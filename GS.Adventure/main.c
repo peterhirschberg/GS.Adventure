@@ -62,10 +62,10 @@ void waitForNextTick(void)
     while (!shouldQuit) {
         clock_t t;
         runGameTick();
-//        do {
-//            t = clock();
-//        }
-//        while ((t - lastTick) < 2);
+        do {
+            t = clock();
+        }
+        while ((t - lastTick) < 1);
         lastTick = t;
     }
 }
