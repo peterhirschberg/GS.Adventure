@@ -1,0 +1,517 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 50;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		D0678FC0267E6E2B00A8010C /* main.c in Sources */ = {isa = PBXBuildFile; fileRef = D0678FBF267E6E2B00A8010C /* main.c */; };
+		D0678FC3267E6E2B00A8010C /* main.rez in CopyFiles */ = {isa = PBXBuildFile; fileRef = D0678FC2267E6E2B00A8010C /* main.rez */; };
+		D0678FC5267E6E2B00A8010C /* Makefile in Sources */ = {isa = PBXBuildFile; fileRef = D0678FC4267E6E2B00A8010C /* Makefile */; };
+		D0678FC8267E6E2B00A8010C /* config.txt in CopyFiles */ = {isa = PBXBuildFile; fileRef = D0678FC7267E6E2B00A8010C /* config.txt */; };
+		D0678FCA267E6E2B00A8010C /* createDiskImage in CopyFiles */ = {isa = PBXBuildFile; fileRef = D0678FC9267E6E2B00A8010C /* createDiskImage */; };
+		D0678FCC267E6E2B00A8010C /* head.mk in CopyFiles */ = {isa = PBXBuildFile; fileRef = D0678FCB267E6E2B00A8010C /* head.mk */; };
+		D0678FCE267E6E2B00A8010C /* launchEmulator in CopyFiles */ = {isa = PBXBuildFile; fileRef = D0678FCD267E6E2B00A8010C /* launchEmulator */; };
+		D0678FD0267E6E2B00A8010C /* orca-asm in CopyFiles */ = {isa = PBXBuildFile; fileRef = D0678FCF267E6E2B00A8010C /* orca-asm */; };
+		D0678FD2267E6E2B00A8010C /* orca-cc in CopyFiles */ = {isa = PBXBuildFile; fileRef = D0678FD1267E6E2B00A8010C /* orca-cc */; };
+		D0678FD4267E6E2B00A8010C /* orca-rez in CopyFiles */ = {isa = PBXBuildFile; fileRef = D0678FD3267E6E2B00A8010C /* orca-rez */; };
+		D0678FD6267E6E2B00A8010C /* system601.2mg in CopyFiles */ = {isa = PBXBuildFile; fileRef = D0678FD5267E6E2B00A8010C /* system601.2mg */; };
+		D0678FD8267E6E2B00A8010C /* tail.mk in CopyFiles */ = {isa = PBXBuildFile; fileRef = D0678FD7267E6E2B00A8010C /* tail.mk */; };
+		D0678FDB267E6E2B00A8010C /* GS.Adventure.xcscheme in CopyFiles */ = {isa = PBXBuildFile; fileRef = D0678FDA267E6E2B00A8010C /* GS.Adventure.xcscheme */; };
+		D0678FEB267E6FE600A8010C /* game.s in Sources */ = {isa = PBXBuildFile; fileRef = D0678FEA267E6FE600A8010C /* game.s */; };
+		D067902B267E938A00A8010C /* globals.s in Sources */ = {isa = PBXBuildFile; fileRef = D067902A267E938A00A8010C /* globals.s */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXCopyFilesBuildPhase section */
+		D0678FBB267E6E2B00A8010C /* CopyFiles */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = /usr/share/man/man1/;
+			dstSubfolderSpec = 0;
+			files = (
+				D0678FCE267E6E2B00A8010C /* launchEmulator in CopyFiles */,
+				D0678FD2267E6E2B00A8010C /* orca-cc in CopyFiles */,
+				D0678FDB267E6E2B00A8010C /* GS.Adventure.xcscheme in CopyFiles */,
+				D0678FCA267E6E2B00A8010C /* createDiskImage in CopyFiles */,
+				D0678FD4267E6E2B00A8010C /* orca-rez in CopyFiles */,
+				D0678FC8267E6E2B00A8010C /* config.txt in CopyFiles */,
+				D0678FD6267E6E2B00A8010C /* system601.2mg in CopyFiles */,
+				D0678FD0267E6E2B00A8010C /* orca-asm in CopyFiles */,
+				D0678FC3267E6E2B00A8010C /* main.rez in CopyFiles */,
+				D0678FCC267E6E2B00A8010C /* head.mk in CopyFiles */,
+				D0678FD8267E6E2B00A8010C /* tail.mk in CopyFiles */,
+			);
+			runOnlyForDeploymentPostprocessing = 1;
+		};
+/* End PBXCopyFilesBuildPhase section */
+
+/* Begin PBXFileReference section */
+		D0678FB5267E6E2B00A8010C /* GS.Adventure */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = GS.Adventure; sourceTree = BUILT_PRODUCTS_DIR; };
+		D0678FB8267E6E2B00A8010C /* GS.Adventure.2mg */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = GS.Adventure.2mg; sourceTree = BUILT_PRODUCTS_DIR; };
+		D0678FBD267E6E2B00A8010C /* doNotBuild */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = doNotBuild; sourceTree = BUILT_PRODUCTS_DIR; };
+		D0678FBF267E6E2B00A8010C /* main.c */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.c; path = main.c; sourceTree = "<group>"; };
+		D0678FC1267E6E2B00A8010C /* main.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = main.h; sourceTree = "<group>"; };
+		D0678FC2267E6E2B00A8010C /* main.rez */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.rez; path = main.rez; sourceTree = "<group>"; };
+		D0678FC4267E6E2B00A8010C /* Makefile */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.make; path = Makefile; sourceTree = "<group>"; };
+		D0678FC7267E6E2B00A8010C /* config.txt */ = {isa = PBXFileReference; lastKnownFileType = text; name = config.txt; path = make/config.txt; sourceTree = "<group>"; };
+		D0678FC9267E6E2B00A8010C /* createDiskImage */ = {isa = PBXFileReference; lastKnownFileType = text.script.sh; name = createDiskImage; path = make/createDiskImage; sourceTree = "<group>"; };
+		D0678FCB267E6E2B00A8010C /* head.mk */ = {isa = PBXFileReference; lastKnownFileType = text; name = head.mk; path = make/head.mk; sourceTree = "<group>"; };
+		D0678FCD267E6E2B00A8010C /* launchEmulator */ = {isa = PBXFileReference; lastKnownFileType = text.script.sh; name = launchEmulator; path = make/launchEmulator; sourceTree = "<group>"; };
+		D0678FCF267E6E2B00A8010C /* orca-asm */ = {isa = PBXFileReference; lastKnownFileType = text.script.sh; name = "orca-asm"; path = "make/orca-asm"; sourceTree = "<group>"; };
+		D0678FD1267E6E2B00A8010C /* orca-cc */ = {isa = PBXFileReference; lastKnownFileType = text.script.sh; name = "orca-cc"; path = "make/orca-cc"; sourceTree = "<group>"; };
+		D0678FD3267E6E2B00A8010C /* orca-rez */ = {isa = PBXFileReference; lastKnownFileType = text.script.sh; name = "orca-rez"; path = "make/orca-rez"; sourceTree = "<group>"; };
+		D0678FD5267E6E2B00A8010C /* system601.2mg */ = {isa = PBXFileReference; lastKnownFileType = file; name = system601.2mg; path = make/system601.2mg; sourceTree = "<group>"; };
+		D0678FD7267E6E2B00A8010C /* tail.mk */ = {isa = PBXFileReference; lastKnownFileType = text; name = tail.mk; path = make/tail.mk; sourceTree = "<group>"; };
+		D0678FDA267E6E2B00A8010C /* GS.Adventure.xcscheme */ = {isa = PBXFileReference; lastKnownFileType = text.xml; name = GS.Adventure.xcscheme; path = GS.Adventure.xcodeproj/xcshareddata/xcschemes/GS.Adventure.xcscheme; sourceTree = SOURCE_ROOT; };
+		D0678FEA267E6FE600A8010C /* game.s */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.asm; path = game.s; sourceTree = "<group>"; };
+		D0678FED267E70FC00A8010C /* game.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = game.h; sourceTree = "<group>"; };
+		D067902A267E938A00A8010C /* globals.s */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.asm; path = globals.s; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		D0678FBA267E6E2B00A8010C /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		D0678FAE267E6E2B00A8010C = {
+			isa = PBXGroup;
+			children = (
+				D0678FBE267E6E2B00A8010C /* GS.Adventure */,
+				D0678FB6267E6E2B00A8010C /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		D0678FB6267E6E2B00A8010C /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				D0678FB5267E6E2B00A8010C /* GS.Adventure */,
+				D0678FB8267E6E2B00A8010C /* GS.Adventure.2mg */,
+				D0678FBD267E6E2B00A8010C /* doNotBuild */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		D0678FBE267E6E2B00A8010C /* GS.Adventure */ = {
+			isa = PBXGroup;
+			children = (
+				D0678FED267E70FC00A8010C /* game.h */,
+				D0678FBF267E6E2B00A8010C /* main.c */,
+				D0678FC1267E6E2B00A8010C /* main.h */,
+				D0678FC2267E6E2B00A8010C /* main.rez */,
+				D0678FC4267E6E2B00A8010C /* Makefile */,
+				D0678FC6267E6E2B00A8010C /* make */,
+				D0678FD9267E6E2B00A8010C /* Supporting Files */,
+				D0678FEA267E6FE600A8010C /* game.s */,
+				D067902A267E938A00A8010C /* globals.s */,
+			);
+			path = GS.Adventure;
+			sourceTree = "<group>";
+		};
+		D0678FC6267E6E2B00A8010C /* make */ = {
+			isa = PBXGroup;
+			children = (
+				D0678FC7267E6E2B00A8010C /* config.txt */,
+				D0678FC9267E6E2B00A8010C /* createDiskImage */,
+				D0678FCB267E6E2B00A8010C /* head.mk */,
+				D0678FCD267E6E2B00A8010C /* launchEmulator */,
+				D0678FCF267E6E2B00A8010C /* orca-asm */,
+				D0678FD1267E6E2B00A8010C /* orca-cc */,
+				D0678FD3267E6E2B00A8010C /* orca-rez */,
+				D0678FD5267E6E2B00A8010C /* system601.2mg */,
+				D0678FD7267E6E2B00A8010C /* tail.mk */,
+			);
+			name = make;
+			sourceTree = "<group>";
+		};
+		D0678FD9267E6E2B00A8010C /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				D0678FDA267E6E2B00A8010C /* GS.Adventure.xcscheme */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXLegacyTarget section */
+		D0678FB3267E6E2B00A8010C /* GS.Adventure */ = {
+			isa = PBXLegacyTarget;
+			buildArgumentsString = "-C GS.Adventure $(ACTION)";
+			buildConfigurationList = D0678FDE267E6E2B00A8010C /* Build configuration list for PBXLegacyTarget "GS.Adventure" */;
+			buildPhases = (
+			);
+			buildToolPath = /usr/bin/make;
+			dependencies = (
+			);
+			name = GS.Adventure;
+			passBuildSettingsInEnvironment = 1;
+			productName = GS.Adventure;
+		};
+/* End PBXLegacyTarget section */
+
+/* Begin PBXNativeTarget section */
+		D0678FB4267E6E2B00A8010C /* Binary */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = D0678FE1267E6E2B00A8010C /* Build configuration list for PBXNativeTarget "Binary" */;
+			buildPhases = (
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = Binary;
+			productName = Binary;
+			productReference = D0678FB5267E6E2B00A8010C /* GS.Adventure */;
+			productType = "com.apple.product-type.tool";
+		};
+		D0678FB7267E6E2B00A8010C /* DiskImage */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = D0678FE4267E6E2B00A8010C /* Build configuration list for PBXNativeTarget "DiskImage" */;
+			buildPhases = (
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = DiskImage;
+			productName = DiskImage;
+			productReference = D0678FB8267E6E2B00A8010C /* GS.Adventure.2mg */;
+			productType = "com.apple.product-type.tool";
+		};
+		D0678FBC267E6E2B00A8010C /* doNotBuild */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = D0678FE7267E6E2B00A8010C /* Build configuration list for PBXNativeTarget "doNotBuild" */;
+			buildPhases = (
+				D0678FB9267E6E2B00A8010C /* Sources */,
+				D0678FBA267E6E2B00A8010C /* Frameworks */,
+				D0678FBB267E6E2B00A8010C /* CopyFiles */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = doNotBuild;
+			productName = doNotBuild;
+			productReference = D0678FBD267E6E2B00A8010C /* doNotBuild */;
+			productType = "com.apple.product-type.tool";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		D0678FAF267E6E2B00A8010C /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastUpgradeCheck = 1010;
+				ORGANIZATIONNAME = "Peter Hirschberg";
+				TargetAttributes = {
+					D0678FB3267E6E2B00A8010C = {
+						CreatedOnToolsVersion = 10.1;
+					};
+					D0678FB4267E6E2B00A8010C = {
+						CreatedOnToolsVersion = 10.1;
+					};
+					D0678FB7267E6E2B00A8010C = {
+						CreatedOnToolsVersion = 10.1;
+					};
+					D0678FBC267E6E2B00A8010C = {
+						CreatedOnToolsVersion = 10.1;
+					};
+				};
+			};
+			buildConfigurationList = D0678FB2267E6E2B00A8010C /* Build configuration list for PBXProject "GS.Adventure" */;
+			compatibilityVersion = "Xcode 9.3";
+			developmentRegion = en;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+			);
+			mainGroup = D0678FAE267E6E2B00A8010C;
+			productRefGroup = D0678FB6267E6E2B00A8010C /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				D0678FB3267E6E2B00A8010C /* GS.Adventure */,
+				D0678FB4267E6E2B00A8010C /* Binary */,
+				D0678FB7267E6E2B00A8010C /* DiskImage */,
+				D0678FBC267E6E2B00A8010C /* doNotBuild */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXSourcesBuildPhase section */
+		D0678FB9267E6E2B00A8010C /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				D0678FC5267E6E2B00A8010C /* Makefile in Sources */,
+				D0678FC0267E6E2B00A8010C /* main.c in Sources */,
+				D067902B267E938A00A8010C /* globals.s in Sources */,
+				D0678FEB267E6FE600A8010C /* game.s in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin XCBuildConfiguration section */
+		D0678FDC267E6E2B00A8010C /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
+				MTL_FAST_MATH = YES;
+				ONLY_ACTIVE_ARCH = YES;
+			};
+			name = Debug;
+		};
+		D0678FDD267E6E2B00A8010C /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				MTL_FAST_MATH = YES;
+			};
+			name = Release;
+		};
+		D0678FDF267E6E2B00A8010C /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_STYLE = Automatic;
+				DEBUGGING_SYMBOLS = YES;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				GCC_GENERATE_DEBUGGING_SYMBOLS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				OTHER_CFLAGS = "";
+				OTHER_LDFLAGS = "";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Debug;
+		};
+		D0678FE0267E6E2B00A8010C /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_STYLE = Automatic;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				OTHER_CFLAGS = "";
+				OTHER_LDFLAGS = "";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Release;
+		};
+		D0678FE2267E6E2B00A8010C /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_STYLE = Automatic;
+				PRODUCT_NAME = GS.Adventure;
+			};
+			name = Debug;
+		};
+		D0678FE3267E6E2B00A8010C /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_STYLE = Automatic;
+				PRODUCT_NAME = GS.Adventure;
+			};
+			name = Release;
+		};
+		D0678FE5267E6E2B00A8010C /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_STYLE = Automatic;
+				PRODUCT_NAME = GS.Adventure.2mg;
+			};
+			name = Debug;
+		};
+		D0678FE6267E6E2B00A8010C /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_STYLE = Automatic;
+				PRODUCT_NAME = GS.Adventure.2mg;
+			};
+			name = Release;
+		};
+		D0678FE8267E6E2B00A8010C /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_STYLE = Automatic;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"inline(X,Y)=\"\"\n",
+					"extended=double\n",
+					"pascal=\"\"",
+				);
+				HEADER_SEARCH_PATHS = (
+					"$TEMP_ROOT/GS.Adventure.build/$CONFIGURATION/GS.Adventure.build/DerivedSources\n",
+					"$GOLDEN_GATE/Libraries/ORCACDefs\n",
+					"~/Library/GoldenGate/Libraries/ORCACDefs\n",
+					"/Library/GoldenGate/Libraries/ORCACDefs\n",
+					"~/GoldenGate/Libraries/ORCACDefs",
+				);
+				PRODUCT_NAME = doNotBuild;
+			};
+			name = Debug;
+		};
+		D0678FE9267E6E2B00A8010C /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_STYLE = Automatic;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"inline(X,Y)=\"\"\n",
+					"extended=double\n",
+					"pascal=\"\"",
+				);
+				HEADER_SEARCH_PATHS = (
+					"$TEMP_ROOT/GS.Adventure.build/$CONFIGURATION/GS.Adventure.build/DerivedSources\n",
+					"$GOLDEN_GATE/Libraries/ORCACDefs\n",
+					"~/Library/GoldenGate/Libraries/ORCACDefs\n",
+					"/Library/GoldenGate/Libraries/ORCACDefs\n",
+					"~/GoldenGate/Libraries/ORCACDefs",
+				);
+				PRODUCT_NAME = doNotBuild;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		D0678FB2267E6E2B00A8010C /* Build configuration list for PBXProject "GS.Adventure" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				D0678FDC267E6E2B00A8010C /* Debug */,
+				D0678FDD267E6E2B00A8010C /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		D0678FDE267E6E2B00A8010C /* Build configuration list for PBXLegacyTarget "GS.Adventure" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				D0678FDF267E6E2B00A8010C /* Debug */,
+				D0678FE0267E6E2B00A8010C /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		D0678FE1267E6E2B00A8010C /* Build configuration list for PBXNativeTarget "Binary" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				D0678FE2267E6E2B00A8010C /* Debug */,
+				D0678FE3267E6E2B00A8010C /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		D0678FE4267E6E2B00A8010C /* Build configuration list for PBXNativeTarget "DiskImage" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				D0678FE5267E6E2B00A8010C /* Debug */,
+				D0678FE6267E6E2B00A8010C /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		D0678FE7267E6E2B00A8010C /* Build configuration list for PBXNativeTarget "doNotBuild" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				D0678FE8267E6E2B00A8010C /* Debug */,
+				D0678FE9267E6E2B00A8010C /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = D0678FAF267E6E2B00A8010C /* Project object */;
+}
