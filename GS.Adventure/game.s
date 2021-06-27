@@ -24,6 +24,10 @@ initGame entry
 
 runGameTick entry
 
+        jsr drawRoom
+        rtl
+
+
         lda oldLeft
         sta rectX
         lda #50
