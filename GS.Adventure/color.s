@@ -95,5 +95,25 @@ initColorTable entry
 
         rts
 
-        
+
+        end
+
+colorData data
+
+COLOR_BLACK         gequ $11
+COLOR_LTGRAY        gequ $22
+COLOR_WHITE         gequ $33
+COLOR_YELLOW        gequ $44
+COLOR_ORANGE        gequ $55
+COLOR_RED           gequ $66
+COLOR_PURPLE        gequ $77
+COLOR_BLUE          gequ $88
+COLOR_LTCYAN        gequ $99
+COLOR_CYAN          gequ $aa
+COLOR_DKGREEN       gequ $bb
+COLOR_LIMEGREEN     gequ $cc
+COLOR_OLIVEGREEN    gequ $dd
+COLOR_TAN           gequ $ee
+COLOR_FLASH         gequ $ff
+
         end

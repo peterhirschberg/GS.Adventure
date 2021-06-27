@@ -36,6 +36,12 @@ void signalQuit(void)
 }
 
 
+word getRandom(word range)
+{
+    return rand() % range;
+}
+
+
 // Sounds
 
 static void loadSound(Word addr, Word soundNum)
@@ -83,14 +89,12 @@ int main(void)
     InitMouse(0);
     SetMouse(transparent);
     
-//    randomSeed = (int)time(NULL);
-//    if (randomSeed == 0)
-//        randomSeed = 1;
-//    srand(randomSeed);
+    randomSeed = (int)time(NULL);
+    if (randomSeed == 0)
+        randomSeed = 1;
+    srand(randomSeed);
     
     initGame();
-    
-//    memset((void*)0x012000, 0, 0x8000);
     
     lastTick = clock();
     waitForNextTick();

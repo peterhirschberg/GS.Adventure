@@ -11,6 +11,7 @@
 game start
         using globalData
         using screenData
+        using colorData
 
 
 initGame entry
@@ -53,7 +54,7 @@ runGameTick entry
         sta rectWidth
         lda #50
         sta rectHeight
-        lda #$88
+        lda #COLOR_BLUE
         sta rectColor
 
         jsr drawRect

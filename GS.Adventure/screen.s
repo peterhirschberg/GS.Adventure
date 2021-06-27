@@ -11,6 +11,7 @@
 screen start
         using globalData
         using screenData
+        using colorData
 
 
 ; Set the SCB to fill mode for all 200 screen rows
@@ -100,8 +101,8 @@ fillLoop1 anop
         clc
         adc rectWidth
         tax
-; background color here
-        lda #$22
+; background color here???
+        lda #COLOR_LTGRAY
         sta >SCREEN_ADDR,x
 
         inc rowCounter
