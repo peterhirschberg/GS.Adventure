@@ -22,6 +22,7 @@
 		D0678FDB267E6E2B00A8010C /* GS.Adventure.xcscheme in CopyFiles */ = {isa = PBXBuildFile; fileRef = D0678FDA267E6E2B00A8010C /* GS.Adventure.xcscheme */; };
 		D0678FEB267E6FE600A8010C /* game.s in Sources */ = {isa = PBXBuildFile; fileRef = D0678FEA267E6FE600A8010C /* game.s */; };
 		D067902B267E938A00A8010C /* globals.s in Sources */ = {isa = PBXBuildFile; fileRef = D067902A267E938A00A8010C /* globals.s */; };
+		D067909326889F8C00A8010C /* color.s in Sources */ = {isa = PBXBuildFile; fileRef = D067909226889F8C00A8010C /* color.s */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -68,6 +69,7 @@
 		D0678FEA267E6FE600A8010C /* game.s */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.asm; path = game.s; sourceTree = "<group>"; };
 		D0678FED267E70FC00A8010C /* game.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = game.h; sourceTree = "<group>"; };
 		D067902A267E938A00A8010C /* globals.s */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.asm; path = globals.s; sourceTree = "<group>"; };
+		D067909226889F8C00A8010C /* color.s */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.asm; path = color.s; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -111,6 +113,7 @@
 				D0678FD9267E6E2B00A8010C /* Supporting Files */,
 				D0678FEA267E6FE600A8010C /* game.s */,
 				D067902A267E938A00A8010C /* globals.s */,
+				D067909226889F8C00A8010C /* color.s */,
 			);
 			path = GS.Adventure;
 			sourceTree = "<group>";
@@ -254,6 +257,7 @@
 				D0678FC5267E6E2B00A8010C /* Makefile in Sources */,
 				D0678FC0267E6E2B00A8010C /* main.c in Sources */,
 				D067902B267E938A00A8010C /* globals.s in Sources */,
+				D067909326889F8C00A8010C /* color.s in Sources */,
 				D0678FEB267E6FE600A8010C /* game.s in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

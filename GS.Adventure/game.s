@@ -14,6 +14,7 @@ game start
 
 initGame entry
         jsr setupScreen
+        jsr initColorTable
         jsr zeroScreen
         jsr initSCB
         jsr fillScreen
@@ -89,7 +90,7 @@ fillLoop anop
         tax
         lda screenRowOffsets,x
         tax
-        lda #$88
+        lda #$22
         sta >SCREEN_ADDR,x
         inc rowCounter
         lda rowCounter
@@ -131,7 +132,7 @@ fillLoop1 anop
         clc
         adc left
         tax
-        lda #$aa
+        lda #$88
         sta >SCREEN_ADDR,x
 
         lda rowCounter
@@ -143,7 +144,7 @@ fillLoop1 anop
         clc
         adc #25
         tax
-        lda #$88
+        lda #$22
         sta >SCREEN_ADDR,x
 
         inc rowCounter

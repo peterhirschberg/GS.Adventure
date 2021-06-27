@@ -10,11 +10,13 @@
 
 globalData data
 
-BORDER_COLOR_REGISTER  gequ $e0c034
+BORDER_COLOR_REGISTER   gequ $e0c034
 STATE_REGISTER          gequ $e1c068
-SCREEN_ADDR gequ $012000
-SCB_BASE gequ $e19d00
-FILL_MODE gequ $20
+SCREEN_ADDR             gequ $012000
+SCB_BASE                gequ $e19d00
+COLOR_TABLE             gequ $e19e00
+
+FILL_MODE               gequ $20
 
 
 ; table of precomputed screen row offsets
