@@ -41,6 +41,16 @@ word getRandom(word range)
     return rand() % range;
 }
 
+word lessThan4(word value)
+{
+    return value < 4 ? 1 : 0;
+}
+
+word lessThan12(word value)
+{
+    return value < 12 ? 1 : 0;
+}
+
 
 // Sounds
 
@@ -67,7 +77,7 @@ void waitForNextTick(void)
 {
     while (!shouldQuit) {
         clock_t t;
-        runGameTick();
+//        runGameTick();
         do {
             t = clock();
         }
@@ -95,7 +105,9 @@ int main(void)
     srand(randomSeed);
     
     initGame();
-    
+  
+    runGameTick();
+
     lastTick = clock();
     waitForNextTick();
     

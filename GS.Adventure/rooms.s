@@ -30,22 +30,22 @@ drawRoom entry
 
 roomVerticalLoop anop
 
-        lda dataIndex
-        tax
-        lda roomGfxCastle,x
+        ldx dataIndex
+        lda roomGfxCastle2,x
         sta pf0
         inc dataIndex
-
-        lda dataIndex
-        tax
-        lda roomGfxCastle,x
-        sta pf1
         inc dataIndex
 
-        lda dataIndex
-        tax
-        lda roomGfxCastle,x
+        ldx dataIndex
+        lda roomGfxCastle2,x
+        sta pf1
+        inc dataIndex
+        inc dataIndex
+
+        ldx dataIndex
+        lda roomGfxCastle2,x
         sta pf2
+        inc dataIndex
         inc dataIndex
 
         lda #6
@@ -58,35 +58,56 @@ roomVerticalLoop anop
 
 horizontalLoop anop
 
-        lda #4
-        cmp cx
-        bcs shift1
+;        lda cx
+;        pha
+;        jsl lessThan4
+;        cmp #1
+;        beq shift0
 
-        lda #12
-        cmp cx
+;        lda cx
+;        pha
+;        jsl lessThan12
+;        cmp #1
+;        beq shift1
+;        bra shift2
+
+
+        lda cx
+        cmp #12
         bcs shift2
 
-; shift0
+        lda cx
+        cmp #4
+        bcs shift1
 
-        ldx cx
-        lda shiftreg,x
-        and pf2
-        sta bit
-        bra doneShift
 
-shift1 anop
+shift0 anop
 
-        ldx cx
+        lda cx
+        asl a
+        tax
         lda shiftreg,x
         and pf0
         sta bit
         bra doneShift
 
-shift2 anop
+shift1 anop
 
-        ldx cx
+        lda cx
+        asl a
+        tax
         lda shiftreg,x
         and pf1
+        sta bit
+        bra doneShift
+
+shift2 anop
+
+        lda cx
+        asl a
+        tax
+        lda shiftreg,x
+        and pf2
         sta bit
 
 doneShift anop
@@ -101,12 +122,14 @@ doneShift anop
         asl a
         sta rectX
 
-        lda cy
+        lda cy ; should be ypos
         asl a
         asl a
         asl a
         asl a
         asl a
+        sec
+        sbc #10 ; adjust vertical position
         sta rectY
 
         lda #CELL_WIDTH
@@ -115,7 +138,7 @@ doneShift anop
         lda #CELL_HEIGHT
         sta rectHeight
 
-        lda #COLOR_BLUE
+        lda #COLOR_YELLOW
         sta rectColor
 
         jsr drawRect
@@ -130,7 +153,7 @@ bitNotSet anop
 roomNextRow anop
         inc cy
         lda cy
-        cmp #6
+        cmp #7
         beq roomDone
         jmp roomVerticalLoop
 
@@ -138,11 +161,11 @@ roomDone anop
         rts
 
 
-temp dc i1'0'
-bit dc i1'0'
-pf0 dc i1'0'
-pf1 dc i1'0'
-pf2 dc i1'0'
+temp dc i2'0'
+bit dc i2'0'
+pf0 dc i2'0'
+pf1 dc i2'0'
+pf2 dc i2'0'
 
 cx dc i2'0'
 cy dc i2'0'
@@ -153,36 +176,76 @@ CELL_WIDTH gequ 8
 CELL_HEIGHT gequ 32
 
 shiftreg anop
-        dc i1'$10'
-        dc i1'$20'
-        dc i1'$40'
-        dc i1'$80'
-        dc i1'$80'
-        dc i1'$40'
-        dc i1'$20'
-        dc i1'$10'
-        dc i1'$8'
-        dc i1'$2'
-        dc i1'$1'
-        dc i1'$1'
-        dc i1'$2'
-        dc i1'$4'
-        dc i1'$8'
-        dc i1'$10'
-        dc i1'$20'
-        dc i1'$40'
-        dc i1'$80'
+        dc i2'$10'
+        dc i2'$20'
+        dc i2'$40'
+        dc i2'$80'
 
+        dc i2'$80'
+        dc i2'$40'
+        dc i2'$20'
+        dc i2'$10'
+        dc i2'$8'
+        dc i2'$4'
+        dc i2'$2'
+        dc i2'$1'
+
+        dc i2'$1'
+        dc i2'$2'
+        dc i2'$4'
+        dc i2'$8'
+        dc i2'$10'
+        dc i2'$20'
+        dc i2'$40'
+        dc i2'$80'
+
+
+roomGfxCastleOrg anop
+        dc i2'$F0' i2'$FE' i2'$15' ; XXXXXXXXXXX X X X      R R R RRRRRRRRRRR
+        dc i2'$30' i2'$03' i2'$1F' ; XX        XXXXXXX      RRRRRRR        RR
+        dc i2'$30' i2'$03' i2'$FF' ; XX        XXXXXXXXXXRRRRRRRRRR        RR
+        dc i2'$30' i2'$00' i2'$FF' ; XX          XXXXXXXXRRRRRRRR          RR
+        dc i2'$30' i2'$00' i2'$3F' ; XX          XXXXXX    RRRRRR          RR
+        dc i2'$30' i2'$00' i2'$00' ; XX                                    RR
+        dc i2'$F0' i2'$FF' i2'$0F' ; XXXXXXXXXXXXXX            RRRRRRRRRRRRRR
 
 roomGfxCastle anop
-        dc i1'$F0' i1'$FE' i1'$15' ; XXXXXXXXXXX X X X      R R R RRRRRRRRRRR
-        dc i1'$30' i1'$03' i1'$1F' ; XX        XXXXXXX      RRRRRRR        RR
-        dc i1'$30' i1'$03' i1'$FF' ; XX        XXXXXXXXXXRRRRRRRRRR        RR
-        dc i1'$30' i1'$00' i1'$FF' ; XX          XXXXXXXXRRRRRRRR          RR
-        dc i1'$30' i1'$00' i1'$3F' ; XX          XXXXXX    RRRRRR          RR
-        dc i1'$30' i1'$00' i1'$00' ; XX                                    RR
-        dc i1'$F0' i1'$FF' i1'$0F' ; XXXXXXXXXXXXXX            RRRRRRRRRRRRRR
+        dc i2'$F0' dc i2'$FE' dc i2'$15' ; XXXXXXXXXXX X X X      R R R RRRRRRRRRRR
+        dc i2'$30' dc i2'$03' dc i2'$1F' ; XX        XXXXXXX      RRRRRRR        RR
+        dc i2'$30' dc i2'$03' dc i2'$FF' ; XX        XXXXXXXXXXRRRRRRRRRR        RR
+        dc i2'$30' dc i2'$00' dc i2'$FF' ; XX          XXXXXXXXRRRRRRRR          RR
+        dc i2'$30' dc i2'$00' dc i2'$3F' ; XX          XXXXXX    RRRRRR          RR
+        dc i2'$30' dc i2'$00' dc i2'$00' ; XX                                    RR
+        dc i2'$F0' dc i2'$FF' dc i2'$0F' ; XXXXXXXXXXXXXX            RRRRRRRRRRRRRR
 
+roomGfxCastle2 anop
+        dc i2'$F0'
+        dc i2'$FE'
+        dc i2'$15'
+
+        dc i2'$30'
+        dc i2'$03'
+        dc i2'$1F'
+
+        dc i2'$30'
+        dc i2'$03'
+        dc i2'$FF'
+
+        dc i2'$30'
+        dc i2'$00'
+        dc i2'$FF'
+
+        dc i2'$30'
+        dc i2'$00'
+        dc i2'$3F'
+
+        dc i2'$30'
+        dc i2'$00'
+        dc i2'$00'
+
+        dc i2'$F0'
+        dc i2'$FF'
+        dc i2'$0F'
 
 
         end

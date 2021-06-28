@@ -75,6 +75,16 @@ done anop
 
 
 drawRect entry
+
+        lda rectX
+        lsr a
+        sta rectX
+
+        lda rectWidth
+        lsr a
+        sta rectWidth
+
+
         lda #0
         sta rowCounter
 fillLoop1 anop
