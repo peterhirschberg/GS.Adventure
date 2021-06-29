@@ -91,9 +91,9 @@ fillLoop1 anop
         clc
         adc rectY
 
-        bmi nextRow
+        bmi nextRow1
         cmp #199
-        bcs nextRow
+        bcs nextRow1
 
         asl a
         tax
@@ -109,7 +109,7 @@ fillLoop1 anop
         clc
         adc rectWidth
         cmp #159
-        bcs nextRow
+        bcs nextRow1
 
         lda rowCounter
         clc
@@ -126,7 +126,7 @@ fillLoop1 anop
         lda #COLOR_LTGRAY
         sta >SCREEN_ADDR,x
 
-nextRow anop
+nextRow1 anop
         inc rowCounter
         lda rowCounter
         cmp rectHeight
@@ -137,20 +137,42 @@ fillDone1 anop
 
 
 eraseRect entry
+
+        lda rectX
+        lsr a
+        sta rectX
+
+        lda rectWidth
+        lsr a
+        sta rectWidth
+
         lda #0
         sta rowCounter
 fillLoop2 anop
         lda rowCounter
         clc
         adc rectY
+
+        bmi nextRow2
+        cmp #199
+        bcs nextRow2
+
         asl a
         tax
         lda screenRowOffsets,x
         clc
         adc rectX
         tax
-        lda #$00
+
+        lda #0
         sta >SCREEN_ADDR,x
+
+; bounds check
+        lda rectX
+        clc
+        adc rectWidth
+        cmp #159
+        bcs nextRow2
 
         lda rowCounter
         clc
@@ -163,9 +185,11 @@ fillLoop2 anop
         clc
         adc rectWidth
         tax
-        lda #$00
+
+        lda #0
         sta >SCREEN_ADDR,x
 
+nextRow2 anop
         inc rowCounter
         lda rowCounter
         cmp rectHeight
@@ -173,7 +197,6 @@ fillLoop2 anop
         bra fillLoop2
 fillDone2 anop
         rts
-
 
 
 ; sets all pixels to 0

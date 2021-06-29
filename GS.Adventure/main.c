@@ -77,7 +77,7 @@ void waitForNextTick(void)
 {
     while (!shouldQuit) {
         clock_t t;
-//        runGameTick();
+        runGameTick();
         do {
             t = clock();
         }

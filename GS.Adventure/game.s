@@ -25,15 +25,13 @@ initGame entry
 runGameTick entry
 
         jsr drawRoom
-;        jsr drawRoom2
-        rtl
 
 
         lda oldLeft
         sta rectX
         lda #50
         sta rectY
-        lda #25
+        lda #50
         sta rectWidth
         lda #50
         sta rectHeight
@@ -55,7 +53,7 @@ runGameTick entry
 
         lda #50
         sta rectY
-        lda #25
+        lda #50
         sta rectWidth
         lda #50
         sta rectHeight
