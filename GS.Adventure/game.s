@@ -20,12 +20,10 @@ initGame entry
         jsr zeroScreen
         jsr initSCB
         jsr fillScreen
+        jsr drawRoom
         rtl
 
 runGameTick entry
-
-        jsr drawRoom
-
 
         lda oldLeft
         sta rectX
