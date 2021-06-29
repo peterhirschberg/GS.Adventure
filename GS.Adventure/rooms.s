@@ -13,6 +13,7 @@ rooms start
         using globalData
         using screenData
 
+
 drawRoom entry
 
 ; Extract the playfield register bits and paint the playfield
@@ -23,6 +24,18 @@ drawRoom entry
 ; Each set bit indicates playfield color - else background color -
 ; the size of each block is 8 x 32, and the drawing is shifted
 ; upwards by 16 pixels
+;
+; Playfields are always just the left half of the screen and
+; the right half is either mirrored or repeated from the left.
+;
+
+        jsr drawRoomLeft
+        jsr drawRoomRightMirrored
+
+        rts
+
+
+drawRoomLeft entry
 
         lda #0
         sta cy
@@ -31,46 +44,27 @@ drawRoom entry
 roomVerticalLoop anop
 
         ldx dataIndex
-        lda roomGfxCastle2,x
+        lda roomGfxCastle,x
         sta pf0
         inc dataIndex
         inc dataIndex
 
         ldx dataIndex
-        lda roomGfxCastle2,x
+        lda roomGfxCastle,x
         sta pf1
         inc dataIndex
         inc dataIndex
 
         ldx dataIndex
-        lda roomGfxCastle2,x
+        lda roomGfxCastle,x
         sta pf2
         inc dataIndex
         inc dataIndex
-
-        lda #6
-        sec
-        sbc cy
-        sta ypos
 
         lda #0
         sta cx
 
 horizontalLoop anop
-
-;        lda cx
-;        pha
-;        jsl lessThan4
-;        cmp #1
-;        beq shift0
-
-;        lda cx
-;        pha
-;        jsl lessThan12
-;        cmp #1
-;        beq shift1
-;        bra shift2
-
 
         lda cx
         cmp #12
@@ -122,7 +116,7 @@ doneShift anop
         asl a
         sta rectX
 
-        lda cy ; should be ypos
+        lda cy
         asl a
         asl a
         asl a
@@ -146,7 +140,7 @@ doneShift anop
 bitNotSet anop
         inc cx
         lda cx
-        cmp #19
+        cmp #20
         beq roomNextRow
         jmp horizontalLoop
 
@@ -161,12 +155,150 @@ roomDone anop
         rts
 
 
+
+drawRoomRightMirrored entry
+
+        lda #0
+        sta cy
+        sta dataIndex
+
+roomVerticalLoop2 anop
+
+        ldx dataIndex
+        lda roomGfxCastle,x
+        sta pf0
+        inc dataIndex
+        inc dataIndex
+
+        ldx dataIndex
+        lda roomGfxCastle,x
+        sta pf1
+        inc dataIndex
+        inc dataIndex
+
+        ldx dataIndex
+        lda roomGfxCastle,x
+        sta pf2
+        inc dataIndex
+        inc dataIndex
+
+        lda #19
+        sta cx
+
+horizontalLoop2 anop
+
+        lda cx
+        cmp #12
+        bcs shift2b
+
+        lda cx
+        cmp #4
+        bcs shift1b
+
+
+shift0b anop
+
+        lda cx
+        asl a
+        tax
+        lda shiftreg,x
+        and pf0
+        sta bit
+        bra doneShift2
+
+shift1b anop
+
+        lda cx
+        asl a
+        tax
+        lda shiftreg,x
+        and pf1
+        sta bit
+        bra doneShift2
+
+shift2b anop
+
+        lda cx
+        asl a
+        tax
+        lda shiftreg,x
+        and pf2
+        sta bit
+
+doneShift2 anop
+
+        lda bit
+        cmp #0
+        beq bitNotSet2
+
+        lda cx
+        asl a
+        asl a
+        asl a
+        sta rectX
+
+        lda cy
+        asl a
+        asl a
+        asl a
+        asl a
+        asl a
+        sec
+        sbc #10 ; adjust vertical position
+        sta rectY
+
+        lda #CELL_WIDTH
+        sta rectWidth
+
+        lda #CELL_HEIGHT
+        sta rectHeight
+
+        lda #COLOR_YELLOW
+        sta rectColor
+
+; draw mirrored right half
+
+        lda cx
+        sta temp
+        inc temp
+
+        lda #40
+        sec
+        sbc temp
+
+        sta rectX
+        asl a
+        asl a
+        asl a
+        sta rectX
+
+        jsr drawRect
+
+bitNotSet2 anop
+        dec cx
+        lda cx
+        bmi roomNextRow2
+        jmp horizontalLoop2
+
+roomNextRow2 anop
+        inc cy
+        lda cy
+        cmp #7
+        beq roomDone2
+        jmp roomVerticalLoop2
+
+roomDone2 anop
+        rts
+
+
+
 temp dc i2'0'
 bit dc i2'0'
 pf0 dc i2'0'
 pf1 dc i2'0'
 pf2 dc i2'0'
 
+cx2 dc i2'0'
 cx dc i2'0'
 cy dc i2'0'
 ypos dc i2'0'
@@ -174,6 +306,7 @@ dataIndex dc i2'0'
 
 CELL_WIDTH gequ 8
 CELL_HEIGHT gequ 32
+
 
 shiftreg anop
         dc i2'$10'
@@ -200,52 +333,14 @@ shiftreg anop
         dc i2'$80'
 
 
-roomGfxCastleOrg anop
-        dc i2'$F0' i2'$FE' i2'$15' ; XXXXXXXXXXX X X X      R R R RRRRRRRRRRR
-        dc i2'$30' i2'$03' i2'$1F' ; XX        XXXXXXX      RRRRRRR        RR
-        dc i2'$30' i2'$03' i2'$FF' ; XX        XXXXXXXXXXRRRRRRRRRR        RR
-        dc i2'$30' i2'$00' i2'$FF' ; XX          XXXXXXXXRRRRRRRR          RR
-        dc i2'$30' i2'$00' i2'$3F' ; XX          XXXXXX    RRRRRR          RR
-        dc i2'$30' i2'$00' i2'$00' ; XX                                    RR
-        dc i2'$F0' i2'$FF' i2'$0F' ; XXXXXXXXXXXXXX            RRRRRRRRRRRRRR
-
 roomGfxCastle anop
-        dc i2'$F0' dc i2'$FE' dc i2'$15' ; XXXXXXXXXXX X X X      R R R RRRRRRRRRRR
-        dc i2'$30' dc i2'$03' dc i2'$1F' ; XX        XXXXXXX      RRRRRRR        RR
-        dc i2'$30' dc i2'$03' dc i2'$FF' ; XX        XXXXXXXXXXRRRRRRRRRR        RR
-        dc i2'$30' dc i2'$00' dc i2'$FF' ; XX          XXXXXXXXRRRRRRRR          RR
-        dc i2'$30' dc i2'$00' dc i2'$3F' ; XX          XXXXXX    RRRRRR          RR
-        dc i2'$30' dc i2'$00' dc i2'$00' ; XX                                    RR
-        dc i2'$F0' dc i2'$FF' dc i2'$0F' ; XXXXXXXXXXXXXX            RRRRRRRRRRRRRR
-
-roomGfxCastle2 anop
-        dc i2'$F0'
-        dc i2'$FE'
-        dc i2'$15'
-
-        dc i2'$30'
-        dc i2'$03'
-        dc i2'$1F'
-
-        dc i2'$30'
-        dc i2'$03'
-        dc i2'$FF'
-
-        dc i2'$30'
-        dc i2'$00'
-        dc i2'$FF'
-
-        dc i2'$30'
-        dc i2'$00'
-        dc i2'$3F'
-
-        dc i2'$30'
-        dc i2'$00'
-        dc i2'$00'
-
-        dc i2'$F0'
-        dc i2'$FF'
-        dc i2'$0F'
+        dc i2'$F0, $FE, $15' ; XXXXXXXXXXX X X X      R R R RRRRRRRRRRR
+        dc i2'$30, $03, $1F' ; XX        XXXXXXX      RRRRRRR        RR
+        dc i2'$30, $03, $FF' ; XX        XXXXXXXXXXRRRRRRRRRR        RR
+        dc i2'$30, $00, $FF' ; XX          XXXXXXXXRRRRRRRR          RR
+        dc i2'$30, $00, $3F' ; XX          XXXXXX    RRRRRR          RR
+        dc i2'$30, $00, $00' ; XX                                    RR
+        dc i2'$F0, $FF, $0F' ; XXXXXXXXXXXXXX            RRRRRRRRRRRRRR
 
 
         end

@@ -84,13 +84,17 @@ drawRect entry
         lsr a
         sta rectWidth
 
-
         lda #0
         sta rowCounter
 fillLoop1 anop
         lda rowCounter
         clc
         adc rectY
+
+        bmi nextRow
+        cmp #199
+        bcs nextRow
+
         asl a
         tax
         lda screenRowOffsets,x
@@ -99,6 +103,13 @@ fillLoop1 anop
         tax
         lda rectColor
         sta >SCREEN_ADDR,x
+
+; bounds check
+        lda rectX
+        clc
+        adc rectWidth
+        cmp #159
+        bcs nextRow
 
         lda rowCounter
         clc
@@ -115,6 +126,7 @@ fillLoop1 anop
         lda #COLOR_LTGRAY
         sta >SCREEN_ADDR,x
 
+nextRow anop
         inc rowCounter
         lda rowCounter
         cmp rectHeight

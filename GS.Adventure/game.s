@@ -25,6 +25,7 @@ initGame entry
 runGameTick entry
 
         jsr drawRoom
+;        jsr drawRoom2
         rtl
 
 
