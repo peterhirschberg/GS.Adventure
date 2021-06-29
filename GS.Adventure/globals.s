@@ -12,9 +12,13 @@ globalData data
 
 BORDER_COLOR_REGISTER   gequ $e0c034
 STATE_REGISTER          gequ $e1c068
-SCREEN_ADDR             gequ $012000
+SCREEN_ADDR             gequ $e12000
 SCB_BASE                gequ $e19d00
 COLOR_TABLE             gequ $e19e00
+
+SHADOW_REGISTER         gequ $e0c035
+NEW_VIDEO_REGISTER      gequ $e0c029
+BORDER_COLOUR_REGISTER  gequ $e0c034
 
 FILL_MODE               gequ $20
 

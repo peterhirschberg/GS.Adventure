@@ -18,12 +18,14 @@ initGame entry
         jsr setupScreen
         jsr initColorTable
         jsr zeroScreen
-        jsr initSCB
-        jsr fillScreen
-        jsr drawRoom
+;        jsr initSCB
+;        jsr fillScreen
+;        jsr drawRoom
         rtl
 
 runGameTick entry
+
+;        jsr asmGrOn
 
         lda oldLeft
         sta rectX
@@ -34,7 +36,11 @@ runGameTick entry
         lda #50
         sta rectHeight
 
-        jsr eraseRect
+;        lda #COLOR_LTGRAY
+        lda #COLOR_BLACK
+        sta rectColor
+
+        jsr newRect
 
         lda left
         sta oldLeft
@@ -58,7 +64,9 @@ runGameTick entry
         lda #COLOR_BLUE
         sta rectColor
 
-        jsr drawRect
+        jsr newRect
+
+;        jsr asmGrOff
 
         lda left
         cmp #100

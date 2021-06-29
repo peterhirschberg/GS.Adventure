@@ -34,6 +34,69 @@ initDone anop
 
 
 
+; sets all pixels to 0
+newRect entry
+
+        lda rectX
+        lsr a
+        sta rectX
+
+        lda rectWidth
+        lsr a
+        sta rectWidth
+
+
+        lda rectHeight
+        sta rowCounter
+
+rowLoop anop
+
+        lda rowCounter
+        asl a
+        tax
+        lda screenRowOffsets,x
+        sta rowOffset
+
+        lda #0
+        sta columnCounter
+
+        lda rectX
+        sta cx
+
+rectColumnLoop anop
+
+        lda rowOffset
+        clc
+        adc cx
+        tax
+
+        lda rectColor
+        sta >SCREEN_ADDR,x
+
+        inc columnCounter
+        lda columnCounter
+        cmp rectWidth
+        beq rectColumnDone
+        inc cx
+        jmp rectColumnLoop
+
+rectColumnDone anop
+
+        dec rowCounter
+        lda rowCounter
+        bmi rectDone
+        jmp rowLoop
+
+rectDone anop
+        rts
+
+
+
+
+
+
+
+
 ; fills the screen with the background color using fill mode
 fillScreen entry
         lda #0
@@ -44,7 +107,7 @@ fillLoop anop
         tax
         lda screenRowOffsets,x
         tax
-        lda #$22
+        lda #COLOR_LTGRAY
         sta >SCREEN_ADDR,x
         inc rowCounter
         lda rowCounter
@@ -62,7 +125,8 @@ zeroScreen entry
         sta offset
 loop anop
         tax
-        lda #$00
+;        lda #COLOR_LTGRAY
+        lda #COLOR_BLACK
         sta >SCREEN_ADDR,x
         inc offset
         lda offset
@@ -240,13 +304,56 @@ zeroDone anop
         rts
 
 
+;
+; JOEYLIB BELOW
+;
+;----------------------------------------
+; Turns off SHR Graphics
+;----------------------------------------
+asmGrOff entry
+;	short	m
+	lda	>$E1C029
+	and	#$7F
+	sta	>$E1C029
+;	long	m
+	rts
+
+
+;----------------------------------------
+; Turns on SHR Graphics
+;----------------------------------------
+asmGrOn entry
+;	short	m
+	lda	>$E1C029
+	ora	#$C1
+	sta	>$E1C029
+;	long	m
+    rts
+
+
+
+
 ; Credit for the code below goes to Jeremy Rand - author of BuGS
 
-setupScreen entry
 
-        lda >BORDER_COLOR_REGISTER
-        and #$f0
-        sta >BORDER_COLOR_REGISTER
+setupScreen entry
+;        short i,m
+        lda >SHADOW_REGISTER     ; Enable shadowing of SHR
+        and #$f7
+        sta >SHADOW_REGISTER
+
+        lda #$a1
+        sta >NEW_VIDEO_REGISTER     ; Enable SHR mode
+        lda >BORDER_COLOUR_REGISTER
+;        long i,m
+        and #$000f
+        sta borderColour
+
+;		short i,m
+		lda >BORDER_COLOUR_REGISTER
+		and #$f0
+		sta >BORDER_COLOUR_REGISTER
+;		long i,m
 
         sei
         phd
@@ -277,13 +384,50 @@ nextWord anop
         rts
 
 
+setupScreen2 entry
+
+        lda >BORDER_COLOR_REGISTER
+        and #$f0
+        sta >BORDER_COLOR_REGISTER
+
+        sei
+        phd
+        tsc
+        sta backupStack
+        lda >STATE_REGISTER      ; Direct Page and Stack in Bank 01/
+        ora #$0030
+        sta >STATE_REGISTER
+        ldx #$0000
+
+        lda #$9dfe
+        tcs
+        ldy #$7e00
+nextWord2 anop
+        phx
+        dey
+        dey
+        bpl nextWord2
+
+        lda >STATE_REGISTER
+        and #$ffcf
+        sta >STATE_REGISTER
+        lda backupStack
+        tcs
+        pld
+        cli
+
+        rts
+
+
 backupStack     dc i2'0'
+borderColour    dc i2'0'
 
 columnCounter dc i2'0'
 rowCounter dc i2'0'
 rowOffset dc i4'0'
 offset dc i4'0'
 rowAddress dc i4'0'
+cx dc i2'0'
 
         end
 

@@ -283,12 +283,6 @@ doneShift2 anop
         cmp #0
         beq bitNotSet2
 
-;        lda cx
-;        asl a
-;        asl a
-;        asl a
-;        sta rectX
-
         lda cy
         asl a
         asl a
@@ -299,7 +293,6 @@ doneShift2 anop
         sbc #10 ; adjust vertical position
         sta rectY
 
-
         lda cx
         sta temp
         inc temp
@@ -307,15 +300,10 @@ doneShift2 anop
         lda #40
         sec
         sbc temp
-
-        sta rectX
         asl a
         asl a
         asl a
         sta rectX
-
-
-
 
         lda #CELL_WIDTH
         sta rectWidth
@@ -346,8 +334,6 @@ bitNotSet2 anop
         cmp #0
         beq dontDrawRun2
 
-;------------------------
-
         lda runLeft
         sta rectX
 
@@ -355,8 +341,6 @@ bitNotSet2 anop
         sta rectWidth
 
         jsr drawRect
-
-;------------------------
 
         lda #0
         sta runLeft
