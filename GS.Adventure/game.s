@@ -35,7 +35,7 @@ runGameTick entry
         lda #50
         sta rectHeight
 
-        jsr eraseRect
+        jsr eraseSpriteRect
 
         lda left
         sta oldLeft
@@ -52,17 +52,17 @@ runGameTick entry
 
         lda #50
         sta rectY
-        lda #50
+        lda #40
         sta rectWidth
-        lda #50
+        lda #40
         sta rectHeight
         lda #COLOR_BLUE
         sta rectColor
 
-        jsr drawRect
+        jsr drawSpriteRect
 
         lda left
-        cmp #100
+        cmp #260
         beq flip
         cmp #10
         beq flip

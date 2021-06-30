@@ -163,7 +163,7 @@ bitNotSet1 anop
         lda runWidth
         sta rectWidth
 
-        jsr drawRect
+        jsr drawBackgroundRect
 
         lda #0
         sta runLeft
@@ -189,7 +189,7 @@ roomNextRow1 anop
         lda runWidth
         sta rectWidth
 
-        jsr drawRect
+        jsr drawBackgroundRect
 
 setupNextRow1 anop
 
@@ -354,7 +354,7 @@ bitNotSet2 anop
         lda runWidth
         sta rectWidth
 
-        jsr drawRect
+        jsr drawBackgroundRect
 
 ;------------------------
 
@@ -381,7 +381,7 @@ roomNextRow2 anop
         lda runWidth
         sta rectWidth
 
-        jsr drawRect
+        jsr drawBackgroundRect
 
 setupNextRow2 anop
 
