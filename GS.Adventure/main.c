@@ -27,6 +27,8 @@ unsigned int userid;
 clock_t lastTick;
 unsigned int randomSeed;
 
+word* backgroundLayer;
+
 
 boolean shouldQuit;
 
@@ -40,17 +42,6 @@ word getRandom(word range)
 {
     return rand() % range;
 }
-
-word lessThan4(word value)
-{
-    return value < 4 ? 1 : 0;
-}
-
-word lessThan12(word value)
-{
-    return value < 12 ? 1 : 0;
-}
-
 
 // Sounds
 
@@ -96,6 +87,7 @@ int main(void)
     toolStartupRef = StartUpTools(userid, refIsResource, TOOL_STARTUP);
     CompactMem();
 //    NewHandle((LongWord)0x8000, userid, (Word)(attrLocked | attrFixed | attrAddr | attrBank), (Pointer)0x012000);
+    NewHandle((LongWord)0x8000, userid, (Word)(attrLocked | attrFixed | attrAddr | attrBank), (Pointer)0x0e0000);
     InitMouse(0);
     SetMouse(transparent);
     
@@ -103,7 +95,7 @@ int main(void)
     if (randomSeed == 0)
         randomSeed = 1;
     srand(randomSeed);
-    
+ 
     initGame();
   
     runGameTick();

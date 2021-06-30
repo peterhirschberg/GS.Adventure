@@ -64,6 +64,7 @@ loop anop
         tax
         lda #$00
         sta >SCREEN_ADDR,x
+        sta >BACKGROUND_ADDR,x
         inc offset
         lda offset
         cmp #$7d00
@@ -199,47 +200,6 @@ fillDone2 anop
         rts
 
 
-; sets all pixels to 0
-zeroScreen2 entry
-        lda #199
-        sta rowCounter
-
-zeroRowLoop anop
-
-        ldx rowCounter
-        lda screenRowOffsets,x
-        sta rowOffset
-
-        lda #319
-        sta columnCounter
-
-zeroColumnLoop anop
-
-        lda rowOffset
-        clc
-        adc columnCounter
-        tax
-
-        lda #$ff
-        sta >SCREEN_ADDR,x
-
-        dec columnCounter
-
-        lda columnCounter
-        bmi zeroColumnDone
-        jmp zeroColumnLoop
-
-zeroColumnDone anop
-
-        dec rowCounter
-        lda rowCounter
-        bmi zeroDone
-        jmp zeroRowLoop
-
-zeroDone anop
-        rts
-
-
 ; Credit for the code below goes to Jeremy Rand - author of BuGS
 
 setupScreen entry
@@ -294,6 +254,8 @@ rectY dc i2'0'
 rectWidth dc i2'0'
 rectHeight dc i2'0'
 rectColor dc i2'0'
+
+BACKGROUND_ADDR gequ $0e0000
 
 
         end

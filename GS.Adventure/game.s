@@ -7,6 +7,7 @@
 ;
 
         case on
+        mcopy 13:ORCAInclude:m16.ORCA
 
 game start
         using globalData
@@ -82,6 +83,7 @@ flipNeg anop
 
 
 
+temp dc i4'0'
 
 oldLeft dc i2'50'
 left dc i2'50'
