@@ -60,7 +60,7 @@ fillHLoop anop
 
         lda columnCounter
         clc
-        adc #4
+        adc #2
         sta columnCounter
         cmp #159
         bcs fillRowDone
@@ -130,27 +130,37 @@ fillLoop1 anop
         sta >SCREEN_ADDR,x
         sta >BACKGROUND_ADDR,x
 
-; bounds check
-        lda rectX
-        clc
-        adc rectWidth
-        cmp #159
-        bcs nextRow1
-
-        lda rowCounter
-        clc
-        adc rectY
-        asl a
-        tax
-        lda screenRowOffsets,x
-        clc
-        adc rectX
-        clc
-        adc rectWidth
-        tax
-        lda #COLOR_LTGRAY
+        inx
         sta >SCREEN_ADDR,x
         sta >BACKGROUND_ADDR,x
+
+        inx
+        sta >SCREEN_ADDR,x
+        sta >BACKGROUND_ADDR,x
+
+
+; bounds check
+;       lda rectX
+;       clc
+;       adc rectWidth
+;       cmp #159
+;       bcs nextRow1
+
+;       lda rowCounter
+;       clc
+;       adc rectY
+;       asl a
+;       tax
+;       lda screenRowOffsets,x
+;       clc
+;        adc rectX
+;        clc
+;        adc rectWidth
+;        tax
+;        lda #COLOR_LTGRAY
+;        sta >SCREEN_ADDR,x
+;        sta >BACKGROUND_ADDR,x
+
 
 nextRow1 anop
         inc rowCounter
@@ -175,15 +185,15 @@ drawSpriteRect entry
         lda #0
         sta rowCounter
 
-fillLoop2 anop
+fillVLoop2 anop
         lda rowCounter
         clc
         adc rectY
 
 ; bounds check
-        bmi nextRow2
-        cmp #199
-        bcs nextRow2
+;        bmi nextRow2
+;        cmp #199
+;        bcs nextRow2
 
         asl a
         tax
@@ -192,39 +202,37 @@ fillLoop2 anop
         adc rectX
         tax
 
+        lda rectWidth
+        sta columnCounter
+
+fillHLoop2 anop
+
         lda rectColor
         sta >SCREEN_ADDR,x
+        inx
+        inx
 
 ; bounds check
-        lda rectX
-        clc
-        adc rectWidth
-        cmp #159
-        bcs nextRow2
+;        lda rectX
+;        clc
+;        adc rectWidth
+;        cmp #159
+;        bcs nextRow2
 
-        lda rowCounter
-        clc
-        adc rectY
-        asl a
-        tax
-        lda screenRowOffsets,x
-        sta rowAddress
 
-        lda rectX
-        clc
-        adc rectWidth
-        sta setBackgroundColumn
+        dec columnCounter
+        dec columnCounter
 
-        jsr setBackgroundForPoint
-
-        jsr plowScreenRow
+        lda columnCounter
+        bmi nextRow2
+        jmp fillHLoop2
 
 nextRow2 anop
         inc rowCounter
         lda rowCounter
         cmp rectHeight
         beq fillDone2
-        bra fillLoop2
+        bra fillVLoop2
 
 fillDone2 anop
         rts
@@ -244,55 +252,56 @@ eraseSpriteRect entry
         lda #0
         sta rowCounter
 
-fillLoop3 anop
+eraseVLoop2 anop
         lda rowCounter
         clc
         adc rectY
-
-        bmi nextRow3
-        cmp #199
-        bcs nextRow3
-
-        asl a
-        tax
-        lda screenRowOffsets,x
-        sta rowAddress
-
-        lda rectX
-        sta restoreColumn
-
-        jsr restoreBackgroundForPoint
 
 ; bounds check
-        lda rectX
-        clc
-        adc rectWidth
-        cmp #159
-        bcs nextRow3
+;        bmi nextRow2
+;        cmp #199
+;        bcs nextRow2
 
-        lda rowCounter
-        clc
-        adc rectY
         asl a
         tax
         lda screenRowOffsets,x
-        sta rowAddress
-
-        lda rectX
         clc
-        adc rectWidth
-        sta restoreColumn
+        adc rectX
+        tax
 
-        jsr restoreBackgroundForPoint
+        lda rectWidth
+        sta columnCounter
+
+eraseHLoop2 anop
+
+        lda >BACKGROUND_ADDR,x
+        sta >SCREEN_ADDR,x
+        inx
+        inx
+
+; bounds check
+;        lda rectX
+;        clc
+;        adc rectWidth
+;        cmp #159
+;        bcs nextRow2
+
+
+        dec columnCounter
+        dec columnCounter
+
+        lda columnCounter
+        bmi nextRow3
+        jmp eraseHLoop2
 
 nextRow3 anop
         inc rowCounter
         lda rowCounter
         cmp rectHeight
-        beq fillDone3
-        bra fillLoop3
+        beq eraseDone2
+        bra eraseVLoop2
 
-fillDone3 anop
+eraseDone2 anop
         rts
 
 
