@@ -481,7 +481,8 @@ rectWidth dc i2'0'
 rectHeight dc i2'0'
 rectColor dc i2'0'
 
-BACKGROUND_ADDR gequ $0e0000
+;BACKGROUND_ADDR gequ $0e0000
+BACKGROUND_ADDR gequ $002000
 
 
         end
