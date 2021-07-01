@@ -127,6 +127,7 @@ fillLoop1 anop
         adc rectX
         tax
         lda rectColor
+
         sta >SCREEN_ADDR,x
         sta >BACKGROUND_ADDR,x
 
@@ -137,30 +138,6 @@ fillLoop1 anop
         inx
         sta >SCREEN_ADDR,x
         sta >BACKGROUND_ADDR,x
-
-
-; bounds check
-;       lda rectX
-;       clc
-;       adc rectWidth
-;       cmp #159
-;       bcs nextRow1
-
-;       lda rowCounter
-;       clc
-;       adc rectY
-;       asl a
-;       tax
-;       lda screenRowOffsets,x
-;       clc
-;        adc rectX
-;        clc
-;        adc rectWidth
-;        tax
-;        lda #COLOR_LTGRAY
-;        sta >SCREEN_ADDR,x
-;        sta >BACKGROUND_ADDR,x
-
 
 nextRow1 anop
         inc rowCounter
@@ -305,110 +282,6 @@ eraseDone2 anop
         rts
 
 
-; point should be in rowAddress + setBackgroundColumn
-setBackgroundForPoint entry
-
-        lda setBackgroundColumn
-        sta setBackgroundCurrentColumn
-
-setLoop1 anop
-
-        lda rowAddress
-        clc
-        adc setBackgroundCurrentColumn
-        tax
-        lda >BACKGROUND_ADDR,x
-        cmp #0
-        bne setDone1
-
-        dec setBackgroundCurrentColumn
-        lda setBackgroundCurrentColumn
-        bmi setDone1
-        jmp setLoop1
-
-setDone1 anop
-        sta setBackgroundColor
-        lda rowAddress
-        clc
-        adc setBackgroundColumn
-        tax
-        lda setBackgroundColor
-        sta >SCREEN_ADDR,x
-
-        rts
-
-
-; point should be in rowAddress + restoreColumn
-restoreBackgroundForPoint entry
-
-restoreLoop2 anop
-
-        lda rowAddress
-        clc
-        adc restoreColumn
-        tax
-        lda >BACKGROUND_ADDR,x
-        sta >SCREEN_ADDR,x
-        cmp #0
-        bne restoreDone2
-
-        dec restoreColumn
-        lda restoreColumn
-        bmi restoreDone2
-        jmp restoreLoop2
-
-restoreDone2 anop
-        rts
-
-
-; plows from rowAddress + rectX for rectWidth
-plowScreenRow entry
-
-        lda rectX
-        sta plowX
-        inc plowX
-
-        clc
-        adc rectWidth
-;        asl a
-        sta plowRight
-        dec plowRight
-
-        lda plowRight
-        sec
-        sbc plowX
-        sta numPlowPixels
-
-        lda plowX
-        pha
-        jsl numLoosePixelsFromLeftToRight
-        sta numLoosePixels
-
-        lda rowAddress
-        clc
-        adc plowX
-        tax
-
-plowLoop1b anop
-
-        lda #$0000
-        sta >SCREEN_ADDR,x
-
-        inc plowX
-        inc plowX
-
-        inx
-        inx
-
-        lda plowX
-        cmp plowRight
-        bcs plowDone1
-
-        jmp plowLoop1b
-
-plowDone1 anop
-        rts
-
 
 
 ; Credit for the code below goes to Jeremy Rand - author of BuGS
@@ -455,18 +328,6 @@ rowCounter dc i2'0'
 rowOffset dc i4'0'
 offset dc i4'0'
 rowAddress dc i4'0'
-
-setBackgroundColumn dc i2'0'
-setBackgroundColor dc i2'0'
-setBackgroundCurrentColumn dc i2'0'
-
-numLoosePixels dc i2'0'
-
-restoreColumn dc i2'0'
-
-plowX dc i2'0'
-plowRight dc i2'0'
-numPlowPixels dc i2'0'
 
 savex dc i2'0'
 
