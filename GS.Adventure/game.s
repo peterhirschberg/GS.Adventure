@@ -19,7 +19,7 @@ initGame entry
         jsr setupScreen
         jsr initColorTable
         jsr zeroScreen
-        jsr initSCB
+;        jsr initSCB
         jsr fillScreen
         jsr drawRoom
         rtl

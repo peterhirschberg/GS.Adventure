@@ -100,20 +100,20 @@ initColorTable entry
 
 colorData data
 
-COLOR_BLACK         gequ $11
-COLOR_LTGRAY        gequ $22
-COLOR_WHITE         gequ $33
-COLOR_YELLOW        gequ $44
-COLOR_ORANGE        gequ $55
-COLOR_RED           gequ $66
-COLOR_PURPLE        gequ $77
-COLOR_BLUE          gequ $88
-COLOR_LTCYAN        gequ $99
-COLOR_CYAN          gequ $aa
-COLOR_DKGREEN       gequ $bb
-COLOR_LIMEGREEN     gequ $cc
-COLOR_OLIVEGREEN    gequ $dd
-COLOR_TAN           gequ $ee
-COLOR_FLASH         gequ $ff
+COLOR_BLACK         gequ $1111
+COLOR_LTGRAY        gequ $2222
+COLOR_WHITE         gequ $3333
+COLOR_YELLOW        gequ $4444
+COLOR_ORANGE        gequ $5555
+COLOR_RED           gequ $6666
+COLOR_PURPLE        gequ $7777
+COLOR_BLUE          gequ $8888
+COLOR_LTCYAN        gequ $9999
+COLOR_CYAN          gequ $aaaa
+COLOR_DKGREEN       gequ $bbbb
+COLOR_LIMEGREEN     gequ $cccc
+COLOR_OLIVEGREEN    gequ $dddd
+COLOR_TAN           gequ $eeee
+COLOR_FLASH         gequ $ffff
 
         end

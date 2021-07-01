@@ -38,19 +38,41 @@ initDone anop
 fillScreen entry
         lda #0
         sta rowCounter
-fillLoop anop
+
+fillVLoop anop
         lda rowCounter
         asl a
         tax
         lda screenRowOffsets,x
+        sta rowAddress
+
+        lda #0
+        sta columnCounter
+
+fillHLoop anop
+        lda rowAddress
+        clc
+        adc columnCounter
         tax
         lda #COLOR_LTGRAY
         sta >SCREEN_ADDR,x
+        sta >BACKGROUND_ADDR,x
+
+        lda columnCounter
+        clc
+        adc #4
+        sta columnCounter
+        cmp #159
+        bcs fillRowDone
+        jmp fillHLoop
+
+fillRowDone anop
         inc rowCounter
         lda rowCounter
         cmp #199
         beq fillDone
-        bra fillLoop
+        bra fillVLoop
+
 fillDone anop
         rts
 
@@ -169,6 +191,7 @@ fillLoop2 anop
         clc
         adc rectX
         tax
+
         lda rectColor
         sta >SCREEN_ADDR,x
 
@@ -276,9 +299,6 @@ fillDone3 anop
 ; point should be in rowAddress + setBackgroundColumn
 setBackgroundForPoint entry
 
-; setBackgroundColumn
-; setBackgroundColor
-
         lda setBackgroundColumn
         sta setBackgroundCurrentColumn
 
@@ -307,6 +327,7 @@ setDone1 anop
         sta >SCREEN_ADDR,x
 
         rts
+
 
 ; point should be in rowAddress + restoreColumn
 restoreBackgroundForPoint entry
@@ -340,25 +361,41 @@ plowScreenRow entry
 
         clc
         adc rectWidth
+;        asl a
         sta plowRight
         dec plowRight
 
-plowLoop1 anop
+        lda plowRight
+        sec
+        sbc plowX
+        sta numPlowPixels
+
+        lda plowX
+        pha
+        jsl numLoosePixelsFromLeftToRight
+        sta numLoosePixels
 
         lda rowAddress
         clc
         adc plowX
         tax
-        lda #0
+
+plowLoop1b anop
+
+        lda #$0000
         sta >SCREEN_ADDR,x
 
         inc plowX
+        inc plowX
+
+        inx
+        inx
+
         lda plowX
-;        cmp #159
-;        beq plowDone1
         cmp plowRight
-        beq plowDone1
-        jmp plowLoop1
+        bcs plowDone1
+
+        jmp plowLoop1b
 
 plowDone1 anop
         rts
@@ -414,10 +451,13 @@ setBackgroundColumn dc i2'0'
 setBackgroundColor dc i2'0'
 setBackgroundCurrentColumn dc i2'0'
 
+numLoosePixels dc i2'0'
+
 restoreColumn dc i2'0'
 
 plowX dc i2'0'
 plowRight dc i2'0'
+numPlowPixels dc i2'0'
 
 savex dc i2'0'
 

@@ -29,9 +29,6 @@ drawRoom entry
 ; the right half is either mirrored or repeated from the left.
 ;
 
-        lda #COLOR_YELLOW
-        sta rectColor
-
         jsr drawRoomLeft
         jsr drawRoomRightMirrored
 
@@ -44,7 +41,7 @@ drawRoomLeft entry
         sta cy
         sta dataIndex
 
-roomVerticalLoop1 anop
+roomVerticalLoop anop
 
         ldx dataIndex
         lda roomGfxCastle,x
@@ -67,17 +64,18 @@ roomVerticalLoop1 anop
         lda #0
         sta cx
 
-horizontalLoop1 anop
+horizontalLoop anop
 
         lda cx
         cmp #12
-        bcs shift2a
+        bcs shift2
 
         lda cx
         cmp #4
-        bcs shift1a
+        bcs shift1
 
-shift0a anop
+
+shift0 anop
 
         lda cx
         asl a
@@ -85,9 +83,9 @@ shift0a anop
         lda shiftreg,x
         and pf0
         sta bit
-        bra doneShift1
+        bra doneShift
 
-shift1a anop
+shift1 anop
 
         lda cx
         asl a
@@ -95,9 +93,9 @@ shift1a anop
         lda shiftreg,x
         and pf1
         sta bit
-        bra doneShift1
+        bra doneShift
 
-shift2a anop
+shift2 anop
 
         lda cx
         asl a
@@ -106,11 +104,11 @@ shift2a anop
         and pf2
         sta bit
 
-doneShift1 anop
+doneShift anop
 
         lda bit
         cmp #0
-        beq bitNotSet1
+        beq bitNotSet
 
         lda cx
         asl a
@@ -134,78 +132,27 @@ doneShift1 anop
         lda #CELL_HEIGHT
         sta rectHeight
 
-        lda runWidth
-        cmp #0
-        bne runAlreadyStarted1
-
-        lda rectX
-        sta runLeft
-        lda rectWidth
-        sta runWidth
-        bra dontDrawRun1
-
-runAlreadyStarted1 anop
-        lda runWidth
-        clc
-        adc rectWidth
-        sta runWidth
-        bra dontDrawRun1
-
-bitNotSet1 anop
-
-        lda runWidth
-        cmp #0
-        beq dontDrawRun1
-
-        lda runLeft
-        sta rectX
-
-        lda runWidth
-        sta rectWidth
+        lda #COLOR_YELLOW
+        sta rectColor
 
         jsr drawBackgroundRect
 
-        lda #0
-        sta runLeft
-        sta runWidth
-
-dontDrawRun1 anop
-
+bitNotSet anop
         inc cx
         lda cx
         cmp #20
-        beq roomNextRow1
-        jmp horizontalLoop1
+        beq roomNextRow
+        jmp horizontalLoop
 
-roomNextRow1 anop
-
-        lda runWidth
-        cmp #0
-        beq setupNextRow1
-
-        lda runLeft
-        sta rectX
-
-        lda runWidth
-        sta rectWidth
-
-        jsr drawBackgroundRect
-
-setupNextRow1 anop
-
-        lda #0
-        sta runLeft
-        sta runWidth
-
+roomNextRow anop
         inc cy
         lda cy
         cmp #7
-        beq roomDone1
-        jmp roomVerticalLoop1
+        beq roomDone
+        jmp roomVerticalLoop
 
-roomDone1 anop
+roomDone anop
         rts
-
 
 
 
@@ -248,6 +195,7 @@ horizontalLoop2 anop
         cmp #4
         bcs shift1b
 
+
 shift0b anop
 
         lda cx
@@ -283,11 +231,11 @@ doneShift2 anop
         cmp #0
         beq bitNotSet2
 
-;        lda cx
-;        asl a
-;        asl a
-;        asl a
-;        sta rectX
+        lda cx
+        asl a
+        asl a
+        asl a
+        sta rectX
 
         lda cy
         asl a
@@ -299,6 +247,16 @@ doneShift2 anop
         sbc #10 ; adjust vertical position
         sta rectY
 
+        lda #CELL_WIDTH
+        sta rectWidth
+
+        lda #CELL_HEIGHT
+        sta rectHeight
+
+        lda #COLOR_YELLOW
+        sta rectColor
+
+; draw mirrored right half
 
         lda cx
         sta temp
@@ -314,81 +272,15 @@ doneShift2 anop
         asl a
         sta rectX
 
-
-
-
-        lda #CELL_WIDTH
-        sta rectWidth
-
-        lda #CELL_HEIGHT
-        sta rectHeight
-
-        lda runWidth
-        cmp #0
-        bne runAlreadyStarted2
-
-        lda rectX
-        sta runLeft
-        lda rectWidth
-        sta runWidth
-        bra dontDrawRun2
-
-runAlreadyStarted2 anop
-        lda runWidth
-        clc
-        adc rectWidth
-        sta runWidth
-        bra dontDrawRun2
-
-bitNotSet2 anop
-
-        lda runWidth
-        cmp #0
-        beq dontDrawRun2
-
-;------------------------
-
-        lda runLeft
-        sta rectX
-
-        lda runWidth
-        sta rectWidth
-
         jsr drawBackgroundRect
 
-;------------------------
-
-        lda #0
-        sta runLeft
-        sta runWidth
-
-dontDrawRun2 anop
-
+bitNotSet2 anop
         dec cx
         lda cx
         bmi roomNextRow2
         jmp horizontalLoop2
 
 roomNextRow2 anop
-
-        lda runWidth
-        cmp #0
-        beq setupNextRow2
-
-        lda runLeft
-        sta rectX
-
-        lda runWidth
-        sta rectWidth
-
-        jsr drawBackgroundRect
-
-setupNextRow2 anop
-
-        lda #0
-        sta runLeft
-        sta runWidth
-
         inc cy
         lda cy
         cmp #7
@@ -399,11 +291,6 @@ roomDone2 anop
         rts
 
 
-
-
-
-runLeft dc i2'0'
-runWidth dc i2'0'
 
 temp dc i2'0'
 bit dc i2'0'
