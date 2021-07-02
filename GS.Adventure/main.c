@@ -85,6 +85,7 @@ void waitForNextTick(void)
         }
         while ((t - lastTick) < 1);
         lastTick = t;
+        
     }
 }
 

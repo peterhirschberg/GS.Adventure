@@ -6,7 +6,10 @@
 ;Copyright © 2021 Peter Hirschberg. All rights reserved.
 ;
 
+
+        mcopy 13:ORCAInclude:m16.ORCA
         case on
+
 
 screen start
         using globalData
@@ -151,6 +154,12 @@ fillDone1 anop
 
 drawSpriteRect entry
 
+;        jsr setWRT
+;        lda #$2000
+;        tcd
+
+        ldy rectColor
+
         lda rectX
         lsr a
         sta rectX
@@ -184,8 +193,11 @@ fillVLoop2 anop
 
 fillHLoop2 anop
 
-        lda rectColor
+        tya
         sta >SCREEN_ADDR,x
+
+;        sta <00,x
+
         inx
         inx
 
@@ -202,7 +214,7 @@ fillHLoop2 anop
 
         lda columnCounter
         bmi nextRow2
-        jmp fillHLoop2
+        bra fillHLoop2
 
 nextRow2 anop
         inc rowCounter
@@ -212,11 +224,22 @@ nextRow2 anop
         bra fillVLoop2
 
 fillDone2 anop
+
+;        lda #$0000
+;        tcd
+;        jsr unsetRDWRT
+
         rts
 
 
 
 eraseSpriteRect entry
+
+        jsr setRDWRT
+
+        lda #$2000
+        tcd
+
 
         lda rectX
         lsr a
@@ -251,8 +274,9 @@ eraseVLoop2 anop
 
 eraseHLoop2 anop
 
-        lda >BACKGROUND_ADDR,x
-        sta >SCREEN_ADDR,x
+        lda <00,x
+        sta <00,x
+
         inx
         inx
 
@@ -279,6 +303,79 @@ nextRow3 anop
         bra eraseVLoop2
 
 eraseDone2 anop
+
+        lda #$0000
+        tcd
+        jsr unsetRDWRT
+
+        rts
+
+
+shadowingOff entry
+        short m
+        lda >$E0C035
+        ora #$08
+        sta >$E0C035
+        long m
+        rts
+
+
+shadowingOn entry
+        short m
+        lda >$E0C035
+        and #$F7
+        sta >$E0C035
+        long m
+        rts
+
+
+interruptsOff entry
+        short m
+        sta >$00C004
+        sta >$00C002
+        long m
+        lda EntryStack
+        tcs
+        lda EntryDP
+        tcd
+        cli
+        rts
+
+interruptsOn entry
+        tdc
+        sta EntryDP
+        tsc
+        sta EntryStack
+        sei
+        short m
+        sta >$00C005
+        sta >$00C003
+        long m
+        rts
+
+
+; Thanks to Lucas Scharenbroich for this code
+setRDWRT entry
+        lda >$00C068
+        sta restoreRDWRT
+        and #$FFDF                ; Set RAMRD to 0 -- read from Bank 00
+        ora #$0010                ; Set RAMWRT to 1 -- write to Bank 01
+        sta >$00C068
+        rts
+
+
+unsetRDWRT entry
+        lda restoreRDWRT
+        sta >$00C068
+        rts
+
+
+
+setWRT entry
+        lda >$00C068
+        sta restoreRDWRT
+        ora #$0010                ; Set RAMWRT to 1 -- write to Bank 01
+        sta >$00C068
         rts
 
 
@@ -330,6 +427,13 @@ offset dc i4'0'
 rowAddress dc i4'0'
 
 savex dc i2'0'
+
+restoreRDWRT dc i2'0'
+
+EntryDP dc i2'0'
+EntryStack dc i2'0'
+
+StackPtr dc i2'0'
 
         end
 

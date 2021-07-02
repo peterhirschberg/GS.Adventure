@@ -26,16 +26,53 @@ initGame entry
 
 runGameTick entry
 
-        lda oldLeft
-        sta rectX
-        lda #50
-        sta rectY
-        lda #50
-        sta rectWidth
-        lda #50
-        sta rectHeight
+;        jsr interruptsOff
+        jsr shadowingOff
 
-        jsr eraseSpriteRect
+
+       lda oldLeft
+       sta rectX
+       lda #50
+       sta rectY
+       lda #30
+       sta rectWidth
+       lda #30
+       sta rectHeight
+
+       jsr eraseSpriteRect
+
+
+;        lda dir
+;      bmi eraseRight
+;
+;      lda oldLeft
+;      sta rectX
+;
+;      lda #50
+;      sta rectY
+;      lda #1
+;      sta rectWidth
+;      lda #30
+;      sta rectHeight
+;
+;      bra doErase
+;
+;eraseRight anop
+;
+;      lda oldLeft
+;      clc
+;      adc #30
+;
+;      sta rectX
+;      lda #50
+;      sta rectY
+;      lda #1
+;      sta rectWidth
+;      lda #30
+;      sta rectHeight
+;
+;doErase entry
+;      jsr eraseSpriteRect
 
         lda left
         sta oldLeft
@@ -47,19 +84,25 @@ runGameTick entry
         adc dir
         sta left
 
-
         sta rectX
 
         lda #50
         sta rectY
-        lda #40
+        lda #30
         sta rectWidth
-        lda #40
+        lda #30
         sta rectHeight
         lda #COLOR_BLUE
         sta rectColor
 
         jsr drawSpriteRect
+
+
+        jsr shadowingOn
+;        jsr interruptsOn
+
+;        jsr asmSlam
+
 
         lda left
         cmp #260
