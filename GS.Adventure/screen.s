@@ -235,8 +235,9 @@ fillDone2 anop
 
 eraseSpriteRect entry
 
-        jsr setRDWRT
+        jsr setR0W1
 
+;        jsr setRDWRT
         lda #$2000
         tcd
 
@@ -306,7 +307,8 @@ eraseDone2 anop
 
         lda #$0000
         tcd
-        jsr unsetRDWRT
+;        jsr unsetRDWRT
+        jsr setR0W0
 
         rts
 
@@ -355,31 +357,6 @@ interruptsOn entry
 
 
 ; Thanks to Lucas Scharenbroich for this code -----------------------
-setRDWRT entry
-        lda >$00C068
-        sta restoreRDWRT
-        and #$FFDF                ; Set RAMRD to 0 -- read from Bank 00
-        ora #$0010                ; Set RAMWRT to 1 -- write to Bank 01
-        sta >$00C068
-        rts
-
-
-unsetRDWRT entry
-        lda restoreRDWRT
-        sta >$00C068
-        rts
-
-
-
-setWRT entry
-        lda >$00C068
-        sta restoreRDWRT
-        ora #$0010                ; Set RAMWRT to 1 -- write to Bank 01
-        sta >$00C068
-        rts
-
-
-
 
 setR0W1 entry                   ; Read Bank 00 / Write Bank 01
         short m
