@@ -154,9 +154,22 @@ fillDone1 anop
 
 drawSpriteRect entry
 
-;        jsr setWRT
+;        phd
+
+;        jsl setR1W1
 ;        lda #$2000
 ;        tcd
+
+
+;        lda #$0000
+;        tcd
+;        jsl setR0W0
+
+;        pld
+
+;        rts
+
+
 
         ldy rectColor
 
@@ -225,9 +238,10 @@ nextRow2 anop
 
 fillDone2 anop
 
+
 ;        lda #$0000
-;        tcd
-;        jsr unsetRDWRT
+;       tcd
+;       jsl setR0W0
 
         rts
 
@@ -235,9 +249,9 @@ fillDone2 anop
 
 eraseSpriteRect entry
 
-        jsr setR0W1
+;        phd                     ; save the assigned direct page
 
-;        jsr setRDWRT
+        jsl setR0W1
         lda #$2000
         tcd
 
@@ -307,8 +321,9 @@ eraseDone2 anop
 
         lda #$0000
         tcd
-;        jsr unsetRDWRT
-        jsr setR0W0
+
+        jsl setR0W0
+;        pld                     ; restore the direct page
 
         rts
 
@@ -365,7 +380,7 @@ setR0W1 entry                   ; Read Bank 00 / Write Bank 01
         ora #$10
         sta >$00C068
         long m
-        rts
+        rtl
 
 setR1W1 entry                   ; Read Bank 01 / Write Bank 01
         short m
@@ -373,7 +388,7 @@ setR1W1 entry                   ; Read Bank 01 / Write Bank 01
         ora #$30
         sta >$00C068
         long m
-        rts
+        rtl
 
 setR0W0 entry                   ; Read Bank 00 / Write Bank 00 (Normal state)
         short m
@@ -381,7 +396,7 @@ setR0W0 entry                   ; Read Bank 00 / Write Bank 00 (Normal state)
         and #$CF
         sta >$00C068
         long m
-        rts
+        rtl
 
 
 ;  ...stuff
@@ -409,15 +424,6 @@ borderInit entry
 
 ; before you start to erase/draw
 borderStart entry
-        short m
-        lda >$00c034
-        inc a
-        sta >$00c034
-        long m
-        rts
-
-; you can change the colour again to "measure" different code portions
-borderStart2 entry
         short m
         lda >$00c034
         inc a

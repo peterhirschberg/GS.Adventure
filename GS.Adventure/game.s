@@ -47,6 +47,8 @@ runGameTick entry
 
        jsr eraseSpriteRect
 
+        jsr borderStart
+
 
 ;        lda dir
 ;      bmi eraseRight
@@ -101,7 +103,7 @@ runGameTick entry
         lda #COLOR_BLUE
         sta rectColor
 
-        jsr borderStart2
+        jsr borderStart
 
         jsr drawSpriteRect
 
@@ -111,7 +113,6 @@ runGameTick entry
 ;        jsr shadowingOn
 ;        jsr interruptsOn
 
-;        jsr asmSlam
 
 
         lda left
