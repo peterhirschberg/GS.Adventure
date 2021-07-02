@@ -354,7 +354,7 @@ interruptsOn entry
         rts
 
 
-; Thanks to Lucas Scharenbroich for this code
+; Thanks to Lucas Scharenbroich for this code -----------------------
 setRDWRT entry
         lda >$00C068
         sta restoreRDWRT
@@ -377,6 +377,86 @@ setWRT entry
         ora #$0010                ; Set RAMWRT to 1 -- write to Bank 01
         sta >$00C068
         rts
+
+
+
+
+setR0W1 entry                   ; Read Bank 00 / Write Bank 01
+        short m
+        lda >$00C068
+        and #$DF
+        ora #$10
+        sta >$00C068
+        long m
+        rts
+
+setR1W1 entry                   ; Read Bank 01 / Write Bank 01
+        short m
+        lda >$00C068
+        ora #$30
+        sta >$00C068
+        long m
+        rts
+
+setR0W0 entry                   ; Read Bank 00 / Write Bank 00 (Normal state)
+        short m
+        lda >$00C068
+        and #$CF
+        sta >$00C068
+        long m
+        rts
+
+
+;  ...stuff
+;  jsr setR0W1
+;  jsr shadowingOff
+;  jsr eraseWithBackgroundFromBank00
+;  jsr setR1W1
+;  jsr drawNewStuffInBank01
+;  jsr shadowingOn
+;  jsr bitbltDirtyRectangles
+;  jsr setR0W0
+
+
+
+; Jesse Blue ----------------------------------
+
+; during init of your program:
+borderInit entry
+        short m
+        lda >$00c034 ;black border
+        and #$f0
+        sta >$00c034
+        long m
+        rts
+
+; before you start to erase/draw
+borderStart entry
+        short m
+        lda >$00c034
+        inc a
+        sta >$00c034
+        long m
+        rts
+
+; you can change the colour again to "measure" different code portions
+borderStart2 entry
+        short m
+        lda >$00c034
+        inc a
+        sta >$00c034
+        long m
+        rts
+
+; at the end of changing pixels on the screen
+borderDone entry
+        short m
+        lda >$00c034 ;black border
+        and #$f0
+        sta >$00c034
+        long m
+        rts
+
 
 
 

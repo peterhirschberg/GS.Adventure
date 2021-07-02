@@ -1,0 +1,66 @@
+;
+;  global.macros
+;  GS.Adventure
+;
+;  Created by Peter Hirschberg on 7/02/21.
+;Copyright © 2021 Peter Hirschberg. All rights reserved.
+;
+
+
+
+        macro
+        spriteGetDrawAddress
+        lda >rectY
+        asl a
+        tax
+        lda >screenRowOffsets,x
+        sta >drawAddress
+        lda >rectX
+        lsr a
+        clc
+        adc >drawAddress
+        clc
+        adc #$2000
+        sec
+        sbc #20
+        sta >drawAddress
+        mend
+
+
+
+
+;
+; ********************************************
+; Code pulled from Jeremy Rand's "BuGS" game
+; Github: https://github.com/jeremysrand/BuGS
+; ********************************************
+;
+;  Created by Jeremy Rand on 2020-12-16.
+;Copyright © 2020 Jeremy Rand. All rights reserved.
+;
+
+        macro
+        _spriteHeader
+        sei                     ; 2
+        tsc                     ; 2
+        sta >backupStack        ; 5
+        lda >STATE_REGISTER     ; 6 - Direct Page and Stack in Bank 01/
+        ora #$0030              ; 3
+        sta >STATE_REGISTER     ; 6
+        clc                     ; 2
+        tya                     ; 2
+        tcs                     ; 2
+        mend                    ; 30
+
+
+        macro
+        _spriteFooter
+        lda #0
+        tcd
+        lda >STATE_REGISTER     ; 6
+        and #$ffcf              ; 3
+        sta >STATE_REGISTER     ; 6
+        lda >backupStack        ; 5
+        tcs                     ; 2
+        cli                     ; 2
+        mend                    ; 24

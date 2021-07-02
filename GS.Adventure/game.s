@@ -18,16 +18,20 @@ game start
 initGame entry
         jsr setupScreen
         jsr initColorTable
+
+        jsr borderInit
+
         jsr zeroScreen
 ;        jsr initSCB
         jsr fillScreen
         jsr drawRoom
+
         rtl
 
 runGameTick entry
 
 ;        jsr interruptsOff
-        jsr shadowingOff
+;        jsr shadowingOff
 
 
        lda oldLeft
@@ -38,6 +42,8 @@ runGameTick entry
        sta rectWidth
        lda #30
        sta rectHeight
+
+       jsr borderStart
 
        jsr eraseSpriteRect
 
@@ -95,10 +101,14 @@ runGameTick entry
         lda #COLOR_BLUE
         sta rectColor
 
+        jsr borderStart2
+
         jsr drawSpriteRect
 
+        jsr borderDone
 
-        jsr shadowingOn
+
+;        jsr shadowingOn
 ;        jsr interruptsOn
 
 ;        jsr asmSlam
