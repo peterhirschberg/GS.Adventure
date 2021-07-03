@@ -9,6 +9,8 @@
 
         mcopy 13:ORCAInclude:m16.ORCA
         case on
+        mcopy global.macros
+        keep global
 
 
 screen start
@@ -134,11 +136,12 @@ fillDone1 anop
 
 drawSpriteRect entry
 
+
 ;        phd
 
-;        jsl setR1W1
-;        lda #$2000
-;        tcd
+        setR1W1
+        lda #$2000
+        tcd
 
 
 ;        lda #$0000
@@ -188,8 +191,13 @@ fillHLoop2 anop
 
         tya
 
-        sta >SCREEN_ADDR,x
+;        sta >SCREEN_ADDR,x
 
+        sta <00,x
+        inx
+        inx
+
+        sta <00,x
         inx
         inx
 
@@ -208,8 +216,8 @@ fillHLoop2 anop
 
         dec columnCounter
         dec columnCounter
-;        dec columnCounter
-;       dec columnCounter
+        dec columnCounter
+        dec columnCounter
 
         lda columnCounter
         bmi nextRow2
@@ -225,9 +233,12 @@ nextRow2 anop
 fillDone2 anop
 
 
-;        lda #$0000
-;       tcd
+        lda #$0000
+       tcd
 ;       jsl setR0W0
+
+        setR0W0
+
 
         rts
 
@@ -237,7 +248,7 @@ eraseSpriteRect entry
 
 ;        phd                     ; save the assigned direct page
 
-        jsl setR0W1
+        setR0W1
         lda #$2000
         tcd
 
@@ -317,7 +328,7 @@ eraseDone2 anop
         lda #$0000
         tcd
 
-        jsl setR0W0
+        setR0W0
 ;        pld                     ; restore the direct page
 
         rts

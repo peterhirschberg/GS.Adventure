@@ -30,10 +30,11 @@ initGame entry
 
 runGameTick entry
 
+        jsl waitForVbl
+
+
 ;        jsr interruptsOff
 ;        jsr shadowingOff
-
-       jsl waitForVbl
 
 
 ;        jsr borderStart

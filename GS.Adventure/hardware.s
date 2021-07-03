@@ -80,33 +80,6 @@ interruptsOn entry
         rts
 
 
-; Thanks to Lucas Scharenbroich for this code -----------------------
-
-setR0W1 entry                   ; Read Bank 00 / Write Bank 01
-        short m
-        lda >$00C068
-        and #$DF
-        ora #$10
-        sta >$00C068
-        long m
-        rtl
-
-setR1W1 entry                   ; Read Bank 01 / Write Bank 01
-        short m
-        lda >$00C068
-        ora #$30
-        sta >$00C068
-        long m
-        rtl
-
-setR0W0 entry                   ; Read Bank 00 / Write Bank 00 (Normal state)
-        short m
-        lda >$00C068
-        and #$CF
-        sta >$00C068
-        long m
-        rtl
-
 
 ;  ...stuff
 ;  jsr setR0W1
@@ -148,6 +121,7 @@ borderDone entry
         sta >$00c034
         long m
         rts
+
 
 
 
