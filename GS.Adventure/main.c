@@ -80,12 +80,13 @@ void waitForNextTick(void)
     while (!shouldQuit) {
         clock_t t;
         runGameTick();
+/*
         do {
             t = clock();
         }
-        while ((t - lastTick) < 1);
+        while ((t - lastTick) < 2);
         lastTick = t;
-        
+*/
     }
 }
 
@@ -98,8 +99,6 @@ int main(void)
     TLStartUp();
     toolStartupRef = StartUpTools(userid, refIsResource, TOOL_STARTUP);
     CompactMem();
-//    NewHandle((LongWord)0x8000, userid, (Word)(attrLocked | attrFixed | attrAddr | attrBank), (Pointer)0x012000);
-//    NewHandle((LongWord)0x8000, userid, (Word)(attrLocked | attrFixed | attrAddr | attrBank), (Pointer)0x0e0000);
     NewHandle((LongWord)0x8000, userid, (Word)(attrLocked | attrFixed | attrAddr | attrBank), (Pointer)0x02000);
     InitMouse(0);
     SetMouse(transparent);

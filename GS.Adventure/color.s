@@ -13,83 +13,78 @@ color start
 
 initColorTable entry
 
-; first entry is reserved for FILL MODE
+; black
         ldx #0
         lda #$0000
         sta >COLOR_TABLE,x
 
-; black
-        ldx #2
-        lda #$0000
-        sta >COLOR_TABLE,x
-
 ; light grey
-        ldx #4
+        ldx #2
         lda #$0ccc
         sta >COLOR_TABLE,x
 
 ; white
-        ldx #6
+        ldx #4
         lda #$0fff
         sta >COLOR_TABLE,x
 
 ; yellow
-        ldx #8
+        ldx #6
         lda #$0fe4
         sta >COLOR_TABLE,x
 
 ; orange
-        ldx #10
+        ldx #8
         lda #$0fa2
         sta >COLOR_TABLE,x
 
 ; red
-        ldx #12
+        ldx #10
         lda #$0f56
         sta >COLOR_TABLE,x
 
 ; purple
-        ldx #14
+        ldx #12
         lda #$0a5e
         sta >COLOR_TABLE,x
 
 ; blue
-        ldx #16
+        ldx #14
         lda #$076f
         sta >COLOR_TABLE,x
 
 ; light cyan
-        ldx #18
+        ldx #16
         lda #$05bf
         sta >COLOR_TABLE,x
 
 ; cyan
-        ldx #20
+        ldx #18
         lda #$06d7
         sta >COLOR_TABLE,x
 
 ; dark green
-        ldx #22
+        ldx #20
         lda #$02e2
         sta >COLOR_TABLE,x
 
 ; lime green
-        ldx #24
+        ldx #22
         lda #$09e2
         sta >COLOR_TABLE,x
 
 ; olive green
-        ldx #26
+        ldx #24
         lda #$0ab3
         sta >COLOR_TABLE,x
 
 ; tan
-        ldx #28
+        ldx #26
         lda #$0db4
         sta >COLOR_TABLE,x
 
 ; "flash" color
-        ldx #30
+        ldx #28
         lda #$0bf4
         sta >COLOR_TABLE,x
 
@@ -100,20 +95,20 @@ initColorTable entry
 
 colorData data
 
-COLOR_BLACK         gequ $1111
-COLOR_LTGRAY        gequ $2222
-COLOR_WHITE         gequ $3333
-COLOR_YELLOW        gequ $4444
-COLOR_ORANGE        gequ $5555
-COLOR_RED           gequ $6666
-COLOR_PURPLE        gequ $7777
-COLOR_BLUE          gequ $8888
-COLOR_LTCYAN        gequ $9999
-COLOR_CYAN          gequ $aaaa
-COLOR_DKGREEN       gequ $bbbb
-COLOR_LIMEGREEN     gequ $cccc
-COLOR_OLIVEGREEN    gequ $dddd
-COLOR_TAN           gequ $eeee
-COLOR_FLASH         gequ $ffff
+COLOR_BLACK         gequ $0000
+COLOR_LTGRAY        gequ $1111
+COLOR_WHITE         gequ $2222
+COLOR_YELLOW        gequ $3333
+COLOR_ORANGE        gequ $4444
+COLOR_RED           gequ $5555
+COLOR_PURPLE        gequ $6666
+COLOR_BLUE          gequ $7777
+COLOR_LTCYAN        gequ $8888
+COLOR_CYAN          gequ $9999
+COLOR_DKGREEN       gequ $aaaa
+COLOR_LIMEGREEN     gequ $bbbb
+COLOR_OLIVEGREEN    gequ $cccc
+COLOR_TAN           gequ $dddd
+COLOR_FLASH         gequ $eeee
 
         end

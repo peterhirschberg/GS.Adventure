@@ -27,6 +27,8 @@
 		D06790972688C67E00A8010C /* background.s in Sources */ = {isa = PBXBuildFile; fileRef = D06790962688C67E00A8010C /* background.s */; };
 		D06790992688EBD400A8010C /* rooms.s in Sources */ = {isa = PBXBuildFile; fileRef = D06790982688EBD400A8010C /* rooms.s */; };
 		D067909B268F24B600A8010C /* global.macros in Sources */ = {isa = PBXBuildFile; fileRef = D067909A268F24B600A8010C /* global.macros */; };
+		D067909D2690054300A8010C /* hardware.s in Sources */ = {isa = PBXBuildFile; fileRef = D067909C2690054300A8010C /* hardware.s */; };
+		D067909F2690162600A8010C /* beam.s in Sources */ = {isa = PBXBuildFile; fileRef = D067909E2690162600A8010C /* beam.s */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -78,6 +80,8 @@
 		D06790962688C67E00A8010C /* background.s */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.asm; path = background.s; sourceTree = "<group>"; };
 		D06790982688EBD400A8010C /* rooms.s */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.asm; path = rooms.s; sourceTree = "<group>"; };
 		D067909A268F24B600A8010C /* global.macros */ = {isa = PBXFileReference; lastKnownFileType = text; path = global.macros; sourceTree = "<group>"; };
+		D067909C2690054300A8010C /* hardware.s */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.asm; path = hardware.s; sourceTree = "<group>"; };
+		D067909E2690162600A8010C /* beam.s */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.asm; path = beam.s; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -126,6 +130,8 @@
 				D06790962688C67E00A8010C /* background.s */,
 				D06790982688EBD400A8010C /* rooms.s */,
 				D067909A268F24B600A8010C /* global.macros */,
+				D067909C2690054300A8010C /* hardware.s */,
+				D067909E2690162600A8010C /* beam.s */,
 			);
 			path = GS.Adventure;
 			sourceTree = "<group>";
@@ -268,11 +274,13 @@
 			files = (
 				D06790992688EBD400A8010C /* rooms.s in Sources */,
 				D0678FC5267E6E2B00A8010C /* Makefile in Sources */,
+				D067909F2690162600A8010C /* beam.s in Sources */,
 				D06790952688BC5A00A8010C /* screen.s in Sources */,
 				D06790972688C67E00A8010C /* background.s in Sources */,
 				D067909B268F24B600A8010C /* global.macros in Sources */,
 				D0678FC0267E6E2B00A8010C /* main.c in Sources */,
 				D067902B267E938A00A8010C /* globals.s in Sources */,
+				D067909D2690054300A8010C /* hardware.s in Sources */,
 				D067909326889F8C00A8010C /* color.s in Sources */,
 				D0678FEB267E6FE600A8010C /* game.s in Sources */,
 			);

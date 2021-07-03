@@ -17,26 +17,6 @@ screen start
         using colorData
 
 
-; Set the SCB to fill mode for all 200 screen rows
-initSCB entry
-        lda #0
-        sta rowCounter
-        ldx #0
-initLoop anop
-        lda >SCB_BASE,x
-        ora #FILL_MODE
-        sta >SCB_BASE,x
-        inc rowCounter
-        lda rowCounter
-        cmp #199
-        beq initDone
-        inx
-        jmp initLoop
-initDone anop
-        rts
-
-
-
 ; fills the screen with the background color using fill mode
 fillScreen entry
         lda #0
@@ -207,12 +187,16 @@ fillVLoop2 anop
 fillHLoop2 anop
 
         tya
+
         sta >SCREEN_ADDR,x
 
-;        sta <00,x
+        inx
+        inx
 
-        inx
-        inx
+;        sta >SCREEN_ADDR,x
+;
+;        inx
+;        inx
 
 ; bounds check
 ;        lda rectX
@@ -224,6 +208,8 @@ fillHLoop2 anop
 
         dec columnCounter
         dec columnCounter
+;        dec columnCounter
+;       dec columnCounter
 
         lda columnCounter
         bmi nextRow2
@@ -295,6 +281,13 @@ eraseHLoop2 anop
         inx
         inx
 
+        lda <00,x
+        sta <00,x
+
+        inx
+        inx
+
+
 ; bounds check
 ;        lda rectX
 ;        clc
@@ -303,6 +296,8 @@ eraseHLoop2 anop
 ;        bcs nextRow2
 
 
+        dec columnCounter
+        dec columnCounter
         dec columnCounter
         dec columnCounter
 
@@ -328,160 +323,6 @@ eraseDone2 anop
         rts
 
 
-shadowingOff entry
-        short m
-        lda >$E0C035
-        ora #$08
-        sta >$E0C035
-        long m
-        rts
-
-
-shadowingOn entry
-        short m
-        lda >$E0C035
-        and #$F7
-        sta >$E0C035
-        long m
-        rts
-
-
-interruptsOff entry
-        short m
-        sta >$00C004
-        sta >$00C002
-        long m
-        lda EntryStack
-        tcs
-        lda EntryDP
-        tcd
-        cli
-        rts
-
-interruptsOn entry
-        tdc
-        sta EntryDP
-        tsc
-        sta EntryStack
-        sei
-        short m
-        sta >$00C005
-        sta >$00C003
-        long m
-        rts
-
-
-; Thanks to Lucas Scharenbroich for this code -----------------------
-
-setR0W1 entry                   ; Read Bank 00 / Write Bank 01
-        short m
-        lda >$00C068
-        and #$DF
-        ora #$10
-        sta >$00C068
-        long m
-        rtl
-
-setR1W1 entry                   ; Read Bank 01 / Write Bank 01
-        short m
-        lda >$00C068
-        ora #$30
-        sta >$00C068
-        long m
-        rtl
-
-setR0W0 entry                   ; Read Bank 00 / Write Bank 00 (Normal state)
-        short m
-        lda >$00C068
-        and #$CF
-        sta >$00C068
-        long m
-        rtl
-
-
-;  ...stuff
-;  jsr setR0W1
-;  jsr shadowingOff
-;  jsr eraseWithBackgroundFromBank00
-;  jsr setR1W1
-;  jsr drawNewStuffInBank01
-;  jsr shadowingOn
-;  jsr bitbltDirtyRectangles
-;  jsr setR0W0
-
-
-
-; Jesse Blue ----------------------------------
-
-; during init of your program:
-borderInit entry
-        short m
-        lda >$00c034 ;black border
-        and #$f0
-        sta >$00c034
-        long m
-        rts
-
-; before you start to erase/draw
-borderStart entry
-        short m
-        lda >$00c034
-        inc a
-        sta >$00c034
-        long m
-        rts
-
-; at the end of changing pixels on the screen
-borderDone entry
-        short m
-        lda >$00c034 ;black border
-        and #$f0
-        sta >$00c034
-        long m
-        rts
-
-
-
-
-
-; Credit for the code below goes to Jeremy Rand - author of BuGS
-
-setupScreen entry
-
-        lda >BORDER_COLOR_REGISTER
-        and #$f0
-        sta >BORDER_COLOR_REGISTER
-
-        sei
-        phd
-        tsc
-        sta backupStack
-        lda >STATE_REGISTER      ; Direct Page and Stack in Bank 01/
-        ora #$0030
-        sta >STATE_REGISTER
-        ldx #$0000
-
-        lda #$9dfe
-        tcs
-        ldy #$7e00
-nextWord anop
-        phx
-        dey
-        dey
-        bpl nextWord
-
-        lda >STATE_REGISTER
-        and #$ffcf
-        sta >STATE_REGISTER
-        lda backupStack
-        tcs
-        pld
-        cli
-
-        rts
-
-
-backupStack     dc i2'0'
 
 columnCounter dc i2'0'
 rowCounter dc i2'0'
@@ -490,13 +331,6 @@ offset dc i4'0'
 rowAddress dc i4'0'
 
 savex dc i2'0'
-
-restoreRDWRT dc i2'0'
-
-EntryDP dc i2'0'
-EntryStack dc i2'0'
-
-StackPtr dc i2'0'
 
         end
 

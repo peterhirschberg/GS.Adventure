@@ -33,54 +33,63 @@ runGameTick entry
 ;        jsr interruptsOff
 ;        jsr shadowingOff
 
+       jsl waitForVbl
 
-       lda oldLeft
-       sta rectX
-       lda #50
-       sta rectY
-       lda #30
-       sta rectWidth
-       lda #30
-       sta rectHeight
 
-       jsr borderStart
+;        jsr borderStart
+;
+;       ldy #120
+;       jsr beamSync
+;
+;       jsr borderStart
 
-       jsr eraseSpriteRect
+
+;       lda oldLeft
+;      sta rectX
+;      lda #20
+;      sta rectY
+;      lda #30
+;      sta rectWidth
+;      lda #30
+;      sta rectHeight
+
+
+;      jsr eraseSpriteRect
 
         jsr borderStart
 
 
-;        lda dir
-;      bmi eraseRight
-;
-;      lda oldLeft
-;      sta rectX
-;
-;      lda #50
-;      sta rectY
-;      lda #1
-;      sta rectWidth
-;      lda #30
-;      sta rectHeight
-;
-;      bra doErase
-;
-;eraseRight anop
-;
-;      lda oldLeft
-;      clc
-;      adc #30
-;
-;      sta rectX
-;      lda #50
-;      sta rectY
-;      lda #1
-;      sta rectWidth
-;      lda #30
-;      sta rectHeight
-;
-;doErase entry
-;      jsr eraseSpriteRect
+        lda dir
+      bmi eraseRight
+
+      lda oldLeft
+      sta rectX
+
+      lda #20
+      sta rectY
+      lda #1
+      sta rectWidth
+      lda #30
+      sta rectHeight
+
+      bra doErase
+
+eraseRight anop
+
+      lda oldLeft
+      clc
+      adc #30
+
+      sta rectX
+      lda #20
+      sta rectY
+      lda #1
+      sta rectWidth
+      lda #30
+      sta rectHeight
+
+doErase entry
+      jsr eraseSpriteRect
 
         lda left
         sta oldLeft
@@ -94,7 +103,7 @@ runGameTick entry
 
         sta rectX
 
-        lda #50
+        lda #20
         sta rectY
         lda #30
         sta rectWidth

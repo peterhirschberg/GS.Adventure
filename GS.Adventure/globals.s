@@ -18,6 +18,9 @@ COLOR_TABLE             gequ $e19e00
 
 FILL_MODE               gequ $20
 
+VERTICAL_COUNTER        gequ $e0c02e
+READ_VBL                gequ $e0c019
+
 
 ; table of precomputed screen row offsets
 
