@@ -44,6 +44,7 @@ runGameTick entry
 ;       ldy #120
 ;       jsr beamSync
 ;
+
 ;       jsr borderStart
 
 
