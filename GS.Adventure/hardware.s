@@ -6,8 +6,9 @@
 ;Copyright © 2021 Peter Hirschberg. All rights reserved.
 ;
 
-        mcopy 13:ORCAInclude:m16.ORCA
         case on
+        mcopy global.macros
+        keep global
 
 
 hardware start

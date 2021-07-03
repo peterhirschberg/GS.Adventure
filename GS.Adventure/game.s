@@ -7,7 +7,9 @@
 ;
 
         case on
-        mcopy 13:ORCAInclude:m16.ORCA
+        mcopy global.macros
+        keep global
+
 
 game start
         using globalData
