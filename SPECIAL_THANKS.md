@@ -13,7 +13,7 @@ Original game written by Warren Robinett. Warren, you rock.
  - Scott Duensing
  - Jesse Blue
  - Kelvin Sherlock
- - Lucas ScharenBroich
+ - Lucas Scharenbroich
  - Antoine Vignau
  - Ian Schmidt
  - Kent Dickey
