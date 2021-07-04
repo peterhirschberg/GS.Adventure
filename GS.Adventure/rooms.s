@@ -12,6 +12,7 @@
 rooms start
         using globalData
         using screenData
+        using roomsData
 
 
 drawRoom entry
@@ -29,7 +30,12 @@ drawRoom entry
 ; the right half is either mirrored or repeated from the left.
 ;
 
+        ldx #ROOM_INDEX_BELOW_YELLOW_CASTLE
+        lda roomGraphicsOffsets,x
         jsr drawRoomLeft
+
+        ldx #ROOM_INDEX_BELOW_YELLOW_CASTLE
+        lda roomGraphicsOffsets,x
         jsr drawRoomRightMirrored
 
         rts
@@ -37,26 +43,27 @@ drawRoom entry
 
 drawRoomLeft entry
 
+        sta dataIndex
+
         lda #0
         sta cy
-        sta dataIndex
 
 roomVerticalLoop anop
 
         ldx dataIndex
-        lda roomGfxCastle,x
+        lda roomGraphicsData,x
         sta pf0
         inc dataIndex
         inc dataIndex
 
         ldx dataIndex
-        lda roomGfxCastle,x
+        lda roomGraphicsData,x
         sta pf1
         inc dataIndex
         inc dataIndex
 
         ldx dataIndex
-        lda roomGfxCastle,x
+        lda roomGraphicsData,x
         sta pf2
         inc dataIndex
         inc dataIndex
@@ -158,26 +165,27 @@ roomDone anop
 
 drawRoomRightMirrored entry
 
+        sta dataIndex
+
         lda #0
         sta cy
-        sta dataIndex
 
 roomVerticalLoop2 anop
 
         ldx dataIndex
-        lda roomGfxCastle,x
+        lda roomGraphicsData,x
         sta pf0
         inc dataIndex
         inc dataIndex
 
         ldx dataIndex
-        lda roomGfxCastle,x
+        lda roomGraphicsData,x
         sta pf1
         inc dataIndex
         inc dataIndex
 
         ldx dataIndex
-        lda roomGfxCastle,x
+        lda roomGraphicsData,x
         sta pf2
         inc dataIndex
         inc dataIndex
@@ -333,7 +341,14 @@ shiftreg anop
         dc i2'$80'
 
 
-roomGfxCastle anop
+        end
+
+
+roomsData data
+
+roomGraphicsData anop
+; Castle
+
         dc i2'$F0, $FE, $15' ; XXXXXXXXXXX X X X      R R R RRRRRRRRRRR
         dc i2'$30, $03, $1F' ; XX        XXXXXXX      RRRRRRR        RR
         dc i2'$30, $03, $FF' ; XX        XXXXXXXXXXRRRRRRRRRR        RR
@@ -342,10 +357,26 @@ roomGfxCastle anop
         dc i2'$30, $00, $00' ; XX                                    RR
         dc i2'$F0, $FF, $0F' ; XXXXXXXXXXXXXX            RRRRRRRRRRRRRR
 
+; roomGfxBelowYellowCastle
 
-        end
+        dc i2'$F0, $FF, $0F' ; XXXXXXXXXXXXXXXX        RRRRRRRRRRRRRRRRRRRR
+        dc i2'$00, $00, $00'
+        dc i2'$00, $00, $00'
+        dc i2'$00, $00, $00'
+        dc i2'$00, $00, $00'
+        dc i2'$00, $00, $00'
+        dc i2'$F0, $FF, $FF' ; XXXXXXXXXXXXXXXXXXXXRRRRRRRRRRRRRRRRRRRRRRRR
 
 
-roomsData data
+ROOM_GRAPHICS_CASTLE                    gequ 7*3*2*0
+ROOM_GRAPHICS_BELOW_YELLOW_CASTLE       gequ 7*3*2*1
+
+roomGraphicsOffsets anop
+        dc i2'ROOM_GRAPHICS_CASTLE'
+        dc i2'ROOM_GRAPHICS_BELOW_YELLOW_CASTLE'
+
+
+ROOM_INDEX_CASTLE                       gequ 2*0
+ROOM_INDEX_BELOW_YELLOW_CASTLE          gequ 2*1
 
         end
