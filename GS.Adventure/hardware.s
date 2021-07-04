@@ -165,17 +165,8 @@ nextWord anop
         rts
 
 
-waitForBeam entry
-beamLoop anop
-        lda >VERTICAL_COUNTER     ; load the counter value
-        and #$80ff                ; mask out the VBL bits
-        asl a                     ; shift the word around
-        adc #0                    ; move MSB -> LSB
-        cmp #$1c8
-        bge beamLoop
-        rtl
 
-
+; Modified to read controls while waiting for VBL
 waitForVbl entry
 vblLoop1 anop
         jsr checkControls
