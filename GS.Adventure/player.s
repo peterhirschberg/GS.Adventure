@@ -115,9 +115,9 @@ drawPlayer entry
 ;       sbc #6
         sta rectY
 
-        lda #8
+        lda #6
         sta rectWidth
-        lda #12
+        lda #8
         sta rectHeight
 
         lda currentRoomColor
@@ -140,9 +140,9 @@ erasePlayer entry
 ;       sbc #6
         sta rectY
 
-        lda #8
+        lda #6
         sta rectWidth
-        lda #12
+        lda #8
         sta rectHeight
 
         jsr eraseSpriteRect
@@ -162,9 +162,9 @@ erasePlayerHit entry
 ;       sbc #6
         sta rectY
 
-        lda #8
+        lda #6
         sta rectWidth
-        lda #12
+        lda #8
         sta rectHeight
 
         jsr eraseSpriteRect
