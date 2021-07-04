@@ -19,11 +19,10 @@ player start
 
 runPlayer entry
 
-        lda playerX
-        sta playerOldX
-        lda playerY
-        sta playerOldY
-
+;       lda playerX
+;       sta playerOldX
+;       lda playerY
+;        sta playerOldY
 
         lda joystickUp
         cmp #1
@@ -71,8 +70,6 @@ joystickDone anop
 
         jsr wrapPlayerRoom
 
-        jsr collisionCheckPlayerWithWalls
-
         rts
 
 
@@ -109,13 +106,13 @@ movePlayerLeft entry
 drawPlayer entry
 
         lda playerX
-        sec
-        sbc #4
+;        sec
+;       sbc #4
         sta rectX
 
         lda playerY
-        sec
-        sbc #6
+;       sec
+;       sbc #6
         sta rectY
 
         lda #8
@@ -134,13 +131,13 @@ drawPlayer entry
 erasePlayer entry
 
         lda playerOldX
-        sec
-        sbc #4
+;        sec
+;       sbc #4
         sta rectX
 
         lda playerOldY
-        sec
-        sbc #6
+;        sec
+;       sbc #6
         sta rectY
 
         lda #8
@@ -153,6 +150,27 @@ erasePlayer entry
         rts
 
 
+erasePlayerHit entry
+
+        lda playerHitX
+;        sec
+;       sbc #4
+        sta rectX
+
+        lda playerHitY
+;        sec
+;       sbc #6
+        sta rectY
+
+        lda #8
+        sta rectWidth
+        lda #12
+        sta rectHeight
+
+        jsr eraseSpriteRect
+
+        rts
+
         end
 
 playerData data
@@ -160,8 +178,13 @@ playerData data
 playerX dc i2'100'
 playerY dc i2'100'
 
+playerLastX dc i2'100'
+playerLastY dc i2'100'
+
 playerOldX dc i2'100'
 playerOldY dc i2'100'
 
+playerHitX dc i2'100'
+playerHitY dc i2'100'
 
         end

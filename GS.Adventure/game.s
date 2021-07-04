@@ -17,6 +17,7 @@ game start
         using colorData
         using roomsData
         using gameData
+        using playerData
 
 
 initGame entry
@@ -61,12 +62,14 @@ runGameTick entry
 
 pass0 anop
         jsr runPlayer
+        jsr erasePlayerHit ; TODO: OPTIMIZE
         jsr erasePlayer
         jsr drawPlayer
         inc gamePass
         bra passDone
 pass1 anop
         inc gamePass
+        jsr collisionCheckPlayerWithWalls
         bra passDone
 pass2 anop
         lda #0

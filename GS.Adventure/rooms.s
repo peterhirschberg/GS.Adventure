@@ -320,6 +320,9 @@ wrapToRoomUp anop
         lda #ROOM_INDEX_CASTLE
         sta currentRoom
 
+        lda #COLOR_YELLOW
+        sta currentRoomColor
+
 ; draw the new room (TODO: OPTIMIZE)
         jsr fillScreen
         jsr drawRoom
@@ -335,6 +338,9 @@ wrapToRoomDown anop
 ; update the room graphics
         lda #ROOM_INDEX_BELOW_YELLOW_CASTLE
         sta currentRoom
+
+        lda #COLOR_LIMEGREEN
+        sta currentRoomColor
 
 ; draw the new room (TODO: OPTIMIZE)
         jsr fillScreen
