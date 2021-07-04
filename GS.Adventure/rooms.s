@@ -306,6 +306,11 @@ wrapPlayerRoom entry
         cmp playerY
         bcs wrapToRoomUp
 
+        lda playerY
+        cmp #192
+        bcs wrapToRoomDown
+
+
         bra wrapDone
 
 
@@ -320,8 +325,26 @@ wrapToRoomUp anop
         jsr drawRoom
 
 ; wrap the player
-        lda #192
+        lda #190
         sta playerY
+
+        bra wrapDone
+
+wrapToRoomDown anop
+
+; update the room graphics
+        lda #ROOM_INDEX_BELOW_YELLOW_CASTLE
+        sta currentRoom
+
+; draw the new room (TODO: OPTIMIZE)
+        jsr fillScreen
+        jsr drawRoom
+
+; wrap the player
+        lda #6
+        sta playerY
+
+        bra wrapDone
 
 wrapDone anop
 
