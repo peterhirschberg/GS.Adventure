@@ -24,7 +24,7 @@ initGame entry
         jsr setupScreen
         jsr initColorTable
 
-        jsr borderInit
+;        jsr borderInit
 
         jsr fillScreen
 
@@ -44,7 +44,7 @@ runGameTick entry
 
         jsr waitForVbl
 
-        jsr borderStart
+;        jsr borderStart
 
 ; ---------------
 
@@ -77,7 +77,7 @@ pass2 anop
 
 passDone anop
 
-        jsr borderDone
+;        jsr borderDone
 
         rtl
 

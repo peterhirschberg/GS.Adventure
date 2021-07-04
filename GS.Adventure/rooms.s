@@ -347,7 +347,7 @@ wrapToRoomDown anop
         jsr drawRoom
 
 ; wrap the player
-        lda #6
+        lda #8
         sta playerY
 
         bra wrapDone
