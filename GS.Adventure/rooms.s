@@ -31,6 +31,7 @@ drawRoom entry
 ; Playfields are always just the left half of the screen and
 ; the right half is either mirrored or repeated from the left.
 ;
+        jsr eraseRoom
 
         jsr drawRoomLeft
         jsr drawRoomRightMirrored
@@ -323,8 +324,7 @@ wrapToRoomUp anop
         lda #COLOR_YELLOW
         sta currentRoomColor
 
-; draw the new room (TODO: OPTIMIZE)
-        jsr fillScreen
+; draw the new room
         jsr drawRoom
 
 ; wrap the player
@@ -342,8 +342,7 @@ wrapToRoomDown anop
         lda #COLOR_LIMEGREEN
         sta currentRoomColor
 
-; draw the new room (TODO: OPTIMIZE)
-        jsr fillScreen
+; draw the new room
         jsr drawRoom
 
 ; wrap the player

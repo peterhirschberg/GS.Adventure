@@ -26,16 +26,9 @@ initGame entry
 
         jsr borderInit
 
-        jsr fillScreen
-
-; ---------------
-
         lda #COLOR_YELLOW
         sta currentRoomColor
-
         jsr drawRoom
-
-; ---------------
 
         rtl
 
@@ -46,11 +39,7 @@ runGameTick entry
 
         jsr borderStart
 
-; ---------------
-
         jsr checkControls
-
-; ---------------
 
         lda gamePass
         cmp #0

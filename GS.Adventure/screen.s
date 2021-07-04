@@ -18,8 +18,11 @@ screen start
         using colorData
 
 
-; fills the screen with the background color using fill mode
-fillScreen entry
+; fills the room buffer and screen with the background color
+eraseRoom entry
+
+        ldy #COLOR_LTGRAY
+
         lda #0
         sta rowCounter
 
@@ -38,7 +41,7 @@ fillHLoop anop
         clc
         adc columnCounter
         tax
-        lda #COLOR_LTGRAY
+        tya
         sta >SCREEN_ADDR,x
         sta >BACKGROUND_ADDR,x
 
@@ -59,7 +62,6 @@ fillRowDone anop
 
 fillDone anop
         rts
-
 
 
 ; set all pixels to 0
