@@ -72,19 +72,31 @@ onJoystickLeft anop
 
 
 movePlayerUp entry
-        dec playerY
+        lda playerY
+        sec
+        sbc #6
+        sta playerY
         rts
 
 movePlayerDown entry
-        inc playerY
+        lda playerY
+        clc
+        adc #6
+        sta playerY
         rts
 
 movePlayerRight entry
-        inc playerX
+        lda playerX
+        clc
+        adc #6
+        sta playerX
         rts
 
 movePlayerLeft entry
-        dec playerX
+        lda playerX
+        sec
+        sbc #6
+        sta playerX
         rts
 
 
