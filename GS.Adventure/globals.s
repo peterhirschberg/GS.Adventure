@@ -15,6 +15,8 @@ STATE_REGISTER          gequ $e1c068
 SCREEN_ADDR             gequ $012000
 SCB_BASE                gequ $e19d00
 COLOR_TABLE             gequ $e19e00
+KEYBOARD                gequ $e0c000
+KEYBOARD_STROBE         gequ $e0c010
 
 FILL_MODE               gequ $20
 

@@ -14,17 +14,71 @@ player start
         using gameData
         using playerData
         using screenData
+        using controlsData
 
 
 runPlayer entry
 
         lda playerX
         sta playerOldX
-
         lda playerY
         sta playerOldY
 
+
+        lda joystickUp
+        cmp #1
+        beq onJoystickUp
+
+        lda joystickDown
+        cmp #1
+        beq onJoystickDown
+
+        lda joystickRight
+        cmp #1
+        beq onJoystickRight
+
+        lda joystickLeft
+        cmp #1
+        beq onJoystickLeft
+
         rts
+
+
+
+onJoystickUp anop
+        jsr movePlayerUp
+        rts
+
+onJoystickDown anop
+        jsr movePlayerDown
+        rts
+
+onJoystickRight anop
+        jsr movePlayerRight
+        rts
+
+onJoystickLeft anop
+        jsr movePlayerLeft
+        rts
+
+
+
+movePlayerUp entry
+        dec playerY
+        rts
+
+movePlayerDown entry
+        inc playerY
+        rts
+
+movePlayerRight entry
+        inc playerX
+        rts
+
+movePlayerLeft entry
+        dec playerX
+        rts
+
 
 
 drawPlayer entry

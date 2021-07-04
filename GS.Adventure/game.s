@@ -40,6 +40,8 @@ initGame entry
 
 runGameTick entry
 
+        jsr checkControls
+
         jsl waitForVbl
 
 ; ---------------
