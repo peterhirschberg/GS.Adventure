@@ -29,6 +29,7 @@
 		D067909B268F24B600A8010C /* global.macros in Sources */ = {isa = PBXBuildFile; fileRef = D067909A268F24B600A8010C /* global.macros */; };
 		D067909D2690054300A8010C /* hardware.s in Sources */ = {isa = PBXBuildFile; fileRef = D067909C2690054300A8010C /* hardware.s */; };
 		D067909F2690162600A8010C /* beam.s in Sources */ = {isa = PBXBuildFile; fileRef = D067909E2690162600A8010C /* beam.s */; };
+		D06790A12691C41D00A8010C /* player.s in Sources */ = {isa = PBXBuildFile; fileRef = D06790A02691C41C00A8010C /* player.s */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -82,6 +83,7 @@
 		D067909A268F24B600A8010C /* global.macros */ = {isa = PBXFileReference; lastKnownFileType = text; path = global.macros; sourceTree = "<group>"; };
 		D067909C2690054300A8010C /* hardware.s */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.asm; path = hardware.s; sourceTree = "<group>"; };
 		D067909E2690162600A8010C /* beam.s */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.asm; path = beam.s; sourceTree = "<group>"; };
+		D06790A02691C41C00A8010C /* player.s */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.asm; path = player.s; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -132,6 +134,7 @@
 				D067909A268F24B600A8010C /* global.macros */,
 				D067909C2690054300A8010C /* hardware.s */,
 				D067909E2690162600A8010C /* beam.s */,
+				D06790A02691C41C00A8010C /* player.s */,
 			);
 			path = GS.Adventure;
 			sourceTree = "<group>";
@@ -278,6 +281,7 @@
 				D06790952688BC5A00A8010C /* screen.s in Sources */,
 				D06790972688C67E00A8010C /* background.s in Sources */,
 				D067909B268F24B600A8010C /* global.macros in Sources */,
+				D06790A12691C41D00A8010C /* player.s in Sources */,
 				D0678FC0267E6E2B00A8010C /* main.c in Sources */,
 				D067902B267E938A00A8010C /* globals.s in Sources */,
 				D067909D2690054300A8010C /* hardware.s in Sources */,

@@ -15,6 +15,8 @@ game start
         using globalData
         using screenData
         using colorData
+        using roomsData
+        using gameData
 
 
 initGame entry
@@ -23,16 +25,45 @@ initGame entry
 
         jsr borderInit
 
-        jsr zeroScreen
-;        jsr initSCB
         jsr fillScreen
+
+; ---------------
+
+        lda #COLOR_YELLOW
+        sta currentRoomColor
+
         jsr drawRoom
+
+; ---------------
 
         rtl
 
 runGameTick entry
 
         jsl waitForVbl
+
+; ---------------
+
+        jsr borderStart
+
+        jsr erasePlayer
+
+; ---------------
+
+        jsr borderStart
+
+        jsr runPlayer
+
+; ---------------
+
+        jsr borderStart
+
+        jsr drawPlayer
+
+        jsr borderDone
+
+        rtl
+
 
 
 ;        jsr interruptsOff
@@ -157,5 +188,14 @@ left dc i2'50'
 
 dir dc i2'1'
 
+
+        end
+
+gameData data
+
+;currentRoom dc i2'ROOM_INDEX_CASTLE'
+currentRoom dc i2'ROOM_INDEX_BELOW_YELLOW_CASTLE'
+
+currentRoomColor dc i2'0'
 
         end

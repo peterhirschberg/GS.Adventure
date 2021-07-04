@@ -12,6 +12,7 @@
 rooms start
         using globalData
         using screenData
+        using gameData
         using roomsData
 
 
@@ -30,12 +31,7 @@ drawRoom entry
 ; the right half is either mirrored or repeated from the left.
 ;
 
-        ldx #ROOM_INDEX_BELOW_YELLOW_CASTLE
-        lda roomGraphicsOffsets,x
         jsr drawRoomLeft
-
-        ldx #ROOM_INDEX_BELOW_YELLOW_CASTLE
-        lda roomGraphicsOffsets,x
         jsr drawRoomRightMirrored
 
         rts
@@ -43,6 +39,8 @@ drawRoom entry
 
 drawRoomLeft entry
 
+        ldx currentRoom
+        lda roomGraphicsOffsets,x
         sta dataIndex
 
         lda #0
@@ -139,7 +137,7 @@ doneShift anop
         lda #CELL_HEIGHT
         sta rectHeight
 
-        lda #COLOR_YELLOW
+        lda currentRoomColor
         sta rectColor
 
         jsr drawBackgroundRect
@@ -165,6 +163,8 @@ roomDone anop
 
 drawRoomRightMirrored entry
 
+        ldx currentRoom
+        lda roomGraphicsOffsets,x
         sta dataIndex
 
         lda #0
@@ -261,7 +261,7 @@ doneShift2 anop
         lda #CELL_HEIGHT
         sta rectHeight
 
-        lda #COLOR_YELLOW
+        lda currentRoomColor
         sta rectColor
 
 ; draw mirrored right half

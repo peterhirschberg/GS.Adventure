@@ -196,9 +196,10 @@ fillHLoop2 anop
         inx
         inx
 
-        sta <00,x
-        inx
-        inx
+;        sta <00,x
+;       inx
+;       inx
+
 
 ;        sta >SCREEN_ADDR,x
 ;
@@ -215,8 +216,8 @@ fillHLoop2 anop
 
         dec columnCounter
         dec columnCounter
-        dec columnCounter
-        dec columnCounter
+;        dec columnCounter
+;       dec columnCounter
 
         lda columnCounter
         bmi nextRow2
@@ -291,11 +292,11 @@ eraseHLoop2 anop
         inx
         inx
 
-        lda <00,x
-        sta <00,x
-
-        inx
-        inx
+;        lda <00,x
+;       sta <00,x
+;
+;       inx
+;       inx
 
 
 ; bounds check
@@ -308,8 +309,8 @@ eraseHLoop2 anop
 
         dec columnCounter
         dec columnCounter
-        dec columnCounter
-        dec columnCounter
+;        dec columnCounter
+;       dec columnCounter
 
         lda columnCounter
         bmi nextRow3
