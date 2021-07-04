@@ -73,7 +73,6 @@ playerHitLoop anop
         cmp #COLOR_LTGRAY
         bne playerHitDoneHit
 
-
         inc rowCounter
         lda rowCounter
         cmp rectHeight
@@ -82,45 +81,28 @@ playerHitLoop anop
 
 playerHitDoneHit anop
 
-;        jsr erasePlayerLast
-;       jsr erasePlayer
-;
+        lda #1
+        sta playerHitWall
 
         lda playerX
         sta playerHitX
         lda playerY
         sta playerHitY
 
-       lda playerOldX
-       sta playerX
+        lda playerOldX
+        sta playerX
+        lda playerOldY
+        sta playerY
 
-       lda playerOldY
-       sta playerY
-;
-;       jsr erasePlayer
-;       jsr drawPlayer
-
-       jsr erasePlayer
-       jsr drawPlayer
-
+        lda #1
+        sta playerMoved
 
         rts
 
 playerHitDoneNoHit anop
 
-        lda playerX
-        sta playerOldX
-        lda playerY
-        sta playerOldY
-
-
-;        lda playerX
-;       sta playerLastX
-;       lda playerY
-;       sta playerLastY
-;
-;        jsr erasePlayer
-;        jsr drawPlayer
+        lda #0
+        sta playerHitWall
 
         rts
 

@@ -24,7 +24,7 @@ initGame entry
         jsr setupScreen
         jsr initColorTable
 
-;        jsr borderInit
+        jsr borderInit
 
         jsr fillScreen
 
@@ -44,7 +44,7 @@ runGameTick entry
 
         jsr waitForVbl
 
-;        jsr borderStart
+        jsr borderStart
 
 ; ---------------
 
@@ -62,22 +62,55 @@ runGameTick entry
 
 pass0 anop
         jsr runPlayer
-        jsr erasePlayerHit ; TODO: OPTIMIZE
+
+        lda playerHitWall
+        cmp #1
+        bne noHitPass0
+        jsr erasePlayerHit
+
+noHitPass0 anop
+
+        lda playerMoved
+        cmp #1
+        bne noMovePass0
+
         jsr erasePlayer
         jsr drawPlayer
+
+noMovePass0 anop
+
         inc gamePass
         bra passDone
+
 pass1 anop
+
         inc gamePass
         jsr collisionCheckPlayerWithWalls
+
+        lda playerHitWall
+        cmp #1
+        bne noHitPass1
+
+        lda playerMoved
+        cmp #1
+        bne noMovePass1
+
+        jsr erasePlayer
+        jsr drawPlayer
+
+noMovePass1 anop
+noHitPass1 anop
+
         bra passDone
+
 pass2 anop
+
         lda #0
         sta gamePass
 
 passDone anop
 
-;        jsr borderDone
+        jsr borderDone
 
         rtl
 

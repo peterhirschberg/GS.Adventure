@@ -19,10 +19,10 @@ player start
 
 runPlayer entry
 
-;       lda playerX
-;       sta playerOldX
-;       lda playerY
-;        sta playerOldY
+        lda playerX
+        sta playerOldX
+        lda playerY
+        sta playerOldY
 
         lda joystickUp
         cmp #1
@@ -74,6 +74,8 @@ joystickDone anop
 
 
 movePlayerUp entry
+        lda #1
+        sta playerMoved
         lda playerY
         sec
         sbc #6
@@ -81,6 +83,8 @@ movePlayerUp entry
         rts
 
 movePlayerDown entry
+        lda #1
+        sta playerMoved
         lda playerY
         clc
         adc #6
@@ -88,6 +92,8 @@ movePlayerDown entry
         rts
 
 movePlayerRight entry
+        lda #1
+        sta playerMoved
         lda playerX
         clc
         adc #6
@@ -95,6 +101,8 @@ movePlayerRight entry
         rts
 
 movePlayerLeft entry
+        lda #1
+        sta playerMoved
         lda playerX
         sec
         sbc #6
@@ -178,13 +186,14 @@ playerData data
 playerX dc i2'100'
 playerY dc i2'100'
 
-playerLastX dc i2'100'
-playerLastY dc i2'100'
-
 playerOldX dc i2'100'
 playerOldY dc i2'100'
 
 playerHitX dc i2'100'
 playerHitY dc i2'100'
+
+playerHitWall dc i2'0'
+
+playerMoved dc i2'1'
 
         end
