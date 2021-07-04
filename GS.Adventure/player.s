@@ -41,34 +41,39 @@ runPlayer entry
         cmp #1
         beq onJoystickLeft
 
-        rts
-
-
+        bra joystickDone
 
 onJoystickUp anop
         lda #0
         sta joystickUp
         jsr movePlayerUp
-        rts
+        bra joystickDone
 
 onJoystickDown anop
         lda #0
         sta joystickDown
         jsr movePlayerDown
-        rts
+        bra joystickDone
 
 onJoystickRight anop
         lda #0
         sta joystickRight
         jsr movePlayerRight
-        rts
+        bra joystickDone
 
 onJoystickLeft anop
         lda #0
         sta joystickLeft
         jsr movePlayerLeft
-        rts
+        bra joystickDone
 
+joystickDone anop
+
+        jsr wrapPlayerRoom
+
+        jsr collisionCheckPlayerWithWalls
+
+        rts
 
 
 movePlayerUp entry
@@ -104,14 +109,18 @@ movePlayerLeft entry
 drawPlayer entry
 
         lda playerX
+        sec
+        sbc #4
         sta rectX
 
         lda playerY
+        sec
+        sbc #6
         sta rectY
 
-        lda #10
+        lda #8
         sta rectWidth
-        lda #11
+        lda #12
         sta rectHeight
 
         lda currentRoomColor
@@ -125,14 +134,18 @@ drawPlayer entry
 erasePlayer entry
 
         lda playerOldX
+        sec
+        sbc #4
         sta rectX
 
         lda playerOldY
+        sec
+        sbc #6
         sta rectY
 
-        lda #10
+        lda #8
         sta rectWidth
-        lda #11
+        lda #12
         sta rectHeight
 
         jsr eraseSpriteRect

@@ -31,6 +31,7 @@
 		D067909F2690162600A8010C /* beam.s in Sources */ = {isa = PBXBuildFile; fileRef = D067909E2690162600A8010C /* beam.s */; };
 		D06790A12691C41D00A8010C /* player.s in Sources */ = {isa = PBXBuildFile; fileRef = D06790A02691C41C00A8010C /* player.s */; };
 		D06790A32691D2E100A8010C /* controls.s in Sources */ = {isa = PBXBuildFile; fileRef = D06790A22691D2E100A8010C /* controls.s */; };
+		D06790A52692373400A8010C /* collision.s in Sources */ = {isa = PBXBuildFile; fileRef = D06790A42692373400A8010C /* collision.s */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -86,6 +87,7 @@
 		D067909E2690162600A8010C /* beam.s */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.asm; path = beam.s; sourceTree = "<group>"; };
 		D06790A02691C41C00A8010C /* player.s */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.asm; path = player.s; sourceTree = "<group>"; };
 		D06790A22691D2E100A8010C /* controls.s */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.asm; path = controls.s; sourceTree = "<group>"; };
+		D06790A42692373400A8010C /* collision.s */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.asm; path = collision.s; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -138,6 +140,7 @@
 				D067909E2690162600A8010C /* beam.s */,
 				D06790A02691C41C00A8010C /* player.s */,
 				D06790A22691D2E100A8010C /* controls.s */,
+				D06790A42692373400A8010C /* collision.s */,
 			);
 			path = GS.Adventure;
 			sourceTree = "<group>";
@@ -288,6 +291,7 @@
 				D06790A12691C41D00A8010C /* player.s in Sources */,
 				D0678FC0267E6E2B00A8010C /* main.c in Sources */,
 				D067902B267E938A00A8010C /* globals.s in Sources */,
+				D06790A52692373400A8010C /* collision.s in Sources */,
 				D067909D2690054300A8010C /* hardware.s in Sources */,
 				D067909326889F8C00A8010C /* color.s in Sources */,
 				D0678FEB267E6FE600A8010C /* game.s in Sources */,

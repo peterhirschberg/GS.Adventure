@@ -14,6 +14,7 @@ rooms start
         using screenData
         using gameData
         using roomsData
+        using playerData
 
 
 drawRoom entry
@@ -297,6 +298,35 @@ roomNextRow2 anop
 
 roomDone2 anop
         rts
+
+
+wrapPlayerRoom entry
+
+        lda #6
+        cmp playerY
+        bcs wrapToRoomUp
+
+        bra wrapDone
+
+
+wrapToRoomUp anop
+
+; update the room graphics
+        lda #ROOM_INDEX_CASTLE
+        sta currentRoom
+
+; draw the new room (TODO: OPTIMIZE)
+        jsr fillScreen
+        jsr drawRoom
+
+; wrap the player
+        lda #192
+        sta playerY
+
+wrapDone anop
+
+        rts
+
 
 
 
