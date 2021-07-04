@@ -7,6 +7,8 @@
 ;
 
         case on
+        mcopy global.macros
+        keep global
 
 
 controls start
@@ -16,15 +18,11 @@ controls start
 
 checkControls entry
 
-        lda #0
-        sta joystickUp
-        sta joystickRight
-        sta joystickDown
-        sta joystickLeft
-
+;        short i,m
         lda >KEYBOARD
         bpl checkKeysDone
         sta >KEYBOARD_STROBE
+;        long i,m
         and #$007f
 
         cmp #'w'
@@ -48,6 +46,7 @@ checkControls entry
         beq onJoystickLeft
 
 checkKeysDone anop
+;        long i,m
         rts
 
 onJoystickUp anop

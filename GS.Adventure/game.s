@@ -38,11 +38,20 @@ initGame entry
 
         rtl
 
+
 runGameTick entry
+
+        jsr waitForVbl
+
+        jsr borderStart
+
+; ---------------
 
         jsr checkControls
 
-        jsl waitForVbl
+; ---------------
+
+        jsr runPlayer
 
 ; ---------------
 
@@ -54,15 +63,10 @@ runGameTick entry
 
         jsr borderStart
 
-        jsr runPlayer
-
-; ---------------
-
-        jsr borderStart
-
         jsr drawPlayer
 
         jsr borderDone
+
 
         rtl
 

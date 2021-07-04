@@ -84,7 +84,7 @@ void waitForNextTick(void)
         do {
             t = clock();
         }
-        while ((t - lastTick) < 2);
+        while ((t - lastTick) < 1);
         lastTick = t;
 */
     }

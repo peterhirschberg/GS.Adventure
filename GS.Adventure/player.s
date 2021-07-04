@@ -46,18 +46,26 @@ runPlayer entry
 
 
 onJoystickUp anop
+        lda #0
+        sta joystickUp
         jsr movePlayerUp
         rts
 
 onJoystickDown anop
+        lda #0
+        sta joystickDown
         jsr movePlayerDown
         rts
 
 onJoystickRight anop
+        lda #0
+        sta joystickRight
         jsr movePlayerRight
         rts
 
 onJoystickLeft anop
+        lda #0
+        sta joystickLeft
         jsr movePlayerLeft
         rts
 
@@ -112,6 +120,7 @@ erasePlayer entry
 
         lda #10
         sta rectWidth
+        lda #11
         sta rectHeight
 
         jsr eraseSpriteRect

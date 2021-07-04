@@ -38,6 +38,8 @@ initDone anop
 
 
 
+; Thanks to Lucas Scharenbroich for this code ----------------------------------
+
 shadowingOff entry
         short m
         lda >$E0C035
@@ -176,15 +178,20 @@ beamLoop anop
 
 waitForVbl entry
 vblLoop1 anop
+        jsr checkControls
 		short m
 		lda #$fe
 		cmp >READ_VBL
+        long m
 		bpl vblLoop1
 vblLoop2 anop
+        jsr checkControls
+        short m
+        lda #$fe
 		cmp >READ_VBL
+        long m
 		bmi vblLoop2
-		long m
-		rtl
+		rts
 
 
 
