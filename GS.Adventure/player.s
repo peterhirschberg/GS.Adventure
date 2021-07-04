@@ -183,14 +183,14 @@ erasePlayerHit entry
 
 playerData data
 
-playerX dc i2'100'
-playerY dc i2'100'
+playerX dc i2'$100'
+playerY dc i2'$40'
 
-playerOldX dc i2'100'
-playerOldY dc i2'100'
+playerOldX dc i2'$100'
+playerOldY dc i2'$40'
 
-playerHitX dc i2'100'
-playerHitY dc i2'100'
+playerHitX dc i2'$100'
+playerHitY dc i2'$40'
 
 playerHitWall dc i2'0'
 

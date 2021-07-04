@@ -122,8 +122,7 @@ passDone anop
 
 gameData data
 
-;currentRoom dc i2'ROOM_INDEX_CASTLE'
-currentRoom dc i2'ROOM_INDEX_BELOW_YELLOW_CASTLE'
+currentRoom dc i2'ROOM_INDEX_CASTLE'
 
 currentRoomColor dc i2'0'
 
