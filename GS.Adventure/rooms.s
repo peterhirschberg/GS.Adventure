@@ -557,29 +557,241 @@ roomsData data
 currentRoom dc i2'0'
 
 roomGraphicsData anop
-; Castle
 
-        dc i2'$F0, $FE, $15' ; XXXXXXXXXXX X X X      R R R RRRRRRRRRRR
-        dc i2'$30, $03, $1F' ; XX        XXXXXXX      RRRRRRR        RR
-        dc i2'$30, $03, $FF' ; XX        XXXXXXXXXXRRRRRRRRRR        RR
-        dc i2'$30, $00, $FF' ; XX          XXXXXXXXRRRRRRRR          RR
-        dc i2'$30, $00, $3F' ; XX          XXXXXX    RRRRRR          RR
-        dc i2'$30, $00, $00' ; XX                                    RR
-        dc i2'$F0, $FF, $0F' ; XXXXXXXXXXXXXX            RRRRRRRRRRRRRR
+; roomGfxLeftOfName
+        dc i2'$F0,$FF,$FF'      ; XXXXXXXXXXXXXXXXXXXXRRRRRRRRRRRRRRRRRRRRRRRR
+        dc i2'$00,$00,$00'
+        dc i2'$00,$00,$00'
+        dc i2'$00,$00,$00'
+        dc i2'$00,$00,$00'
+        dc i2'$00,$00,$00'
+        dc i2'$F0,$FF,$0F'      ; XXXXXXXXXXXXXXXX        RRRRRRRRRRRRRRRRRRRR
 
 ; roomGfxBelowYellowCastle
+        dc i2'$F0,$FF,$0F'      ; XXXXXXXXXXXXXXXX        RRRRRRRRRRRRRRRRRRRR
+        dc i2'$00,$00,$00'
+        dc i2'$00,$00,$00'
+        dc i2'$00,$00,$00'
+        dc i2'$00,$00,$00'
+        dc i2'$00,$00,$00'
+        dc i2'$F0,$FF,$FF'      ; XXXXXXXXXXXXXXXXXXXXRRRRRRRRRRRRRRRRRRRRRRRR
 
-        dc i2'$F0, $FF, $0F' ; XXXXXXXXXXXXXXXX        RRRRRRRRRRRRRRRRRRRR
-        dc i2'$00, $00, $00'
-        dc i2'$00, $00, $00'
-        dc i2'$00, $00, $00'
-        dc i2'$00, $00, $00'
-        dc i2'$00, $00, $00'
-        dc i2'$F0, $FF, $FF' ; XXXXXXXXXXXXXXXXXXXXRRRRRRRRRRRRRRRRRRRRRRRR
+; roomGfxSideCorridor
+        dc i2'$F0,$FF,$0F'      ; XXXXXXXXXXXXXXXX        RRRRRRRRRRRRRRRR
+        dc i2'$00,$00,$00'
+        dc i2'$00,$00,$00'
+        dc i2'$00,$00,$00'
+        dc i2'$00,$00,$00'
+        dc i2'$00,$00,$00'
+        dc i2'$F0,$FF,$0F'      ; XXXXXXXXXXXXXXXX        RRRRRRRRRRRRRRRR
+
+; roomGfxNumberRoom
+        dc i2'$F0,$FF,$FF'     ; XXXXXXXXXXXXXXXXXXXXRRRRRRRRRRRRRRRRRRRR
+        dc i2'$30,$00,$00'     ; XX                                    RR
+        dc i2'$30,$00,$00'     ; XX                                    RR
+        dc i2'$30,$00,$00'     ; XX                                    RR
+        dc i2'$30,$00,$00'     ; XX                                    RR
+        dc i2'$30,$00,$00'     ; XX                                    RR
+        dc i2'$F0,$FF,$0F'     ; XXXXXXXXXXXXXXXXXXXXRRRRRRRRRRRRRRRRRRRR
+
+; roomGfxTwoExitRoom
+        dc i2'$F0,$FF,$0F'     ; XXXXXXXXXXXXXXXX        RRRRRRRRRRRRRRRR
+        dc i2'$30,$00,$00'     ; XX                                    RR
+        dc i2'$30,$00,$00'     ; XX                                    RR
+        dc i2'$30,$00,$00'     ; XX                                    RR
+        dc i2'$30,$00,$00'     ; XX                                    RR
+        dc i2'$30,$00,$00'     ; XX                                    RR
+        dc i2'$F0,$FF,$0F'     ; XXXXXXXXXXXXXXXX        RRRRRRRRRRRRRRRR
+
+; roomGfxBlueMazeTop
+        dc i2'$F0,$FF,$0F'     ; XXXXXXXXXXXXXXXX        RRRRRRRRRRRRRRRR
+        dc i2'$00,$0C,$0C'     ;         XX    XX        RR    RR
+        dc i2'$F0,$0C,$3C'     ; XXXX    XX    XXXX    RRRR    RR    RRRR
+        dc i2'$F0,$0C,$00'     ; XXXX    XX                    RR    RRRR
+        dc i2'$F0,$FF,$3F'     ; XXXXXXXXXXXXXXXXXX    RRRRRRRRRRRRRRRRRR
+        dc i2'$00,$30,$30'     ;       XX        XX    RR        RR
+        dc i2'$F0,$33,$3F'     ; XXXX  XX  XXXXXXXX    RRRRRRRR  RR  RRRR
+
+; roomGfxBlueMaze1
+        dc i2'$F0,$FF,$FF'          ; XXXXXXXXXXXXXXXXXXXXRRRRRRRRRRRRRRRRRRRR
+        dc i2'$00,$00,$00'          ;
+        dc i2'$F0,$FC,$FF'          ; XXXXXXXXXX  XXXXXXXXRRRRRRRR  RRRRRRRRRR
+        dc i2'$F0,$00,$C0'          ; XXXX              XXRR              RRRR
+        dc i2'$F0,$3F,$CF'          ; XXXX  XXXXXXXXXX  XXRR  RRRRRRRRRR  RRRR
+        dc i2'$00,$30,$CC'          ;       XX      XX  XXRR  RR      RR
+        dc i2'$F0,$F3,$CC'          ; XXXXXXXX  XX  XX  XXRR  RR  RR  RRRRRRRR
+
+; roomGfxBlueMazeBottom
+        dc i2'$F0,$F3,$0C'          ; XXXXXXXX  XX  XX        RR  RR  RRRRRRRR
+        dc i2'$00,$30,$0C'          ;       XX      XX        RR      RR
+        dc i2'$F0,$3F,$0F'          ; XXXX  XXXXXXXXXX        RRRRRRRRRR  RRRR
+        dc i2'$F0,$00,$00'          ; XXXX                                RRRR
+        dc i2'$F0,$F0,$00'          ; XXXXXXXX                        RRRRRRRR
+        dc i2'$00,$30,$00'          ;       XX                        RR
+        dc i2'$F0,$FF,$FF'          ; XXXXXXXXXXXXXXXXXXXXRRRRRRRRRRRRRRRRRRRR
+
+; roomGfxBlueMazeCenter
+        dc i2'$F0,$33,$3F'          ; XXXX  XX  XXXXXXXX    RRRRRRRR  RR  RRRR
+        dc i2'$00,$30,$3C'          ;       XX      XXXX    RRRR      RR
+        dc i2'$F0,$FF,$3C'          ; XXXXXXXXXXXX  XXXX    RRRR  RRRRRRRRRRRR
+        dc i2'$00,$03,$3C'          ;           XX  XXXX    RRRR  RR
+        dc i2'$F0,$33,$3C'          ; XXXX  XX  XX  XXXX    RRRR  RR  RR  RRRR
+        dc i2'$00,$33,$0C'          ;       XX  XX  XX        RR  RR  RR
+        dc i2'$F0,$F3,$0C'          ; XXXXXXXX  XX  XX        RR  RR  RRRRRRRR
+
+; roomGfxBlueMazeEntry
+        dc i2'$F0,$F3,$CC'          ; XXXXXXXX  XX  XX  XXRR  RR  RR  RRRRRRRR
+        dc i2'$00,$33,$0C'          ;       XX  XX  XX        RR  RR  RR
+        dc i2'$F0,$33,$FC'          ; XXXX  XX  XX  XXXXXXRRRRRR  RR  RR  RRRR
+        dc i2'$00,$33,$00'          ;       XX  XX                RR  RR
+        dc i2'$F0,$F3,$FF'          ; XXXXXXXX  XXXXXXXXXXRRRRRRRRRR  RRRRRRRR
+        dc i2'$00,$00,$00'          ;
+        dc i2'$F0,$FF,$0F'          ; XXXXXXXXXXXXXXXX        RRRRRRRRRRRRRRRR
+
+; roomGfxMazeMiddle
+        dc i2'$F0,$FF,$CC'          ; XXXXXXXXXXXX  XX  XXRR  RR  RRRRRRRRRRRR
+        dc i2'$00,$00,$CC'          ;               XX  XXRR  RR
+        dc i2'$F0,$03,$CF'          ; XXXX      XXXXXX  XXRR  RRRRRR      RRRR
+        dc i2'$00,$03,$00'          ;           XX                RR
+        dc i2'$F0,$F3,$FC'          ; XXXXXXXX  XX  XXXXXXRRRRRR  RR  RRRRRRRR
+        dc i2'$00,$33,$0C'          ;       XX  XX  XX        RR  RR  RR
+        dc i2'$F0,$33,$CC'          ; XXXX  XX  XX  XX  XXRR  RR  RR  RR  RRRR
+
+; roomGfxMazeSide
+        dc i2'$F0,$33,$CC'          ; XXXX  XX  XX  XX  XXRR  RR  RR  RR  RRRR
+        dc i2'$00,$30,$CC'          ;       XX      XX  XXRR  RR      RR
+        dc i2'$00,$3F,$CF'          ;       XXXXXX  XX  XXRR  RR  RRRRRR
+        dc i2'$00,$00,$C0'          ;                   XXRR
+        dc i2'$00,$3F,$C3'          ;       XXXXXXXX    XXRR    RRRRRRRR
+        dc i2'$00,$30,$C0'          ;       XX          XXRR          RR
+        dc i2'$F0,$FF,$FF'          ; XXXXXXXXXXXXXXXXXXXXRRRRRRRRRRRRRRRRRRRR
+
+; roomGfxMazeEntry
+        dc i2'$F0,$FF,$0F'          ; XXXXXXXXXXXXXXXX        RRRRRRRRRRRRRRRR
+        dc i2'$00,$30,$00'          ;       XX                        RR
+        dc i2'$F0,$30,$FF'          ; XXXX  XX    XXXXXXXXRRRRRRRRR   RR  RRRR
+        dc i2'$00,$30,$C0'          ;       XX          XXRR          RR
+        dc i2'$F0,$F3,$C0'          ; XXXXXXXX  XX      XXRR      RR  RRRRRRRR
+        dc i2'$00,$03,$C0'          ;           XX      XXRR      RR
+        dc i2'$F0,$FF,$CC'          ; XXXXXXXXXXXX  XX  XXRR  RR  RRRRRRRRRRRR
+
+; roomGfxCastle
+        dc i2'$F0,$FE,$15'          ; XXXXXXXXXXX X X X      R R R RRRRRRRRRRR
+        dc i2'$30,$03,$1F'          ; XX        XXXXXXX      RRRRRRR        RR
+        dc i2'$30,$03,$FF'          ; XX        XXXXXXXXXXRRRRRRRRRR        RR
+        dc i2'$30,$00,$FF'          ; XX          XXXXXXXXRRRRRRRR          RR
+        dc i2'$30,$00,$3F'          ; XX          XXXXXX    RRRRRR          RR
+        dc i2'$30,$00,$00'          ; XX                                    RR
+        dc i2'$F0,$FF,$0F'          ; XXXXXXXXXXXXXX            RRRRRRRRRRRRRR
+
+; roomGfxRedMaze1
+        dc i2'$F0,$FF,$FF'          ; XXXXXXXXXXXXXXXXXXXXRRRRRRRRRRRRRRRRRRRR
+        dc i2'$00,$00,$00'          ;
+        dc i2'$F0,$FF,$0F'          ; XXXXXXXXXXXXXXXX        RRRRRRRRRRRRRRRR
+        dc i2'$00,$00,$0C'          ;                   XX        RR
+        dc i2'$F0,$FF,$0C'          ; XXXXXXXXXXXX  XX        RR  RRRRRRRRRRRR
+        dc i2'$F0,$03,$CC'          ; XXXX      XX  XX  XXRR  RR  RR      RRRR
+        dc i2'$F0,$33,$CF'          ; XXXX  XX  XXXXXX  XXRR  RRRRRR  RR  RRRR
+
+; roomGfxRedMazeBottom
+        dc i2'$F0,$33,$CF'          ; XXXX  XX  XXXXXX  XXRR  RRRRRR  RR  RRRR
+        dc i2'$F0,$30,$00'          ; XXXX  XX                        RR  RRRR
+        dc i2'$F0,$33,$FF'          ; XXXX  XX  XXXXXXXXXXRRRRRRRRRR  RR  RRRR
+        dc i2'$00,$33,$00'          ;       XX  XX                RR  RR  RRRR
+        dc i2'$F0,$FF,$00'          ; XXXXXXXXXXXX                RRRRRRRRRRRR
+        dc i2'$00,$00,$00'          ;
+        dc i2'$F0,$FF,$0F'          ; XXXXXXXXXXXXXXXX        RRRRRRRRRRRRRRRR
+
+; roomGfxRedMazeTop
+        dc i2'$F0,$FF,$FF'          ; XXXXXXXXXXXXXXXXXXXXRRRRRRRRRRRRRRRRRRRR
+        dc i2'$00,$00,$C0'          ;                   XXRR
+        dc i2'$F0,$FF,$CF'          ; XXXXXXXXXXXXXXXX  XXRR  RRRRRRRRRRRRRRRR
+        dc i2'$00,$00,$CC'          ;               XX  XXRR  RR
+        dc i2'$F0,$33,$FF'          ; XXXX  XX  XXXXXXXXXXRRRRRRRRRR  RR  RRRR
+        dc i2'$F0,$33,$00'          ; XXXX  XX  XX                RR  RR  RRRR
+        dc i2'$F0,$3F,$0C'          ; XXXX  XXXXXX  XX        RR  RRRRRR  RRRR
+
+; roomGfxWhiteCastleEntry
+        dc i2'$F0,$3F,$0C'          ; XXXX  XXXXXX  XX        RR  RRRRRR  RRRR
+        dc i2'$F0,$00,$0C'          ; XXXX          XX        RR          RRRR
+        dc i2'$F0,$FF,$0F'          ; XXXXXXXXXXXXXXXX        RRRRRRRRRRRRRRRR
+        dc i2'$00,$30,$00'          ;       XX                        RR
+        dc i2'$F0,$30,$00'          ; XXXX  XX                        RR  RRRR
+        dc i2'$00,$30,$00'          ;       XX                        RR
+        dc i2'$F0,$FF,$0F'          ; XXXXXXXXXXXXXXXX        RRRRRRRRRRRRRRRR
+
+; roomGfxTopEntryRoom
+        dc i2'$F0,$FF,$0F'          ; XXXXXXXXXXXXXXXX        RRRRRRRRRRRRRRRR
+        dc i2'$30,$00,$00'          ; XX                                    RR
+        dc i2'$30,$00,$00'          ; XX                                    RR
+        dc i2'$30,$00,$00'          ; XX                                    RR
+        dc i2'$30,$00,$00'          ; XX                                    RR
+        dc i2'$30,$00,$00'          ; XX                                    RR
+        dc i2'$F0,$FF,$FF'          ; XXXXXXXXXXXXXXXXXXXXRRRRRRRRRRRRRRRRRRRR
+
+; roomGfxBlackMaze1
+        dc i2'$F0,$F0,$FF'          ; XXXXXXXX    XXXXXXXXRRRRRRRR    RRRRRRRR
+        dc i2'$00,$00,$03'          ;             XX            RR
+        dc i2'$F0,$FF,$03'          ; XXXXXXXXXXXXXX            RRRRRRRRRRRRRR
+        dc i2'$00,$00,$00'          ;
+        dc i2'$30,$3F,$FF'          ; XX    XXXXXXXXXXXXXXRRRRRRRRRRRRRR    RR
+        dc i2'$00,$30,$00'          ;       XX                        RR
+        dc i2'$F0,$F0,$FF'          ; XXXXXXXX    XXXXXXXXRRRRRRRR    RRRRRRRR
+
+; roomGfxBlackMaze3
+        dc i2'$F0,$F0,$FF'          ; XXXXXXXX    XXXXXXXXRRRRRRRR    RRRRRRRR
+        dc i2'$30,$00,$00'          ; XX                  MM
+        dc i2'$30,$3F,$FF'          ; XX    XXXXXXXXXXXXXXMM    MMMMMMMMMMMMMM
+        dc i2'$00,$30,$00'          ;       XX                  MM
+        dc i2'$F0,$F0,$FF'          ; XXXXXXXX    XXXXXXXXMMMMMMMM    MMMMMMMM
+        dc i2'$30,$00,$03'          ; XX          XX      MM          MM
+        dc i2'$F0,$F0,$FF'          ; XXXXXXXX    XXXXXXXXMMMMMMMM    MMMMMMMM
+
+; roomGfxBlackMaze2
+        dc i2'$F0,$FF,$FF'          ; XXXXXXXXXXXXXXXXXXXXMMMMMMMMMMMMMMMMMMMM
+        dc i2'$00,$00,$C0'          ;                   XX                  MM
+        dc i2'$F0,$FF,$CF'          ; XXXXXXXXXXXXXXXX  XXMMMMMMMMMMMMMMMM  MM
+        dc i2'$00,$00,$0C'          ;                   XX                  MM
+        dc i2'$F0,$0F,$FF'          ; XXXX    XXXXXXXXXXXXMMMM    MMMMMMMMMMMM
+        dc i2'$00,$0F,$C0'          ;         XXXX      XX        MMMM      MM
+        dc i2'$30,$CF,$CC'          ; XX  XX  XXXX  XX  XXMM  MM  MMMM  MM  MM
+
+; roomGfxBlackMazeEntry
+        dc i2'$30,$CF,$CC'          ; XX  XX  XXXX  XX  XXMM  MM  MMMM  MM  MM
+        dc i2'$00,$C0,$CC'          ;         XX        XX  XXRR  RR        RR
+        dc i2'$F0,$FF,$0F'          ; XXXXXXXXXXXXXXXX        RRRRRRRRRRRRRRRR
+        dc i2'$00,$00,$00'          ;
+        dc i2'$F0,$FF,$0F'          ; XXXXXXXXXXXXXXXX        RRRRRRRRRRRRRRRR
+        dc i2'$00,$00,$00'          ;
+        dc i2'$F0,$FF,$0F'          ; XXXXXXXXXXXXXXXX        RRRRRRRRRRRRRRRR
 
 
-ROOM_GRAPHICS_CASTLE                    gequ 7*3*2*0
-ROOM_GRAPHICS_BELOW_YELLOW_CASTLE       gequ 7*3*2*1
+
+
+ROOM_GRAPHICS_LEFT_OF_NAME          gequ 7*3*2*0
+ROOM_GRAPHICS_BELOW_YELLOW_CASTLE   gequ 7*3*2*1
+ROOM_GRAPHICS_SIDE_CORRIDOR         gequ 7*3*2*2
+ROOM_GRAPHICS_NUMBER_ROOM           gequ 7*3*2*3
+ROOM_GRAPHICS_TWO_EXIT_ROOM         gequ 7*3*2*4
+ROOM_GRAPHICS_BLUE_MAZE_TOP         gequ 7*3*2*5
+ROOM_GRAPHICS_BLUE_MAZE1            gequ 7*3*2*6
+ROOM_GRAPHICS_BLUE_MAZE_BOTTOM      gequ 7*3*2*7
+ROOM_GRAPHICS_BLUE_MAZE_CENTER      gequ 7*3*2*8
+ROOM_GRAPHICS_BLUE_MAZE_ENTRY       gequ 7*3*2*9
+ROOM_GRAPHICS_MAZE_MIDDLE           gequ 7*3*2*10
+ROOM_GRAPHICS_MAZE_SIDE             gequ 7*3*2*11
+ROOM_GRAPHICS_MAZE_ENTRY            gequ 7*3*2*12
+ROOM_GRAPHICS_CASTLE                gequ 7*3*2*13
+ROOM_GRAPHICS_RED_MAZE1             gequ 7*3*2*14
+ROOM_GRAPHICS_RED_MAZE_BOTTOM       gequ 7*3*2*15
+ROOM_GRAPHICS_RED_MAZE_TOP          gequ 7*3*2*16
+ROOM_GRAPHICS_WHITE_CASTLE_ENTRY    gequ 7*3*2*17
+ROOM_GRAPHICS_TOP_ENTRY_ROOM        gequ 7*3*2*18
+ROOM_GRAPHICS_BLACK_MAZE1           gequ 7*3*2*19
+ROOM_GRAPHICS_BLACK_MAZE2           gequ 7*3*2*20
+ROOM_GRAPHICS_BLACK_MAZE3           gequ 7*3*2*21
+ROOM_GRAPHICS_BLACK_MAZE_ENTRY      gequ 7*3*2*22
+
 
 roomGraphicsOffsetList anop
         dc i2'ROOM_GRAPHICS_CASTLE'
