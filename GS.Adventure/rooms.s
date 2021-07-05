@@ -794,18 +794,151 @@ ROOM_GRAPHICS_BLACK_MAZE_ENTRY      gequ 7*3*2*22
 
 
 roomGraphicsOffsetList anop
+        dc i2'ROOM_GRAPHICS_NUMBER_ROOM'
+        dc i2'ROOM_GRAPHICS_BELOW_YELLOW_CASTLE'
+        dc i2'ROOM_GRAPHICS_BELOW_YELLOW_CASTLE'
+        dc i2'ROOM_GRAPHICS_LEFT_OF_NAME'
+        dc i2'ROOM_GRAPHICS_BLUE_MAZE_TOP'
+        dc i2'ROOM_GRAPHICS_BLUE_MAZE1'
+        dc i2'ROOM_GRAPHICS_BLUE_MAZE_BOTTOM'
+        dc i2'ROOM_GRAPHICS_BLUE_MAZE_CENTER'
+        dc i2'ROOM_GRAPHICS_BLUE_MAZE_ENTRY'
+        dc i2'ROOM_GRAPHICS_MAZE_MIDDLE'
+        dc i2'ROOM_GRAPHICS_MAZE_ENTRY'
+        dc i2'ROOM_GRAPHICS_MAZE_SIDE'
+        dc i2'ROOM_GRAPHICS_SIDE_CORRIDOR'
+        dc i2'ROOM_GRAPHICS_SIDE_CORRIDOR'
+        dc i2'ROOM_GRAPHICS_TOP_ENTRY_ROOM'
         dc i2'ROOM_GRAPHICS_CASTLE'
+        dc i2'ROOM_GRAPHICS_CASTLE'
+        dc i2'ROOM_GRAPHICS_CASTLE'
+        dc i2'ROOM_GRAPHICS_NUMBER_ROOM'
+        dc i2'ROOM_GRAPHICS_BLACK_MAZE1'
+        dc i2'ROOM_GRAPHICS_BLACK_MAZE2'
+        dc i2'ROOM_GRAPHICS_BLACK_MAZE3'
+        dc i2'ROOM_GRAPHICS_BLACK_MAZE_ENTRY'
+        dc i2'ROOM_GRAPHICS_RED_MAZE1'
+        dc i2'ROOM_GRAPHICS_RED_MAZE_TOP'
+        dc i2'ROOM_GRAPHICS_RED_MAZE_BOTTOM'
+        dc i2'ROOM_GRAPHICS_WHITE_CASTLE_ENTRY'
+        dc i2'ROOM_GRAPHICS_TWO_EXIT_ROOM'
+        dc i2'ROOM_GRAPHICS_NUMBER_ROOM'
+        dc i2'ROOM_GRAPHICS_TOP_ENTRY_ROOM'
         dc i2'ROOM_GRAPHICS_BELOW_YELLOW_CASTLE'
 
 roomColorList anop
-        dc i2'COLOR_YELLOW'
+        dc i2'COLOR_PURPLE'
+        dc i2'COLOR_OLIVEGREEN'
         dc i2'COLOR_LIMEGREEN'
+        dc i2'COLOR_TAN'
+        dc i2'COLOR_BLUE'
+        dc i2'COLOR_BLUE'
+        dc i2'COLOR_BLUE'
+        dc i2'COLOR_BLUE'
+        dc i2'COLOR_BLUE'
+        dc i2'COLOR_LTGRAY'
+        dc i2'COLOR_LTGRAY'
+        dc i2'COLOR_LTGRAY'
+        dc i2'COLOR_LTCYAN'
+        dc i2'COLOR_DKGREEN'
+        dc i2'COLOR_CYAN'
+        dc i2'COLOR_WHITE'
+        dc i2'COLOR_BLACK'
+        dc i2'COLOR_YELLOW'
+        dc i2'COLOR_YELLOW'
+        dc i2'COLOR_LYGRAY'
+        dc i2'COLOR_LTGRAY'
+        dc i2'COLOR_LYGRAY'
+        dc i2'COLOR_LTGRAY'
+        dc i2'COLOR_RED'
+        dc i2'COLOR_RED'
+        dc i2'COLOR_RED'
+        dc i2'COLOR_RED'
+        dc i2'COLOR_RED'
+        dc i2'COLOR_PURPLE'
+        dc i2'COLOR_RED'
+        dc i2'COLOR_PURPLE'
 
 roomMirroredList anop
         dc i2'1'
         dc i2'1'
+        dc i2'1'
+        dc i2'1'
+        dc i2'1'
+        dc i2'1'
+        dc i2'1'
+        dc i2'1'
+        dc i2'1'
+        dc i2'1'
+        dc i2'1'
+        dc i2'1'
+        dc i2'1'
+        dc i2'1'
+        dc i2'1'
+        dc i2'1'
+        dc i2'1'
+        dc i2'1'
+        dc i2'1'
+        dc i2'1'
+        dc i2'0'
+        dc i2'0'
+        dc i2'1'
+        dc i2'1'
+        dc i2'1'
+        dc i2'1'
+        dc i2'1'
+        dc i2'1'
+        dc i2'1'
+        dc i2'1'
+        dc i2'1'
 
-ROOM_INDEX_CASTLE                       gequ 2*0
-ROOM_INDEX_BELOW_YELLOW_CASTLE          gequ 2*1
+ROOM_GRAPHICS_LEFT_OF_NAME          gequ 7*3*2*0
+ROOM_GRAPHICS_BELOW_YELLOW_CASTLE   gequ 7*3*2*1
+ROOM_GRAPHICS_SIDE_CORRIDOR         gequ 7*3*2*2
+ROOM_GRAPHICS_NUMBER_ROOM           gequ 7*3*2*3
+ROOM_GRAPHICS_TWO_EXIT_ROOM         gequ 7*3*2*4
+ROOM_GRAPHICS_BLUE_MAZE_TOP         gequ 7*3*2*5
+ROOM_GRAPHICS_BLUE_MAZE1            gequ 7*3*2*6
+ROOM_GRAPHICS_BLUE_MAZE_BOTTOM      gequ 7*3*2*7
+ROOM_GRAPHICS_BLUE_MAZE_CENTER      gequ 7*3*2*8
+ROOM_GRAPHICS_BLUE_MAZE_ENTRY       gequ 7*3*2*9
+ROOM_GRAPHICS_MAZE_MIDDLE           gequ 7*3*2*10
+ROOM_GRAPHICS_MAZE_SIDE             gequ 7*3*2*11
+ROOM_GRAPHICS_MAZE_ENTRY            gequ 7*3*2*12
+ROOM_GRAPHICS_CASTLE                gequ 7*3*2*13
+ROOM_GRAPHICS_RED_MAZE1             gequ 7*3*2*14
+ROOM_GRAPHICS_RED_MAZE_BOTTOM       gequ 7*3*2*15
+ROOM_GRAPHICS_RED_MAZE_TOP          gequ 7*3*2*16
+ROOM_GRAPHICS_WHITE_CASTLE_ENTRY    gequ 7*3*2*17
+ROOM_GRAPHICS_TOP_ENTRY_ROOM        gequ 7*3*2*18
+ROOM_GRAPHICS_BLACK_MAZE1           gequ 7*3*2*19
+ROOM_GRAPHICS_BLACK_MAZE2           gequ 7*3*2*20
+ROOM_GRAPHICS_BLACK_MAZE3           gequ 7*3*2*21
+ROOM_GRAPHICS_BLACK_MAZE_ENTRY      gequ 7*3*2*22
+
+ROOM_INDEX_LEFT_OF_NAME             gequ 2*0
+ROOM_INDEX_BELOW_YELLOW_CASTLE      gequ 2*1
+ROOM_INDEX_SIDE_CORRIDOR            gequ 2*2
+ROOM_INDEX_NUMBER_ROOM              gequ 2*3
+ROOM_INDEX_TWO_EXIT_ROOM            gequ 2*4
+ROOM_INDEX_BLUE_MAZE_TOP            gequ 2*5
+ROOM_INDEX_BLUE_MAZE1               gequ 2*6
+ROOM_INDEX_BLUE_MAZE_BOTTOM         gequ 2*7
+ROOM_INDEX_BLUE_MAZE_CENTER         gequ 2*8
+ROOM_INDEX_BLUE_MAZE_ENTRY          gequ 2*9
+ROOM_INDEX_MAZE_MIDDLE              gequ 2*10
+ROOM_INDEX_MAZE_SIDE                gequ 2*11
+ROOM_INDEX_MAZE_ENTRY               gequ 2*12
+ROOM_INDEX_CASTLE                   gequ 2*13
+ROOM_INDEX_RED_MAZE1                gequ 2*14
+ROOM_INDEX_RED_MAZE_BOTTOM          gequ 2*15
+ROOM_INDEX_RED_MAZE_TOP             gequ 2*16
+ROOM_INDEX_WHITE_CASTLE_ENTRY       gequ 2*17
+ROOM_INDEX_TOP_ENTRY_ROOM           gequ 2*18
+ROOM_INDEX_BLACK_MAZE1              gequ 2*19
+ROOM_INDEX_BLACK_MAZE2              gequ 2*20
+ROOM_INDEX_BLACK_MAZE3              gequ 2*21
+ROOM_INDEX_BLACK_MAZE_ENTRY         gequ 2*22
+
 
         end
