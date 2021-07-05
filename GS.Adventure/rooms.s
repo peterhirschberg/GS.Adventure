@@ -139,7 +139,8 @@ doneShift anop
         lda #CELL_HEIGHT
         sta rectHeight
 
-        lda currentRoomColor
+        ldx currentRoom
+        lda roomColorList,x
         sta rectColor
 
         jsr drawBackgroundRect
@@ -263,7 +264,8 @@ doneShift2 anop
         lda #CELL_HEIGHT
         sta rectHeight
 
-        lda currentRoomColor
+        ldx currentRoom
+        lda roomColorList,x
         sta rectColor
 
 ; draw mirrored right half
@@ -321,9 +323,6 @@ wrapToRoomUp anop
         lda #ROOM_INDEX_CASTLE
         sta currentRoom
 
-        lda #COLOR_YELLOW
-        sta currentRoomColor
-
 ; draw the new room
         jsr drawRoom
 
@@ -338,9 +337,6 @@ wrapToRoomDown anop
 ; update the room graphics
         lda #ROOM_INDEX_BELOW_YELLOW_CASTLE
         sta currentRoom
-
-        lda #COLOR_LIMEGREEN
-        sta currentRoomColor
 
 ; draw the new room
         jsr drawRoom
@@ -404,6 +400,8 @@ shiftreg anop
 
 roomsData data
 
+currentRoom dc i2'0'
+
 roomGraphicsData anop
 ; Castle
 
@@ -433,6 +431,9 @@ roomGraphicsOffsets anop
         dc i2'ROOM_GRAPHICS_CASTLE'
         dc i2'ROOM_GRAPHICS_BELOW_YELLOW_CASTLE'
 
+roomColorList anop
+        dc i2'COLOR_YELLOW'
+        dc i2'COLOR_LIMEGREEN'
 
 ROOM_INDEX_CASTLE                       gequ 2*0
 ROOM_INDEX_BELOW_YELLOW_CASTLE          gequ 2*1

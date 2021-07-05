@@ -26,15 +26,20 @@ initGame entry
 
         jsr borderInit
 
-        lda #COLOR_YELLOW
-        sta currentRoomColor
-        jsr drawRoom
+; -------------------------------
+; set up game
+
+        lda #ROOM_INDEX_CASTLE
+        sta currentRoom
 
         lda #$45
         sta playerX
         lda #$85
         sta playerY
 
+; -------------------------------
+
+        jsr drawRoom
 
         rtl
 
@@ -116,10 +121,6 @@ passDone anop
         end
 
 gameData data
-
-currentRoom dc i2'ROOM_INDEX_CASTLE'
-
-currentRoomColor dc i2'0'
 
 gamePass dc i2'0'
 

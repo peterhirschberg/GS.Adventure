@@ -14,6 +14,7 @@ player start
         using gameData
         using playerData
         using screenData
+        using roomsData
         using controlsData
 
 
@@ -128,7 +129,8 @@ drawPlayer entry
         lda #8
         sta rectHeight
 
-        lda currentRoomColor
+        ldx currentRoom
+        lda roomColorList,x
         sta rectColor
 
         jsr drawSpriteRect
