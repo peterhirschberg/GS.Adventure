@@ -33,8 +33,24 @@ drawRoom entry
 ;
         jsr eraseRoom
 
+; draw room as mirrored or repeated
+
+        ldx currentRoom
+        lda roomMirroredList,x
+        cmp #1
+        bne roomRepeats
+
+; draw mirrored
+
         jsr drawRoomLeft
         jsr drawRoomRightMirrored
+        bra drawRoomDone
+
+roomRepeats anop
+
+        jsr drawRoomRepeating
+
+drawRoomDone anop
 
         rts
 
@@ -303,6 +319,147 @@ roomDone2 anop
         rts
 
 
+
+drawRoomRepeating entry
+
+        ldx currentRoom
+        lda roomGraphicsOffsets,x
+        sta dataIndex
+
+        lda #0
+        sta cy
+
+roomVerticalLoop3 anop
+
+        ldx dataIndex
+        lda roomGraphicsData,x
+        sta pf0
+        inc dataIndex
+        inc dataIndex
+
+        ldx dataIndex
+        lda roomGraphicsData,x
+        sta pf1
+        inc dataIndex
+        inc dataIndex
+
+        ldx dataIndex
+        lda roomGraphicsData,x
+        sta pf2
+        inc dataIndex
+        inc dataIndex
+
+        lda #0
+        sta cx
+
+horizontalLoop3 anop
+
+        lda cx
+        cmp #12
+        bcs shift2c
+
+        lda cx
+        cmp #4
+        bcs shift1c
+
+
+shift0c anop
+
+        lda cx
+        asl a
+        tax
+        lda shiftreg,x
+        and pf0
+        sta bit
+        bra doneShift3
+
+shift1c anop
+
+        lda cx
+        asl a
+        tax
+        lda shiftreg,x
+        and pf1
+        sta bit
+        bra doneShift3
+
+shift2c anop
+
+        lda cx
+        asl a
+        tax
+        lda shiftreg,x
+        and pf2
+        sta bit
+
+doneShift3 anop
+
+        lda bit
+        cmp #0
+        beq bitNotSet3
+
+        lda cx
+        asl a
+        asl a
+        asl a
+        sta rectX
+
+        lda cy
+        asl a
+        asl a
+        asl a
+        asl a
+        asl a
+        sec
+        sbc #10 ; adjust vertical position
+        sta rectY
+
+        lda #CELL_WIDTH
+        sta rectWidth
+
+        lda #CELL_HEIGHT
+        sta rectHeight
+
+        ldx currentRoom
+        lda roomColorList,x
+        sta rectColor
+
+        jsr drawBackgroundRect
+
+        lda cx
+        asl a
+        asl a
+        asl a
+        clc
+        adc #160
+        sta rectX
+
+        lda #CELL_WIDTH
+        sta rectWidth
+
+        jsr drawBackgroundRect
+
+bitNotSet3 anop
+        inc cx
+        lda cx
+        cmp #20
+        beq roomNextRow3
+        jmp horizontalLoop3
+
+roomNextRow3 anop
+        inc cy
+        lda cy
+        cmp #7
+        beq roomDone3
+        jmp roomVerticalLoop3
+
+roomDone3 anop
+        rts
+
+
+
+; ------------------------------------
+
 wrapPlayerRoom entry
 
         lda #6
@@ -313,9 +470,7 @@ wrapPlayerRoom entry
         cmp #192
         bcs wrapToRoomDown
 
-
         bra wrapDone
-
 
 wrapToRoomUp anop
 
@@ -350,7 +505,6 @@ wrapToRoomDown anop
 wrapDone anop
 
         rts
-
 
 
 
@@ -434,6 +588,10 @@ roomGraphicsOffsets anop
 roomColorList anop
         dc i2'COLOR_YELLOW'
         dc i2'COLOR_LIMEGREEN'
+
+roomMirroredList anop
+        dc i2'1'
+        dc i2'1'
 
 ROOM_INDEX_CASTLE                       gequ 2*0
 ROOM_INDEX_BELOW_YELLOW_CASTLE          gequ 2*1
