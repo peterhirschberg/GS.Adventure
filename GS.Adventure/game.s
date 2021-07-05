@@ -30,6 +30,12 @@ initGame entry
         sta currentRoomColor
         jsr drawRoom
 
+        lda #$45
+        sta playerX
+        lda #$85
+        sta playerY
+
+
         rtl
 
 
