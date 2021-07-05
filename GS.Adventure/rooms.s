@@ -58,7 +58,7 @@ drawRoomDone anop
 drawRoomLeft entry
 
         ldx currentRoom
-        lda roomGraphicsOffsets,x
+        lda roomGraphicsOffsetList,x
         sta dataIndex
 
         lda #0
@@ -183,7 +183,7 @@ roomDone anop
 drawRoomRightMirrored entry
 
         ldx currentRoom
-        lda roomGraphicsOffsets,x
+        lda roomGraphicsOffsetList,x
         sta dataIndex
 
         lda #0
@@ -323,7 +323,7 @@ roomDone2 anop
 drawRoomRepeating entry
 
         ldx currentRoom
-        lda roomGraphicsOffsets,x
+        lda roomGraphicsOffsetList,x
         sta dataIndex
 
         lda #0
@@ -581,7 +581,7 @@ roomGraphicsData anop
 ROOM_GRAPHICS_CASTLE                    gequ 7*3*2*0
 ROOM_GRAPHICS_BELOW_YELLOW_CASTLE       gequ 7*3*2*1
 
-roomGraphicsOffsets anop
+roomGraphicsOffsetList anop
         dc i2'ROOM_GRAPHICS_CASTLE'
         dc i2'ROOM_GRAPHICS_BELOW_YELLOW_CASTLE'
 
