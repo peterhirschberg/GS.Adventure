@@ -83,15 +83,11 @@ done anop
 
 
 
-drawBackgroundRect entry
+drawBackgroundRectChunk entry
 
         lda rectX
         lsr a
         sta rectX
-
-        lda rectWidth
-        lsr a
-        sta rectWidth
 
         lda #0
         sta rowCounter
@@ -133,6 +129,51 @@ nextRow1 anop
         bra fillLoop1
 fillDone1 anop
         rts
+
+
+drawBackgroundRectThin entry
+
+        lda rectX
+        lsr a
+        sta rectX
+
+        lda rectWidth
+        lsr a
+        sta rectWidth
+
+        lda #0
+        sta rowCounter
+
+fillLoop1b anop
+        lda rowCounter
+        clc
+        adc rectY
+
+; bounds check
+        bmi nextRow1b
+        cmp #199
+        bcs nextRow1b
+
+        asl a
+        tax
+        lda screenRowOffsets,x
+        clc
+        adc rectX
+        tax
+        lda rectColor
+
+        sta >SCREEN_ADDR,x
+        sta >BACKGROUND_ADDR,x
+
+nextRow1b anop
+        inc rowCounter
+        lda rowCounter
+        cmp rectHeight
+        beq fillDone1b
+        bra fillLoop1b
+fillDone1b anop
+        rts
+
 
 
 drawSpriteRect entry

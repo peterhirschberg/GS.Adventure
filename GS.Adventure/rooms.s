@@ -79,7 +79,7 @@ drawLeftBarrier anop
         lda #COLOR_BLACK
         sta rectColor
 
-        jsr drawBackgroundRect
+        jsr drawBackgroundRectThin
 
         bra drawRoomDone
 
@@ -101,7 +101,7 @@ drawRightBarrier anop
         lda #COLOR_BLACK
         sta rectColor
 
-        jsr drawBackgroundRect
+        jsr drawBackgroundRectThin
 
 drawRoomDone anop
         rts
@@ -211,7 +211,7 @@ doneShift anop
         lda roomColorList,x
         sta rectColor
 
-        jsr drawBackgroundRect
+        jsr drawBackgroundRectChunk
 
 bitNotSet anop
         inc cx
@@ -352,7 +352,7 @@ doneShift2 anop
         asl a
         sta rectX
 
-        jsr drawBackgroundRect
+        jsr drawBackgroundRectChunk
 
 bitNotSet2 anop
         dec cx
@@ -476,7 +476,7 @@ doneShift3 anop
         lda roomColorList,x
         sta rectColor
 
-        jsr drawBackgroundRect
+        jsr drawBackgroundRectChunk
 
         lda cx
         asl a
@@ -489,7 +489,7 @@ doneShift3 anop
         lda #CELL_WIDTH
         sta rectWidth
 
-        jsr drawBackgroundRect
+        jsr drawBackgroundRectChunk
 
 bitNotSet3 anop
         inc cx
