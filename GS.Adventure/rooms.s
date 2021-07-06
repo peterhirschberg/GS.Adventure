@@ -540,6 +540,8 @@ wrapToRoomUp anop
         lda roomUp
         sta currentRoom
 
+        jsr adjustRoomLevel
+
 ; draw the new room
         jsr drawRoom
 
@@ -556,6 +558,8 @@ wrapToRoomDown anop
 ; update the room graphics
         lda roomDown
         sta currentRoom
+
+        jsr adjustRoomLevel
 
 ; draw the new room
         jsr drawRoom
@@ -574,6 +578,8 @@ wrapToRoomLeft anop
         lda roomLeft
         sta currentRoom
 
+        jsr adjustRoomLevel
+
 ; draw the new room
         jsr drawRoom
 
@@ -590,6 +596,8 @@ wrapToRoomRight anop
 ; update the room graphics
         lda roomRight
         sta currentRoom
+
+        jsr adjustRoomLevel
 
 ; draw the new room
         jsr drawRoom
@@ -612,25 +620,21 @@ getCurrentLinkedRooms entry
         asl a
         tax
         lda roomLinkList,x
-        jsr adjustRoomLevel
         asl a
         sta roomUp
         inx
         inx
         lda roomLinkList,x
-        jsr adjustRoomLevel
         asl a
         sta roomRight
         inx
         inx
         lda roomLinkList,x
-        jsr adjustRoomLevel
         asl a
         sta roomDown
         inx
         inx
         lda roomLinkList,x
-        jsr adjustRoomLevel
         asl a
         sta roomLeft
 
@@ -638,47 +642,30 @@ getCurrentLinkedRooms entry
 
 
 adjustRoomLevel entry
-; if the the room number is above $80 it changes based on the game level
+; if the the room number is above $80 (shifted here to $100) it changes based on the game level
 
-    rts
-
-        sta temp
-
-;        lda currentRoom
-        and #$80
+        lda currentRoom
+        and #$100
         cmp #0
         beq adjustDone
 
 ; remove the $80 flag and add the level number to get the offset into the room delta table
 
+        lda gameLevel
+        asl a
+        sta temp
 
-        lda temp
-        and #$7f
-;        clc
-;        adc gameLevel
-;        asl a
-;        asl a
-;        tax
-;        lda roomLevelDiffsList,x
-;        asl a
-
-;       sta currentRoom
-
+        lda currentRoom
+        and #$feff
+        clc
+        adc temp
         tax
-
         lda roomLevelDiffsList,x
-;        asl a
-
-;       sta currentRoom
-
-
-
+        asl a
+        sta currentRoom
 
 adjustDone anop
-
-        lda temp
         rts
-
 
 
 temp dc i2'0'
@@ -1109,20 +1096,12 @@ roomLinkList anop
 
 
 roomLevelDiffsList anop
-;        dc i2'$10,$0f,$0f,$00'      ; down from room 01
-;        dc i2'$05,$11,$11,$00'      ; down from room 02
-;        dc i2'$1d,$0a,$0a,$00'      ; down from room 03
-;        dc i2'$1c,$16,$16,$00'      ; u/l/r/d from room 1b (black castle room)
-;        dc i2'$1b,$0c,$0c,$00'      ; down from room 1c
-;        dc i2'$03,$0c,$0c,$00'      ; up from room 1d (top entry room)
-
-
-    dc i2'$10'      ; down from room 01
-    dc i2'$05'      ; down from room 02
-    dc i2'$1d'      ; down from room 03
-    dc i2'$1c'      ; u/l/r/d from room 1b (black castle room)
-    dc i2'$1b'      ; down from room 1c
-    dc i2'$03'      ; up from room 1d (top entry room)
+        dc i2'$10,$0f,$0f'      ; down from room 01
+        dc i2'$05,$11,$11'      ; down from room 02
+        dc i2'$1d,$0a,$0a'      ; down from room 03
+        dc i2'$1c,$16,$16'      ; u/l/r/d from room 1b (black castle room)
+        dc i2'$1b,$0c,$0c'      ; down from room 1c
+        dc i2'$03,$0c,$0c'      ; up from room 1d (top entry room)
 
 
 ROOM_INDEX_NUMBER_ROOM_PURPLE1          gequ 2*0    ; 0

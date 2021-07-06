@@ -124,6 +124,6 @@ gameData data
 
 gamePass dc i2'0'
 
-gameLevel dc i2'0'
+gameLevel dc i2'1'
 
         end
