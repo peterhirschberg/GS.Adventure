@@ -18,7 +18,7 @@ screen start
         using colorData
 
 
-; fills the room buffer and screen with the background color
+; fills the room buffer with the background color
 eraseRoom entry
 
         ldy #COLOR_LTGRAY
@@ -41,14 +41,36 @@ fillHLoop anop
         clc
         adc columnCounter
         tax
+
         tya
-        sta >SCREEN_ADDR,x
         sta >BACKGROUND_ADDR,x
 
+        inc columnCounter
+        inc columnCounter
+        inx
+        inx
+
+        sta >BACKGROUND_ADDR,x
+
+        inc columnCounter
+        inc columnCounter
+        inx
+        inx
+
+        sta >BACKGROUND_ADDR,x
+
+        inc columnCounter
+        inc columnCounter
+        inx
+        inx
+
+        sta >BACKGROUND_ADDR,x
+
+        inc columnCounter
+        inc columnCounter
+
+
         lda columnCounter
-        clc
-        adc #2
-        sta columnCounter
         cmp #159
         bcs fillRowDone
         jmp fillHLoop
@@ -61,6 +83,73 @@ fillRowDone anop
         bra fillVLoop
 
 fillDone anop
+        rts
+
+
+blitRoom entry
+
+        lda #0
+        sta rowCounter
+
+blitVLoop anop
+        lda rowCounter
+        asl a
+        tax
+        lda screenRowOffsets,x
+        sta rowAddress
+
+        lda #0
+        sta columnCounter
+
+blitHLoop anop
+        lda rowAddress
+        clc
+        adc columnCounter
+        tax
+
+        lda >BACKGROUND_ADDR,x
+        sta >SCREEN_ADDR,x
+
+        inc columnCounter
+        inc columnCounter
+        inx
+        inx
+
+        lda >BACKGROUND_ADDR,x
+        sta >SCREEN_ADDR,x
+
+        inc columnCounter
+        inc columnCounter
+        inx
+        inx
+
+        lda >BACKGROUND_ADDR,x
+        sta >SCREEN_ADDR,x
+
+        inc columnCounter
+        inc columnCounter
+        inx
+        inx
+
+        lda >BACKGROUND_ADDR,x
+        sta >SCREEN_ADDR,x
+
+        inc columnCounter
+        inc columnCounter
+
+        lda columnCounter
+        cmp #159
+        bcs blitRowDone
+        jmp blitHLoop
+
+blitRowDone anop
+        inc rowCounter
+        lda rowCounter
+        cmp #199
+        beq blitDone
+        bra blitVLoop
+
+blitDone anop
         rts
 
 

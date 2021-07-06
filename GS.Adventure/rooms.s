@@ -104,6 +104,9 @@ drawRightBarrier anop
         jsr drawBackgroundRectThin
 
 drawRoomDone anop
+
+        jsr blitRoom
+
         rts
 
 
