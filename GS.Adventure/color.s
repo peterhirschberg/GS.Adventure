@@ -96,6 +96,93 @@ initColorTable entry
         rts
 
 
+blankColorTable entry
+
+; black
+        ldx #0
+        lda #$0000
+        sta >COLOR_TABLE,x
+
+; light grey
+        ldx #2
+        lda #$0000
+        sta >COLOR_TABLE,x
+
+; white
+        ldx #4
+        lda #$0000
+        sta >COLOR_TABLE,x
+
+; yellow
+        ldx #6
+        lda #$0000
+        sta >COLOR_TABLE,x
+
+; orange
+        ldx #8
+        lda #$0000
+        sta >COLOR_TABLE,x
+
+; red
+        ldx #10
+        lda #$0000
+        sta >COLOR_TABLE,x
+
+; purple
+        ldx #12
+        lda #$0000
+        sta >COLOR_TABLE,x
+
+; blue
+        ldx #14
+        lda #$0000
+        sta >COLOR_TABLE,x
+
+; light cyan
+        ldx #16
+        lda #$0000
+        sta >COLOR_TABLE,x
+
+; cyan
+        ldx #18
+        lda #$0000
+        sta >COLOR_TABLE,x
+
+; dark green
+        ldx #20
+        lda #$0000
+        sta >COLOR_TABLE,x
+
+; lime green
+        ldx #22
+        lda #$0000
+        sta >COLOR_TABLE,x
+
+; olive green
+        ldx #24
+        lda #$0000
+        sta >COLOR_TABLE,x
+
+; tan
+        ldx #26
+        lda #$0000
+        sta >COLOR_TABLE,x
+
+; "fog" color (same color as background)
+        ldx #28
+        lda #$0000
+        sta >COLOR_TABLE,x
+
+; "flash" color
+        ldx #30
+        lda #$0000
+        sta >COLOR_TABLE,x
+
+        rts
+
+
+
+
         end
 
 colorData data
