@@ -44,14 +44,66 @@ drawRoom entry
 
         jsr drawRoomLeft
         jsr drawRoomRightMirrored
-        bra drawRoomDone
+        bra checkForBarriers
 
 roomRepeats anop
 
         jsr drawRoomRepeating
 
-drawRoomDone anop
+checkForBarriers anop
 
+        lda currentRoom
+        cmp #ROOM_INDEX_LEFT_OF_NAME
+        beq drawRightBarrier
+        cmp #ROOM_INDEX_SIDE_CORRIDOR_RIGHT
+        beq drawRightBarrier
+        cmp #ROOM_INDEX_BELOW_YELLOW_CASTLE_OLIVE
+        beq drawLeftBarrier
+        bra drawRoomDone
+
+drawLeftBarrier anop
+; Position missile 00 to 0D,00 - left thin wall
+
+        lda #$1A
+        sta rectX
+
+        lda #$0
+        sta rectY
+
+        lda #4
+        sta rectWidth
+
+        lda #200
+        sta rectHeight
+
+        lda #COLOR_BLACK
+        sta rectColor
+
+        jsr drawBackgroundRect
+
+        bra drawRoomDone
+
+drawRightBarrier anop
+; Position missile 01 to 96,00 - right thin wall
+
+        lda #$12C
+        sta rectX
+
+        lda #$0
+        sta rectY
+
+        lda #4
+        sta rectWidth
+
+        lda #200
+        sta rectHeight
+
+        lda #COLOR_BLACK
+        sta rectColor
+
+        jsr drawBackgroundRect
+
+drawRoomDone anop
         rts
 
 
@@ -467,15 +519,25 @@ wrapPlayerRoom entry
         bcs wrapToRoomUp
 
         lda playerY
-        cmp #192
+        cmp #194
         bcs wrapToRoomDown
+
+        lda #6
+        cmp playerX
+        bcs wrapToRoomLeft
+
+        lda playerX
+        cmp #314
+        bcs wrapToRoomRight
 
         bra wrapDone
 
 wrapToRoomUp anop
 
+        jsr getCurrentLinkedRooms
+
 ; update the room graphics
-        lda #ROOM_INDEX_CASTLE
+        lda roomUp
         sta currentRoom
 
 ; draw the new room
@@ -489,8 +551,10 @@ wrapToRoomUp anop
 
 wrapToRoomDown anop
 
+        jsr getCurrentLinkedRooms
+
 ; update the room graphics
-        lda #ROOM_INDEX_BELOW_YELLOW_CASTLE
+        lda roomDown
         sta currentRoom
 
 ; draw the new room
@@ -502,14 +566,125 @@ wrapToRoomDown anop
 
         bra wrapDone
 
+wrapToRoomLeft anop
+
+        jsr getCurrentLinkedRooms
+
+; update the room graphics
+        lda roomLeft
+        sta currentRoom
+
+; draw the new room
+        jsr drawRoom
+
+; wrap the player
+        lda #310
+        sta playerX
+
+        bra wrapDone
+
+wrapToRoomRight anop
+
+        jsr getCurrentLinkedRooms
+
+; update the room graphics
+        lda roomRight
+        sta currentRoom
+
+; draw the new room
+        jsr drawRoom
+
+; wrap the player
+        lda #8
+        sta playerX
+
+        bra wrapDone
+
 wrapDone anop
 
         rts
 
 
+getCurrentLinkedRooms entry
+
+        lda currentRoom
+        asl a
+        asl a
+        tax
+        lda roomLinkList,x
+        jsr adjustRoomLevel
+        asl a
+        sta roomUp
+        inx
+        inx
+        lda roomLinkList,x
+        jsr adjustRoomLevel
+        asl a
+        sta roomRight
+        inx
+        inx
+        lda roomLinkList,x
+        jsr adjustRoomLevel
+        asl a
+        sta roomDown
+        inx
+        inx
+        lda roomLinkList,x
+        jsr adjustRoomLevel
+        asl a
+        sta roomLeft
+
+        rts
+
+
+adjustRoomLevel entry
+; if the the room number is above $80 it changes based on the game level
+
+    rts
+
+        sta temp
+
+;        lda currentRoom
+        and #$80
+        cmp #0
+        beq adjustDone
+
+; remove the $80 flag and add the level number to get the offset into the room delta table
+
+
+        lda temp
+        and #$7f
+;        clc
+;        adc gameLevel
+;        asl a
+;        asl a
+;        tax
+;        lda roomLevelDiffsList,x
+;        asl a
+
+;       sta currentRoom
+
+        tax
+
+        lda roomLevelDiffsList,x
+;        asl a
+
+;       sta currentRoom
+
+
+
+
+adjustDone anop
+
+        lda temp
+        rts
+
+
 
 temp dc i2'0'
+
 bit dc i2'0'
+
 pf0 dc i2'0'
 pf1 dc i2'0'
 pf2 dc i2'0'
@@ -519,6 +694,12 @@ cx dc i2'0'
 cy dc i2'0'
 ypos dc i2'0'
 dataIndex dc i2'0'
+
+roomUp dc i2'0'
+roomRight dc i2'0'
+roomDown dc i2'0'
+roomLeft dc i2'0'
+
 
 CELL_WIDTH gequ 8
 CELL_HEIGHT gequ 32
@@ -766,8 +947,6 @@ roomGraphicsData anop
         dc i2'$F0,$FF,$0F'          ; XXXXXXXXXXXXXXXX        RRRRRRRRRRRRRRRR
 
 
-
-
 ROOM_GRAPHICS_LEFT_OF_NAME          gequ 7*3*2*0
 ROOM_GRAPHICS_BELOW_YELLOW_CASTLE   gequ 7*3*2*1
 ROOM_GRAPHICS_SIDE_CORRIDOR         gequ 7*3*2*2
@@ -826,6 +1005,7 @@ roomGraphicsOffsetList anop
         dc i2'ROOM_GRAPHICS_TOP_ENTRY_ROOM'
         dc i2'ROOM_GRAPHICS_BELOW_YELLOW_CASTLE'
 
+
 roomColorList anop
         dc i2'COLOR_PURPLE'
         dc i2'COLOR_OLIVEGREEN'
@@ -836,9 +1016,9 @@ roomColorList anop
         dc i2'COLOR_BLUE'
         dc i2'COLOR_BLUE'
         dc i2'COLOR_BLUE'
-        dc i2'COLOR_LTGRAY'
-        dc i2'COLOR_LTGRAY'
-        dc i2'COLOR_LTGRAY'
+        dc i2'COLOR_FOG'
+        dc i2'COLOR_FOG'
+        dc i2'COLOR_FOG'
         dc i2'COLOR_LTCYAN'
         dc i2'COLOR_DKGREEN'
         dc i2'COLOR_CYAN'
@@ -846,10 +1026,10 @@ roomColorList anop
         dc i2'COLOR_BLACK'
         dc i2'COLOR_YELLOW'
         dc i2'COLOR_YELLOW'
-        dc i2'COLOR_LYGRAY'
-        dc i2'COLOR_LTGRAY'
-        dc i2'COLOR_LYGRAY'
-        dc i2'COLOR_LTGRAY'
+        dc i2'COLOR_FOG'
+        dc i2'COLOR_FOG'
+        dc i2'COLOR_FOG'
+        dc i2'COLOR_FOG'
         dc i2'COLOR_RED'
         dc i2'COLOR_RED'
         dc i2'COLOR_RED'
@@ -858,6 +1038,7 @@ roomColorList anop
         dc i2'COLOR_PURPLE'
         dc i2'COLOR_RED'
         dc i2'COLOR_PURPLE'
+
 
 roomMirroredList anop
         dc i2'1'
@@ -891,6 +1072,57 @@ roomMirroredList anop
         dc i2'1'
         dc i2'1'
         dc i2'1'
+
+
+roomLinkList anop
+        dc i2'$00,$00,$00,$00'
+        dc i2'$08,$02,$80,$03'
+        dc i2'$11,$03,$83,$01'
+        dc i2'$06,$01,$86,$02'
+        dc i2'$10,$05,$07,$06'
+        dc i2'$1D,$06,$08,$04'
+        dc i2'$07,$04,$03,$05'
+        dc i2'$04,$08,$06,$08'
+        dc i2'$05,$07,$01,$07'
+        dc i2'$0A,$0A,$0B,$0A'
+        dc i2'$03,$09,$09,$09'
+        dc i2'$09,$0C,$1C,$0D'
+        dc i2'$1C,$0D,$1D,$0B'
+        dc i2'$0F,$0B,$0E,$0C'
+        dc i2'$0D,$10,$0F,$10'
+        dc i2'$0E,$0F,$0D,$0F'
+        dc i2'$01,$1C,$04,$1C'
+        dc i2'$06,$03,$02,$01'
+        dc i2'$12,$12,$12,$12'
+        dc i2'$15,$14,$15,$16'
+        dc i2'$16,$15,$16,$13'
+        dc i2'$13,$16,$13,$14'
+        dc i2'$14,$13,$1B,$15'
+        dc i2'$19,$18,$19,$18'
+        dc i2'$1A,$17,$1A,$17'
+        dc i2'$17,$1A,$17,$1A'
+        dc i2'$18,$19,$18,$19'
+        dc i2'$89,$89,$89,$89'
+        dc i2'$1D,$07,$8C,$08'
+        dc i2'$8F,$01,$10,$03'
+        dc i2'$06,$01,$06,$03'
+
+
+roomLevelDiffsList anop
+;        dc i2'$10,$0f,$0f,$00'      ; down from room 01
+;        dc i2'$05,$11,$11,$00'      ; down from room 02
+;        dc i2'$1d,$0a,$0a,$00'      ; down from room 03
+;        dc i2'$1c,$16,$16,$00'      ; u/l/r/d from room 1b (black castle room)
+;        dc i2'$1b,$0c,$0c,$00'      ; down from room 1c
+;        dc i2'$03,$0c,$0c,$00'      ; up from room 1d (top entry room)
+
+
+    dc i2'$10'      ; down from room 01
+    dc i2'$05'      ; down from room 02
+    dc i2'$1d'      ; down from room 03
+    dc i2'$1c'      ; u/l/r/d from room 1b (black castle room)
+    dc i2'$1b'      ; down from room 1c
+    dc i2'$03'      ; up from room 1d (top entry room)
 
 
 ROOM_INDEX_NUMBER_ROOM_PURPLE1          gequ 2*0    ; 0

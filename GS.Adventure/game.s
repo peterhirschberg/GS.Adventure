@@ -29,7 +29,7 @@ initGame entry
 ; -------------------------------
 ; set up game
 
-        lda #ROOM_INDEX_CASTLE
+        lda #ROOM_INDEX_CASTLE_YELLOW
         sta currentRoom
 
         lda #$45
@@ -123,5 +123,7 @@ passDone anop
 gameData data
 
 gamePass dc i2'0'
+
+gameLevel dc i2'0'
 
         end

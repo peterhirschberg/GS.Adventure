@@ -83,8 +83,13 @@ initColorTable entry
         lda #$0db4
         sta >COLOR_TABLE,x
 
-; "flash" color
+; "fog" color (same color as background)
         ldx #28
+        lda #$000f
+        sta >COLOR_TABLE,x
+
+; "flash" color
+        ldx #30
         lda #$0bf4
         sta >COLOR_TABLE,x
 
@@ -109,6 +114,7 @@ COLOR_DKGREEN       gequ $aaaa
 COLOR_LIMEGREEN     gequ $bbbb
 COLOR_OLIVEGREEN    gequ $cccc
 COLOR_TAN           gequ $dddd
-COLOR_FLASH         gequ $eeee
+COLOR_FOG           gequ $eeee
+COLOR_FLASH         gequ $ffff
 
         end
