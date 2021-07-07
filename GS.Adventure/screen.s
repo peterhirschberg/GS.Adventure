@@ -43,44 +43,189 @@ fillHLoop anop
         tax
 
         tya
-        sta >BACKGROUND_ADDR,x
 
-        inc columnCounter
-        inc columnCounter
-        inx
-        inx
+        eraseBackgroundWord
+        eraseBackgroundWord
+        eraseBackgroundWord
+        eraseBackgroundWord
+        eraseBackgroundWord
+        eraseBackgroundWord
+        eraseBackgroundWord
+        eraseBackgroundWord
+        eraseBackgroundWord
+        eraseBackgroundWord
 
-        sta >BACKGROUND_ADDR,x
+        eraseBackgroundWord
+        eraseBackgroundWord
+        eraseBackgroundWord
+        eraseBackgroundWord
+        eraseBackgroundWord
+        eraseBackgroundWord
+        eraseBackgroundWord
+        eraseBackgroundWord
+        eraseBackgroundWord
+        eraseBackgroundWord
 
-        inc columnCounter
-        inc columnCounter
-        inx
-        inx
+        eraseBackgroundWord
+        eraseBackgroundWord
+        eraseBackgroundWord
+        eraseBackgroundWord
+        eraseBackgroundWord
+        eraseBackgroundWord
+        eraseBackgroundWord
+        eraseBackgroundWord
+        eraseBackgroundWord
+        eraseBackgroundWord
 
-        sta >BACKGROUND_ADDR,x
+        eraseBackgroundWord
+        eraseBackgroundWord
+        eraseBackgroundWord
+        eraseBackgroundWord
+        eraseBackgroundWord
+        eraseBackgroundWord
+        eraseBackgroundWord
+        eraseBackgroundWord
+        eraseBackgroundWord
+        eraseBackgroundWord
 
-        inc columnCounter
-        inc columnCounter
-        inx
-        inx
+        eraseBackgroundWord
+        eraseBackgroundWord
+        eraseBackgroundWord
+        eraseBackgroundWord
+        eraseBackgroundWord
+        eraseBackgroundWord
+        eraseBackgroundWord
+        eraseBackgroundWord
+        eraseBackgroundWord
+        eraseBackgroundWord
 
-        sta >BACKGROUND_ADDR,x
+        eraseBackgroundWord
+        eraseBackgroundWord
+        eraseBackgroundWord
+        eraseBackgroundWord
+        eraseBackgroundWord
+        eraseBackgroundWord
+        eraseBackgroundWord
+        eraseBackgroundWord
+        eraseBackgroundWord
+        eraseBackgroundWord
 
-        inc columnCounter
-        inc columnCounter
+        eraseBackgroundWord
+        eraseBackgroundWord
+        eraseBackgroundWord
+        eraseBackgroundWord
+        eraseBackgroundWord
+        eraseBackgroundWord
+        eraseBackgroundWord
+        eraseBackgroundWord
+        eraseBackgroundWord
+        eraseBackgroundWord
 
+        eraseBackgroundWord
+        eraseBackgroundWord
+        eraseBackgroundWord
+        eraseBackgroundWord
+        eraseBackgroundWord
+        eraseBackgroundWord
+        eraseBackgroundWord
+        eraseBackgroundWord
+        eraseBackgroundWord
+        eraseBackgroundWord
 
-        lda columnCounter
-        cmp #159
-        bcs fillRowDone
-        jmp fillHLoop
+        eraseBackgroundWord
+        eraseBackgroundWord
+        eraseBackgroundWord
+        eraseBackgroundWord
+        eraseBackgroundWord
+        eraseBackgroundWord
+        eraseBackgroundWord
+        eraseBackgroundWord
+        eraseBackgroundWord
+        eraseBackgroundWord
+
+        eraseBackgroundWord
+        eraseBackgroundWord
+        eraseBackgroundWord
+        eraseBackgroundWord
+        eraseBackgroundWord
+        eraseBackgroundWord
+        eraseBackgroundWord
+        eraseBackgroundWord
+        eraseBackgroundWord
+        eraseBackgroundWord
+
+        eraseBackgroundWord
+        eraseBackgroundWord
+        eraseBackgroundWord
+        eraseBackgroundWord
+        eraseBackgroundWord
+        eraseBackgroundWord
+        eraseBackgroundWord
+        eraseBackgroundWord
+        eraseBackgroundWord
+        eraseBackgroundWord
+
+        eraseBackgroundWord
+        eraseBackgroundWord
+        eraseBackgroundWord
+        eraseBackgroundWord
+        eraseBackgroundWord
+        eraseBackgroundWord
+        eraseBackgroundWord
+        eraseBackgroundWord
+        eraseBackgroundWord
+        eraseBackgroundWord
+
+        eraseBackgroundWord
+        eraseBackgroundWord
+        eraseBackgroundWord
+        eraseBackgroundWord
+        eraseBackgroundWord
+        eraseBackgroundWord
+        eraseBackgroundWord
+        eraseBackgroundWord
+        eraseBackgroundWord
+        eraseBackgroundWord
+
+        eraseBackgroundWord
+        eraseBackgroundWord
+        eraseBackgroundWord
+        eraseBackgroundWord
+        eraseBackgroundWord
+        eraseBackgroundWord
+        eraseBackgroundWord
+        eraseBackgroundWord
+        eraseBackgroundWord
+        eraseBackgroundWord
+
+        eraseBackgroundWord
+        eraseBackgroundWord
+        eraseBackgroundWord
+        eraseBackgroundWord
+        eraseBackgroundWord
+        eraseBackgroundWord
+        eraseBackgroundWord
+        eraseBackgroundWord
+        eraseBackgroundWord
+        eraseBackgroundWord
+
+        eraseBackgroundWord
+        eraseBackgroundWord
+        eraseBackgroundWord
+        eraseBackgroundWord
+        eraseBackgroundWord
+        eraseBackgroundWord
+        eraseBackgroundWord
+        eraseBackgroundWord
+        eraseBackgroundWord
+        eraseBackgroundWord
 
 fillRowDone anop
         inc rowCounter
         lda rowCounter
         cmp #199
         beq fillDone
-        bra fillVLoop
+        jmp fillVLoop
 
 fillDone anop
         rts
@@ -98,76 +243,194 @@ blitVLoop anop
         lda screenRowOffsets,x
         sta rowAddress
 
-        lda #0
-        sta columnCounter
-
 blitHLoop anop
         lda rowAddress
-        clc
-        adc columnCounter
         tax
 
-        lda >BACKGROUND_ADDR,x
-        sta >SCREEN_ADDR,x
+        blitBackgroundWord
+        blitBackgroundWord
+        blitBackgroundWord
+        blitBackgroundWord
+        blitBackgroundWord
+        blitBackgroundWord
+        blitBackgroundWord
+        blitBackgroundWord
+        blitBackgroundWord
+        blitBackgroundWord
 
-        inc columnCounter
-        inc columnCounter
-        inx
-        inx
+        blitBackgroundWord
+        blitBackgroundWord
+        blitBackgroundWord
+        blitBackgroundWord
+        blitBackgroundWord
+        blitBackgroundWord
+        blitBackgroundWord
+        blitBackgroundWord
+        blitBackgroundWord
+        blitBackgroundWord
 
-        lda >BACKGROUND_ADDR,x
-        sta >SCREEN_ADDR,x
+        blitBackgroundWord
+        blitBackgroundWord
+        blitBackgroundWord
+        blitBackgroundWord
+        blitBackgroundWord
+        blitBackgroundWord
+        blitBackgroundWord
+        blitBackgroundWord
+        blitBackgroundWord
+        blitBackgroundWord
 
-        inc columnCounter
-        inc columnCounter
-        inx
-        inx
+        blitBackgroundWord
+        blitBackgroundWord
+        blitBackgroundWord
+        blitBackgroundWord
+        blitBackgroundWord
+        blitBackgroundWord
+        blitBackgroundWord
+        blitBackgroundWord
+        blitBackgroundWord
+        blitBackgroundWord
 
-        lda >BACKGROUND_ADDR,x
-        sta >SCREEN_ADDR,x
+        blitBackgroundWord
+        blitBackgroundWord
+        blitBackgroundWord
+        blitBackgroundWord
+        blitBackgroundWord
+        blitBackgroundWord
+        blitBackgroundWord
+        blitBackgroundWord
+        blitBackgroundWord
+        blitBackgroundWord
 
-        inc columnCounter
-        inc columnCounter
-        inx
-        inx
+        blitBackgroundWord
+        blitBackgroundWord
+        blitBackgroundWord
+        blitBackgroundWord
+        blitBackgroundWord
+        blitBackgroundWord
+        blitBackgroundWord
+        blitBackgroundWord
+        blitBackgroundWord
+        blitBackgroundWord
 
-        lda >BACKGROUND_ADDR,x
-        sta >SCREEN_ADDR,x
+        blitBackgroundWord
+        blitBackgroundWord
+        blitBackgroundWord
+        blitBackgroundWord
+        blitBackgroundWord
+        blitBackgroundWord
+        blitBackgroundWord
+        blitBackgroundWord
+        blitBackgroundWord
+        blitBackgroundWord
 
-        inc columnCounter
-        inc columnCounter
+        blitBackgroundWord
+        blitBackgroundWord
+        blitBackgroundWord
+        blitBackgroundWord
+        blitBackgroundWord
+        blitBackgroundWord
+        blitBackgroundWord
+        blitBackgroundWord
+        blitBackgroundWord
+        blitBackgroundWord
 
-        lda columnCounter
-        cmp #159
-        bcs blitRowDone
-        jmp blitHLoop
+        blitBackgroundWord
+        blitBackgroundWord
+        blitBackgroundWord
+        blitBackgroundWord
+        blitBackgroundWord
+        blitBackgroundWord
+        blitBackgroundWord
+        blitBackgroundWord
+        blitBackgroundWord
+        blitBackgroundWord
+
+        blitBackgroundWord
+        blitBackgroundWord
+        blitBackgroundWord
+        blitBackgroundWord
+        blitBackgroundWord
+        blitBackgroundWord
+        blitBackgroundWord
+        blitBackgroundWord
+        blitBackgroundWord
+        blitBackgroundWord
+
+        blitBackgroundWord
+        blitBackgroundWord
+        blitBackgroundWord
+        blitBackgroundWord
+        blitBackgroundWord
+        blitBackgroundWord
+        blitBackgroundWord
+        blitBackgroundWord
+        blitBackgroundWord
+        blitBackgroundWord
+
+        blitBackgroundWord
+        blitBackgroundWord
+        blitBackgroundWord
+        blitBackgroundWord
+        blitBackgroundWord
+        blitBackgroundWord
+        blitBackgroundWord
+        blitBackgroundWord
+        blitBackgroundWord
+        blitBackgroundWord
+
+        blitBackgroundWord
+        blitBackgroundWord
+        blitBackgroundWord
+        blitBackgroundWord
+        blitBackgroundWord
+        blitBackgroundWord
+        blitBackgroundWord
+        blitBackgroundWord
+        blitBackgroundWord
+        blitBackgroundWord
+
+        blitBackgroundWord
+        blitBackgroundWord
+        blitBackgroundWord
+        blitBackgroundWord
+        blitBackgroundWord
+        blitBackgroundWord
+        blitBackgroundWord
+        blitBackgroundWord
+        blitBackgroundWord
+        blitBackgroundWord
+
+        blitBackgroundWord
+        blitBackgroundWord
+        blitBackgroundWord
+        blitBackgroundWord
+        blitBackgroundWord
+        blitBackgroundWord
+        blitBackgroundWord
+        blitBackgroundWord
+        blitBackgroundWord
+        blitBackgroundWord
+
+        blitBackgroundWord
+        blitBackgroundWord
+        blitBackgroundWord
+        blitBackgroundWord
+        blitBackgroundWord
+        blitBackgroundWord
+        blitBackgroundWord
+        blitBackgroundWord
+        blitBackgroundWord
+        blitBackgroundWord
 
 blitRowDone anop
         inc rowCounter
         lda rowCounter
         cmp #199
         beq blitDone
-        bra blitVLoop
+        jmp blitVLoop
 
 blitDone anop
-        rts
-
-
-; set all pixels to 0
-zeroScreen entry
-        lda #0
-        sta offset
-loop anop
-        tax
-        lda #$00
-        sta >SCREEN_ADDR,x
-        sta >BACKGROUND_ADDR,x
-        inc offset
-        lda offset
-        cmp #$7d00
-        beq done
-        bra loop
-done anop
         rts
 
 
@@ -199,15 +462,12 @@ fillLoop1 anop
         tax
         lda rectColor
 
-        sta >SCREEN_ADDR,x
         sta >BACKGROUND_ADDR,x
 
         inx
-        sta >SCREEN_ADDR,x
         sta >BACKGROUND_ADDR,x
 
         inx
-        sta >SCREEN_ADDR,x
         sta >BACKGROUND_ADDR,x
 
 nextRow1 anop
@@ -251,7 +511,6 @@ fillLoop1b anop
         tax
         lda rectColor
 
-        sta >SCREEN_ADDR,x
         sta >BACKGROUND_ADDR,x
 
 nextRow1b anop

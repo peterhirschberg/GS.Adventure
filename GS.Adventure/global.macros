@@ -27,6 +27,22 @@
         mend
 
 
+        macro
+        eraseBackgroundWord
+        sta >BACKGROUND_ADDR,x
+        inx
+        inx
+        mend
+
+
+        macro
+        blitBackgroundWord
+        lda >BACKGROUND_ADDR,x
+        sta >SCREEN_ADDR,x
+        inx
+        inx
+        mend
+
 
 
 ;
