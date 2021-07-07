@@ -17,13 +17,13 @@ checkSurroundDrawDirty entry
 
         lda playerX
         sec
-        sbc #36
+        sbc #32
         and #$fff0
         sta rectX
 
         lda playerY
         sec
-        sbc #36
+        sbc #32
         and #$fff0
         sta rectY
 
@@ -52,13 +52,13 @@ checkSurroundEraseDirty entry
 
         lda playerX
         sec
-        sbc #36
+        sbc #32
         and #$fff0
         sta rectX
 
         lda playerY
         sec
-        sbc #36
+        sbc #32
         and #$fff0
         sta rectY
 
@@ -89,7 +89,7 @@ drawSurround entry
 
         lda playerX
         sec
-        sbc #36
+        sbc #32
         and #$fff0
         sta rectX
         sta surroundX
@@ -97,7 +97,7 @@ drawSurround entry
 
         lda playerY
         sec
-        sbc #36
+        sbc #32
         and #$fff0
         sta rectY
         sta surroundY
