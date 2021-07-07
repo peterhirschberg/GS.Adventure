@@ -20,6 +20,7 @@ drawSurround entry
         sbc #36
         and #$fff0
         sta rectX
+        sta surroundX
 
 
         lda playerY
@@ -27,12 +28,28 @@ drawSurround entry
         sbc #36
         and #$fff0
         sta rectY
+        sta surroundY
 
 
-        lda rectX
-        sta surroundOldX
-        lda rectY
-        sta surroundOldY
+        lda surroundX
+        cmp surroundOldX
+        beq checkDrawY
+        lda #1
+        sta surroundDrawDirty
+
+checkDrawY anop
+
+        lda surroundY
+        cmp surroundOldY
+        beq checkDraw
+        lda #1
+        sta surroundDrawDirty
+
+checkDraw anop
+
+        lda surroundDrawDirty
+        cmp #1
+        bne drawDone
 
 
         lda #80
@@ -44,23 +61,45 @@ drawSurround entry
 
         jsr drawSurroundRect
 
+drawDone anop
+
+        lda surroundX
+        sta surroundOldX
+        lda surroundY
+        sta surroundOldY
 
         rts
 
 
 eraseSurround entry
 
-        lda playerOldX
-        sec
-        sbc #36
-        and #$fff0
+        lda surroundOldX
         sta rectX
 
-        lda playerOldY
-        sec
-        sbc #36
-        and #$fff0
+        lda surroundOldY
         sta rectY
+
+
+        lda rectX
+        cmp surroundOldX
+        beq checkEraseY
+        lda #1
+        sta surroundEraseDirty
+
+checkEraseY anop
+
+        lda rectY
+        cmp surroundOldY
+        beq checkErase
+        lda #1
+        sta surroundEraseDirty
+
+checkErase anop
+
+        lda surroundEraseDirty
+        cmp #1
+        bne eraseDone1
+
 
         lda #80
         sta rectWidth
@@ -69,6 +108,12 @@ eraseSurround entry
         sta rectHeight
 
         jsr eraseSurroundRect
+
+eraseDone1 anop
+
+        stz surroundDrawDirty
+        stz surroundEraseDirty
+
         rts
 
 
@@ -214,6 +259,11 @@ eraseSurroundRight entry
         rts
 
 
+surroundDrawDirty dc i2'0'
+surroundEraseDirty dc i2'0'
+
+surroundX dc i2'0'
+surroundY dc i2'0'
 
 surroundOldX dc i2'0'
 surroundOldY dc i2'0'
