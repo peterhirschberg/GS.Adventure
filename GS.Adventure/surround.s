@@ -41,6 +41,47 @@ drawSurround entry
 
 eraseSurround entry
 
+        lda playerX
+        cmp playerOldX
+        beq checkY
+
+        lda playerX
+        cmp playerOldX
+        bcs eraseLeft
+        bra eraseRight
+
+eraseLeft anop
+        jsr eraseSurroundLeft
+        bra checkY
+
+eraseRight anop
+        jsr eraseSurroundRight
+
+checkY anop
+
+        lda playerY
+        cmp playerOldY
+        beq eraseDone
+
+        lda playerY
+        cmp playerOldY
+        bcs eraseBottom
+        bra eraseTop
+
+eraseBottom anop
+        jsr eraseSurroundBottom
+        bra eraseDone
+
+eraseTop anop
+        jsr eraseSurroundTop
+
+eraseDone anop
+
+        rts
+
+
+
+
         lda playerOldX
         sec
         sbc #38
@@ -60,9 +101,70 @@ eraseSurround entry
         sta rectHeight
 
 
-        jsr eraseSurroundRect
+        jsr eraseSpriteRect
 
         rts
+
+
+
+eraseSurroundBottom entry
+
+        lda playerOldX
+        sec
+        sbc #38
+        sta rectX
+
+        lda playerOldY
+        sec
+        sbc #36
+        sta rectY
+
+        lda #80
+        sta rectWidth
+
+        lda #6
+        sta rectHeight
+
+        jsr eraseSpriteRect
+
+        rts
+
+
+
+eraseSurroundTop entry
+
+        lda playerOldX
+        sec
+        sbc #38
+        sta rectX
+
+        lda playerOldY
+        clc
+        adc #44
+        sta rectY
+
+        lda #80
+        sta rectWidth
+
+        lda #6
+        sta rectHeight
+
+        jsr eraseSpriteRect
+
+        rts
+
+
+
+eraseSurroundLeft entry
+
+        rts
+
+
+
+eraseSurroundRight entry
+
+        rts
+
 
 
         end
