@@ -17,7 +17,8 @@ drawSurround entry
 
         lda playerX
         sec
-        sbc #38
+        sbc #36
+        and #$fff0
         sta rectX
 
 
@@ -25,6 +26,12 @@ drawSurround entry
         sec
         sbc #36
         sta rectY
+
+
+        lda rectX
+        sta surroundOldX
+        lda rectY
+        sta surroundOldY
 
 
         lda #80
@@ -35,6 +42,7 @@ drawSurround entry
 
 
         jsr drawSurroundRect
+
 
         rts
 
@@ -65,8 +73,8 @@ checkY anop
 
         lda playerY
         cmp playerOldY
-        bcs eraseBottom
-        bra eraseTop
+        bcs eraseTop
+        bra eraseBottom
 
 eraseBottom anop
         jsr eraseSurroundBottom
@@ -81,37 +89,12 @@ eraseDone anop
 
 
 
+eraseSurroundTop entry
 
         lda playerOldX
         sec
         sbc #38
-        sta rectX
-
-
-        lda playerOldY
-        sec
-        sbc #36
-        sta rectY
-
-
-        lda #80
-        sta rectWidth
-
-        lda #80
-        sta rectHeight
-
-
-        jsr eraseSpriteRect
-
-        rts
-
-
-
-eraseSurroundBottom entry
-
-        lda playerOldX
-        sec
-        sbc #38
+        and #$fff0
         sta rectX
 
         lda playerOldY
@@ -131,11 +114,12 @@ eraseSurroundBottom entry
 
 
 
-eraseSurroundTop entry
+eraseSurroundBottom entry
 
         lda playerOldX
         sec
         sbc #38
+        and #$fff0
         sta rectX
 
         lda playerOldY
@@ -157,14 +141,61 @@ eraseSurroundTop entry
 
 eraseSurroundLeft entry
 
+        lda playerOldX
+        sec
+        sbc #50
+        sta rectX
+
+        lda playerOldY
+        sec
+        sbc #36
+        sta rectY
+
+        lda #6
+        sta rectWidth
+
+        lda #80
+        sta rectHeight
+
+    lda #COLOR_BLUE
+    sta rectColor
+
+;    jsr drawSpriteRect
+
+        jsr eraseSpriteRect
+
         rts
 
 
 
 eraseSurroundRight entry
 
+        lda playerOldX
+        clc
+        adc #42
+        sta rectX
+
+        lda playerOldY
+        sec
+        sbc #36
+        sta rectY
+
+        lda #6
+        sta rectWidth
+
+        lda #80
+        sta rectHeight
+
+        jsr eraseSpriteRect
+
         rts
 
 
 
+surroundOldX dc i2'0'
+surroundOldY dc i2'0'
+
+
         end
+
+
