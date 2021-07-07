@@ -671,24 +671,13 @@ eraseDone2 anop
 
 drawSurroundRect entry
 
-        lda playerX
+        lda rectX
         lsr a
-        sec
-        sbc #18
         sta rectX
 
-
-        lda playerY
-        sec
-        sbc #36
-        sta rectY
-
-
-        lda #40
+        lda rectWidth
+        lsr a
         sta rectWidth
-
-        lda #80
-        sta rectHeight
 
 
         ldy #COLOR_ORANGE
@@ -749,24 +738,13 @@ eraseDone3 anop
 
 eraseSurroundRect entry
 
-        lda playerOldX
+        lda rectX
         lsr a
-        sec
-        sbc #18
         sta rectX
 
-
-        lda playerOldY
-        sec
-        sbc #36
-        sta rectY
-
-
-        lda #40
+        lda rectWidth
+        lsr a
         sta rectWidth
-
-        lda #80
-        sta rectHeight
 
 
         lda #0

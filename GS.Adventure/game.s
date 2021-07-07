@@ -76,9 +76,9 @@ noHitPass0 anop
         cmp #1
         bne noMovePass0
 
-        jsr eraseSurroundRect
+        jsr eraseSurround
         jsr erasePlayer
-        jsr drawSurroundRect
+        jsr drawSurround
         jsr drawPlayer
 
 noMovePass0 anop
