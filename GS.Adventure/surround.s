@@ -103,13 +103,6 @@ drawSurround entry
         sta surroundY
 
 
-        lda surroundX
-        sta eraseX
-
-        lda surroundY
-        sta eraseY
-
-
 ;        lda surroundX
 ;       cmp surroundOldX
 ;       beq checkDrawY
