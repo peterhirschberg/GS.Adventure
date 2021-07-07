@@ -526,23 +526,12 @@ fillDone1b anop
 
 drawSpriteRect entry
 
-
-;        phd
+        phd                     ; save the assigned direct page
 
         setR1W1
+
         lda #$2000
         tcd
-
-
-;        lda #$0000
-;        tcd
-;        jsl setR0W0
-
-;        pld
-
-;        rts
-
-
 
         ldy rectColor
 
@@ -562,11 +551,6 @@ fillVLoop2 anop
         clc
         adc rectY
 
-; bounds check
-;        bmi nextRow2
-;        cmp #199
-;        bcs nextRow2
-
         asl a
         tax
         lda screenRowOffsets,x
@@ -581,34 +565,12 @@ fillHLoop2 anop
 
         tya
 
-;        sta >SCREEN_ADDR,x
-
         sta <00,x
         inx
         inx
 
-;        sta <00,x
-;       inx
-;       inx
-
-
-;        sta >SCREEN_ADDR,x
-;
-;        inx
-;        inx
-
-; bounds check
-;        lda rectX
-;        clc
-;        adc rectWidth
-;        cmp #159
-;        bcs nextRow2
-
-
         dec columnCounter
         dec columnCounter
-;        dec columnCounter
-;       dec columnCounter
 
         lda columnCounter
         bmi nextRow2
@@ -623,13 +585,12 @@ nextRow2 anop
 
 fillDone2 anop
 
-
         lda #$0000
-       tcd
-;       jsl setR0W0
+        tcd
 
         setR0W0
 
+        pld                     ; restore the direct page
 
         rts
 
@@ -637,7 +598,7 @@ fillDone2 anop
 
 eraseSpriteRect entry
 
-;        phd                     ; save the assigned direct page
+        phd                     ; save the assigned direct page
 
         setR0W1
         lda #$2000
@@ -660,11 +621,6 @@ eraseVLoop2 anop
         clc
         adc rectY
 
-; bounds check
-;        bmi nextRow2
-;        cmp #199
-;        bcs nextRow2
-
         asl a
         tax
         lda screenRowOffsets,x
@@ -683,25 +639,8 @@ eraseHLoop2 anop
         inx
         inx
 
-;        lda <00,x
-;       sta <00,x
-;
-;       inx
-;       inx
-
-
-; bounds check
-;        lda rectX
-;        clc
-;        adc rectWidth
-;        cmp #159
-;        bcs nextRow2
-
-
         dec columnCounter
         dec columnCounter
-;        dec columnCounter
-;       dec columnCounter
 
         lda columnCounter
         bmi nextRow3
@@ -720,7 +659,8 @@ eraseDone2 anop
         tcd
 
         setR0W0
-;        pld                     ; restore the direct page
+
+        pld                     ; restore the direct page
 
         rts
 
