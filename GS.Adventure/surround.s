@@ -13,6 +13,78 @@ surround start
         using playerData
 
 
+checkSurroundDrawDirty entry
+
+        lda playerX
+        sec
+        sbc #36
+        and #$fff0
+        sta rectX
+
+        lda playerY
+        sec
+        sbc #36
+        and #$fff0
+        sta rectY
+
+
+        lda rectX
+        cmp surroundOldX
+        beq checkDrawY
+        lda #1
+        sta surroundDrawDirty
+
+checkDrawY anop
+
+        lda rectY
+        cmp surroundOldY
+        beq checkDone1
+        lda #1
+        sta surroundDrawDirty
+
+checkDone1 anop
+
+        rts
+
+
+
+checkSurroundEraseDirty entry
+
+        lda playerX
+        sec
+        sbc #36
+        and #$fff0
+        sta rectX
+
+        lda playerY
+        sec
+        sbc #36
+        and #$fff0
+        sta rectY
+
+
+        lda rectX
+        cmp surroundX
+        beq checkEraseY
+        lda #1
+        sta surroundEraseDirty
+
+checkEraseY anop
+
+        lda rectY
+        cmp surroundY
+        beq checkDone2
+        lda #1
+        sta surroundEraseDirty
+
+checkDone2 anop
+
+        rts
+
+
+
+
+
 drawSurround entry
 
         lda playerX
@@ -32,25 +104,54 @@ drawSurround entry
 
 
         lda surroundX
-        cmp surroundOldX
-        beq checkDrawY
-        lda #1
-        sta surroundDrawDirty
-
-checkDrawY anop
+        sta eraseX
 
         lda surroundY
-        cmp surroundOldY
-        beq checkDraw
-        lda #1
-        sta surroundDrawDirty
+        sta eraseY
 
-checkDraw anop
 
+;        lda surroundX
+;       cmp surroundOldX
+;       beq checkDrawY
+;       lda #1
+;       sta surroundDrawDirty
+;
+;checkDrawY anop
+;
+;       lda surroundY
+;       cmp surroundOldY
+;       beq checkDraw
+;       lda #1
+;       sta surroundDrawDirty
+;
+;checkDraw anop
+;
+;       lda surroundDrawDirty
+;       cmp #1
+;       bne drawDone
+
+
+        jsr checkSurroundDrawDirty
         lda surroundDrawDirty
         cmp #1
         bne drawDone
 
+
+;        lda #1
+;       sta surroundEraseDirty
+
+
+        lda surroundOldX
+        sta eraseX
+
+        lda surroundOldY
+        sta eraseY
+
+
+        lda surroundX
+        sta surroundOldX
+        lda surroundY
+        sta surroundOldY
 
         lda #80
         sta rectWidth
@@ -58,47 +159,28 @@ checkDraw anop
         lda #80
         sta rectHeight
 
-
         jsr drawSurroundRect
 
-drawDone anop
+        stz surroundDrawDirty
 
-        lda surroundX
-        sta surroundOldX
-        lda surroundY
-        sta surroundOldY
+drawDone anop
 
         rts
 
 
 eraseSurround entry
 
-        lda surroundOldX
-        sta rectX
-
-        lda surroundOldY
-        sta rectY
-
-
-        lda rectX
-        cmp surroundOldX
-        beq checkEraseY
-        lda #1
-        sta surroundEraseDirty
-
-checkEraseY anop
-
-        lda rectY
-        cmp surroundOldY
-        beq checkErase
-        lda #1
-        sta surroundEraseDirty
-
-checkErase anop
-
+        jsr checkSurroundEraseDirty
         lda surroundEraseDirty
         cmp #1
         bne eraseDone1
+
+
+        lda eraseX
+        sta rectX
+
+        lda eraseY
+        sta rectY
 
 
         lda #80
@@ -109,12 +191,13 @@ checkErase anop
 
         jsr eraseSurroundRect
 
-eraseDone1 anop
-
-        stz surroundDrawDirty
         stz surroundEraseDirty
 
+eraseDone1 anop
+
         rts
+
+
 
 
         lda playerX
@@ -268,6 +351,8 @@ surroundY dc i2'0'
 surroundOldX dc i2'0'
 surroundOldY dc i2'0'
 
+eraseX dc i2'0'
+eraseY dc i2'0'
 
         end
 
