@@ -25,6 +25,7 @@ drawSurround entry
         lda playerY
         sec
         sbc #36
+        and #$fff0
         sta rectY
 
 
@@ -48,6 +49,28 @@ drawSurround entry
 
 
 eraseSurround entry
+
+        lda playerOldX
+        sec
+        sbc #36
+        and #$fff0
+        sta rectX
+
+        lda playerOldY
+        sec
+        sbc #36
+        and #$fff0
+        sta rectY
+
+        lda #80
+        sta rectWidth
+
+        lda #80
+        sta rectHeight
+
+        jsr eraseSurroundRect
+        rts
+
 
         lda playerX
         cmp playerOldX
