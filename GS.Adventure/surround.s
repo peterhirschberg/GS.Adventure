@@ -17,13 +17,13 @@ checkSurroundDrawDirty entry
 
         lda playerX
         sec
-        sbc #32
+        sbc #SURROUND_OFFSET_X
         and #$fff0
         sta rectX
 
         lda playerY
         sec
-        sbc #32
+        sbc #SURROUND_OFFSET_Y
         and #$fff0
         sta rectY
 
@@ -52,13 +52,13 @@ checkSurroundEraseDirty entry
 
         lda playerX
         sec
-        sbc #32
+        sbc #SURROUND_OFFSET_X
         and #$fff0
         sta rectX
 
         lda playerY
         sec
-        sbc #32
+        sbc #SURROUND_OFFSET_Y
         and #$fff0
         sta rectY
 
@@ -89,7 +89,7 @@ drawSurround entry
 
         lda playerX
         sec
-        sbc #32
+        sbc #SURROUND_OFFSET_X
         and #$fff0
         sta rectX
         sta surroundX
@@ -97,41 +97,16 @@ drawSurround entry
 
         lda playerY
         sec
-        sbc #32
+        sbc #SURROUND_OFFSET_Y
         and #$fff0
         sta rectY
         sta surroundY
-
-
-;        lda surroundX
-;       cmp surroundOldX
-;       beq checkDrawY
-;       lda #1
-;       sta surroundDrawDirty
-;
-;checkDrawY anop
-;
-;       lda surroundY
-;       cmp surroundOldY
-;       beq checkDraw
-;       lda #1
-;       sta surroundDrawDirty
-;
-;checkDraw anop
-;
-;       lda surroundDrawDirty
-;       cmp #1
-;       bne drawDone
 
 
         jsr checkSurroundDrawDirty
         lda surroundDrawDirty
         cmp #1
         bne drawDone
-
-
-;        lda #1
-;       sta surroundEraseDirty
 
 
         lda surroundOldX
@@ -146,10 +121,10 @@ drawSurround entry
         lda surroundY
         sta surroundOldY
 
-        lda #80
+        lda #SURROUND_WIDTH
         sta rectWidth
 
-        lda #80
+        lda #SURROUND_HEIGHT
         sta rectHeight
 
         jsr drawSurroundRect
@@ -159,6 +134,7 @@ drawSurround entry
 drawDone anop
 
         rts
+
 
 
 eraseSurround entry
@@ -176,10 +152,10 @@ eraseSurround entry
         sta rectY
 
 
-        lda #80
+        lda #SURROUND_WIDTH
         sta rectWidth
 
-        lda #80
+        lda #SURROUND_HEIGHT
         sta rectHeight
 
         jsr eraseSurroundRect
@@ -346,6 +322,13 @@ surroundOldY dc i2'0'
 
 eraseX dc i2'0'
 eraseY dc i2'0'
+
+
+SURROUND_WIDTH gequ 80
+SURROUND_HEIGHT gequ 80
+SURROUND_OFFSET_X gequ 32
+SURROUND_OFFSET_X gequ 32
+
 
         end
 
