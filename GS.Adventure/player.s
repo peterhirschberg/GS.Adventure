@@ -115,13 +115,9 @@ movePlayerLeft entry
 drawPlayer entry
 
         lda playerX
-;        sec
-;       sbc #4
         sta rectX
 
         lda playerY
-;       sec
-;       sbc #6
         sta rectY
 
         lda #6
@@ -141,13 +137,9 @@ drawPlayer entry
 erasePlayer entry
 
         lda playerOldX
-;        sec
-;       sbc #4
         sta rectX
 
         lda playerOldY
-;        sec
-;       sbc #6
         sta rectY
 
         lda #6
@@ -163,13 +155,9 @@ erasePlayer entry
 erasePlayerHit entry
 
         lda playerHitX
-;        sec
-;       sbc #4
         sta rectX
 
         lda playerHitY
-;        sec
-;       sbc #6
         sta rectY
 
         lda #6

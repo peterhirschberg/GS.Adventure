@@ -16,6 +16,7 @@ screen start
         using globalData
         using screenData
         using colorData
+        using playerData
 
 
 ; fills the room buffer with the background color
@@ -476,6 +477,7 @@ nextRow1 anop
         cmp rectHeight
         beq fillDone1
         bra fillLoop1
+
 fillDone1 anop
         rts
 
@@ -519,6 +521,7 @@ nextRow1b anop
         cmp rectHeight
         beq fillDone1b
         bra fillLoop1b
+
 fillDone1b anop
         rts
 
@@ -664,6 +667,151 @@ eraseDone2 anop
 
         rts
 
+
+
+drawSurroundRect entry
+
+        lda playerX
+        lsr a
+        sec
+        sbc #18
+        sta rectX
+
+
+        lda playerY
+        sec
+        sbc #36
+        sta rectY
+
+
+        lda #40
+        sta rectWidth
+
+        lda #80
+        sta rectHeight
+
+
+        ldy #COLOR_ORANGE
+
+
+        lda #0
+        sta rowCounter
+
+eraseVLoop3 anop
+        lda rowCounter
+        clc
+        adc rectY
+
+        asl a
+        tax
+        lda screenRowOffsets,x
+        clc
+        adc rectX
+        tax
+
+        lda rectWidth
+        sta columnCounter
+
+eraseHLoop3 anop
+
+        lda >BACKGROUND_ADDR,x
+
+        cmp #COLOR_LTGRAY
+        bne dontDrawSurround
+
+        tya
+        sta >SCREEN_ADDR,x
+
+dontDrawSurround anop
+
+        inx
+        inx
+
+        dec columnCounter
+        dec columnCounter
+
+        lda columnCounter
+        bmi nextRow4
+        jmp eraseHLoop3
+
+nextRow4 anop
+        inc rowCounter
+        lda rowCounter
+        cmp rectHeight
+        beq eraseDone3
+        bra eraseVLoop3
+
+eraseDone3 anop
+
+        rts
+
+
+
+eraseSurroundRect entry
+
+        lda playerOldX
+        lsr a
+        sec
+        sbc #18
+        sta rectX
+
+
+        lda playerOldY
+        sec
+        sbc #36
+        sta rectY
+
+
+        lda #40
+        sta rectWidth
+
+        lda #80
+        sta rectHeight
+
+
+        lda #0
+        sta rowCounter
+
+eraseVLoop4 anop
+        lda rowCounter
+        clc
+        adc rectY
+
+        asl a
+        tax
+        lda screenRowOffsets,x
+        clc
+        adc rectX
+        tax
+
+        lda rectWidth
+        sta columnCounter
+
+eraseHLoop4 anop
+
+        lda >BACKGROUND_ADDR,x
+        sta >SCREEN_ADDR,x
+
+        inx
+        inx
+
+        dec columnCounter
+        dec columnCounter
+
+        lda columnCounter
+        bmi nextRow5
+        jmp eraseHLoop4
+
+nextRow5 anop
+        inc rowCounter
+        lda rowCounter
+        cmp rectHeight
+        beq eraseDone4
+        bra eraseVLoop4
+
+eraseDone4 anop
+
+        rts
 
 
 columnCounter dc i2'0'

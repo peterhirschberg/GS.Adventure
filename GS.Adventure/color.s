@@ -85,7 +85,7 @@ initColorTable entry
 
 ; "fog" color (same color as background)
         ldx #28
-        lda #$000f
+        lda #$0ccc
         sta >COLOR_TABLE,x
 
 ; "flash" color

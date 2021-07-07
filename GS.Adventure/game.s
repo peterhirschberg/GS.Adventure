@@ -76,7 +76,9 @@ noHitPass0 anop
         cmp #1
         bne noMovePass0
 
+        jsr eraseSurroundRect
         jsr erasePlayer
+        jsr drawSurroundRect
         jsr drawPlayer
 
 noMovePass0 anop
@@ -111,6 +113,9 @@ pass2 anop
         sta gamePass
 
 passDone anop
+
+        stz playerMoved
+        stz playerHitWall
 
         jsr borderDone
 
