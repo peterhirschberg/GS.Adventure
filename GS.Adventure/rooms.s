@@ -671,6 +671,22 @@ adjustDone anop
         rts
 
 
+roomHasFog entry
+
+        ldx currentRoom
+        lda roomColorList,x
+        cmp #COLOR_FOG
+        beq hasFog
+        lda #0
+        rts
+
+hasFog anop
+        lda #1
+        rts
+
+
+
+
 temp dc i2'0'
 
 bit dc i2'0'

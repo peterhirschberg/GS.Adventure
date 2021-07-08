@@ -89,13 +89,12 @@ checkDone2 anop
 
 drawSurround entry
 
-        ldx currentRoom
-        lda roomColorList,x
-        cmp #COLOR_FOG
-        beq roomHasFog1
+        jsr roomHasFog
+        cmp #1
+        beq hasFog1
         rts
 
-roomHasFog1 anop
+hasFog1 anop
 
         lda playerX
         sec
@@ -313,13 +312,12 @@ drawSurroundRight entry
 
 eraseSurround entry
 
-        ldx currentRoom
-        lda roomColorList,x
-        cmp #COLOR_FOG
-        beq roomHasFog2
+        jsr roomHasFog
+        cmp #1
+        beq hasFog2
         rts
 
-roomHasFog2 anop
+hasFog2 anop
 
         jsr checkSurroundEraseDirty
         lda surroundEraseDirty

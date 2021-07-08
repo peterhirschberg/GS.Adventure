@@ -154,16 +154,15 @@ doErase anop
         lda #8
         sta rectHeight
 
-        ldx currentRoom
-        lda roomColorList,x
-        cmp #COLOR_FOG
-        beq roomHasFog
+        jsr roomHasFog
+        cmp #1
+        beq hasFog
 
         jsr eraseSpriteRect
 
         rts
 
-roomHasFog anop
+hasFog anop
 
         lda #COLOR_ORANGE
         sta rectColor
