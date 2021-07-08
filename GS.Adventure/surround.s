@@ -185,17 +185,17 @@ drawDone anop
 
         lda surroundOldX
 ;---------------
-        sec
-        sbc #16
+;        sec
+;        sbc #16
 
-        bmi isMinus
-        bra notMinus
+;        bmi isMinus
+;       bra notMinus
+;
+;isMinus anop
 
-isMinus anop
+;        lda #0
 
-        lda #0
-
-notMinus anop
+;notMinus anop
 
 ;---------------
         sta eraseX
