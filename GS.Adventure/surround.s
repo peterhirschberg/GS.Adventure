@@ -54,13 +54,13 @@ checkSurroundEraseDirty entry
         lda playerX
         sec
         sbc #SURROUND_OFFSET_X
-        and #$fff0
+;        and #$fff0
         sta rectX
 
         lda playerY
         sec
         sbc #SURROUND_OFFSET_Y
-        and #$fff0
+;        and #$fff0
         sta rectY
 
 
@@ -217,6 +217,7 @@ noDrawDone anop
 
 
 drawSurroundTop entry
+  jsr eraseSurroundBottom
 
         lda surroundX
         sta rectX
@@ -235,6 +236,7 @@ drawSurroundTop entry
         rts
 
 drawSurroundBottom entry
+  jsr eraseSurroundTop
 
         lda surroundX
         sta rectX
@@ -257,6 +259,7 @@ drawSurroundBottom entry
         rts
 
 drawSurroundLeft entry
+  jsr eraseSurroundRight
 
         lda surroundX
         sta rectX
@@ -277,6 +280,7 @@ drawSurroundLeft entry
         rts
 
 drawSurroundRight entry
+  jsr eraseSurroundLeft
 
         lda surroundX
         clc
@@ -307,11 +311,11 @@ drawSurroundRight entry
 
 
 eraseSurround entry
-
+  rts
         jsr checkSurroundEraseDirty
         lda surroundEraseDirty
         cmp #1
-        bne eraseDone
+;        bne eraseDone
 
 
 ;        jmp here
@@ -394,9 +398,11 @@ eraseDone anop
 eraseSurroundTop entry
 
         lda eraseX
+  lda surroundOldX
         sta rectX
 
         lda eraseY
+  lda surroundOldY
         sta rectY
 
         lda #SURROUND_WIDTH
@@ -422,9 +428,12 @@ eraseSurroundTop entry
 eraseSurroundBottom entry
 
         lda eraseX
+  lda surroundOldX
         sta rectX
 
         lda eraseY
+  lda surroundOldY
+
         clc
         adc #SURROUND_HEIGHT
 ;        sec
@@ -454,9 +463,11 @@ eraseSurroundBottom entry
 eraseSurroundLeft entry
 
         lda eraseX
+  lda surroundOldX
         sta rectX
 
         lda eraseY
+  lda surroundOldY
         sta rectY
 
         lda #16
@@ -479,6 +490,7 @@ eraseSurroundRight entry
 
 
         lda eraseX
+  lda surroundOldX
         clc
         adc #SURROUND_WIDTH
 ;---------------
@@ -490,6 +502,7 @@ eraseSurroundRight entry
         sta rectX
 
         lda eraseY
+  lda surroundOldY
         sta rectY
 
         lda #16
