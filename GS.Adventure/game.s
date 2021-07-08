@@ -22,7 +22,7 @@ game start
 
 initGame entry
         jsr setupScreen
-        jsr blankColorTable
+        jsr blackColorTable
 
 ;        jsr borderInit
 
@@ -46,7 +46,7 @@ initGame entry
 
         jsr drawRoom
 
-        jsr initColorTable
+        jsr normalColorTable
 
         rtl
 

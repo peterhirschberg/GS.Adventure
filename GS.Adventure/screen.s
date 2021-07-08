@@ -239,6 +239,7 @@ fillDone anop
         rts
 
 
+
 blitRoom entry
 
         lda #0
@@ -440,6 +441,222 @@ blitRowDone anop
 
 blitDone anop
         rts
+
+
+
+; fills the screen only (not the room buffer) with the fog color
+fillScreenWithFog entry
+
+        lda #0
+        sta rowCounter
+
+		ldy #COLOR_LTGRAY
+
+fogVLoop anop
+        lda rowCounter
+        asl a
+        tax
+        lda screenRowOffsets,x
+        sta rowAddress
+
+        lda #0
+        sta columnCounter
+
+fogHLoop anop
+        lda rowAddress
+        clc
+        adc columnCounter
+        tax
+
+        tya
+
+        writeScreenWord
+        writeScreenWord
+        writeScreenWord
+        writeScreenWord
+        writeScreenWord
+        writeScreenWord
+        writeScreenWord
+        writeScreenWord
+        writeScreenWord
+        writeScreenWord
+
+        writeScreenWord
+        writeScreenWord
+        writeScreenWord
+        writeScreenWord
+        writeScreenWord
+        writeScreenWord
+        writeScreenWord
+        writeScreenWord
+        writeScreenWord
+        writeScreenWord
+
+        writeScreenWord
+        writeScreenWord
+        writeScreenWord
+        writeScreenWord
+        writeScreenWord
+        writeScreenWord
+        writeScreenWord
+        writeScreenWord
+        writeScreenWord
+        writeScreenWord
+
+        writeScreenWord
+        writeScreenWord
+        writeScreenWord
+        writeScreenWord
+        writeScreenWord
+        writeScreenWord
+        writeScreenWord
+        writeScreenWord
+        writeScreenWord
+        writeScreenWord
+
+        writeScreenWord
+        writeScreenWord
+        writeScreenWord
+        writeScreenWord
+        writeScreenWord
+        writeScreenWord
+        writeScreenWord
+        writeScreenWord
+        writeScreenWord
+        writeScreenWord
+
+        writeScreenWord
+        writeScreenWord
+        writeScreenWord
+        writeScreenWord
+        writeScreenWord
+        writeScreenWord
+        writeScreenWord
+        writeScreenWord
+        writeScreenWord
+        writeScreenWord
+
+        writeScreenWord
+        writeScreenWord
+        writeScreenWord
+        writeScreenWord
+        writeScreenWord
+        writeScreenWord
+        writeScreenWord
+        writeScreenWord
+        writeScreenWord
+        writeScreenWord
+
+        writeScreenWord
+        writeScreenWord
+        writeScreenWord
+        writeScreenWord
+        writeScreenWord
+        writeScreenWord
+        writeScreenWord
+        writeScreenWord
+        writeScreenWord
+        writeScreenWord
+
+        writeScreenWord
+        writeScreenWord
+        writeScreenWord
+        writeScreenWord
+        writeScreenWord
+        writeScreenWord
+        writeScreenWord
+        writeScreenWord
+        writeScreenWord
+        writeScreenWord
+
+        writeScreenWord
+        writeScreenWord
+        writeScreenWord
+        writeScreenWord
+        writeScreenWord
+        writeScreenWord
+        writeScreenWord
+        writeScreenWord
+        writeScreenWord
+        writeScreenWord
+
+        writeScreenWord
+        writeScreenWord
+        writeScreenWord
+        writeScreenWord
+        writeScreenWord
+        writeScreenWord
+        writeScreenWord
+        writeScreenWord
+        writeScreenWord
+        writeScreenWord
+
+        writeScreenWord
+        writeScreenWord
+        writeScreenWord
+        writeScreenWord
+        writeScreenWord
+        writeScreenWord
+        writeScreenWord
+        writeScreenWord
+        writeScreenWord
+        writeScreenWord
+
+        writeScreenWord
+        writeScreenWord
+        writeScreenWord
+        writeScreenWord
+        writeScreenWord
+        writeScreenWord
+        writeScreenWord
+        writeScreenWord
+        writeScreenWord
+        writeScreenWord
+
+        writeScreenWord
+        writeScreenWord
+        writeScreenWord
+        writeScreenWord
+        writeScreenWord
+        writeScreenWord
+        writeScreenWord
+        writeScreenWord
+        writeScreenWord
+        writeScreenWord
+
+        writeScreenWord
+        writeScreenWord
+        writeScreenWord
+        writeScreenWord
+        writeScreenWord
+        writeScreenWord
+        writeScreenWord
+        writeScreenWord
+        writeScreenWord
+        writeScreenWord
+
+        writeScreenWord
+        writeScreenWord
+        writeScreenWord
+        writeScreenWord
+        writeScreenWord
+        writeScreenWord
+        writeScreenWord
+        writeScreenWord
+        writeScreenWord
+        writeScreenWord
+
+fogRowDone anop
+        inc rowCounter
+        lda rowCounter
+        cmp #199
+        beq fogDone
+        jmp fogVLoop
+
+fogDone anop
+        rts
+
+
 
 
 

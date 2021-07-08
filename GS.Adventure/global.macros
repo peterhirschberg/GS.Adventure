@@ -135,6 +135,12 @@ dontDrawSurround_&SYSCNT anop
         mend
 
 
+        macro
+        writeScreenWord
+        sta >SCREEN_ADDR,x
+        inx
+        inx
+        mend
 
 ;
 ; ********************************************

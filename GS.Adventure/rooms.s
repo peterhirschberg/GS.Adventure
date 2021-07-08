@@ -105,8 +105,18 @@ drawRightBarrier anop
 
 drawRoomDone anop
 
+        jsr roomHasFog
+        cmp #1
+        beq doFogBlit
         jsr blitRoom
+        rts
 
+doFogBlit anop
+
+        jsr fogColorTable
+        jsr blitRoom
+        jsr fillScreenWithFog
+        jsr normalColorTable
         rts
 
 
