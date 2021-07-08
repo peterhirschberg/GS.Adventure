@@ -104,12 +104,31 @@ drawSurround entry
         sta surroundY
 
 
-        jsr checkSurroundDrawDirty
-        lda surroundDrawDirty
-        cmp #1
-        bne noDrawDone
+; PUT THIS BACK
+;        jsr checkSurroundDrawDirty
+;        lda surroundDrawDirty
+;        cmp #1
+;        bne noDrawDone
 
 ; --------------------------------------
+
+        lda rectY
+        bmi drawMinusY
+        cmp #$76
+        bcs drawPositiveY
+        bra drawOkayY
+
+drawMinusY anop
+        stz rectY
+        stz surroundY
+        bra drawOkayY
+
+drawPositiveY anop
+        lda #$76
+        sta rectY
+        sta surroundY
+
+drawOkayY anop
 
         jsl drawSurroundRect
         jmp drawDone
@@ -282,15 +301,35 @@ drawSurroundRight entry
 
 eraseSurround entry
 
-        jsr checkSurroundEraseDirty
-        lda surroundEraseDirty
-        cmp #1
-        bne eraseDone
+; PUT THIS BACK
+;        jsr checkSurroundEraseDirty
+;        lda surroundEraseDirty
+;        cmp #1
+;        bne eraseDone
 
         lda eraseX
         sta rectX
         lda eraseY
         sta rectY
+
+
+        lda rectY
+        bmi eraseMinusY
+        cmp #$76
+        bcs erasePositiveY
+        bra eraseOkayY
+
+eraseMinusY anop
+        stz rectY
+        stz eraseY
+        bra eraseOkayY
+
+erasePositiveY anop
+        lda #$76
+        sta rectY
+        sta eraseY
+
+eraseOkayY anop
 
         jsl eraseSurroundRect
 
@@ -299,7 +338,7 @@ eraseSurround entry
         rts
 
 
-
+; ---------------------------------------------
 
 
         lda playerX
