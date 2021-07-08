@@ -111,7 +111,7 @@ drawSurround entry
 
 ; --------------------------------------
 
-        jsr drawSurroundRect
+        jsl drawSurroundRect
         jmp drawDone
 
 ; --------------------------------------
@@ -204,7 +204,7 @@ drawSurroundTop entry
         lda #16
         sta rectHeight
 
-        jsr drawSurroundRect
+        jsl drawSurroundRect
 
         rts
 
@@ -226,7 +226,7 @@ drawSurroundBottom entry
         lda #16
         sta rectHeight
 
-        jsr drawSurroundRect
+        jsl drawSurroundRect
 
         rts
 
@@ -246,7 +246,7 @@ drawSurroundLeft entry
         sbc #16
         sta rectHeight
 
-        jsr drawSurroundRect
+        jsl drawSurroundRect
 
         rts
 
@@ -268,7 +268,7 @@ drawSurroundRight entry
         lda #SURROUND_HEIGHT
         sta rectHeight
 
-        jsr drawSurroundRect
+        jsl drawSurroundRect
 
         rts
 

@@ -669,61 +669,6 @@ eraseDone2 anop
 
 
 
-drawSurroundRect entry
-
-        lda rectX
-        lsr a
-        sta rectX
-
-        ldy #COLOR_ORANGE
-
-        lda #80
-        sta rowCounter
-
-drawSurroundVLoop anop
-
-        lda rectY
-        clc
-        adc rowCounter
-        asl a
-        tax
-        lda screenRowOffsets,x
-        clc
-        adc rectX
-        tax
-
-        drawSurroundWord
-        drawSurroundWord
-        drawSurroundWord
-        drawSurroundWord
-        drawSurroundWord
-        drawSurroundWord
-        drawSurroundWord
-        drawSurroundWord
-        drawSurroundWord
-        drawSurroundWord
-
-        drawSurroundWord
-        drawSurroundWord
-        drawSurroundWord
-        drawSurroundWord
-        drawSurroundWord
-        drawSurroundWord
-        drawSurroundWord
-        drawSurroundWord
-        drawSurroundWord
-        drawSurroundWord
-
-        dec rowCounter
-        lda rowCounter
-        bmi drawSurroundDone
-        jmp drawSurroundVLoop
-
-drawSurroundDone anop
-        rts
-
-
-
 eraseSurroundRect entry
 
         lda rectX
