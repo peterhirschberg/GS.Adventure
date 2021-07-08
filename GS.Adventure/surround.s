@@ -148,7 +148,7 @@ goDraw anop
         jsr checkSurroundDrawDirty
         lda surroundDrawDirty
         cmp #1
-        bne drawDone
+        bne noDrawDone
 
 ; --------------------------------------
 
@@ -179,6 +179,7 @@ drawBottom anop
 drawTop anop
         jsr drawSurroundTop
 
+drawDone anop
 
 ; --------------------------------------
 
@@ -210,8 +211,7 @@ notMinus anop
 
         stz surroundDrawDirty
 
-
-drawDone anop
+noDrawDone anop
 
         rts
 
@@ -317,6 +317,10 @@ eraseSurround entry
 ;        jmp here
 
 ; --------------------------------------
+;    lda playerX
+;    sta eraseX
+;    lda playerY
+;    sta eraseY
 
 
         lda playerX
@@ -338,7 +342,7 @@ checkY1 anop
         lda playerY
         cmp playerOldY
         bcs eraseTop
-;        bra eraseBottom
+        bra eraseBottom
 
 eraseBottom anop
         jsr eraseSurroundBottom
