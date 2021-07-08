@@ -147,7 +147,12 @@ erasePlayer entry
         lda #8
         sta rectHeight
 
-        jsr eraseSpriteRect
+; if drawing surround...
+    lda #COLOR_ORANGE
+    sta rectColor
+    jsr drawSpriteRect
+
+;        jsr eraseSpriteRect
 
         rts
 
