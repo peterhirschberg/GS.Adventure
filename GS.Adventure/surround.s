@@ -54,13 +54,13 @@ checkSurroundEraseDirty entry
         lda playerX
         sec
         sbc #SURROUND_OFFSET_X
-;        and #$fff0
+        and #$fff0
         sta rectX
 
         lda playerY
         sec
         sbc #SURROUND_OFFSET_Y
-;        and #$fff0
+        and #$fff0
         sta rectY
 
 
@@ -152,32 +152,42 @@ goDraw anop
 
 ; --------------------------------------
 
-
         lda playerX
         cmp playerOldX
+        beq checkY
         bcs drawRight
         bra drawLeft
 
 drawLeft anop
         jsr drawSurroundLeft
-        bra checkY
+        jsr drawSurroundTop
+        jsr drawSurroundBottom
+        bra drawDone
 
 drawRight anop
         jsr drawSurroundRight
+        jsr drawSurroundTop
+        jsr drawSurroundBottom
+        bra drawDone
 
 checkY anop
 
         lda playerY
         cmp playerOldY
+        beq drawDone
         bcs drawBottom
         bra drawTop
 
 drawBottom anop
         jsr drawSurroundBottom
+        jsr drawSurroundLeft
+        jsr drawSurroundRight
         bra drawDone
 
 drawTop anop
         jsr drawSurroundTop
+        jsr drawSurroundLeft
+        jsr drawSurroundRight
 
 drawDone anop
 
@@ -217,7 +227,6 @@ noDrawDone anop
 
 
 drawSurroundTop entry
-  jsr eraseSurroundBottom
 
         lda surroundX
         sta rectX
@@ -236,7 +245,6 @@ drawSurroundTop entry
         rts
 
 drawSurroundBottom entry
-  jsr eraseSurroundTop
 
         lda surroundX
         sta rectX
@@ -259,7 +267,6 @@ drawSurroundBottom entry
         rts
 
 drawSurroundLeft entry
-  jsr eraseSurroundRight
 
         lda surroundX
         sta rectX
@@ -280,7 +287,6 @@ drawSurroundLeft entry
         rts
 
 drawSurroundRight entry
-  jsr eraseSurroundLeft
 
         lda surroundX
         clc
@@ -311,21 +317,11 @@ drawSurroundRight entry
 
 
 eraseSurround entry
-  rts
+
         jsr checkSurroundEraseDirty
         lda surroundEraseDirty
         cmp #1
-;        bne eraseDone
-
-
-;        jmp here
-
-; --------------------------------------
-;    lda playerX
-;    sta eraseX
-;    lda playerY
-;    sta eraseY
-
+        bne eraseDone
 
         lda playerX
         cmp playerOldX
@@ -335,11 +331,15 @@ eraseSurround entry
 
 eraseLeft anop
         jsr eraseSurroundLeft
+        jsr eraseSurroundTop
+        jsr eraseSurroundBottom
         stz surroundEraseDirty
         bra checkY1
 
 eraseRight anop
         jsr eraseSurroundRight
+        jsr eraseSurroundTop
+        jsr eraseSurroundBottom
         stz surroundEraseDirty
 
 checkY1 anop
@@ -352,40 +352,19 @@ checkY1 anop
 
 eraseBottom anop
         jsr eraseSurroundBottom
+        jsr eraseSurroundLeft
+        jsr eraseSurroundRight
         stz surroundEraseDirty
         bra eraseDone
 
 eraseTop anop
         jsr eraseSurroundTop
+        jsr eraseSurroundLeft
+        jsr eraseSurroundRight
         stz surroundEraseDirty
         bra eraseDone
 
 skipEraseY anop
-        stz surroundEraseDirty
-        bra eraseDone
-; --------------------------------------
-
-
-here anop
-
-        lda eraseX
-        sta rectX
-
-        lda eraseY
-        sta rectY
-
-        lda #SURROUND_WIDTH
-;---------------
-        clc
-        adc #32
-;---------------
-        sta rectWidth
-
-        lda #SURROUND_HEIGHT
-        sta rectHeight
-
-        jsr eraseSurroundRect
-
         stz surroundEraseDirty
 
 eraseDone anop
@@ -398,11 +377,9 @@ eraseDone anop
 eraseSurroundTop entry
 
         lda eraseX
-  lda surroundOldX
         sta rectX
 
         lda eraseY
-  lda surroundOldY
         sta rectY
 
         lda #SURROUND_WIDTH
@@ -416,8 +393,8 @@ eraseSurroundTop entry
         sta rectHeight
 
 
-    lda #COLOR_BLUE
-    sta rectColor
+;    lda #COLOR_BLUE
+;    sta rectColor
 
 ;    jsr drawSpriteRect
 
@@ -427,13 +404,11 @@ eraseSurroundTop entry
 
 eraseSurroundBottom entry
 
+
         lda eraseX
-  lda surroundOldX
         sta rectX
 
         lda eraseY
-  lda surroundOldY
-
         clc
         adc #SURROUND_HEIGHT
 ;        sec
@@ -451,8 +426,8 @@ eraseSurroundBottom entry
         sta rectHeight
 
 
-    lda #COLOR_RED
-    sta rectColor
+;    lda #COLOR_RED
+;    sta rectColor
 
 ;    jsr drawSpriteRect
 
@@ -463,22 +438,20 @@ eraseSurroundBottom entry
 eraseSurroundLeft entry
 
         lda eraseX
-  lda surroundOldX
         sta rectX
 
         lda eraseY
-  lda surroundOldY
         sta rectY
 
-        lda #16
+        lda #12
         sta rectWidth
 
         lda #SURROUND_HEIGHT
         sta rectHeight
 
 
-    lda #COLOR_BLUE
-    sta rectColor
+;    lda #COLOR_BLUE
+;    sta rectColor
 
 ;    jsr drawSpriteRect
 
@@ -488,9 +461,7 @@ eraseSurroundLeft entry
 
 eraseSurroundRight entry
 
-
         lda eraseX
-  lda surroundOldX
         clc
         adc #SURROUND_WIDTH
 ;---------------
@@ -502,18 +473,17 @@ eraseSurroundRight entry
         sta rectX
 
         lda eraseY
-  lda surroundOldY
         sta rectY
 
-        lda #16
+        lda #12
         sta rectWidth
 
         lda #SURROUND_HEIGHT
         sta rectHeight
 
 
-    lda #COLOR_BLUE
-    sta rectColor
+;    lda #COLOR_BLUE
+;    sta rectColor
 
 ;    jsr drawSpriteRect
 
