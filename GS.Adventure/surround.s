@@ -155,8 +155,8 @@ goDraw anop
 
         lda playerX
         cmp playerOldX
-        bcs drawLeft
-        bra drawRight
+        bcs drawRight
+        bra drawLeft
 
 drawLeft anop
         jsr drawSurroundLeft
@@ -169,8 +169,8 @@ checkY anop
 
         lda playerY
         cmp playerOldY
-        bcs drawTop
-        bra drawBottom
+        bcs drawBottom
+        bra drawTop
 
 drawBottom anop
         jsr drawSurroundBottom
@@ -325,6 +325,7 @@ eraseSurround entry
 
         lda playerX
         cmp playerOldX
+        beq checkY1
         bcs eraseLeft
         bra eraseRight
 
@@ -341,6 +342,7 @@ checkY1 anop
 
         lda playerY
         cmp playerOldY
+        beq skipEraseY
         bcs eraseTop
         bra eraseBottom
 
@@ -354,6 +356,9 @@ eraseTop anop
         stz surroundEraseDirty
         bra eraseDone
 
+skipEraseY anop
+        stz surroundEraseDirty
+        bra eraseDone
 ; --------------------------------------
 
 
