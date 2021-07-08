@@ -136,6 +136,13 @@ drawPlayer entry
 
 erasePlayer entry
 
+        lda currentRoom
+        cmp lastRoom
+        beq doErase
+        rts
+
+doErase anop
+
         lda playerOldX
         sta rectX
 
@@ -147,12 +154,20 @@ erasePlayer entry
         lda #8
         sta rectHeight
 
-; if drawing surround...
-    lda #COLOR_ORANGE
-    sta rectColor
-    jsr drawSpriteRect
+        ldx currentRoom
+        lda roomColorList,x
+        cmp #COLOR_FOG
+        beq roomHasFog
 
-;        jsr eraseSpriteRect
+        jsr eraseSpriteRect
+
+        rts
+
+roomHasFog anop
+
+        lda #COLOR_ORANGE
+        sta rectColor
+        jsr drawSpriteRect
 
         rts
 

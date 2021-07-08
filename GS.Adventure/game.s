@@ -24,7 +24,7 @@ initGame entry
         jsr setupScreen
         jsr blankColorTable
 
-        jsr borderInit
+;        jsr borderInit
 
 ; -------------------------------
 ; set up game
@@ -55,7 +55,7 @@ runGameTick entry
 
         jsr waitForVbl
 
-        jsr borderStart
+;        jsr borderStart
 
         jsr checkControls
 
@@ -122,7 +122,10 @@ passDone anop
         stz playerMoved
         stz playerHitWall
 
-        jsr borderDone
+        lda currentRoom
+        sta lastRoom
+
+;        jsr borderDone
 
         rtl
 

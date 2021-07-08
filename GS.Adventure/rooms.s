@@ -726,6 +726,7 @@ shiftreg anop
 roomsData data
 
 currentRoom dc i2'0'
+lastRoom dc i2'0'
 
 roomGraphicsData anop
 

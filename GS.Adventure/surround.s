@@ -11,6 +11,7 @@
 surround start
         using screenData
         using playerData
+        using roomsData
         using surroundData
 
 
@@ -88,6 +89,14 @@ checkDone2 anop
 
 drawSurround entry
 
+        ldx currentRoom
+        lda roomColorList,x
+        cmp #COLOR_FOG
+        beq roomHasFog1
+        rts
+
+roomHasFog1 anop
+
         lda playerX
         sec
         sbc #SURROUND_OFFSET_X
@@ -105,10 +114,13 @@ drawSurround entry
 
 
 ; PUT THIS BACK
-;        jsr checkSurroundDrawDirty
-;        lda surroundDrawDirty
-;        cmp #1
-;        bne noDrawDone
+        jsr checkSurroundDrawDirty
+        lda surroundDrawDirty
+        cmp #1
+        beq startDraw
+        rts
+
+startDraw anop
 
 ; --------------------------------------
 
@@ -301,11 +313,21 @@ drawSurroundRight entry
 
 eraseSurround entry
 
-; PUT THIS BACK
-;        jsr checkSurroundEraseDirty
-;        lda surroundEraseDirty
-;        cmp #1
-;        bne eraseDone
+        ldx currentRoom
+        lda roomColorList,x
+        cmp #COLOR_FOG
+        beq roomHasFog2
+        rts
+
+roomHasFog2 anop
+
+        jsr checkSurroundEraseDirty
+        lda surroundEraseDirty
+        cmp #1
+        beq startErase
+        rts
+
+startErase anop
 
         lda eraseX
         sta rectX
