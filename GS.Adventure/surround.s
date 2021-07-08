@@ -292,7 +292,7 @@ eraseSurround entry
         lda eraseY
         sta rectY
 
-        jsr eraseSurroundRect
+        jsl eraseSurroundRect
 
         stz surroundEraseDirty
 
@@ -377,7 +377,7 @@ eraseSurroundTop entry
 
 ;    jsr drawSpriteRect
 
-        jsr eraseSurroundRect
+        jsl eraseSurroundRect
 
         rts
 
@@ -410,7 +410,7 @@ eraseSurroundBottom entry
 
 ;    jsr drawSpriteRect
 
-        jsr eraseSurroundRect
+        jsl eraseSurroundRect
 
         rts
 
@@ -434,7 +434,7 @@ eraseSurroundLeft entry
 
 ;    jsr drawSpriteRect
 
-        jsr eraseSurroundRect
+        jsl eraseSurroundRect
 
         rts
 
@@ -466,7 +466,7 @@ eraseSurroundRight entry
 
 ;    jsr drawSpriteRect
 
-        jsr eraseSurroundRect
+        jsl eraseSurroundRect
 
         rts
 

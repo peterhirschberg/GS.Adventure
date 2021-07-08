@@ -1975,4 +1975,1962 @@ drawSurroundRect entry
 
 
 
+eraseSurroundRect entry
+
+        lda >rectX
+        lsr a
+        sta >rectX
+
+        ldy #COLOR_ORANGE
+
+        lda >rectY
+        asl a
+        tax
+        lda >screenRowOffsets,x
+        clc
+        adc >rectX
+        tax
+
+
+        eraseSurroundWord
+        eraseSurroundWord
+        eraseSurroundWord
+        eraseSurroundWord
+        eraseSurroundWord
+        eraseSurroundWord
+        eraseSurroundWord
+        eraseSurroundWord
+        eraseSurroundWord
+        eraseSurroundWord
+
+        eraseSurroundWord
+        eraseSurroundWord
+        eraseSurroundWord
+        eraseSurroundWord
+        eraseSurroundWord
+        eraseSurroundWord
+        eraseSurroundWord
+        eraseSurroundWord
+        eraseSurroundWord
+        eraseSurroundWordLast
+
+        nextSurroundRow
+
+        eraseSurroundWordBackwards
+        eraseSurroundWordBackwards
+        eraseSurroundWordBackwards
+        eraseSurroundWordBackwards
+        eraseSurroundWordBackwards
+        eraseSurroundWordBackwards
+        eraseSurroundWordBackwards
+        eraseSurroundWordBackwards
+        eraseSurroundWordBackwards
+        eraseSurroundWordBackwards
+
+        eraseSurroundWordBackwards
+        eraseSurroundWordBackwards
+        eraseSurroundWordBackwards
+        eraseSurroundWordBackwards
+        eraseSurroundWordBackwards
+        eraseSurroundWordBackwards
+        eraseSurroundWordBackwards
+        eraseSurroundWordBackwards
+        eraseSurroundWordBackwards
+        eraseSurroundWordBackwardsLast
+
+        nextSurroundRow
+
+        eraseSurroundWord
+        eraseSurroundWord
+        eraseSurroundWord
+        eraseSurroundWord
+        eraseSurroundWord
+        eraseSurroundWord
+        eraseSurroundWord
+        eraseSurroundWord
+        eraseSurroundWord
+        eraseSurroundWord
+
+        eraseSurroundWord
+        eraseSurroundWord
+        eraseSurroundWord
+        eraseSurroundWord
+        eraseSurroundWord
+        eraseSurroundWord
+        eraseSurroundWord
+        eraseSurroundWord
+        eraseSurroundWord
+        eraseSurroundWordLast
+
+        nextSurroundRow
+
+        eraseSurroundWordBackwards
+        eraseSurroundWordBackwards
+        eraseSurroundWordBackwards
+        eraseSurroundWordBackwards
+        eraseSurroundWordBackwards
+        eraseSurroundWordBackwards
+        eraseSurroundWordBackwards
+        eraseSurroundWordBackwards
+        eraseSurroundWordBackwards
+        eraseSurroundWordBackwards
+
+        eraseSurroundWordBackwards
+        eraseSurroundWordBackwards
+        eraseSurroundWordBackwards
+        eraseSurroundWordBackwards
+        eraseSurroundWordBackwards
+        eraseSurroundWordBackwards
+        eraseSurroundWordBackwards
+        eraseSurroundWordBackwards
+        eraseSurroundWordBackwards
+        eraseSurroundWordBackwardsLast
+
+        nextSurroundRow
+
+        eraseSurroundWord
+        eraseSurroundWord
+        eraseSurroundWord
+        eraseSurroundWord
+        eraseSurroundWord
+        eraseSurroundWord
+        eraseSurroundWord
+        eraseSurroundWord
+        eraseSurroundWord
+        eraseSurroundWord
+
+        eraseSurroundWord
+        eraseSurroundWord
+        eraseSurroundWord
+        eraseSurroundWord
+        eraseSurroundWord
+        eraseSurroundWord
+        eraseSurroundWord
+        eraseSurroundWord
+        eraseSurroundWord
+        eraseSurroundWordLast
+
+        nextSurroundRow
+
+        eraseSurroundWordBackwards
+        eraseSurroundWordBackwards
+        eraseSurroundWordBackwards
+        eraseSurroundWordBackwards
+        eraseSurroundWordBackwards
+        eraseSurroundWordBackwards
+        eraseSurroundWordBackwards
+        eraseSurroundWordBackwards
+        eraseSurroundWordBackwards
+        eraseSurroundWordBackwards
+
+        eraseSurroundWordBackwards
+        eraseSurroundWordBackwards
+        eraseSurroundWordBackwards
+        eraseSurroundWordBackwards
+        eraseSurroundWordBackwards
+        eraseSurroundWordBackwards
+        eraseSurroundWordBackwards
+        eraseSurroundWordBackwards
+        eraseSurroundWordBackwards
+        eraseSurroundWordBackwardsLast
+
+        nextSurroundRow
+
+        eraseSurroundWord
+        eraseSurroundWord
+        eraseSurroundWord
+        eraseSurroundWord
+        eraseSurroundWord
+        eraseSurroundWord
+        eraseSurroundWord
+        eraseSurroundWord
+        eraseSurroundWord
+        eraseSurroundWord
+
+        eraseSurroundWord
+        eraseSurroundWord
+        eraseSurroundWord
+        eraseSurroundWord
+        eraseSurroundWord
+        eraseSurroundWord
+        eraseSurroundWord
+        eraseSurroundWord
+        eraseSurroundWord
+        eraseSurroundWordLast
+
+        nextSurroundRow
+
+        eraseSurroundWordBackwards
+        eraseSurroundWordBackwards
+        eraseSurroundWordBackwards
+        eraseSurroundWordBackwards
+        eraseSurroundWordBackwards
+        eraseSurroundWordBackwards
+        eraseSurroundWordBackwards
+        eraseSurroundWordBackwards
+        eraseSurroundWordBackwards
+        eraseSurroundWordBackwards
+
+        eraseSurroundWordBackwards
+        eraseSurroundWordBackwards
+        eraseSurroundWordBackwards
+        eraseSurroundWordBackwards
+        eraseSurroundWordBackwards
+        eraseSurroundWordBackwards
+        eraseSurroundWordBackwards
+        eraseSurroundWordBackwards
+        eraseSurroundWordBackwards
+        eraseSurroundWordBackwardsLast
+
+        nextSurroundRow
+
+        eraseSurroundWord
+        eraseSurroundWord
+        eraseSurroundWord
+        eraseSurroundWord
+        eraseSurroundWord
+        eraseSurroundWord
+        eraseSurroundWord
+        eraseSurroundWord
+        eraseSurroundWord
+        eraseSurroundWord
+
+        eraseSurroundWord
+        eraseSurroundWord
+        eraseSurroundWord
+        eraseSurroundWord
+        eraseSurroundWord
+        eraseSurroundWord
+        eraseSurroundWord
+        eraseSurroundWord
+        eraseSurroundWord
+        eraseSurroundWordLast
+
+        nextSurroundRow
+
+        eraseSurroundWordBackwards
+        eraseSurroundWordBackwards
+        eraseSurroundWordBackwards
+        eraseSurroundWordBackwards
+        eraseSurroundWordBackwards
+        eraseSurroundWordBackwards
+        eraseSurroundWordBackwards
+        eraseSurroundWordBackwards
+        eraseSurroundWordBackwards
+        eraseSurroundWordBackwards
+
+        eraseSurroundWordBackwards
+        eraseSurroundWordBackwards
+        eraseSurroundWordBackwards
+        eraseSurroundWordBackwards
+        eraseSurroundWordBackwards
+        eraseSurroundWordBackwards
+        eraseSurroundWordBackwards
+        eraseSurroundWordBackwards
+        eraseSurroundWordBackwards
+        eraseSurroundWordBackwardsLast
+
+        nextSurroundRow
+
+; ---------------------------
+
+
+        eraseSurroundWord
+        eraseSurroundWord
+        eraseSurroundWord
+        eraseSurroundWord
+        eraseSurroundWord
+        eraseSurroundWord
+        eraseSurroundWord
+        eraseSurroundWord
+        eraseSurroundWord
+        eraseSurroundWord
+
+        eraseSurroundWord
+        eraseSurroundWord
+        eraseSurroundWord
+        eraseSurroundWord
+        eraseSurroundWord
+        eraseSurroundWord
+        eraseSurroundWord
+        eraseSurroundWord
+        eraseSurroundWord
+        eraseSurroundWordLast
+
+        nextSurroundRow
+
+        eraseSurroundWordBackwards
+        eraseSurroundWordBackwards
+        eraseSurroundWordBackwards
+        eraseSurroundWordBackwards
+        eraseSurroundWordBackwards
+        eraseSurroundWordBackwards
+        eraseSurroundWordBackwards
+        eraseSurroundWordBackwards
+        eraseSurroundWordBackwards
+        eraseSurroundWordBackwards
+
+        eraseSurroundWordBackwards
+        eraseSurroundWordBackwards
+        eraseSurroundWordBackwards
+        eraseSurroundWordBackwards
+        eraseSurroundWordBackwards
+        eraseSurroundWordBackwards
+        eraseSurroundWordBackwards
+        eraseSurroundWordBackwards
+        eraseSurroundWordBackwards
+        eraseSurroundWordBackwardsLast
+
+        nextSurroundRow
+
+        eraseSurroundWord
+        eraseSurroundWord
+        eraseSurroundWord
+        eraseSurroundWord
+        eraseSurroundWord
+        eraseSurroundWord
+        eraseSurroundWord
+        eraseSurroundWord
+        eraseSurroundWord
+        eraseSurroundWord
+
+        eraseSurroundWord
+        eraseSurroundWord
+        eraseSurroundWord
+        eraseSurroundWord
+        eraseSurroundWord
+        eraseSurroundWord
+        eraseSurroundWord
+        eraseSurroundWord
+        eraseSurroundWord
+        eraseSurroundWordLast
+
+        nextSurroundRow
+
+        eraseSurroundWordBackwards
+        eraseSurroundWordBackwards
+        eraseSurroundWordBackwards
+        eraseSurroundWordBackwards
+        eraseSurroundWordBackwards
+        eraseSurroundWordBackwards
+        eraseSurroundWordBackwards
+        eraseSurroundWordBackwards
+        eraseSurroundWordBackwards
+        eraseSurroundWordBackwards
+
+        eraseSurroundWordBackwards
+        eraseSurroundWordBackwards
+        eraseSurroundWordBackwards
+        eraseSurroundWordBackwards
+        eraseSurroundWordBackwards
+        eraseSurroundWordBackwards
+        eraseSurroundWordBackwards
+        eraseSurroundWordBackwards
+        eraseSurroundWordBackwards
+        eraseSurroundWordBackwardsLast
+
+        nextSurroundRow
+
+        eraseSurroundWord
+        eraseSurroundWord
+        eraseSurroundWord
+        eraseSurroundWord
+        eraseSurroundWord
+        eraseSurroundWord
+        eraseSurroundWord
+        eraseSurroundWord
+        eraseSurroundWord
+        eraseSurroundWord
+
+        eraseSurroundWord
+        eraseSurroundWord
+        eraseSurroundWord
+        eraseSurroundWord
+        eraseSurroundWord
+        eraseSurroundWord
+        eraseSurroundWord
+        eraseSurroundWord
+        eraseSurroundWord
+        eraseSurroundWordLast
+
+        nextSurroundRow
+
+        eraseSurroundWordBackwards
+        eraseSurroundWordBackwards
+        eraseSurroundWordBackwards
+        eraseSurroundWordBackwards
+        eraseSurroundWordBackwards
+        eraseSurroundWordBackwards
+        eraseSurroundWordBackwards
+        eraseSurroundWordBackwards
+        eraseSurroundWordBackwards
+        eraseSurroundWordBackwards
+
+        eraseSurroundWordBackwards
+        eraseSurroundWordBackwards
+        eraseSurroundWordBackwards
+        eraseSurroundWordBackwards
+        eraseSurroundWordBackwards
+        eraseSurroundWordBackwards
+        eraseSurroundWordBackwards
+        eraseSurroundWordBackwards
+        eraseSurroundWordBackwards
+        eraseSurroundWordBackwardsLast
+
+        nextSurroundRow
+
+        eraseSurroundWord
+        eraseSurroundWord
+        eraseSurroundWord
+        eraseSurroundWord
+        eraseSurroundWord
+        eraseSurroundWord
+        eraseSurroundWord
+        eraseSurroundWord
+        eraseSurroundWord
+        eraseSurroundWord
+
+        eraseSurroundWord
+        eraseSurroundWord
+        eraseSurroundWord
+        eraseSurroundWord
+        eraseSurroundWord
+        eraseSurroundWord
+        eraseSurroundWord
+        eraseSurroundWord
+        eraseSurroundWord
+        eraseSurroundWordLast
+
+        nextSurroundRow
+
+        eraseSurroundWordBackwards
+        eraseSurroundWordBackwards
+        eraseSurroundWordBackwards
+        eraseSurroundWordBackwards
+        eraseSurroundWordBackwards
+        eraseSurroundWordBackwards
+        eraseSurroundWordBackwards
+        eraseSurroundWordBackwards
+        eraseSurroundWordBackwards
+        eraseSurroundWordBackwards
+
+        eraseSurroundWordBackwards
+        eraseSurroundWordBackwards
+        eraseSurroundWordBackwards
+        eraseSurroundWordBackwards
+        eraseSurroundWordBackwards
+        eraseSurroundWordBackwards
+        eraseSurroundWordBackwards
+        eraseSurroundWordBackwards
+        eraseSurroundWordBackwards
+        eraseSurroundWordBackwardsLast
+
+        nextSurroundRow
+
+        eraseSurroundWord
+        eraseSurroundWord
+        eraseSurroundWord
+        eraseSurroundWord
+        eraseSurroundWord
+        eraseSurroundWord
+        eraseSurroundWord
+        eraseSurroundWord
+        eraseSurroundWord
+        eraseSurroundWord
+
+        eraseSurroundWord
+        eraseSurroundWord
+        eraseSurroundWord
+        eraseSurroundWord
+        eraseSurroundWord
+        eraseSurroundWord
+        eraseSurroundWord
+        eraseSurroundWord
+        eraseSurroundWord
+        eraseSurroundWordLast
+
+        nextSurroundRow
+
+        eraseSurroundWordBackwards
+        eraseSurroundWordBackwards
+        eraseSurroundWordBackwards
+        eraseSurroundWordBackwards
+        eraseSurroundWordBackwards
+        eraseSurroundWordBackwards
+        eraseSurroundWordBackwards
+        eraseSurroundWordBackwards
+        eraseSurroundWordBackwards
+        eraseSurroundWordBackwards
+
+        eraseSurroundWordBackwards
+        eraseSurroundWordBackwards
+        eraseSurroundWordBackwards
+        eraseSurroundWordBackwards
+        eraseSurroundWordBackwards
+        eraseSurroundWordBackwards
+        eraseSurroundWordBackwards
+        eraseSurroundWordBackwards
+        eraseSurroundWordBackwards
+        eraseSurroundWordBackwardsLast
+
+        nextSurroundRow
+
+; ---------------------------
+
+        eraseSurroundWord
+        eraseSurroundWord
+        eraseSurroundWord
+        eraseSurroundWord
+        eraseSurroundWord
+        eraseSurroundWord
+        eraseSurroundWord
+        eraseSurroundWord
+        eraseSurroundWord
+        eraseSurroundWord
+
+        eraseSurroundWord
+        eraseSurroundWord
+        eraseSurroundWord
+        eraseSurroundWord
+        eraseSurroundWord
+        eraseSurroundWord
+        eraseSurroundWord
+        eraseSurroundWord
+        eraseSurroundWord
+        eraseSurroundWordLast
+
+        nextSurroundRow
+
+        eraseSurroundWordBackwards
+        eraseSurroundWordBackwards
+        eraseSurroundWordBackwards
+        eraseSurroundWordBackwards
+        eraseSurroundWordBackwards
+        eraseSurroundWordBackwards
+        eraseSurroundWordBackwards
+        eraseSurroundWordBackwards
+        eraseSurroundWordBackwards
+        eraseSurroundWordBackwards
+
+        eraseSurroundWordBackwards
+        eraseSurroundWordBackwards
+        eraseSurroundWordBackwards
+        eraseSurroundWordBackwards
+        eraseSurroundWordBackwards
+        eraseSurroundWordBackwards
+        eraseSurroundWordBackwards
+        eraseSurroundWordBackwards
+        eraseSurroundWordBackwards
+        eraseSurroundWordBackwardsLast
+
+        nextSurroundRow
+
+        eraseSurroundWord
+        eraseSurroundWord
+        eraseSurroundWord
+        eraseSurroundWord
+        eraseSurroundWord
+        eraseSurroundWord
+        eraseSurroundWord
+        eraseSurroundWord
+        eraseSurroundWord
+        eraseSurroundWord
+
+        eraseSurroundWord
+        eraseSurroundWord
+        eraseSurroundWord
+        eraseSurroundWord
+        eraseSurroundWord
+        eraseSurroundWord
+        eraseSurroundWord
+        eraseSurroundWord
+        eraseSurroundWord
+        eraseSurroundWordLast
+
+        nextSurroundRow
+
+        eraseSurroundWordBackwards
+        eraseSurroundWordBackwards
+        eraseSurroundWordBackwards
+        eraseSurroundWordBackwards
+        eraseSurroundWordBackwards
+        eraseSurroundWordBackwards
+        eraseSurroundWordBackwards
+        eraseSurroundWordBackwards
+        eraseSurroundWordBackwards
+        eraseSurroundWordBackwards
+
+        eraseSurroundWordBackwards
+        eraseSurroundWordBackwards
+        eraseSurroundWordBackwards
+        eraseSurroundWordBackwards
+        eraseSurroundWordBackwards
+        eraseSurroundWordBackwards
+        eraseSurroundWordBackwards
+        eraseSurroundWordBackwards
+        eraseSurroundWordBackwards
+        eraseSurroundWordBackwardsLast
+
+        nextSurroundRow
+
+        eraseSurroundWord
+        eraseSurroundWord
+        eraseSurroundWord
+        eraseSurroundWord
+        eraseSurroundWord
+        eraseSurroundWord
+        eraseSurroundWord
+        eraseSurroundWord
+        eraseSurroundWord
+        eraseSurroundWord
+
+        eraseSurroundWord
+        eraseSurroundWord
+        eraseSurroundWord
+        eraseSurroundWord
+        eraseSurroundWord
+        eraseSurroundWord
+        eraseSurroundWord
+        eraseSurroundWord
+        eraseSurroundWord
+        eraseSurroundWordLast
+
+        nextSurroundRow
+
+        eraseSurroundWordBackwards
+        eraseSurroundWordBackwards
+        eraseSurroundWordBackwards
+        eraseSurroundWordBackwards
+        eraseSurroundWordBackwards
+        eraseSurroundWordBackwards
+        eraseSurroundWordBackwards
+        eraseSurroundWordBackwards
+        eraseSurroundWordBackwards
+        eraseSurroundWordBackwards
+
+        eraseSurroundWordBackwards
+        eraseSurroundWordBackwards
+        eraseSurroundWordBackwards
+        eraseSurroundWordBackwards
+        eraseSurroundWordBackwards
+        eraseSurroundWordBackwards
+        eraseSurroundWordBackwards
+        eraseSurroundWordBackwards
+        eraseSurroundWordBackwards
+        eraseSurroundWordBackwardsLast
+
+        nextSurroundRow
+
+        eraseSurroundWord
+        eraseSurroundWord
+        eraseSurroundWord
+        eraseSurroundWord
+        eraseSurroundWord
+        eraseSurroundWord
+        eraseSurroundWord
+        eraseSurroundWord
+        eraseSurroundWord
+        eraseSurroundWord
+
+        eraseSurroundWord
+        eraseSurroundWord
+        eraseSurroundWord
+        eraseSurroundWord
+        eraseSurroundWord
+        eraseSurroundWord
+        eraseSurroundWord
+        eraseSurroundWord
+        eraseSurroundWord
+        eraseSurroundWordLast
+
+        nextSurroundRow
+
+        eraseSurroundWordBackwards
+        eraseSurroundWordBackwards
+        eraseSurroundWordBackwards
+        eraseSurroundWordBackwards
+        eraseSurroundWordBackwards
+        eraseSurroundWordBackwards
+        eraseSurroundWordBackwards
+        eraseSurroundWordBackwards
+        eraseSurroundWordBackwards
+        eraseSurroundWordBackwards
+
+        eraseSurroundWordBackwards
+        eraseSurroundWordBackwards
+        eraseSurroundWordBackwards
+        eraseSurroundWordBackwards
+        eraseSurroundWordBackwards
+        eraseSurroundWordBackwards
+        eraseSurroundWordBackwards
+        eraseSurroundWordBackwards
+        eraseSurroundWordBackwards
+        eraseSurroundWordBackwardsLast
+
+        nextSurroundRow
+
+        eraseSurroundWord
+        eraseSurroundWord
+        eraseSurroundWord
+        eraseSurroundWord
+        eraseSurroundWord
+        eraseSurroundWord
+        eraseSurroundWord
+        eraseSurroundWord
+        eraseSurroundWord
+        eraseSurroundWord
+
+        eraseSurroundWord
+        eraseSurroundWord
+        eraseSurroundWord
+        eraseSurroundWord
+        eraseSurroundWord
+        eraseSurroundWord
+        eraseSurroundWord
+        eraseSurroundWord
+        eraseSurroundWord
+        eraseSurroundWordLast
+
+        nextSurroundRow
+
+        eraseSurroundWordBackwards
+        eraseSurroundWordBackwards
+        eraseSurroundWordBackwards
+        eraseSurroundWordBackwards
+        eraseSurroundWordBackwards
+        eraseSurroundWordBackwards
+        eraseSurroundWordBackwards
+        eraseSurroundWordBackwards
+        eraseSurroundWordBackwards
+        eraseSurroundWordBackwards
+
+        eraseSurroundWordBackwards
+        eraseSurroundWordBackwards
+        eraseSurroundWordBackwards
+        eraseSurroundWordBackwards
+        eraseSurroundWordBackwards
+        eraseSurroundWordBackwards
+        eraseSurroundWordBackwards
+        eraseSurroundWordBackwards
+        eraseSurroundWordBackwards
+        eraseSurroundWordBackwardsLast
+
+        nextSurroundRow
+
+; ---------------------------
+
+        eraseSurroundWord
+        eraseSurroundWord
+        eraseSurroundWord
+        eraseSurroundWord
+        eraseSurroundWord
+        eraseSurroundWord
+        eraseSurroundWord
+        eraseSurroundWord
+        eraseSurroundWord
+        eraseSurroundWord
+
+        eraseSurroundWord
+        eraseSurroundWord
+        eraseSurroundWord
+        eraseSurroundWord
+        eraseSurroundWord
+        eraseSurroundWord
+        eraseSurroundWord
+        eraseSurroundWord
+        eraseSurroundWord
+        eraseSurroundWordLast
+
+        nextSurroundRow
+
+        eraseSurroundWordBackwards
+        eraseSurroundWordBackwards
+        eraseSurroundWordBackwards
+        eraseSurroundWordBackwards
+        eraseSurroundWordBackwards
+        eraseSurroundWordBackwards
+        eraseSurroundWordBackwards
+        eraseSurroundWordBackwards
+        eraseSurroundWordBackwards
+        eraseSurroundWordBackwards
+
+        eraseSurroundWordBackwards
+        eraseSurroundWordBackwards
+        eraseSurroundWordBackwards
+        eraseSurroundWordBackwards
+        eraseSurroundWordBackwards
+        eraseSurroundWordBackwards
+        eraseSurroundWordBackwards
+        eraseSurroundWordBackwards
+        eraseSurroundWordBackwards
+        eraseSurroundWordBackwardsLast
+
+        nextSurroundRow
+
+        eraseSurroundWord
+        eraseSurroundWord
+        eraseSurroundWord
+        eraseSurroundWord
+        eraseSurroundWord
+        eraseSurroundWord
+        eraseSurroundWord
+        eraseSurroundWord
+        eraseSurroundWord
+        eraseSurroundWord
+
+        eraseSurroundWord
+        eraseSurroundWord
+        eraseSurroundWord
+        eraseSurroundWord
+        eraseSurroundWord
+        eraseSurroundWord
+        eraseSurroundWord
+        eraseSurroundWord
+        eraseSurroundWord
+        eraseSurroundWordLast
+
+        nextSurroundRow
+
+        eraseSurroundWordBackwards
+        eraseSurroundWordBackwards
+        eraseSurroundWordBackwards
+        eraseSurroundWordBackwards
+        eraseSurroundWordBackwards
+        eraseSurroundWordBackwards
+        eraseSurroundWordBackwards
+        eraseSurroundWordBackwards
+        eraseSurroundWordBackwards
+        eraseSurroundWordBackwards
+
+        eraseSurroundWordBackwards
+        eraseSurroundWordBackwards
+        eraseSurroundWordBackwards
+        eraseSurroundWordBackwards
+        eraseSurroundWordBackwards
+        eraseSurroundWordBackwards
+        eraseSurroundWordBackwards
+        eraseSurroundWordBackwards
+        eraseSurroundWordBackwards
+        eraseSurroundWordBackwardsLast
+
+        nextSurroundRow
+
+        eraseSurroundWord
+        eraseSurroundWord
+        eraseSurroundWord
+        eraseSurroundWord
+        eraseSurroundWord
+        eraseSurroundWord
+        eraseSurroundWord
+        eraseSurroundWord
+        eraseSurroundWord
+        eraseSurroundWord
+
+        eraseSurroundWord
+        eraseSurroundWord
+        eraseSurroundWord
+        eraseSurroundWord
+        eraseSurroundWord
+        eraseSurroundWord
+        eraseSurroundWord
+        eraseSurroundWord
+        eraseSurroundWord
+        eraseSurroundWordLast
+
+        nextSurroundRow
+
+        eraseSurroundWordBackwards
+        eraseSurroundWordBackwards
+        eraseSurroundWordBackwards
+        eraseSurroundWordBackwards
+        eraseSurroundWordBackwards
+        eraseSurroundWordBackwards
+        eraseSurroundWordBackwards
+        eraseSurroundWordBackwards
+        eraseSurroundWordBackwards
+        eraseSurroundWordBackwards
+
+        eraseSurroundWordBackwards
+        eraseSurroundWordBackwards
+        eraseSurroundWordBackwards
+        eraseSurroundWordBackwards
+        eraseSurroundWordBackwards
+        eraseSurroundWordBackwards
+        eraseSurroundWordBackwards
+        eraseSurroundWordBackwards
+        eraseSurroundWordBackwards
+        eraseSurroundWordBackwardsLast
+
+        nextSurroundRow
+
+        eraseSurroundWord
+        eraseSurroundWord
+        eraseSurroundWord
+        eraseSurroundWord
+        eraseSurroundWord
+        eraseSurroundWord
+        eraseSurroundWord
+        eraseSurroundWord
+        eraseSurroundWord
+        eraseSurroundWord
+
+        eraseSurroundWord
+        eraseSurroundWord
+        eraseSurroundWord
+        eraseSurroundWord
+        eraseSurroundWord
+        eraseSurroundWord
+        eraseSurroundWord
+        eraseSurroundWord
+        eraseSurroundWord
+        eraseSurroundWordLast
+
+        nextSurroundRow
+
+        eraseSurroundWordBackwards
+        eraseSurroundWordBackwards
+        eraseSurroundWordBackwards
+        eraseSurroundWordBackwards
+        eraseSurroundWordBackwards
+        eraseSurroundWordBackwards
+        eraseSurroundWordBackwards
+        eraseSurroundWordBackwards
+        eraseSurroundWordBackwards
+        eraseSurroundWordBackwards
+
+        eraseSurroundWordBackwards
+        eraseSurroundWordBackwards
+        eraseSurroundWordBackwards
+        eraseSurroundWordBackwards
+        eraseSurroundWordBackwards
+        eraseSurroundWordBackwards
+        eraseSurroundWordBackwards
+        eraseSurroundWordBackwards
+        eraseSurroundWordBackwards
+        eraseSurroundWordBackwardsLast
+
+        nextSurroundRow
+
+        eraseSurroundWord
+        eraseSurroundWord
+        eraseSurroundWord
+        eraseSurroundWord
+        eraseSurroundWord
+        eraseSurroundWord
+        eraseSurroundWord
+        eraseSurroundWord
+        eraseSurroundWord
+        eraseSurroundWord
+
+        eraseSurroundWord
+        eraseSurroundWord
+        eraseSurroundWord
+        eraseSurroundWord
+        eraseSurroundWord
+        eraseSurroundWord
+        eraseSurroundWord
+        eraseSurroundWord
+        eraseSurroundWord
+        eraseSurroundWordLast
+
+        nextSurroundRow
+
+        eraseSurroundWordBackwards
+        eraseSurroundWordBackwards
+        eraseSurroundWordBackwards
+        eraseSurroundWordBackwards
+        eraseSurroundWordBackwards
+        eraseSurroundWordBackwards
+        eraseSurroundWordBackwards
+        eraseSurroundWordBackwards
+        eraseSurroundWordBackwards
+        eraseSurroundWordBackwards
+
+        eraseSurroundWordBackwards
+        eraseSurroundWordBackwards
+        eraseSurroundWordBackwards
+        eraseSurroundWordBackwards
+        eraseSurroundWordBackwards
+        eraseSurroundWordBackwards
+        eraseSurroundWordBackwards
+        eraseSurroundWordBackwards
+        eraseSurroundWordBackwards
+        eraseSurroundWordBackwardsLast
+
+        nextSurroundRow
+
+; ---------------------------
+
+        eraseSurroundWord
+        eraseSurroundWord
+        eraseSurroundWord
+        eraseSurroundWord
+        eraseSurroundWord
+        eraseSurroundWord
+        eraseSurroundWord
+        eraseSurroundWord
+        eraseSurroundWord
+        eraseSurroundWord
+
+        eraseSurroundWord
+        eraseSurroundWord
+        eraseSurroundWord
+        eraseSurroundWord
+        eraseSurroundWord
+        eraseSurroundWord
+        eraseSurroundWord
+        eraseSurroundWord
+        eraseSurroundWord
+        eraseSurroundWordLast
+
+        nextSurroundRow
+
+        eraseSurroundWordBackwards
+        eraseSurroundWordBackwards
+        eraseSurroundWordBackwards
+        eraseSurroundWordBackwards
+        eraseSurroundWordBackwards
+        eraseSurroundWordBackwards
+        eraseSurroundWordBackwards
+        eraseSurroundWordBackwards
+        eraseSurroundWordBackwards
+        eraseSurroundWordBackwards
+
+        eraseSurroundWordBackwards
+        eraseSurroundWordBackwards
+        eraseSurroundWordBackwards
+        eraseSurroundWordBackwards
+        eraseSurroundWordBackwards
+        eraseSurroundWordBackwards
+        eraseSurroundWordBackwards
+        eraseSurroundWordBackwards
+        eraseSurroundWordBackwards
+        eraseSurroundWordBackwardsLast
+
+        nextSurroundRow
+
+        eraseSurroundWord
+        eraseSurroundWord
+        eraseSurroundWord
+        eraseSurroundWord
+        eraseSurroundWord
+        eraseSurroundWord
+        eraseSurroundWord
+        eraseSurroundWord
+        eraseSurroundWord
+        eraseSurroundWord
+
+        eraseSurroundWord
+        eraseSurroundWord
+        eraseSurroundWord
+        eraseSurroundWord
+        eraseSurroundWord
+        eraseSurroundWord
+        eraseSurroundWord
+        eraseSurroundWord
+        eraseSurroundWord
+        eraseSurroundWordLast
+
+        nextSurroundRow
+
+        eraseSurroundWordBackwards
+        eraseSurroundWordBackwards
+        eraseSurroundWordBackwards
+        eraseSurroundWordBackwards
+        eraseSurroundWordBackwards
+        eraseSurroundWordBackwards
+        eraseSurroundWordBackwards
+        eraseSurroundWordBackwards
+        eraseSurroundWordBackwards
+        eraseSurroundWordBackwards
+
+        eraseSurroundWordBackwards
+        eraseSurroundWordBackwards
+        eraseSurroundWordBackwards
+        eraseSurroundWordBackwards
+        eraseSurroundWordBackwards
+        eraseSurroundWordBackwards
+        eraseSurroundWordBackwards
+        eraseSurroundWordBackwards
+        eraseSurroundWordBackwards
+        eraseSurroundWordBackwardsLast
+
+        nextSurroundRow
+
+        eraseSurroundWord
+        eraseSurroundWord
+        eraseSurroundWord
+        eraseSurroundWord
+        eraseSurroundWord
+        eraseSurroundWord
+        eraseSurroundWord
+        eraseSurroundWord
+        eraseSurroundWord
+        eraseSurroundWord
+
+        eraseSurroundWord
+        eraseSurroundWord
+        eraseSurroundWord
+        eraseSurroundWord
+        eraseSurroundWord
+        eraseSurroundWord
+        eraseSurroundWord
+        eraseSurroundWord
+        eraseSurroundWord
+        eraseSurroundWordLast
+
+        nextSurroundRow
+
+        eraseSurroundWordBackwards
+        eraseSurroundWordBackwards
+        eraseSurroundWordBackwards
+        eraseSurroundWordBackwards
+        eraseSurroundWordBackwards
+        eraseSurroundWordBackwards
+        eraseSurroundWordBackwards
+        eraseSurroundWordBackwards
+        eraseSurroundWordBackwards
+        eraseSurroundWordBackwards
+
+        eraseSurroundWordBackwards
+        eraseSurroundWordBackwards
+        eraseSurroundWordBackwards
+        eraseSurroundWordBackwards
+        eraseSurroundWordBackwards
+        eraseSurroundWordBackwards
+        eraseSurroundWordBackwards
+        eraseSurroundWordBackwards
+        eraseSurroundWordBackwards
+        eraseSurroundWordBackwardsLast
+
+        nextSurroundRow
+
+        eraseSurroundWord
+        eraseSurroundWord
+        eraseSurroundWord
+        eraseSurroundWord
+        eraseSurroundWord
+        eraseSurroundWord
+        eraseSurroundWord
+        eraseSurroundWord
+        eraseSurroundWord
+        eraseSurroundWord
+
+        eraseSurroundWord
+        eraseSurroundWord
+        eraseSurroundWord
+        eraseSurroundWord
+        eraseSurroundWord
+        eraseSurroundWord
+        eraseSurroundWord
+        eraseSurroundWord
+        eraseSurroundWord
+        eraseSurroundWordLast
+
+        nextSurroundRow
+
+        eraseSurroundWordBackwards
+        eraseSurroundWordBackwards
+        eraseSurroundWordBackwards
+        eraseSurroundWordBackwards
+        eraseSurroundWordBackwards
+        eraseSurroundWordBackwards
+        eraseSurroundWordBackwards
+        eraseSurroundWordBackwards
+        eraseSurroundWordBackwards
+        eraseSurroundWordBackwards
+
+        eraseSurroundWordBackwards
+        eraseSurroundWordBackwards
+        eraseSurroundWordBackwards
+        eraseSurroundWordBackwards
+        eraseSurroundWordBackwards
+        eraseSurroundWordBackwards
+        eraseSurroundWordBackwards
+        eraseSurroundWordBackwards
+        eraseSurroundWordBackwards
+        eraseSurroundWordBackwardsLast
+
+        nextSurroundRow
+
+        eraseSurroundWord
+        eraseSurroundWord
+        eraseSurroundWord
+        eraseSurroundWord
+        eraseSurroundWord
+        eraseSurroundWord
+        eraseSurroundWord
+        eraseSurroundWord
+        eraseSurroundWord
+        eraseSurroundWord
+
+        eraseSurroundWord
+        eraseSurroundWord
+        eraseSurroundWord
+        eraseSurroundWord
+        eraseSurroundWord
+        eraseSurroundWord
+        eraseSurroundWord
+        eraseSurroundWord
+        eraseSurroundWord
+        eraseSurroundWordLast
+
+        nextSurroundRow
+
+        eraseSurroundWordBackwards
+        eraseSurroundWordBackwards
+        eraseSurroundWordBackwards
+        eraseSurroundWordBackwards
+        eraseSurroundWordBackwards
+        eraseSurroundWordBackwards
+        eraseSurroundWordBackwards
+        eraseSurroundWordBackwards
+        eraseSurroundWordBackwards
+        eraseSurroundWordBackwards
+
+        eraseSurroundWordBackwards
+        eraseSurroundWordBackwards
+        eraseSurroundWordBackwards
+        eraseSurroundWordBackwards
+        eraseSurroundWordBackwards
+        eraseSurroundWordBackwards
+        eraseSurroundWordBackwards
+        eraseSurroundWordBackwards
+        eraseSurroundWordBackwards
+        eraseSurroundWordBackwardsLast
+
+        nextSurroundRow
+
+; ---------------------------
+
+        eraseSurroundWord
+        eraseSurroundWord
+        eraseSurroundWord
+        eraseSurroundWord
+        eraseSurroundWord
+        eraseSurroundWord
+        eraseSurroundWord
+        eraseSurroundWord
+        eraseSurroundWord
+        eraseSurroundWord
+
+        eraseSurroundWord
+        eraseSurroundWord
+        eraseSurroundWord
+        eraseSurroundWord
+        eraseSurroundWord
+        eraseSurroundWord
+        eraseSurroundWord
+        eraseSurroundWord
+        eraseSurroundWord
+        eraseSurroundWordLast
+
+        nextSurroundRow
+
+        eraseSurroundWordBackwards
+        eraseSurroundWordBackwards
+        eraseSurroundWordBackwards
+        eraseSurroundWordBackwards
+        eraseSurroundWordBackwards
+        eraseSurroundWordBackwards
+        eraseSurroundWordBackwards
+        eraseSurroundWordBackwards
+        eraseSurroundWordBackwards
+        eraseSurroundWordBackwards
+
+        eraseSurroundWordBackwards
+        eraseSurroundWordBackwards
+        eraseSurroundWordBackwards
+        eraseSurroundWordBackwards
+        eraseSurroundWordBackwards
+        eraseSurroundWordBackwards
+        eraseSurroundWordBackwards
+        eraseSurroundWordBackwards
+        eraseSurroundWordBackwards
+        eraseSurroundWordBackwardsLast
+
+        nextSurroundRow
+
+        eraseSurroundWord
+        eraseSurroundWord
+        eraseSurroundWord
+        eraseSurroundWord
+        eraseSurroundWord
+        eraseSurroundWord
+        eraseSurroundWord
+        eraseSurroundWord
+        eraseSurroundWord
+        eraseSurroundWord
+
+        eraseSurroundWord
+        eraseSurroundWord
+        eraseSurroundWord
+        eraseSurroundWord
+        eraseSurroundWord
+        eraseSurroundWord
+        eraseSurroundWord
+        eraseSurroundWord
+        eraseSurroundWord
+        eraseSurroundWordLast
+
+        nextSurroundRow
+
+        eraseSurroundWordBackwards
+        eraseSurroundWordBackwards
+        eraseSurroundWordBackwards
+        eraseSurroundWordBackwards
+        eraseSurroundWordBackwards
+        eraseSurroundWordBackwards
+        eraseSurroundWordBackwards
+        eraseSurroundWordBackwards
+        eraseSurroundWordBackwards
+        eraseSurroundWordBackwards
+
+        eraseSurroundWordBackwards
+        eraseSurroundWordBackwards
+        eraseSurroundWordBackwards
+        eraseSurroundWordBackwards
+        eraseSurroundWordBackwards
+        eraseSurroundWordBackwards
+        eraseSurroundWordBackwards
+        eraseSurroundWordBackwards
+        eraseSurroundWordBackwards
+        eraseSurroundWordBackwardsLast
+
+        nextSurroundRow
+
+        eraseSurroundWord
+        eraseSurroundWord
+        eraseSurroundWord
+        eraseSurroundWord
+        eraseSurroundWord
+        eraseSurroundWord
+        eraseSurroundWord
+        eraseSurroundWord
+        eraseSurroundWord
+        eraseSurroundWord
+
+        eraseSurroundWord
+        eraseSurroundWord
+        eraseSurroundWord
+        eraseSurroundWord
+        eraseSurroundWord
+        eraseSurroundWord
+        eraseSurroundWord
+        eraseSurroundWord
+        eraseSurroundWord
+        eraseSurroundWordLast
+
+        nextSurroundRow
+
+        eraseSurroundWordBackwards
+        eraseSurroundWordBackwards
+        eraseSurroundWordBackwards
+        eraseSurroundWordBackwards
+        eraseSurroundWordBackwards
+        eraseSurroundWordBackwards
+        eraseSurroundWordBackwards
+        eraseSurroundWordBackwards
+        eraseSurroundWordBackwards
+        eraseSurroundWordBackwards
+
+        eraseSurroundWordBackwards
+        eraseSurroundWordBackwards
+        eraseSurroundWordBackwards
+        eraseSurroundWordBackwards
+        eraseSurroundWordBackwards
+        eraseSurroundWordBackwards
+        eraseSurroundWordBackwards
+        eraseSurroundWordBackwards
+        eraseSurroundWordBackwards
+        eraseSurroundWordBackwardsLast
+
+        nextSurroundRow
+
+        eraseSurroundWord
+        eraseSurroundWord
+        eraseSurroundWord
+        eraseSurroundWord
+        eraseSurroundWord
+        eraseSurroundWord
+        eraseSurroundWord
+        eraseSurroundWord
+        eraseSurroundWord
+        eraseSurroundWord
+
+        eraseSurroundWord
+        eraseSurroundWord
+        eraseSurroundWord
+        eraseSurroundWord
+        eraseSurroundWord
+        eraseSurroundWord
+        eraseSurroundWord
+        eraseSurroundWord
+        eraseSurroundWord
+        eraseSurroundWordLast
+
+        nextSurroundRow
+
+        eraseSurroundWordBackwards
+        eraseSurroundWordBackwards
+        eraseSurroundWordBackwards
+        eraseSurroundWordBackwards
+        eraseSurroundWordBackwards
+        eraseSurroundWordBackwards
+        eraseSurroundWordBackwards
+        eraseSurroundWordBackwards
+        eraseSurroundWordBackwards
+        eraseSurroundWordBackwards
+
+        eraseSurroundWordBackwards
+        eraseSurroundWordBackwards
+        eraseSurroundWordBackwards
+        eraseSurroundWordBackwards
+        eraseSurroundWordBackwards
+        eraseSurroundWordBackwards
+        eraseSurroundWordBackwards
+        eraseSurroundWordBackwards
+        eraseSurroundWordBackwards
+        eraseSurroundWordBackwardsLast
+
+        nextSurroundRow
+
+        eraseSurroundWord
+        eraseSurroundWord
+        eraseSurroundWord
+        eraseSurroundWord
+        eraseSurroundWord
+        eraseSurroundWord
+        eraseSurroundWord
+        eraseSurroundWord
+        eraseSurroundWord
+        eraseSurroundWord
+
+        eraseSurroundWord
+        eraseSurroundWord
+        eraseSurroundWord
+        eraseSurroundWord
+        eraseSurroundWord
+        eraseSurroundWord
+        eraseSurroundWord
+        eraseSurroundWord
+        eraseSurroundWord
+        eraseSurroundWordLast
+
+        nextSurroundRow
+
+        eraseSurroundWordBackwards
+        eraseSurroundWordBackwards
+        eraseSurroundWordBackwards
+        eraseSurroundWordBackwards
+        eraseSurroundWordBackwards
+        eraseSurroundWordBackwards
+        eraseSurroundWordBackwards
+        eraseSurroundWordBackwards
+        eraseSurroundWordBackwards
+        eraseSurroundWordBackwards
+
+        eraseSurroundWordBackwards
+        eraseSurroundWordBackwards
+        eraseSurroundWordBackwards
+        eraseSurroundWordBackwards
+        eraseSurroundWordBackwards
+        eraseSurroundWordBackwards
+        eraseSurroundWordBackwards
+        eraseSurroundWordBackwards
+        eraseSurroundWordBackwards
+        eraseSurroundWordBackwardsLast
+
+        nextSurroundRow
+
+; ---------------------------
+
+        eraseSurroundWord
+        eraseSurroundWord
+        eraseSurroundWord
+        eraseSurroundWord
+        eraseSurroundWord
+        eraseSurroundWord
+        eraseSurroundWord
+        eraseSurroundWord
+        eraseSurroundWord
+        eraseSurroundWord
+
+        eraseSurroundWord
+        eraseSurroundWord
+        eraseSurroundWord
+        eraseSurroundWord
+        eraseSurroundWord
+        eraseSurroundWord
+        eraseSurroundWord
+        eraseSurroundWord
+        eraseSurroundWord
+        eraseSurroundWordLast
+
+        nextSurroundRow
+
+        eraseSurroundWordBackwards
+        eraseSurroundWordBackwards
+        eraseSurroundWordBackwards
+        eraseSurroundWordBackwards
+        eraseSurroundWordBackwards
+        eraseSurroundWordBackwards
+        eraseSurroundWordBackwards
+        eraseSurroundWordBackwards
+        eraseSurroundWordBackwards
+        eraseSurroundWordBackwards
+
+        eraseSurroundWordBackwards
+        eraseSurroundWordBackwards
+        eraseSurroundWordBackwards
+        eraseSurroundWordBackwards
+        eraseSurroundWordBackwards
+        eraseSurroundWordBackwards
+        eraseSurroundWordBackwards
+        eraseSurroundWordBackwards
+        eraseSurroundWordBackwards
+        eraseSurroundWordBackwardsLast
+
+        nextSurroundRow
+
+        eraseSurroundWord
+        eraseSurroundWord
+        eraseSurroundWord
+        eraseSurroundWord
+        eraseSurroundWord
+        eraseSurroundWord
+        eraseSurroundWord
+        eraseSurroundWord
+        eraseSurroundWord
+        eraseSurroundWord
+
+        eraseSurroundWord
+        eraseSurroundWord
+        eraseSurroundWord
+        eraseSurroundWord
+        eraseSurroundWord
+        eraseSurroundWord
+        eraseSurroundWord
+        eraseSurroundWord
+        eraseSurroundWord
+        eraseSurroundWordLast
+
+        nextSurroundRow
+
+        eraseSurroundWordBackwards
+        eraseSurroundWordBackwards
+        eraseSurroundWordBackwards
+        eraseSurroundWordBackwards
+        eraseSurroundWordBackwards
+        eraseSurroundWordBackwards
+        eraseSurroundWordBackwards
+        eraseSurroundWordBackwards
+        eraseSurroundWordBackwards
+        eraseSurroundWordBackwards
+
+        eraseSurroundWordBackwards
+        eraseSurroundWordBackwards
+        eraseSurroundWordBackwards
+        eraseSurroundWordBackwards
+        eraseSurroundWordBackwards
+        eraseSurroundWordBackwards
+        eraseSurroundWordBackwards
+        eraseSurroundWordBackwards
+        eraseSurroundWordBackwards
+        eraseSurroundWordBackwardsLast
+
+        nextSurroundRow
+
+        eraseSurroundWord
+        eraseSurroundWord
+        eraseSurroundWord
+        eraseSurroundWord
+        eraseSurroundWord
+        eraseSurroundWord
+        eraseSurroundWord
+        eraseSurroundWord
+        eraseSurroundWord
+        eraseSurroundWord
+
+        eraseSurroundWord
+        eraseSurroundWord
+        eraseSurroundWord
+        eraseSurroundWord
+        eraseSurroundWord
+        eraseSurroundWord
+        eraseSurroundWord
+        eraseSurroundWord
+        eraseSurroundWord
+        eraseSurroundWordLast
+
+        nextSurroundRow
+
+        eraseSurroundWordBackwards
+        eraseSurroundWordBackwards
+        eraseSurroundWordBackwards
+        eraseSurroundWordBackwards
+        eraseSurroundWordBackwards
+        eraseSurroundWordBackwards
+        eraseSurroundWordBackwards
+        eraseSurroundWordBackwards
+        eraseSurroundWordBackwards
+        eraseSurroundWordBackwards
+
+        eraseSurroundWordBackwards
+        eraseSurroundWordBackwards
+        eraseSurroundWordBackwards
+        eraseSurroundWordBackwards
+        eraseSurroundWordBackwards
+        eraseSurroundWordBackwards
+        eraseSurroundWordBackwards
+        eraseSurroundWordBackwards
+        eraseSurroundWordBackwards
+        eraseSurroundWordBackwardsLast
+
+        nextSurroundRow
+
+        eraseSurroundWord
+        eraseSurroundWord
+        eraseSurroundWord
+        eraseSurroundWord
+        eraseSurroundWord
+        eraseSurroundWord
+        eraseSurroundWord
+        eraseSurroundWord
+        eraseSurroundWord
+        eraseSurroundWord
+
+        eraseSurroundWord
+        eraseSurroundWord
+        eraseSurroundWord
+        eraseSurroundWord
+        eraseSurroundWord
+        eraseSurroundWord
+        eraseSurroundWord
+        eraseSurroundWord
+        eraseSurroundWord
+        eraseSurroundWordLast
+
+        nextSurroundRow
+
+        eraseSurroundWordBackwards
+        eraseSurroundWordBackwards
+        eraseSurroundWordBackwards
+        eraseSurroundWordBackwards
+        eraseSurroundWordBackwards
+        eraseSurroundWordBackwards
+        eraseSurroundWordBackwards
+        eraseSurroundWordBackwards
+        eraseSurroundWordBackwards
+        eraseSurroundWordBackwards
+
+        eraseSurroundWordBackwards
+        eraseSurroundWordBackwards
+        eraseSurroundWordBackwards
+        eraseSurroundWordBackwards
+        eraseSurroundWordBackwards
+        eraseSurroundWordBackwards
+        eraseSurroundWordBackwards
+        eraseSurroundWordBackwards
+        eraseSurroundWordBackwards
+        eraseSurroundWordBackwardsLast
+
+        nextSurroundRow
+
+        eraseSurroundWord
+        eraseSurroundWord
+        eraseSurroundWord
+        eraseSurroundWord
+        eraseSurroundWord
+        eraseSurroundWord
+        eraseSurroundWord
+        eraseSurroundWord
+        eraseSurroundWord
+        eraseSurroundWord
+
+        eraseSurroundWord
+        eraseSurroundWord
+        eraseSurroundWord
+        eraseSurroundWord
+        eraseSurroundWord
+        eraseSurroundWord
+        eraseSurroundWord
+        eraseSurroundWord
+        eraseSurroundWord
+        eraseSurroundWordLast
+
+        nextSurroundRow
+
+        eraseSurroundWordBackwards
+        eraseSurroundWordBackwards
+        eraseSurroundWordBackwards
+        eraseSurroundWordBackwards
+        eraseSurroundWordBackwards
+        eraseSurroundWordBackwards
+        eraseSurroundWordBackwards
+        eraseSurroundWordBackwards
+        eraseSurroundWordBackwards
+        eraseSurroundWordBackwards
+
+        eraseSurroundWordBackwards
+        eraseSurroundWordBackwards
+        eraseSurroundWordBackwards
+        eraseSurroundWordBackwards
+        eraseSurroundWordBackwards
+        eraseSurroundWordBackwards
+        eraseSurroundWordBackwards
+        eraseSurroundWordBackwards
+        eraseSurroundWordBackwards
+        eraseSurroundWordBackwardsLast
+
+        nextSurroundRow
+
+; ---------------------------
+
+        eraseSurroundWord
+        eraseSurroundWord
+        eraseSurroundWord
+        eraseSurroundWord
+        eraseSurroundWord
+        eraseSurroundWord
+        eraseSurroundWord
+        eraseSurroundWord
+        eraseSurroundWord
+        eraseSurroundWord
+
+        eraseSurroundWord
+        eraseSurroundWord
+        eraseSurroundWord
+        eraseSurroundWord
+        eraseSurroundWord
+        eraseSurroundWord
+        eraseSurroundWord
+        eraseSurroundWord
+        eraseSurroundWord
+        eraseSurroundWordLast
+
+        nextSurroundRow
+
+        eraseSurroundWordBackwards
+        eraseSurroundWordBackwards
+        eraseSurroundWordBackwards
+        eraseSurroundWordBackwards
+        eraseSurroundWordBackwards
+        eraseSurroundWordBackwards
+        eraseSurroundWordBackwards
+        eraseSurroundWordBackwards
+        eraseSurroundWordBackwards
+        eraseSurroundWordBackwards
+
+        eraseSurroundWordBackwards
+        eraseSurroundWordBackwards
+        eraseSurroundWordBackwards
+        eraseSurroundWordBackwards
+        eraseSurroundWordBackwards
+        eraseSurroundWordBackwards
+        eraseSurroundWordBackwards
+        eraseSurroundWordBackwards
+        eraseSurroundWordBackwards
+        eraseSurroundWordBackwardsLast
+
+        nextSurroundRow
+
+        eraseSurroundWord
+        eraseSurroundWord
+        eraseSurroundWord
+        eraseSurroundWord
+        eraseSurroundWord
+        eraseSurroundWord
+        eraseSurroundWord
+        eraseSurroundWord
+        eraseSurroundWord
+        eraseSurroundWord
+
+        eraseSurroundWord
+        eraseSurroundWord
+        eraseSurroundWord
+        eraseSurroundWord
+        eraseSurroundWord
+        eraseSurroundWord
+        eraseSurroundWord
+        eraseSurroundWord
+        eraseSurroundWord
+        eraseSurroundWordLast
+
+        nextSurroundRow
+
+        eraseSurroundWordBackwards
+        eraseSurroundWordBackwards
+        eraseSurroundWordBackwards
+        eraseSurroundWordBackwards
+        eraseSurroundWordBackwards
+        eraseSurroundWordBackwards
+        eraseSurroundWordBackwards
+        eraseSurroundWordBackwards
+        eraseSurroundWordBackwards
+        eraseSurroundWordBackwards
+
+        eraseSurroundWordBackwards
+        eraseSurroundWordBackwards
+        eraseSurroundWordBackwards
+        eraseSurroundWordBackwards
+        eraseSurroundWordBackwards
+        eraseSurroundWordBackwards
+        eraseSurroundWordBackwards
+        eraseSurroundWordBackwards
+        eraseSurroundWordBackwards
+        eraseSurroundWordBackwardsLast
+
+        nextSurroundRow
+
+        eraseSurroundWord
+        eraseSurroundWord
+        eraseSurroundWord
+        eraseSurroundWord
+        eraseSurroundWord
+        eraseSurroundWord
+        eraseSurroundWord
+        eraseSurroundWord
+        eraseSurroundWord
+        eraseSurroundWord
+
+        eraseSurroundWord
+        eraseSurroundWord
+        eraseSurroundWord
+        eraseSurroundWord
+        eraseSurroundWord
+        eraseSurroundWord
+        eraseSurroundWord
+        eraseSurroundWord
+        eraseSurroundWord
+        eraseSurroundWordLast
+
+        nextSurroundRow
+
+        eraseSurroundWordBackwards
+        eraseSurroundWordBackwards
+        eraseSurroundWordBackwards
+        eraseSurroundWordBackwards
+        eraseSurroundWordBackwards
+        eraseSurroundWordBackwards
+        eraseSurroundWordBackwards
+        eraseSurroundWordBackwards
+        eraseSurroundWordBackwards
+        eraseSurroundWordBackwards
+
+        eraseSurroundWordBackwards
+        eraseSurroundWordBackwards
+        eraseSurroundWordBackwards
+        eraseSurroundWordBackwards
+        eraseSurroundWordBackwards
+        eraseSurroundWordBackwards
+        eraseSurroundWordBackwards
+        eraseSurroundWordBackwards
+        eraseSurroundWordBackwards
+        eraseSurroundWordBackwardsLast
+
+        nextSurroundRow
+
+        eraseSurroundWord
+        eraseSurroundWord
+        eraseSurroundWord
+        eraseSurroundWord
+        eraseSurroundWord
+        eraseSurroundWord
+        eraseSurroundWord
+        eraseSurroundWord
+        eraseSurroundWord
+        eraseSurroundWord
+
+        eraseSurroundWord
+        eraseSurroundWord
+        eraseSurroundWord
+        eraseSurroundWord
+        eraseSurroundWord
+        eraseSurroundWord
+        eraseSurroundWord
+        eraseSurroundWord
+        eraseSurroundWord
+        eraseSurroundWordLast
+
+        nextSurroundRow
+
+        eraseSurroundWordBackwards
+        eraseSurroundWordBackwards
+        eraseSurroundWordBackwards
+        eraseSurroundWordBackwards
+        eraseSurroundWordBackwards
+        eraseSurroundWordBackwards
+        eraseSurroundWordBackwards
+        eraseSurroundWordBackwards
+        eraseSurroundWordBackwards
+        eraseSurroundWordBackwards
+
+        eraseSurroundWordBackwards
+        eraseSurroundWordBackwards
+        eraseSurroundWordBackwards
+        eraseSurroundWordBackwards
+        eraseSurroundWordBackwards
+        eraseSurroundWordBackwards
+        eraseSurroundWordBackwards
+        eraseSurroundWordBackwards
+        eraseSurroundWordBackwards
+        eraseSurroundWordBackwardsLast
+
+        nextSurroundRow
+
+        eraseSurroundWord
+        eraseSurroundWord
+        eraseSurroundWord
+        eraseSurroundWord
+        eraseSurroundWord
+        eraseSurroundWord
+        eraseSurroundWord
+        eraseSurroundWord
+        eraseSurroundWord
+        eraseSurroundWord
+
+        eraseSurroundWord
+        eraseSurroundWord
+        eraseSurroundWord
+        eraseSurroundWord
+        eraseSurroundWord
+        eraseSurroundWord
+        eraseSurroundWord
+        eraseSurroundWord
+        eraseSurroundWord
+        eraseSurroundWordLast
+
+        nextSurroundRow
+
+        eraseSurroundWordBackwards
+        eraseSurroundWordBackwards
+        eraseSurroundWordBackwards
+        eraseSurroundWordBackwards
+        eraseSurroundWordBackwards
+        eraseSurroundWordBackwards
+        eraseSurroundWordBackwards
+        eraseSurroundWordBackwards
+        eraseSurroundWordBackwards
+        eraseSurroundWordBackwards
+
+        eraseSurroundWordBackwards
+        eraseSurroundWordBackwards
+        eraseSurroundWordBackwards
+        eraseSurroundWordBackwards
+        eraseSurroundWordBackwards
+        eraseSurroundWordBackwards
+        eraseSurroundWordBackwards
+        eraseSurroundWordBackwards
+        eraseSurroundWordBackwards
+        eraseSurroundWordBackwardsLast
+
+
+; ---------------------------
+
+
+        rtl
+
+
+
         end

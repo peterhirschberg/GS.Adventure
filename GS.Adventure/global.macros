@@ -92,6 +92,40 @@ dontDrawSurround_&SYSCNT anop
         mend
 
 
+
+        macro
+        eraseSurroundWord
+        lda >BACKGROUND_ADDR,x
+        sta >SCREEN_ADDR,x
+        inx
+        inx
+        mend
+
+
+        macro
+        eraseSurroundWordLast
+        lda >BACKGROUND_ADDR,x
+        sta >SCREEN_ADDR,x
+        mend
+
+
+        macro
+        eraseSurroundWordBackwards
+        lda >BACKGROUND_ADDR,x
+        sta >SCREEN_ADDR,x
+        dex
+        dex
+        mend
+
+
+        macro
+        eraseSurroundWordBackwardsLast
+        lda >BACKGROUND_ADDR,x
+        sta >SCREEN_ADDR,x
+        mend
+
+
+
         macro
         nextSurroundRow
         txa

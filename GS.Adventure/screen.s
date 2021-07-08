@@ -669,59 +669,6 @@ eraseDone2 anop
 
 
 
-eraseSurroundRect entry
-
-        lda rectX
-        lsr a
-        sta rectX
-
-        lda #80
-        sta rowCounter
-
-eraseSurroundVLoop anop
-
-        lda rectY
-        clc
-        adc rowCounter
-        asl a
-        tax
-        lda screenRowOffsets,x
-        clc
-        adc rectX
-        tax
-
-        blitBackgroundWord
-        blitBackgroundWord
-        blitBackgroundWord
-        blitBackgroundWord
-        blitBackgroundWord
-        blitBackgroundWord
-        blitBackgroundWord
-        blitBackgroundWord
-        blitBackgroundWord
-        blitBackgroundWord
-
-        blitBackgroundWord
-        blitBackgroundWord
-        blitBackgroundWord
-        blitBackgroundWord
-        blitBackgroundWord
-        blitBackgroundWord
-        blitBackgroundWord
-        blitBackgroundWord
-        blitBackgroundWord
-        blitBackgroundWord
-
-        dec rowCounter
-        lda rowCounter
-        bmi eraseSurroundDone
-        jmp eraseSurroundVLoop
-
-eraseSurroundDone anop
-        rts
-
-
-
 columnCounter dc i2'0'
 rowCounter dc i2'0'
 rowOffset dc i4'0'
