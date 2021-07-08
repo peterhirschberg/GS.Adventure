@@ -675,22 +675,16 @@ drawSurroundRect entry
         lsr a
         sta rectX
 
-        lda rectWidth
-        lsr a
-        sta rectWidth
-
-
         ldy #COLOR_ORANGE
 
-
-        lda #0
+        lda #80
         sta rowCounter
 
-eraseVLoop3 anop
-        lda rowCounter
-        clc
-        adc rectY
+drawSurroundVLoop anop
 
+        lda rectY
+        clc
+        adc rowCounter
         asl a
         tax
         lda screenRowOffsets,x
@@ -698,40 +692,34 @@ eraseVLoop3 anop
         adc rectX
         tax
 
-        lda rectWidth
-        sta columnCounter
+        drawSurroundWord
+        drawSurroundWord
+        drawSurroundWord
+        drawSurroundWord
+        drawSurroundWord
+        drawSurroundWord
+        drawSurroundWord
+        drawSurroundWord
+        drawSurroundWord
+        drawSurroundWord
 
-eraseHLoop3 anop
+        drawSurroundWord
+        drawSurroundWord
+        drawSurroundWord
+        drawSurroundWord
+        drawSurroundWord
+        drawSurroundWord
+        drawSurroundWord
+        drawSurroundWord
+        drawSurroundWord
+        drawSurroundWord
 
-        lda >BACKGROUND_ADDR,x
-
-        cmp #COLOR_LTGRAY
-        bne dontDrawSurround
-
-        tya
-        sta >SCREEN_ADDR,x
-
-dontDrawSurround anop
-
-        inx
-        inx
-
-        dec columnCounter
-        dec columnCounter
-
-        lda columnCounter
-        bmi nextRow4
-        jmp eraseHLoop3
-
-nextRow4 anop
-        inc rowCounter
+        dec rowCounter
         lda rowCounter
-        cmp rectHeight
-        beq eraseDone3
-        bra eraseVLoop3
+        bmi drawSurroundDone
+        jmp drawSurroundVLoop
 
-eraseDone3 anop
-
+drawSurroundDone anop
         rts
 
 
@@ -742,19 +730,14 @@ eraseSurroundRect entry
         lsr a
         sta rectX
 
-        lda rectWidth
-        lsr a
-        sta rectWidth
-
-
-        lda #0
+        lda #80
         sta rowCounter
 
-eraseVLoop4 anop
-        lda rowCounter
-        clc
-        adc rectY
+eraseSurroundVLoop anop
 
+        lda rectY
+        clc
+        adc rowCounter
         asl a
         tax
         lda screenRowOffsets,x
@@ -762,34 +745,36 @@ eraseVLoop4 anop
         adc rectX
         tax
 
-        lda rectWidth
-        sta columnCounter
+        blitBackgroundWord
+        blitBackgroundWord
+        blitBackgroundWord
+        blitBackgroundWord
+        blitBackgroundWord
+        blitBackgroundWord
+        blitBackgroundWord
+        blitBackgroundWord
+        blitBackgroundWord
+        blitBackgroundWord
 
-eraseHLoop4 anop
+        blitBackgroundWord
+        blitBackgroundWord
+        blitBackgroundWord
+        blitBackgroundWord
+        blitBackgroundWord
+        blitBackgroundWord
+        blitBackgroundWord
+        blitBackgroundWord
+        blitBackgroundWord
+        blitBackgroundWord
 
-        lda >BACKGROUND_ADDR,x
-        sta >SCREEN_ADDR,x
-
-        inx
-        inx
-
-        dec columnCounter
-        dec columnCounter
-
-        lda columnCounter
-        bmi nextRow5
-        jmp eraseHLoop4
-
-nextRow5 anop
-        inc rowCounter
+        dec rowCounter
         lda rowCounter
-        cmp rectHeight
-        beq eraseDone4
-        bra eraseVLoop4
+        bmi eraseSurroundDone
+        jmp eraseSurroundVLoop
 
-eraseDone4 anop
-
+eraseSurroundDone anop
         rts
+
 
 
 columnCounter dc i2'0'

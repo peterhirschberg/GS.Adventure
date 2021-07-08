@@ -88,47 +88,6 @@ checkDone2 anop
 
 drawSurround entry
 
-
-        lda surroundAllDirty
-        cmp #1
-        bne goDraw
-
-        stz surroundAllDirty
-
-        lda playerX
-        sec
-        sbc #SURROUND_OFFSET_X
-        and #$fff0
-        sta rectX
-        sta surroundX
-
-        lda playerY
-        sec
-        sbc #SURROUND_OFFSET_Y
-        and #$fff0
-        sta rectY
-        sta surroundY
-
-        lda #SURROUND_WIDTH
-        sta rectWidth
-
-        lda #SURROUND_HEIGHT
-        sta rectHeight
-
-        lda surroundX
-        sta surroundOldX
-        sta eraseX
-
-        lda surroundY
-        sta surroundOldY
-        sta eraseY
-
-        jsr drawSurroundRect
-
-        rts
-
-goDraw anop
-
         lda playerX
         sec
         sbc #SURROUND_OFFSET_X
@@ -149,6 +108,11 @@ goDraw anop
         lda surroundDrawDirty
         cmp #1
         bne noDrawDone
+
+; --------------------------------------
+
+        jsr drawSurroundRect
+        jmp drawDone
 
 ; --------------------------------------
 
@@ -322,6 +286,21 @@ eraseSurround entry
         lda surroundEraseDirty
         cmp #1
         bne eraseDone
+
+        lda eraseX
+        sta rectX
+        lda eraseY
+        sta rectY
+
+        jsr eraseSurroundRect
+
+        stz surroundEraseDirty
+
+        rts
+
+
+
+
 
         lda playerX
         cmp playerOldX
