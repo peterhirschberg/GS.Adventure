@@ -326,29 +326,28 @@ eraseSurround entry
 
 eraseLeft anop
         jsr eraseSurroundLeft
+        stz surroundEraseDirty
         bra checkY1
 
 eraseRight anop
         jsr eraseSurroundRight
+        stz surroundEraseDirty
 
 checkY1 anop
 
         lda playerY
         cmp playerOldY
         bcs eraseTop
-        bra eraseBottom
+;        bra eraseBottom
 
 eraseBottom anop
         jsr eraseSurroundBottom
+        stz surroundEraseDirty
         bra eraseDone
 
 eraseTop anop
         jsr eraseSurroundTop
-
-
         stz surroundEraseDirty
-
-
         bra eraseDone
 
 ; --------------------------------------
