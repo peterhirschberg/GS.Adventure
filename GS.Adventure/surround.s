@@ -11,6 +11,7 @@
 surround start
         using screenData
         using playerData
+        using surroundData
 
 
 checkSurroundDrawDirty entry
@@ -87,6 +88,47 @@ checkDone2 anop
 
 drawSurround entry
 
+
+        lda surroundAllDirty
+        cmp #1
+        bne goDraw
+
+        stz surroundAllDirty
+
+        lda playerX
+        sec
+        sbc #SURROUND_OFFSET_X
+        and #$fff0
+        sta rectX
+        sta surroundX
+
+        lda playerY
+        sec
+        sbc #SURROUND_OFFSET_Y
+        and #$fff0
+        sta rectY
+        sta surroundY
+
+        lda #SURROUND_WIDTH
+        sta rectWidth
+
+        lda #SURROUND_HEIGHT
+        sta rectHeight
+
+        lda surroundX
+        sta surroundOldX
+        sta eraseX
+
+        lda surroundY
+        sta surroundOldY
+        sta eraseY
+
+        jsr drawSurroundRect
+
+        rts
+
+goDraw anop
+
         lda playerX
         sec
         sbc #SURROUND_OFFSET_X
@@ -108,8 +150,53 @@ drawSurround entry
         cmp #1
         bne drawDone
 
+; --------------------------------------
+
+
+        lda playerX
+        cmp playerOldX
+        bcs drawLeft
+        bra drawRight
+
+drawLeft anop
+        jsr drawSurroundLeft
+        bra checkY
+
+drawRight anop
+        jsr drawSurroundRight
+
+checkY anop
+
+        lda playerY
+        cmp playerOldY
+        bcs drawTop
+        bra drawBottom
+
+drawBottom anop
+        jsr drawSurroundBottom
+        bra drawDone
+
+drawTop anop
+        jsr drawSurroundTop
+
+
+; --------------------------------------
 
         lda surroundOldX
+;---------------
+        sec
+        sbc #16
+
+        bmi isMinus
+        bra notMinus
+
+isMinus anop
+
+        lda #0
+
+notMinus anop
+
+;---------------
         sta eraseX
 
         lda surroundOldY
@@ -121,7 +208,87 @@ drawSurround entry
         lda surroundY
         sta surroundOldY
 
+        stz surroundDrawDirty
+
+
+drawDone anop
+
+        rts
+
+
+drawSurroundTop entry
+
+        lda surroundX
+        sta rectX
+
+        lda surroundY
+        sta rectY
+
         lda #SURROUND_WIDTH
+        sta rectWidth
+
+        lda #16
+        sta rectHeight
+
+        jsr drawSurroundRect
+
+        rts
+
+drawSurroundBottom entry
+
+        lda surroundX
+        sta rectX
+
+        lda surroundY
+        clc
+        adc #SURROUND_HEIGHT
+        sec
+        sbc #16
+        sta rectY
+
+        lda #SURROUND_WIDTH
+        sta rectWidth
+
+        lda #16
+        sta rectHeight
+
+        jsr drawSurroundRect
+
+        rts
+
+drawSurroundLeft entry
+
+        lda surroundX
+        sta rectX
+
+        lda surroundY
+        sta rectY
+
+        lda #16
+        sta rectWidth
+
+        lda #SURROUND_HEIGHT
+        sec
+        sbc #16
+        sta rectHeight
+
+        jsr drawSurroundRect
+
+        rts
+
+drawSurroundRight entry
+
+        lda surroundX
+        clc
+        adc #SURROUND_WIDTH
+        sec
+        sbc #16
+        sta rectX
+
+        lda surroundY
+        sta rectY
+
+        lda #16
         sta rectWidth
 
         lda #SURROUND_HEIGHT
@@ -129,11 +296,13 @@ drawSurround entry
 
         jsr drawSurroundRect
 
-        stz surroundDrawDirty
-
-drawDone anop
-
         rts
+
+
+
+
+
+
 
 
 
@@ -142,36 +311,13 @@ eraseSurround entry
         jsr checkSurroundEraseDirty
         lda surroundEraseDirty
         cmp #1
-        bne eraseDone1
+        bne eraseDone
 
 
-        lda eraseX
-        sta rectX
+;        jmp here
 
-        lda eraseY
-        sta rectY
+; --------------------------------------
 
-
-        lda #SURROUND_WIDTH
-        sta rectWidth
-
-        lda #SURROUND_HEIGHT
-        sta rectHeight
-
-        jsr eraseSurroundRect
-
-        stz surroundEraseDirty
-
-eraseDone1 anop
-
-        rts
-
-
-
-
-        lda playerX
-        cmp playerOldX
-        beq checkY
 
         lda playerX
         cmp playerOldX
@@ -180,16 +326,12 @@ eraseDone1 anop
 
 eraseLeft anop
         jsr eraseSurroundLeft
-        bra checkY
+        bra checkY1
 
 eraseRight anop
         jsr eraseSurroundRight
 
-checkY anop
-
-        lda playerY
-        cmp playerOldY
-        beq eraseDone
+checkY1 anop
 
         lda playerY
         cmp playerOldY
@@ -203,7 +345,39 @@ eraseBottom anop
 eraseTop anop
         jsr eraseSurroundTop
 
+
+        stz surroundEraseDirty
+
+
+        bra eraseDone
+
+; --------------------------------------
+
+
+here anop
+
+        lda eraseX
+        sta rectX
+
+        lda eraseY
+        sta rectY
+
+        lda #SURROUND_WIDTH
+;---------------
+        clc
+        adc #32
+;---------------
+        sta rectWidth
+
+        lda #SURROUND_HEIGHT
+        sta rectHeight
+
+        jsr eraseSurroundRect
+
+        stz surroundEraseDirty
+
 eraseDone anop
+
 
         rts
 
@@ -211,104 +385,124 @@ eraseDone anop
 
 eraseSurroundTop entry
 
-        lda playerOldX
-        sec
-        sbc #38
-        and #$fff0
+        lda eraseX
         sta rectX
 
-        lda playerOldY
-        sec
-        sbc #36
+        lda eraseY
         sta rectY
 
-        lda #80
-        sta rectWidth
-
-        lda #6
-        sta rectHeight
-
-        jsr eraseSpriteRect
-
-        rts
-
-
-
-eraseSurroundBottom entry
-
-        lda playerOldX
-        sec
-        sbc #38
-        and #$fff0
-        sta rectX
-
-        lda playerOldY
+        lda #SURROUND_WIDTH
+;---------------
         clc
-        adc #44
-        sta rectY
-
-        lda #80
+        adc #32
+;---------------
         sta rectWidth
 
-        lda #6
+        lda #16
         sta rectHeight
 
-        jsr eraseSpriteRect
-
-        rts
-
-
-
-eraseSurroundLeft entry
-
-        lda playerOldX
-        sec
-        sbc #50
-        sta rectX
-
-        lda playerOldY
-        sec
-        sbc #36
-        sta rectY
-
-        lda #6
-        sta rectWidth
-
-        lda #80
-        sta rectHeight
 
     lda #COLOR_BLUE
     sta rectColor
 
-;    jsr drawSpriteRect
+    jsr drawSpriteRect
 
-        jsr eraseSpriteRect
+;        jsr eraseSurroundRect
 
         rts
 
+eraseSurroundBottom entry
 
+        lda eraseX
+        sta rectX
+
+        lda eraseY
+        clc
+        adc #SURROUND_HEIGHT
+        sec
+        sbc #16
+        sta rectY
+
+        lda #SURROUND_WIDTH
+;---------------
+        clc
+        adc #32
+;---------------
+        sta rectWidth
+
+        lda #16
+        sta rectHeight
+
+
+    lda #COLOR_RED
+    sta rectColor
+
+    jsr drawSpriteRect
+
+;        jsr eraseSurroundRect
+
+        rts
+
+eraseSurroundLeft entry
+
+        lda eraseX
+        sta rectX
+
+        lda eraseY
+        sta rectY
+
+        lda #16
+        sta rectWidth
+
+        lda #SURROUND_HEIGHT
+        sta rectHeight
+
+
+    lda #COLOR_BLUE
+    sta rectColor
+
+    jsr drawSpriteRect
+
+;        jsr eraseSurroundRect
+
+        rts
 
 eraseSurroundRight entry
 
-        lda playerOldX
+
+        lda eraseX
         clc
-        adc #42
+        adc #SURROUND_WIDTH
+;---------------
+        clc
+        adc #32
+;---------------
+        sec
+        sbc #16
         sta rectX
 
-        lda playerOldY
-        sec
-        sbc #36
+        lda eraseY
         sta rectY
 
-        lda #6
+        lda #16
         sta rectWidth
 
-        lda #80
+        lda #SURROUND_HEIGHT
         sta rectHeight
 
-        jsr eraseSpriteRect
+
+    lda #COLOR_BLUE
+    sta rectColor
+
+    jsr drawSpriteRect
+
+;        jsr eraseSurroundRect
 
         rts
+
+
+
+
 
 
 surroundDrawDirty dc i2'0'
@@ -327,9 +521,14 @@ eraseY dc i2'0'
 SURROUND_WIDTH gequ 80
 SURROUND_HEIGHT gequ 80
 SURROUND_OFFSET_X gequ 32
-SURROUND_OFFSET_X gequ 32
+SURROUND_OFFSET_Y gequ 32
 
 
         end
 
+surroundData data
+
+surroundAllDirty dc i2'1'
+
+        end
 

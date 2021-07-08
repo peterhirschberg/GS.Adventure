@@ -29,12 +29,17 @@ initGame entry
 ; -------------------------------
 ; set up game
 
-        lda #ROOM_INDEX_CASTLE_YELLOW
+;        lda #ROOM_INDEX_CASTLE_YELLOW
+
+    lda #ROOM_INDEX_BELOW_YELLOW_CASTLE_LIME
+
         sta currentRoom
 
-        lda #$45
+    lda #100
+
+;        lda #$45
         sta playerX
-        lda #$85
+;        lda #$85
         sta playerY
 
 ; -------------------------------
