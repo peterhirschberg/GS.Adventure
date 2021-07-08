@@ -396,8 +396,8 @@ eraseSurroundTop entry
 
         lda #SURROUND_WIDTH
 ;---------------
-        clc
-        adc #32
+;        clc
+;        adc #32
 ;---------------
         sta rectWidth
 
@@ -408,9 +408,9 @@ eraseSurroundTop entry
     lda #COLOR_BLUE
     sta rectColor
 
-    jsr drawSpriteRect
+;    jsr drawSpriteRect
 
-;        jsr eraseSurroundRect
+        jsr eraseSurroundRect
 
         rts
 
@@ -422,14 +422,14 @@ eraseSurroundBottom entry
         lda eraseY
         clc
         adc #SURROUND_HEIGHT
-        sec
-        sbc #16
+;        sec
+;        sbc #16
         sta rectY
 
         lda #SURROUND_WIDTH
 ;---------------
         clc
-        adc #32
+        adc #16
 ;---------------
         sta rectWidth
 
@@ -440,9 +440,9 @@ eraseSurroundBottom entry
     lda #COLOR_RED
     sta rectColor
 
-    jsr drawSpriteRect
+;    jsr drawSpriteRect
 
-;        jsr eraseSurroundRect
+        jsr eraseSurroundRect
 
         rts
 
@@ -464,9 +464,9 @@ eraseSurroundLeft entry
     lda #COLOR_BLUE
     sta rectColor
 
-    jsr drawSpriteRect
+;    jsr drawSpriteRect
 
-;        jsr eraseSurroundRect
+        jsr eraseSurroundRect
 
         rts
 
@@ -477,11 +477,11 @@ eraseSurroundRight entry
         clc
         adc #SURROUND_WIDTH
 ;---------------
-        clc
-        adc #32
+;        clc
+;        adc #32
 ;---------------
-        sec
-        sbc #16
+;        clc
+;        adc #16
         sta rectX
 
         lda eraseY
@@ -497,9 +497,9 @@ eraseSurroundRight entry
     lda #COLOR_BLUE
     sta rectColor
 
-    jsr drawSpriteRect
+;    jsr drawSpriteRect
 
-;        jsr eraseSurroundRect
+        jsr eraseSurroundRect
 
         rts
 
