@@ -22,14 +22,7 @@ screen start
 ; fills the room buffer with the background color
 eraseRoom entry
 
-        jsr roomHasFog
-        cmp #1
-        beq hasFog
         ldy #COLOR_LTGRAY
-        bra doneFogCheck
-hasFog anop
-        ldy #COLOR_ORANGE
-doneFogCheck anop
 
         lda #0
         sta rowCounter

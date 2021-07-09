@@ -17,7 +17,7 @@ spriteSurround start spriteSurroundSeg
         using screenData
 
 
-drawSurroundRect entry
+drawSurroundSprite entry
 
         lda >rectX
         lsr a
@@ -1975,13 +1975,12 @@ drawSurroundRect entry
 
 
 
-eraseSurroundRect entry
+eraseSurroundSprite entry
 
         lda >rectX
         lsr a
         sta >rectX
 
-        ldy #COLOR_ORANGE
 
         lda >rectY
         asl a

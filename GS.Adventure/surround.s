@@ -112,7 +112,6 @@ hasFog1 anop
         sta surroundY
 
 
-; PUT THIS BACK
         jsr checkSurroundDrawDirty
         lda surroundDrawDirty
         cmp #1
@@ -141,7 +140,7 @@ drawPositiveY anop
 
 drawOkayY anop
 
-        jsl drawSurroundRect
+        jsl drawSurroundSprite
         jmp drawDone
 
 ; --------------------------------------
@@ -234,7 +233,7 @@ drawSurroundTop entry
         lda #16
         sta rectHeight
 
-        jsl drawSurroundRect
+        jsl drawSurroundSprite
 
         rts
 
@@ -256,7 +255,7 @@ drawSurroundBottom entry
         lda #16
         sta rectHeight
 
-        jsl drawSurroundRect
+        jsl drawSurroundSprite
 
         rts
 
@@ -276,7 +275,7 @@ drawSurroundLeft entry
         sbc #16
         sta rectHeight
 
-        jsl drawSurroundRect
+        jsl drawSurroundSprite
 
         rts
 
@@ -298,7 +297,7 @@ drawSurroundRight entry
         lda #SURROUND_HEIGHT
         sta rectHeight
 
-        jsl drawSurroundRect
+        jsl drawSurroundSprite
 
         rts
 
@@ -332,7 +331,6 @@ startErase anop
         lda eraseY
         sta rectY
 
-
         lda rectY
         bmi eraseMinusY
         cmp #$76
@@ -351,8 +349,7 @@ erasePositiveY anop
 
 eraseOkayY anop
 
-        jsl eraseSurroundRect
-
+        jsl eraseSurroundSprite
         stz surroundEraseDirty
 
         rts
@@ -436,7 +433,7 @@ eraseSurroundTop entry
 
 ;    jsr drawSpriteRect
 
-        jsl eraseSurroundRect
+        jsl eraseSurroundSprite
 
         rts
 
@@ -469,7 +466,7 @@ eraseSurroundBottom entry
 
 ;    jsr drawSpriteRect
 
-        jsl eraseSurroundRect
+        jsl eraseSurroundSprite
 
         rts
 
@@ -493,7 +490,7 @@ eraseSurroundLeft entry
 
 ;    jsr drawSpriteRect
 
-        jsl eraseSurroundRect
+        jsl eraseSurroundSprite
 
         rts
 
@@ -525,7 +522,7 @@ eraseSurroundRight entry
 
 ;    jsr drawSpriteRect
 
-        jsl eraseSurroundRect
+        jsl eraseSurroundSprite
 
         rts
 

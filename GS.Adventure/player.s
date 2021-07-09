@@ -154,8 +154,16 @@ doErase anop
         lda #8
         sta rectHeight
 
+        jsr roomHasFog
+        cmp #1
+        beq hasFog
         jsr eraseSpriteRect
+        rts
 
+hasFog anop
+        lda #COLOR_ORANGE
+        sta rectColor
+        jsr drawSpriteRect
         rts
 
 
