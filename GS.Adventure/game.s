@@ -84,16 +84,12 @@ noHitPass0 anop
         cmp #1
         bne noMovePass0
 
-;        jsr eraseSurround
-        jsr erasePlayer
-
-;        jsr drawSurround
-
         jsr setStaleSurroundGrid
         jsr runSurround
         jsr renderSurroundGrid
         jsr eraseSurroundGrid
 
+        jsr erasePlayer
         jsr drawPlayer
 
 noMovePass0 anop

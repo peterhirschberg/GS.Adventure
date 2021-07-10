@@ -1204,6 +1204,10 @@ runSurround entry
         tax
         setSurroundGridValue
         
+        lda surroundX
+        sta surroundOldX
+        lda surroundY
+        sta surroundOldY
         
         rts
 
@@ -1297,14 +1301,6 @@ renderSurroundDone anop
         
 setStaleSurroundGrid entry
 
-        lda playerOldX
-        jsr pixelToSurroundGrid
-        sta surroundOldX
-        
-        lda playerOldY
-        jsr pixelToSurroundGrid
-        sta surroundOldY
-
         lda surroundOldY
         asl a
         asl a
@@ -1319,14 +1315,6 @@ setStaleSurroundGrid entry
         unsetSurroundGridValue
         
 ; ----------------------
-
-        lda playerOldX
-        jsr pixelToSurroundGrid
-        sta surroundOldX
-
-        lda playerOldY
-        jsr pixelToSurroundGrid
-        sta surroundOldY
 
         lda surroundOldY
         clc
@@ -1345,14 +1333,6 @@ setStaleSurroundGrid entry
 
 ; ----------------------
 
-        lda playerOldX
-        jsr pixelToSurroundGrid
-        sta surroundOldX
-        
-        lda playerOldY
-        jsr pixelToSurroundGrid
-        sta surroundOldY
-        
         lda surroundOldY
         clc
         adc #2
@@ -1370,14 +1350,6 @@ setStaleSurroundGrid entry
 
 ; ----------------------
 
-        lda playerOldX
-        jsr pixelToSurroundGrid
-        sta surroundOldX
-        
-        lda playerOldY
-        jsr pixelToSurroundGrid
-        sta surroundOldY
-        
         lda surroundOldY
         clc
         adc #-1
@@ -1395,14 +1367,6 @@ setStaleSurroundGrid entry
         
 ; ----------------------
 
-        lda playerOldX
-        jsr pixelToSurroundGrid
-        sta surroundOldX
-        
-        lda playerOldY
-        jsr pixelToSurroundGrid
-        sta surroundOldY
-        
         lda surroundOldY
         clc
         adc #-2
@@ -1421,14 +1385,6 @@ setStaleSurroundGrid entry
         
 ; ##################################
 
-        lda playerOldX
-        jsr pixelToSurroundGrid
-        sta surroundOldX
-        
-        lda playerOldY
-        jsr pixelToSurroundGrid
-        sta surroundOldY
-
         lda surroundOldY
         asl a
         asl a
@@ -1446,14 +1402,6 @@ setStaleSurroundGrid entry
 
 
 ; ----------------------
-
-        lda playerOldX
-        jsr pixelToSurroundGrid
-        sta surroundOldX
-
-        lda playerOldY
-        jsr pixelToSurroundGrid
-        sta surroundOldY
 
         lda surroundOldY
         clc
@@ -1474,14 +1422,6 @@ setStaleSurroundGrid entry
 
 ; ----------------------
 
-        lda playerOldX
-        jsr pixelToSurroundGrid
-        sta surroundOldX
-        
-        lda playerOldY
-        jsr pixelToSurroundGrid
-        sta surroundOldY
-        
         lda surroundOldY
         clc
         adc #2
@@ -1501,14 +1441,6 @@ setStaleSurroundGrid entry
 
 ; ----------------------
 
-        lda playerOldX
-        jsr pixelToSurroundGrid
-        sta surroundOldX
-        
-        lda playerOldY
-        jsr pixelToSurroundGrid
-        sta surroundOldY
-        
         lda surroundOldY
         clc
         adc #-1
@@ -1528,14 +1460,6 @@ setStaleSurroundGrid entry
         
 ; ----------------------
 
-        lda playerOldX
-        jsr pixelToSurroundGrid
-        sta surroundOldX
-        
-        lda playerOldY
-        jsr pixelToSurroundGrid
-        sta surroundOldY
-        
         lda surroundOldY
         clc
         adc #-2
@@ -1556,14 +1480,6 @@ setStaleSurroundGrid entry
         
 ; ##################################
 
-        lda playerOldX
-        jsr pixelToSurroundGrid
-        sta surroundOldX
-        
-        lda playerOldY
-        jsr pixelToSurroundGrid
-        sta surroundOldY
-
         lda surroundOldY
         asl a
         asl a
@@ -1581,14 +1497,6 @@ setStaleSurroundGrid entry
 
 
 ; ----------------------
-
-        lda playerOldX
-        jsr pixelToSurroundGrid
-        sta surroundOldX
-
-        lda playerOldY
-        jsr pixelToSurroundGrid
-        sta surroundOldY
 
         lda surroundOldY
         clc
@@ -1609,14 +1517,6 @@ setStaleSurroundGrid entry
 
 ; ----------------------
 
-        lda playerOldX
-        jsr pixelToSurroundGrid
-        sta surroundOldX
-        
-        lda playerOldY
-        jsr pixelToSurroundGrid
-        sta surroundOldY
-        
         lda surroundOldY
         clc
         adc #2
@@ -1636,14 +1536,6 @@ setStaleSurroundGrid entry
 
 ; ----------------------
 
-        lda playerOldX
-        jsr pixelToSurroundGrid
-        sta surroundOldX
-        
-        lda playerOldY
-        jsr pixelToSurroundGrid
-        sta surroundOldY
-        
         lda surroundOldY
         clc
         adc #-1
@@ -1663,14 +1555,6 @@ setStaleSurroundGrid entry
         
 ; ----------------------
 
-        lda playerOldX
-        jsr pixelToSurroundGrid
-        sta surroundOldX
-        
-        lda playerOldY
-        jsr pixelToSurroundGrid
-        sta surroundOldY
-        
         lda surroundOldY
         clc
         adc #-2
@@ -1693,14 +1577,6 @@ setStaleSurroundGrid entry
 ; ##############################
 
 
-        lda playerOldX
-        jsr pixelToSurroundGrid
-        sta surroundOldX
-        
-        lda playerOldY
-        jsr pixelToSurroundGrid
-        sta surroundOldY
-
         lda surroundOldY
         asl a
         asl a
@@ -1717,14 +1593,6 @@ setStaleSurroundGrid entry
         unsetSurroundGridValue
 
 ; ----------------------
-
-        lda playerOldX
-        jsr pixelToSurroundGrid
-        sta surroundOldX
-
-        lda playerOldY
-        jsr pixelToSurroundGrid
-        sta surroundOldY
 
         lda surroundOldY
         clc
@@ -1745,14 +1613,6 @@ setStaleSurroundGrid entry
 
 ; ----------------------
 
-        lda playerOldX
-        jsr pixelToSurroundGrid
-        sta surroundOldX
-        
-        lda playerOldY
-        jsr pixelToSurroundGrid
-        sta surroundOldY
-        
         lda surroundOldY
         clc
         adc #2
@@ -1772,14 +1632,6 @@ setStaleSurroundGrid entry
 
 ; ----------------------
 
-        lda playerOldX
-        jsr pixelToSurroundGrid
-        sta surroundOldX
-        
-        lda playerOldY
-        jsr pixelToSurroundGrid
-        sta surroundOldY
-        
         lda surroundOldY
         clc
         adc #-1
@@ -1799,14 +1651,6 @@ setStaleSurroundGrid entry
         
 ; ----------------------
 
-        lda playerOldX
-        jsr pixelToSurroundGrid
-        sta surroundOldX
-        
-        lda playerOldY
-        jsr pixelToSurroundGrid
-        sta surroundOldY
-        
         lda surroundOldY
         clc
         adc #-2
@@ -1827,14 +1671,6 @@ setStaleSurroundGrid entry
         
 ; ##################################
 
-        lda playerOldX
-        jsr pixelToSurroundGrid
-        sta surroundOldX
-        
-        lda playerOldY
-        jsr pixelToSurroundGrid
-        sta surroundOldY
-
         lda surroundOldY
         asl a
         asl a
@@ -1852,14 +1688,6 @@ setStaleSurroundGrid entry
 
 
 ; ----------------------
-
-        lda playerOldX
-        jsr pixelToSurroundGrid
-        sta surroundOldX
-
-        lda playerOldY
-        jsr pixelToSurroundGrid
-        sta surroundOldY
 
         lda surroundOldY
         clc
@@ -1880,14 +1708,6 @@ setStaleSurroundGrid entry
 
 ; ----------------------
 
-        lda playerOldX
-        jsr pixelToSurroundGrid
-        sta surroundOldX
-        
-        lda playerOldY
-        jsr pixelToSurroundGrid
-        sta surroundOldY
-        
         lda surroundOldY
         clc
         adc #2
@@ -1907,14 +1727,6 @@ setStaleSurroundGrid entry
 
 ; ----------------------
 
-        lda playerOldX
-        jsr pixelToSurroundGrid
-        sta surroundOldX
-        
-        lda playerOldY
-        jsr pixelToSurroundGrid
-        sta surroundOldY
-        
         lda surroundOldY
         clc
         adc #-1
@@ -1934,14 +1746,6 @@ setStaleSurroundGrid entry
         
 ; ----------------------
 
-        lda playerOldX
-        jsr pixelToSurroundGrid
-        sta surroundOldX
-        
-        lda playerOldY
-        jsr pixelToSurroundGrid
-        sta surroundOldY
-        
         lda surroundOldY
         clc
         adc #-2

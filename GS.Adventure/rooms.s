@@ -546,6 +546,7 @@ wrapToRoomUp anop
         jsr adjustRoomLevel
 
 ; draw the new room
+        jsr zeroSurroundGrid
         jsr drawRoom
 
 ; wrap the player
@@ -565,6 +566,7 @@ wrapToRoomDown anop
         jsr adjustRoomLevel
 
 ; draw the new room
+        jsr zeroSurroundGrid
         jsr drawRoom
 
 ; wrap the player
@@ -584,6 +586,7 @@ wrapToRoomLeft anop
         jsr adjustRoomLevel
 
 ; draw the new room
+        jsr zeroSurroundGrid
         jsr drawRoom
 
 ; wrap the player
@@ -603,6 +606,7 @@ wrapToRoomRight anop
         jsr adjustRoomLevel
 
 ; draw the new room
+        jsr zeroSurroundGrid
         jsr drawRoom
 
 ; wrap the player
