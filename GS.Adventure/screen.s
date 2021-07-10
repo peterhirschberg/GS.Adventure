@@ -906,6 +906,11 @@ drawSurroundVLoop2 anop
         clc
         adc rectY
 
+; bounds check
+        bmi nextRow4
+        cmp #199
+        bcs nextRow4
+        
         asl a
         tax
         lda screenRowOffsets,x
@@ -928,6 +933,8 @@ drawSurroundVLoop2 anop
         drawSurroundWord
         drawSurroundWord
         
+nextRow4 anop
+
         inc rowCounter
         lda rowCounter
         cmp rectHeight
@@ -960,6 +967,11 @@ eraseSurroundVLoop2 anop
         clc
         adc rectY
 
+; bounds check
+        bmi nextRow5
+        cmp #199
+        bcs nextRow5
+
         asl a
         tax
         lda screenRowOffsets,x
@@ -982,6 +994,8 @@ eraseSurroundVLoop2 anop
         eraseSurroundWord
         eraseSurroundWord
         eraseSurroundWord
+
+nextRow5 anop
 
         inc rowCounter
         lda rowCounter

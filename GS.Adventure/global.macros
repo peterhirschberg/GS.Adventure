@@ -58,42 +58,6 @@ dontDrawSurround_&SYSCNT anop
 
 
         macro
-        drawSurroundWordLast
-        lda >BACKGROUND_ADDR,x
-        cmp #COLOR_LTGRAY
-        bne dontDrawSurround_&SYSCNT
-        tya
-        sta >SCREEN_ADDR,x
-dontDrawSurround_&SYSCNT anop
-        mend
-
-
-        macro
-        drawSurroundWordBackwards
-        lda >BACKGROUND_ADDR,x
-        cmp #COLOR_LTGRAY
-        bne dontDrawSurround_&SYSCNT
-        tya
-        sta >SCREEN_ADDR,x
-dontDrawSurround_&SYSCNT anop
-        dex
-        dex
-        mend
-
-
-        macro
-        drawSurroundWordBackwardsLast
-        lda >BACKGROUND_ADDR,x
-        cmp #COLOR_LTGRAY
-        bne dontDrawSurround_&SYSCNT
-        tya
-        sta >SCREEN_ADDR,x
-dontDrawSurround_&SYSCNT anop
-        mend
-
-
-
-        macro
         eraseSurroundWord
         lda >BACKGROUND_ADDR,x
         sta >SCREEN_ADDR,x
@@ -103,45 +67,11 @@ dontDrawSurround_&SYSCNT anop
 
 
         macro
-        eraseSurroundWordLast
-        lda >BACKGROUND_ADDR,x
-        sta >SCREEN_ADDR,x
-        mend
-
-
-        macro
-        eraseSurroundWordBackwards
-        lda >BACKGROUND_ADDR,x
-        sta >SCREEN_ADDR,x
-        dex
-        dex
-        mend
-
-
-        macro
-        eraseSurroundWordBackwardsLast
-        lda >BACKGROUND_ADDR,x
-        sta >SCREEN_ADDR,x
-        mend
-
-
-
-        macro
-        nextSurroundRow
-        txa
-        clc
-        adc #160
-        tax
-        mend
-
-
-        macro
         writeScreenWord
         sta >SCREEN_ADDR,x
         inx
         inx
         mend
-
 
 
         macro
@@ -163,7 +93,6 @@ surroundLeave_&SYSCNT anop
         sta >SURROUND_GRID_ADDR,x
 surroundDone_&SYSCNT anop
         mend
-
 
 
         macro

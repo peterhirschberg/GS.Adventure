@@ -181,11 +181,21 @@ erasePlayerHit entry
         lda #8
         sta rectHeight
 
+        jsr roomHasFog
+        cmp #1
+        beq hasFog2
         jsr eraseSpriteRect
-
         rts
 
+hasFog2 anop
+        jsr surroundRedrawPlayerHitBlock
+        rts
+        
+        
+
         end
+
+
 
 playerData data
 

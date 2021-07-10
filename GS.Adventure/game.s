@@ -32,17 +32,12 @@ initGame entry
 ; -------------------------------
 ; set up game
 
-;        lda #ROOM_INDEX_CASTLE_YELLOW
-
-    lda #ROOM_INDEX_BELOW_YELLOW_CASTLE_LIME
-
+        lda #ROOM_INDEX_CASTLE_YELLOW
         sta currentRoom
 
-    lda #100
-
-;        lda #$45
+        lda #$45
         sta playerX
-;        lda #$85
+        lda #$85
         sta playerY
 
 ; -------------------------------
@@ -73,13 +68,6 @@ runGameTick entry
 pass0 anop
         jsr runPlayer
 
-        lda playerHitWall
-        cmp #1
-        bne noHitPass0
-        jsr erasePlayerHit
-
-noHitPass0 anop
-
         lda playerMoved
         cmp #1
         bne noMovePass0
@@ -92,6 +80,11 @@ noHitPass0 anop
 updateSurround anop
         lda #4
         sta surroundUpdateCounter
+        
+        jsr roomHasFog
+        cmp #1
+        bne dontUpdateSurround
+
         jsr setStaleSurroundGrid
         jsr runSurround
         jsr eraseSurroundGrid
@@ -115,10 +108,10 @@ pass1 anop
         cmp #1
         bne noHitPass1
 
-        lda playerMoved
+        lda playerHitWall
         cmp #1
-        bne noMovePass1
-
+        bne noHitPass1
+        jsr erasePlayerHit
         jsr erasePlayer
         jsr drawPlayer
 
