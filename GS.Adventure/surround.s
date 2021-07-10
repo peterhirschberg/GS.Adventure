@@ -543,11 +543,11 @@ eraseSurroundRight entry
 runSurround entry
 
         lda playerX
-        jsr pixelToSurroundGrid
+        pixelToSurroundGrid
         sta surroundX
         
         lda playerY
-        jsr pixelToSurroundGrid
+        pixelToSurroundGrid
         sta surroundY
 
         lda surroundY
@@ -566,11 +566,11 @@ runSurround entry
 ; ----------------------
 
         lda playerX
-        jsr pixelToSurroundGrid
+        pixelToSurroundGrid
         sta surroundX
 
         lda playerY
-        jsr pixelToSurroundGrid
+        pixelToSurroundGrid
         sta surroundY
 
         lda surroundY
@@ -591,11 +591,11 @@ runSurround entry
 ; ----------------------
         
         lda playerX
-        jsr pixelToSurroundGrid
+        pixelToSurroundGrid
         sta surroundX
         
         lda playerY
-        jsr pixelToSurroundGrid
+        pixelToSurroundGrid
         sta surroundY
         
         lda surroundY
@@ -616,11 +616,11 @@ runSurround entry
 ; ----------------------
         
         lda playerX
-        jsr pixelToSurroundGrid
+        pixelToSurroundGrid
         sta surroundX
         
         lda playerY
-        jsr pixelToSurroundGrid
+        pixelToSurroundGrid
         sta surroundY
         
         lda surroundY
@@ -641,11 +641,11 @@ runSurround entry
 ; ----------------------
         
         lda playerX
-        jsr pixelToSurroundGrid
+        pixelToSurroundGrid
         sta surroundX
         
         lda playerY
-        jsr pixelToSurroundGrid
+        pixelToSurroundGrid
         sta surroundY
         
         lda surroundY
@@ -667,11 +667,11 @@ runSurround entry
 ; ##################################
 
         lda playerX
-        jsr pixelToSurroundGrid
+        pixelToSurroundGrid
         sta surroundX
         
         lda playerY
-        jsr pixelToSurroundGrid
+        pixelToSurroundGrid
         sta surroundY
 
         lda surroundY
@@ -693,11 +693,11 @@ runSurround entry
 ; ----------------------
 
         lda playerX
-        jsr pixelToSurroundGrid
+        pixelToSurroundGrid
         sta surroundX
 
         lda playerY
-        jsr pixelToSurroundGrid
+        pixelToSurroundGrid
         sta surroundY
 
         lda surroundY
@@ -720,11 +720,11 @@ runSurround entry
 ; ----------------------
 
         lda playerX
-        jsr pixelToSurroundGrid
+        pixelToSurroundGrid
         sta surroundX
         
         lda playerY
-        jsr pixelToSurroundGrid
+        pixelToSurroundGrid
         sta surroundY
         
         lda surroundY
@@ -747,11 +747,11 @@ runSurround entry
 ; ----------------------
 
         lda playerX
-        jsr pixelToSurroundGrid
+        pixelToSurroundGrid
         sta surroundX
         
         lda playerY
-        jsr pixelToSurroundGrid
+        pixelToSurroundGrid
         sta surroundY
         
         lda surroundY
@@ -774,11 +774,11 @@ runSurround entry
 ; ----------------------
 
         lda playerX
-        jsr pixelToSurroundGrid
+        pixelToSurroundGrid
         sta surroundX
         
         lda playerY
-        jsr pixelToSurroundGrid
+        pixelToSurroundGrid
         sta surroundY
         
         lda surroundY
@@ -802,11 +802,11 @@ runSurround entry
 ; ##################################
 
         lda playerX
-        jsr pixelToSurroundGrid
+        pixelToSurroundGrid
         sta surroundX
         
         lda playerY
-        jsr pixelToSurroundGrid
+        pixelToSurroundGrid
         sta surroundY
 
         lda surroundY
@@ -828,11 +828,11 @@ runSurround entry
 ; ----------------------
 
         lda playerX
-        jsr pixelToSurroundGrid
+        pixelToSurroundGrid
         sta surroundX
 
         lda playerY
-        jsr pixelToSurroundGrid
+        pixelToSurroundGrid
         sta surroundY
 
         lda surroundY
@@ -855,11 +855,11 @@ runSurround entry
 ; ----------------------
 
         lda playerX
-        jsr pixelToSurroundGrid
+        pixelToSurroundGrid
         sta surroundX
         
         lda playerY
-        jsr pixelToSurroundGrid
+        pixelToSurroundGrid
         sta surroundY
         
         lda surroundY
@@ -882,11 +882,11 @@ runSurround entry
 ; ----------------------
 
         lda playerX
-        jsr pixelToSurroundGrid
+        pixelToSurroundGrid
         sta surroundX
         
         lda playerY
-        jsr pixelToSurroundGrid
+        pixelToSurroundGrid
         sta surroundY
         
         lda surroundY
@@ -909,11 +909,11 @@ runSurround entry
 ; ----------------------
 
         lda playerX
-        jsr pixelToSurroundGrid
+        pixelToSurroundGrid
         sta surroundX
         
         lda playerY
-        jsr pixelToSurroundGrid
+        pixelToSurroundGrid
         sta surroundY
         
         lda surroundY
@@ -939,11 +939,11 @@ runSurround entry
 
 
         lda playerX
-        jsr pixelToSurroundGrid
+        pixelToSurroundGrid
         sta surroundX
         
         lda playerY
-        jsr pixelToSurroundGrid
+        pixelToSurroundGrid
         sta surroundY
 
         lda surroundY
@@ -964,11 +964,11 @@ runSurround entry
 ; ----------------------
 
         lda playerX
-        jsr pixelToSurroundGrid
+        pixelToSurroundGrid
         sta surroundX
 
         lda playerY
-        jsr pixelToSurroundGrid
+        pixelToSurroundGrid
         sta surroundY
 
         lda surroundY
@@ -991,11 +991,11 @@ runSurround entry
 ; ----------------------
 
         lda playerX
-        jsr pixelToSurroundGrid
+        pixelToSurroundGrid
         sta surroundX
         
         lda playerY
-        jsr pixelToSurroundGrid
+        pixelToSurroundGrid
         sta surroundY
         
         lda surroundY
@@ -1018,11 +1018,11 @@ runSurround entry
 ; ----------------------
 
         lda playerX
-        jsr pixelToSurroundGrid
+        pixelToSurroundGrid
         sta surroundX
         
         lda playerY
-        jsr pixelToSurroundGrid
+        pixelToSurroundGrid
         sta surroundY
         
         lda surroundY
@@ -1045,11 +1045,11 @@ runSurround entry
 ; ----------------------
 
         lda playerX
-        jsr pixelToSurroundGrid
+        pixelToSurroundGrid
         sta surroundX
         
         lda playerY
-        jsr pixelToSurroundGrid
+        pixelToSurroundGrid
         sta surroundY
         
         lda surroundY
@@ -1073,11 +1073,11 @@ runSurround entry
 ; ##################################
 
         lda playerX
-        jsr pixelToSurroundGrid
+        pixelToSurroundGrid
         sta surroundX
         
         lda playerY
-        jsr pixelToSurroundGrid
+        pixelToSurroundGrid
         sta surroundY
 
         lda surroundY
@@ -1099,11 +1099,11 @@ runSurround entry
 ; ----------------------
 
         lda playerX
-        jsr pixelToSurroundGrid
+        pixelToSurroundGrid
         sta surroundX
 
         lda playerY
-        jsr pixelToSurroundGrid
+        pixelToSurroundGrid
         sta surroundY
 
         lda surroundY
@@ -1126,11 +1126,11 @@ runSurround entry
 ; ----------------------
 
         lda playerX
-        jsr pixelToSurroundGrid
+        pixelToSurroundGrid
         sta surroundX
         
         lda playerY
-        jsr pixelToSurroundGrid
+        pixelToSurroundGrid
         sta surroundY
         
         lda surroundY
@@ -1153,11 +1153,11 @@ runSurround entry
 ; ----------------------
 
         lda playerX
-        jsr pixelToSurroundGrid
+        pixelToSurroundGrid
         sta surroundX
         
         lda playerY
-        jsr pixelToSurroundGrid
+        pixelToSurroundGrid
         sta surroundY
         
         lda surroundY
@@ -1180,11 +1180,11 @@ runSurround entry
 ; ----------------------
 
         lda playerX
-        jsr pixelToSurroundGrid
+        pixelToSurroundGrid
         sta surroundX
         
         lda playerY
-        jsr pixelToSurroundGrid
+        pixelToSurroundGrid
         sta surroundY
         
         lda surroundY
@@ -1211,15 +1211,6 @@ runSurround entry
         
         rts
 
-        
-        
-pixelToSurroundGrid entry
-        lsr a
-        lsr a
-        lsr a
-        lsr a
-        rts
-        
         
 
 renderSurroundGrid entry
@@ -1799,17 +1790,11 @@ eraseSurroundHLoop anop
 ; erase this block
 
         lda colCounter
-        asl a
-        asl a
-        asl a
-        asl a
+        surroundGridToPixel
         sta rectX
 
         lda rowCounter
-        asl a
-        asl a
-        asl a
-        asl a
+        surroundGridToPixel
         sta rectY
 
         lda #12
@@ -1824,6 +1809,7 @@ eraseSurroundHLoop anop
         jsr eraseSurroundChunk
         
 ; clear the grid position
+
         lda rowCounter
         asl a
         tax
@@ -1904,97 +1890,6 @@ zeroSurroundDone anop
         rts
         
 
-     bra here
-        ldx #0
-        lda surroundGridRowOffsets,x
-        clc
-        adc #2
-        tax
-        lda #1
-        sta >SURROUND_GRID_ADDR,x
-
-
-        ldx #1
-        lda surroundGridRowOffsets,x
-        clc
-        adc #2
-        tax
-        lda #1
-        sta >SURROUND_GRID_ADDR,x
-
-here anop
-
-        lda #4
-        asl a
-        asl a
-        tax
-        lda surroundGridRowOffsets,x
-        sta rowAddress
-        lda #2
-        asl a
-        clc
-        adc rowAddress
-        tax
-        lda #1
-        sta >SURROUND_GRID_ADDR,x
-
-
-        lda #4
-        asl a
-        asl a
-        tax
-        lda surroundGridRowOffsets,x
-        sta rowAddress
-        lda #4
-        asl a
-        clc
-        adc rowAddress
-        tax
-        lda #1
-        sta >SURROUND_GRID_ADDR,x
-
-        
-        lda #5
-        asl a
-        asl a
-        tax
-        lda surroundGridRowOffsets,x
-        sta rowAddress
-        lda #2
-        asl a
-        clc
-        adc rowAddress
-        tax
-        lda #1
-        sta >SURROUND_GRID_ADDR,x
-        
-        
-        lda #5
-        asl a
-        asl a
-        tax
-        lda surroundGridRowOffsets,x
-        sta rowAddress
-        lda #4
-        asl a
-        clc
-        adc rowAddress
-        tax
-        lda #1
-        sta >SURROUND_GRID_ADDR,x
-
-
-        rts
-
-
-
-
-; divide X & Y by 16
-
-; 320 / 16
-; 200 / 16
-;
-; 20 x 12 block size
 
 surroundGridRowOffsets anop
         dc i2'0'

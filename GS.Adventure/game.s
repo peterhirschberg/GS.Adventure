@@ -84,11 +84,20 @@ noHitPass0 anop
         cmp #1
         bne noMovePass0
 
+        dec surroundUpdateCounter
+        lda surroundUpdateCounter
+        bmi updateSurround
+        bra dontUpdateSurround
+        
+updateSurround anop
+        lda #4
+        sta surroundUpdateCounter
         jsr setStaleSurroundGrid
         jsr runSurround
-        jsr renderSurroundGrid
         jsr eraseSurroundGrid
-
+        jsr renderSurroundGrid
+        
+dontUpdateSurround anop
         jsr erasePlayer
         jsr drawPlayer
 
@@ -146,5 +155,7 @@ gameData data
 gamePass dc i2'0'
 
 gameLevel dc i2'1'
+
+surroundUpdateCounter dc i2'0'
 
         end

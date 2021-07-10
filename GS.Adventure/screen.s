@@ -916,25 +916,23 @@ drawSurroundVLoop2 anop
         lda rectWidth
         sta columnCounter
 
-drawSurroundHLoop2 anop
-
+; paint the row
         tya
 
         drawSurroundWord
-
-        dec columnCounter
-        dec columnCounter
-
-        lda columnCounter
-        bmi drawSurroundNextRow2
-        bra drawSurroundHLoop2
-
-drawSurroundNextRow2 anop
+        drawSurroundWord
+        drawSurroundWord
+        drawSurroundWord
+        drawSurroundWord
+        drawSurroundWord
+        drawSurroundWord
+        drawSurroundWord
+        
         inc rowCounter
         lda rowCounter
         cmp rectHeight
         beq drawSurroundDone2
-        bra drawSurroundVLoop2
+        jmp drawSurroundVLoop2
 
 drawSurroundDone2 anop
 
@@ -972,25 +970,24 @@ eraseSurroundVLoop2 anop
         lda rectWidth
         sta columnCounter
 
-eraseSurroundHLoop2 anop
+; erase the row
 
         tya
 
         eraseSurroundWord
+        eraseSurroundWord
+        eraseSurroundWord
+        eraseSurroundWord
+        eraseSurroundWord
+        eraseSurroundWord
+        eraseSurroundWord
+        eraseSurroundWord
 
-        dec columnCounter
-        dec columnCounter
-
-        lda columnCounter
-        bmi eraseSurroundNextRow2
-        bra eraseSurroundHLoop2
-
-eraseSurroundNextRow2 anop
         inc rowCounter
         lda rowCounter
         cmp rectHeight
         beq eraseSurroundDone2
-        bra eraseSurroundVLoop2
+        jmp eraseSurroundVLoop2
 
 eraseSurroundDone2 anop
 

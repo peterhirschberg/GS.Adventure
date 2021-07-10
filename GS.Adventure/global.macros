@@ -173,6 +173,22 @@ surroundDone_&SYSCNT anop
         mend
 
 
+        macro
+        pixelToSurroundGrid
+        lsr a
+        lsr a
+        lsr a
+        lsr a
+        mend
+
+
+        macro
+        surroundGridToPixel
+        asl a
+        asl a
+        asl a
+        asl a
+        mend
 
 
 ;
