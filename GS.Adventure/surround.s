@@ -540,17 +540,11 @@ eraseSurroundRight entry
 runSurround entry
 
         lda playerX
-        lsr a
-        lsr a
-        lsr a
-        lsr a
+        jsr pixelToSurroundGrid
         sta surroundX
         
         lda playerY
-        lsr a
-        lsr a
-        lsr a
-        lsr a
+        jsr pixelToSurroundGrid
         sta surroundY
 
         lda surroundY
@@ -567,8 +561,45 @@ runSurround entry
         lda #1
         sta >SURROUND_GRID_ADDR,x
 
+; ----------------------
+
+        lda playerX
+        jsr pixelToSurroundGrid
+        sta surroundX
+
+        lda playerY
+        jsr pixelToSurroundGrid
+        sta surroundY
+
+        lda surroundY
+        clc
+        adc #1
+        asl a
+        asl a
+        tax
+        lda surroundGridRowOffsets,x
+        sta rowAddress
+        lda surroundX
+        asl a
+        clc
+        adc rowAddress
+        tax
+        lda #1
+        sta >SURROUND_GRID_ADDR,x
+
+        
+        
         rts
 
+        
+        
+pixelToSurroundGrid entry
+        lsr a
+        lsr a
+        lsr a
+        lsr a
+        rts
+        
         
 
 renderSurroundGrid entry
@@ -621,7 +652,7 @@ renderSurroundHLoop anop
         lda #16
         sta rectHeight
 
-        lda #COLOR_BLUE
+        lda #COLOR_ORANGE
         sta rectColor
 
         jsr drawSurroundChunk
@@ -629,7 +660,7 @@ renderSurroundHLoop anop
 renderSurroundSkipBlock anop
         inc colCounter
         lda colCounter
-        cmp #13
+        cmp #20
         beq renderSurroundGridRowDone
         bra renderSurroundHLoop
 
@@ -637,7 +668,7 @@ renderSurroundGridRowDone anop
         stz colCounter
         inc rowCounter
         lda rowCounter
-        cmp #12
+        cmp #13
         beq renderSurroundDone
         bra renderSurroundVLoop
 
@@ -672,7 +703,7 @@ zeroSurroundHLoop anop
 
         inc colCounter
         lda colCounter
-        cmp #12
+        cmp #20
         beq zeroSurroundGridRowDone
         bra zeroSurroundHLoop
 
@@ -784,30 +815,30 @@ here anop
 
 surroundGridRowOffsets anop
         dc i2'0'
-        dc i2'16'
         dc i2'32'
-        dc i2'48'
         dc i2'64'
-        dc i2'80'
         dc i2'96'
-        dc i2'112'
         dc i2'128'
-        dc i2'144'
         dc i2'160'
-        dc i2'176'
         dc i2'192'
-        dc i2'208'
         dc i2'224'
-        dc i2'240'
         dc i2'256'
-        dc i2'272'
         dc i2'288'
-        dc i2'304'
         dc i2'320'
-        dc i2'336'
         dc i2'352'
-        dc i2'368'
         dc i2'384'
+        dc i2'416'
+        dc i2'448'
+        dc i2'480'
+        dc i2'512'
+        dc i2'544'
+        dc i2'576'
+        dc i2'608'
+        dc i2'640'
+        dc i2'672'
+        dc i2'704'
+        dc i2'736'
+        dc i2'768'
 
 
 surroundDrawDirty dc i2'0'
