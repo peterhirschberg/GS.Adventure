@@ -88,6 +88,7 @@ noHitPass0 anop
         jsr erasePlayer
 
 ;        jsr drawSurround
+        jsr runSurround
         jsr renderSurroundGrid
 
         jsr drawPlayer

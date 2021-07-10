@@ -527,7 +527,49 @@ eraseSurroundRight entry
         rts
 
 
+; ////////////////////////////////////////
+; ////////////////////////////////////////
+; ////////////////////////////////////////
+; ////////////////////////////////////////
+; ////////////////////////////////////////
+; ////////////////////////////////////////
+; ////////////////////////////////////////
+; ////////////////////////////////////////
 
+
+runSurround entry
+
+        lda playerX
+        lsr a
+        lsr a
+        lsr a
+        lsr a
+        sta surroundX
+        
+        lda playerY
+        lsr a
+        lsr a
+        lsr a
+        lsr a
+        sta surroundY
+
+        lda surroundY
+        asl a
+        asl a
+        tax
+        lda surroundGridRowOffsets,x
+        sta rowAddress
+        lda surroundX
+        asl a
+        clc
+        adc rowAddress
+        tax
+        lda #1
+        sta >SURROUND_GRID_ADDR,x
+
+        rts
+
+        
 
 renderSurroundGrid entry
 
@@ -606,9 +648,11 @@ renderSurroundDone anop
 
 
 zeroSurroundGrid entry
+        lda #0
         sta rowCounter
 
 zeroSurroundVLoop anop
+        lda #0
         sta colCounter
 
 zeroSurroundHLoop anop
@@ -637,11 +681,14 @@ zeroSurroundGridRowDone anop
         sta colCounter
         inc rowCounter
         lda rowCounter
-        cmp #13
+        cmp #26
         beq zeroSurroundDone
         bra zeroSurroundVLoop
 
 zeroSurroundDone anop
+
+        rts
+        
 
      bra here
         ldx #0
@@ -749,6 +796,18 @@ surroundGridRowOffsets anop
         dc i2'160'
         dc i2'176'
         dc i2'192'
+        dc i2'208'
+        dc i2'224'
+        dc i2'240'
+        dc i2'256'
+        dc i2'272'
+        dc i2'288'
+        dc i2'304'
+        dc i2'320'
+        dc i2'336'
+        dc i2'352'
+        dc i2'368'
+        dc i2'384'
 
 
 surroundDrawDirty dc i2'0'
