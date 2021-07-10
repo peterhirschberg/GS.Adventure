@@ -7,6 +7,9 @@
 ;
 
         case on
+        mcopy global.macros
+        keep global
+
 
 surround start
         using screenData
@@ -539,6 +542,15 @@ eraseSurroundRight entry
 
 runSurround entry
 
+        inc surroundGenId
+        lda surroundGenId
+        cmp #$ff
+        bne runSurroundContinue
+        lda #1
+        sta surroundGenId
+        
+runSurroundContinue anop
+
         lda playerX
         jsr pixelToSurroundGrid
         sta surroundX
@@ -558,9 +570,8 @@ runSurround entry
         clc
         adc rowAddress
         tax
-        lda #1
-        sta >SURROUND_GRID_ADDR,x
-
+        setSurroundGridValue
+        
 ; ----------------------
 
         lda playerX
@@ -584,9 +595,623 @@ runSurround entry
         clc
         adc rowAddress
         tax
-        lda #1
-        sta >SURROUND_GRID_ADDR,x
+        setSurroundGridValue
 
+; ----------------------
+        
+        lda playerX
+        jsr pixelToSurroundGrid
+        sta surroundX
+        
+        lda playerY
+        jsr pixelToSurroundGrid
+        sta surroundY
+        
+        lda surroundY
+        clc
+        adc #2
+        asl a
+        asl a
+        tax
+        lda surroundGridRowOffsets,x
+        sta rowAddress
+        lda surroundX
+        asl a
+        clc
+        adc rowAddress
+        tax
+        setSurroundGridValue
+
+; ----------------------
+        
+        lda playerX
+        jsr pixelToSurroundGrid
+        sta surroundX
+        
+        lda playerY
+        jsr pixelToSurroundGrid
+        sta surroundY
+        
+        lda surroundY
+        clc
+        adc #-1
+        asl a
+        asl a
+        tax
+        lda surroundGridRowOffsets,x
+        sta rowAddress
+        lda surroundX
+        asl a
+        clc
+        adc rowAddress
+        tax
+        setSurroundGridValue
+        
+; ----------------------
+        
+        lda playerX
+        jsr pixelToSurroundGrid
+        sta surroundX
+        
+        lda playerY
+        jsr pixelToSurroundGrid
+        sta surroundY
+        
+        lda surroundY
+        clc
+        adc #-2
+        asl a
+        asl a
+        tax
+        lda surroundGridRowOffsets,x
+        sta rowAddress
+        lda surroundX
+        asl a
+        clc
+        adc rowAddress
+        tax
+        setSurroundGridValue
+
+        
+; ##################################
+
+        lda playerX
+        jsr pixelToSurroundGrid
+        sta surroundX
+        
+        lda playerY
+        jsr pixelToSurroundGrid
+        sta surroundY
+
+        lda surroundY
+        asl a
+        asl a
+        tax
+        lda surroundGridRowOffsets,x
+        sta rowAddress
+        lda surroundX
+        sec
+        sbc #1
+        asl a
+        clc
+        adc rowAddress
+        tax
+        setSurroundGridValue
+
+
+; ----------------------
+
+        lda playerX
+        jsr pixelToSurroundGrid
+        sta surroundX
+
+        lda playerY
+        jsr pixelToSurroundGrid
+        sta surroundY
+
+        lda surroundY
+        clc
+        adc #1
+        asl a
+        asl a
+        tax
+        lda surroundGridRowOffsets,x
+        sta rowAddress
+        lda surroundX
+        sec
+        sbc #1
+        asl a
+        clc
+        adc rowAddress
+        tax
+        setSurroundGridValue
+
+; ----------------------
+
+        lda playerX
+        jsr pixelToSurroundGrid
+        sta surroundX
+        
+        lda playerY
+        jsr pixelToSurroundGrid
+        sta surroundY
+        
+        lda surroundY
+        clc
+        adc #2
+        asl a
+        asl a
+        tax
+        lda surroundGridRowOffsets,x
+        sta rowAddress
+        lda surroundX
+        sec
+        sbc #1
+        asl a
+        clc
+        adc rowAddress
+        tax
+        setSurroundGridValue
+
+; ----------------------
+
+        lda playerX
+        jsr pixelToSurroundGrid
+        sta surroundX
+        
+        lda playerY
+        jsr pixelToSurroundGrid
+        sta surroundY
+        
+        lda surroundY
+        clc
+        adc #-1
+        asl a
+        asl a
+        tax
+        lda surroundGridRowOffsets,x
+        sta rowAddress
+        lda surroundX
+        sec
+        sbc #1
+        asl a
+        clc
+        adc rowAddress
+        tax
+        setSurroundGridValue
+        
+; ----------------------
+
+        lda playerX
+        jsr pixelToSurroundGrid
+        sta surroundX
+        
+        lda playerY
+        jsr pixelToSurroundGrid
+        sta surroundY
+        
+        lda surroundY
+        clc
+        adc #-2
+        asl a
+        asl a
+        tax
+        lda surroundGridRowOffsets,x
+        sta rowAddress
+        lda surroundX
+        sec
+        sbc #1
+        asl a
+        clc
+        adc rowAddress
+        tax
+        setSurroundGridValue
+        
+        
+; ##################################
+
+        lda playerX
+        jsr pixelToSurroundGrid
+        sta surroundX
+        
+        lda playerY
+        jsr pixelToSurroundGrid
+        sta surroundY
+
+        lda surroundY
+        asl a
+        asl a
+        tax
+        lda surroundGridRowOffsets,x
+        sta rowAddress
+        lda surroundX
+        sec
+        sbc #2
+        asl a
+        clc
+        adc rowAddress
+        tax
+        setSurroundGridValue
+
+
+; ----------------------
+
+        lda playerX
+        jsr pixelToSurroundGrid
+        sta surroundX
+
+        lda playerY
+        jsr pixelToSurroundGrid
+        sta surroundY
+
+        lda surroundY
+        clc
+        adc #1
+        asl a
+        asl a
+        tax
+        lda surroundGridRowOffsets,x
+        sta rowAddress
+        lda surroundX
+        sec
+        sbc #2
+        asl a
+        clc
+        adc rowAddress
+        tax
+        setSurroundGridValue
+
+; ----------------------
+
+        lda playerX
+        jsr pixelToSurroundGrid
+        sta surroundX
+        
+        lda playerY
+        jsr pixelToSurroundGrid
+        sta surroundY
+        
+        lda surroundY
+        clc
+        adc #2
+        asl a
+        asl a
+        tax
+        lda surroundGridRowOffsets,x
+        sta rowAddress
+        lda surroundX
+        sec
+        sbc #2
+        asl a
+        clc
+        adc rowAddress
+        tax
+        setSurroundGridValue
+
+; ----------------------
+
+        lda playerX
+        jsr pixelToSurroundGrid
+        sta surroundX
+        
+        lda playerY
+        jsr pixelToSurroundGrid
+        sta surroundY
+        
+        lda surroundY
+        clc
+        adc #-1
+        asl a
+        asl a
+        tax
+        lda surroundGridRowOffsets,x
+        sta rowAddress
+        lda surroundX
+        sec
+        sbc #2
+        asl a
+        clc
+        adc rowAddress
+        tax
+        setSurroundGridValue
+        
+; ----------------------
+
+        lda playerX
+        jsr pixelToSurroundGrid
+        sta surroundX
+        
+        lda playerY
+        jsr pixelToSurroundGrid
+        sta surroundY
+        
+        lda surroundY
+        clc
+        adc #-2
+        asl a
+        asl a
+        tax
+        lda surroundGridRowOffsets,x
+        sta rowAddress
+        lda surroundX
+        sec
+        sbc #2
+        asl a
+        clc
+        adc rowAddress
+        tax
+        setSurroundGridValue
+        
+        
+; ##############################
+; ##############################
+
+
+        lda playerX
+        jsr pixelToSurroundGrid
+        sta surroundX
+        
+        lda playerY
+        jsr pixelToSurroundGrid
+        sta surroundY
+
+        lda surroundY
+        asl a
+        asl a
+        tax
+        lda surroundGridRowOffsets,x
+        sta rowAddress
+        lda surroundX
+        clc
+        adc #1
+        asl a
+        clc
+        adc rowAddress
+        tax
+        setSurroundGridValue
+
+; ----------------------
+
+        lda playerX
+        jsr pixelToSurroundGrid
+        sta surroundX
+
+        lda playerY
+        jsr pixelToSurroundGrid
+        sta surroundY
+
+        lda surroundY
+        clc
+        adc #1
+        asl a
+        asl a
+        tax
+        lda surroundGridRowOffsets,x
+        sta rowAddress
+        lda surroundX
+        clc
+        adc #1
+        asl a
+        clc
+        adc rowAddress
+        tax
+        setSurroundGridValue
+
+; ----------------------
+
+        lda playerX
+        jsr pixelToSurroundGrid
+        sta surroundX
+        
+        lda playerY
+        jsr pixelToSurroundGrid
+        sta surroundY
+        
+        lda surroundY
+        clc
+        adc #2
+        asl a
+        asl a
+        tax
+        lda surroundGridRowOffsets,x
+        sta rowAddress
+        lda surroundX
+        clc
+        adc #1
+        asl a
+        clc
+        adc rowAddress
+        tax
+        setSurroundGridValue
+
+; ----------------------
+
+        lda playerX
+        jsr pixelToSurroundGrid
+        sta surroundX
+        
+        lda playerY
+        jsr pixelToSurroundGrid
+        sta surroundY
+        
+        lda surroundY
+        clc
+        adc #-1
+        asl a
+        asl a
+        tax
+        lda surroundGridRowOffsets,x
+        sta rowAddress
+        lda surroundX
+        clc
+        adc #1
+        asl a
+        clc
+        adc rowAddress
+        tax
+        setSurroundGridValue
+        
+; ----------------------
+
+        lda playerX
+        jsr pixelToSurroundGrid
+        sta surroundX
+        
+        lda playerY
+        jsr pixelToSurroundGrid
+        sta surroundY
+        
+        lda surroundY
+        clc
+        adc #-2
+        asl a
+        asl a
+        tax
+        lda surroundGridRowOffsets,x
+        sta rowAddress
+        lda surroundX
+        clc
+        adc #1
+        asl a
+        clc
+        adc rowAddress
+        tax
+        setSurroundGridValue
+        
+        
+; ##################################
+
+        lda playerX
+        jsr pixelToSurroundGrid
+        sta surroundX
+        
+        lda playerY
+        jsr pixelToSurroundGrid
+        sta surroundY
+
+        lda surroundY
+        asl a
+        asl a
+        tax
+        lda surroundGridRowOffsets,x
+        sta rowAddress
+        lda surroundX
+        clc
+        adc #2
+        asl a
+        clc
+        adc rowAddress
+        tax
+        setSurroundGridValue
+
+
+; ----------------------
+
+        lda playerX
+        jsr pixelToSurroundGrid
+        sta surroundX
+
+        lda playerY
+        jsr pixelToSurroundGrid
+        sta surroundY
+
+        lda surroundY
+        clc
+        adc #1
+        asl a
+        asl a
+        tax
+        lda surroundGridRowOffsets,x
+        sta rowAddress
+        lda surroundX
+        clc
+        adc #2
+        asl a
+        clc
+        adc rowAddress
+        tax
+        setSurroundGridValue
+
+; ----------------------
+
+        lda playerX
+        jsr pixelToSurroundGrid
+        sta surroundX
+        
+        lda playerY
+        jsr pixelToSurroundGrid
+        sta surroundY
+        
+        lda surroundY
+        clc
+        adc #2
+        asl a
+        asl a
+        tax
+        lda surroundGridRowOffsets,x
+        sta rowAddress
+        lda surroundX
+        clc
+        adc #2
+        asl a
+        clc
+        adc rowAddress
+        tax
+        setSurroundGridValue
+
+; ----------------------
+
+        lda playerX
+        jsr pixelToSurroundGrid
+        sta surroundX
+        
+        lda playerY
+        jsr pixelToSurroundGrid
+        sta surroundY
+        
+        lda surroundY
+        clc
+        adc #-1
+        asl a
+        asl a
+        tax
+        lda surroundGridRowOffsets,x
+        sta rowAddress
+        lda surroundX
+        clc
+        adc #2
+        asl a
+        clc
+        adc rowAddress
+        tax
+        setSurroundGridValue
+        
+; ----------------------
+
+        lda playerX
+        jsr pixelToSurroundGrid
+        sta surroundX
+        
+        lda playerY
+        jsr pixelToSurroundGrid
+        sta surroundY
+        
+        lda surroundY
+        clc
+        adc #-2
+        asl a
+        asl a
+        tax
+        lda surroundGridRowOffsets,x
+        sta rowAddress
+        lda surroundX
+        clc
+        adc #2
+        asl a
+        clc
+        adc rowAddress
+        tax
+        setSurroundGridValue
         
         
         rts
@@ -629,6 +1254,8 @@ renderSurroundHLoop anop
         lda >SURROUND_GRID_ADDR,x
         cmp #0
         beq renderSurroundSkipBlock
+        cmp surroundGenId
+        bne renderSurroundSkipBlock
 
 ; render this block
 
@@ -678,6 +1305,85 @@ renderSurroundDone anop
 
 
 
+eraseSurroundGrid entry
+
+        lda #0
+        sta rowCounter
+
+eraseSurroundVLoop anop
+        lda #0
+        sta colCounter
+
+eraseSurroundHLoop anop
+
+        lda rowCounter
+        asl a
+        tax
+        lda surroundGridRowOffsets,x
+        sta rowAddress
+
+        lda colCounter
+
+        clc
+        adc rowAddress
+        asl a
+        
+        tax
+        lda >SURROUND_GRID_ADDR,x
+        cmp #0
+        beq eraseSurroundSkipBlock
+        cmp surroundGenId
+        bne eraseSurroundSkipBlock
+
+; erase this block
+
+        lda colCounter
+        asl a
+        asl a
+        asl a
+        asl a
+        sta rectX
+
+        lda rowCounter
+        asl a
+        asl a
+        asl a
+        asl a
+        sta rectY
+
+        lda #12
+        sta rectWidth
+
+        lda #16
+        sta rectHeight
+
+        lda #COLOR_ORANGE
+        sta rectColor
+
+        jsr eraseSurroundChunk
+
+eraseSurroundSkipBlock anop
+        inc colCounter
+        lda colCounter
+        cmp #20
+        beq eraseSurroundGridRowDone
+        bra eraseSurroundHLoop
+
+eraseSurroundGridRowDone anop
+        stz colCounter
+        inc rowCounter
+        lda rowCounter
+        cmp #13
+        beq eraseSurroundDone
+        bra eraseSurroundVLoop
+
+eraseSurroundDone anop
+
+        rts
+        
+        
+        
+        
 zeroSurroundGrid entry
         lda #0
         sta rowCounter
@@ -858,6 +1564,8 @@ rowCounter dc i2'0'
 colCounter dc i2'0'
 
 rowAddress dc i4'0'
+
+surroundGenId dc i2'0'
 
 
 SURROUND_WIDTH gequ 80

@@ -142,6 +142,19 @@ dontDrawSurround_&SYSCNT anop
         inx
         mend
 
+
+
+        macro
+        setSurroundGridValue
+        lda >SURROUND_GRID_ADDR,x
+        cmp #0
+        bne skipSurroundSet_&SYSCNT
+        lda surroundGenId
+        sta >SURROUND_GRID_ADDR,x
+skipSurroundSet_&SYSCNT anop
+        mend
+
+
 ;
 ; ********************************************
 ; Code pulled from Jeremy Rand's "BuGS" game
