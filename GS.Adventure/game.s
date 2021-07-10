@@ -80,15 +80,8 @@ pass0 anop
 updateSurround anop
         lda #4
         sta surroundUpdateCounter
-        
-        jsr roomHasFog
-        cmp #1
-        bne dontUpdateSurround
 
-        jsr setStaleSurroundGrid
-        jsr runSurround
-        jsr eraseSurroundGrid
-        jsr renderSurroundGrid
+        jsr doSurround
         
 dontUpdateSurround anop
         jsr erasePlayer

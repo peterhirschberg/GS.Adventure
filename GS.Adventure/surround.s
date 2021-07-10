@@ -18,6 +18,23 @@ surround start
         using surroundData
 
 
+        
+doSurround entry
+
+        jsr roomHasFog
+        cmp #1
+        bne dontDoSurround
+
+        jsr setStaleSurroundGrid
+        jsr runSurround
+        jsr eraseSurroundGrid
+        jsr renderSurroundGrid
+        
+dontDoSurround anop
+        
+        rts
+        
+
 runSurround entry
 
         lda playerX
