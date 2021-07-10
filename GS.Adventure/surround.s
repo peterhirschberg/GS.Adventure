@@ -529,6 +529,193 @@ eraseSurroundRight entry
 
 
 
+renderSurroundGrid entry
+
+        lda #0
+        sta rowCounter
+
+renderSurroundVLoop anop
+        lda #0
+        sta colCounter
+
+renderSurroundHLoop anop
+
+        lda rowCounter
+        asl a
+        tax
+        lda surroundGridRowOffsets,x
+        sta rowAddress
+
+        lda colCounter
+
+        clc
+        adc rowAddress
+        asl a
+        
+        tax
+        lda >SURROUND_GRID_ADDR,x
+        cmp #0
+        beq renderSurroundSkipBlock
+
+; render this block
+
+        lda colCounter
+        asl a
+        asl a
+        asl a
+        asl a
+        sta rectX
+
+        lda rowCounter
+        asl a
+        asl a
+        asl a
+        asl a
+        sta rectY
+
+        lda #12
+        sta rectWidth
+
+        lda #16
+        sta rectHeight
+
+        lda #COLOR_BLUE
+        sta rectColor
+
+        jsr drawSurroundChunk
+
+renderSurroundSkipBlock anop
+        inc colCounter
+        lda colCounter
+        cmp #16
+        beq renderSurroundGridRowDone
+        bra renderSurroundHLoop
+
+renderSurroundGridRowDone anop
+        stz colCounter
+        inc rowCounter
+        lda rowCounter
+        cmp #12
+        beq renderSurroundDone
+        bra renderSurroundVLoop
+
+renderSurroundDone anop
+
+        rts
+
+
+
+zeroSurroundGrid entry
+        stz rowCounter
+
+zeroSurroundVLoop anop
+        stz colCounter
+
+zeroSurroundHLoop anop
+
+        lda rowCounter
+        asl a
+        tax
+        lda surroundGridRowOffsets,x
+        sta rowAddress
+        lda colCounter
+        asl a
+        clc
+        adc rowAddress
+        tax
+        lda #0
+        sta >SURROUND_GRID_ADDR,x
+
+        inc colCounter
+        lda colCounter
+        cmp #16
+        beq zeroSurroundGridRowDone
+        bra zeroSurroundHLoop
+
+zeroSurroundGridRowDone anop
+        stz colCounter
+        inc rowCounter
+        lda rowCounter
+        cmp #13
+        beq zeroSurroundDone
+        bra zeroSurroundVLoop
+
+zeroSurroundDone anop
+
+     bra here
+        ldx #0
+        lda surroundGridRowOffsets,x
+        clc
+        adc #2
+        tax
+        lda #1
+        sta >SURROUND_GRID_ADDR,x
+
+
+        ldx #1
+        lda surroundGridRowOffsets,x
+        clc
+        adc #2
+        tax
+        lda #1
+        sta >SURROUND_GRID_ADDR,x
+
+here anop
+
+        lda #3
+        asl a
+        tax
+        lda surroundGridRowOffsets,x
+        sta rowAddress
+        lda #0
+        asl a
+        clc
+        adc rowAddress
+        tax
+        lda #1
+        sta >SURROUND_GRID_ADDR,x
+
+
+        lda #3
+        asl a
+        tax
+        lda surroundGridRowOffsets,x
+        sta rowAddress
+        lda #2
+        asl a
+        clc
+        adc rowAddress
+        tax
+        lda #1
+        sta >SURROUND_GRID_ADDR,x
+
+
+        rts
+
+
+
+
+; divide X & Y by 16
+
+; 320 / 16
+; 200 / 16
+;
+; 20 x 12 block size
+
+surroundGridRowOffsets anop
+        dc i2'0'
+        dc i2'16'
+        dc i2'32'
+        dc i2'48'
+        dc i2'64'
+        dc i2'80'
+        dc i2'96'
+        dc i2'112'
+        dc i2'128'
+        dc i2'144'
+        dc i2'160'
+        dc i2'176'
+        dc i2'192'
 
 
 surroundDrawDirty dc i2'0'
@@ -544,6 +731,12 @@ eraseX dc i2'0'
 eraseY dc i2'0'
 
 
+rowCounter dc i2'0'
+colCounter dc i2'0'
+
+rowAddress dc i2'0'
+
+
 SURROUND_WIDTH gequ 80
 SURROUND_HEIGHT gequ 80
 SURROUND_OFFSET_X gequ 32
@@ -555,6 +748,8 @@ SURROUND_OFFSET_Y gequ 32
 surroundData data
 
 surroundAllDirty dc i2'1'
+
+SURROUND_GRID_ADDR gequ $0a0000
 
         end
 

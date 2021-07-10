@@ -24,6 +24,9 @@ initGame entry
         jsr setupScreen
         jsr blackColorTable
 
+        jsr zeroSurroundGrid
+
+
 ;        jsr borderInit
 
 ; -------------------------------
@@ -81,9 +84,12 @@ noHitPass0 anop
         cmp #1
         bne noMovePass0
 
-        jsr eraseSurround
+;        jsr eraseSurround
         jsr erasePlayer
-        jsr drawSurround
+
+;        jsr drawSurround
+        jsr renderSurroundGrid
+
         jsr drawPlayer
 
 noMovePass0 anop

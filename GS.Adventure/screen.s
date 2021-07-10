@@ -886,6 +886,63 @@ eraseDone2 anop
 
 
 
+drawSurroundChunk entry
+
+        ldy rectColor
+
+        lda rectX
+        lsr a
+        sta rectX
+
+        lda rectWidth
+        lsr a
+        sta rectWidth
+
+        lda #0
+        sta rowCounter
+
+drawSurroundVLoop2 anop
+        lda rowCounter
+        clc
+        adc rectY
+
+        asl a
+        tax
+        lda screenRowOffsets,x
+        clc
+        adc rectX
+        tax
+
+        lda rectWidth
+        sta columnCounter
+
+drawSurroundHLoop2 anop
+
+        tya
+
+        drawSurroundWord
+
+        dec columnCounter
+        dec columnCounter
+
+        lda columnCounter
+        bmi drawSurroundNextRow2
+        bra drawSurroundHLoop2
+
+drawSurroundNextRow2 anop
+        inc rowCounter
+        lda rowCounter
+        cmp rectHeight
+        beq drawSurroundDone2
+        bra drawSurroundVLoop2
+
+drawSurroundDone2 anop
+
+        rts
+
+
+
+
 columnCounter dc i2'0'
 rowCounter dc i2'0'
 rowOffset dc i4'0'
