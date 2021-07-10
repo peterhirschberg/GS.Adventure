@@ -7,8 +7,12 @@
 ;
 
         case on
+        mcopy global.macros
+        keep global
+
 
 surround start
+        using globalData
         using screenData
         using playerData
         using roomsData
@@ -528,6 +532,382 @@ eraseSurroundRight entry
 
 
 
+updateSurround entry
+
+        jsr eraseSurround2
+        jsr drawSurround2
+        jsr renderSurround
+
+        rts
+
+
+
+eraseSurround2 entry
+
+        jsr roomHasFog
+        cmp #1
+        beq hasFog3
+        rts
+
+hasFog3 anop
+
+        jsr checkSurroundEraseDirty
+        lda surroundEraseDirty
+        cmp #1
+        beq startErase3
+        rts
+
+startErase3 anop
+
+        lda eraseX
+        sta rectX
+        lda eraseY
+        sta rectY
+
+        lda rectY
+        bmi eraseMinusY3
+        cmp #$76
+        bcs erasePositiveY3
+        bra eraseOkayY3
+
+eraseMinusY3 anop
+        stz rectY
+        stz eraseY
+        bra eraseOkayY3
+
+erasePositiveY3 anop
+        lda #$76
+        sta rectY
+        sta eraseY
+
+eraseOkayY3 anop
+
+;        jsl eraseSurroundSprite
+        stz surroundEraseDirty
+
+        rts
+
+
+
+drawSurround2 entry
+
+        jsr roomHasFog
+        cmp #1
+        beq hasFog4
+        rts
+
+hasFog4 anop
+
+        lda playerX
+        sec
+        sbc #SURROUND_OFFSET_X
+        and #$fff0
+        sta rectX
+        sta surroundX
+
+
+        lda playerY
+        sec
+        sbc #SURROUND_OFFSET_Y
+        and #$fff0
+        sta rectY
+        sta surroundY
+
+
+        jsr checkSurroundDrawDirty
+        lda surroundDrawDirty
+        cmp #1
+        beq startDraw4
+        rts
+
+startDraw4 anop
+
+; --------------------------------------
+
+        lda rectY
+        bmi drawMinusY4
+        cmp #$76
+        bcs drawPositiveY4
+        bra drawOkayY4
+
+drawMinusY4 anop
+        stz rectY
+        stz surroundY
+        bra drawOkayY4
+
+drawPositiveY4 anop
+        lda #$76
+        sta rectY
+        sta surroundY
+
+drawOkayY4 anop
+
+        jsr drawSurroundSprite2
+
+        lda surroundOldX
+        sta eraseX
+
+        lda surroundOldY
+        sta eraseY
+
+
+        lda surroundX
+        sta surroundOldX
+        lda surroundY
+        sta surroundOldY
+
+        stz surroundDrawDirty
+
+
+        rts
+
+
+renderSurround entry
+
+        lda #0
+        sta rowCounter
+
+blitVLoop anop
+        lda rowCounter
+        asl a
+        tax
+        lda screenRowOffsets,x
+        sta rowAddress
+
+blitHLoop anop
+        lda rowAddress
+        tax
+
+        blitSurroundWord
+        blitSurroundWord
+        blitSurroundWord
+        blitSurroundWord
+        blitSurroundWord
+        blitSurroundWord
+        blitSurroundWord
+        blitSurroundWord
+        blitSurroundWord
+        blitSurroundWord
+
+        blitSurroundWord
+        blitSurroundWord
+        blitSurroundWord
+        blitSurroundWord
+        blitSurroundWord
+        blitSurroundWord
+        blitSurroundWord
+        blitSurroundWord
+        blitSurroundWord
+        blitSurroundWord
+
+        blitSurroundWord
+        blitSurroundWord
+        blitSurroundWord
+        blitSurroundWord
+        blitSurroundWord
+        blitSurroundWord
+        blitSurroundWord
+        blitSurroundWord
+        blitSurroundWord
+        blitSurroundWord
+
+        blitSurroundWord
+        blitSurroundWord
+        blitSurroundWord
+        blitSurroundWord
+        blitSurroundWord
+        blitSurroundWord
+        blitSurroundWord
+        blitSurroundWord
+        blitSurroundWord
+        blitSurroundWord
+
+        blitSurroundWord
+        blitSurroundWord
+        blitSurroundWord
+        blitSurroundWord
+        blitSurroundWord
+        blitSurroundWord
+        blitSurroundWord
+        blitSurroundWord
+        blitSurroundWord
+        blitSurroundWord
+
+        blitSurroundWord
+        blitSurroundWord
+        blitSurroundWord
+        blitSurroundWord
+        blitSurroundWord
+        blitSurroundWord
+        blitSurroundWord
+        blitSurroundWord
+        blitSurroundWord
+        blitSurroundWord
+
+        blitSurroundWord
+        blitSurroundWord
+        blitSurroundWord
+        blitSurroundWord
+        blitSurroundWord
+        blitSurroundWord
+        blitSurroundWord
+        blitSurroundWord
+        blitSurroundWord
+        blitSurroundWord
+
+        blitSurroundWord
+        blitSurroundWord
+        blitSurroundWord
+        blitSurroundWord
+        blitSurroundWord
+        blitSurroundWord
+        blitSurroundWord
+        blitSurroundWord
+        blitSurroundWord
+        blitSurroundWord
+
+        blitSurroundWord
+        blitSurroundWord
+        blitSurroundWord
+        blitSurroundWord
+        blitSurroundWord
+        blitSurroundWord
+        blitSurroundWord
+        blitSurroundWord
+        blitSurroundWord
+        blitSurroundWord
+
+        blitSurroundWord
+        blitSurroundWord
+        blitSurroundWord
+        blitSurroundWord
+        blitSurroundWord
+        blitSurroundWord
+        blitSurroundWord
+        blitSurroundWord
+        blitSurroundWord
+        blitSurroundWord
+
+        blitSurroundWord
+        blitSurroundWord
+        blitSurroundWord
+        blitSurroundWord
+        blitSurroundWord
+        blitSurroundWord
+        blitSurroundWord
+        blitSurroundWord
+        blitSurroundWord
+        blitSurroundWord
+
+        blitSurroundWord
+        blitSurroundWord
+        blitSurroundWord
+        blitSurroundWord
+        blitSurroundWord
+        blitSurroundWord
+        blitSurroundWord
+        blitSurroundWord
+        blitSurroundWord
+        blitSurroundWord
+
+        blitSurroundWord
+        blitSurroundWord
+        blitSurroundWord
+        blitSurroundWord
+        blitSurroundWord
+        blitSurroundWord
+        blitSurroundWord
+        blitSurroundWord
+        blitSurroundWord
+        blitSurroundWord
+
+        blitSurroundWord
+        blitSurroundWord
+        blitSurroundWord
+        blitSurroundWord
+        blitSurroundWord
+        blitSurroundWord
+        blitSurroundWord
+        blitSurroundWord
+        blitSurroundWord
+        blitSurroundWord
+
+        blitSurroundWord
+        blitSurroundWord
+        blitSurroundWord
+        blitSurroundWord
+        blitSurroundWord
+        blitSurroundWord
+        blitSurroundWord
+        blitSurroundWord
+        blitSurroundWord
+        blitSurroundWord
+
+        blitSurroundWord
+        blitSurroundWord
+        blitSurroundWord
+        blitSurroundWord
+        blitSurroundWord
+        blitSurroundWord
+        blitSurroundWord
+        blitSurroundWord
+        blitSurroundWord
+        blitSurroundWord
+
+blitRowDone anop
+        inc rowCounter
+        lda rowCounter
+        cmp #199
+        beq blitDone
+        jmp blitVLoop
+
+blitDone anop
+
+        rts
+
+
+
+drawSurroundSprite2 entry
+
+        lda rectX
+        lsr a
+        sta rectX
+
+        lda #SURROUND_WIDTH
+        lsr a
+        sta rectWidth
+
+        lda #0
+        sta rowCounter
+
+        ldy #COLOR_ORANGE
+
+fillLoop1 anop
+        lda rowCounter
+        clc
+        adc rectY
+
+        asl a
+        tax
+        lda screenRowOffsets,x
+        clc
+        adc rectX
+        tax
+
+        tya
+        sta >SURROUND_ADDR,x
+
+nextRow1 anop
+        inc rowCounter
+        lda rowCounter
+        cmp #SURROUND_HEIGHT
+        beq fillDone1
+        bra fillLoop1
+
+fillDone1 anop
+
+        rts
+
 
 
 
@@ -542,6 +922,9 @@ surroundOldY dc i2'0'
 
 eraseX dc i2'0'
 eraseY dc i2'0'
+
+rowCounter dc i2'0'
+rowAddress dc i4'0'
 
 
 SURROUND_WIDTH gequ 80

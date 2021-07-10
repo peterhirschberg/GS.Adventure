@@ -886,6 +886,26 @@ eraseDone2 anop
 
 
 
+; set all surround pixels to 0
+zeroSurroundBuffer entry
+        ldy #$00
+        lda #0
+        sta offset
+loop anop
+        tax
+        tya
+        sta >SURROUND_ADDR,x
+        inc offset
+        lda offset
+        cmp #$7d00
+        beq done
+        bra loop
+done anop
+        rts
+
+
+
+
 columnCounter dc i2'0'
 rowCounter dc i2'0'
 rowOffset dc i4'0'
@@ -905,7 +925,7 @@ rectWidth dc i2'0'
 rectHeight dc i2'0'
 rectColor dc i2'0'
 
-;BACKGROUND_ADDR gequ $0e0000
+SURROUND_ADDR gequ $0a0000
 BACKGROUND_ADDR gequ $002000
 
 

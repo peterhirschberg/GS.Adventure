@@ -22,9 +22,11 @@ game start
 
 initGame entry
         jsr setupScreen
+        jsr zeroSurroundBuffer
         jsr blackColorTable
 
-;        jsr borderInit
+
+        jsr borderInit
 
 ; -------------------------------
 ; set up game
@@ -55,7 +57,7 @@ runGameTick entry
 
         jsr waitForVbl
 
-;        jsr borderStart
+        jsr borderStart
 
         jsr checkControls
 
@@ -81,9 +83,13 @@ noHitPass0 anop
         cmp #1
         bne noMovePass0
 
-        jsr eraseSurround
+        jsr borderStart
+        jsr updateSurround
+        jsr borderStart
+
+;        jsr eraseSurround
         jsr erasePlayer
-        jsr drawSurround
+;        jsr drawSurround
         jsr drawPlayer
 
 noMovePass0 anop
@@ -125,7 +131,7 @@ passDone anop
         lda currentRoom
         sta lastRoom
 
-;        jsr borderDone
+        jsr borderDone
 
         rtl
 

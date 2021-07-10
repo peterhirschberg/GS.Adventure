@@ -142,6 +142,22 @@ dontDrawSurround_&SYSCNT anop
         inx
         mend
 
+
+
+
+        macro
+        blitSurroundWord
+        lda >SURROUND_ADDR,x
+        cmp #$0000
+        beq dontBlitSurround_&SYSCNT
+        sta >SCREEN_ADDR,x
+        inx
+        inx
+dontBlitSurround_&SYSCNT anop
+        mend
+
+
+
 ;
 ; ********************************************
 ; Code pulled from Jeremy Rand's "BuGS" game

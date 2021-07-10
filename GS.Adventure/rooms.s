@@ -673,6 +673,9 @@ adjustDone anop
 
 roomHasFog entry
 
+    lda #1
+    rts
+
         ldx currentRoom
         lda roomColorList,x
         cmp #COLOR_FOG
