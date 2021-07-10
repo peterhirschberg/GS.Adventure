@@ -148,11 +148,21 @@ dontDrawSurround_&SYSCNT anop
         setSurroundGridValue
         lda >SURROUND_GRID_ADDR,x
         cmp #0
-        bne skipSurroundSet_&SYSCNT
-        lda surroundGenId
+        beq surroundDraw_&SYSCNT
+        cmp #SURROUND_DRAW
+        beq surroundLeave_&SYSCNT
+        bra surroundDone_&SYSCNT
+surroundDraw_&SYSCNT anop
+        lda #SURROUND_DRAW
         sta >SURROUND_GRID_ADDR,x
-skipSurroundSet_&SYSCNT anop
+        bra surroundDone_&SYSCNT
+surroundLeave_&SYSCNT anop
+        lda #SURROUND_LEAVE
+        sta >SURROUND_GRID_ADDR,x
+surroundDone_&SYSCNT anop
         mend
+
+
 
 
 ;

@@ -542,15 +542,6 @@ eraseSurroundRight entry
 
 runSurround entry
 
-        inc surroundGenId
-        lda surroundGenId
-        cmp #$ff
-        bne runSurroundContinue
-        lda #1
-        sta surroundGenId
-        
-runSurroundContinue anop
-
         lda playerX
         jsr pixelToSurroundGrid
         sta surroundX
@@ -1245,7 +1236,6 @@ renderSurroundHLoop anop
         sta rowAddress
 
         lda colCounter
-
         clc
         adc rowAddress
         asl a
@@ -1254,7 +1244,7 @@ renderSurroundHLoop anop
         lda >SURROUND_GRID_ADDR,x
         cmp #0
         beq renderSurroundSkipBlock
-        cmp surroundGenId
+        cmp #SURROUND_DRAW
         bne renderSurroundSkipBlock
 
 ; render this block
@@ -1323,7 +1313,6 @@ eraseSurroundHLoop anop
         sta rowAddress
 
         lda colCounter
-
         clc
         adc rowAddress
         asl a
@@ -1332,8 +1321,8 @@ eraseSurroundHLoop anop
         lda >SURROUND_GRID_ADDR,x
         cmp #0
         beq eraseSurroundSkipBlock
-        cmp surroundGenId
-        beq eraseSurroundSkipBlock
+        cmp #SURROUND_ERASE
+        bne eraseSurroundSkipBlock
 
 ; erase this block
 
@@ -1361,6 +1350,22 @@ eraseSurroundHLoop anop
         sta rectColor
 
         jsr eraseSurroundChunk
+        
+; clear the grid position
+        lda rowCounter
+        asl a
+        tax
+        lda surroundGridRowOffsets,x
+        sta rowAddress
+
+        lda colCounter
+        clc
+        adc rowAddress
+        asl a
+
+        tax
+        lda #0
+        sta >SURROUND_GRID_ADDR,x
 
 eraseSurroundSkipBlock anop
         inc colCounter
@@ -1375,7 +1380,7 @@ eraseSurroundGridRowDone anop
         lda rowCounter
         cmp #13
         beq eraseSurroundDone
-        bra eraseSurroundVLoop
+        jmp eraseSurroundVLoop
 
 eraseSurroundDone anop
 
@@ -1565,7 +1570,10 @@ colCounter dc i2'0'
 
 rowAddress dc i4'0'
 
-surroundGenId dc i2'0'
+
+SURROUND_ERASE gequ 1
+SURROUND_LEAVE gequ 2
+SURROUND_DRAW gequ 3
 
 
 SURROUND_WIDTH gequ 80
