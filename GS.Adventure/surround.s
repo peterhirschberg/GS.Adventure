@@ -587,7 +587,7 @@ renderSurroundHLoop anop
 renderSurroundSkipBlock anop
         inc colCounter
         lda colCounter
-        cmp #16
+        cmp #13
         beq renderSurroundGridRowDone
         bra renderSurroundHLoop
 
@@ -606,10 +606,10 @@ renderSurroundDone anop
 
 
 zeroSurroundGrid entry
-        stz rowCounter
+        sta rowCounter
 
 zeroSurroundVLoop anop
-        stz colCounter
+        sta colCounter
 
 zeroSurroundHLoop anop
 
@@ -628,12 +628,13 @@ zeroSurroundHLoop anop
 
         inc colCounter
         lda colCounter
-        cmp #16
+        cmp #12
         beq zeroSurroundGridRowDone
         bra zeroSurroundHLoop
 
 zeroSurroundGridRowDone anop
-        stz colCounter
+        lda #0
+        sta colCounter
         inc rowCounter
         lda rowCounter
         cmp #13
@@ -662,12 +663,13 @@ zeroSurroundDone anop
 
 here anop
 
-        lda #3
+        lda #4
+        asl a
         asl a
         tax
         lda surroundGridRowOffsets,x
         sta rowAddress
-        lda #0
+        lda #2
         asl a
         clc
         adc rowAddress
@@ -676,12 +678,43 @@ here anop
         sta >SURROUND_GRID_ADDR,x
 
 
-        lda #3
+        lda #4
+        asl a
+        asl a
+        tax
+        lda surroundGridRowOffsets,x
+        sta rowAddress
+        lda #4
+        asl a
+        clc
+        adc rowAddress
+        tax
+        lda #1
+        sta >SURROUND_GRID_ADDR,x
+
+        
+        lda #5
+        asl a
         asl a
         tax
         lda surroundGridRowOffsets,x
         sta rowAddress
         lda #2
+        asl a
+        clc
+        adc rowAddress
+        tax
+        lda #1
+        sta >SURROUND_GRID_ADDR,x
+        
+        
+        lda #5
+        asl a
+        asl a
+        tax
+        lda surroundGridRowOffsets,x
+        sta rowAddress
+        lda #4
         asl a
         clc
         adc rowAddress
@@ -734,7 +767,7 @@ eraseY dc i2'0'
 rowCounter dc i2'0'
 colCounter dc i2'0'
 
-rowAddress dc i2'0'
+rowAddress dc i4'0'
 
 
 SURROUND_WIDTH gequ 80
