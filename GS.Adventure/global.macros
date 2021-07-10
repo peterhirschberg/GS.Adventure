@@ -149,6 +149,8 @@ dontDrawSurround_&SYSCNT anop
         lda >SURROUND_GRID_ADDR,x
         cmp #0
         beq surroundDraw_&SYSCNT
+        cmp #SURROUND_ERASE
+        beq surroundDraw_&SYSCNT
         cmp #SURROUND_DRAW
         beq surroundLeave_&SYSCNT
         bra surroundDone_&SYSCNT
@@ -160,6 +162,14 @@ surroundLeave_&SYSCNT anop
         lda #SURROUND_LEAVE
         sta >SURROUND_GRID_ADDR,x
 surroundDone_&SYSCNT anop
+        mend
+
+
+
+        macro
+        unsetSurroundGridValue
+        lda #SURROUND_ERASE
+        sta >SURROUND_GRID_ADDR,x
         mend
 
 
