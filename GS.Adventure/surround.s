@@ -1333,7 +1333,7 @@ eraseSurroundHLoop anop
         cmp #0
         beq eraseSurroundSkipBlock
         cmp surroundGenId
-        bne eraseSurroundSkipBlock
+        beq eraseSurroundSkipBlock
 
 ; erase this block
 
