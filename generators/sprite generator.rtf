@@ -40,15 +40,42 @@ const objectGfxDragon = \
     0x3F,                  //   XXXXXX         \
 ]\
 \
+const objectGfxBridge =\
+[\
+    24,\
+    0xC3,                  // XX    XX                                                                  \
+    0xC3,                  // XX    XX                                                                  \
+    0xC3,                  // XX    XX                                                                  \
+    0xC3,                  // XX    XX                                                                  \
+    0x42,                  //  X    X                                                                   \
+    0x42,                  //  X    X                                                                   \
+    0x42,                  //  X    X                                                                   \
+    0x42,                  //  X    X                                                                   \
+    0x42,                  //  X    X                                                                   \
+    0x42,                  //  X    X                                                                   \
+    0x42,                  //  X    X                                                                   \
+    0x42,                  //  X    X                                                                   \
+    0x42,                  //  X    X                                                                   \
+    0x42,                  //  X    X                                                                   \
+    0x42,                  //  X    X                                                                   \
+    0x42,                  //  X    X                                                                   \
+    0x42,                  //  X    X                                                                   \
+    0x42,                  //  X    X                                                                   \
+    0x42,                  //  X    X                                                                   \
+    0x42,                  //  X    X                                                                   \
+    0xC3,                  // XX    XX                                                                  \
+    0xC3,                  // XX    XX                                                                  \
+    0xC3,                  // XX    XX                                                                  \
+    0xC3                   // XX    XX  \
+]\
 \
-let size = 1\
 \
-function renderSprite(sprite, name, color) \{\
+function renderSprite(sprite, name, color, size) \{\
 \
 	str += name + ' entry\\n\\n'\
 \
 	str += '		spriteGetDrawAddress\\n'\
-	str += '		_spriteHeader\\n'\
+	str += '		_spriteHeader\\n\\n'\
 \
 \
 	let cx = 0\
@@ -66,30 +93,43 @@ function renderSprite(sprite, name, color) \{\
       str += `		adc #$\{cy*160\}\\n`\
       str += '		tcd\\n\\n'      \
 \
+			str += '		short m\\n'\
+\
+      str += `		lda #$$\{color\}\\n\\n`\
+\
       for (let bit=0; bit < 8; bit++)\
       \{\
         let rowByte = sprite[i]\
         if (rowByte & (1 << (7-bit)))\
         \{\
           let x = cx+(bit*size);\
-          str += `		lda $\{x\}\\n`\
-          str += `		ora #$$\{color\}\\n`            \
-          str += `		sta $\{x\}\\n`\
+          for (let k=0; k<size; k++) \{\
+	          str += `		sta $\{x+k\}\\n`\
+					\}\
         \}\
       \}\
+      \
+			str += '		long m\\n'\
+      \
       cy++\
     \}\
 	\}\
+\
+  str += '\\n'\
+\
+	str += '		long m\\n'\
   \
   str += '\\n'\
   str += '		_spriteFooter\\n'\
-  str += '		rts\\n'\
+  str += '		rts\\n\\n'\
 \
 \}\
 \
-renderSprite(objectGfxKey, 'spriteYellowKey', '33')\
+renderSprite(objectGfxKey, 'drawSpriteYellowKey', '33', 1)\
 \
-renderSprite(objectGfxDragon, 'spriteRedDragon', '55')\
+renderSprite(objectGfxDragon, 'drawSpriteRedDragon', '55', 1)\
+\
+renderSprite(objectGfxBridge, 'drawSpriteBridge', '66', 4)\
 \
 \
 str += '\\n\\n'\

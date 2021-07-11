@@ -135,13 +135,20 @@ passDone anop
         sta spriteX
         lda #100
         sta spriteY
-        jsr spriteYellowKey
+        jsr drawSpriteYellowKey
 
         lda #50
         sta spriteX
         lda #40
         sta spriteY
-        jsr spriteRedDragon
+        jsr drawSpriteRedDragon
+
+        
+        lda #180
+        sta spriteX
+        lda #40
+        sta spriteY
+        jsr drawSpriteBridge
 
         
         jsr borderDone
