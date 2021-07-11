@@ -137,18 +137,39 @@ passDone anop
         sta spriteY
         jsr drawSpriteYellowKey
 
-        lda #50
-        sta spriteX
-        lda #40
-        sta spriteY
-        jsr drawSpriteRedDragon
-
-        
         lda #180
         sta spriteX
         lda #40
         sta spriteY
         jsr drawSpriteBridge
+
+        jsr borderStart
+        
+
+        lda temp
+        sta spriteX
+        lda #40
+        sta spriteY
+        jsr eraseSpriteDragon
+
+
+        inc temp
+        lda temp
+        cmp #320
+        beq resetTemp
+        bra continue
+        
+resetTemp anop
+        lda #0
+        sta temp
+        
+continue anop
+
+        lda temp
+        sta spriteX
+        lda #40
+        sta spriteY
+        jsr drawSpriteRedDragon
 
         
         jsr borderDone
@@ -157,10 +178,11 @@ passDone anop
         rtl
 
 
-
+temp dc i2'0'
 
 
         end
+
 
 gameData data
 

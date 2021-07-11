@@ -125,11 +125,80 @@ function renderSprite(sprite, name, color, size) \{\
 \
 \}\
 \
+\
+function eraseSprite(sprite, name, size) \{\
+\
+	str += name + ' entry\\n\\n'\
+\
+  str += '		lda spriteX\\n'\
+  str += '		lsr a\\n'\
+  str += '		sta spriteX\\n'\
+\
+	let cx = 0\
+  let cy = 0\
+\
+	let height = sprite[0]\
+  \
+  for (let i=1; i<height+1; i++) \{\
+  \
+    for (let j=0; j<2; j++) \{\
+\
+      str += '		lda spriteY\\n'\
+      str += '		clc\\n'\
+      str += `		adc #$\{cy\}\\n`\
+      str += '		asl a\\n'\
+      str += '		tax\\n'\
+      str += '		lda screenRowOffsets,x\\n'\
+      str += '		sta rowAddress\\n\\n'\
+\
+      for (let bit=0; bit < 8; bit++)\
+      \{\
+        let rowByte = sprite[i]\
+        if (rowByte & (1 << (7-bit)))\
+        \{\
+          let x = cx+(bit*size);\
+          for (let k=0; k<size; k++) \{\
+          \
+          	str += '		lda rowAddress\\n'\
+            str += '		clc\\n'\
+            str += '		adc spriteX\\n\\n'\
+            str += '		clc\\n'\
+            str += `		adc #$\{x+k\}\\n`\
+            \
+						str += '		tax\\n\\n'\
+\
+            str += '\\n'\
+//            str += '		short m\\n'\
+\
+            str += '		lda >BACKGROUND_ADDR,x\\n'\
+            str += '		sta >SCREEN_ADDR,x\\n'\
+            \
+//						str += '		long m\\n'\
+            \
+            str += '\\n'\
+            \
+					\}\
+        \}\
+      \}\
+      \
+      cy++\
+    \}\
+	\}\
+\
+  str += '\\n'\
+  \
+  str += '		rts\\n\\n'\
+\
+\}\
+\
+\
 renderSprite(objectGfxKey, 'drawSpriteYellowKey', '33', 1)\
 \
 renderSprite(objectGfxDragon, 'drawSpriteRedDragon', '55', 1)\
 \
 renderSprite(objectGfxBridge, 'drawSpriteBridge', '66', 4)\
+\
+eraseSprite(objectGfxDragon, 'eraseSpriteDragon', 1)\
 \
 \
 str += '\\n\\n'\

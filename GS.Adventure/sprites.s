@@ -1707,8 +1707,2775 @@ drawSpriteBridge entry
         rts
         
         
+        
+eraseSpriteDragon entry
+
+        lda spriteX
+        lsr a
+        sta spriteX
+        lda spriteY
+        clc
+        adc #0
+        asl a
+        tax
+        lda screenRowOffsets,x
+        sta rowAddress
+
+        lda rowAddress
+        clc
+        adc spriteX
+
+        clc
+        adc #5
+        tax
+
+
+        short m
+        lda >BACKGROUND_ADDR,x
+        sta >SCREEN_ADDR,x
+        long m
+
+        lda rowAddress
+        clc
+        adc spriteX
+
+        clc
+        adc #6
+        tax
+
+
+        short m
+        lda >BACKGROUND_ADDR,x
+        sta >SCREEN_ADDR,x
+        long m
+
+        lda spriteY
+        clc
+        adc #1
+        asl a
+        tax
+        lda screenRowOffsets,x
+        sta rowAddress
+
+        lda rowAddress
+        clc
+        adc spriteX
+
+        clc
+        adc #5
+        tax
+
+
+        short m
+        lda >BACKGROUND_ADDR,x
+        sta >SCREEN_ADDR,x
+        long m
+
+        lda rowAddress
+        clc
+        adc spriteX
+
+        clc
+        adc #6
+        tax
+
+
+        short m
+        lda >BACKGROUND_ADDR,x
+        sta >SCREEN_ADDR,x
+        long m
+
+        lda spriteY
+        clc
+        adc #2
+        asl a
+        tax
+        lda screenRowOffsets,x
+        sta rowAddress
+
+        lda rowAddress
+        clc
+        adc spriteX
+
+        clc
+        adc #4
+        tax
+
+
+        short m
+        lda >BACKGROUND_ADDR,x
+        sta >SCREEN_ADDR,x
+        long m
+
+        lda rowAddress
+        clc
+        adc spriteX
+
+        clc
+        adc #5
+        tax
+
+
+        short m
+        lda >BACKGROUND_ADDR,x
+        sta >SCREEN_ADDR,x
+        long m
+
+        lda rowAddress
+        clc
+        adc spriteX
+
+        clc
+        adc #6
+        tax
+
+
+        short m
+        lda >BACKGROUND_ADDR,x
+        sta >SCREEN_ADDR,x
+        long m
+
+        lda rowAddress
+        clc
+        adc spriteX
+
+        clc
+        adc #7
+        tax
+
+
+        short m
+        lda >BACKGROUND_ADDR,x
+        sta >SCREEN_ADDR,x
+        long m
+
+        lda spriteY
+        clc
+        adc #3
+        asl a
+        tax
+        lda screenRowOffsets,x
+        sta rowAddress
+
+        lda rowAddress
+        clc
+        adc spriteX
+
+        clc
+        adc #4
+        tax
+
+
+        short m
+        lda >BACKGROUND_ADDR,x
+        sta >SCREEN_ADDR,x
+        long m
+
+        lda rowAddress
+        clc
+        adc spriteX
+
+        clc
+        adc #5
+        tax
+
+
+        short m
+        lda >BACKGROUND_ADDR,x
+        sta >SCREEN_ADDR,x
+        long m
+
+        lda rowAddress
+        clc
+        adc spriteX
+
+        clc
+        adc #6
+        tax
+
+
+        short m
+        lda >BACKGROUND_ADDR,x
+        sta >SCREEN_ADDR,x
+        long m
+
+        lda rowAddress
+        clc
+        adc spriteX
+
+        clc
+        adc #7
+        tax
+
+
+        short m
+        lda >BACKGROUND_ADDR,x
+        sta >SCREEN_ADDR,x
+        long m
+
+        lda spriteY
+        clc
+        adc #4
+        asl a
+        tax
+        lda screenRowOffsets,x
+        sta rowAddress
+
+        lda rowAddress
+        clc
+        adc spriteX
+
+        clc
+        adc #0
+        tax
+
+
+        short m
+        lda >BACKGROUND_ADDR,x
+        sta >SCREEN_ADDR,x
+        long m
+
+        lda rowAddress
+        clc
+        adc spriteX
+
+        clc
+        adc #1
+        tax
+
+
+        short m
+        lda >BACKGROUND_ADDR,x
+        sta >SCREEN_ADDR,x
+        long m
+
+        lda rowAddress
+        clc
+        adc spriteX
+
+        clc
+        adc #2
+        tax
+
+
+        short m
+        lda >BACKGROUND_ADDR,x
+        sta >SCREEN_ADDR,x
+        long m
+
+        lda rowAddress
+        clc
+        adc spriteX
+
+        clc
+        adc #3
+        tax
+
+
+        short m
+        lda >BACKGROUND_ADDR,x
+        sta >SCREEN_ADDR,x
+        long m
+
+        lda rowAddress
+        clc
+        adc spriteX
+
+        clc
+        adc #6
+        tax
+
+
+        short m
+        lda >BACKGROUND_ADDR,x
+        sta >SCREEN_ADDR,x
+        long m
+
+        lda rowAddress
+        clc
+        adc spriteX
+
+        clc
+        adc #7
+        tax
+
+
+        short m
+        lda >BACKGROUND_ADDR,x
+        sta >SCREEN_ADDR,x
+        long m
+
+        lda spriteY
+        clc
+        adc #5
+        asl a
+        tax
+        lda screenRowOffsets,x
+        sta rowAddress
+
+        lda rowAddress
+        clc
+        adc spriteX
+
+        clc
+        adc #0
+        tax
+
+
+        short m
+        lda >BACKGROUND_ADDR,x
+        sta >SCREEN_ADDR,x
+        long m
+
+        lda rowAddress
+        clc
+        adc spriteX
+
+        clc
+        adc #1
+        tax
+
+
+        short m
+        lda >BACKGROUND_ADDR,x
+        sta >SCREEN_ADDR,x
+        long m
+
+        lda rowAddress
+        clc
+        adc spriteX
+
+        clc
+        adc #2
+        tax
+
+
+        short m
+        lda >BACKGROUND_ADDR,x
+        sta >SCREEN_ADDR,x
+        long m
+
+        lda rowAddress
+        clc
+        adc spriteX
+
+        clc
+        adc #3
+        tax
+
+
+        short m
+        lda >BACKGROUND_ADDR,x
+        sta >SCREEN_ADDR,x
+        long m
+
+        lda rowAddress
+        clc
+        adc spriteX
+
+        clc
+        adc #6
+        tax
+
+
+        short m
+        lda >BACKGROUND_ADDR,x
+        sta >SCREEN_ADDR,x
+        long m
+
+        lda rowAddress
+        clc
+        adc spriteX
+
+        clc
+        adc #7
+        tax
+
+
+        short m
+        lda >BACKGROUND_ADDR,x
+        sta >SCREEN_ADDR,x
+        long m
+
+        lda spriteY
+        clc
+        adc #6
+        asl a
+        tax
+        lda screenRowOffsets,x
+        sta rowAddress
+
+        lda rowAddress
+        clc
+        adc spriteX
+
+        clc
+        adc #0
+        tax
+
+
+        short m
+        lda >BACKGROUND_ADDR,x
+        sta >SCREEN_ADDR,x
+        long m
+
+        lda rowAddress
+        clc
+        adc spriteX
+
+        clc
+        adc #1
+        tax
+
+
+        short m
+        lda >BACKGROUND_ADDR,x
+        sta >SCREEN_ADDR,x
+        long m
+
+        lda rowAddress
+        clc
+        adc spriteX
+
+        clc
+        adc #2
+        tax
+
+
+        short m
+        lda >BACKGROUND_ADDR,x
+        sta >SCREEN_ADDR,x
+        long m
+
+        lda rowAddress
+        clc
+        adc spriteX
+
+        clc
+        adc #3
+        tax
+
+
+        short m
+        lda >BACKGROUND_ADDR,x
+        sta >SCREEN_ADDR,x
+        long m
+
+        lda rowAddress
+        clc
+        adc spriteX
+
+        clc
+        adc #4
+        tax
+
+
+        short m
+        lda >BACKGROUND_ADDR,x
+        sta >SCREEN_ADDR,x
+        long m
+
+        lda rowAddress
+        clc
+        adc spriteX
+
+        clc
+        adc #5
+        tax
+
+
+        short m
+        lda >BACKGROUND_ADDR,x
+        sta >SCREEN_ADDR,x
+        long m
+
+        lda rowAddress
+        clc
+        adc spriteX
+
+        clc
+        adc #6
+        tax
+
+
+        short m
+        lda >BACKGROUND_ADDR,x
+        sta >SCREEN_ADDR,x
+        long m
+
+        lda spriteY
+        clc
+        adc #7
+        asl a
+        tax
+        lda screenRowOffsets,x
+        sta rowAddress
+
+        lda rowAddress
+        clc
+        adc spriteX
+
+        clc
+        adc #0
+        tax
+
+
+        short m
+        lda >BACKGROUND_ADDR,x
+        sta >SCREEN_ADDR,x
+        long m
+
+        lda rowAddress
+        clc
+        adc spriteX
+
+        clc
+        adc #1
+        tax
+
+
+        short m
+        lda >BACKGROUND_ADDR,x
+        sta >SCREEN_ADDR,x
+        long m
+
+        lda rowAddress
+        clc
+        adc spriteX
+
+        clc
+        adc #2
+        tax
+
+
+        short m
+        lda >BACKGROUND_ADDR,x
+        sta >SCREEN_ADDR,x
+        long m
+
+        lda rowAddress
+        clc
+        adc spriteX
+
+        clc
+        adc #3
+        tax
+
+
+        short m
+        lda >BACKGROUND_ADDR,x
+        sta >SCREEN_ADDR,x
+        long m
+
+        lda rowAddress
+        clc
+        adc spriteX
+
+        clc
+        adc #4
+        tax
+
+
+        short m
+        lda >BACKGROUND_ADDR,x
+        sta >SCREEN_ADDR,x
+        long m
+
+        lda rowAddress
+        clc
+        adc spriteX
+
+        clc
+        adc #5
+        tax
+
+
+        short m
+        lda >BACKGROUND_ADDR,x
+        sta >SCREEN_ADDR,x
+        long m
+
+        lda rowAddress
+        clc
+        adc spriteX
+
+        clc
+        adc #6
+        tax
+
+
+        short m
+        lda >BACKGROUND_ADDR,x
+        sta >SCREEN_ADDR,x
+        long m
+
+        lda spriteY
+        clc
+        adc #8
+        asl a
+        tax
+        lda screenRowOffsets,x
+        sta rowAddress
+
+        lda rowAddress
+        clc
+        adc spriteX
+
+        clc
+        adc #4
+        tax
+
+
+        short m
+        lda >BACKGROUND_ADDR,x
+        sta >SCREEN_ADDR,x
+        long m
+
+        lda rowAddress
+        clc
+        adc spriteX
+
+        clc
+        adc #5
+        tax
+
+
+        short m
+        lda >BACKGROUND_ADDR,x
+        sta >SCREEN_ADDR,x
+        long m
+
+        lda rowAddress
+        clc
+        adc spriteX
+
+        clc
+        adc #6
+        tax
+
+
+        short m
+        lda >BACKGROUND_ADDR,x
+        sta >SCREEN_ADDR,x
+        long m
+
+        lda spriteY
+        clc
+        adc #9
+        asl a
+        tax
+        lda screenRowOffsets,x
+        sta rowAddress
+
+        lda rowAddress
+        clc
+        adc spriteX
+
+        clc
+        adc #4
+        tax
+
+
+        short m
+        lda >BACKGROUND_ADDR,x
+        sta >SCREEN_ADDR,x
+        long m
+
+        lda rowAddress
+        clc
+        adc spriteX
+
+        clc
+        adc #5
+        tax
+
+
+        short m
+        lda >BACKGROUND_ADDR,x
+        sta >SCREEN_ADDR,x
+        long m
+
+        lda rowAddress
+        clc
+        adc spriteX
+
+        clc
+        adc #6
+        tax
+
+
+        short m
+        lda >BACKGROUND_ADDR,x
+        sta >SCREEN_ADDR,x
+        long m
+
+        lda spriteY
+        clc
+        adc #10
+        asl a
+        tax
+        lda screenRowOffsets,x
+        sta rowAddress
+
+        lda rowAddress
+        clc
+        adc spriteX
+
+        clc
+        adc #5
+        tax
+
+
+        short m
+        lda >BACKGROUND_ADDR,x
+        sta >SCREEN_ADDR,x
+        long m
+
+        lda spriteY
+        clc
+        adc #11
+        asl a
+        tax
+        lda screenRowOffsets,x
+        sta rowAddress
+
+        lda rowAddress
+        clc
+        adc spriteX
+
+        clc
+        adc #5
+        tax
+
+
+        short m
+        lda >BACKGROUND_ADDR,x
+        sta >SCREEN_ADDR,x
+        long m
+
+        lda spriteY
+        clc
+        adc #12
+        asl a
+        tax
+        lda screenRowOffsets,x
+        sta rowAddress
+
+        lda rowAddress
+        clc
+        adc spriteX
+
+        clc
+        adc #5
+        tax
+
+
+        short m
+        lda >BACKGROUND_ADDR,x
+        sta >SCREEN_ADDR,x
+        long m
+
+        lda spriteY
+        clc
+        adc #13
+        asl a
+        tax
+        lda screenRowOffsets,x
+        sta rowAddress
+
+        lda rowAddress
+        clc
+        adc spriteX
+
+        clc
+        adc #5
+        tax
+
+
+        short m
+        lda >BACKGROUND_ADDR,x
+        sta >SCREEN_ADDR,x
+        long m
+
+        lda spriteY
+        clc
+        adc #14
+        asl a
+        tax
+        lda screenRowOffsets,x
+        sta rowAddress
+
+        lda rowAddress
+        clc
+        adc spriteX
+
+        clc
+        adc #3
+        tax
+
+
+        short m
+        lda >BACKGROUND_ADDR,x
+        sta >SCREEN_ADDR,x
+        long m
+
+        lda rowAddress
+        clc
+        adc spriteX
+
+        clc
+        adc #4
+        tax
+
+
+        short m
+        lda >BACKGROUND_ADDR,x
+        sta >SCREEN_ADDR,x
+        long m
+
+        lda rowAddress
+        clc
+        adc spriteX
+
+        clc
+        adc #5
+        tax
+
+
+        short m
+        lda >BACKGROUND_ADDR,x
+        sta >SCREEN_ADDR,x
+        long m
+
+        lda rowAddress
+        clc
+        adc spriteX
+
+        clc
+        adc #6
+        tax
+
+
+        short m
+        lda >BACKGROUND_ADDR,x
+        sta >SCREEN_ADDR,x
+        long m
+
+        lda spriteY
+        clc
+        adc #15
+        asl a
+        tax
+        lda screenRowOffsets,x
+        sta rowAddress
+
+        lda rowAddress
+        clc
+        adc spriteX
+
+        clc
+        adc #3
+        tax
+
+
+        short m
+        lda >BACKGROUND_ADDR,x
+        sta >SCREEN_ADDR,x
+        long m
+
+        lda rowAddress
+        clc
+        adc spriteX
+
+        clc
+        adc #4
+        tax
+
+
+        short m
+        lda >BACKGROUND_ADDR,x
+        sta >SCREEN_ADDR,x
+        long m
+
+        lda rowAddress
+        clc
+        adc spriteX
+
+        clc
+        adc #5
+        tax
+
+
+        short m
+        lda >BACKGROUND_ADDR,x
+        sta >SCREEN_ADDR,x
+        long m
+
+        lda rowAddress
+        clc
+        adc spriteX
+
+        clc
+        adc #6
+        tax
+
+
+        short m
+        lda >BACKGROUND_ADDR,x
+        sta >SCREEN_ADDR,x
+        long m
+
+        lda spriteY
+        clc
+        adc #16
+        asl a
+        tax
+        lda screenRowOffsets,x
+        sta rowAddress
+
+        lda rowAddress
+        clc
+        adc spriteX
+
+        clc
+        adc #2
+        tax
+
+
+        short m
+        lda >BACKGROUND_ADDR,x
+        sta >SCREEN_ADDR,x
+        long m
+
+        lda rowAddress
+        clc
+        adc spriteX
+
+        clc
+        adc #3
+        tax
+
+
+        short m
+        lda >BACKGROUND_ADDR,x
+        sta >SCREEN_ADDR,x
+        long m
+
+        lda rowAddress
+        clc
+        adc spriteX
+
+        clc
+        adc #4
+        tax
+
+
+        short m
+        lda >BACKGROUND_ADDR,x
+        sta >SCREEN_ADDR,x
+        long m
+
+        lda rowAddress
+        clc
+        adc spriteX
+
+        clc
+        adc #5
+        tax
+
+
+        short m
+        lda >BACKGROUND_ADDR,x
+        sta >SCREEN_ADDR,x
+        long m
+
+        lda rowAddress
+        clc
+        adc spriteX
+
+        clc
+        adc #6
+        tax
+
+
+        short m
+        lda >BACKGROUND_ADDR,x
+        sta >SCREEN_ADDR,x
+        long m
+
+        lda rowAddress
+        clc
+        adc spriteX
+
+        clc
+        adc #7
+        tax
+
+
+        short m
+        lda >BACKGROUND_ADDR,x
+        sta >SCREEN_ADDR,x
+        long m
+
+        lda spriteY
+        clc
+        adc #17
+        asl a
+        tax
+        lda screenRowOffsets,x
+        sta rowAddress
+
+        lda rowAddress
+        clc
+        adc spriteX
+
+        clc
+        adc #2
+        tax
+
+
+        short m
+        lda >BACKGROUND_ADDR,x
+        sta >SCREEN_ADDR,x
+        long m
+
+        lda rowAddress
+        clc
+        adc spriteX
+
+        clc
+        adc #3
+        tax
+
+
+        short m
+        lda >BACKGROUND_ADDR,x
+        sta >SCREEN_ADDR,x
+        long m
+
+        lda rowAddress
+        clc
+        adc spriteX
+
+        clc
+        adc #4
+        tax
+
+
+        short m
+        lda >BACKGROUND_ADDR,x
+        sta >SCREEN_ADDR,x
+        long m
+
+        lda rowAddress
+        clc
+        adc spriteX
+
+        clc
+        adc #5
+        tax
+
+
+        short m
+        lda >BACKGROUND_ADDR,x
+        sta >SCREEN_ADDR,x
+        long m
+
+        lda rowAddress
+        clc
+        adc spriteX
+
+        clc
+        adc #6
+        tax
+
+
+        short m
+        lda >BACKGROUND_ADDR,x
+        sta >SCREEN_ADDR,x
+        long m
+
+        lda rowAddress
+        clc
+        adc spriteX
+
+        clc
+        adc #7
+        tax
+
+
+        short m
+        lda >BACKGROUND_ADDR,x
+        sta >SCREEN_ADDR,x
+        long m
+
+        lda spriteY
+        clc
+        adc #18
+        asl a
+        tax
+        lda screenRowOffsets,x
+        sta rowAddress
+
+        lda rowAddress
+        clc
+        adc spriteX
+
+        clc
+        adc #1
+        tax
+
+
+        short m
+        lda >BACKGROUND_ADDR,x
+        sta >SCREEN_ADDR,x
+        long m
+
+        lda rowAddress
+        clc
+        adc spriteX
+
+        clc
+        adc #2
+        tax
+
+
+        short m
+        lda >BACKGROUND_ADDR,x
+        sta >SCREEN_ADDR,x
+        long m
+
+        lda rowAddress
+        clc
+        adc spriteX
+
+        clc
+        adc #3
+        tax
+
+
+        short m
+        lda >BACKGROUND_ADDR,x
+        sta >SCREEN_ADDR,x
+        long m
+
+        lda rowAddress
+        clc
+        adc spriteX
+
+        clc
+        adc #4
+        tax
+
+
+        short m
+        lda >BACKGROUND_ADDR,x
+        sta >SCREEN_ADDR,x
+        long m
+
+        lda rowAddress
+        clc
+        adc spriteX
+
+        clc
+        adc #5
+        tax
+
+
+        short m
+        lda >BACKGROUND_ADDR,x
+        sta >SCREEN_ADDR,x
+        long m
+
+        lda rowAddress
+        clc
+        adc spriteX
+
+        clc
+        adc #6
+        tax
+
+
+        short m
+        lda >BACKGROUND_ADDR,x
+        sta >SCREEN_ADDR,x
+        long m
+
+        lda rowAddress
+        clc
+        adc spriteX
+
+        clc
+        adc #7
+        tax
+
+
+        short m
+        lda >BACKGROUND_ADDR,x
+        sta >SCREEN_ADDR,x
+        long m
+
+        lda spriteY
+        clc
+        adc #19
+        asl a
+        tax
+        lda screenRowOffsets,x
+        sta rowAddress
+
+        lda rowAddress
+        clc
+        adc spriteX
+
+        clc
+        adc #1
+        tax
+
+
+        short m
+        lda >BACKGROUND_ADDR,x
+        sta >SCREEN_ADDR,x
+        long m
+
+        lda rowAddress
+        clc
+        adc spriteX
+
+        clc
+        adc #2
+        tax
+
+
+        short m
+        lda >BACKGROUND_ADDR,x
+        sta >SCREEN_ADDR,x
+        long m
+
+        lda rowAddress
+        clc
+        adc spriteX
+
+        clc
+        adc #3
+        tax
+
+
+        short m
+        lda >BACKGROUND_ADDR,x
+        sta >SCREEN_ADDR,x
+        long m
+
+        lda rowAddress
+        clc
+        adc spriteX
+
+        clc
+        adc #4
+        tax
+
+
+        short m
+        lda >BACKGROUND_ADDR,x
+        sta >SCREEN_ADDR,x
+        long m
+
+        lda rowAddress
+        clc
+        adc spriteX
+
+        clc
+        adc #5
+        tax
+
+
+        short m
+        lda >BACKGROUND_ADDR,x
+        sta >SCREEN_ADDR,x
+        long m
+
+        lda rowAddress
+        clc
+        adc spriteX
+
+        clc
+        adc #6
+        tax
+
+
+        short m
+        lda >BACKGROUND_ADDR,x
+        sta >SCREEN_ADDR,x
+        long m
+
+        lda rowAddress
+        clc
+        adc spriteX
+
+        clc
+        adc #7
+        tax
+
+
+        short m
+        lda >BACKGROUND_ADDR,x
+        sta >SCREEN_ADDR,x
+        long m
+
+        lda spriteY
+        clc
+        adc #20
+        asl a
+        tax
+        lda screenRowOffsets,x
+        sta rowAddress
+
+        lda rowAddress
+        clc
+        adc spriteX
+
+        clc
+        adc #0
+        tax
+
+
+        short m
+        lda >BACKGROUND_ADDR,x
+        sta >SCREEN_ADDR,x
+        long m
+
+        lda rowAddress
+        clc
+        adc spriteX
+
+        clc
+        adc #1
+        tax
+
+
+        short m
+        lda >BACKGROUND_ADDR,x
+        sta >SCREEN_ADDR,x
+        long m
+
+        lda rowAddress
+        clc
+        adc spriteX
+
+        clc
+        adc #2
+        tax
+
+
+        short m
+        lda >BACKGROUND_ADDR,x
+        sta >SCREEN_ADDR,x
+        long m
+
+        lda rowAddress
+        clc
+        adc spriteX
+
+        clc
+        adc #6
+        tax
+
+
+        short m
+        lda >BACKGROUND_ADDR,x
+        sta >SCREEN_ADDR,x
+        long m
+
+        lda rowAddress
+        clc
+        adc spriteX
+
+        clc
+        adc #7
+        tax
+
+
+        short m
+        lda >BACKGROUND_ADDR,x
+        sta >SCREEN_ADDR,x
+        long m
+
+        lda spriteY
+        clc
+        adc #21
+        asl a
+        tax
+        lda screenRowOffsets,x
+        sta rowAddress
+
+        lda rowAddress
+        clc
+        adc spriteX
+
+        clc
+        adc #0
+        tax
+
+
+        short m
+        lda >BACKGROUND_ADDR,x
+        sta >SCREEN_ADDR,x
+        long m
+
+        lda rowAddress
+        clc
+        adc spriteX
+
+        clc
+        adc #1
+        tax
+
+
+        short m
+        lda >BACKGROUND_ADDR,x
+        sta >SCREEN_ADDR,x
+        long m
+
+        lda rowAddress
+        clc
+        adc spriteX
+
+        clc
+        adc #2
+        tax
+
+
+        short m
+        lda >BACKGROUND_ADDR,x
+        sta >SCREEN_ADDR,x
+        long m
+
+        lda rowAddress
+        clc
+        adc spriteX
+
+        clc
+        adc #6
+        tax
+
+
+        short m
+        lda >BACKGROUND_ADDR,x
+        sta >SCREEN_ADDR,x
+        long m
+
+        lda rowAddress
+        clc
+        adc spriteX
+
+        clc
+        adc #7
+        tax
+
+
+        short m
+        lda >BACKGROUND_ADDR,x
+        sta >SCREEN_ADDR,x
+        long m
+
+        lda spriteY
+        clc
+        adc #22
+        asl a
+        tax
+        lda screenRowOffsets,x
+        sta rowAddress
+
+        lda rowAddress
+        clc
+        adc spriteX
+
+        clc
+        adc #0
+        tax
+
+
+        short m
+        lda >BACKGROUND_ADDR,x
+        sta >SCREEN_ADDR,x
+        long m
+
+        lda rowAddress
+        clc
+        adc spriteX
+
+        clc
+        adc #1
+        tax
+
+
+        short m
+        lda >BACKGROUND_ADDR,x
+        sta >SCREEN_ADDR,x
+        long m
+
+        lda rowAddress
+        clc
+        adc spriteX
+
+        clc
+        adc #6
+        tax
+
+
+        short m
+        lda >BACKGROUND_ADDR,x
+        sta >SCREEN_ADDR,x
+        long m
+
+        lda rowAddress
+        clc
+        adc spriteX
+
+        clc
+        adc #7
+        tax
+
+
+        short m
+        lda >BACKGROUND_ADDR,x
+        sta >SCREEN_ADDR,x
+        long m
+
+        lda spriteY
+        clc
+        adc #23
+        asl a
+        tax
+        lda screenRowOffsets,x
+        sta rowAddress
+
+        lda rowAddress
+        clc
+        adc spriteX
+
+        clc
+        adc #0
+        tax
+
+
+        short m
+        lda >BACKGROUND_ADDR,x
+        sta >SCREEN_ADDR,x
+        long m
+
+        lda rowAddress
+        clc
+        adc spriteX
+
+        clc
+        adc #1
+        tax
+
+
+        short m
+        lda >BACKGROUND_ADDR,x
+        sta >SCREEN_ADDR,x
+        long m
+
+        lda rowAddress
+        clc
+        adc spriteX
+
+        clc
+        adc #6
+        tax
+
+
+        short m
+        lda >BACKGROUND_ADDR,x
+        sta >SCREEN_ADDR,x
+        long m
+
+        lda rowAddress
+        clc
+        adc spriteX
+
+        clc
+        adc #7
+        tax
+
+
+        short m
+        lda >BACKGROUND_ADDR,x
+        sta >SCREEN_ADDR,x
+        long m
+
+        lda spriteY
+        clc
+        adc #24
+        asl a
+        tax
+        lda screenRowOffsets,x
+        sta rowAddress
+
+        lda rowAddress
+        clc
+        adc spriteX
+
+        clc
+        adc #0
+        tax
+
+
+        short m
+        lda >BACKGROUND_ADDR,x
+        sta >SCREEN_ADDR,x
+        long m
+
+        lda rowAddress
+        clc
+        adc spriteX
+
+        clc
+        adc #1
+        tax
+
+
+        short m
+        lda >BACKGROUND_ADDR,x
+        sta >SCREEN_ADDR,x
+        long m
+
+        lda rowAddress
+        clc
+        adc spriteX
+
+        clc
+        adc #6
+        tax
+
+
+        short m
+        lda >BACKGROUND_ADDR,x
+        sta >SCREEN_ADDR,x
+        long m
+
+        lda rowAddress
+        clc
+        adc spriteX
+
+        clc
+        adc #7
+        tax
+
+
+        short m
+        lda >BACKGROUND_ADDR,x
+        sta >SCREEN_ADDR,x
+        long m
+
+        lda spriteY
+        clc
+        adc #25
+        asl a
+        tax
+        lda screenRowOffsets,x
+        sta rowAddress
+
+        lda rowAddress
+        clc
+        adc spriteX
+
+        clc
+        adc #0
+        tax
+
+
+        short m
+        lda >BACKGROUND_ADDR,x
+        sta >SCREEN_ADDR,x
+        long m
+
+        lda rowAddress
+        clc
+        adc spriteX
+
+        clc
+        adc #1
+        tax
+
+
+        short m
+        lda >BACKGROUND_ADDR,x
+        sta >SCREEN_ADDR,x
+        long m
+
+        lda rowAddress
+        clc
+        adc spriteX
+
+        clc
+        adc #6
+        tax
+
+
+        short m
+        lda >BACKGROUND_ADDR,x
+        sta >SCREEN_ADDR,x
+        long m
+
+        lda rowAddress
+        clc
+        adc spriteX
+
+        clc
+        adc #7
+        tax
+
+
+        short m
+        lda >BACKGROUND_ADDR,x
+        sta >SCREEN_ADDR,x
+        long m
+
+        lda spriteY
+        clc
+        adc #26
+        asl a
+        tax
+        lda screenRowOffsets,x
+        sta rowAddress
+
+        lda rowAddress
+        clc
+        adc spriteX
+
+        clc
+        adc #0
+        tax
+
+
+        short m
+        lda >BACKGROUND_ADDR,x
+        sta >SCREEN_ADDR,x
+        long m
+
+        lda rowAddress
+        clc
+        adc spriteX
+
+        clc
+        adc #1
+        tax
+
+
+        short m
+        lda >BACKGROUND_ADDR,x
+        sta >SCREEN_ADDR,x
+        long m
+
+        lda rowAddress
+        clc
+        adc spriteX
+
+        clc
+        adc #5
+        tax
+
+
+        short m
+        lda >BACKGROUND_ADDR,x
+        sta >SCREEN_ADDR,x
+        long m
+
+        lda rowAddress
+        clc
+        adc spriteX
+
+        clc
+        adc #6
+        tax
+
+
+        short m
+        lda >BACKGROUND_ADDR,x
+        sta >SCREEN_ADDR,x
+        long m
+
+        lda rowAddress
+        clc
+        adc spriteX
+
+        clc
+        adc #7
+        tax
+
+
+        short m
+        lda >BACKGROUND_ADDR,x
+        sta >SCREEN_ADDR,x
+        long m
+
+        lda spriteY
+        clc
+        adc #27
+        asl a
+        tax
+        lda screenRowOffsets,x
+        sta rowAddress
+
+        lda rowAddress
+        clc
+        adc spriteX
+
+        clc
+        adc #0
+        tax
+
+
+        short m
+        lda >BACKGROUND_ADDR,x
+        sta >SCREEN_ADDR,x
+        long m
+
+        lda rowAddress
+        clc
+        adc spriteX
+
+        clc
+        adc #1
+        tax
+
+
+        short m
+        lda >BACKGROUND_ADDR,x
+        sta >SCREEN_ADDR,x
+        long m
+
+        lda rowAddress
+        clc
+        adc spriteX
+
+        clc
+        adc #5
+        tax
+
+
+        short m
+        lda >BACKGROUND_ADDR,x
+        sta >SCREEN_ADDR,x
+        long m
+
+        lda rowAddress
+        clc
+        adc spriteX
+
+        clc
+        adc #6
+        tax
+
+
+        short m
+        lda >BACKGROUND_ADDR,x
+        sta >SCREEN_ADDR,x
+        long m
+
+        lda rowAddress
+        clc
+        adc spriteX
+
+        clc
+        adc #7
+        tax
+
+
+        short m
+        lda >BACKGROUND_ADDR,x
+        sta >SCREEN_ADDR,x
+        long m
+
+        lda spriteY
+        clc
+        adc #28
+        asl a
+        tax
+        lda screenRowOffsets,x
+        sta rowAddress
+
+        lda rowAddress
+        clc
+        adc spriteX
+
+        clc
+        adc #0
+        tax
+
+
+        short m
+        lda >BACKGROUND_ADDR,x
+        sta >SCREEN_ADDR,x
+        long m
+
+        lda rowAddress
+        clc
+        adc spriteX
+
+        clc
+        adc #1
+        tax
+
+
+        short m
+        lda >BACKGROUND_ADDR,x
+        sta >SCREEN_ADDR,x
+        long m
+
+        lda rowAddress
+        clc
+        adc spriteX
+
+        clc
+        adc #2
+        tax
+
+
+        short m
+        lda >BACKGROUND_ADDR,x
+        sta >SCREEN_ADDR,x
+        long m
+
+        lda rowAddress
+        clc
+        adc spriteX
+
+        clc
+        adc #3
+        tax
+
+
+        short m
+        lda >BACKGROUND_ADDR,x
+        sta >SCREEN_ADDR,x
+        long m
+
+        lda rowAddress
+        clc
+        adc spriteX
+
+        clc
+        adc #4
+        tax
+
+
+        short m
+        lda >BACKGROUND_ADDR,x
+        sta >SCREEN_ADDR,x
+        long m
+
+        lda rowAddress
+        clc
+        adc spriteX
+
+        clc
+        adc #5
+        tax
+
+
+        short m
+        lda >BACKGROUND_ADDR,x
+        sta >SCREEN_ADDR,x
+        long m
+
+        lda rowAddress
+        clc
+        adc spriteX
+
+        clc
+        adc #6
+        tax
+
+
+        short m
+        lda >BACKGROUND_ADDR,x
+        sta >SCREEN_ADDR,x
+        long m
+
+        lda rowAddress
+        clc
+        adc spriteX
+
+        clc
+        adc #7
+        tax
+
+
+        short m
+        lda >BACKGROUND_ADDR,x
+        sta >SCREEN_ADDR,x
+        long m
+
+        lda spriteY
+        clc
+        adc #29
+        asl a
+        tax
+        lda screenRowOffsets,x
+        sta rowAddress
+
+        lda rowAddress
+        clc
+        adc spriteX
+
+        clc
+        adc #0
+        tax
+
+
+        short m
+        lda >BACKGROUND_ADDR,x
+        sta >SCREEN_ADDR,x
+        long m
+
+        lda rowAddress
+        clc
+        adc spriteX
+
+        clc
+        adc #1
+        tax
+
+
+        short m
+        lda >BACKGROUND_ADDR,x
+        sta >SCREEN_ADDR,x
+        long m
+
+        lda rowAddress
+        clc
+        adc spriteX
+
+        clc
+        adc #2
+        tax
+
+
+        short m
+        lda >BACKGROUND_ADDR,x
+        sta >SCREEN_ADDR,x
+        long m
+
+        lda rowAddress
+        clc
+        adc spriteX
+
+        clc
+        adc #3
+        tax
+
+
+        short m
+        lda >BACKGROUND_ADDR,x
+        sta >SCREEN_ADDR,x
+        long m
+
+        lda rowAddress
+        clc
+        adc spriteX
+
+        clc
+        adc #4
+        tax
+
+
+        short m
+        lda >BACKGROUND_ADDR,x
+        sta >SCREEN_ADDR,x
+        long m
+
+        lda rowAddress
+        clc
+        adc spriteX
+
+        clc
+        adc #5
+        tax
+
+
+        short m
+        lda >BACKGROUND_ADDR,x
+        sta >SCREEN_ADDR,x
+        long m
+
+        lda rowAddress
+        clc
+        adc spriteX
+
+        clc
+        adc #6
+        tax
+
+
+        short m
+        lda >BACKGROUND_ADDR,x
+        sta >SCREEN_ADDR,x
+        long m
+
+        lda rowAddress
+        clc
+        adc spriteX
+
+        clc
+        adc #7
+        tax
+
+
+        short m
+        lda >BACKGROUND_ADDR,x
+        sta >SCREEN_ADDR,x
+        long m
+
+        lda spriteY
+        clc
+        adc #30
+        asl a
+        tax
+        lda screenRowOffsets,x
+        sta rowAddress
+
+        lda rowAddress
+        clc
+        adc spriteX
+
+        clc
+        adc #2
+        tax
+
+
+        short m
+        lda >BACKGROUND_ADDR,x
+        sta >SCREEN_ADDR,x
+        long m
+
+        lda rowAddress
+        clc
+        adc spriteX
+
+        clc
+        adc #3
+        tax
+
+
+        short m
+        lda >BACKGROUND_ADDR,x
+        sta >SCREEN_ADDR,x
+        long m
+
+        lda rowAddress
+        clc
+        adc spriteX
+
+        clc
+        adc #4
+        tax
+
+
+        short m
+        lda >BACKGROUND_ADDR,x
+        sta >SCREEN_ADDR,x
+        long m
+
+        lda rowAddress
+        clc
+        adc spriteX
+
+        clc
+        adc #5
+        tax
+
+
+        short m
+        lda >BACKGROUND_ADDR,x
+        sta >SCREEN_ADDR,x
+        long m
+
+        lda spriteY
+        clc
+        adc #31
+        asl a
+        tax
+        lda screenRowOffsets,x
+        sta rowAddress
+
+        lda rowAddress
+        clc
+        adc spriteX
+
+        clc
+        adc #2
+        tax
+
+
+        short m
+        lda >BACKGROUND_ADDR,x
+        sta >SCREEN_ADDR,x
+        long m
+
+        lda rowAddress
+        clc
+        adc spriteX
+
+        clc
+        adc #3
+        tax
+
+
+        short m
+        lda >BACKGROUND_ADDR,x
+        sta >SCREEN_ADDR,x
+        long m
+
+        lda rowAddress
+        clc
+        adc spriteX
+
+        clc
+        adc #4
+        tax
+
+
+        short m
+        lda >BACKGROUND_ADDR,x
+        sta >SCREEN_ADDR,x
+        long m
+
+        lda rowAddress
+        clc
+        adc spriteX
+
+        clc
+        adc #5
+        tax
+
+
+        short m
+        lda >BACKGROUND_ADDR,x
+        sta >SCREEN_ADDR,x
+        long m
+
+        lda spriteY
+        clc
+        adc #32
+        asl a
+        tax
+        lda screenRowOffsets,x
+        sta rowAddress
+
+        lda rowAddress
+        clc
+        adc spriteX
+
+        clc
+        adc #4
+        tax
+
+
+        short m
+        lda >BACKGROUND_ADDR,x
+        sta >SCREEN_ADDR,x
+        long m
+
+        lda spriteY
+        clc
+        adc #33
+        asl a
+        tax
+        lda screenRowOffsets,x
+        sta rowAddress
+
+        lda rowAddress
+        clc
+        adc spriteX
+
+        clc
+        adc #4
+        tax
+
+
+        short m
+        lda >BACKGROUND_ADDR,x
+        sta >SCREEN_ADDR,x
+        long m
+
+        lda spriteY
+        clc
+        adc #34
+        asl a
+        tax
+        lda screenRowOffsets,x
+        sta rowAddress
+
+        lda rowAddress
+        clc
+        adc spriteX
+
+        clc
+        adc #0
+        tax
+
+
+        short m
+        lda >BACKGROUND_ADDR,x
+        sta >SCREEN_ADDR,x
+        long m
+
+        lda rowAddress
+        clc
+        adc spriteX
+
+        clc
+        adc #4
+        tax
+
+
+        short m
+        lda >BACKGROUND_ADDR,x
+        sta >SCREEN_ADDR,x
+        long m
+
+        lda rowAddress
+        clc
+        adc spriteX
+
+        clc
+        adc #5
+        tax
+
+
+        short m
+        lda >BACKGROUND_ADDR,x
+        sta >SCREEN_ADDR,x
+        long m
+
+        lda rowAddress
+        clc
+        adc spriteX
+
+        clc
+        adc #6
+        tax
+
+
+        short m
+        lda >BACKGROUND_ADDR,x
+        sta >SCREEN_ADDR,x
+        long m
+
+        lda rowAddress
+        clc
+        adc spriteX
+
+        clc
+        adc #7
+        tax
+
+
+        short m
+        lda >BACKGROUND_ADDR,x
+        sta >SCREEN_ADDR,x
+        long m
+
+        lda spriteY
+        clc
+        adc #35
+        asl a
+        tax
+        lda screenRowOffsets,x
+        sta rowAddress
+
+        lda rowAddress
+        clc
+        adc spriteX
+
+        clc
+        adc #0
+        tax
+
+
+        short m
+        lda >BACKGROUND_ADDR,x
+        sta >SCREEN_ADDR,x
+        long m
+
+        lda rowAddress
+        clc
+        adc spriteX
+
+        clc
+        adc #4
+        tax
+
+
+        short m
+        lda >BACKGROUND_ADDR,x
+        sta >SCREEN_ADDR,x
+        long m
+
+        lda rowAddress
+        clc
+        adc spriteX
+
+        clc
+        adc #5
+        tax
+
+
+        short m
+        lda >BACKGROUND_ADDR,x
+        sta >SCREEN_ADDR,x
+        long m
+
+        lda rowAddress
+        clc
+        adc spriteX
+
+        clc
+        adc #6
+        tax
+
+
+        short m
+        lda >BACKGROUND_ADDR,x
+        sta >SCREEN_ADDR,x
+        long m
+
+        lda rowAddress
+        clc
+        adc spriteX
+
+        clc
+        adc #7
+        tax
+
+
+        short m
+        lda >BACKGROUND_ADDR,x
+        sta >SCREEN_ADDR,x
+        long m
+
+        lda spriteY
+        clc
+        adc #36
+        asl a
+        tax
+        lda screenRowOffsets,x
+        sta rowAddress
+
+        lda rowAddress
+        clc
+        adc spriteX
+
+        clc
+        adc #0
+        tax
+
+
+        short m
+        lda >BACKGROUND_ADDR,x
+        sta >SCREEN_ADDR,x
+        long m
+
+        lda rowAddress
+        clc
+        adc spriteX
+
+        clc
+        adc #1
+        tax
+
+
+        short m
+        lda >BACKGROUND_ADDR,x
+        sta >SCREEN_ADDR,x
+        long m
+
+        lda rowAddress
+        clc
+        adc spriteX
+
+        clc
+        adc #2
+        tax
+
+
+        short m
+        lda >BACKGROUND_ADDR,x
+        sta >SCREEN_ADDR,x
+        long m
+
+        lda rowAddress
+        clc
+        adc spriteX
+
+        clc
+        adc #7
+        tax
+
+
+        short m
+        lda >BACKGROUND_ADDR,x
+        sta >SCREEN_ADDR,x
+        long m
+
+        lda spriteY
+        clc
+        adc #37
+        asl a
+        tax
+        lda screenRowOffsets,x
+        sta rowAddress
+
+        lda rowAddress
+        clc
+        adc spriteX
+
+        clc
+        adc #0
+        tax
+
+
+        short m
+        lda >BACKGROUND_ADDR,x
+        sta >SCREEN_ADDR,x
+        long m
+
+        lda rowAddress
+        clc
+        adc spriteX
+
+        clc
+        adc #1
+        tax
+
+
+        short m
+        lda >BACKGROUND_ADDR,x
+        sta >SCREEN_ADDR,x
+        long m
+
+        lda rowAddress
+        clc
+        adc spriteX
+
+        clc
+        adc #2
+        tax
+
+
+        short m
+        lda >BACKGROUND_ADDR,x
+        sta >SCREEN_ADDR,x
+        long m
+
+        lda rowAddress
+        clc
+        adc spriteX
+
+        clc
+        adc #7
+        tax
+
+
+        short m
+        lda >BACKGROUND_ADDR,x
+        sta >SCREEN_ADDR,x
+        long m
+
+        lda spriteY
+        clc
+        adc #38
+        asl a
+        tax
+        lda screenRowOffsets,x
+        sta rowAddress
+
+        lda rowAddress
+        clc
+        adc spriteX
+
+        clc
+        adc #2
+        tax
+
+
+        short m
+        lda >BACKGROUND_ADDR,x
+        sta >SCREEN_ADDR,x
+        long m
+
+        lda rowAddress
+        clc
+        adc spriteX
+
+        clc
+        adc #3
+        tax
+
+
+        short m
+        lda >BACKGROUND_ADDR,x
+        sta >SCREEN_ADDR,x
+        long m
+
+        lda rowAddress
+        clc
+        adc spriteX
+
+        clc
+        adc #4
+        tax
+
+
+        short m
+        lda >BACKGROUND_ADDR,x
+        sta >SCREEN_ADDR,x
+        long m
+
+        lda rowAddress
+        clc
+        adc spriteX
+
+        clc
+        adc #5
+        tax
+
+
+        short m
+        lda >BACKGROUND_ADDR,x
+        sta >SCREEN_ADDR,x
+        long m
+
+        lda rowAddress
+        clc
+        adc spriteX
+
+        clc
+        adc #6
+        tax
+
+
+        short m
+        lda >BACKGROUND_ADDR,x
+        sta >SCREEN_ADDR,x
+        long m
+
+        lda rowAddress
+        clc
+        adc spriteX
+
+        clc
+        adc #7
+        tax
+
+
+        short m
+        lda >BACKGROUND_ADDR,x
+        sta >SCREEN_ADDR,x
+        long m
+
+        lda spriteY
+        clc
+        adc #39
+        asl a
+        tax
+        lda screenRowOffsets,x
+        sta rowAddress
+
+        lda rowAddress
+        clc
+        adc spriteX
+
+        clc
+        adc #2
+        tax
+
+
+        short m
+        lda >BACKGROUND_ADDR,x
+        sta >SCREEN_ADDR,x
+        long m
+
+        lda rowAddress
+        clc
+        adc spriteX
+
+        clc
+        adc #3
+        tax
+
+
+        short m
+        lda >BACKGROUND_ADDR,x
+        sta >SCREEN_ADDR,x
+        long m
+
+        lda rowAddress
+        clc
+        adc spriteX
+
+        clc
+        adc #4
+        tax
+
+
+        short m
+        lda >BACKGROUND_ADDR,x
+        sta >SCREEN_ADDR,x
+        long m
+
+        lda rowAddress
+        clc
+        adc spriteX
+
+        clc
+        adc #5
+        tax
+
+
+        short m
+        lda >BACKGROUND_ADDR,x
+        sta >SCREEN_ADDR,x
+        long m
+
+        lda rowAddress
+        clc
+        adc spriteX
+
+        clc
+        adc #6
+        tax
+
+
+        short m
+        lda >BACKGROUND_ADDR,x
+        sta >SCREEN_ADDR,x
+        long m
+
+        lda rowAddress
+        clc
+        adc spriteX
+
+        clc
+        adc #7
+        tax
+
+
+        short m
+        lda >BACKGROUND_ADDR,x
+        sta >SCREEN_ADDR,x
+        long m
+
+
+        rts
+
+
 
         
+rowAddress dc i4'0'
 drawAddress dc i4'0'
 
 backupStack dc i4'0'
