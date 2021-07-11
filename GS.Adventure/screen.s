@@ -906,10 +906,11 @@ drawSurroundVLoop2 anop
         clc
         adc rectY
 
+; TODO - FIX THIS
 ; bounds check
-        bmi nextRow4
-        cmp #199
-        bcs nextRow4
+;        bmi nextRow4
+;        cmp #199
+;        bcs nextRow4
         
         asl a
         tax

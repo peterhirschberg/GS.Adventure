@@ -10,19 +10,17 @@
 
         macro
         spriteGetDrawAddress
-        lda >rectY
+        lda >spriteY
         asl a
         tax
         lda >screenRowOffsets,x
         sta >drawAddress
-        lda >rectX
+        lda >spriteX
         lsr a
         clc
         adc >drawAddress
         clc
         adc #$2000
-        sec
-        sbc #20
         sta >drawAddress
         mend
 

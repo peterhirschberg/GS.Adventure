@@ -18,6 +18,8 @@ game start
         using roomsData
         using gameData
         using playerData
+        
+        using spriteData
 
 
 initGame entry
@@ -27,7 +29,7 @@ initGame entry
         jsr zeroSurroundGrid
 
 
-;        jsr borderInit
+        jsr borderInit
 
 ; -------------------------------
 ; set up game
@@ -53,7 +55,7 @@ runGameTick entry
 
         jsr waitForVbl
 
-;        jsr borderStart
+        jsr borderStart
 
         jsr checkControls
 
@@ -126,7 +128,24 @@ passDone anop
         lda currentRoom
         sta lastRoom
 
-;        jsr borderDone
+
+        jsr borderStart
+
+        lda #40
+        sta spriteX
+        lda #100
+        sta spriteY
+        jsr spriteYellowKey
+
+        lda #50
+        sta spriteX
+        lda #40
+        sta spriteY
+        jsr spriteRedDragon
+
+        
+        jsr borderDone
+
 
         rtl
 
