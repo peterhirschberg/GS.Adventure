@@ -161,8 +161,11 @@ eraseWithFog anop
 eraseDone anop
 
         inc temp
+        inc temp
         lda temp
         cmp #320
+        beq resetTemp
+        cmp #319
         beq resetTemp
         bra continue
         
