@@ -101,6 +101,7 @@ int main(void)
     CompactMem();
     NewHandle((LongWord)0x8000, userid, (Word)(attrLocked | attrFixed | attrAddr | attrBank), (Pointer)0x02000);
     NewHandle((LongWord)0x8000, userid, (Word)(attrLocked | attrFixed | attrAddr | attrBank), (Pointer)0xa0000);
+    NewHandle((LongWord)0x8000, userid, (Word)(attrLocked | attrFixed | attrAddr | attrBank), (Pointer)0xb0000);
     InitMouse(0);
     SetMouse(transparent);
     

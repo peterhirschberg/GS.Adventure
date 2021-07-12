@@ -49,6 +49,7 @@
         bne dontDrawSurround_&SYSCNT
         tya
         sta >SCREEN_ADDR,x
+        sta >SURROUND_PIXEL_ADDR,x
 dontDrawSurround_&SYSCNT anop
         inx
         inx
@@ -59,6 +60,8 @@ dontDrawSurround_&SYSCNT anop
         eraseSurroundWord
         lda >BACKGROUND_ADDR,x
         sta >SCREEN_ADDR,x
+        lda #00
+        sta >SURROUND_PIXEL_ADDR,x
         inx
         inx
         mend

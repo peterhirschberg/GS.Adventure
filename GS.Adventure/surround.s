@@ -1404,6 +1404,30 @@ zeroSurroundDone anop
         rts
         
 
+        
+eraseSurroundPixelBuffer entry
+
+        lda #$4000
+        sta counter
+        
+        ldx #0
+        
+erasePixelBufferLoop anop
+
+        lda #00
+        sta >SURROUND_PIXEL_ADDR,x
+        inx
+        inx
+        
+        dec counter
+        lda counter
+        bmi erasePixelBufferDone
+        bra erasePixelBufferLoop
+
+erasePixelBufferDone anop
+        rts
+        
+
 
 surroundGridRowOffsets anop
         dc i2'0'
@@ -1445,6 +1469,7 @@ colCounter dc i2'0'
 
 rowAddress dc i4'0'
 
+counter dc i4'0'
 
 SURROUND_ERASE gequ 1
 SURROUND_LEAVE gequ 2
@@ -1457,6 +1482,7 @@ SURROUND_DRAW gequ 3
 surroundData data
 
 SURROUND_GRID_ADDR gequ $0a0000
+SURROUND_PIXEL_ADDR gequ $0b0000
 
         end
 

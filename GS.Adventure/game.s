@@ -27,6 +27,7 @@ initGame entry
         jsr blackColorTable
 
         jsr zeroSurroundGrid
+        jsr eraseSurroundPixelBuffer
 
 
         jsr borderInit
@@ -87,9 +88,8 @@ updateSurround anop
         
 dontUpdateSurround anop
         jsr erasePlayer
-        jsr drawPlayer
-
 noMovePass0 anop
+        jsr drawPlayer
 
         inc gamePass
         bra passDone
@@ -150,8 +150,15 @@ passDone anop
         sta spriteX
         lda #40
         sta spriteY
+        
+        jsr roomHasFog
+        cmp #1
+        beq eraseWithFog
         jsr eraseSpriteDragon
-
+        bra eraseDone
+eraseWithFog anop
+        jsr eraseSpriteDragonFog
+eraseDone anop
 
         inc temp
         lda temp

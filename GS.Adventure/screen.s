@@ -968,10 +968,11 @@ eraseSurroundVLoop2 anop
         clc
         adc rectY
 
+; TODO FIX ME
 ; bounds check
-        bmi nextRow5
-        cmp #199
-        bcs nextRow5
+;        bmi nextRow5
+;        cmp #199
+;        bcs nextRow5
 
         asl a
         tax
