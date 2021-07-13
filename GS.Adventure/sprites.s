@@ -17,17 +17,16 @@ sprites start
         using spriteData
     
 
-        
-rowAddress dc i4'0'
-drawAddress dc i4'0'
-
-backupStack dc i4'0'
-    
         end
 
 
 spriteData data
-    
+
+rowAddress dc i4'0'
+drawAddress dc i4'0'
+
+backupStack dc i4'0'
+
 spriteX dc i2'0'
 spriteY dc i2'0'
     

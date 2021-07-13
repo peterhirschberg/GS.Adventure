@@ -60,6 +60,7 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		D0328FE1269D399100883A3F /* spritePortcullis.s */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.asm; path = spritePortcullis.s; sourceTree = "<group>"; };
 		D0678FB5267E6E2B00A8010C /* GS.Adventure */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = GS.Adventure; sourceTree = BUILT_PRODUCTS_DIR; };
 		D0678FB8267E6E2B00A8010C /* GS.Adventure.2mg */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = GS.Adventure.2mg; sourceTree = BUILT_PRODUCTS_DIR; };
 		D0678FBD267E6E2B00A8010C /* doNotBuild */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = doNotBuild; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -126,6 +127,7 @@
 		D0678FBE267E6E2B00A8010C /* GS.Adventure */ = {
 			isa = PBXGroup;
 			children = (
+				D0328FE1269D399100883A3F /* spritePortcullis.s */,
 				D0678FED267E70FC00A8010C /* game.h */,
 				D0678FBF267E6E2B00A8010C /* main.c */,
 				D0678FC1267E6E2B00A8010C /* main.h */,

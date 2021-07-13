@@ -137,11 +137,19 @@ passDone anop
         sta spriteY
 ;        jsr drawSpriteYellowKey
 
-        lda #180
+        lda #$4d
+        sec
+        sbc #1
+        asl a
         sta spriteX
-        lda #40
+        lda #$31
+        clc
+        adc #$a
+        asl a
         sta spriteY
 ;        jsr drawSpriteBridge
+
+        jsl drawSpritePort7
 
         jsr borderStart
         
