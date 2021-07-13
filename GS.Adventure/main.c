@@ -37,20 +37,9 @@ void signalQuit(void)
     shouldQuit = true;
 }
 
-
 word getRandom(word range)
 {
     return rand() % range;
-}
-
-word numLoosePixelsFromLeftToRight(word start)
-{
-    return 8 - (start % 8);
-}
-
-word numLoosePixelsFromRightToLeft(word start)
-{
-    return start % 8;
 }
 
 
@@ -74,21 +63,6 @@ void preloadSound(void)
 //    LoadResource(rRawSound, FIRE_SOUND);
 }
 
-// Game loop
-void waitForNextTick(void)
-{
-    while (!shouldQuit) {
-        clock_t t;
-        runGameTick();
-/*
-        do {
-            t = clock();
-        }
-        while ((t - lastTick) < 1);
-        lastTick = t;
-*/
-    }
-}
 
 int main(void)
 {
@@ -111,11 +85,12 @@ int main(void)
     srand(randomSeed);
  
     initGame();
-  
-    runGameTick();
+    
+    // Game loop
+    while (!shouldQuit) {
+        runGameTick();
+    };
 
-    lastTick = clock();
-    waitForNextTick();
     
     ShutDownTools(refIsHandle, toolStartupRef);
     TLShutDown();

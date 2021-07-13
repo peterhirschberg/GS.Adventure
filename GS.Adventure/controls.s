@@ -45,6 +45,11 @@ checkControls entry
         cmp #'A'
         beq onJoystickLeft
 
+        cmp #'q'
+        beq onQuit
+        cmp #'Q'
+        beq onQuit
+
 checkKeysDone anop
 ;        long i,m
         rts
@@ -69,6 +74,9 @@ onJoystickRight anop
         sta joystickRight
         rts
 
+onQuit anop
+        jsl signalQuit
+        rts
 
         end
 

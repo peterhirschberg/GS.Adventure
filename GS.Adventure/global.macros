@@ -121,6 +121,22 @@ surroundDone_&SYSCNT anop
         mend
 
 
+        macro
+        adjustSpriteX
+        sec
+        sbc #1
+        asl a
+        mend
+
+
+        macro
+        adjustSpriteY
+        clc
+        adc #$a
+        asl a
+        mend
+
+
 ;
 ; ********************************************
 ; Code pulled from Jeremy Rand's "BuGS" game

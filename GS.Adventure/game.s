@@ -138,18 +138,24 @@ passDone anop
 ;        jsr drawSpriteYellowKey
 
         lda #$4d
-        sec
-        sbc #1
-        asl a
+        adjustSpriteX
         sta spriteX
         lda #$31
-        clc
-        adc #$a
-        asl a
+        adjustSpriteY
         sta spriteY
+        jsl eraseSpritePort
+
+        lda #$4d
+        adjustSpriteX
+        sta spriteX
+        lda #$31
+        adjustSpriteY
+        sta spriteY
+        jsl drawSpritePort7
+
+
 ;        jsr drawSpriteBridge
 
-        jsl drawSpritePort7
 
         jsr borderStart
         
