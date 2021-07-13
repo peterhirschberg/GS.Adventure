@@ -14,8 +14,44 @@
 
 sprites start
         using globalData
+        using gameData
+        using roomsData
+        using objectData
         using spriteData
-    
+
+
+drawRoomSprites entry
+
+        jsr drawYellowKey
+        jsr drawPort1
+
+        rts
+
+drawYellowKey entry
+        ldx #OBJECT_YELLOWKEY
+        lda objectRoomList,x
+        cmp currentRoom
+        bne drawYellowKeyDone
+        lda objectPositionXList,x
+        sta spriteX
+        lda objectPositionYList,x
+        sta spriteY
+        jsl drawSpriteYellowKey
+drawYellowKeyDone anop
+        rts
+
+drawPort1 entry
+        ldx #OBJECT_PORT1
+        lda objectRoomList,x
+        cmp currentRoom
+        bne drawPort1Done
+        lda objectPositionXList,x
+        sta spriteX
+        lda objectPositionYList,x
+        sta spriteY
+        jsl drawSpritePort7
+drawPort1Done anop
+        rts
 
         end
 

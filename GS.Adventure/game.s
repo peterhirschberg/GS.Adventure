@@ -143,7 +143,7 @@ passDone anop
         lda #$31
         adjustSpriteY
         sta spriteY
-        jsl eraseSpritePort
+;        jsl eraseSpritePort
 
         lda #$4d
         adjustSpriteX
@@ -151,7 +151,13 @@ passDone anop
         lda #$31
         adjustSpriteY
         sta spriteY
-        jsl drawSpritePort7
+;        jsl drawSpritePort7
+
+
+
+        jsr drawRoomSprites
+
+
 
 
 ;        jsr drawSpriteBridge
