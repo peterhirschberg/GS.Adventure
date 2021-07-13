@@ -131,36 +131,8 @@ passDone anop
 
         jsr borderStart
 
-        lda #40
-        sta spriteX
-        lda #100
-        sta spriteY
-;        jsr drawSpriteYellowKey
-
-        lda #$4d
-        adjustSpriteX
-        sta spriteX
-        lda #$31
-        adjustSpriteY
-        sta spriteY
-;        jsl eraseSpritePort
-
-        lda #$4d
-        adjustSpriteX
-        sta spriteX
-        lda #$31
-        adjustSpriteY
-        sta spriteY
-;        jsl drawSpritePort7
-
-
 
         jsr drawRoomSprites
-
-
-
-
-;        jsr drawSpriteBridge
 
 
         jsr borderStart
@@ -218,7 +190,7 @@ gameData data
 
 gamePass dc i2'0'
 
-gameLevel dc i2'1'
+gameLevel dc i2'0'
 
 surroundUpdateCounter dc i2'0'
 

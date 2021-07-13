@@ -11,7 +11,6 @@
 #include <stdlib.h>
 #include <string.h>
 #include <math.h>
-#include <time.h>
 
 #include <gsos.h>
 #include <Memory.h>
@@ -24,7 +23,6 @@
 #include "main.h"
 
 unsigned int userid;
-clock_t lastTick;
 unsigned int randomSeed;
 
 word* backgroundLayer;
@@ -37,9 +35,20 @@ void signalQuit(void)
     shouldQuit = true;
 }
 
+
 word getRandom(word range)
 {
     return rand() % range;
+}
+
+word numLoosePixelsFromLeftToRight(word start)
+{
+    return 8 - (start % 8);
+}
+
+word numLoosePixelsFromRightToLeft(word start)
+{
+    return start % 8;
 }
 
 
@@ -63,6 +72,13 @@ void preloadSound(void)
 //    LoadResource(rRawSound, FIRE_SOUND);
 }
 
+// Game loop
+void waitForNextTick(void)
+{
+    while (!shouldQuit) {
+        runGameTick();
+    }
+}
 
 int main(void)
 {
@@ -85,12 +101,10 @@ int main(void)
     srand(randomSeed);
  
     initGame();
-    
-    // Game loop
-    while (!shouldQuit) {
-        runGameTick();
-    };
+  
+    runGameTick();
 
+    waitForNextTick();
     
     ShutDownTools(refIsHandle, toolStartupRef);
     TLShutDown();
