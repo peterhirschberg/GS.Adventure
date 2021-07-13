@@ -135,13 +135,13 @@ passDone anop
         sta spriteX
         lda #100
         sta spriteY
-        jsr drawSpriteYellowKey
+;        jsr drawSpriteYellowKey
 
         lda #180
         sta spriteX
         lda #40
         sta spriteY
-        jsr drawSpriteBridge
+;        jsr drawSpriteBridge
 
         jsr borderStart
         
@@ -154,10 +154,10 @@ passDone anop
         jsr roomHasFog
         cmp #1
         beq eraseWithFog
-        jsr eraseSpriteDragon
+;        jsr eraseSpriteDragon
         bra eraseDone
 eraseWithFog anop
-        jsr eraseSpriteDragonFog
+;        jsr eraseSpriteDragonFog
 eraseDone anop
 
         inc temp
@@ -179,7 +179,7 @@ continue anop
         sta spriteX
         lda #40
         sta spriteY
-        jsr drawSpriteRedDragon
+;        jsr drawSpriteRedDragon
 
         
         jsr borderDone
