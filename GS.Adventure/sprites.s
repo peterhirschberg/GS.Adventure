@@ -27,31 +27,40 @@ drawRoomSprites entry
 
         rts
 
+
 drawYellowKey entry
         ldx #OBJECT_YELLOWKEY
         lda objectRoomList,x
+        asl a
         cmp currentRoom
         bne drawYellowKeyDone
         lda objectPositionXList,x
+        adjustSpriteX
         sta spriteX
         lda objectPositionYList,x
+        adjustSpriteY
         sta spriteY
         jsl drawSpriteYellowKey
 drawYellowKeyDone anop
         rts
 
+
 drawPort1 entry
         ldx #OBJECT_PORT1
         lda objectRoomList,x
+        asl a
         cmp currentRoom
         bne drawPort1Done
         lda objectPositionXList,x
+        adjustSpriteX
         sta spriteX
         lda objectPositionYList,x
+        adjustSpriteY
         sta spriteY
         jsl drawSpritePort7
 drawPort1Done anop
         rts
+
 
         end
 
