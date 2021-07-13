@@ -30,7 +30,7 @@ initGame entry
         jsr eraseSurroundPixelBuffer
 
 
-        jsr borderInit
+;        jsr borderInit
 
 ; -------------------------------
 ; set up game
@@ -56,7 +56,7 @@ runGameTick entry
 
         jsr waitForVbl
 
-        jsr borderStart
+;        jsr borderStart
 
         jsr checkControls
 
@@ -129,13 +129,13 @@ passDone anop
         sta lastRoom
 
 
-        jsr borderStart
+;        jsr borderStart
 
 
         jsr drawRoomSprites
 
 
-        jsr borderStart
+;        jsr borderStart
         
 
         lda temp
@@ -174,7 +174,7 @@ continue anop
 ;        jsr drawSpriteRedDragon
 
         
-        jsr borderDone
+;        jsr borderDone
 
 
         rtl
