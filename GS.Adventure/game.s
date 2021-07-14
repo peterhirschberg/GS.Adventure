@@ -43,6 +43,8 @@ initGame entry
         lda #$85
         sta playerY
 
+        jsr initObjectPositions
+
 ; -------------------------------
 
         jsr drawRoom

@@ -123,17 +123,21 @@ surroundDone_&SYSCNT anop
 
         macro
         adjustSpriteX
-        sec
-        sbc #1
         asl a
+        sec
+        sbc #2
         mend
 
 
         macro
         adjustSpriteY
-        clc
-        adc #$a
         asl a
+        sec
+        sbc #16
+        sta temp
+        lda #200
+        sec
+        sbc temp
         mend
 
 

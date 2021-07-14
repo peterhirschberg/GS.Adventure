@@ -182,6 +182,8 @@ drawYellowDragonDone anop
         rts
 
 
+temp dc i2'0'
+
 
         end
 
