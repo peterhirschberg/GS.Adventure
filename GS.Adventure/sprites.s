@@ -34,6 +34,8 @@ drawRoomSprites entry
         jsr drawGreenDragon
         jsr drawYellowDragon
 
+        jsr drawBridge
+
         rts
 
 
@@ -44,10 +46,8 @@ drawYellowKey entry
         cmp currentRoom
         bne drawYellowKeyDone
         lda objectPositionXList,x
-        adjustSpriteX
         sta spriteX
         lda objectPositionYList,x
-        adjustSpriteY
         sta spriteY
         jsl drawSpriteYellowKey
 drawYellowKeyDone anop
@@ -60,10 +60,8 @@ drawWhiteKey entry
         cmp currentRoom
         bne drawWhiteKeyDone
         lda objectPositionXList,x
-        adjustSpriteX
         sta spriteX
         lda objectPositionYList,x
-        adjustSpriteY
         sta spriteY
         jsl drawSpriteWhiteKey
 drawWhiteKeyDone anop
@@ -76,10 +74,8 @@ drawBlackKey entry
         cmp currentRoom
         bne drawBlackKeyDone
         lda objectPositionXList,x
-        adjustSpriteX
         sta spriteX
         lda objectPositionYList,x
-        adjustSpriteY
         sta spriteY
         jsl drawSpriteBlackKey
 drawBlackKeyDone anop
@@ -92,10 +88,8 @@ drawPort1 entry
         cmp currentRoom
         bne drawPort1Done
         lda objectPositionXList,x
-        adjustSpriteX
         sta spriteX
         lda objectPositionYList,x
-        adjustSpriteY
         sta spriteY
         jsl drawSpritePort7
 drawPort1Done anop
@@ -108,10 +102,8 @@ drawPort2 entry
         cmp currentRoom
         bne drawPort2Done
         lda objectPositionXList,x
-        adjustSpriteX
         sta spriteX
         lda objectPositionYList,x
-        adjustSpriteY
         sta spriteY
         jsl drawSpritePort7
 drawPort2Done anop
@@ -124,10 +116,8 @@ drawPort3 entry
         cmp currentRoom
         bne drawPort3Done
         lda objectPositionXList,x
-        adjustSpriteX
         sta spriteX
         lda objectPositionYList,x
-        adjustSpriteY
         sta spriteY
         jsl drawSpritePort7
 drawPort3Done anop
@@ -140,10 +130,8 @@ drawRedDragon entry
         cmp currentRoom
         bne drawRedDragonDone
         lda objectPositionXList,x
-        adjustSpriteX
         sta spriteX
         lda objectPositionYList,x
-        adjustSpriteY
         sta spriteY
         jsl drawSpriteRedDragon1
 drawRedDragonDone anop
@@ -156,10 +144,8 @@ drawGreenDragon entry
         cmp currentRoom
         bne drawGreenDragonDone
         lda objectPositionXList,x
-        adjustSpriteX
         sta spriteX
         lda objectPositionYList,x
-        adjustSpriteY
         sta spriteY
         jsl drawSpriteGreenDragon1
 drawGreenDragonDone anop
@@ -172,17 +158,27 @@ drawYellowDragon entry
         cmp currentRoom
         bne drawYellowDragonDone
         lda objectPositionXList,x
-        adjustSpriteX
         sta spriteX
         lda objectPositionYList,x
-        adjustSpriteY
         sta spriteY
         jsl drawSpriteYellowDragon1
 drawYellowDragonDone anop
         rts
 
+drawBridge entry
+        ldx #OBJECT_BRIDGE
+        lda objectRoomList,x
+        asl a
+        cmp currentRoom
+        bne drawBridgeDone
+        lda objectPositionXList,x
+        sta spriteX
+        lda objectPositionYList,x
+        sta spriteY
+        jsl drawSpriteBridge
+drawBridgeDone anop
+        rts
 
-temp dc i2'0'
 
 
         end
