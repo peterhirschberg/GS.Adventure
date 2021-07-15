@@ -99,10 +99,51 @@ OBJECT_AUTHOR           gequ 2*16
 OBJECT_NUMBERS          gequ 2*18
 OBJECT_PLAYER           gegu 2*19
 
+OBJECT_WIDTH_KEY gequ 14
+OBJECT_HEIGHT_KEY gequ 6
+
+OBJECT_WIDTH_BRIDGE gequ 30
+OBJECT_HEIGHT_BRIDGE gequ 48
+
+OBJECT_WIDTH_BAT1 gequ 14
+OBJECT_HEIGHT_BAT1 gequ 14
+
+OBJECT_WIDTH_BAT2 gequ 14
+OBJECT_HEIGHT_BAT2 gequ 22
+
+OBJECT_WIDTH_DRAGON1 gequ 14
+OBJECT_HEIGHT_DRAGON1 gequ 40
+
+OBJECT_WIDTH_DRAGON2 gequ 14
+OBJECT_HEIGHT_DRAGON2 gequ 44
+
+OBJECT_WIDTH_DRAGON3 gequ 14
+OBJECT_HEIGHT_DRAGON3 gequ 34
+
+OBJECT_WIDTH_SWORD gequ 14
+OBJECT_HEIGHT_SWORD gequ 10
+
+OBJECT_WIDTH_DOT gequ 2
+OBJECT_HEIGHT_DOT gequ 2
+
+OBJECT_WIDTH_CHALISE gequ 14
+OBJECT_HEIGHT_CHALISE gequ 18
+
+OBJECT_WIDTH_MAGNET gequ 14
+OBJECT_HEIGHT_MAGNET gequ 16
+
+OBJECT_WIDTH_PORT_OPEN gequ 12
+OBJECT_HEIGHT_PORT_OPEN gequ 8
+
+OBJECT_WIDTH_PORT_CLOSED gequ 12
+OBJECT_HEIGHT_PORT_CLOSED gequ 32
+
 objectRoomList anop
         dc i2'$00' ; port 1
         dc i2'$00' ; port 2
         dc i2'$00' ; port 3
+        dc i2'$00' ; author
+        dc i2'$00' ; numbers
         dc i2'$00' ; red dragon
         dc i2'$00' ; yellow dragon
         dc i2'$00' ; green dragon
@@ -120,6 +161,8 @@ objectPositionXList anop
         dc i2'$00' ; port 1
         dc i2'$00' ; port 2
         dc i2'$00' ; port 3
+        dc i2'$00' ; author
+        dc i2'$00' ; numbers
         dc i2'$00' ; red dragon
         dc i2'$00' ; yellow dragon
         dc i2'$00' ; green dragon
@@ -137,6 +180,8 @@ objectPositionYList anop
         dc i2'$00' ; port 1
         dc i2'$00' ; port 2
         dc i2'$00' ; port 3
+        dc i2'$00' ; author
+        dc i2'$00' ; numbers
         dc i2'$00' ; red dragon
         dc i2'$00' ; yellow dragon
         dc i2'$00' ; green dragon
@@ -154,6 +199,8 @@ objectStateList anop
         dc i2'$00' ; port 1
         dc i2'$00' ; port 2
         dc i2'$00' ; port 3
+        dc i2'$00' ; author
+        dc i2'$00' ; numbers
         dc i2'$00' ; red dragon
         dc i2'$00' ; yellow dragon
         dc i2'$00' ; green dragon
@@ -171,6 +218,8 @@ objectColorList anop
         dc i2'COLOR_BLACK' ; port 1
         dc i2'COLOR_BLACK' ; port 2
         dc i2'COLOR_BLACK' ; port 3
+        dc i2'COLOR_FLASH' ; author
+        dc i2'COLOR_LIMEGREEN' ; numbers
         dc i2'COLOR_RED' ; red dragon
         dc i2'COLOR_YELLOW' ; yellow dragon
         dc i2'COLOR_LIMEGREEN' ; green dragon
@@ -188,6 +237,8 @@ objectLinkedObjectList anop
         dc i2'OBJECT_NONE' ; port 1
         dc i2'OBJECT_NONE' ; port 2
         dc i2'OBJECT_NONE' ; port 3
+        dc i2'OBJECT_NONE' ; author
+        dc i2'OBJECT_NONE' ; numbers
         dc i2'OBJECT_NONE' ; red dragon
         dc i2'OBJECT_NONE' ; yellow dragon
         dc i2'OBJECT_NONE' ; green dragon
@@ -206,6 +257,8 @@ objectLinkedObjectXOffsetList anop
         dc i2'$00' ; port 1
         dc i2'$00' ; port 2
         dc i2'$00' ; port 3
+        dc i2'$00' ; author
+        dc i2'$00' ; numbers
         dc i2'$00' ; red dragon
         dc i2'$00' ; yellow dragon
         dc i2'$00' ; green dragon
@@ -224,6 +277,8 @@ objectLinkedObjectYOffsetList anop
         dc i2'$00' ; port 1
         dc i2'$00' ; port 2
         dc i2'$00' ; port 3
+        dc i2'$00' ; author
+        dc i2'$00' ; numbers
         dc i2'$00' ; red dragon
         dc i2'$00' ; yellow dragon
         dc i2'$00' ; green dragon
@@ -238,13 +293,14 @@ objectLinkedObjectYOffsetList anop
         dc i2'$00' ; magnet
         dc i2'$00' ; player
 
-
 ; Initial values
 
 objectInitialRoomGame1List anop
         dc i2'$11' ; port 1
         dc i2'$0f' ; port 2
         dc i2'$10' ; port 3
+        dc i2'$1e' ; author
+        dc i2'$00' ; numbers
         dc i2'$0e' ; red dragon
         dc i2'$01' ; yellow dragon
         dc i2'$1d' ; green dragon
@@ -262,6 +318,8 @@ objectInitialStateGame1List anop
         dc i2'$0c' ; port 1
         dc i2'$0c' ; port 2
         dc i2'$0c' ; port 3
+        dc i2'$00' ; author
+        dc i2'$00' ; numbers
         dc i2'$00' ; red dragon
         dc i2'$00' ; yellow dragon
         dc i2'$00' ; green dragon
@@ -279,6 +337,8 @@ objectInitialPositionXGame1List anop
         dc i2'$4d' ; port 1
         dc i2'$4d' ; port 2
         dc i2'$4d' ; port 3
+        dc i2'$50' ; author
+        dc i2'$50' ; numbers
         dc i2'$50' ; red dragon
         dc i2'$50' ; yellow dragon
         dc i2'$50' ; green dragon
@@ -296,6 +356,8 @@ objectInitialPositionYGame1List anop
         dc i2'$31' ; port 1
         dc i2'$31' ; port 2
         dc i2'$31' ; port 3
+        dc i2'$69' ; author
+        dc i2'$40' ; numbers
         dc i2'$20' ; red dragon
         dc i2'$20' ; yellow dragon
         dc i2'$20' ; green dragon

@@ -8,6 +8,9 @@
 \f0\fs24 \cf0 let str = '\\n\\n'\
 let braCounter = 0\
 \
+let spriteW = 0\
+let spriteH = 0\
+\
 \
 const COLOR_BLACK         = '00'\
 const COLOR_LTGRAY        = '11'\
@@ -55,6 +58,7 @@ const objectGfxNum2 =\
 const objectGfxNum3 =\
 [\
     // Object #5 State #3 Graphic :'3'                                                                                 7,\
+    7,\
     0x0E,                  //  XXX                                                                      \
     0x11,                  // X   X                                                                     \
     0x01,                  //     X                                                                     \
@@ -105,7 +109,8 @@ const objectGfxBridge =\
 \
 const objectGfxBat1 =\
 [\
-    // Object #0E : State 03 : Graphic                                                                                 7,\
+    // Object #0E : State 03 : Graphic                                                                                 \
+    7,\
     0x81,                  // X      X                                                                  \
     0x81,                  // X      X                                                                  \
     0xC3,                  // XX    XX                                                                  \
@@ -117,7 +122,8 @@ const objectGfxBat1 =\
 \
 const objectGfxBat2 =\
 [\
-    // Object #0E : State FF : Graphic                                                                                 11,\
+    // Object #0E : State FF : Graphic                                                                                 \
+    11,\
     0x01,                  //        X                                                                  \
     0x80,                  // X                                                                         \
     0x01,                  //        X                                                                  \
@@ -159,7 +165,8 @@ const objectGfxDragon1 = \
 \
 const objectGfxDragon2 = \
 [\
-    // Object 6 : State 01 : Graphic                                                                                   22,\
+    // Object 6 : State 01 : Graphic                                                                                   \
+    22,\
     0x80,                  // X                                                                         \
     0x40,                  //  X                                                                        \
     0x26,                  //   X  XX                                                                   \
@@ -186,7 +193,8 @@ const objectGfxDragon2 = \
 \
 const objectGfxDragon3 = \
 [\
-    // Object 6 : State 02 : Graphic                                                                                   17,\
+    // Object 6 : State 02 : Graphic                                                                                   \
+    17,\
     0x0C,                  //     XX                                                                    \
     0x0C,                  //     XX                                                                    \
     0x0C,                  //     XX                                                                    \
@@ -208,7 +216,8 @@ const objectGfxDragon3 = \
   \
 const objectGfxSword =\
 [\
-		// Object #9 : State FF : Graphics                                                                                 5,\
+		// Object #9 : State FF : Graphics                                                                                 \
+    5,\
     0x20,                  //   X                                                                       \
     0x40,                  //  X                                                                        \
     0xFF,                  // XXXXXXXX     \
@@ -517,7 +526,7 @@ function renderSprite(sprite, name, color, size) \{\
   \
   str += '\\n'\
   str += '		_spriteFooter\\n'\
-  str += '		rts\\n\\n'\
+  str += '		rtl\\n\\n'\
 \
 \}\
 \
@@ -526,9 +535,9 @@ function eraseSprite(sprite, name, size, checkFog) \{\
 \
 	str += name + ' entry\\n\\n'\
 \
-  str += '		lda spriteX\\n'\
+  str += '		lda >spriteX\\n'\
   str += '		lsr a\\n'\
-  str += '		sta spriteX\\n'\
+  str += '		sta >spriteX\\n'\
 \
 	let cx = 0\
   let cy = 0\
@@ -539,13 +548,13 @@ function eraseSprite(sprite, name, size, checkFog) \{\
   \
     for (let j=0; j<2; j++) \{\
 \
-      str += '		lda spriteY\\n'\
+      str += '		lda >spriteY\\n'\
       str += '		clc\\n'\
       str += `		adc #$\{cy\}\\n`\
       str += '		asl a\\n'\
       str += '		tax\\n'\
-      str += '		lda screenRowOffsets,x\\n'\
-      str += '		sta rowAddress\\n\\n'\
+      str += '		lda >screenRowOffsets,x\\n'\
+      str += '		sta >rowAddress\\n\\n'\
 \
       for (let bit=0; bit < 8; bit++)\
       \{\
@@ -555,9 +564,9 @@ function eraseSprite(sprite, name, size, checkFog) \{\
           let x = cx+(bit*size);\
           for (let k=0; k<size; k++) \{\
           \
-          	str += '		lda rowAddress\\n'\
+          	str += '		lda >rowAddress\\n'\
             str += '		clc\\n'\
-            str += '		adc spriteX\\n\\n'\
+            str += '		adc >spriteX\\n\\n'\
             str += '		clc\\n'\
             str += `		adc #$\{x+k\}\\n`\
             \
@@ -599,7 +608,51 @@ function eraseSprite(sprite, name, size, checkFog) \{\
 \
   str += '\\n'\
   \
-  str += '		rts\\n\\n'\
+  str += '		rtl\\n\\n'\
+\
+\}\
+\
+function calcSpriteExtents(sprite, name, size) \{\
+\
+	spriteW = 0\
+  spriteH = 0\
+\
+	let cx = 0\
+  let cy = 0\
+\
+	let height = sprite[0]\
+  \
+  spriteH = height * 2\
+  \
+  let minX = 0\
+  let maxX = 0\
+  \
+  for (let i=1; i<height+1; i++) \{\
+    for (let j=0; j<2; j++) \{\
+      for (let bit=0; bit < 8; bit++)\
+      \{\
+        let rowByte = sprite[i]\
+        if (rowByte & (1 << (7-bit)))\
+        \{\
+          let x = cx+(bit*size);\
+          for (let k=0; k<size; k++) \{\
+          	let pixelX = x + k\
+            minX = Math.min(minX, pixelX)\
+            maxX = Math.max(maxX, pixelX)\
+					\}\
+        \}\
+      \}\
+      cy++\
+    \}\
+	\}\
+\
+	spriteW = (maxX - minX) * 2\
+  if (spriteW === 0) spriteW = 2\
+\
+\
+  str += `OBJECT_WIDTH_$\{name\} gequ $\{spriteW\}\\n`\
+  str += `OBJECT_HEIGHT_$\{name\} gequ $\{spriteH\}\\n\\n`\
+  \
 \
 \}\
 \
@@ -648,7 +701,7 @@ objectGfxPort7\
     \{ (const byte*)0, 0, 0, 0, -1, 0, 0, 0, 0, 0, 0, 0, 0, false\}                                  // #12 Null\
 \
 */\
-\
+/*\
 renderSprite(objectGfxPort1, 'drawSpritePort1', COLOR_BLACK, 1, false)\
 renderSprite(objectGfxPort2, 'drawSpritePort2', COLOR_BLACK, 1, false)\
 renderSprite(objectGfxPort3, 'drawSpritePort3', COLOR_BLACK, 1, false)\
@@ -656,7 +709,9 @@ renderSprite(objectGfxPort4, 'drawSpritePort4', COLOR_BLACK, 1, false)\
 renderSprite(objectGfxPort5, 'drawSpritePort5', COLOR_BLACK, 1, false)\
 renderSprite(objectGfxPort6, 'drawSpritePort6', COLOR_BLACK, 1, false)\
 renderSprite(objectGfxPort7, 'drawSpritePort7', COLOR_BLACK, 1, false)\
+*/\
 \
+/*\
 renderSprite(objectGfxAuthor, 'drawSpriteAuthor', COLOR_FLASH, 1, false)\
 \
 renderSprite(objectGfxNum1, 'drawSpriteNum1', COLOR_LIMEGREEN, 1, false)\
@@ -675,8 +730,6 @@ renderSprite(objectGfxDragon1, 'drawSpriteGreenDragon1', COLOR_LIMEGREEN, 1, fal
 renderSprite(objectGfxDragon2, 'drawSpriteGreenDragon2', COLOR_LIMEGREEN, 1, false)\
 renderSprite(objectGfxDragon3, 'drawSpriteGreenDragon3', COLOR_LIMEGREEN, 1, false)\
 \
-renderSprite(objectGfxSword, 'drawSpriteGreenSword', COLOR_YELLOW, 1, false)\
-\
 renderSprite(objectGfxBridge, 'drawSpriteBridge', COLOR_PURPLE, 4, false)\
 \
 renderSprite(objectGfxKey, 'drawSpriteYellowKey', COLOR_YELLOW, 1, false)\
@@ -686,6 +739,9 @@ renderSprite(objectGfxKey, 'drawSpriteBlackKey', COLOR_BLACK, 1, false)\
 renderSprite(objectGfxBat1, 'drawSpriteBat1', COLOR_BLACK, 1, false)\
 renderSprite(objectGfxBat2, 'drawSpriteBat2', COLOR_BLACK, 1, false)\
 \
+\
+renderSprite(objectGfxSword, 'drawSpriteSword', COLOR_YELLOW, 1, false)\
+\
 renderSprite(objectGfxDot, 'drawSpriteDot', COLOR_LTGRAY, 1, false)\
 \
 renderSprite(objectGfxChallise, 'drawSpriteChallise', COLOR_FLASH, 1, false)\
@@ -693,18 +749,15 @@ renderSprite(objectGfxChallise, 'drawSpriteChallise', COLOR_FLASH, 1, false)\
 renderSprite(objectGfxMagnet, 'drawSpriteMagnet', COLOR_BLACK, 1, false)\
 \
 \
+eraseSprite(objectGfxPort7, 'eraseSpritePort', 1, false)\
 \
-eraseSprite(objectGfxPort7, 'erasePort', 1, false)\
-\
-eraseSprite(objectGfxNum1, 'eraseNum1', 1, false)\
-eraseSprite(objectGfxNum2, 'eraseNum2', 1, false)\
-eraseSprite(objectGfxNum3, 'eraseNum3', 1, false)\
+eraseSprite(objectGfxNum1, 'eraseSpriteNum1', 1, false)\
+eraseSprite(objectGfxNum2, 'eraseSpriteNum2', 1, false)\
+eraseSprite(objectGfxNum3, 'eraseSpriteNum3', 1, false)\
 \
 eraseSprite(objectGfxDragon1, 'eraseSpriteDragon1', 1, false)\
 eraseSprite(objectGfxDragon2, 'eraseSpriteDragon2', 1, false)\
 eraseSprite(objectGfxDragon3, 'eraseSpriteDragon3', 1, false)\
-\
-eraseSprite(objectGfxSword, 'eraseSpriteSword', 1, false)\
 \
 eraseSprite(objectGfxBridge, 'eraseSpriteBridge', 1, false)\
 \
@@ -713,6 +766,8 @@ eraseSprite(objectGfxKey, 'eraseSpriteKey', 1, false)\
 eraseSprite(objectGfxBat1, 'eraseSpriteBat1', 1, false)\
 eraseSprite(objectGfxBat2, 'eraseSpriteBat2', 1, false)\
 \
+eraseSprite(objectGfxSword, 'eraseSpriteSword', 1, false)\
+\
 eraseSprite(objectGfxDot, 'eraseSpriteDot', 1, false)\
 \
 eraseSprite(objectGfxChallise, 'eraseSpriteChallise', 1, false)\
@@ -720,26 +775,67 @@ eraseSprite(objectGfxChallise, 'eraseSpriteChallise', 1, false)\
 eraseSprite(objectGfxMagnet, 'eraseSpriteMagnet', 1, false)\
 \
 \
-\
 eraseSprite(objectGfxDragon1, 'eraseSpriteDragon1Fog', 1, true)\
 eraseSprite(objectGfxDragon2, 'eraseSpriteDragon2Fog', 1, true)\
 eraseSprite(objectGfxDragon3, 'eraseSpriteDragon3Fog', 1, true)\
 \
-eraseSprite(objectGfxSword, 'eraseSpriteSwordFog', 1, true)\
-\
 eraseSprite(objectGfxBridge, 'eraseSpriteBridgeFog', 1, true)\
 \
-eraseSprite(objectGfxKey, 'eraseSpriteDragonKey', 1, true)\
+eraseSprite(objectGfxKey, 'eraseSpriteKeyFog', 1, true)\
 \
 eraseSprite(objectGfxBat1, 'eraseSpriteBat1Fog', 1, true)\
 eraseSprite(objectGfxBat2, 'eraseSpriteBat2Fog', 1, true)\
+\
+\
+eraseSprite(objectGfxSword, 'eraseSpriteSwordFog', 1, true)\
 \
 eraseSprite(objectGfxDot, 'eraseSpriteDotFog', 1, true)\
 \
 eraseSprite(objectGfxChallise, 'eraseSpriteChalliseFog', 1, true)\
 \
 eraseSprite(objectGfxMagnet, 'eraseSpriteMagnetFog', 1, true)\
+*/\
 \
+/*\
+/*\
+objectGfxNum1\
+objectGfxNum2\
+objectGfxNum3\
+objectGfxKey\
+objectGfxBridge\
+objectGfxBat1\
+objectGfxBat2\
+objectGfxDragon1\
+objectGfxDragon2\
+objectGfxDragon3\
+objectGfxSword\
+objectGfxDot\
+objectGfxAuthor\
+objectGfxChallise\
+objectGfxMagnet\
+objectGfxPort1\
+objectGfxPort2\
+objectGfxPort3\
+objectGfxPort4\
+objectGfxPort5\
+objectGfxPort6\
+objectGfxPort7\
+*/\
+\
+\
+calcSpriteExtents(objectGfxKey, 'KEY', 1)\
+calcSpriteExtents(objectGfxBridge, 'BRIDGE', 2)\
+calcSpriteExtents(objectGfxBat1, 'BAT1', 1)\
+calcSpriteExtents(objectGfxBat2, 'BAT2', 1)\
+calcSpriteExtents(objectGfxDragon1, 'DRAGON1', 1)\
+calcSpriteExtents(objectGfxDragon2, 'DRAGON2', 1)\
+calcSpriteExtents(objectGfxDragon3, 'DRAGON3', 1)\
+calcSpriteExtents(objectGfxSword, 'SWORD', 1)\
+calcSpriteExtents(objectGfxDot, 'DOT', 1)\
+calcSpriteExtents(objectGfxChallise, 'CHALISE', 1)\
+calcSpriteExtents(objectGfxMagnet, 'MAGNET', 1)\
+calcSpriteExtents(objectGfxPort1, 'PORT_OPEN', 1)\
+calcSpriteExtents(objectGfxPort7, 'PORT_CLOSED', 1)\
 \
 \
 str += '\\n\\n'\

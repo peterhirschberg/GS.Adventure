@@ -35,13 +35,22 @@ initGame entry
 ; -------------------------------
 ; set up game
 
+; set the current room
+
         lda #ROOM_INDEX_CASTLE_YELLOW
         sta currentRoom
 
-        lda #$45
+; position the player
+
+        lda #$50
+        adjustSpriteX
         sta playerX
-        lda #$85
+
+        lda #$20
+        adjustSpriteY
         sta playerY
+
+; initialize object positions (only on full reset)
 
         jsr initObjectPositions
 
