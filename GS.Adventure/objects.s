@@ -22,6 +22,12 @@ initObjectPositions entry
         ldx #OBJECT_PORT1
         jsr setInitialObjectValues
 
+        ldx #OBJECT_PORT2
+        jsr setInitialObjectValues
+
+        ldx #OBJECT_PORT3
+        jsr setInitialObjectValues
+
         ldx #OBJECT_YELLOWKEY
         jsr setInitialObjectValues
 
@@ -73,6 +79,7 @@ temp dc i2'0'
 
 objectData data
 
+OBJECT_NONE             gequ -1
 OBJECT_PORT1            gequ 2*0
 OBJECT_PORT2            gequ 2*1
 OBJECT_PORT3            gequ 2*2
@@ -90,6 +97,7 @@ OBJECT_CHALISE          gequ 2*13
 OBJECT_MAGNET           gequ 2*14
 OBJECT_AUTHOR           gequ 2*16
 OBJECT_NUMBERS          gequ 2*18
+OBJECT_PLAYER           gegu 2*19
 
 objectRoomList anop
         dc i2'$00' ; port 1
@@ -175,6 +183,61 @@ objectColorList anop
         dc i2'COLOR_LTGRAY' ; dot
         dc i2'COLOR_FLASH' ; chalise
         dc i2'COLOR_BLACK' ; magnet
+
+objectLinkedObjectList anop
+        dc i2'OBJECT_NONE' ; port 1
+        dc i2'OBJECT_NONE' ; port 2
+        dc i2'OBJECT_NONE' ; port 3
+        dc i2'OBJECT_NONE' ; red dragon
+        dc i2'OBJECT_NONE' ; yellow dragon
+        dc i2'OBJECT_NONE' ; green dragon
+        dc i2'OBJECT_NONE' ; sword
+        dc i2'OBJECT_NONE' ; bridge
+        dc i2'OBJECT_NONE' ; yellow key
+        dc i2'OBJECT_NONE' ; white key
+        dc i2'OBJECT_NONE' ; black key
+        dc i2'OBJECT_NONE' ; bat
+        dc i2'OBJECT_NONE' ; dot
+        dc i2'OBJECT_NONE' ; chalise
+        dc i2'OBJECT_NONE' ; magnet
+        dc i2'OBJECT_NONE' ; player
+
+objectLinkedObjectXOffsetList anop
+        dc i2'$00' ; port 1
+        dc i2'$00' ; port 2
+        dc i2'$00' ; port 3
+        dc i2'$00' ; red dragon
+        dc i2'$00' ; yellow dragon
+        dc i2'$00' ; green dragon
+        dc i2'$00' ; sword
+        dc i2'$00' ; bridge
+        dc i2'$00' ; yellow key
+        dc i2'$00' ; white key
+        dc i2'$00' ; black key
+        dc i2'$00' ; bat
+        dc i2'$00' ; dot
+        dc i2'$00' ; chalise
+        dc i2'$00' ; magnet
+        dc i2'$00' ; player
+
+objectLinkedObjectYOffsetList anop
+        dc i2'$00' ; port 1
+        dc i2'$00' ; port 2
+        dc i2'$00' ; port 3
+        dc i2'$00' ; red dragon
+        dc i2'$00' ; yellow dragon
+        dc i2'$00' ; green dragon
+        dc i2'$00' ; sword
+        dc i2'$00' ; bridge
+        dc i2'$00' ; yellow key
+        dc i2'$00' ; white key
+        dc i2'$00' ; black key
+        dc i2'$00' ; bat
+        dc i2'$00' ; dot
+        dc i2'$00' ; chalise
+        dc i2'$00' ; magnet
+        dc i2'$00' ; player
+
 
 ; Initial values
 
