@@ -115,7 +115,15 @@ pass1 anop
 
         lda playerHitWall
         cmp #1
-        bne noHitPass1
+        beq hitPass1
+
+        lda playerHitObject
+        cmp #0
+        bne hitPass1
+
+        bra noHitPass1
+
+hitPass1 anop
 
         jsr erasePlayerHit
         jsr erasePlayer
