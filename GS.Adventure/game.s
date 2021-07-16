@@ -108,20 +108,19 @@ noMovePass0 anop
 pass1 anop
 
         inc gamePass
+
         jsr collisionCheckPlayerWithWalls
 
-        lda playerHitWall
-        cmp #1
-        bne noHitPass1
+        jsr collisionCheckPlayerWithObjects
 
         lda playerHitWall
         cmp #1
         bne noHitPass1
+
         jsr erasePlayerHit
         jsr erasePlayer
         jsr drawPlayer
 
-noMovePass1 anop
 noHitPass1 anop
 
         bra passDone

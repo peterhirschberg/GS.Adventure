@@ -209,6 +209,7 @@ playerHitX dc i2'$0'
 playerHitY dc i2'$0'
 
 playerHitWall dc i2'0'
+playerHitObject dc i2'0'
 
 playerMoved dc i2'1'
 

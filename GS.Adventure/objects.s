@@ -72,10 +72,74 @@ setInitialObjectValues entry
 
 
 
+getHeightForObjectState entry
+
+        txa
+
+        cmp #OBJECT_YELLOWKEY
+        beq getKeyHeight
+        cmp #OBJECT_WHITEKEY
+        beq getKeyHeight
+        cmp #OBJECT_BLACKKEY
+        beq getKeyHeight
+
+        cmp #OBJECT_PORT1
+        beq getPortHeight
+        cmp #OBJECT_PORT2
+        beq getPortHeight
+        cmp #OBJECT_PORT3
+        beq getPortHeight
+
+        rts
+
+getKeyHeight anop
+        lda #OBJECT_HEIGHT_KEY
+        rts
+
+getPortHeight anop
+; TODO: STATE
+        lda #OBJECT_HEIGHT_PORT_CLOSED
+        rts
+
+
+getWidthForObjectState entry
+
+        txa
+
+        cmp #OBJECT_YELLOWKEY
+        beq getKeyWidth
+        cmp #OBJECT_WHITEKEY
+        beq getKeyWidth
+        cmp #OBJECT_BLACKKEY
+        beq getKeyWidth
+
+        cmp #OBJECT_PORT1
+        beq getPortWidth
+        cmp #OBJECT_PORT2
+        beq getPortWidth
+        cmp #OBJECT_PORT3
+        beq getPortWidth
+
+        rts
+
+getKeyWidth anop
+        lda #OBJECT_WIDTH_KEY
+        rts
+
+getPortWidth anop
+; TODO: STATE
+        lda #OBJECT_WIDTH_PORT_CLOSED
+        rts
+
+
+
+
+
 temp dc i2'0'
 
 
         end
+
 
 objectData data
 
@@ -97,46 +161,7 @@ OBJECT_CHALISE          gequ 2*13
 OBJECT_MAGNET           gequ 2*14
 OBJECT_AUTHOR           gequ 2*16
 OBJECT_NUMBERS          gequ 2*18
-OBJECT_PLAYER           gegu 2*19
-
-OBJECT_WIDTH_KEY gequ 14
-OBJECT_HEIGHT_KEY gequ 6
-
-OBJECT_WIDTH_BRIDGE gequ 30
-OBJECT_HEIGHT_BRIDGE gequ 48
-
-OBJECT_WIDTH_BAT1 gequ 14
-OBJECT_HEIGHT_BAT1 gequ 14
-
-OBJECT_WIDTH_BAT2 gequ 14
-OBJECT_HEIGHT_BAT2 gequ 22
-
-OBJECT_WIDTH_DRAGON1 gequ 14
-OBJECT_HEIGHT_DRAGON1 gequ 40
-
-OBJECT_WIDTH_DRAGON2 gequ 14
-OBJECT_HEIGHT_DRAGON2 gequ 44
-
-OBJECT_WIDTH_DRAGON3 gequ 14
-OBJECT_HEIGHT_DRAGON3 gequ 34
-
-OBJECT_WIDTH_SWORD gequ 14
-OBJECT_HEIGHT_SWORD gequ 10
-
-OBJECT_WIDTH_DOT gequ 2
-OBJECT_HEIGHT_DOT gequ 2
-
-OBJECT_WIDTH_CHALISE gequ 14
-OBJECT_HEIGHT_CHALISE gequ 18
-
-OBJECT_WIDTH_MAGNET gequ 14
-OBJECT_HEIGHT_MAGNET gequ 16
-
-OBJECT_WIDTH_PORT_OPEN gequ 12
-OBJECT_HEIGHT_PORT_OPEN gequ 8
-
-OBJECT_WIDTH_PORT_CLOSED gequ 12
-OBJECT_HEIGHT_PORT_CLOSED gequ 32
+OBJECT_PLAYER           gequ 2*19
 
 objectRoomList anop
         dc i2'$00' ; port 1
@@ -370,6 +395,47 @@ objectInitialPositionYGame1List anop
         dc i2'$12' ; dot
         dc i2'$20' ; chalise
         dc i2'$20' ; magnet
+
+OBJECT_WIDTH_KEY gequ 14
+OBJECT_HEIGHT_KEY gequ 6
+
+OBJECT_WIDTH_BRIDGE gequ 30
+OBJECT_HEIGHT_BRIDGE gequ 48
+
+OBJECT_WIDTH_BAT1 gequ 14
+OBJECT_HEIGHT_BAT1 gequ 14
+
+OBJECT_WIDTH_BAT2 gequ 14
+OBJECT_HEIGHT_BAT2 gequ 22
+
+OBJECT_WIDTH_DRAGON1 gequ 14
+OBJECT_HEIGHT_DRAGON1 gequ 40
+
+OBJECT_WIDTH_DRAGON2 gequ 14
+OBJECT_HEIGHT_DRAGON2 gequ 44
+
+OBJECT_WIDTH_DRAGON3 gequ 14
+OBJECT_HEIGHT_DRAGON3 gequ 34
+
+OBJECT_WIDTH_SWORD gequ 14
+OBJECT_HEIGHT_SWORD gequ 10
+
+OBJECT_WIDTH_DOT gequ 2
+OBJECT_HEIGHT_DOT gequ 2
+
+OBJECT_WIDTH_CHALISE gequ 14
+OBJECT_HEIGHT_CHALISE gequ 18
+
+OBJECT_WIDTH_MAGNET gequ 14
+OBJECT_HEIGHT_MAGNET gequ 16
+
+OBJECT_WIDTH_PORT_OPEN gequ 12
+OBJECT_HEIGHT_PORT_OPEN gequ 8
+
+OBJECT_WIDTH_PORT_CLOSED gequ 12
+OBJECT_HEIGHT_PORT_CLOSED gequ 32
+
+
 
 
         end
