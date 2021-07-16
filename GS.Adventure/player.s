@@ -42,6 +42,10 @@ runPlayer entry
         cmp #1
         beq onJoystickLeft
 
+        lda joystickButton
+        cmp #1
+        beq onJoystickButton
+
         bra joystickDone
 
 onJoystickUp anop
@@ -67,6 +71,12 @@ onJoystickLeft anop
         sta joystickLeft
         jsr movePlayerLeft
         bra joystickDone
+
+onJoystickButton anop
+        lda #0
+        sta joystickButton
+        jsr dropCarriedObject
+        rts
 
 joystickDone anop
 
@@ -140,6 +150,14 @@ moveCarriedObject entry
 carryDone anop
         rts
 
+
+dropCarriedObject entry
+
+        ldx #OBJECT_PLAYER
+        lda #OBJECT_NONE
+        sta objectLinkedObjectList,x
+
+        rts
 
 
 drawPlayer entry

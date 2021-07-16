@@ -166,11 +166,18 @@ hitObject anop
         lda hitObjectX
         sec
         sbc playerX
+        asl a
+
+pickupXIsNeg anop
+
         sta objectLinkedObjectXOffsetList,x
+
+pickupDoYOffset anop
 
         lda hitObjectY
         sec
         sbc playerY
+        asl a
         sta objectLinkedObjectYOffsetList,x
 
         rts

@@ -18,11 +18,11 @@ controls start
 
 checkControls entry
 
-;        short i,m
+        short i,m
         lda >KEYBOARD
         bpl checkKeysDone
         sta >KEYBOARD_STROBE
-;        long i,m
+        long i,m
         and #$007f
 
         cmp #'w'
@@ -45,13 +45,16 @@ checkControls entry
         cmp #'A'
         beq onJoystickLeft
 
+        cmp #$20
+        beq onJoystickButton
+
         cmp #'q'
         beq onQuit
         cmp #'Q'
         beq onQuit
 
 checkKeysDone anop
-;        long i,m
+        long i,m
         rts
 
 onJoystickUp anop
@@ -74,6 +77,11 @@ onJoystickRight anop
         sta joystickRight
         rts
 
+onJoystickButton anop
+        lda #1
+        sta joystickButton
+        rts
+
 onQuit anop
         jsl signalQuit
         rts
@@ -88,6 +96,8 @@ joystickUp dc i2'0'
 joystickRight dc i2'0'
 joystickDown dc i2'0'
 joystickLeft dc i2'0'
+
+joystickButton dc i2'0'
 
 
         end
