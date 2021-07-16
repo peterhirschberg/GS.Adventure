@@ -128,7 +128,47 @@ collisionCheckPlayerWithObjects entry
         cmp #1
         beq hitObject
 
+        ldx #OBJECT_WHITEKEY
+        jsr collisionCheckPlayerWithObject
+        cmp #1
+        beq hitObject
+
+        ldx #OBJECT_BLACKKEY
+        jsr collisionCheckPlayerWithObject
+        cmp #1
+        beq hitObject
+
+        ldx #OBJECT_YELLOWDRAGON
+        jsr collisionCheckPlayerWithObject
+        cmp #1
+        beq hitObject
+
+        ldx #OBJECT_GREENDRAGON
+        jsr collisionCheckPlayerWithObject
+        cmp #1
+        beq hitObject
+
+        ldx #OBJECT_REDDRAGON
+        jsr collisionCheckPlayerWithObject
+        cmp #1
+        beq hitObject
+
+        ldx #OBJECT_BRIDGE
+        jsr collisionCheckPlayerWithObject
+        cmp #1
+        beq hitObject
+
         ldx #OBJECT_PORT1
+        jsr collisionCheckPlayerWithObject
+        cmp #1
+        beq hitObject
+
+        ldx #OBJECT_PORT2
+        jsr collisionCheckPlayerWithObject
+        cmp #1
+        beq hitObject
+
+        ldx #OBJECT_PORT3
         jsr collisionCheckPlayerWithObject
         cmp #1
         beq hitObject
@@ -145,8 +185,8 @@ hitObject anop
 
         ldx #OBJECT_PLAYER
         lda objectLinkedObjectList,x
-        cmp #OBJECT_NONE
-        bne alreadyCarrying
+;        cmp #OBJECT_NONE
+;        bne alreadyCarrying
 
 ; Pick up the object!
 
@@ -182,8 +222,8 @@ pickupDoYOffset anop
 
         rts
 
-alreadyCarrying anop
-        rts
+;alreadyCarrying anop
+;        rts
 
 hitNonLinkableObject anop
 
@@ -202,6 +242,14 @@ hitNonLinkableObject anop
 
 
 collisionCheckPlayerWithObject entry
+
+        lda objectRoomList,x
+        asl a
+        cmp currentRoom
+        beq doChecks
+        rts
+
+doChecks anop
 
         lda objectPositionXList,x
         sta testRectLeft
