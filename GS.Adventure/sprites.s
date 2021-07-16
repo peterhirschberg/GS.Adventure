@@ -39,6 +39,26 @@ drawRoomSprites entry
         rts
 
 
+eraseRoomSprites entry
+
+        jsr eraseYellowKey
+        jsr eraseWhiteKey
+        jsr eraseBlackKey
+
+        jsr erasePort1
+        jsr erasePort2
+        jsr erasePort3
+
+        jsr eraseRedDragon
+        jsr eraseGreenDragon
+        jsr eraseYellowDragon
+
+        jsr eraseBridge
+
+        rts
+
+; draw
+
 drawYellowKey entry
         ldx #OBJECT_YELLOWKEY
         lda objectRoomList,x
@@ -179,6 +199,149 @@ drawBridge entry
 drawBridgeDone anop
         rts
 
+
+; erase
+
+
+eraseYellowKey entry
+        ldx #OBJECT_YELLOWKEY
+        lda objectRoomList,x
+        asl a
+        cmp currentRoom
+        bne eraseYellowKeyDone
+        lda objectPositionOldXList,x
+        sta spriteX
+        lda objectPositionOldYList,x
+        sta spriteY
+        jsl eraseSpriteKey
+eraseYellowKeyDone anop
+        rts
+
+eraseWhiteKey entry
+        ldx #OBJECT_WHITEKEY
+        lda objectRoomList,x
+        asl a
+        cmp currentRoom
+        bne eraseWhiteKeyDone
+        lda objectPositionOldXList,x
+        sta spriteX
+        lda objectPositionOldYList,x
+        sta spriteY
+        jsl eraseSpriteKey
+eraseWhiteKeyDone anop
+        rts
+
+eraseBlackKey entry
+        ldx #OBJECT_BLACKKEY
+        lda objectRoomList,x
+        asl a
+        cmp currentRoom
+        bne eraseBlackKeyDone
+        lda objectPositionOldXList,x
+        sta spriteX
+        lda objectPositionOldYList,x
+        sta spriteY
+        jsl eraseSpriteKey
+eraseBlackKeyDone anop
+        rts
+
+erasePort1 entry
+        ldx #OBJECT_PORT1
+        lda objectRoomList,x
+        asl a
+        cmp currentRoom
+        bne erasePort1Done
+        lda objectPositionOldXList,x
+        sta spriteX
+        lda objectPositionOldYList,x
+        sta spriteY
+        jsl eraseSpritePort
+erasePort1Done anop
+        rts
+
+erasePort2 entry
+        ldx #OBJECT_PORT2
+        lda objectRoomList,x
+        asl a
+        cmp currentRoom
+        bne erasePort2Done
+        lda objectPositionOldXList,x
+        sta spriteX
+        lda objectPositionOldYList,x
+        sta spriteY
+        jsl eraseSpritePort
+erasePort2Done anop
+        rts
+
+erasePort3 entry
+        ldx #OBJECT_PORT3
+        lda objectRoomList,x
+        asl a
+        cmp currentRoom
+        bne erasePort3Done
+        lda objectPositionOldXList,x
+        sta spriteX
+        lda objectPositionOldYList,x
+        sta spriteY
+        jsl eraseSpritePort
+erasePort3Done anop
+        rts
+
+eraseRedDragon entry
+        ldx #OBJECT_REDDRAGON
+        lda objectRoomList,x
+        asl a
+        cmp currentRoom
+        bne eraseRedDragonDone
+        lda objectPositionOldXList,x
+        sta spriteX
+        lda objectPositionOldYList,x
+        sta spriteY
+        jsl eraseSpriteDragon1
+eraseRedDragonDone anop
+        rts
+
+eraseGreenDragon entry
+        ldx #OBJECT_GREENDRAGON
+        lda objectRoomList,x
+        asl a
+        cmp currentRoom
+        bne eraseGreenDragonDone
+        lda objectPositionOldXList,x
+        sta spriteX
+        lda objectPositionOldYList,x
+        sta spriteY
+        jsl eraseSpriteDragon1
+eraseGreenDragonDone anop
+        rts
+
+eraseYellowDragon entry
+        ldx #OBJECT_YELLOWDRAGON
+        lda objectRoomList,x
+        asl a
+        cmp currentRoom
+        bne eraseYellowDragonDone
+        lda objectPositionOldXList,x
+        sta spriteX
+        lda objectPositionOldYList,x
+        sta spriteY
+        jsl eraseSpriteDragon1
+eraseYellowDragonDone anop
+        rts
+
+eraseBridge entry
+        ldx #OBJECT_BRIDGE
+        lda objectRoomList,x
+        asl a
+        cmp currentRoom
+        bne eraseBridgeDone
+        lda objectPositionOldXList,x
+        sta spriteX
+        lda objectPositionOldYList,x
+        sta spriteY
+        jsl eraseSpriteBridge
+eraseBridgeDone anop
+        rts
 
 
         end

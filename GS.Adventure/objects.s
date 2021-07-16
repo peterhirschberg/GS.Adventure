@@ -72,6 +72,53 @@ setInitialObjectValues entry
 
 
 
+runObjects entry
+
+        ldx #OBJECT_PORT1
+        jsr updateObjectValues
+
+        ldx #OBJECT_PORT2
+        jsr updateObjectValues
+
+        ldx #OBJECT_PORT3
+        jsr updateObjectValues
+
+        ldx #OBJECT_YELLOWKEY
+        jsr updateObjectValues
+
+        ldx #OBJECT_WHITEKEY
+        jsr updateObjectValues
+
+        ldx #OBJECT_BLACKKEY
+        jsr updateObjectValues
+
+        ldx #OBJECT_REDDRAGON
+        jsr updateObjectValues
+
+        ldx #OBJECT_YELLOWDRAGON
+        jsr updateObjectValues
+
+        ldx #OBJECT_GREENDRAGON
+        jsr updateObjectValues
+
+        ldx #OBJECT_BRIDGE
+        jsr updateObjectValues
+
+        rts
+
+
+updateObjectValues entry
+
+        lda objectPositionXList,x
+        sta objectPositionOldXList,x
+
+        lda objectPositionYList,x
+        sta objectPositionOldYList,x
+
+        rts
+
+
+
 getHeightForObjectState entry
 
         txa
@@ -100,6 +147,7 @@ getPortHeight anop
 ; TODO: STATE
         lda #OBJECT_HEIGHT_PORT_CLOSED
         rts
+
 
 
 getWidthForObjectState entry
@@ -220,6 +268,44 @@ objectPositionYList anop
         dc i2'$00' ; chalise
         dc i2'$00' ; magnet
 
+objectPositionOldXList anop
+        dc i2'$00' ; port 1
+        dc i2'$00' ; port 2
+        dc i2'$00' ; port 3
+        dc i2'$00' ; author
+        dc i2'$00' ; numbers
+        dc i2'$00' ; red dragon
+        dc i2'$00' ; yellow dragon
+        dc i2'$00' ; green dragon
+        dc i2'$00' ; sword
+        dc i2'$00' ; bridge
+        dc i2'$00' ; yellow key
+        dc i2'$00' ; white key
+        dc i2'$00' ; black key
+        dc i2'$00' ; bat
+        dc i2'$00' ; dot
+        dc i2'$00' ; chalise
+        dc i2'$00' ; magnet
+
+objectPositionOldYList anop
+        dc i2'$00' ; port 1
+        dc i2'$00' ; port 2
+        dc i2'$00' ; port 3
+        dc i2'$00' ; author
+        dc i2'$00' ; numbers
+        dc i2'$00' ; red dragon
+        dc i2'$00' ; yellow dragon
+        dc i2'$00' ; green dragon
+        dc i2'$00' ; sword
+        dc i2'$00' ; bridge
+        dc i2'$00' ; yellow key
+        dc i2'$00' ; white key
+        dc i2'$00' ; black key
+        dc i2'$00' ; bat
+        dc i2'$00' ; dot
+        dc i2'$00' ; chalise
+        dc i2'$00' ; magnet
+
 objectStateList anop
         dc i2'$00' ; port 1
         dc i2'$00' ; port 2
@@ -317,6 +403,26 @@ objectLinkedObjectYOffsetList anop
         dc i2'$00' ; chalise
         dc i2'$00' ; magnet
         dc i2'$00' ; player
+
+objectLinkableList anop
+        dc i2'$0' ; port 1
+        dc i2'$0' ; port 2
+        dc i2'$0' ; port 3
+        dc i2'$0' ; author
+        dc i2'$0' ; numbers
+        dc i2'$0' ; red dragon
+        dc i2'$0' ; yellow dragon
+        dc i2'$0' ; green dragon
+        dc i2'$1' ; sword
+        dc i2'$1' ; bridge
+        dc i2'$1' ; yellow key
+        dc i2'$1' ; white key
+        dc i2'$1' ; black key
+        dc i2'$1' ; bat
+        dc i2'$1' ; dot
+        dc i2'$1' ; chalise
+        dc i2'$1' ; magnet
+        dc i2'$0' ; player
 
 ; Initial values
 

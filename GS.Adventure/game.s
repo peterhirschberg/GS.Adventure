@@ -138,6 +138,14 @@ pass2 anop
         lda #0
         sta gamePass
 
+        jsr runObjects
+
+; run object movement here?
+
+        jsr moveCarriedObject
+
+        jsr eraseRoomSprites
+
 passDone anop
 
         stz playerMoved

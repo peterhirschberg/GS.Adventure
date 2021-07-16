@@ -139,10 +139,46 @@ hitObject anop
         txa
         sta playerHitObject
 
-;        ldx #OBJECT_PLAYER
-;        lda hitObject
-;        sta objectLinkedObjectList,x
+        lda objectLinkableList,x
+        cmp #1
+        bne hitNonLinkableObject
 
+        ldx #OBJECT_PLAYER
+        lda objectLinkedObjectList,x
+        cmp #OBJECT_NONE
+        bne alreadyCarrying
+
+; Pick up the object!
+
+        lda playerHitObject
+        sta objectLinkedObjectList,x
+
+        ldx playerHitObject
+
+        lda objectPositionXList,x
+        sta hitObjectX
+
+        lda objectPositionYList,x
+        sta hitObjectY
+
+        ldx #OBJECT_PLAYER
+
+        lda hitObjectX
+        sec
+        sbc playerX
+        sta objectLinkedObjectXOffsetList,x
+
+        lda hitObjectY
+        sec
+        sbc playerY
+        sta objectLinkedObjectYOffsetList,x
+
+        rts
+
+alreadyCarrying anop
+        rts
+
+hitNonLinkableObject anop
 
         lda playerX
         sta playerHitX
@@ -153,7 +189,6 @@ hitObject anop
         sta playerX
         lda playerOldY
         sta playerY
-
 
         rts
 
@@ -226,6 +261,9 @@ testRectLeft dc i2'0'
 testRectRight dc i2'0'
 testRectTop dc i2'0'
 testRectBottom dc i2'0'
+
+hitObjectX dc i2'0'
+hitObjectY dc i2'0'
 
         end
 

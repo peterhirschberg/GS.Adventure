@@ -16,6 +16,7 @@ player start
         using screenData
         using roomsData
         using controlsData
+        using objectData
 
 
 runPlayer entry
@@ -108,6 +109,35 @@ movePlayerLeft entry
         sec
         sbc #6
         sta playerX
+        rts
+
+
+moveCarriedObject entry
+
+        ldx #OBJECT_PLAYER
+        lda objectLinkedObjectList,x
+        cmp #OBJECT_NONE
+        beq carryDone
+
+        tay
+
+        lda currentRoom
+        lsr a
+        sta objectRoomList,y
+
+        lda objectLinkedObjectXOffsetList,x
+        clc
+        adc playerX
+        sta objectPositionXList,y
+
+        ldx #OBJECT_PLAYER
+
+        lda objectLinkedObjectYOffsetList,x
+        clc
+        adc playerY
+        sta objectPositionYList,y
+
+carryDone anop
         rts
 
 
