@@ -147,21 +147,21 @@ OBJECT_NONE             gequ -1
 OBJECT_PORT1            gequ 2*0
 OBJECT_PORT2            gequ 2*1
 OBJECT_PORT3            gequ 2*2
-OBJECT_REDDRAGON        gequ 2*3
-OBJECT_YELLOWDRAGON     gequ 2*4
-OBJECT_GREENDRAGON      gequ 2*5
-OBJECT_SWORD            gequ 2*6
-OBJECT_BRIDGE           gequ 2*7
-OBJECT_YELLOWKEY        gequ 2*8
-OBJECT_WHITEKEY         gequ 2*9
-OBJECT_BLACKKEY         gequ 2*10
-OBJECT_BAT              gequ 2*11
-OBJECT_DOT              gequ 2*12
-OBJECT_CHALISE          gequ 2*13
-OBJECT_MAGNET           gequ 2*14
-OBJECT_AUTHOR           gequ 2*16
-OBJECT_NUMBERS          gequ 2*18
-OBJECT_PLAYER           gequ 2*19
+OBJECT_AUTHOR           gequ 2*3
+OBJECT_NUMBERS          gequ 2*4
+OBJECT_REDDRAGON        gequ 2*5
+OBJECT_YELLOWDRAGON     gequ 2*6
+OBJECT_GREENDRAGON      gequ 2*7
+OBJECT_SWORD            gequ 2*8
+OBJECT_BRIDGE           gequ 2*9
+OBJECT_YELLOWKEY        gequ 2*10
+OBJECT_WHITEKEY         gequ 2*11
+OBJECT_BLACKKEY         gequ 2*12
+OBJECT_BAT              gequ 2*13
+OBJECT_DOT              gequ 2*14
+OBJECT_CHALISE          gequ 2*15
+OBJECT_MAGNET           gequ 2*16
+OBJECT_PLAYER           gequ 2*17
 
 objectRoomList anop
         dc i2'$00' ; port 1
