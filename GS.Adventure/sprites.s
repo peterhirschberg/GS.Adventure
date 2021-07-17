@@ -61,10 +61,17 @@ eraseRoomSprites entry
 
 drawYellowKey entry
         ldx #OBJECT_YELLOWKEY
+
         lda objectRoomList,x
         asl a
         cmp currentRoom
         bne drawYellowKeyDone
+
+;        lda objectDirtyList,x
+;       cmp #1
+;       bne drawYellowKeyDone
+;       stz objectDirtyList,x
+
         lda objectPositionXList,x
         sta spriteX
         lda objectPositionYList,x
@@ -107,6 +114,12 @@ drawPort1 entry
         asl a
         cmp currentRoom
         bne drawPort1Done
+
+;        lda objectDirtyList,x
+;       cmp #1
+;       bne drawPort1Done
+;       stz objectDirtyList,x
+
         lda objectPositionXList,x
         sta spriteX
         lda objectPositionYList,x
@@ -191,9 +204,16 @@ drawBridge entry
         asl a
         cmp currentRoom
         bne drawBridgeDone
+
+;        lda objectDirtyList,x
+;        cmp #1
+;       bne drawBridgeDone
+;       stz objectDirtyList,x
+
         lda objectPositionXList,x
         sta spriteX
         lda objectPositionYList,x
+        bmi drawBridgeDone
         sta spriteY
         jsl drawSpriteBridge
 drawBridgeDone anop
@@ -209,6 +229,11 @@ eraseYellowKey entry
         asl a
         cmp currentRoom
         bne eraseYellowKeyDone
+
+;        lda objectDirtyList,x
+;        cmp #1
+;        bne eraseYellowKeyDone
+
         lda objectPositionOldXList,x
         sta spriteX
         lda objectPositionOldYList,x
@@ -251,6 +276,11 @@ erasePort1 entry
         asl a
         cmp currentRoom
         bne erasePort1Done
+
+;        lda objectDirtyList,x
+;        cmp #1
+;        bne erasePort1Done
+
         lda objectPositionOldXList,x
         sta spriteX
         lda objectPositionOldYList,x
@@ -335,6 +365,11 @@ eraseBridge entry
         asl a
         cmp currentRoom
         bne eraseBridgeDone
+
+;        lda objectDirtyList,x
+;       cmp #1
+;       bne eraseBridgeDone
+
         lda objectPositionOldXList,x
         sta spriteX
         lda objectPositionOldYList,x
@@ -348,6 +383,8 @@ eraseBridgeDone anop
 
 
 spriteData data
+
+rowCounter dc i2'0'
 
 rowAddress dc i4'0'
 drawAddress dc i4'0'

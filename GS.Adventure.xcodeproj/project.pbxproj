@@ -13,7 +13,7 @@
 		D0328FEB269E3CAD00883A3F /* spriteMisc.s in Sources */ = {isa = PBXBuildFile; fileRef = D0328FE7269E3CAD00883A3F /* spriteMisc.s */; };
 		D0328FEC269E3CAD00883A3F /* spriteBat.s in Sources */ = {isa = PBXBuildFile; fileRef = D0328FE8269E3CAD00883A3F /* spriteBat.s */; };
 		D0328FED269E3CAD00883A3F /* spriteDragonErase.s in Sources */ = {isa = PBXBuildFile; fileRef = D0328FE9269E3CAD00883A3F /* spriteDragonErase.s */; };
-		D0328FF2269E42B800883A3F /* spriteBridge.s in Sources */ = {isa = PBXBuildFile; fileRef = D0328FF1269E42B800883A3F /* spriteBridge.s */; };
+		D0328FF526A270F800883A3F /* spriteBridge.s in Sources */ = {isa = PBXBuildFile; fileRef = D0328FF326A270F800883A3F /* spriteBridge.s */; };
 		D0678FC0267E6E2B00A8010C /* main.c in Sources */ = {isa = PBXBuildFile; fileRef = D0678FBF267E6E2B00A8010C /* main.c */; };
 		D0678FC3267E6E2B00A8010C /* main.rez in CopyFiles */ = {isa = PBXBuildFile; fileRef = D0678FC2267E6E2B00A8010C /* main.rez */; };
 		D0678FC5267E6E2B00A8010C /* Makefile in Sources */ = {isa = PBXBuildFile; fileRef = D0678FC4267E6E2B00A8010C /* Makefile */; };
@@ -75,7 +75,7 @@
 		D0328FE8269E3CAD00883A3F /* spriteBat.s */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.asm; path = spriteBat.s; sourceTree = "<group>"; };
 		D0328FE9269E3CAD00883A3F /* spriteDragonErase.s */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.asm; path = spriteDragonErase.s; sourceTree = "<group>"; };
 		D0328FEF269E3FC900883A3F /* spriteDragonDraw.s */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.asm; path = spriteDragonDraw.s; sourceTree = "<group>"; };
-		D0328FF1269E42B800883A3F /* spriteBridge.s */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.asm; path = spriteBridge.s; sourceTree = "<group>"; };
+		D0328FF326A270F800883A3F /* spriteBridge.s */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.asm; path = spriteBridge.s; sourceTree = "<group>"; };
 		D0678FB5267E6E2B00A8010C /* GS.Adventure */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = GS.Adventure; sourceTree = BUILT_PRODUCTS_DIR; };
 		D0678FB8267E6E2B00A8010C /* GS.Adventure.2mg */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = GS.Adventure.2mg; sourceTree = BUILT_PRODUCTS_DIR; };
 		D0678FBD267E6E2B00A8010C /* doNotBuild */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = doNotBuild; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -170,8 +170,8 @@
 				D0328FE8269E3CAD00883A3F /* spriteBat.s */,
 				D0328FE9269E3CAD00883A3F /* spriteDragonErase.s */,
 				D0328FEF269E3FC900883A3F /* spriteDragonDraw.s */,
-				D0328FF1269E42B800883A3F /* spriteBridge.s */,
 				D0328FE7269E3CAD00883A3F /* spriteMisc.s */,
+				D0328FF326A270F800883A3F /* spriteBridge.s */,
 			);
 			path = GS.Adventure;
 			sourceTree = "<group>";
@@ -312,6 +312,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				D0328FF526A270F800883A3F /* spriteBridge.s in Sources */,
 				D06790992688EBD400A8010C /* rooms.s in Sources */,
 				D0678FC5267E6E2B00A8010C /* Makefile in Sources */,
 				D067909F2690162600A8010C /* beam.s in Sources */,
@@ -331,7 +332,6 @@
 				D0678FC0267E6E2B00A8010C /* main.c in Sources */,
 				D067902B267E938A00A8010C /* globals.s in Sources */,
 				D06790A52692373400A8010C /* collision.s in Sources */,
-				D0328FF2269E42B800883A3F /* spriteBridge.s in Sources */,
 				D067909D2690054300A8010C /* hardware.s in Sources */,
 				D067909326889F8C00A8010C /* color.s in Sources */,
 				D0678FEB267E6FE600A8010C /* game.s in Sources */,

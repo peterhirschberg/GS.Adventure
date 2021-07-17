@@ -137,6 +137,9 @@ getHeightForObjectState entry
         cmp #OBJECT_PORT3
         beq getPortHeight
 
+        cmp #OBJECT_BRIDGE
+        beq getBridgeHeight
+
         rts
 
 getKeyHeight anop
@@ -148,6 +151,9 @@ getPortHeight anop
         lda #OBJECT_HEIGHT_PORT_CLOSED
         rts
 
+getBridgeHeight anop
+        lda #OBJECT_HEIGHT_BRIDGE
+        rts
 
 
 getWidthForObjectState entry
@@ -168,6 +174,9 @@ getWidthForObjectState entry
         cmp #OBJECT_PORT3
         beq getPortWidth
 
+        cmp #OBJECT_BRIDGE
+        beq getBridgeWidth
+
         rts
 
 getKeyWidth anop
@@ -179,6 +188,9 @@ getPortWidth anop
         lda #OBJECT_WIDTH_PORT_CLOSED
         rts
 
+getBridgeWidth anop
+        lda #OBJECT_WIDTH_BRIDGE
+        rts
 
 
 
@@ -424,6 +436,27 @@ objectLinkableList anop
         dc i2'$1' ; magnet
         dc i2'$0' ; player
 
+objectDirtyList anop
+        dc i2'$1' ; port 1
+        dc i2'$1' ; port 2
+        dc i2'$1' ; port 3
+        dc i2'$1' ; author
+        dc i2'$1' ; numbers
+        dc i2'$1' ; red dragon
+        dc i2'$1' ; yellow dragon
+        dc i2'$1' ; green dragon
+        dc i2'$1' ; sword
+        dc i2'$1' ; bridge
+        dc i2'$1' ; yellow key
+        dc i2'$1' ; white key
+        dc i2'$1' ; black key
+        dc i2'$1' ; bat
+        dc i2'$1' ; dot
+        dc i2'$1' ; chalise
+        dc i2'$1' ; magnet
+        dc i2'$1' ; player
+
+
 ; Initial values
 
 objectInitialRoomGame1List anop
@@ -436,7 +469,8 @@ objectInitialRoomGame1List anop
         dc i2'$01' ; yellow dragon
         dc i2'$1d' ; green dragon
         dc i2'$12' ; sword
-        dc i2'$04' ; bridge
+        dc i2'$11'
+;dc i2'$04' ; bridge
         dc i2'$11' ; yellow key
         dc i2'$0e' ; white key
         dc i2'$1d' ; black key
@@ -502,10 +536,11 @@ objectInitialPositionYGame1List anop
         dc i2'$20' ; chalise
         dc i2'$20' ; magnet
 
+
 OBJECT_WIDTH_KEY gequ 14
 OBJECT_HEIGHT_KEY gequ 6
 
-OBJECT_WIDTH_BRIDGE gequ 30
+OBJECT_WIDTH_BRIDGE gequ 62
 OBJECT_HEIGHT_BRIDGE gequ 48
 
 OBJECT_WIDTH_BAT1 gequ 14

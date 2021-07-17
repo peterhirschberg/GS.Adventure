@@ -147,6 +147,9 @@ moveCarriedObject entry
         adc playerY
         sta objectPositionYList,y
 
+;        lda #1
+;        sta objectDirtyList,y
+
 carryDone anop
         rts
 

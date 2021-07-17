@@ -185,8 +185,8 @@ hitObject anop
 
         ldx #OBJECT_PLAYER
         lda objectLinkedObjectList,x
-;        cmp #OBJECT_NONE
-;        bne alreadyCarrying
+        cmp #OBJECT_NONE
+        bne alreadyCarrying
 
 ; Pick up the object!
 
@@ -206,24 +206,19 @@ hitObject anop
         lda hitObjectX
         sec
         sbc playerX
-        asl a
-
-pickupXIsNeg anop
-
+;        asl a
         sta objectLinkedObjectXOffsetList,x
-
-pickupDoYOffset anop
 
         lda hitObjectY
         sec
         sbc playerY
-        asl a
+;        asl a
         sta objectLinkedObjectYOffsetList,x
 
         rts
 
-;alreadyCarrying anop
-;        rts
+alreadyCarrying anop
+        rts
 
 hitNonLinkableObject anop
 

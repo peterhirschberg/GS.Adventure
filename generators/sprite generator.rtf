@@ -7,6 +7,7 @@
 
 \f0\fs24 \cf0 let str = '\\n\\n'\
 let braCounter = 0\
+let skipRowCounter = 0\
 \
 let spriteW = 0\
 let spriteH = 0\
@@ -481,7 +482,9 @@ function renderSprite(sprite, name, color, size) \{\
 \
 	str += '		spriteGetDrawAddress\\n'\
 	str += '		_spriteHeader\\n\\n'\
-\
+  \
+  str += '		lda >spriteY\\n'\
+  str += '		sta >rowCounter\\n'\
 \
 	let cx = 0\
   let cy = 0\
@@ -493,6 +496,11 @@ function renderSprite(sprite, name, color, size) \{\
     for (let j=0; j<2; j++) \{\
 \
       str += '\\n'\
+//      str += '		lda >rowCounter\\n'\
+      str += '		cmp #199\\n'\
+      str += `		bcs $\{name+'SkipRowDraw'+skipRowCounter\}\\n`\
+      str += '\\n'\
+      \
       str += '		lda >drawAddress\\n'\
       str += '		clc\\n'\
       str += `		adc #$\{cy*160\}\\n`\
@@ -516,6 +524,15 @@ function renderSprite(sprite, name, color, size) \{\
       \
 			str += '		long m\\n'\
       \
+      str += `\\n$\{name+'SkipRowDraw'+skipRowCounter\} anop\\n\\n`\
+\
+			str += '		lda >rowCounter\\n'\
+			str += '		clc\\n'\
+			str += '		adc #1\\n'\
+			str += '		sta >rowCounter\\n'\
+      \
+      ++skipRowCounter\
+      \
       cy++\
     \}\
 	\}\
@@ -534,10 +551,13 @@ function renderSprite(sprite, name, color, size) \{\
 function eraseSprite(sprite, name, size, checkFog) \{\
 \
 	str += name + ' entry\\n\\n'\
-\
+  \
   str += '		lda >spriteX\\n'\
   str += '		lsr a\\n'\
   str += '		sta >spriteX\\n'\
+\
+  str += '		lda >spriteY\\n'\
+  str += '		sta >rowCounter\\n'\
 \
 	let cx = 0\
   let cy = 0\
@@ -547,6 +567,17 @@ function eraseSprite(sprite, name, size, checkFog) \{\
   for (let i=1; i<height+1; i++) \{\
   \
     for (let j=0; j<2; j++) \{\
+    \
+      str += '\\n'\
+//      str += '		lda >rowCounter\\n'\
+      str += '		cmp #199\\n'\
+      str += `		bcs $\{name+'SkipRowEraseShortJump'+skipRowCounter\}\\n`\
+      str += `		bra $\{name+'SkipRowEraseDontSkipRow'+skipRowCounter\}\\n`\
+      str += '\\n'\
+      str += `$\{name+'SkipRowEraseShortJump'+skipRowCounter\} anop\\n`\
+      str += `		brl $\{name+'SkipRowErase'+skipRowCounter\}\\n`\
+\
+      str += `$\{name+'SkipRowEraseDontSkipRow'+skipRowCounter\} anop\\n`\
 \
       str += '		lda >spriteY\\n'\
       str += '		clc\\n'\
@@ -596,11 +627,22 @@ function eraseSprite(sprite, name, size, checkFog) \{\
             \
 						str += '		long m\\n'\
             \
-            str += '\\n'\
-            \
 					\}\
         \}\
       \}\
+      \
+      str += '\\n'\
+\
+      str += `\\n$\{name+'SkipRowErase'+skipRowCounter\} anop\\n\\n`\
+\
+			str += '		lda >rowCounter\\n'\
+			str += '		clc\\n'\
+			str += '		adc #1\\n'\
+			str += '		sta >rowCounter\\n'\
+\
+      str += '\\n'\
+\
+      ++skipRowCounter\
       \
       cy++\
     \}\
@@ -658,60 +700,6 @@ function calcSpriteExtents(sprite, name, size) \{\
 \
 \
 /*\
-objectGfxNum1\
-objectGfxNum2\
-objectGfxNum3\
-objectGfxKey\
-objectGfxBridge\
-objectGfxBat1\
-objectGfxBat2\
-objectGfxDragon1\
-objectGfxDragon2\
-objectGfxDragon3\
-objectGfxSword\
-objectGfxDot\
-objectGfxAuthor\
-objectGfxChallise\
-objectGfxMagnet\
-objectGfxPort1\
-objectGfxPort2\
-objectGfxPort3\
-objectGfxPort4\
-objectGfxPort5\
-objectGfxPort6\
-objectGfxPort7\
-\
-    \{ objectGfxPort, portStates, 0, COLOR_BLACK, -1, 0, 0, 0, 0, 0, 0, 0, 0, false \},              // #1 Portcullis #1\
-    \{ objectGfxPort, portStates, 0, COLOR_BLACK, -1, 0, 0, 0, 0, 0, 0, 0, 0, false \},              // #2 Portcullis #2\
-    \{ objectGfxPort, portStates, 0, COLOR_BLACK, -1, 0, 0, 0, 0, 0, 0, 0, 0, false \},              // #3 Portcullis #3\
-    \{ objectGfxAuthor, 0, 0, COLOR_FLASH, 0x1E, 0x50, 0x69, 0, 0, 0, 0, 0, 0, false \},   // #4 Name\
-    \{ objectGfxNum, numberStates, 0, COLOR_LIMEGREEN, 0x00, 0x50, 0x40, 0, 0, 0, 0, 0, 0, false \},// #5 Number\
-    \{ objectGfxDrag, dragonStates, 0, COLOR_RED, -1, 0, 0, 0, 0, 0, 0, 0, 0, false \},              // #6 Dragon #1\
-    \{ objectGfxDrag, dragonStates, 0, COLOR_YELLOW, -1, 0, 0, 0, 0, 0, 0, 0, 0, false \},           // #7 Dragon #2\
-    \{ objectGfxDrag, dragonStates, 0, COLOR_LIMEGREEN, -1, 0, 0, 0, 0, 0, 0, 0, 0, false \},        // #8 Dragon #3\
-    \{ objectGfxSword, 0, 0, COLOR_YELLOW, -1, 0, 0, 0, 0, 0, 0, 0, 0, false \},            // #9 Sword\
-    \{ objectGfxBridge, 0, 0, COLOR_PURPLE, -1, 0, 0, 0, 0, 0x07, 0, 0, 0, false \},        // #0A Bridge\
-    \{ objectGfxKey, 0, 0, COLOR_YELLOW, -1, 0, 0, 0, 0, 0, 0, 0, 0, false \},              // #0B - Key #1\
-    \{ objectGfxKey, 0, 0, COLOR_WHITE, -1, 0, 0, 0, 0, 0, 0, 0, 0, false \},               // #0C - Key #2\
-    \{ objectGfxKey, 0, 0, COLOR_BLACK, -1, 0, 0, 0, 0, 0, 0, 0, 0, false \},               // #0D - Key #3\
-    \{ objectGfxBat, batStates, 0, COLOR_BLACK, -1, 0, 0, 0, 0, 0, 0, 0, 0, false \},               // #0E - Bat\
-    \{ objectGfxDot, 0, 0, COLOR_LTGRAY, -1, 0, 0, 0, 0, 0, 0, 0, 0, false \},// #0F - Black Dot\
-    \{ objectGfxChallise, 0, 0, COLOR_FLASH, -1, 0, 0, 0, 0, 0, 0, 0, 0, false \},          // #10 Challise\
-    \{ objectGfxMagnet, 0, 0, COLOR_BLACK, -1, 0, 0, 0, 0, 0, 0, 0, 0, false \},            // #11 Magnet\
-    \{ (const byte*)0, 0, 0, 0, -1, 0, 0, 0, 0, 0, 0, 0, 0, false\}                                  // #12 Null\
-\
-*/\
-/*\
-renderSprite(objectGfxPort1, 'drawSpritePort1', COLOR_BLACK, 1, false)\
-renderSprite(objectGfxPort2, 'drawSpritePort2', COLOR_BLACK, 1, false)\
-renderSprite(objectGfxPort3, 'drawSpritePort3', COLOR_BLACK, 1, false)\
-renderSprite(objectGfxPort4, 'drawSpritePort4', COLOR_BLACK, 1, false)\
-renderSprite(objectGfxPort5, 'drawSpritePort5', COLOR_BLACK, 1, false)\
-renderSprite(objectGfxPort6, 'drawSpritePort6', COLOR_BLACK, 1, false)\
-renderSprite(objectGfxPort7, 'drawSpritePort7', COLOR_BLACK, 1, false)\
-*/\
-\
-/*\
 renderSprite(objectGfxAuthor, 'drawSpriteAuthor', COLOR_FLASH, 1, false)\
 \
 renderSprite(objectGfxNum1, 'drawSpriteNum1', COLOR_LIMEGREEN, 1, false)\
@@ -729,9 +717,9 @@ renderSprite(objectGfxDragon3, 'drawSpriteYellowDragon3', COLOR_YELLOW, 1, false
 renderSprite(objectGfxDragon1, 'drawSpriteGreenDragon1', COLOR_LIMEGREEN, 1, false)\
 renderSprite(objectGfxDragon2, 'drawSpriteGreenDragon2', COLOR_LIMEGREEN, 1, false)\
 renderSprite(objectGfxDragon3, 'drawSpriteGreenDragon3', COLOR_LIMEGREEN, 1, false)\
-\
-renderSprite(objectGfxBridge, 'drawSpriteBridge', COLOR_PURPLE, 4, false)\
-\
+*/\
+renderSprite(objectGfxBridge, 'drawSpriteBridge', COLOR_PURPLE, 4)\
+/*\
 renderSprite(objectGfxKey, 'drawSpriteYellowKey', COLOR_YELLOW, 1, false)\
 renderSprite(objectGfxKey, 'drawSpriteWhiteKey', COLOR_WHITE, 1, false)\
 renderSprite(objectGfxKey, 'drawSpriteBlackKey', COLOR_BLACK, 1, false)\
@@ -758,9 +746,9 @@ eraseSprite(objectGfxNum3, 'eraseSpriteNum3', 1, false)\
 eraseSprite(objectGfxDragon1, 'eraseSpriteDragon1', 1, false)\
 eraseSprite(objectGfxDragon2, 'eraseSpriteDragon2', 1, false)\
 eraseSprite(objectGfxDragon3, 'eraseSpriteDragon3', 1, false)\
-\
-eraseSprite(objectGfxBridge, 'eraseSpriteBridge', 1, false)\
-\
+*/\
+eraseSprite(objectGfxBridge, 'eraseSpriteBridge', 4, false)\
+/*\
 eraseSprite(objectGfxKey, 'eraseSpriteKey', 1, false)\
 \
 eraseSprite(objectGfxBat1, 'eraseSpriteBat1', 1, false)\
@@ -778,9 +766,9 @@ eraseSprite(objectGfxMagnet, 'eraseSpriteMagnet', 1, false)\
 eraseSprite(objectGfxDragon1, 'eraseSpriteDragon1Fog', 1, true)\
 eraseSprite(objectGfxDragon2, 'eraseSpriteDragon2Fog', 1, true)\
 eraseSprite(objectGfxDragon3, 'eraseSpriteDragon3Fog', 1, true)\
-\
-eraseSprite(objectGfxBridge, 'eraseSpriteBridgeFog', 1, true)\
-\
+*/\
+eraseSprite(objectGfxBridge, 'eraseSpriteBridgeFog', 4, true)\
+/*\
 eraseSprite(objectGfxKey, 'eraseSpriteKeyFog', 1, true)\
 \
 eraseSprite(objectGfxBat1, 'eraseSpriteBat1Fog', 1, true)\
@@ -796,35 +784,11 @@ eraseSprite(objectGfxChallise, 'eraseSpriteChalliseFog', 1, true)\
 eraseSprite(objectGfxMagnet, 'eraseSpriteMagnetFog', 1, true)\
 */\
 \
-/*\
-/*\
-objectGfxNum1\
-objectGfxNum2\
-objectGfxNum3\
-objectGfxKey\
-objectGfxBridge\
-objectGfxBat1\
-objectGfxBat2\
-objectGfxDragon1\
-objectGfxDragon2\
-objectGfxDragon3\
-objectGfxSword\
-objectGfxDot\
-objectGfxAuthor\
-objectGfxChallise\
-objectGfxMagnet\
-objectGfxPort1\
-objectGfxPort2\
-objectGfxPort3\
-objectGfxPort4\
-objectGfxPort5\
-objectGfxPort6\
-objectGfxPort7\
-*/\
 \
 \
+/*\
 calcSpriteExtents(objectGfxKey, 'KEY', 1)\
-calcSpriteExtents(objectGfxBridge, 'BRIDGE', 2)\
+calcSpriteExtents(objectGfxBridge, 'BRIDGE', 4)\
 calcSpriteExtents(objectGfxBat1, 'BAT1', 1)\
 calcSpriteExtents(objectGfxBat2, 'BAT2', 1)\
 calcSpriteExtents(objectGfxDragon1, 'DRAGON1', 1)\
@@ -836,7 +800,7 @@ calcSpriteExtents(objectGfxChallise, 'CHALISE', 1)\
 calcSpriteExtents(objectGfxMagnet, 'MAGNET', 1)\
 calcSpriteExtents(objectGfxPort1, 'PORT_OPEN', 1)\
 calcSpriteExtents(objectGfxPort7, 'PORT_CLOSED', 1)\
-\
+*/\
 \
 str += '\\n\\n'\
 \
