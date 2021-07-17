@@ -73,12 +73,14 @@ void preloadSound(void)
 }
 
 // Game loop
+/*
 void waitForNextTick(void)
 {
     while (!shouldQuit) {
         runGameTick();
     }
 }
+*/
 
 int main(void)
 {
@@ -100,11 +102,13 @@ int main(void)
         randomSeed = 1;
     srand(randomSeed);
  
-    initGame();
-  
-    runGameTick();
-
-    waitForNextTick();
+//    initGame();
+//    runGameTick();
+//    waitForNextTick();
+    
+    while (!shouldQuit) {
+        runGameTick();
+    }
     
     ShutDownTools(refIsHandle, toolStartupRef);
     TLShutDown();

@@ -18,17 +18,19 @@ game start
         using roomsData
         using gameData
         using playerData
-        
+        using objectData
         using spriteData
 
 
 initGame entry
+        lda #0
+        sta doInitGame
+
         jsr setupScreen
         jsr blackColorTable
 
         jsr zeroSurroundGrid
         jsr eraseSurroundPixelBuffer
-
 
 ;        jsr borderInit
 
@@ -50,6 +52,11 @@ initGame entry
         adjustSpriteY
         sta playerY
 
+; unlink all objects
+        ldx #OBJECT_PLAYER
+        lda #OBJECT_NONE
+        sta >objectLinkedObjectList,x
+
 ; initialize object positions (only on full reset)
 
         jsr initObjectPositions
@@ -60,10 +67,23 @@ initGame entry
 
         jsr normalColorTable
 
-        rtl
+        rts
+
 
 
 runGameTick entry
+        jsr doRunGameTick
+        rtl
+
+
+doRunGameTick entry
+
+        lda doInitGame
+        cmp #1
+        bne dontInitGame
+        jsr initGame
+
+dontInitGame anop
 
         jsr waitForVbl
 
@@ -202,10 +222,10 @@ continue anop
         
 ;        jsr borderDone
 
+        rts
 
-        rtl
 
-
+doInitGame dc i2'1'
 temp dc i2'0'
 
 
