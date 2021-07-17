@@ -12,7 +12,7 @@
         keep global
 
 
-sprites start
+sprites start spritesSeg
         using globalData
         using gameData
         using roomsData
@@ -36,7 +36,7 @@ drawRoomSprites entry
 
         jsr drawBridge
 
-        rts
+        rtl
 
 
 eraseRoomSprites entry
@@ -55,16 +55,39 @@ eraseRoomSprites entry
 
         jsr eraseBridge
 
-        rts
+        rtl
+
+
+dirtyAllSprites entry
+
+        lda #0
+        tax
+
+dirtyLoop anop
+
+        lda #1
+        sta >objectDirtyList,x
+        inx
+        inx
+
+        txa
+        cmp #36
+        beq dirtyDone
+        bra dirtyLoop
+
+dirtyDone anop
+        rtl
+
 
 ; draw
 
 drawYellowKey entry
-        ldx #OBJECT_YELLOWKEY
+        lda #OBJECT_YELLOWKEY
+        tax
 
         lda >objectRoomList,x
         asl a
-        cmp currentRoom
+        cmp >currentRoom
         bne drawYellowKeyDone
 
         lda >objectDirtyList,x
@@ -74,19 +97,21 @@ drawYellowKey entry
         sta >objectDirtyList,x
 
         lda >objectPositionXList,x
-        sta spriteX
+        sta >spriteX
         lda >objectPositionYList,x
         bmi drawYellowKeyDone
-        sta spriteY
+        sta >spriteY
         jsl drawSpriteYellowKey
 drawYellowKeyDone anop
         rts
 
 drawWhiteKey entry
-        ldx #OBJECT_WHITEKEY
+        lda #OBJECT_WHITEKEY
+        tax
+
         lda >objectRoomList,x
         asl a
-        cmp currentRoom
+        cmp >currentRoom
         bne drawWhiteKeyDone
 
         lda >objectDirtyList,x
@@ -96,19 +121,21 @@ drawWhiteKey entry
         sta >objectDirtyList,x
 
         lda >objectPositionXList,x
-        sta spriteX
+        sta >spriteX
         lda >objectPositionYList,x
         bmi drawWhiteKeyDone
-        sta spriteY
+        sta >spriteY
         jsl drawSpriteWhiteKey
 drawWhiteKeyDone anop
         rts
 
 drawBlackKey entry
-        ldx #OBJECT_BLACKKEY
+        lda #OBJECT_BLACKKEY
+        tax
+
         lda >objectRoomList,x
         asl a
-        cmp currentRoom
+        cmp >currentRoom
         bne drawBlackKeyDone
 
         lda >objectDirtyList,x
@@ -118,19 +145,21 @@ drawBlackKey entry
         sta >objectDirtyList,x
 
         lda >objectPositionXList,x
-        sta spriteX
+        sta >spriteX
         lda >objectPositionYList,x
         bmi drawBlackKeyDone
-        sta spriteY
+        sta >spriteY
         jsl drawSpriteBlackKey
 drawBlackKeyDone anop
         rts
 
 drawPort1 entry
-        ldx #OBJECT_PORT1
+        lda #OBJECT_PORT1
+        tax
+
         lda >objectRoomList,x
         asl a
-        cmp currentRoom
+        cmp >currentRoom
         bne drawPort1Done
 
         lda >objectDirtyList,x
@@ -140,19 +169,21 @@ drawPort1 entry
         sta >objectDirtyList,x
 
         lda >objectPositionXList,x
-        sta spriteX
+        sta >spriteX
         lda >objectPositionYList,x
         bmi drawPort1Done
-        sta spriteY
+        sta >spriteY
         jsl drawSpritePort7
 drawPort1Done anop
         rts
 
 drawPort2 entry
-        ldx #OBJECT_PORT2
+        lda #OBJECT_PORT2
+        tax
+
         lda >objectRoomList,x
         asl a
-        cmp currentRoom
+        cmp >currentRoom
         bne drawPort2Done
 
         lda >objectDirtyList,x
@@ -162,19 +193,21 @@ drawPort2 entry
         sta >objectDirtyList,x
 
         lda >objectPositionXList,x
-        sta spriteX
+        sta >spriteX
         lda >objectPositionYList,x
         bmi drawPort2Done
-        sta spriteY
+        sta >spriteY
         jsl drawSpritePort7
 drawPort2Done anop
         rts
 
 drawPort3 entry
-        ldx #OBJECT_PORT3
+        lda #OBJECT_PORT3
+        tax
+
         lda >objectRoomList,x
         asl a
-        cmp currentRoom
+        cmp >currentRoom
         bne drawPort3Done
 
         lda >objectDirtyList,x
@@ -184,19 +217,21 @@ drawPort3 entry
         sta >objectDirtyList,x
 
         lda >objectPositionXList,x
-        sta spriteX
+        sta >spriteX
         lda >objectPositionYList,x
         bmi drawPort3Done
-        sta spriteY
+        sta >spriteY
         jsl drawSpritePort7
 drawPort3Done anop
         rts
 
 drawRedDragon entry
-        ldx #OBJECT_REDDRAGON
+        lda #OBJECT_REDDRAGON
+        tax
+
         lda >objectRoomList,x
         asl a
-        cmp currentRoom
+        cmp >currentRoom
         bne drawRedDragonDone
 
         lda >objectDirtyList,x
@@ -206,19 +241,21 @@ drawRedDragon entry
         sta >objectDirtyList,x
 
         lda >objectPositionXList,x
-        sta spriteX
+        sta >spriteX
         lda >objectPositionYList,x
-        sta spriteY
+        sta >spriteY
         bmi drawRedDragonDone
-        jsl drawSpriteRedDragon1
+        jsl drawSpriteYellowDragon1
 drawRedDragonDone anop
         rts
 
 drawGreenDragon entry
-        ldx #OBJECT_GREENDRAGON
+        lda #OBJECT_GREENDRAGON
+        tax
+
         lda >objectRoomList,x
         asl a
-        cmp currentRoom
+        cmp >currentRoom
         bne drawGreenDragonDone
 
         lda >objectDirtyList,x
@@ -228,19 +265,21 @@ drawGreenDragon entry
         sta >objectDirtyList,x
 
         lda >objectPositionXList,x
-        sta spriteX
+        sta >spriteX
         lda >objectPositionYList,x
         bmi drawGreenDragonDone
-        sta spriteY
-        jsl drawSpriteGreenDragon1
+        sta >spriteY
+        jsl drawSpriteYellowDragon1
 drawGreenDragonDone anop
         rts
 
 drawYellowDragon entry
-        ldx #OBJECT_YELLOWDRAGON
+        lda #OBJECT_YELLOWDRAGON
+        tax
+
         lda >objectRoomList,x
         asl a
-        cmp currentRoom
+        cmp >currentRoom
         bne drawYellowDragonDone
 
         lda >objectDirtyList,x
@@ -250,19 +289,21 @@ drawYellowDragon entry
         sta >objectDirtyList,x
 
         lda >objectPositionXList,x
-        sta spriteX
+        sta >spriteX
         lda >objectPositionYList,x
         bmi drawYellowDragonDone
-        sta spriteY
+        sta >spriteY
         jsl drawSpriteYellowDragon1
 drawYellowDragonDone anop
         rts
 
 drawBridge entry
-        ldx #OBJECT_BRIDGE
+        lda #OBJECT_BRIDGE
+        tax
+
         lda >objectRoomList,x
         asl a
-        cmp currentRoom
+        cmp >currentRoom
         bne drawBridgeDone
 
         lda >objectDirtyList,x
@@ -272,10 +313,10 @@ drawBridge entry
         sta >objectDirtyList,x
 
         lda >objectPositionXList,x
-        sta spriteX
+        sta >spriteX
         lda >objectPositionYList,x
         bmi drawBridgeDone
-        sta spriteY
+        sta >spriteY
         jsl drawSpriteBridge
 drawBridgeDone anop
         rts
@@ -285,10 +326,12 @@ drawBridgeDone anop
 
 
 eraseYellowKey entry
-        ldx #OBJECT_YELLOWKEY
+        lda #OBJECT_YELLOWKEY
+        tax
+
         lda >objectRoomList,x
         asl a
-        cmp currentRoom
+        cmp >currentRoom
         bne eraseYellowKeyDone
 
         lda >objectDirtyList,x
@@ -296,19 +339,21 @@ eraseYellowKey entry
         bne eraseYellowKeyDone
 
         lda >objectPositionOldXList,x
-        sta spriteX
+        sta >spriteX
         lda >objectPositionOldYList,x
         bmi eraseYellowKeyDone
-        sta spriteY
+        sta >spriteY
         jsl eraseSpriteKey
 eraseYellowKeyDone anop
         rts
 
 eraseWhiteKey entry
-        ldx #OBJECT_WHITEKEY
+        lda #OBJECT_WHITEKEY
+        tax
+
         lda >objectRoomList,x
         asl a
-        cmp currentRoom
+        cmp >currentRoom
         bne eraseWhiteKeyDone
 
         lda >objectDirtyList,x
@@ -316,19 +361,21 @@ eraseWhiteKey entry
         bne eraseWhiteKeyDone
 
         lda >objectPositionOldXList,x
-        sta spriteX
+        sta >spriteX
         lda >objectPositionOldYList,x
         bmi eraseWhiteKeyDone
-        sta spriteY
+        sta >spriteY
         jsl eraseSpriteKey
 eraseWhiteKeyDone anop
         rts
 
 eraseBlackKey entry
-        ldx #OBJECT_BLACKKEY
+        lda #OBJECT_BLACKKEY
+        tax
+
         lda >objectRoomList,x
         asl a
-        cmp currentRoom
+        cmp >currentRoom
         bne eraseBlackKeyDone
 
         lda >objectDirtyList,x
@@ -336,19 +383,21 @@ eraseBlackKey entry
         bne eraseBlackKeyDone
 
         lda >objectPositionOldXList,x
-        sta spriteX
+        sta >spriteX
         lda >objectPositionOldYList,x
         bmi eraseBlackKeyDone
-        sta spriteY
+        sta >spriteY
         jsl eraseSpriteKey
 eraseBlackKeyDone anop
         rts
 
 erasePort1 entry
-        ldx #OBJECT_PORT1
+        lda #OBJECT_PORT1
+        tax
+
         lda >objectRoomList,x
         asl a
-        cmp currentRoom
+        cmp >currentRoom
         bne erasePort1Done
 
         lda >objectDirtyList,x
@@ -356,19 +405,21 @@ erasePort1 entry
         bne erasePort1Done
 
         lda >objectPositionOldXList,x
-        sta spriteX
+        sta >spriteX
         lda >objectPositionOldYList,x
         bmi erasePort1Done
-        sta spriteY
+        sta >spriteY
         jsl eraseSpritePort
 erasePort1Done anop
         rts
 
 erasePort2 entry
-        ldx #OBJECT_PORT2
+        lda #OBJECT_PORT2
+        tax
+
         lda >objectRoomList,x
         asl a
-        cmp currentRoom
+        cmp >currentRoom
         bne erasePort2Done
 
         lda >objectDirtyList,x
@@ -376,19 +427,21 @@ erasePort2 entry
         bne erasePort2Done
 
         lda >objectPositionOldXList,x
-        sta spriteX
+        sta >spriteX
         lda >objectPositionOldYList,x
         bmi erasePort2Done
-        sta spriteY
+        sta >spriteY
         jsl eraseSpritePort
 erasePort2Done anop
         rts
 
 erasePort3 entry
-        ldx #OBJECT_PORT3
+        lda #OBJECT_PORT3
+        tax
+
         lda >objectRoomList,x
         asl a
-        cmp currentRoom
+        cmp >currentRoom
         bne erasePort3Done
 
         lda >objectDirtyList,x
@@ -396,19 +449,21 @@ erasePort3 entry
         bne erasePort3Done
 
         lda >objectPositionOldXList,x
-        sta spriteX
+        sta >spriteX
         lda >objectPositionOldYList,x
         bmi erasePort3Done
-        sta spriteY
+        sta >spriteY
         jsl eraseSpritePort
 erasePort3Done anop
         rts
 
 eraseRedDragon entry
-        ldx #OBJECT_REDDRAGON
+        lda #OBJECT_REDDRAGON
+        tax
+
         lda >objectRoomList,x
         asl a
-        cmp currentRoom
+        cmp >currentRoom
         bne eraseRedDragonDone
 
         lda >objectDirtyList,x
@@ -416,19 +471,21 @@ eraseRedDragon entry
         bne eraseRedDragonDone
 
         lda >objectPositionOldXList,x
-        sta spriteX
+        sta >spriteX
         lda >objectPositionOldYList,x
         bmi eraseRedDragonDone
-        sta spriteY
+        sta >spriteY
         jsl eraseSpriteDragon1
 eraseRedDragonDone anop
         rts
 
 eraseGreenDragon entry
-        ldx #OBJECT_GREENDRAGON
+        lda #OBJECT_GREENDRAGON
+        tax
+
         lda >objectRoomList,x
         asl a
-        cmp currentRoom
+        cmp >currentRoom
         bne eraseGreenDragonDone
 
         lda >objectDirtyList,x
@@ -436,19 +493,21 @@ eraseGreenDragon entry
         bne eraseGreenDragonDone
 
         lda >objectPositionOldXList,x
-        sta spriteX
+        sta >spriteX
         lda >objectPositionOldYList,x
         bmi eraseGreenDragonDone
-        sta spriteY
+        sta >spriteY
         jsl eraseSpriteDragon1
 eraseGreenDragonDone anop
         rts
 
 eraseYellowDragon entry
-        ldx #OBJECT_YELLOWDRAGON
+        lda #OBJECT_YELLOWDRAGON
+        tax
+
         lda >objectRoomList,x
         asl a
-        cmp currentRoom
+        cmp >currentRoom
         bne eraseYellowDragonDone
 
         lda >objectDirtyList,x
@@ -456,19 +515,21 @@ eraseYellowDragon entry
         bne eraseYellowDragonDone
 
         lda >objectPositionOldXList,x
-        sta spriteX
+        sta >spriteX
         lda >objectPositionOldYList,x
         bmi eraseYellowDragonDone
-        sta spriteY
+        sta >spriteY
         jsl eraseSpriteDragon1
 eraseYellowDragonDone anop
         rts
 
 eraseBridge entry
-        ldx #OBJECT_BRIDGE
+        lda #OBJECT_BRIDGE
+        tax
+
         lda >objectRoomList,x
         asl a
-        cmp currentRoom
+        cmp >currentRoom
         bne eraseBridgeDone
 
         lda >objectDirtyList,x
@@ -476,10 +537,10 @@ eraseBridge entry
         bne eraseBridgeDone
 
         lda >objectPositionOldXList,x
-        sta spriteX
+        sta >spriteX
         lda >objectPositionOldYList,x
         bmi eraseBridgeDone
-        sta spriteY
+        sta >spriteY
         jsl eraseSpriteBridge
 eraseBridgeDone anop
         rts
@@ -489,7 +550,7 @@ eraseBridgeDone anop
         end
 
 
-spriteData data
+spriteData data spriteDataSeg
 
 rowCounter dc i2'0'
 

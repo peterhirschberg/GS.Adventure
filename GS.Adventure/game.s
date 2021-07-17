@@ -164,7 +164,7 @@ pass2 anop
 
         jsr moveCarriedObject
 
-        jsr eraseRoomSprites
+        jsl eraseRoomSprites
 
 passDone anop
 
@@ -178,16 +178,16 @@ passDone anop
 ;        jsr borderStart
 
 
-        jsr drawRoomSprites
+        jsl drawRoomSprites
 
 
 ;        jsr borderStart
         
 
         lda temp
-        sta spriteX
+        sta >spriteX
         lda #40
-        sta spriteY
+        sta >spriteY
         
         jsr roomHasFog
         cmp #1
@@ -214,9 +214,9 @@ resetTemp anop
 continue anop
 
         lda temp
-        sta spriteX
+        sta >spriteX
         lda #40
-        sta spriteY
+        sta >spriteY
 ;        jsr drawSpriteRedDragon
 
         
