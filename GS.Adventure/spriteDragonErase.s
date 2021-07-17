@@ -21,6 +21,16 @@ eraseSpriteDragon1 entry
         lsr a
         sta >spriteX
         lda >spriteY
+        sta >rowCounter
+
+        cmp #199
+        bcs eraseSpriteDragon1SkipRowEraseShortJump0
+        bra eraseSpriteDragon1SkipRowEraseDontSkipRow0
+
+eraseSpriteDragon1SkipRowEraseShortJump0 anop
+        brl eraseSpriteDragon1SkipRowErase0
+eraseSpriteDragon1SkipRowEraseDontSkipRow0 anop
+        lda >spriteY
         clc
         adc #0
         asl a
@@ -41,7 +51,6 @@ eraseSpriteDragon1 entry
         lda >BACKGROUND_ADDR,x
         sta >SCREEN_ADDR,x
         long m
-
         lda >rowAddress
         clc
         adc >spriteX
@@ -56,6 +65,22 @@ eraseSpriteDragon1 entry
         sta >SCREEN_ADDR,x
         long m
 
+
+eraseSpriteDragon1SkipRowErase0 anop
+
+        lda >rowCounter
+        clc
+        adc #1
+        sta >rowCounter
+
+
+        cmp #199
+        bcs eraseSpriteDragon1SkipRowEraseShortJump1
+        bra eraseSpriteDragon1SkipRowEraseDontSkipRow1
+
+eraseSpriteDragon1SkipRowEraseShortJump1 anop
+        brl eraseSpriteDragon1SkipRowErase1
+eraseSpriteDragon1SkipRowEraseDontSkipRow1 anop
         lda >spriteY
         clc
         adc #1
@@ -77,7 +102,6 @@ eraseSpriteDragon1 entry
         lda >BACKGROUND_ADDR,x
         sta >SCREEN_ADDR,x
         long m
-
         lda >rowAddress
         clc
         adc >spriteX
@@ -92,6 +116,22 @@ eraseSpriteDragon1 entry
         sta >SCREEN_ADDR,x
         long m
 
+
+eraseSpriteDragon1SkipRowErase1 anop
+
+        lda >rowCounter
+        clc
+        adc #1
+        sta >rowCounter
+
+
+        cmp #199
+        bcs eraseSpriteDragon1SkipRowEraseShortJump2
+        bra eraseSpriteDragon1SkipRowEraseDontSkipRow2
+
+eraseSpriteDragon1SkipRowEraseShortJump2 anop
+        brl eraseSpriteDragon1SkipRowErase2
+eraseSpriteDragon1SkipRowEraseDontSkipRow2 anop
         lda >spriteY
         clc
         adc #2
@@ -113,7 +153,6 @@ eraseSpriteDragon1 entry
         lda >BACKGROUND_ADDR,x
         sta >SCREEN_ADDR,x
         long m
-
         lda >rowAddress
         clc
         adc >spriteX
@@ -127,7 +166,6 @@ eraseSpriteDragon1 entry
         lda >BACKGROUND_ADDR,x
         sta >SCREEN_ADDR,x
         long m
-
         lda >rowAddress
         clc
         adc >spriteX
@@ -141,7 +179,6 @@ eraseSpriteDragon1 entry
         lda >BACKGROUND_ADDR,x
         sta >SCREEN_ADDR,x
         long m
-
         lda >rowAddress
         clc
         adc >spriteX
@@ -156,6 +193,22 @@ eraseSpriteDragon1 entry
         sta >SCREEN_ADDR,x
         long m
 
+
+eraseSpriteDragon1SkipRowErase2 anop
+
+        lda >rowCounter
+        clc
+        adc #1
+        sta >rowCounter
+
+
+        cmp #199
+        bcs eraseSpriteDragon1SkipRowEraseShortJump3
+        bra eraseSpriteDragon1SkipRowEraseDontSkipRow3
+
+eraseSpriteDragon1SkipRowEraseShortJump3 anop
+        brl eraseSpriteDragon1SkipRowErase3
+eraseSpriteDragon1SkipRowEraseDontSkipRow3 anop
         lda >spriteY
         clc
         adc #3
@@ -177,7 +230,6 @@ eraseSpriteDragon1 entry
         lda >BACKGROUND_ADDR,x
         sta >SCREEN_ADDR,x
         long m
-
         lda >rowAddress
         clc
         adc >spriteX
@@ -191,7 +243,6 @@ eraseSpriteDragon1 entry
         lda >BACKGROUND_ADDR,x
         sta >SCREEN_ADDR,x
         long m
-
         lda >rowAddress
         clc
         adc >spriteX
@@ -205,7 +256,6 @@ eraseSpriteDragon1 entry
         lda >BACKGROUND_ADDR,x
         sta >SCREEN_ADDR,x
         long m
-
         lda >rowAddress
         clc
         adc >spriteX
@@ -220,6 +270,22 @@ eraseSpriteDragon1 entry
         sta >SCREEN_ADDR,x
         long m
 
+
+eraseSpriteDragon1SkipRowErase3 anop
+
+        lda >rowCounter
+        clc
+        adc #1
+        sta >rowCounter
+
+
+        cmp #199
+        bcs eraseSpriteDragon1SkipRowEraseShortJump4
+        bra eraseSpriteDragon1SkipRowEraseDontSkipRow4
+
+eraseSpriteDragon1SkipRowEraseShortJump4 anop
+        brl eraseSpriteDragon1SkipRowErase4
+eraseSpriteDragon1SkipRowEraseDontSkipRow4 anop
         lda >spriteY
         clc
         adc #4
@@ -241,7 +307,6 @@ eraseSpriteDragon1 entry
         lda >BACKGROUND_ADDR,x
         sta >SCREEN_ADDR,x
         long m
-
         lda >rowAddress
         clc
         adc >spriteX
@@ -255,7 +320,6 @@ eraseSpriteDragon1 entry
         lda >BACKGROUND_ADDR,x
         sta >SCREEN_ADDR,x
         long m
-
         lda >rowAddress
         clc
         adc >spriteX
@@ -269,7 +333,6 @@ eraseSpriteDragon1 entry
         lda >BACKGROUND_ADDR,x
         sta >SCREEN_ADDR,x
         long m
-
         lda >rowAddress
         clc
         adc >spriteX
@@ -283,7 +346,6 @@ eraseSpriteDragon1 entry
         lda >BACKGROUND_ADDR,x
         sta >SCREEN_ADDR,x
         long m
-
         lda >rowAddress
         clc
         adc >spriteX
@@ -297,7 +359,6 @@ eraseSpriteDragon1 entry
         lda >BACKGROUND_ADDR,x
         sta >SCREEN_ADDR,x
         long m
-
         lda >rowAddress
         clc
         adc >spriteX
@@ -312,6 +373,22 @@ eraseSpriteDragon1 entry
         sta >SCREEN_ADDR,x
         long m
 
+
+eraseSpriteDragon1SkipRowErase4 anop
+
+        lda >rowCounter
+        clc
+        adc #1
+        sta >rowCounter
+
+
+        cmp #199
+        bcs eraseSpriteDragon1SkipRowEraseShortJump5
+        bra eraseSpriteDragon1SkipRowEraseDontSkipRow5
+
+eraseSpriteDragon1SkipRowEraseShortJump5 anop
+        brl eraseSpriteDragon1SkipRowErase5
+eraseSpriteDragon1SkipRowEraseDontSkipRow5 anop
         lda >spriteY
         clc
         adc #5
@@ -333,7 +410,6 @@ eraseSpriteDragon1 entry
         lda >BACKGROUND_ADDR,x
         sta >SCREEN_ADDR,x
         long m
-
         lda >rowAddress
         clc
         adc >spriteX
@@ -347,7 +423,6 @@ eraseSpriteDragon1 entry
         lda >BACKGROUND_ADDR,x
         sta >SCREEN_ADDR,x
         long m
-
         lda >rowAddress
         clc
         adc >spriteX
@@ -361,7 +436,6 @@ eraseSpriteDragon1 entry
         lda >BACKGROUND_ADDR,x
         sta >SCREEN_ADDR,x
         long m
-
         lda >rowAddress
         clc
         adc >spriteX
@@ -375,7 +449,6 @@ eraseSpriteDragon1 entry
         lda >BACKGROUND_ADDR,x
         sta >SCREEN_ADDR,x
         long m
-
         lda >rowAddress
         clc
         adc >spriteX
@@ -389,7 +462,6 @@ eraseSpriteDragon1 entry
         lda >BACKGROUND_ADDR,x
         sta >SCREEN_ADDR,x
         long m
-
         lda >rowAddress
         clc
         adc >spriteX
@@ -404,6 +476,22 @@ eraseSpriteDragon1 entry
         sta >SCREEN_ADDR,x
         long m
 
+
+eraseSpriteDragon1SkipRowErase5 anop
+
+        lda >rowCounter
+        clc
+        adc #1
+        sta >rowCounter
+
+
+        cmp #199
+        bcs eraseSpriteDragon1SkipRowEraseShortJump6
+        bra eraseSpriteDragon1SkipRowEraseDontSkipRow6
+
+eraseSpriteDragon1SkipRowEraseShortJump6 anop
+        brl eraseSpriteDragon1SkipRowErase6
+eraseSpriteDragon1SkipRowEraseDontSkipRow6 anop
         lda >spriteY
         clc
         adc #6
@@ -425,7 +513,6 @@ eraseSpriteDragon1 entry
         lda >BACKGROUND_ADDR,x
         sta >SCREEN_ADDR,x
         long m
-
         lda >rowAddress
         clc
         adc >spriteX
@@ -439,7 +526,6 @@ eraseSpriteDragon1 entry
         lda >BACKGROUND_ADDR,x
         sta >SCREEN_ADDR,x
         long m
-
         lda >rowAddress
         clc
         adc >spriteX
@@ -453,7 +539,6 @@ eraseSpriteDragon1 entry
         lda >BACKGROUND_ADDR,x
         sta >SCREEN_ADDR,x
         long m
-
         lda >rowAddress
         clc
         adc >spriteX
@@ -467,7 +552,6 @@ eraseSpriteDragon1 entry
         lda >BACKGROUND_ADDR,x
         sta >SCREEN_ADDR,x
         long m
-
         lda >rowAddress
         clc
         adc >spriteX
@@ -481,7 +565,6 @@ eraseSpriteDragon1 entry
         lda >BACKGROUND_ADDR,x
         sta >SCREEN_ADDR,x
         long m
-
         lda >rowAddress
         clc
         adc >spriteX
@@ -495,7 +578,6 @@ eraseSpriteDragon1 entry
         lda >BACKGROUND_ADDR,x
         sta >SCREEN_ADDR,x
         long m
-
         lda >rowAddress
         clc
         adc >spriteX
@@ -510,6 +592,22 @@ eraseSpriteDragon1 entry
         sta >SCREEN_ADDR,x
         long m
 
+
+eraseSpriteDragon1SkipRowErase6 anop
+
+        lda >rowCounter
+        clc
+        adc #1
+        sta >rowCounter
+
+
+        cmp #199
+        bcs eraseSpriteDragon1SkipRowEraseShortJump7
+        bra eraseSpriteDragon1SkipRowEraseDontSkipRow7
+
+eraseSpriteDragon1SkipRowEraseShortJump7 anop
+        brl eraseSpriteDragon1SkipRowErase7
+eraseSpriteDragon1SkipRowEraseDontSkipRow7 anop
         lda >spriteY
         clc
         adc #7
@@ -531,7 +629,6 @@ eraseSpriteDragon1 entry
         lda >BACKGROUND_ADDR,x
         sta >SCREEN_ADDR,x
         long m
-
         lda >rowAddress
         clc
         adc >spriteX
@@ -545,7 +642,6 @@ eraseSpriteDragon1 entry
         lda >BACKGROUND_ADDR,x
         sta >SCREEN_ADDR,x
         long m
-
         lda >rowAddress
         clc
         adc >spriteX
@@ -559,7 +655,6 @@ eraseSpriteDragon1 entry
         lda >BACKGROUND_ADDR,x
         sta >SCREEN_ADDR,x
         long m
-
         lda >rowAddress
         clc
         adc >spriteX
@@ -573,7 +668,6 @@ eraseSpriteDragon1 entry
         lda >BACKGROUND_ADDR,x
         sta >SCREEN_ADDR,x
         long m
-
         lda >rowAddress
         clc
         adc >spriteX
@@ -587,7 +681,6 @@ eraseSpriteDragon1 entry
         lda >BACKGROUND_ADDR,x
         sta >SCREEN_ADDR,x
         long m
-
         lda >rowAddress
         clc
         adc >spriteX
@@ -601,7 +694,6 @@ eraseSpriteDragon1 entry
         lda >BACKGROUND_ADDR,x
         sta >SCREEN_ADDR,x
         long m
-
         lda >rowAddress
         clc
         adc >spriteX
@@ -616,6 +708,22 @@ eraseSpriteDragon1 entry
         sta >SCREEN_ADDR,x
         long m
 
+
+eraseSpriteDragon1SkipRowErase7 anop
+
+        lda >rowCounter
+        clc
+        adc #1
+        sta >rowCounter
+
+
+        cmp #199
+        bcs eraseSpriteDragon1SkipRowEraseShortJump8
+        bra eraseSpriteDragon1SkipRowEraseDontSkipRow8
+
+eraseSpriteDragon1SkipRowEraseShortJump8 anop
+        brl eraseSpriteDragon1SkipRowErase8
+eraseSpriteDragon1SkipRowEraseDontSkipRow8 anop
         lda >spriteY
         clc
         adc #8
@@ -637,7 +745,6 @@ eraseSpriteDragon1 entry
         lda >BACKGROUND_ADDR,x
         sta >SCREEN_ADDR,x
         long m
-
         lda >rowAddress
         clc
         adc >spriteX
@@ -651,7 +758,6 @@ eraseSpriteDragon1 entry
         lda >BACKGROUND_ADDR,x
         sta >SCREEN_ADDR,x
         long m
-
         lda >rowAddress
         clc
         adc >spriteX
@@ -666,6 +772,22 @@ eraseSpriteDragon1 entry
         sta >SCREEN_ADDR,x
         long m
 
+
+eraseSpriteDragon1SkipRowErase8 anop
+
+        lda >rowCounter
+        clc
+        adc #1
+        sta >rowCounter
+
+
+        cmp #199
+        bcs eraseSpriteDragon1SkipRowEraseShortJump9
+        bra eraseSpriteDragon1SkipRowEraseDontSkipRow9
+
+eraseSpriteDragon1SkipRowEraseShortJump9 anop
+        brl eraseSpriteDragon1SkipRowErase9
+eraseSpriteDragon1SkipRowEraseDontSkipRow9 anop
         lda >spriteY
         clc
         adc #9
@@ -687,7 +809,6 @@ eraseSpriteDragon1 entry
         lda >BACKGROUND_ADDR,x
         sta >SCREEN_ADDR,x
         long m
-
         lda >rowAddress
         clc
         adc >spriteX
@@ -701,7 +822,6 @@ eraseSpriteDragon1 entry
         lda >BACKGROUND_ADDR,x
         sta >SCREEN_ADDR,x
         long m
-
         lda >rowAddress
         clc
         adc >spriteX
@@ -716,6 +836,22 @@ eraseSpriteDragon1 entry
         sta >SCREEN_ADDR,x
         long m
 
+
+eraseSpriteDragon1SkipRowErase9 anop
+
+        lda >rowCounter
+        clc
+        adc #1
+        sta >rowCounter
+
+
+        cmp #199
+        bcs eraseSpriteDragon1SkipRowEraseShortJump10
+        bra eraseSpriteDragon1SkipRowEraseDontSkipRow10
+
+eraseSpriteDragon1SkipRowEraseShortJump10 anop
+        brl eraseSpriteDragon1SkipRowErase10
+eraseSpriteDragon1SkipRowEraseDontSkipRow10 anop
         lda >spriteY
         clc
         adc #10
@@ -738,6 +874,22 @@ eraseSpriteDragon1 entry
         sta >SCREEN_ADDR,x
         long m
 
+
+eraseSpriteDragon1SkipRowErase10 anop
+
+        lda >rowCounter
+        clc
+        adc #1
+        sta >rowCounter
+
+
+        cmp #199
+        bcs eraseSpriteDragon1SkipRowEraseShortJump11
+        bra eraseSpriteDragon1SkipRowEraseDontSkipRow11
+
+eraseSpriteDragon1SkipRowEraseShortJump11 anop
+        brl eraseSpriteDragon1SkipRowErase11
+eraseSpriteDragon1SkipRowEraseDontSkipRow11 anop
         lda >spriteY
         clc
         adc #11
@@ -760,6 +912,22 @@ eraseSpriteDragon1 entry
         sta >SCREEN_ADDR,x
         long m
 
+
+eraseSpriteDragon1SkipRowErase11 anop
+
+        lda >rowCounter
+        clc
+        adc #1
+        sta >rowCounter
+
+
+        cmp #199
+        bcs eraseSpriteDragon1SkipRowEraseShortJump12
+        bra eraseSpriteDragon1SkipRowEraseDontSkipRow12
+
+eraseSpriteDragon1SkipRowEraseShortJump12 anop
+        brl eraseSpriteDragon1SkipRowErase12
+eraseSpriteDragon1SkipRowEraseDontSkipRow12 anop
         lda >spriteY
         clc
         adc #12
@@ -782,6 +950,22 @@ eraseSpriteDragon1 entry
         sta >SCREEN_ADDR,x
         long m
 
+
+eraseSpriteDragon1SkipRowErase12 anop
+
+        lda >rowCounter
+        clc
+        adc #1
+        sta >rowCounter
+
+
+        cmp #199
+        bcs eraseSpriteDragon1SkipRowEraseShortJump13
+        bra eraseSpriteDragon1SkipRowEraseDontSkipRow13
+
+eraseSpriteDragon1SkipRowEraseShortJump13 anop
+        brl eraseSpriteDragon1SkipRowErase13
+eraseSpriteDragon1SkipRowEraseDontSkipRow13 anop
         lda >spriteY
         clc
         adc #13
@@ -804,6 +988,22 @@ eraseSpriteDragon1 entry
         sta >SCREEN_ADDR,x
         long m
 
+
+eraseSpriteDragon1SkipRowErase13 anop
+
+        lda >rowCounter
+        clc
+        adc #1
+        sta >rowCounter
+
+
+        cmp #199
+        bcs eraseSpriteDragon1SkipRowEraseShortJump14
+        bra eraseSpriteDragon1SkipRowEraseDontSkipRow14
+
+eraseSpriteDragon1SkipRowEraseShortJump14 anop
+        brl eraseSpriteDragon1SkipRowErase14
+eraseSpriteDragon1SkipRowEraseDontSkipRow14 anop
         lda >spriteY
         clc
         adc #14
@@ -825,7 +1025,6 @@ eraseSpriteDragon1 entry
         lda >BACKGROUND_ADDR,x
         sta >SCREEN_ADDR,x
         long m
-
         lda >rowAddress
         clc
         adc >spriteX
@@ -839,7 +1038,6 @@ eraseSpriteDragon1 entry
         lda >BACKGROUND_ADDR,x
         sta >SCREEN_ADDR,x
         long m
-
         lda >rowAddress
         clc
         adc >spriteX
@@ -853,7 +1051,6 @@ eraseSpriteDragon1 entry
         lda >BACKGROUND_ADDR,x
         sta >SCREEN_ADDR,x
         long m
-
         lda >rowAddress
         clc
         adc >spriteX
@@ -868,6 +1065,22 @@ eraseSpriteDragon1 entry
         sta >SCREEN_ADDR,x
         long m
 
+
+eraseSpriteDragon1SkipRowErase14 anop
+
+        lda >rowCounter
+        clc
+        adc #1
+        sta >rowCounter
+
+
+        cmp #199
+        bcs eraseSpriteDragon1SkipRowEraseShortJump15
+        bra eraseSpriteDragon1SkipRowEraseDontSkipRow15
+
+eraseSpriteDragon1SkipRowEraseShortJump15 anop
+        brl eraseSpriteDragon1SkipRowErase15
+eraseSpriteDragon1SkipRowEraseDontSkipRow15 anop
         lda >spriteY
         clc
         adc #15
@@ -889,7 +1102,6 @@ eraseSpriteDragon1 entry
         lda >BACKGROUND_ADDR,x
         sta >SCREEN_ADDR,x
         long m
-
         lda >rowAddress
         clc
         adc >spriteX
@@ -903,7 +1115,6 @@ eraseSpriteDragon1 entry
         lda >BACKGROUND_ADDR,x
         sta >SCREEN_ADDR,x
         long m
-
         lda >rowAddress
         clc
         adc >spriteX
@@ -917,7 +1128,6 @@ eraseSpriteDragon1 entry
         lda >BACKGROUND_ADDR,x
         sta >SCREEN_ADDR,x
         long m
-
         lda >rowAddress
         clc
         adc >spriteX
@@ -932,6 +1142,22 @@ eraseSpriteDragon1 entry
         sta >SCREEN_ADDR,x
         long m
 
+
+eraseSpriteDragon1SkipRowErase15 anop
+
+        lda >rowCounter
+        clc
+        adc #1
+        sta >rowCounter
+
+
+        cmp #199
+        bcs eraseSpriteDragon1SkipRowEraseShortJump16
+        bra eraseSpriteDragon1SkipRowEraseDontSkipRow16
+
+eraseSpriteDragon1SkipRowEraseShortJump16 anop
+        brl eraseSpriteDragon1SkipRowErase16
+eraseSpriteDragon1SkipRowEraseDontSkipRow16 anop
         lda >spriteY
         clc
         adc #16
@@ -953,7 +1179,6 @@ eraseSpriteDragon1 entry
         lda >BACKGROUND_ADDR,x
         sta >SCREEN_ADDR,x
         long m
-
         lda >rowAddress
         clc
         adc >spriteX
@@ -967,7 +1192,6 @@ eraseSpriteDragon1 entry
         lda >BACKGROUND_ADDR,x
         sta >SCREEN_ADDR,x
         long m
-
         lda >rowAddress
         clc
         adc >spriteX
@@ -981,7 +1205,6 @@ eraseSpriteDragon1 entry
         lda >BACKGROUND_ADDR,x
         sta >SCREEN_ADDR,x
         long m
-
         lda >rowAddress
         clc
         adc >spriteX
@@ -995,7 +1218,6 @@ eraseSpriteDragon1 entry
         lda >BACKGROUND_ADDR,x
         sta >SCREEN_ADDR,x
         long m
-
         lda >rowAddress
         clc
         adc >spriteX
@@ -1009,7 +1231,6 @@ eraseSpriteDragon1 entry
         lda >BACKGROUND_ADDR,x
         sta >SCREEN_ADDR,x
         long m
-
         lda >rowAddress
         clc
         adc >spriteX
@@ -1024,6 +1245,22 @@ eraseSpriteDragon1 entry
         sta >SCREEN_ADDR,x
         long m
 
+
+eraseSpriteDragon1SkipRowErase16 anop
+
+        lda >rowCounter
+        clc
+        adc #1
+        sta >rowCounter
+
+
+        cmp #199
+        bcs eraseSpriteDragon1SkipRowEraseShortJump17
+        bra eraseSpriteDragon1SkipRowEraseDontSkipRow17
+
+eraseSpriteDragon1SkipRowEraseShortJump17 anop
+        brl eraseSpriteDragon1SkipRowErase17
+eraseSpriteDragon1SkipRowEraseDontSkipRow17 anop
         lda >spriteY
         clc
         adc #17
@@ -1045,7 +1282,6 @@ eraseSpriteDragon1 entry
         lda >BACKGROUND_ADDR,x
         sta >SCREEN_ADDR,x
         long m
-
         lda >rowAddress
         clc
         adc >spriteX
@@ -1059,7 +1295,6 @@ eraseSpriteDragon1 entry
         lda >BACKGROUND_ADDR,x
         sta >SCREEN_ADDR,x
         long m
-
         lda >rowAddress
         clc
         adc >spriteX
@@ -1073,7 +1308,6 @@ eraseSpriteDragon1 entry
         lda >BACKGROUND_ADDR,x
         sta >SCREEN_ADDR,x
         long m
-
         lda >rowAddress
         clc
         adc >spriteX
@@ -1087,7 +1321,6 @@ eraseSpriteDragon1 entry
         lda >BACKGROUND_ADDR,x
         sta >SCREEN_ADDR,x
         long m
-
         lda >rowAddress
         clc
         adc >spriteX
@@ -1101,7 +1334,6 @@ eraseSpriteDragon1 entry
         lda >BACKGROUND_ADDR,x
         sta >SCREEN_ADDR,x
         long m
-
         lda >rowAddress
         clc
         adc >spriteX
@@ -1116,6 +1348,22 @@ eraseSpriteDragon1 entry
         sta >SCREEN_ADDR,x
         long m
 
+
+eraseSpriteDragon1SkipRowErase17 anop
+
+        lda >rowCounter
+        clc
+        adc #1
+        sta >rowCounter
+
+
+        cmp #199
+        bcs eraseSpriteDragon1SkipRowEraseShortJump18
+        bra eraseSpriteDragon1SkipRowEraseDontSkipRow18
+
+eraseSpriteDragon1SkipRowEraseShortJump18 anop
+        brl eraseSpriteDragon1SkipRowErase18
+eraseSpriteDragon1SkipRowEraseDontSkipRow18 anop
         lda >spriteY
         clc
         adc #18
@@ -1137,7 +1385,6 @@ eraseSpriteDragon1 entry
         lda >BACKGROUND_ADDR,x
         sta >SCREEN_ADDR,x
         long m
-
         lda >rowAddress
         clc
         adc >spriteX
@@ -1151,7 +1398,6 @@ eraseSpriteDragon1 entry
         lda >BACKGROUND_ADDR,x
         sta >SCREEN_ADDR,x
         long m
-
         lda >rowAddress
         clc
         adc >spriteX
@@ -1165,7 +1411,6 @@ eraseSpriteDragon1 entry
         lda >BACKGROUND_ADDR,x
         sta >SCREEN_ADDR,x
         long m
-
         lda >rowAddress
         clc
         adc >spriteX
@@ -1179,7 +1424,6 @@ eraseSpriteDragon1 entry
         lda >BACKGROUND_ADDR,x
         sta >SCREEN_ADDR,x
         long m
-
         lda >rowAddress
         clc
         adc >spriteX
@@ -1193,7 +1437,6 @@ eraseSpriteDragon1 entry
         lda >BACKGROUND_ADDR,x
         sta >SCREEN_ADDR,x
         long m
-
         lda >rowAddress
         clc
         adc >spriteX
@@ -1207,7 +1450,6 @@ eraseSpriteDragon1 entry
         lda >BACKGROUND_ADDR,x
         sta >SCREEN_ADDR,x
         long m
-
         lda >rowAddress
         clc
         adc >spriteX
@@ -1222,6 +1464,22 @@ eraseSpriteDragon1 entry
         sta >SCREEN_ADDR,x
         long m
 
+
+eraseSpriteDragon1SkipRowErase18 anop
+
+        lda >rowCounter
+        clc
+        adc #1
+        sta >rowCounter
+
+
+        cmp #199
+        bcs eraseSpriteDragon1SkipRowEraseShortJump19
+        bra eraseSpriteDragon1SkipRowEraseDontSkipRow19
+
+eraseSpriteDragon1SkipRowEraseShortJump19 anop
+        brl eraseSpriteDragon1SkipRowErase19
+eraseSpriteDragon1SkipRowEraseDontSkipRow19 anop
         lda >spriteY
         clc
         adc #19
@@ -1243,7 +1501,6 @@ eraseSpriteDragon1 entry
         lda >BACKGROUND_ADDR,x
         sta >SCREEN_ADDR,x
         long m
-
         lda >rowAddress
         clc
         adc >spriteX
@@ -1257,7 +1514,6 @@ eraseSpriteDragon1 entry
         lda >BACKGROUND_ADDR,x
         sta >SCREEN_ADDR,x
         long m
-
         lda >rowAddress
         clc
         adc >spriteX
@@ -1271,7 +1527,6 @@ eraseSpriteDragon1 entry
         lda >BACKGROUND_ADDR,x
         sta >SCREEN_ADDR,x
         long m
-
         lda >rowAddress
         clc
         adc >spriteX
@@ -1285,7 +1540,6 @@ eraseSpriteDragon1 entry
         lda >BACKGROUND_ADDR,x
         sta >SCREEN_ADDR,x
         long m
-
         lda >rowAddress
         clc
         adc >spriteX
@@ -1299,7 +1553,6 @@ eraseSpriteDragon1 entry
         lda >BACKGROUND_ADDR,x
         sta >SCREEN_ADDR,x
         long m
-
         lda >rowAddress
         clc
         adc >spriteX
@@ -1313,7 +1566,6 @@ eraseSpriteDragon1 entry
         lda >BACKGROUND_ADDR,x
         sta >SCREEN_ADDR,x
         long m
-
         lda >rowAddress
         clc
         adc >spriteX
@@ -1328,6 +1580,22 @@ eraseSpriteDragon1 entry
         sta >SCREEN_ADDR,x
         long m
 
+
+eraseSpriteDragon1SkipRowErase19 anop
+
+        lda >rowCounter
+        clc
+        adc #1
+        sta >rowCounter
+
+
+        cmp #199
+        bcs eraseSpriteDragon1SkipRowEraseShortJump20
+        bra eraseSpriteDragon1SkipRowEraseDontSkipRow20
+
+eraseSpriteDragon1SkipRowEraseShortJump20 anop
+        brl eraseSpriteDragon1SkipRowErase20
+eraseSpriteDragon1SkipRowEraseDontSkipRow20 anop
         lda >spriteY
         clc
         adc #20
@@ -1349,7 +1617,6 @@ eraseSpriteDragon1 entry
         lda >BACKGROUND_ADDR,x
         sta >SCREEN_ADDR,x
         long m
-
         lda >rowAddress
         clc
         adc >spriteX
@@ -1363,7 +1630,6 @@ eraseSpriteDragon1 entry
         lda >BACKGROUND_ADDR,x
         sta >SCREEN_ADDR,x
         long m
-
         lda >rowAddress
         clc
         adc >spriteX
@@ -1377,7 +1643,6 @@ eraseSpriteDragon1 entry
         lda >BACKGROUND_ADDR,x
         sta >SCREEN_ADDR,x
         long m
-
         lda >rowAddress
         clc
         adc >spriteX
@@ -1391,7 +1656,6 @@ eraseSpriteDragon1 entry
         lda >BACKGROUND_ADDR,x
         sta >SCREEN_ADDR,x
         long m
-
         lda >rowAddress
         clc
         adc >spriteX
@@ -1406,6 +1670,22 @@ eraseSpriteDragon1 entry
         sta >SCREEN_ADDR,x
         long m
 
+
+eraseSpriteDragon1SkipRowErase20 anop
+
+        lda >rowCounter
+        clc
+        adc #1
+        sta >rowCounter
+
+
+        cmp #199
+        bcs eraseSpriteDragon1SkipRowEraseShortJump21
+        bra eraseSpriteDragon1SkipRowEraseDontSkipRow21
+
+eraseSpriteDragon1SkipRowEraseShortJump21 anop
+        brl eraseSpriteDragon1SkipRowErase21
+eraseSpriteDragon1SkipRowEraseDontSkipRow21 anop
         lda >spriteY
         clc
         adc #21
@@ -1427,7 +1707,6 @@ eraseSpriteDragon1 entry
         lda >BACKGROUND_ADDR,x
         sta >SCREEN_ADDR,x
         long m
-
         lda >rowAddress
         clc
         adc >spriteX
@@ -1441,7 +1720,6 @@ eraseSpriteDragon1 entry
         lda >BACKGROUND_ADDR,x
         sta >SCREEN_ADDR,x
         long m
-
         lda >rowAddress
         clc
         adc >spriteX
@@ -1455,7 +1733,6 @@ eraseSpriteDragon1 entry
         lda >BACKGROUND_ADDR,x
         sta >SCREEN_ADDR,x
         long m
-
         lda >rowAddress
         clc
         adc >spriteX
@@ -1469,7 +1746,6 @@ eraseSpriteDragon1 entry
         lda >BACKGROUND_ADDR,x
         sta >SCREEN_ADDR,x
         long m
-
         lda >rowAddress
         clc
         adc >spriteX
@@ -1484,6 +1760,22 @@ eraseSpriteDragon1 entry
         sta >SCREEN_ADDR,x
         long m
 
+
+eraseSpriteDragon1SkipRowErase21 anop
+
+        lda >rowCounter
+        clc
+        adc #1
+        sta >rowCounter
+
+
+        cmp #199
+        bcs eraseSpriteDragon1SkipRowEraseShortJump22
+        bra eraseSpriteDragon1SkipRowEraseDontSkipRow22
+
+eraseSpriteDragon1SkipRowEraseShortJump22 anop
+        brl eraseSpriteDragon1SkipRowErase22
+eraseSpriteDragon1SkipRowEraseDontSkipRow22 anop
         lda >spriteY
         clc
         adc #22
@@ -1505,7 +1797,6 @@ eraseSpriteDragon1 entry
         lda >BACKGROUND_ADDR,x
         sta >SCREEN_ADDR,x
         long m
-
         lda >rowAddress
         clc
         adc >spriteX
@@ -1519,7 +1810,6 @@ eraseSpriteDragon1 entry
         lda >BACKGROUND_ADDR,x
         sta >SCREEN_ADDR,x
         long m
-
         lda >rowAddress
         clc
         adc >spriteX
@@ -1533,7 +1823,6 @@ eraseSpriteDragon1 entry
         lda >BACKGROUND_ADDR,x
         sta >SCREEN_ADDR,x
         long m
-
         lda >rowAddress
         clc
         adc >spriteX
@@ -1548,6 +1837,22 @@ eraseSpriteDragon1 entry
         sta >SCREEN_ADDR,x
         long m
 
+
+eraseSpriteDragon1SkipRowErase22 anop
+
+        lda >rowCounter
+        clc
+        adc #1
+        sta >rowCounter
+
+
+        cmp #199
+        bcs eraseSpriteDragon1SkipRowEraseShortJump23
+        bra eraseSpriteDragon1SkipRowEraseDontSkipRow23
+
+eraseSpriteDragon1SkipRowEraseShortJump23 anop
+        brl eraseSpriteDragon1SkipRowErase23
+eraseSpriteDragon1SkipRowEraseDontSkipRow23 anop
         lda >spriteY
         clc
         adc #23
@@ -1569,7 +1874,6 @@ eraseSpriteDragon1 entry
         lda >BACKGROUND_ADDR,x
         sta >SCREEN_ADDR,x
         long m
-
         lda >rowAddress
         clc
         adc >spriteX
@@ -1583,7 +1887,6 @@ eraseSpriteDragon1 entry
         lda >BACKGROUND_ADDR,x
         sta >SCREEN_ADDR,x
         long m
-
         lda >rowAddress
         clc
         adc >spriteX
@@ -1597,7 +1900,6 @@ eraseSpriteDragon1 entry
         lda >BACKGROUND_ADDR,x
         sta >SCREEN_ADDR,x
         long m
-
         lda >rowAddress
         clc
         adc >spriteX
@@ -1612,6 +1914,22 @@ eraseSpriteDragon1 entry
         sta >SCREEN_ADDR,x
         long m
 
+
+eraseSpriteDragon1SkipRowErase23 anop
+
+        lda >rowCounter
+        clc
+        adc #1
+        sta >rowCounter
+
+
+        cmp #199
+        bcs eraseSpriteDragon1SkipRowEraseShortJump24
+        bra eraseSpriteDragon1SkipRowEraseDontSkipRow24
+
+eraseSpriteDragon1SkipRowEraseShortJump24 anop
+        brl eraseSpriteDragon1SkipRowErase24
+eraseSpriteDragon1SkipRowEraseDontSkipRow24 anop
         lda >spriteY
         clc
         adc #24
@@ -1633,7 +1951,6 @@ eraseSpriteDragon1 entry
         lda >BACKGROUND_ADDR,x
         sta >SCREEN_ADDR,x
         long m
-
         lda >rowAddress
         clc
         adc >spriteX
@@ -1647,7 +1964,6 @@ eraseSpriteDragon1 entry
         lda >BACKGROUND_ADDR,x
         sta >SCREEN_ADDR,x
         long m
-
         lda >rowAddress
         clc
         adc >spriteX
@@ -1661,7 +1977,6 @@ eraseSpriteDragon1 entry
         lda >BACKGROUND_ADDR,x
         sta >SCREEN_ADDR,x
         long m
-
         lda >rowAddress
         clc
         adc >spriteX
@@ -1676,6 +1991,22 @@ eraseSpriteDragon1 entry
         sta >SCREEN_ADDR,x
         long m
 
+
+eraseSpriteDragon1SkipRowErase24 anop
+
+        lda >rowCounter
+        clc
+        adc #1
+        sta >rowCounter
+
+
+        cmp #199
+        bcs eraseSpriteDragon1SkipRowEraseShortJump25
+        bra eraseSpriteDragon1SkipRowEraseDontSkipRow25
+
+eraseSpriteDragon1SkipRowEraseShortJump25 anop
+        brl eraseSpriteDragon1SkipRowErase25
+eraseSpriteDragon1SkipRowEraseDontSkipRow25 anop
         lda >spriteY
         clc
         adc #25
@@ -1697,7 +2028,6 @@ eraseSpriteDragon1 entry
         lda >BACKGROUND_ADDR,x
         sta >SCREEN_ADDR,x
         long m
-
         lda >rowAddress
         clc
         adc >spriteX
@@ -1711,7 +2041,6 @@ eraseSpriteDragon1 entry
         lda >BACKGROUND_ADDR,x
         sta >SCREEN_ADDR,x
         long m
-
         lda >rowAddress
         clc
         adc >spriteX
@@ -1725,7 +2054,6 @@ eraseSpriteDragon1 entry
         lda >BACKGROUND_ADDR,x
         sta >SCREEN_ADDR,x
         long m
-
         lda >rowAddress
         clc
         adc >spriteX
@@ -1740,6 +2068,22 @@ eraseSpriteDragon1 entry
         sta >SCREEN_ADDR,x
         long m
 
+
+eraseSpriteDragon1SkipRowErase25 anop
+
+        lda >rowCounter
+        clc
+        adc #1
+        sta >rowCounter
+
+
+        cmp #199
+        bcs eraseSpriteDragon1SkipRowEraseShortJump26
+        bra eraseSpriteDragon1SkipRowEraseDontSkipRow26
+
+eraseSpriteDragon1SkipRowEraseShortJump26 anop
+        brl eraseSpriteDragon1SkipRowErase26
+eraseSpriteDragon1SkipRowEraseDontSkipRow26 anop
         lda >spriteY
         clc
         adc #26
@@ -1761,7 +2105,6 @@ eraseSpriteDragon1 entry
         lda >BACKGROUND_ADDR,x
         sta >SCREEN_ADDR,x
         long m
-
         lda >rowAddress
         clc
         adc >spriteX
@@ -1775,7 +2118,6 @@ eraseSpriteDragon1 entry
         lda >BACKGROUND_ADDR,x
         sta >SCREEN_ADDR,x
         long m
-
         lda >rowAddress
         clc
         adc >spriteX
@@ -1789,7 +2131,6 @@ eraseSpriteDragon1 entry
         lda >BACKGROUND_ADDR,x
         sta >SCREEN_ADDR,x
         long m
-
         lda >rowAddress
         clc
         adc >spriteX
@@ -1803,7 +2144,6 @@ eraseSpriteDragon1 entry
         lda >BACKGROUND_ADDR,x
         sta >SCREEN_ADDR,x
         long m
-
         lda >rowAddress
         clc
         adc >spriteX
@@ -1818,6 +2158,22 @@ eraseSpriteDragon1 entry
         sta >SCREEN_ADDR,x
         long m
 
+
+eraseSpriteDragon1SkipRowErase26 anop
+
+        lda >rowCounter
+        clc
+        adc #1
+        sta >rowCounter
+
+
+        cmp #199
+        bcs eraseSpriteDragon1SkipRowEraseShortJump27
+        bra eraseSpriteDragon1SkipRowEraseDontSkipRow27
+
+eraseSpriteDragon1SkipRowEraseShortJump27 anop
+        brl eraseSpriteDragon1SkipRowErase27
+eraseSpriteDragon1SkipRowEraseDontSkipRow27 anop
         lda >spriteY
         clc
         adc #27
@@ -1839,7 +2195,6 @@ eraseSpriteDragon1 entry
         lda >BACKGROUND_ADDR,x
         sta >SCREEN_ADDR,x
         long m
-
         lda >rowAddress
         clc
         adc >spriteX
@@ -1853,7 +2208,6 @@ eraseSpriteDragon1 entry
         lda >BACKGROUND_ADDR,x
         sta >SCREEN_ADDR,x
         long m
-
         lda >rowAddress
         clc
         adc >spriteX
@@ -1867,7 +2221,6 @@ eraseSpriteDragon1 entry
         lda >BACKGROUND_ADDR,x
         sta >SCREEN_ADDR,x
         long m
-
         lda >rowAddress
         clc
         adc >spriteX
@@ -1881,7 +2234,6 @@ eraseSpriteDragon1 entry
         lda >BACKGROUND_ADDR,x
         sta >SCREEN_ADDR,x
         long m
-
         lda >rowAddress
         clc
         adc >spriteX
@@ -1896,6 +2248,22 @@ eraseSpriteDragon1 entry
         sta >SCREEN_ADDR,x
         long m
 
+
+eraseSpriteDragon1SkipRowErase27 anop
+
+        lda >rowCounter
+        clc
+        adc #1
+        sta >rowCounter
+
+
+        cmp #199
+        bcs eraseSpriteDragon1SkipRowEraseShortJump28
+        bra eraseSpriteDragon1SkipRowEraseDontSkipRow28
+
+eraseSpriteDragon1SkipRowEraseShortJump28 anop
+        brl eraseSpriteDragon1SkipRowErase28
+eraseSpriteDragon1SkipRowEraseDontSkipRow28 anop
         lda >spriteY
         clc
         adc #28
@@ -1917,7 +2285,6 @@ eraseSpriteDragon1 entry
         lda >BACKGROUND_ADDR,x
         sta >SCREEN_ADDR,x
         long m
-
         lda >rowAddress
         clc
         adc >spriteX
@@ -1931,7 +2298,6 @@ eraseSpriteDragon1 entry
         lda >BACKGROUND_ADDR,x
         sta >SCREEN_ADDR,x
         long m
-
         lda >rowAddress
         clc
         adc >spriteX
@@ -1945,7 +2311,6 @@ eraseSpriteDragon1 entry
         lda >BACKGROUND_ADDR,x
         sta >SCREEN_ADDR,x
         long m
-
         lda >rowAddress
         clc
         adc >spriteX
@@ -1959,7 +2324,6 @@ eraseSpriteDragon1 entry
         lda >BACKGROUND_ADDR,x
         sta >SCREEN_ADDR,x
         long m
-
         lda >rowAddress
         clc
         adc >spriteX
@@ -1973,7 +2337,6 @@ eraseSpriteDragon1 entry
         lda >BACKGROUND_ADDR,x
         sta >SCREEN_ADDR,x
         long m
-
         lda >rowAddress
         clc
         adc >spriteX
@@ -1987,7 +2350,6 @@ eraseSpriteDragon1 entry
         lda >BACKGROUND_ADDR,x
         sta >SCREEN_ADDR,x
         long m
-
         lda >rowAddress
         clc
         adc >spriteX
@@ -2001,7 +2363,6 @@ eraseSpriteDragon1 entry
         lda >BACKGROUND_ADDR,x
         sta >SCREEN_ADDR,x
         long m
-
         lda >rowAddress
         clc
         adc >spriteX
@@ -2016,6 +2377,22 @@ eraseSpriteDragon1 entry
         sta >SCREEN_ADDR,x
         long m
 
+
+eraseSpriteDragon1SkipRowErase28 anop
+
+        lda >rowCounter
+        clc
+        adc #1
+        sta >rowCounter
+
+
+        cmp #199
+        bcs eraseSpriteDragon1SkipRowEraseShortJump29
+        bra eraseSpriteDragon1SkipRowEraseDontSkipRow29
+
+eraseSpriteDragon1SkipRowEraseShortJump29 anop
+        brl eraseSpriteDragon1SkipRowErase29
+eraseSpriteDragon1SkipRowEraseDontSkipRow29 anop
         lda >spriteY
         clc
         adc #29
@@ -2037,7 +2414,6 @@ eraseSpriteDragon1 entry
         lda >BACKGROUND_ADDR,x
         sta >SCREEN_ADDR,x
         long m
-
         lda >rowAddress
         clc
         adc >spriteX
@@ -2051,7 +2427,6 @@ eraseSpriteDragon1 entry
         lda >BACKGROUND_ADDR,x
         sta >SCREEN_ADDR,x
         long m
-
         lda >rowAddress
         clc
         adc >spriteX
@@ -2065,7 +2440,6 @@ eraseSpriteDragon1 entry
         lda >BACKGROUND_ADDR,x
         sta >SCREEN_ADDR,x
         long m
-
         lda >rowAddress
         clc
         adc >spriteX
@@ -2079,7 +2453,6 @@ eraseSpriteDragon1 entry
         lda >BACKGROUND_ADDR,x
         sta >SCREEN_ADDR,x
         long m
-
         lda >rowAddress
         clc
         adc >spriteX
@@ -2093,7 +2466,6 @@ eraseSpriteDragon1 entry
         lda >BACKGROUND_ADDR,x
         sta >SCREEN_ADDR,x
         long m
-
         lda >rowAddress
         clc
         adc >spriteX
@@ -2107,7 +2479,6 @@ eraseSpriteDragon1 entry
         lda >BACKGROUND_ADDR,x
         sta >SCREEN_ADDR,x
         long m
-
         lda >rowAddress
         clc
         adc >spriteX
@@ -2121,7 +2492,6 @@ eraseSpriteDragon1 entry
         lda >BACKGROUND_ADDR,x
         sta >SCREEN_ADDR,x
         long m
-
         lda >rowAddress
         clc
         adc >spriteX
@@ -2136,6 +2506,22 @@ eraseSpriteDragon1 entry
         sta >SCREEN_ADDR,x
         long m
 
+
+eraseSpriteDragon1SkipRowErase29 anop
+
+        lda >rowCounter
+        clc
+        adc #1
+        sta >rowCounter
+
+
+        cmp #199
+        bcs eraseSpriteDragon1SkipRowEraseShortJump30
+        bra eraseSpriteDragon1SkipRowEraseDontSkipRow30
+
+eraseSpriteDragon1SkipRowEraseShortJump30 anop
+        brl eraseSpriteDragon1SkipRowErase30
+eraseSpriteDragon1SkipRowEraseDontSkipRow30 anop
         lda >spriteY
         clc
         adc #30
@@ -2157,7 +2543,6 @@ eraseSpriteDragon1 entry
         lda >BACKGROUND_ADDR,x
         sta >SCREEN_ADDR,x
         long m
-
         lda >rowAddress
         clc
         adc >spriteX
@@ -2171,7 +2556,6 @@ eraseSpriteDragon1 entry
         lda >BACKGROUND_ADDR,x
         sta >SCREEN_ADDR,x
         long m
-
         lda >rowAddress
         clc
         adc >spriteX
@@ -2185,7 +2569,6 @@ eraseSpriteDragon1 entry
         lda >BACKGROUND_ADDR,x
         sta >SCREEN_ADDR,x
         long m
-
         lda >rowAddress
         clc
         adc >spriteX
@@ -2200,6 +2583,22 @@ eraseSpriteDragon1 entry
         sta >SCREEN_ADDR,x
         long m
 
+
+eraseSpriteDragon1SkipRowErase30 anop
+
+        lda >rowCounter
+        clc
+        adc #1
+        sta >rowCounter
+
+
+        cmp #199
+        bcs eraseSpriteDragon1SkipRowEraseShortJump31
+        bra eraseSpriteDragon1SkipRowEraseDontSkipRow31
+
+eraseSpriteDragon1SkipRowEraseShortJump31 anop
+        brl eraseSpriteDragon1SkipRowErase31
+eraseSpriteDragon1SkipRowEraseDontSkipRow31 anop
         lda >spriteY
         clc
         adc #31
@@ -2221,7 +2620,6 @@ eraseSpriteDragon1 entry
         lda >BACKGROUND_ADDR,x
         sta >SCREEN_ADDR,x
         long m
-
         lda >rowAddress
         clc
         adc >spriteX
@@ -2235,7 +2633,6 @@ eraseSpriteDragon1 entry
         lda >BACKGROUND_ADDR,x
         sta >SCREEN_ADDR,x
         long m
-
         lda >rowAddress
         clc
         adc >spriteX
@@ -2249,7 +2646,6 @@ eraseSpriteDragon1 entry
         lda >BACKGROUND_ADDR,x
         sta >SCREEN_ADDR,x
         long m
-
         lda >rowAddress
         clc
         adc >spriteX
@@ -2264,6 +2660,22 @@ eraseSpriteDragon1 entry
         sta >SCREEN_ADDR,x
         long m
 
+
+eraseSpriteDragon1SkipRowErase31 anop
+
+        lda >rowCounter
+        clc
+        adc #1
+        sta >rowCounter
+
+
+        cmp #199
+        bcs eraseSpriteDragon1SkipRowEraseShortJump32
+        bra eraseSpriteDragon1SkipRowEraseDontSkipRow32
+
+eraseSpriteDragon1SkipRowEraseShortJump32 anop
+        brl eraseSpriteDragon1SkipRowErase32
+eraseSpriteDragon1SkipRowEraseDontSkipRow32 anop
         lda >spriteY
         clc
         adc #32
@@ -2286,6 +2698,22 @@ eraseSpriteDragon1 entry
         sta >SCREEN_ADDR,x
         long m
 
+
+eraseSpriteDragon1SkipRowErase32 anop
+
+        lda >rowCounter
+        clc
+        adc #1
+        sta >rowCounter
+
+
+        cmp #199
+        bcs eraseSpriteDragon1SkipRowEraseShortJump33
+        bra eraseSpriteDragon1SkipRowEraseDontSkipRow33
+
+eraseSpriteDragon1SkipRowEraseShortJump33 anop
+        brl eraseSpriteDragon1SkipRowErase33
+eraseSpriteDragon1SkipRowEraseDontSkipRow33 anop
         lda >spriteY
         clc
         adc #33
@@ -2308,6 +2736,22 @@ eraseSpriteDragon1 entry
         sta >SCREEN_ADDR,x
         long m
 
+
+eraseSpriteDragon1SkipRowErase33 anop
+
+        lda >rowCounter
+        clc
+        adc #1
+        sta >rowCounter
+
+
+        cmp #199
+        bcs eraseSpriteDragon1SkipRowEraseShortJump34
+        bra eraseSpriteDragon1SkipRowEraseDontSkipRow34
+
+eraseSpriteDragon1SkipRowEraseShortJump34 anop
+        brl eraseSpriteDragon1SkipRowErase34
+eraseSpriteDragon1SkipRowEraseDontSkipRow34 anop
         lda >spriteY
         clc
         adc #34
@@ -2329,7 +2773,6 @@ eraseSpriteDragon1 entry
         lda >BACKGROUND_ADDR,x
         sta >SCREEN_ADDR,x
         long m
-
         lda >rowAddress
         clc
         adc >spriteX
@@ -2343,7 +2786,6 @@ eraseSpriteDragon1 entry
         lda >BACKGROUND_ADDR,x
         sta >SCREEN_ADDR,x
         long m
-
         lda >rowAddress
         clc
         adc >spriteX
@@ -2357,7 +2799,6 @@ eraseSpriteDragon1 entry
         lda >BACKGROUND_ADDR,x
         sta >SCREEN_ADDR,x
         long m
-
         lda >rowAddress
         clc
         adc >spriteX
@@ -2371,7 +2812,6 @@ eraseSpriteDragon1 entry
         lda >BACKGROUND_ADDR,x
         sta >SCREEN_ADDR,x
         long m
-
         lda >rowAddress
         clc
         adc >spriteX
@@ -2386,6 +2826,22 @@ eraseSpriteDragon1 entry
         sta >SCREEN_ADDR,x
         long m
 
+
+eraseSpriteDragon1SkipRowErase34 anop
+
+        lda >rowCounter
+        clc
+        adc #1
+        sta >rowCounter
+
+
+        cmp #199
+        bcs eraseSpriteDragon1SkipRowEraseShortJump35
+        bra eraseSpriteDragon1SkipRowEraseDontSkipRow35
+
+eraseSpriteDragon1SkipRowEraseShortJump35 anop
+        brl eraseSpriteDragon1SkipRowErase35
+eraseSpriteDragon1SkipRowEraseDontSkipRow35 anop
         lda >spriteY
         clc
         adc #35
@@ -2407,7 +2863,6 @@ eraseSpriteDragon1 entry
         lda >BACKGROUND_ADDR,x
         sta >SCREEN_ADDR,x
         long m
-
         lda >rowAddress
         clc
         adc >spriteX
@@ -2421,7 +2876,6 @@ eraseSpriteDragon1 entry
         lda >BACKGROUND_ADDR,x
         sta >SCREEN_ADDR,x
         long m
-
         lda >rowAddress
         clc
         adc >spriteX
@@ -2435,7 +2889,6 @@ eraseSpriteDragon1 entry
         lda >BACKGROUND_ADDR,x
         sta >SCREEN_ADDR,x
         long m
-
         lda >rowAddress
         clc
         adc >spriteX
@@ -2449,7 +2902,6 @@ eraseSpriteDragon1 entry
         lda >BACKGROUND_ADDR,x
         sta >SCREEN_ADDR,x
         long m
-
         lda >rowAddress
         clc
         adc >spriteX
@@ -2464,6 +2916,22 @@ eraseSpriteDragon1 entry
         sta >SCREEN_ADDR,x
         long m
 
+
+eraseSpriteDragon1SkipRowErase35 anop
+
+        lda >rowCounter
+        clc
+        adc #1
+        sta >rowCounter
+
+
+        cmp #199
+        bcs eraseSpriteDragon1SkipRowEraseShortJump36
+        bra eraseSpriteDragon1SkipRowEraseDontSkipRow36
+
+eraseSpriteDragon1SkipRowEraseShortJump36 anop
+        brl eraseSpriteDragon1SkipRowErase36
+eraseSpriteDragon1SkipRowEraseDontSkipRow36 anop
         lda >spriteY
         clc
         adc #36
@@ -2485,7 +2953,6 @@ eraseSpriteDragon1 entry
         lda >BACKGROUND_ADDR,x
         sta >SCREEN_ADDR,x
         long m
-
         lda >rowAddress
         clc
         adc >spriteX
@@ -2499,7 +2966,6 @@ eraseSpriteDragon1 entry
         lda >BACKGROUND_ADDR,x
         sta >SCREEN_ADDR,x
         long m
-
         lda >rowAddress
         clc
         adc >spriteX
@@ -2513,7 +2979,6 @@ eraseSpriteDragon1 entry
         lda >BACKGROUND_ADDR,x
         sta >SCREEN_ADDR,x
         long m
-
         lda >rowAddress
         clc
         adc >spriteX
@@ -2528,6 +2993,22 @@ eraseSpriteDragon1 entry
         sta >SCREEN_ADDR,x
         long m
 
+
+eraseSpriteDragon1SkipRowErase36 anop
+
+        lda >rowCounter
+        clc
+        adc #1
+        sta >rowCounter
+
+
+        cmp #199
+        bcs eraseSpriteDragon1SkipRowEraseShortJump37
+        bra eraseSpriteDragon1SkipRowEraseDontSkipRow37
+
+eraseSpriteDragon1SkipRowEraseShortJump37 anop
+        brl eraseSpriteDragon1SkipRowErase37
+eraseSpriteDragon1SkipRowEraseDontSkipRow37 anop
         lda >spriteY
         clc
         adc #37
@@ -2549,7 +3030,6 @@ eraseSpriteDragon1 entry
         lda >BACKGROUND_ADDR,x
         sta >SCREEN_ADDR,x
         long m
-
         lda >rowAddress
         clc
         adc >spriteX
@@ -2563,7 +3043,6 @@ eraseSpriteDragon1 entry
         lda >BACKGROUND_ADDR,x
         sta >SCREEN_ADDR,x
         long m
-
         lda >rowAddress
         clc
         adc >spriteX
@@ -2577,7 +3056,6 @@ eraseSpriteDragon1 entry
         lda >BACKGROUND_ADDR,x
         sta >SCREEN_ADDR,x
         long m
-
         lda >rowAddress
         clc
         adc >spriteX
@@ -2592,6 +3070,22 @@ eraseSpriteDragon1 entry
         sta >SCREEN_ADDR,x
         long m
 
+
+eraseSpriteDragon1SkipRowErase37 anop
+
+        lda >rowCounter
+        clc
+        adc #1
+        sta >rowCounter
+
+
+        cmp #199
+        bcs eraseSpriteDragon1SkipRowEraseShortJump38
+        bra eraseSpriteDragon1SkipRowEraseDontSkipRow38
+
+eraseSpriteDragon1SkipRowEraseShortJump38 anop
+        brl eraseSpriteDragon1SkipRowErase38
+eraseSpriteDragon1SkipRowEraseDontSkipRow38 anop
         lda >spriteY
         clc
         adc #38
@@ -2613,7 +3107,6 @@ eraseSpriteDragon1 entry
         lda >BACKGROUND_ADDR,x
         sta >SCREEN_ADDR,x
         long m
-
         lda >rowAddress
         clc
         adc >spriteX
@@ -2627,7 +3120,6 @@ eraseSpriteDragon1 entry
         lda >BACKGROUND_ADDR,x
         sta >SCREEN_ADDR,x
         long m
-
         lda >rowAddress
         clc
         adc >spriteX
@@ -2641,7 +3133,6 @@ eraseSpriteDragon1 entry
         lda >BACKGROUND_ADDR,x
         sta >SCREEN_ADDR,x
         long m
-
         lda >rowAddress
         clc
         adc >spriteX
@@ -2655,7 +3146,6 @@ eraseSpriteDragon1 entry
         lda >BACKGROUND_ADDR,x
         sta >SCREEN_ADDR,x
         long m
-
         lda >rowAddress
         clc
         adc >spriteX
@@ -2669,7 +3159,6 @@ eraseSpriteDragon1 entry
         lda >BACKGROUND_ADDR,x
         sta >SCREEN_ADDR,x
         long m
-
         lda >rowAddress
         clc
         adc >spriteX
@@ -2684,6 +3173,22 @@ eraseSpriteDragon1 entry
         sta >SCREEN_ADDR,x
         long m
 
+
+eraseSpriteDragon1SkipRowErase38 anop
+
+        lda >rowCounter
+        clc
+        adc #1
+        sta >rowCounter
+
+
+        cmp #199
+        bcs eraseSpriteDragon1SkipRowEraseShortJump39
+        bra eraseSpriteDragon1SkipRowEraseDontSkipRow39
+
+eraseSpriteDragon1SkipRowEraseShortJump39 anop
+        brl eraseSpriteDragon1SkipRowErase39
+eraseSpriteDragon1SkipRowEraseDontSkipRow39 anop
         lda >spriteY
         clc
         adc #39
@@ -2705,7 +3210,6 @@ eraseSpriteDragon1 entry
         lda >BACKGROUND_ADDR,x
         sta >SCREEN_ADDR,x
         long m
-
         lda >rowAddress
         clc
         adc >spriteX
@@ -2719,7 +3223,6 @@ eraseSpriteDragon1 entry
         lda >BACKGROUND_ADDR,x
         sta >SCREEN_ADDR,x
         long m
-
         lda >rowAddress
         clc
         adc >spriteX
@@ -2733,7 +3236,6 @@ eraseSpriteDragon1 entry
         lda >BACKGROUND_ADDR,x
         sta >SCREEN_ADDR,x
         long m
-
         lda >rowAddress
         clc
         adc >spriteX
@@ -2747,7 +3249,6 @@ eraseSpriteDragon1 entry
         lda >BACKGROUND_ADDR,x
         sta >SCREEN_ADDR,x
         long m
-
         lda >rowAddress
         clc
         adc >spriteX
@@ -2761,7 +3262,6 @@ eraseSpriteDragon1 entry
         lda >BACKGROUND_ADDR,x
         sta >SCREEN_ADDR,x
         long m
-
         lda >rowAddress
         clc
         adc >spriteX
@@ -2775,6 +3275,14 @@ eraseSpriteDragon1 entry
         lda >BACKGROUND_ADDR,x
         sta >SCREEN_ADDR,x
         long m
+
+
+eraseSpriteDragon1SkipRowErase39 anop
+
+        lda >rowCounter
+        clc
+        adc #1
+        sta >rowCounter
 
 
         rtl
@@ -2785,6 +3293,16 @@ eraseSpriteDragon2 entry
         lsr a
         sta >spriteX
         lda >spriteY
+        sta >rowCounter
+
+        cmp #199
+        bcs eraseSpriteDragon2SkipRowEraseShortJump40
+        bra eraseSpriteDragon2SkipRowEraseDontSkipRow40
+
+eraseSpriteDragon2SkipRowEraseShortJump40 anop
+        brl eraseSpriteDragon2SkipRowErase40
+eraseSpriteDragon2SkipRowEraseDontSkipRow40 anop
+        lda >spriteY
         clc
         adc #0
         asl a
@@ -2797,7 +3315,7 @@ eraseSpriteDragon2 entry
         adc >spriteX
 
         clc
-        adc #1
+        adc #0
         tax
 
 
@@ -2806,6 +3324,22 @@ eraseSpriteDragon2 entry
         sta >SCREEN_ADDR,x
         long m
 
+
+eraseSpriteDragon2SkipRowErase40 anop
+
+        lda >rowCounter
+        clc
+        adc #1
+        sta >rowCounter
+
+
+        cmp #199
+        bcs eraseSpriteDragon2SkipRowEraseShortJump41
+        bra eraseSpriteDragon2SkipRowEraseDontSkipRow41
+
+eraseSpriteDragon2SkipRowEraseShortJump41 anop
+        brl eraseSpriteDragon2SkipRowErase41
+eraseSpriteDragon2SkipRowEraseDontSkipRow41 anop
         lda >spriteY
         clc
         adc #1
@@ -2819,7 +3353,7 @@ eraseSpriteDragon2 entry
         adc >spriteX
 
         clc
-        adc #1
+        adc #0
         tax
 
 
@@ -2828,6 +3362,22 @@ eraseSpriteDragon2 entry
         sta >SCREEN_ADDR,x
         long m
 
+
+eraseSpriteDragon2SkipRowErase41 anop
+
+        lda >rowCounter
+        clc
+        adc #1
+        sta >rowCounter
+
+
+        cmp #199
+        bcs eraseSpriteDragon2SkipRowEraseShortJump42
+        bra eraseSpriteDragon2SkipRowEraseDontSkipRow42
+
+eraseSpriteDragon2SkipRowEraseShortJump42 anop
+        brl eraseSpriteDragon2SkipRowErase42
+eraseSpriteDragon2SkipRowEraseDontSkipRow42 anop
         lda >spriteY
         clc
         adc #2
@@ -2841,6 +3391,82 @@ eraseSpriteDragon2 entry
         adc >spriteX
 
         clc
+        adc #1
+        tax
+
+
+        short m
+        lda >BACKGROUND_ADDR,x
+        sta >SCREEN_ADDR,x
+        long m
+
+
+eraseSpriteDragon2SkipRowErase42 anop
+
+        lda >rowCounter
+        clc
+        adc #1
+        sta >rowCounter
+
+
+        cmp #199
+        bcs eraseSpriteDragon2SkipRowEraseShortJump43
+        bra eraseSpriteDragon2SkipRowEraseDontSkipRow43
+
+eraseSpriteDragon2SkipRowEraseShortJump43 anop
+        brl eraseSpriteDragon2SkipRowErase43
+eraseSpriteDragon2SkipRowEraseDontSkipRow43 anop
+        lda >spriteY
+        clc
+        adc #3
+        asl a
+        tax
+        lda >screenRowOffsets,x
+        sta >rowAddress
+
+        lda >rowAddress
+        clc
+        adc >spriteX
+
+        clc
+        adc #1
+        tax
+
+
+        short m
+        lda >BACKGROUND_ADDR,x
+        sta >SCREEN_ADDR,x
+        long m
+
+
+eraseSpriteDragon2SkipRowErase43 anop
+
+        lda >rowCounter
+        clc
+        adc #1
+        sta >rowCounter
+
+
+        cmp #199
+        bcs eraseSpriteDragon2SkipRowEraseShortJump44
+        bra eraseSpriteDragon2SkipRowEraseDontSkipRow44
+
+eraseSpriteDragon2SkipRowEraseShortJump44 anop
+        brl eraseSpriteDragon2SkipRowErase44
+eraseSpriteDragon2SkipRowEraseDontSkipRow44 anop
+        lda >spriteY
+        clc
+        adc #4
+        asl a
+        tax
+        lda >screenRowOffsets,x
+        sta >rowAddress
+
+        lda >rowAddress
+        clc
+        adc >spriteX
+
+        clc
         adc #2
         tax
 
@@ -2849,7 +3475,6 @@ eraseSpriteDragon2 entry
         lda >BACKGROUND_ADDR,x
         sta >SCREEN_ADDR,x
         long m
-
         lda >rowAddress
         clc
         adc >spriteX
@@ -2863,7 +3488,6 @@ eraseSpriteDragon2 entry
         lda >BACKGROUND_ADDR,x
         sta >SCREEN_ADDR,x
         long m
-
         lda >rowAddress
         clc
         adc >spriteX
@@ -2878,9 +3502,25 @@ eraseSpriteDragon2 entry
         sta >SCREEN_ADDR,x
         long m
 
+
+eraseSpriteDragon2SkipRowErase44 anop
+
+        lda >rowCounter
+        clc
+        adc #1
+        sta >rowCounter
+
+
+        cmp #199
+        bcs eraseSpriteDragon2SkipRowEraseShortJump45
+        bra eraseSpriteDragon2SkipRowEraseDontSkipRow45
+
+eraseSpriteDragon2SkipRowEraseShortJump45 anop
+        brl eraseSpriteDragon2SkipRowErase45
+eraseSpriteDragon2SkipRowEraseDontSkipRow45 anop
         lda >spriteY
         clc
-        adc #3
+        adc #5
         asl a
         tax
         lda >screenRowOffsets,x
@@ -2899,7 +3539,6 @@ eraseSpriteDragon2 entry
         lda >BACKGROUND_ADDR,x
         sta >SCREEN_ADDR,x
         long m
-
         lda >rowAddress
         clc
         adc >spriteX
@@ -2913,7 +3552,6 @@ eraseSpriteDragon2 entry
         lda >BACKGROUND_ADDR,x
         sta >SCREEN_ADDR,x
         long m
-
         lda >rowAddress
         clc
         adc >spriteX
@@ -2928,9 +3566,25 @@ eraseSpriteDragon2 entry
         sta >SCREEN_ADDR,x
         long m
 
+
+eraseSpriteDragon2SkipRowErase45 anop
+
+        lda >rowCounter
+        clc
+        adc #1
+        sta >rowCounter
+
+
+        cmp #199
+        bcs eraseSpriteDragon2SkipRowEraseShortJump46
+        bra eraseSpriteDragon2SkipRowEraseDontSkipRow46
+
+eraseSpriteDragon2SkipRowEraseShortJump46 anop
+        brl eraseSpriteDragon2SkipRowErase46
+eraseSpriteDragon2SkipRowEraseDontSkipRow46 anop
         lda >spriteY
         clc
-        adc #4
+        adc #6
         asl a
         tax
         lda >screenRowOffsets,x
@@ -2949,7 +3603,6 @@ eraseSpriteDragon2 entry
         lda >BACKGROUND_ADDR,x
         sta >SCREEN_ADDR,x
         long m
-
         lda >rowAddress
         clc
         adc >spriteX
@@ -2963,7 +3616,6 @@ eraseSpriteDragon2 entry
         lda >BACKGROUND_ADDR,x
         sta >SCREEN_ADDR,x
         long m
-
         lda >rowAddress
         clc
         adc >spriteX
@@ -2977,7 +3629,6 @@ eraseSpriteDragon2 entry
         lda >BACKGROUND_ADDR,x
         sta >SCREEN_ADDR,x
         long m
-
         lda >rowAddress
         clc
         adc >spriteX
@@ -2991,7 +3642,6 @@ eraseSpriteDragon2 entry
         lda >BACKGROUND_ADDR,x
         sta >SCREEN_ADDR,x
         long m
-
         lda >rowAddress
         clc
         adc >spriteX
@@ -3006,9 +3656,25 @@ eraseSpriteDragon2 entry
         sta >SCREEN_ADDR,x
         long m
 
+
+eraseSpriteDragon2SkipRowErase46 anop
+
+        lda >rowCounter
+        clc
+        adc #1
+        sta >rowCounter
+
+
+        cmp #199
+        bcs eraseSpriteDragon2SkipRowEraseShortJump47
+        bra eraseSpriteDragon2SkipRowEraseDontSkipRow47
+
+eraseSpriteDragon2SkipRowEraseShortJump47 anop
+        brl eraseSpriteDragon2SkipRowErase47
+eraseSpriteDragon2SkipRowEraseDontSkipRow47 anop
         lda >spriteY
         clc
-        adc #5
+        adc #7
         asl a
         tax
         lda >screenRowOffsets,x
@@ -3027,7 +3693,6 @@ eraseSpriteDragon2 entry
         lda >BACKGROUND_ADDR,x
         sta >SCREEN_ADDR,x
         long m
-
         lda >rowAddress
         clc
         adc >spriteX
@@ -3041,7 +3706,6 @@ eraseSpriteDragon2 entry
         lda >BACKGROUND_ADDR,x
         sta >SCREEN_ADDR,x
         long m
-
         lda >rowAddress
         clc
         adc >spriteX
@@ -3055,7 +3719,6 @@ eraseSpriteDragon2 entry
         lda >BACKGROUND_ADDR,x
         sta >SCREEN_ADDR,x
         long m
-
         lda >rowAddress
         clc
         adc >spriteX
@@ -3069,7 +3732,6 @@ eraseSpriteDragon2 entry
         lda >BACKGROUND_ADDR,x
         sta >SCREEN_ADDR,x
         long m
-
         lda >rowAddress
         clc
         adc >spriteX
@@ -3084,106 +3746,22 @@ eraseSpriteDragon2 entry
         sta >SCREEN_ADDR,x
         long m
 
-        lda >spriteY
+
+eraseSpriteDragon2SkipRowErase47 anop
+
+        lda >rowCounter
         clc
-        adc #6
-        asl a
-        tax
-        lda >screenRowOffsets,x
-        sta >rowAddress
-
-        lda >rowAddress
-        clc
-        adc >spriteX
-
-        clc
-        adc #4
-        tax
+        adc #1
+        sta >rowCounter
 
 
-        short m
-        lda >BACKGROUND_ADDR,x
-        sta >SCREEN_ADDR,x
-        long m
+        cmp #199
+        bcs eraseSpriteDragon2SkipRowEraseShortJump48
+        bra eraseSpriteDragon2SkipRowEraseDontSkipRow48
 
-        lda >rowAddress
-        clc
-        adc >spriteX
-
-        clc
-        adc #6
-        tax
-
-
-        short m
-        lda >BACKGROUND_ADDR,x
-        sta >SCREEN_ADDR,x
-        long m
-
-        lda >rowAddress
-        clc
-        adc >spriteX
-
-        clc
-        adc #7
-        tax
-
-
-        short m
-        lda >BACKGROUND_ADDR,x
-        sta >SCREEN_ADDR,x
-        long m
-
-        lda >spriteY
-        clc
-        adc #7
-        asl a
-        tax
-        lda >screenRowOffsets,x
-        sta >rowAddress
-
-        lda >rowAddress
-        clc
-        adc >spriteX
-
-        clc
-        adc #4
-        tax
-
-
-        short m
-        lda >BACKGROUND_ADDR,x
-        sta >SCREEN_ADDR,x
-        long m
-
-        lda >rowAddress
-        clc
-        adc >spriteX
-
-        clc
-        adc #6
-        tax
-
-
-        short m
-        lda >BACKGROUND_ADDR,x
-        sta >SCREEN_ADDR,x
-        long m
-
-        lda >rowAddress
-        clc
-        adc >spriteX
-
-        clc
-        adc #7
-        tax
-
-
-        short m
-        lda >BACKGROUND_ADDR,x
-        sta >SCREEN_ADDR,x
-        long m
-
+eraseSpriteDragon2SkipRowEraseShortJump48 anop
+        brl eraseSpriteDragon2SkipRowErase48
+eraseSpriteDragon2SkipRowEraseDontSkipRow48 anop
         lda >spriteY
         clc
         adc #8
@@ -3205,21 +3783,6 @@ eraseSpriteDragon2 entry
         lda >BACKGROUND_ADDR,x
         sta >SCREEN_ADDR,x
         long m
-
-        lda >rowAddress
-        clc
-        adc >spriteX
-
-        clc
-        adc #5
-        tax
-
-
-        short m
-        lda >BACKGROUND_ADDR,x
-        sta >SCREEN_ADDR,x
-        long m
-
         lda >rowAddress
         clc
         adc >spriteX
@@ -3233,7 +3796,36 @@ eraseSpriteDragon2 entry
         lda >BACKGROUND_ADDR,x
         sta >SCREEN_ADDR,x
         long m
+        lda >rowAddress
+        clc
+        adc >spriteX
 
+        clc
+        adc #7
+        tax
+
+
+        short m
+        lda >BACKGROUND_ADDR,x
+        sta >SCREEN_ADDR,x
+        long m
+
+
+eraseSpriteDragon2SkipRowErase48 anop
+
+        lda >rowCounter
+        clc
+        adc #1
+        sta >rowCounter
+
+
+        cmp #199
+        bcs eraseSpriteDragon2SkipRowEraseShortJump49
+        bra eraseSpriteDragon2SkipRowEraseDontSkipRow49
+
+eraseSpriteDragon2SkipRowEraseShortJump49 anop
+        brl eraseSpriteDragon2SkipRowErase49
+eraseSpriteDragon2SkipRowEraseDontSkipRow49 anop
         lda >spriteY
         clc
         adc #9
@@ -3255,21 +3847,6 @@ eraseSpriteDragon2 entry
         lda >BACKGROUND_ADDR,x
         sta >SCREEN_ADDR,x
         long m
-
-        lda >rowAddress
-        clc
-        adc >spriteX
-
-        clc
-        adc #5
-        tax
-
-
-        short m
-        lda >BACKGROUND_ADDR,x
-        sta >SCREEN_ADDR,x
-        long m
-
         lda >rowAddress
         clc
         adc >spriteX
@@ -3283,7 +3860,36 @@ eraseSpriteDragon2 entry
         lda >BACKGROUND_ADDR,x
         sta >SCREEN_ADDR,x
         long m
+        lda >rowAddress
+        clc
+        adc >spriteX
 
+        clc
+        adc #7
+        tax
+
+
+        short m
+        lda >BACKGROUND_ADDR,x
+        sta >SCREEN_ADDR,x
+        long m
+
+
+eraseSpriteDragon2SkipRowErase49 anop
+
+        lda >rowCounter
+        clc
+        adc #1
+        sta >rowCounter
+
+
+        cmp #199
+        bcs eraseSpriteDragon2SkipRowEraseShortJump50
+        bra eraseSpriteDragon2SkipRowEraseDontSkipRow50
+
+eraseSpriteDragon2SkipRowEraseShortJump50 anop
+        brl eraseSpriteDragon2SkipRowErase50
+eraseSpriteDragon2SkipRowEraseDontSkipRow50 anop
         lda >spriteY
         clc
         adc #10
@@ -3297,20 +3903,6 @@ eraseSpriteDragon2 entry
         adc >spriteX
 
         clc
-        adc #3
-        tax
-
-
-        short m
-        lda >BACKGROUND_ADDR,x
-        sta >SCREEN_ADDR,x
-        long m
-
-        lda >rowAddress
-        clc
-        adc >spriteX
-
-        clc
         adc #4
         tax
 
@@ -3319,7 +3911,6 @@ eraseSpriteDragon2 entry
         lda >BACKGROUND_ADDR,x
         sta >SCREEN_ADDR,x
         long m
-
         lda >rowAddress
         clc
         adc >spriteX
@@ -3333,7 +3924,6 @@ eraseSpriteDragon2 entry
         lda >BACKGROUND_ADDR,x
         sta >SCREEN_ADDR,x
         long m
-
         lda >rowAddress
         clc
         adc >spriteX
@@ -3348,6 +3938,22 @@ eraseSpriteDragon2 entry
         sta >SCREEN_ADDR,x
         long m
 
+
+eraseSpriteDragon2SkipRowErase50 anop
+
+        lda >rowCounter
+        clc
+        adc #1
+        sta >rowCounter
+
+
+        cmp #199
+        bcs eraseSpriteDragon2SkipRowEraseShortJump51
+        bra eraseSpriteDragon2SkipRowEraseDontSkipRow51
+
+eraseSpriteDragon2SkipRowEraseShortJump51 anop
+        brl eraseSpriteDragon2SkipRowErase51
+eraseSpriteDragon2SkipRowEraseDontSkipRow51 anop
         lda >spriteY
         clc
         adc #11
@@ -3361,20 +3967,6 @@ eraseSpriteDragon2 entry
         adc >spriteX
 
         clc
-        adc #3
-        tax
-
-
-        short m
-        lda >BACKGROUND_ADDR,x
-        sta >SCREEN_ADDR,x
-        long m
-
-        lda >rowAddress
-        clc
-        adc >spriteX
-
-        clc
         adc #4
         tax
 
@@ -3383,7 +3975,6 @@ eraseSpriteDragon2 entry
         lda >BACKGROUND_ADDR,x
         sta >SCREEN_ADDR,x
         long m
-
         lda >rowAddress
         clc
         adc >spriteX
@@ -3397,7 +3988,6 @@ eraseSpriteDragon2 entry
         lda >BACKGROUND_ADDR,x
         sta >SCREEN_ADDR,x
         long m
-
         lda >rowAddress
         clc
         adc >spriteX
@@ -3412,6 +4002,22 @@ eraseSpriteDragon2 entry
         sta >SCREEN_ADDR,x
         long m
 
+
+eraseSpriteDragon2SkipRowErase51 anop
+
+        lda >rowCounter
+        clc
+        adc #1
+        sta >rowCounter
+
+
+        cmp #199
+        bcs eraseSpriteDragon2SkipRowEraseShortJump52
+        bra eraseSpriteDragon2SkipRowEraseDontSkipRow52
+
+eraseSpriteDragon2SkipRowEraseShortJump52 anop
+        brl eraseSpriteDragon2SkipRowErase52
+eraseSpriteDragon2SkipRowEraseDontSkipRow52 anop
         lda >spriteY
         clc
         adc #12
@@ -3425,7 +4031,7 @@ eraseSpriteDragon2 entry
         adc >spriteX
 
         clc
-        adc #2
+        adc #3
         tax
 
 
@@ -3433,7 +4039,19 @@ eraseSpriteDragon2 entry
         lda >BACKGROUND_ADDR,x
         sta >SCREEN_ADDR,x
         long m
+        lda >rowAddress
+        clc
+        adc >spriteX
 
+        clc
+        adc #4
+        tax
+
+
+        short m
+        lda >BACKGROUND_ADDR,x
+        sta >SCREEN_ADDR,x
+        long m
         lda >rowAddress
         clc
         adc >spriteX
@@ -3447,7 +4065,36 @@ eraseSpriteDragon2 entry
         lda >BACKGROUND_ADDR,x
         sta >SCREEN_ADDR,x
         long m
+        lda >rowAddress
+        clc
+        adc >spriteX
 
+        clc
+        adc #6
+        tax
+
+
+        short m
+        lda >BACKGROUND_ADDR,x
+        sta >SCREEN_ADDR,x
+        long m
+
+
+eraseSpriteDragon2SkipRowErase52 anop
+
+        lda >rowCounter
+        clc
+        adc #1
+        sta >rowCounter
+
+
+        cmp #199
+        bcs eraseSpriteDragon2SkipRowEraseShortJump53
+        bra eraseSpriteDragon2SkipRowEraseDontSkipRow53
+
+eraseSpriteDragon2SkipRowEraseShortJump53 anop
+        brl eraseSpriteDragon2SkipRowErase53
+eraseSpriteDragon2SkipRowEraseDontSkipRow53 anop
         lda >spriteY
         clc
         adc #13
@@ -3461,7 +4108,7 @@ eraseSpriteDragon2 entry
         adc >spriteX
 
         clc
-        adc #2
+        adc #3
         tax
 
 
@@ -3469,7 +4116,19 @@ eraseSpriteDragon2 entry
         lda >BACKGROUND_ADDR,x
         sta >SCREEN_ADDR,x
         long m
+        lda >rowAddress
+        clc
+        adc >spriteX
 
+        clc
+        adc #4
+        tax
+
+
+        short m
+        lda >BACKGROUND_ADDR,x
+        sta >SCREEN_ADDR,x
+        long m
         lda >rowAddress
         clc
         adc >spriteX
@@ -3483,7 +4142,36 @@ eraseSpriteDragon2 entry
         lda >BACKGROUND_ADDR,x
         sta >SCREEN_ADDR,x
         long m
+        lda >rowAddress
+        clc
+        adc >spriteX
 
+        clc
+        adc #6
+        tax
+
+
+        short m
+        lda >BACKGROUND_ADDR,x
+        sta >SCREEN_ADDR,x
+        long m
+
+
+eraseSpriteDragon2SkipRowErase53 anop
+
+        lda >rowCounter
+        clc
+        adc #1
+        sta >rowCounter
+
+
+        cmp #199
+        bcs eraseSpriteDragon2SkipRowEraseShortJump54
+        bra eraseSpriteDragon2SkipRowEraseDontSkipRow54
+
+eraseSpriteDragon2SkipRowEraseShortJump54 anop
+        brl eraseSpriteDragon2SkipRowErase54
+eraseSpriteDragon2SkipRowEraseDontSkipRow54 anop
         lda >spriteY
         clc
         adc #14
@@ -3497,7 +4185,7 @@ eraseSpriteDragon2 entry
         adc >spriteX
 
         clc
-        adc #1
+        adc #2
         tax
 
 
@@ -3505,7 +4193,6 @@ eraseSpriteDragon2 entry
         lda >BACKGROUND_ADDR,x
         sta >SCREEN_ADDR,x
         long m
-
         lda >rowAddress
         clc
         adc >spriteX
@@ -3520,6 +4207,22 @@ eraseSpriteDragon2 entry
         sta >SCREEN_ADDR,x
         long m
 
+
+eraseSpriteDragon2SkipRowErase54 anop
+
+        lda >rowCounter
+        clc
+        adc #1
+        sta >rowCounter
+
+
+        cmp #199
+        bcs eraseSpriteDragon2SkipRowEraseShortJump55
+        bra eraseSpriteDragon2SkipRowEraseDontSkipRow55
+
+eraseSpriteDragon2SkipRowEraseShortJump55 anop
+        brl eraseSpriteDragon2SkipRowErase55
+eraseSpriteDragon2SkipRowEraseDontSkipRow55 anop
         lda >spriteY
         clc
         adc #15
@@ -3533,7 +4236,7 @@ eraseSpriteDragon2 entry
         adc >spriteX
 
         clc
-        adc #1
+        adc #2
         tax
 
 
@@ -3541,7 +4244,6 @@ eraseSpriteDragon2 entry
         lda >BACKGROUND_ADDR,x
         sta >SCREEN_ADDR,x
         long m
-
         lda >rowAddress
         clc
         adc >spriteX
@@ -3556,6 +4258,22 @@ eraseSpriteDragon2 entry
         sta >SCREEN_ADDR,x
         long m
 
+
+eraseSpriteDragon2SkipRowErase55 anop
+
+        lda >rowCounter
+        clc
+        adc #1
+        sta >rowCounter
+
+
+        cmp #199
+        bcs eraseSpriteDragon2SkipRowEraseShortJump56
+        bra eraseSpriteDragon2SkipRowEraseDontSkipRow56
+
+eraseSpriteDragon2SkipRowEraseShortJump56 anop
+        brl eraseSpriteDragon2SkipRowErase56
+eraseSpriteDragon2SkipRowEraseDontSkipRow56 anop
         lda >spriteY
         clc
         adc #16
@@ -3569,7 +4287,7 @@ eraseSpriteDragon2 entry
         adc >spriteX
 
         clc
-        adc #0
+        adc #1
         tax
 
 
@@ -3577,21 +4295,6 @@ eraseSpriteDragon2 entry
         lda >BACKGROUND_ADDR,x
         sta >SCREEN_ADDR,x
         long m
-
-        lda >rowAddress
-        clc
-        adc >spriteX
-
-        clc
-        adc #4
-        tax
-
-
-        short m
-        lda >BACKGROUND_ADDR,x
-        sta >SCREEN_ADDR,x
-        long m
-
         lda >rowAddress
         clc
         adc >spriteX
@@ -3606,20 +4309,22 @@ eraseSpriteDragon2 entry
         sta >SCREEN_ADDR,x
         long m
 
-        lda >rowAddress
+
+eraseSpriteDragon2SkipRowErase56 anop
+
+        lda >rowCounter
         clc
-        adc >spriteX
-
-        clc
-        adc #6
-        tax
+        adc #1
+        sta >rowCounter
 
 
-        short m
-        lda >BACKGROUND_ADDR,x
-        sta >SCREEN_ADDR,x
-        long m
+        cmp #199
+        bcs eraseSpriteDragon2SkipRowEraseShortJump57
+        bra eraseSpriteDragon2SkipRowEraseDontSkipRow57
 
+eraseSpriteDragon2SkipRowEraseShortJump57 anop
+        brl eraseSpriteDragon2SkipRowErase57
+eraseSpriteDragon2SkipRowEraseDontSkipRow57 anop
         lda >spriteY
         clc
         adc #17
@@ -3633,7 +4338,7 @@ eraseSpriteDragon2 entry
         adc >spriteX
 
         clc
-        adc #0
+        adc #1
         tax
 
 
@@ -3641,21 +4346,6 @@ eraseSpriteDragon2 entry
         lda >BACKGROUND_ADDR,x
         sta >SCREEN_ADDR,x
         long m
-
-        lda >rowAddress
-        clc
-        adc >spriteX
-
-        clc
-        adc #4
-        tax
-
-
-        short m
-        lda >BACKGROUND_ADDR,x
-        sta >SCREEN_ADDR,x
-        long m
-
         lda >rowAddress
         clc
         adc >spriteX
@@ -3670,20 +4360,22 @@ eraseSpriteDragon2 entry
         sta >SCREEN_ADDR,x
         long m
 
-        lda >rowAddress
+
+eraseSpriteDragon2SkipRowErase57 anop
+
+        lda >rowCounter
         clc
-        adc >spriteX
-
-        clc
-        adc #6
-        tax
+        adc #1
+        sta >rowCounter
 
 
-        short m
-        lda >BACKGROUND_ADDR,x
-        sta >SCREEN_ADDR,x
-        long m
+        cmp #199
+        bcs eraseSpriteDragon2SkipRowEraseShortJump58
+        bra eraseSpriteDragon2SkipRowEraseDontSkipRow58
 
+eraseSpriteDragon2SkipRowEraseShortJump58 anop
+        brl eraseSpriteDragon2SkipRowErase58
+eraseSpriteDragon2SkipRowEraseDontSkipRow58 anop
         lda >spriteY
         clc
         adc #18
@@ -3697,7 +4389,7 @@ eraseSpriteDragon2 entry
         adc >spriteX
 
         clc
-        adc #3
+        adc #0
         tax
 
 
@@ -3705,7 +4397,6 @@ eraseSpriteDragon2 entry
         lda >BACKGROUND_ADDR,x
         sta >SCREEN_ADDR,x
         long m
-
         lda >rowAddress
         clc
         adc >spriteX
@@ -3719,7 +4410,6 @@ eraseSpriteDragon2 entry
         lda >BACKGROUND_ADDR,x
         sta >SCREEN_ADDR,x
         long m
-
         lda >rowAddress
         clc
         adc >spriteX
@@ -3733,7 +4423,6 @@ eraseSpriteDragon2 entry
         lda >BACKGROUND_ADDR,x
         sta >SCREEN_ADDR,x
         long m
-
         lda >rowAddress
         clc
         adc >spriteX
@@ -3748,6 +4437,22 @@ eraseSpriteDragon2 entry
         sta >SCREEN_ADDR,x
         long m
 
+
+eraseSpriteDragon2SkipRowErase58 anop
+
+        lda >rowCounter
+        clc
+        adc #1
+        sta >rowCounter
+
+
+        cmp #199
+        bcs eraseSpriteDragon2SkipRowEraseShortJump59
+        bra eraseSpriteDragon2SkipRowEraseDontSkipRow59
+
+eraseSpriteDragon2SkipRowEraseShortJump59 anop
+        brl eraseSpriteDragon2SkipRowErase59
+eraseSpriteDragon2SkipRowEraseDontSkipRow59 anop
         lda >spriteY
         clc
         adc #19
@@ -3761,7 +4466,7 @@ eraseSpriteDragon2 entry
         adc >spriteX
 
         clc
-        adc #3
+        adc #0
         tax
 
 
@@ -3769,7 +4474,6 @@ eraseSpriteDragon2 entry
         lda >BACKGROUND_ADDR,x
         sta >SCREEN_ADDR,x
         long m
-
         lda >rowAddress
         clc
         adc >spriteX
@@ -3783,7 +4487,6 @@ eraseSpriteDragon2 entry
         lda >BACKGROUND_ADDR,x
         sta >SCREEN_ADDR,x
         long m
-
         lda >rowAddress
         clc
         adc >spriteX
@@ -3797,7 +4500,6 @@ eraseSpriteDragon2 entry
         lda >BACKGROUND_ADDR,x
         sta >SCREEN_ADDR,x
         long m
-
         lda >rowAddress
         clc
         adc >spriteX
@@ -3812,6 +4514,22 @@ eraseSpriteDragon2 entry
         sta >SCREEN_ADDR,x
         long m
 
+
+eraseSpriteDragon2SkipRowErase59 anop
+
+        lda >rowCounter
+        clc
+        adc #1
+        sta >rowCounter
+
+
+        cmp #199
+        bcs eraseSpriteDragon2SkipRowEraseShortJump60
+        bra eraseSpriteDragon2SkipRowEraseDontSkipRow60
+
+eraseSpriteDragon2SkipRowEraseShortJump60 anop
+        brl eraseSpriteDragon2SkipRowErase60
+eraseSpriteDragon2SkipRowEraseDontSkipRow60 anop
         lda >spriteY
         clc
         adc #20
@@ -3825,20 +4543,6 @@ eraseSpriteDragon2 entry
         adc >spriteX
 
         clc
-        adc #2
-        tax
-
-
-        short m
-        lda >BACKGROUND_ADDR,x
-        sta >SCREEN_ADDR,x
-        long m
-
-        lda >rowAddress
-        clc
-        adc >spriteX
-
-        clc
         adc #3
         tax
 
@@ -3847,7 +4551,6 @@ eraseSpriteDragon2 entry
         lda >BACKGROUND_ADDR,x
         sta >SCREEN_ADDR,x
         long m
-
         lda >rowAddress
         clc
         adc >spriteX
@@ -3861,7 +4564,6 @@ eraseSpriteDragon2 entry
         lda >BACKGROUND_ADDR,x
         sta >SCREEN_ADDR,x
         long m
-
         lda >rowAddress
         clc
         adc >spriteX
@@ -3875,7 +4577,6 @@ eraseSpriteDragon2 entry
         lda >BACKGROUND_ADDR,x
         sta >SCREEN_ADDR,x
         long m
-
         lda >rowAddress
         clc
         adc >spriteX
@@ -3890,20 +4591,22 @@ eraseSpriteDragon2 entry
         sta >SCREEN_ADDR,x
         long m
 
-        lda >rowAddress
+
+eraseSpriteDragon2SkipRowErase60 anop
+
+        lda >rowCounter
         clc
-        adc >spriteX
-
-        clc
-        adc #7
-        tax
+        adc #1
+        sta >rowCounter
 
 
-        short m
-        lda >BACKGROUND_ADDR,x
-        sta >SCREEN_ADDR,x
-        long m
+        cmp #199
+        bcs eraseSpriteDragon2SkipRowEraseShortJump61
+        bra eraseSpriteDragon2SkipRowEraseDontSkipRow61
 
+eraseSpriteDragon2SkipRowEraseShortJump61 anop
+        brl eraseSpriteDragon2SkipRowErase61
+eraseSpriteDragon2SkipRowEraseDontSkipRow61 anop
         lda >spriteY
         clc
         adc #21
@@ -3917,20 +4620,6 @@ eraseSpriteDragon2 entry
         adc >spriteX
 
         clc
-        adc #2
-        tax
-
-
-        short m
-        lda >BACKGROUND_ADDR,x
-        sta >SCREEN_ADDR,x
-        long m
-
-        lda >rowAddress
-        clc
-        adc >spriteX
-
-        clc
         adc #3
         tax
 
@@ -3939,7 +4628,6 @@ eraseSpriteDragon2 entry
         lda >BACKGROUND_ADDR,x
         sta >SCREEN_ADDR,x
         long m
-
         lda >rowAddress
         clc
         adc >spriteX
@@ -3953,7 +4641,6 @@ eraseSpriteDragon2 entry
         lda >BACKGROUND_ADDR,x
         sta >SCREEN_ADDR,x
         long m
-
         lda >rowAddress
         clc
         adc >spriteX
@@ -3967,7 +4654,6 @@ eraseSpriteDragon2 entry
         lda >BACKGROUND_ADDR,x
         sta >SCREEN_ADDR,x
         long m
-
         lda >rowAddress
         clc
         adc >spriteX
@@ -3982,20 +4668,22 @@ eraseSpriteDragon2 entry
         sta >SCREEN_ADDR,x
         long m
 
-        lda >rowAddress
+
+eraseSpriteDragon2SkipRowErase61 anop
+
+        lda >rowCounter
         clc
-        adc >spriteX
-
-        clc
-        adc #7
-        tax
+        adc #1
+        sta >rowCounter
 
 
-        short m
-        lda >BACKGROUND_ADDR,x
-        sta >SCREEN_ADDR,x
-        long m
+        cmp #199
+        bcs eraseSpriteDragon2SkipRowEraseShortJump62
+        bra eraseSpriteDragon2SkipRowEraseDontSkipRow62
 
+eraseSpriteDragon2SkipRowEraseShortJump62 anop
+        brl eraseSpriteDragon2SkipRowErase62
+eraseSpriteDragon2SkipRowEraseDontSkipRow62 anop
         lda >spriteY
         clc
         adc #22
@@ -4009,20 +4697,6 @@ eraseSpriteDragon2 entry
         adc >spriteX
 
         clc
-        adc #1
-        tax
-
-
-        short m
-        lda >BACKGROUND_ADDR,x
-        sta >SCREEN_ADDR,x
-        long m
-
-        lda >rowAddress
-        clc
-        adc >spriteX
-
-        clc
         adc #2
         tax
 
@@ -4031,7 +4705,6 @@ eraseSpriteDragon2 entry
         lda >BACKGROUND_ADDR,x
         sta >SCREEN_ADDR,x
         long m
-
         lda >rowAddress
         clc
         adc >spriteX
@@ -4045,7 +4718,6 @@ eraseSpriteDragon2 entry
         lda >BACKGROUND_ADDR,x
         sta >SCREEN_ADDR,x
         long m
-
         lda >rowAddress
         clc
         adc >spriteX
@@ -4059,7 +4731,6 @@ eraseSpriteDragon2 entry
         lda >BACKGROUND_ADDR,x
         sta >SCREEN_ADDR,x
         long m
-
         lda >rowAddress
         clc
         adc >spriteX
@@ -4073,7 +4744,6 @@ eraseSpriteDragon2 entry
         lda >BACKGROUND_ADDR,x
         sta >SCREEN_ADDR,x
         long m
-
         lda >rowAddress
         clc
         adc >spriteX
@@ -4087,7 +4757,6 @@ eraseSpriteDragon2 entry
         lda >BACKGROUND_ADDR,x
         sta >SCREEN_ADDR,x
         long m
-
         lda >rowAddress
         clc
         adc >spriteX
@@ -4102,6 +4771,22 @@ eraseSpriteDragon2 entry
         sta >SCREEN_ADDR,x
         long m
 
+
+eraseSpriteDragon2SkipRowErase62 anop
+
+        lda >rowCounter
+        clc
+        adc #1
+        sta >rowCounter
+
+
+        cmp #199
+        bcs eraseSpriteDragon2SkipRowEraseShortJump63
+        bra eraseSpriteDragon2SkipRowEraseDontSkipRow63
+
+eraseSpriteDragon2SkipRowEraseShortJump63 anop
+        brl eraseSpriteDragon2SkipRowErase63
+eraseSpriteDragon2SkipRowEraseDontSkipRow63 anop
         lda >spriteY
         clc
         adc #23
@@ -4115,20 +4800,6 @@ eraseSpriteDragon2 entry
         adc >spriteX
 
         clc
-        adc #1
-        tax
-
-
-        short m
-        lda >BACKGROUND_ADDR,x
-        sta >SCREEN_ADDR,x
-        long m
-
-        lda >rowAddress
-        clc
-        adc >spriteX
-
-        clc
         adc #2
         tax
 
@@ -4137,7 +4808,6 @@ eraseSpriteDragon2 entry
         lda >BACKGROUND_ADDR,x
         sta >SCREEN_ADDR,x
         long m
-
         lda >rowAddress
         clc
         adc >spriteX
@@ -4151,7 +4821,6 @@ eraseSpriteDragon2 entry
         lda >BACKGROUND_ADDR,x
         sta >SCREEN_ADDR,x
         long m
-
         lda >rowAddress
         clc
         adc >spriteX
@@ -4165,7 +4834,6 @@ eraseSpriteDragon2 entry
         lda >BACKGROUND_ADDR,x
         sta >SCREEN_ADDR,x
         long m
-
         lda >rowAddress
         clc
         adc >spriteX
@@ -4179,7 +4847,6 @@ eraseSpriteDragon2 entry
         lda >BACKGROUND_ADDR,x
         sta >SCREEN_ADDR,x
         long m
-
         lda >rowAddress
         clc
         adc >spriteX
@@ -4193,7 +4860,6 @@ eraseSpriteDragon2 entry
         lda >BACKGROUND_ADDR,x
         sta >SCREEN_ADDR,x
         long m
-
         lda >rowAddress
         clc
         adc >spriteX
@@ -4208,6 +4874,22 @@ eraseSpriteDragon2 entry
         sta >SCREEN_ADDR,x
         long m
 
+
+eraseSpriteDragon2SkipRowErase63 anop
+
+        lda >rowCounter
+        clc
+        adc #1
+        sta >rowCounter
+
+
+        cmp #199
+        bcs eraseSpriteDragon2SkipRowEraseShortJump64
+        bra eraseSpriteDragon2SkipRowEraseDontSkipRow64
+
+eraseSpriteDragon2SkipRowEraseShortJump64 anop
+        brl eraseSpriteDragon2SkipRowErase64
+eraseSpriteDragon2SkipRowEraseDontSkipRow64 anop
         lda >spriteY
         clc
         adc #24
@@ -4229,7 +4911,6 @@ eraseSpriteDragon2 entry
         lda >BACKGROUND_ADDR,x
         sta >SCREEN_ADDR,x
         long m
-
         lda >rowAddress
         clc
         adc >spriteX
@@ -4243,7 +4924,6 @@ eraseSpriteDragon2 entry
         lda >BACKGROUND_ADDR,x
         sta >SCREEN_ADDR,x
         long m
-
         lda >rowAddress
         clc
         adc >spriteX
@@ -4257,7 +4937,6 @@ eraseSpriteDragon2 entry
         lda >BACKGROUND_ADDR,x
         sta >SCREEN_ADDR,x
         long m
-
         lda >rowAddress
         clc
         adc >spriteX
@@ -4271,7 +4950,6 @@ eraseSpriteDragon2 entry
         lda >BACKGROUND_ADDR,x
         sta >SCREEN_ADDR,x
         long m
-
         lda >rowAddress
         clc
         adc >spriteX
@@ -4285,7 +4963,6 @@ eraseSpriteDragon2 entry
         lda >BACKGROUND_ADDR,x
         sta >SCREEN_ADDR,x
         long m
-
         lda >rowAddress
         clc
         adc >spriteX
@@ -4299,7 +4976,6 @@ eraseSpriteDragon2 entry
         lda >BACKGROUND_ADDR,x
         sta >SCREEN_ADDR,x
         long m
-
         lda >rowAddress
         clc
         adc >spriteX
@@ -4314,6 +4990,22 @@ eraseSpriteDragon2 entry
         sta >SCREEN_ADDR,x
         long m
 
+
+eraseSpriteDragon2SkipRowErase64 anop
+
+        lda >rowCounter
+        clc
+        adc #1
+        sta >rowCounter
+
+
+        cmp #199
+        bcs eraseSpriteDragon2SkipRowEraseShortJump65
+        bra eraseSpriteDragon2SkipRowEraseDontSkipRow65
+
+eraseSpriteDragon2SkipRowEraseShortJump65 anop
+        brl eraseSpriteDragon2SkipRowErase65
+eraseSpriteDragon2SkipRowEraseDontSkipRow65 anop
         lda >spriteY
         clc
         adc #25
@@ -4335,7 +5027,6 @@ eraseSpriteDragon2 entry
         lda >BACKGROUND_ADDR,x
         sta >SCREEN_ADDR,x
         long m
-
         lda >rowAddress
         clc
         adc >spriteX
@@ -4349,7 +5040,6 @@ eraseSpriteDragon2 entry
         lda >BACKGROUND_ADDR,x
         sta >SCREEN_ADDR,x
         long m
-
         lda >rowAddress
         clc
         adc >spriteX
@@ -4363,7 +5053,6 @@ eraseSpriteDragon2 entry
         lda >BACKGROUND_ADDR,x
         sta >SCREEN_ADDR,x
         long m
-
         lda >rowAddress
         clc
         adc >spriteX
@@ -4377,7 +5066,6 @@ eraseSpriteDragon2 entry
         lda >BACKGROUND_ADDR,x
         sta >SCREEN_ADDR,x
         long m
-
         lda >rowAddress
         clc
         adc >spriteX
@@ -4391,7 +5079,6 @@ eraseSpriteDragon2 entry
         lda >BACKGROUND_ADDR,x
         sta >SCREEN_ADDR,x
         long m
-
         lda >rowAddress
         clc
         adc >spriteX
@@ -4405,7 +5092,6 @@ eraseSpriteDragon2 entry
         lda >BACKGROUND_ADDR,x
         sta >SCREEN_ADDR,x
         long m
-
         lda >rowAddress
         clc
         adc >spriteX
@@ -4420,6 +5106,22 @@ eraseSpriteDragon2 entry
         sta >SCREEN_ADDR,x
         long m
 
+
+eraseSpriteDragon2SkipRowErase65 anop
+
+        lda >rowCounter
+        clc
+        adc #1
+        sta >rowCounter
+
+
+        cmp #199
+        bcs eraseSpriteDragon2SkipRowEraseShortJump66
+        bra eraseSpriteDragon2SkipRowEraseDontSkipRow66
+
+eraseSpriteDragon2SkipRowEraseShortJump66 anop
+        brl eraseSpriteDragon2SkipRowErase66
+eraseSpriteDragon2SkipRowEraseDontSkipRow66 anop
         lda >spriteY
         clc
         adc #26
@@ -4441,7 +5143,6 @@ eraseSpriteDragon2 entry
         lda >BACKGROUND_ADDR,x
         sta >SCREEN_ADDR,x
         long m
-
         lda >rowAddress
         clc
         adc >spriteX
@@ -4455,7 +5156,6 @@ eraseSpriteDragon2 entry
         lda >BACKGROUND_ADDR,x
         sta >SCREEN_ADDR,x
         long m
-
         lda >rowAddress
         clc
         adc >spriteX
@@ -4469,7 +5169,6 @@ eraseSpriteDragon2 entry
         lda >BACKGROUND_ADDR,x
         sta >SCREEN_ADDR,x
         long m
-
         lda >rowAddress
         clc
         adc >spriteX
@@ -4483,7 +5182,6 @@ eraseSpriteDragon2 entry
         lda >BACKGROUND_ADDR,x
         sta >SCREEN_ADDR,x
         long m
-
         lda >rowAddress
         clc
         adc >spriteX
@@ -4497,7 +5195,6 @@ eraseSpriteDragon2 entry
         lda >BACKGROUND_ADDR,x
         sta >SCREEN_ADDR,x
         long m
-
         lda >rowAddress
         clc
         adc >spriteX
@@ -4511,7 +5208,6 @@ eraseSpriteDragon2 entry
         lda >BACKGROUND_ADDR,x
         sta >SCREEN_ADDR,x
         long m
-
         lda >rowAddress
         clc
         adc >spriteX
@@ -4526,6 +5222,22 @@ eraseSpriteDragon2 entry
         sta >SCREEN_ADDR,x
         long m
 
+
+eraseSpriteDragon2SkipRowErase66 anop
+
+        lda >rowCounter
+        clc
+        adc #1
+        sta >rowCounter
+
+
+        cmp #199
+        bcs eraseSpriteDragon2SkipRowEraseShortJump67
+        bra eraseSpriteDragon2SkipRowEraseDontSkipRow67
+
+eraseSpriteDragon2SkipRowEraseShortJump67 anop
+        brl eraseSpriteDragon2SkipRowErase67
+eraseSpriteDragon2SkipRowEraseDontSkipRow67 anop
         lda >spriteY
         clc
         adc #27
@@ -4547,7 +5259,6 @@ eraseSpriteDragon2 entry
         lda >BACKGROUND_ADDR,x
         sta >SCREEN_ADDR,x
         long m
-
         lda >rowAddress
         clc
         adc >spriteX
@@ -4561,7 +5272,6 @@ eraseSpriteDragon2 entry
         lda >BACKGROUND_ADDR,x
         sta >SCREEN_ADDR,x
         long m
-
         lda >rowAddress
         clc
         adc >spriteX
@@ -4575,7 +5285,6 @@ eraseSpriteDragon2 entry
         lda >BACKGROUND_ADDR,x
         sta >SCREEN_ADDR,x
         long m
-
         lda >rowAddress
         clc
         adc >spriteX
@@ -4589,7 +5298,6 @@ eraseSpriteDragon2 entry
         lda >BACKGROUND_ADDR,x
         sta >SCREEN_ADDR,x
         long m
-
         lda >rowAddress
         clc
         adc >spriteX
@@ -4603,7 +5311,6 @@ eraseSpriteDragon2 entry
         lda >BACKGROUND_ADDR,x
         sta >SCREEN_ADDR,x
         long m
-
         lda >rowAddress
         clc
         adc >spriteX
@@ -4617,7 +5324,6 @@ eraseSpriteDragon2 entry
         lda >BACKGROUND_ADDR,x
         sta >SCREEN_ADDR,x
         long m
-
         lda >rowAddress
         clc
         adc >spriteX
@@ -4632,6 +5338,22 @@ eraseSpriteDragon2 entry
         sta >SCREEN_ADDR,x
         long m
 
+
+eraseSpriteDragon2SkipRowErase67 anop
+
+        lda >rowCounter
+        clc
+        adc #1
+        sta >rowCounter
+
+
+        cmp #199
+        bcs eraseSpriteDragon2SkipRowEraseShortJump68
+        bra eraseSpriteDragon2SkipRowEraseDontSkipRow68
+
+eraseSpriteDragon2SkipRowEraseShortJump68 anop
+        brl eraseSpriteDragon2SkipRowErase68
+eraseSpriteDragon2SkipRowEraseDontSkipRow68 anop
         lda >spriteY
         clc
         adc #28
@@ -4653,7 +5375,6 @@ eraseSpriteDragon2 entry
         lda >BACKGROUND_ADDR,x
         sta >SCREEN_ADDR,x
         long m
-
         lda >rowAddress
         clc
         adc >spriteX
@@ -4667,7 +5388,6 @@ eraseSpriteDragon2 entry
         lda >BACKGROUND_ADDR,x
         sta >SCREEN_ADDR,x
         long m
-
         lda >rowAddress
         clc
         adc >spriteX
@@ -4681,7 +5401,6 @@ eraseSpriteDragon2 entry
         lda >BACKGROUND_ADDR,x
         sta >SCREEN_ADDR,x
         long m
-
         lda >rowAddress
         clc
         adc >spriteX
@@ -4695,7 +5414,6 @@ eraseSpriteDragon2 entry
         lda >BACKGROUND_ADDR,x
         sta >SCREEN_ADDR,x
         long m
-
         lda >rowAddress
         clc
         adc >spriteX
@@ -4709,7 +5427,6 @@ eraseSpriteDragon2 entry
         lda >BACKGROUND_ADDR,x
         sta >SCREEN_ADDR,x
         long m
-
         lda >rowAddress
         clc
         adc >spriteX
@@ -4723,7 +5440,6 @@ eraseSpriteDragon2 entry
         lda >BACKGROUND_ADDR,x
         sta >SCREEN_ADDR,x
         long m
-
         lda >rowAddress
         clc
         adc >spriteX
@@ -4738,6 +5454,22 @@ eraseSpriteDragon2 entry
         sta >SCREEN_ADDR,x
         long m
 
+
+eraseSpriteDragon2SkipRowErase68 anop
+
+        lda >rowCounter
+        clc
+        adc #1
+        sta >rowCounter
+
+
+        cmp #199
+        bcs eraseSpriteDragon2SkipRowEraseShortJump69
+        bra eraseSpriteDragon2SkipRowEraseDontSkipRow69
+
+eraseSpriteDragon2SkipRowEraseShortJump69 anop
+        brl eraseSpriteDragon2SkipRowErase69
+eraseSpriteDragon2SkipRowEraseDontSkipRow69 anop
         lda >spriteY
         clc
         adc #29
@@ -4759,7 +5491,6 @@ eraseSpriteDragon2 entry
         lda >BACKGROUND_ADDR,x
         sta >SCREEN_ADDR,x
         long m
-
         lda >rowAddress
         clc
         adc >spriteX
@@ -4773,7 +5504,6 @@ eraseSpriteDragon2 entry
         lda >BACKGROUND_ADDR,x
         sta >SCREEN_ADDR,x
         long m
-
         lda >rowAddress
         clc
         adc >spriteX
@@ -4787,7 +5517,6 @@ eraseSpriteDragon2 entry
         lda >BACKGROUND_ADDR,x
         sta >SCREEN_ADDR,x
         long m
-
         lda >rowAddress
         clc
         adc >spriteX
@@ -4801,7 +5530,6 @@ eraseSpriteDragon2 entry
         lda >BACKGROUND_ADDR,x
         sta >SCREEN_ADDR,x
         long m
-
         lda >rowAddress
         clc
         adc >spriteX
@@ -4815,7 +5543,6 @@ eraseSpriteDragon2 entry
         lda >BACKGROUND_ADDR,x
         sta >SCREEN_ADDR,x
         long m
-
         lda >rowAddress
         clc
         adc >spriteX
@@ -4829,7 +5556,6 @@ eraseSpriteDragon2 entry
         lda >BACKGROUND_ADDR,x
         sta >SCREEN_ADDR,x
         long m
-
         lda >rowAddress
         clc
         adc >spriteX
@@ -4844,6 +5570,22 @@ eraseSpriteDragon2 entry
         sta >SCREEN_ADDR,x
         long m
 
+
+eraseSpriteDragon2SkipRowErase69 anop
+
+        lda >rowCounter
+        clc
+        adc #1
+        sta >rowCounter
+
+
+        cmp #199
+        bcs eraseSpriteDragon2SkipRowEraseShortJump70
+        bra eraseSpriteDragon2SkipRowEraseDontSkipRow70
+
+eraseSpriteDragon2SkipRowEraseShortJump70 anop
+        brl eraseSpriteDragon2SkipRowErase70
+eraseSpriteDragon2SkipRowEraseDontSkipRow70 anop
         lda >spriteY
         clc
         adc #30
@@ -4857,6 +5599,19 @@ eraseSpriteDragon2 entry
         adc >spriteX
 
         clc
+        adc #1
+        tax
+
+
+        short m
+        lda >BACKGROUND_ADDR,x
+        sta >SCREEN_ADDR,x
+        long m
+        lda >rowAddress
+        clc
+        adc >spriteX
+
+        clc
         adc #2
         tax
 
@@ -4865,7 +5620,6 @@ eraseSpriteDragon2 entry
         lda >BACKGROUND_ADDR,x
         sta >SCREEN_ADDR,x
         long m
-
         lda >rowAddress
         clc
         adc >spriteX
@@ -4879,7 +5633,6 @@ eraseSpriteDragon2 entry
         lda >BACKGROUND_ADDR,x
         sta >SCREEN_ADDR,x
         long m
-
         lda >rowAddress
         clc
         adc >spriteX
@@ -4893,7 +5646,6 @@ eraseSpriteDragon2 entry
         lda >BACKGROUND_ADDR,x
         sta >SCREEN_ADDR,x
         long m
-
         lda >rowAddress
         clc
         adc >spriteX
@@ -4907,7 +5659,6 @@ eraseSpriteDragon2 entry
         lda >BACKGROUND_ADDR,x
         sta >SCREEN_ADDR,x
         long m
-
         lda >rowAddress
         clc
         adc >spriteX
@@ -4921,7 +5672,36 @@ eraseSpriteDragon2 entry
         lda >BACKGROUND_ADDR,x
         sta >SCREEN_ADDR,x
         long m
+        lda >rowAddress
+        clc
+        adc >spriteX
 
+        clc
+        adc #7
+        tax
+
+
+        short m
+        lda >BACKGROUND_ADDR,x
+        sta >SCREEN_ADDR,x
+        long m
+
+
+eraseSpriteDragon2SkipRowErase70 anop
+
+        lda >rowCounter
+        clc
+        adc #1
+        sta >rowCounter
+
+
+        cmp #199
+        bcs eraseSpriteDragon2SkipRowEraseShortJump71
+        bra eraseSpriteDragon2SkipRowEraseDontSkipRow71
+
+eraseSpriteDragon2SkipRowEraseShortJump71 anop
+        brl eraseSpriteDragon2SkipRowErase71
+eraseSpriteDragon2SkipRowEraseDontSkipRow71 anop
         lda >spriteY
         clc
         adc #31
@@ -4935,6 +5715,19 @@ eraseSpriteDragon2 entry
         adc >spriteX
 
         clc
+        adc #1
+        tax
+
+
+        short m
+        lda >BACKGROUND_ADDR,x
+        sta >SCREEN_ADDR,x
+        long m
+        lda >rowAddress
+        clc
+        adc >spriteX
+
+        clc
         adc #2
         tax
 
@@ -4943,7 +5736,6 @@ eraseSpriteDragon2 entry
         lda >BACKGROUND_ADDR,x
         sta >SCREEN_ADDR,x
         long m
-
         lda >rowAddress
         clc
         adc >spriteX
@@ -4957,7 +5749,6 @@ eraseSpriteDragon2 entry
         lda >BACKGROUND_ADDR,x
         sta >SCREEN_ADDR,x
         long m
-
         lda >rowAddress
         clc
         adc >spriteX
@@ -4971,7 +5762,6 @@ eraseSpriteDragon2 entry
         lda >BACKGROUND_ADDR,x
         sta >SCREEN_ADDR,x
         long m
-
         lda >rowAddress
         clc
         adc >spriteX
@@ -4985,7 +5775,109 @@ eraseSpriteDragon2 entry
         lda >BACKGROUND_ADDR,x
         sta >SCREEN_ADDR,x
         long m
+        lda >rowAddress
+        clc
+        adc >spriteX
 
+        clc
+        adc #6
+        tax
+
+
+        short m
+        lda >BACKGROUND_ADDR,x
+        sta >SCREEN_ADDR,x
+        long m
+        lda >rowAddress
+        clc
+        adc >spriteX
+
+        clc
+        adc #7
+        tax
+
+
+        short m
+        lda >BACKGROUND_ADDR,x
+        sta >SCREEN_ADDR,x
+        long m
+
+
+eraseSpriteDragon2SkipRowErase71 anop
+
+        lda >rowCounter
+        clc
+        adc #1
+        sta >rowCounter
+
+
+        cmp #199
+        bcs eraseSpriteDragon2SkipRowEraseShortJump72
+        bra eraseSpriteDragon2SkipRowEraseDontSkipRow72
+
+eraseSpriteDragon2SkipRowEraseShortJump72 anop
+        brl eraseSpriteDragon2SkipRowErase72
+eraseSpriteDragon2SkipRowEraseDontSkipRow72 anop
+        lda >spriteY
+        clc
+        adc #32
+        asl a
+        tax
+        lda >screenRowOffsets,x
+        sta >rowAddress
+
+        lda >rowAddress
+        clc
+        adc >spriteX
+
+        clc
+        adc #2
+        tax
+
+
+        short m
+        lda >BACKGROUND_ADDR,x
+        sta >SCREEN_ADDR,x
+        long m
+        lda >rowAddress
+        clc
+        adc >spriteX
+
+        clc
+        adc #3
+        tax
+
+
+        short m
+        lda >BACKGROUND_ADDR,x
+        sta >SCREEN_ADDR,x
+        long m
+        lda >rowAddress
+        clc
+        adc >spriteX
+
+        clc
+        adc #4
+        tax
+
+
+        short m
+        lda >BACKGROUND_ADDR,x
+        sta >SCREEN_ADDR,x
+        long m
+        lda >rowAddress
+        clc
+        adc >spriteX
+
+        clc
+        adc #5
+        tax
+
+
+        short m
+        lda >BACKGROUND_ADDR,x
+        sta >SCREEN_ADDR,x
+        long m
         lda >rowAddress
         clc
         adc >spriteX
@@ -5000,56 +5892,22 @@ eraseSpriteDragon2 entry
         sta >SCREEN_ADDR,x
         long m
 
-        lda >spriteY
+
+eraseSpriteDragon2SkipRowErase72 anop
+
+        lda >rowCounter
         clc
-        adc #32
-        asl a
-        tax
-        lda >screenRowOffsets,x
-        sta >rowAddress
-
-        lda >rowAddress
-        clc
-        adc >spriteX
-
-        clc
-        adc #3
-        tax
+        adc #1
+        sta >rowCounter
 
 
-        short m
-        lda >BACKGROUND_ADDR,x
-        sta >SCREEN_ADDR,x
-        long m
+        cmp #199
+        bcs eraseSpriteDragon2SkipRowEraseShortJump73
+        bra eraseSpriteDragon2SkipRowEraseDontSkipRow73
 
-        lda >rowAddress
-        clc
-        adc >spriteX
-
-        clc
-        adc #4
-        tax
-
-
-        short m
-        lda >BACKGROUND_ADDR,x
-        sta >SCREEN_ADDR,x
-        long m
-
-        lda >rowAddress
-        clc
-        adc >spriteX
-
-        clc
-        adc #5
-        tax
-
-
-        short m
-        lda >BACKGROUND_ADDR,x
-        sta >SCREEN_ADDR,x
-        long m
-
+eraseSpriteDragon2SkipRowEraseShortJump73 anop
+        brl eraseSpriteDragon2SkipRowErase73
+eraseSpriteDragon2SkipRowEraseDontSkipRow73 anop
         lda >spriteY
         clc
         adc #33
@@ -5063,6 +5921,19 @@ eraseSpriteDragon2 entry
         adc >spriteX
 
         clc
+        adc #2
+        tax
+
+
+        short m
+        lda >BACKGROUND_ADDR,x
+        sta >SCREEN_ADDR,x
+        long m
+        lda >rowAddress
+        clc
+        adc >spriteX
+
+        clc
         adc #3
         tax
 
@@ -5071,7 +5942,6 @@ eraseSpriteDragon2 entry
         lda >BACKGROUND_ADDR,x
         sta >SCREEN_ADDR,x
         long m
-
         lda >rowAddress
         clc
         adc >spriteX
@@ -5085,7 +5955,83 @@ eraseSpriteDragon2 entry
         lda >BACKGROUND_ADDR,x
         sta >SCREEN_ADDR,x
         long m
+        lda >rowAddress
+        clc
+        adc >spriteX
 
+        clc
+        adc #5
+        tax
+
+
+        short m
+        lda >BACKGROUND_ADDR,x
+        sta >SCREEN_ADDR,x
+        long m
+        lda >rowAddress
+        clc
+        adc >spriteX
+
+        clc
+        adc #6
+        tax
+
+
+        short m
+        lda >BACKGROUND_ADDR,x
+        sta >SCREEN_ADDR,x
+        long m
+
+
+eraseSpriteDragon2SkipRowErase73 anop
+
+        lda >rowCounter
+        clc
+        adc #1
+        sta >rowCounter
+
+
+        cmp #199
+        bcs eraseSpriteDragon2SkipRowEraseShortJump74
+        bra eraseSpriteDragon2SkipRowEraseDontSkipRow74
+
+eraseSpriteDragon2SkipRowEraseShortJump74 anop
+        brl eraseSpriteDragon2SkipRowErase74
+eraseSpriteDragon2SkipRowEraseDontSkipRow74 anop
+        lda >spriteY
+        clc
+        adc #34
+        asl a
+        tax
+        lda >screenRowOffsets,x
+        sta >rowAddress
+
+        lda >rowAddress
+        clc
+        adc >spriteX
+
+        clc
+        adc #3
+        tax
+
+
+        short m
+        lda >BACKGROUND_ADDR,x
+        sta >SCREEN_ADDR,x
+        long m
+        lda >rowAddress
+        clc
+        adc >spriteX
+
+        clc
+        adc #4
+        tax
+
+
+        short m
+        lda >BACKGROUND_ADDR,x
+        sta >SCREEN_ADDR,x
+        long m
         lda >rowAddress
         clc
         adc >spriteX
@@ -5100,28 +6046,22 @@ eraseSpriteDragon2 entry
         sta >SCREEN_ADDR,x
         long m
 
-        lda >spriteY
+
+eraseSpriteDragon2SkipRowErase74 anop
+
+        lda >rowCounter
         clc
-        adc #34
-        asl a
-        tax
-        lda >screenRowOffsets,x
-        sta >rowAddress
-
-        lda >rowAddress
-        clc
-        adc >spriteX
-
-        clc
-        adc #4
-        tax
+        adc #1
+        sta >rowCounter
 
 
-        short m
-        lda >BACKGROUND_ADDR,x
-        sta >SCREEN_ADDR,x
-        long m
+        cmp #199
+        bcs eraseSpriteDragon2SkipRowEraseShortJump75
+        bra eraseSpriteDragon2SkipRowEraseDontSkipRow75
 
+eraseSpriteDragon2SkipRowEraseShortJump75 anop
+        brl eraseSpriteDragon2SkipRowErase75
+eraseSpriteDragon2SkipRowEraseDontSkipRow75 anop
         lda >spriteY
         clc
         adc #35
@@ -5135,6 +6075,19 @@ eraseSpriteDragon2 entry
         adc >spriteX
 
         clc
+        adc #3
+        tax
+
+
+        short m
+        lda >BACKGROUND_ADDR,x
+        sta >SCREEN_ADDR,x
+        long m
+        lda >rowAddress
+        clc
+        adc >spriteX
+
+        clc
         adc #4
         tax
 
@@ -5143,7 +6096,36 @@ eraseSpriteDragon2 entry
         lda >BACKGROUND_ADDR,x
         sta >SCREEN_ADDR,x
         long m
+        lda >rowAddress
+        clc
+        adc >spriteX
 
+        clc
+        adc #5
+        tax
+
+
+        short m
+        lda >BACKGROUND_ADDR,x
+        sta >SCREEN_ADDR,x
+        long m
+
+
+eraseSpriteDragon2SkipRowErase75 anop
+
+        lda >rowCounter
+        clc
+        adc #1
+        sta >rowCounter
+
+
+        cmp #199
+        bcs eraseSpriteDragon2SkipRowEraseShortJump76
+        bra eraseSpriteDragon2SkipRowEraseDontSkipRow76
+
+eraseSpriteDragon2SkipRowEraseShortJump76 anop
+        brl eraseSpriteDragon2SkipRowErase76
+eraseSpriteDragon2SkipRowEraseDontSkipRow76 anop
         lda >spriteY
         clc
         adc #36
@@ -5157,62 +6139,6 @@ eraseSpriteDragon2 entry
         adc >spriteX
 
         clc
-        adc #0
-        tax
-
-
-        short m
-        lda >BACKGROUND_ADDR,x
-        sta >SCREEN_ADDR,x
-        long m
-
-        lda >rowAddress
-        clc
-        adc >spriteX
-
-        clc
-        adc #1
-        tax
-
-
-        short m
-        lda >BACKGROUND_ADDR,x
-        sta >SCREEN_ADDR,x
-        long m
-
-        lda >rowAddress
-        clc
-        adc >spriteX
-
-        clc
-        adc #2
-        tax
-
-
-        short m
-        lda >BACKGROUND_ADDR,x
-        sta >SCREEN_ADDR,x
-        long m
-
-        lda >rowAddress
-        clc
-        adc >spriteX
-
-        clc
-        adc #3
-        tax
-
-
-        short m
-        lda >BACKGROUND_ADDR,x
-        sta >SCREEN_ADDR,x
-        long m
-
-        lda >rowAddress
-        clc
-        adc >spriteX
-
-        clc
         adc #4
         tax
 
@@ -5222,6 +6148,22 @@ eraseSpriteDragon2 entry
         sta >SCREEN_ADDR,x
         long m
 
+
+eraseSpriteDragon2SkipRowErase76 anop
+
+        lda >rowCounter
+        clc
+        adc #1
+        sta >rowCounter
+
+
+        cmp #199
+        bcs eraseSpriteDragon2SkipRowEraseShortJump77
+        bra eraseSpriteDragon2SkipRowEraseDontSkipRow77
+
+eraseSpriteDragon2SkipRowEraseShortJump77 anop
+        brl eraseSpriteDragon2SkipRowErase77
+eraseSpriteDragon2SkipRowEraseDontSkipRow77 anop
         lda >spriteY
         clc
         adc #37
@@ -5235,62 +6177,6 @@ eraseSpriteDragon2 entry
         adc >spriteX
 
         clc
-        adc #0
-        tax
-
-
-        short m
-        lda >BACKGROUND_ADDR,x
-        sta >SCREEN_ADDR,x
-        long m
-
-        lda >rowAddress
-        clc
-        adc >spriteX
-
-        clc
-        adc #1
-        tax
-
-
-        short m
-        lda >BACKGROUND_ADDR,x
-        sta >SCREEN_ADDR,x
-        long m
-
-        lda >rowAddress
-        clc
-        adc >spriteX
-
-        clc
-        adc #2
-        tax
-
-
-        short m
-        lda >BACKGROUND_ADDR,x
-        sta >SCREEN_ADDR,x
-        long m
-
-        lda >rowAddress
-        clc
-        adc >spriteX
-
-        clc
-        adc #3
-        tax
-
-
-        short m
-        lda >BACKGROUND_ADDR,x
-        sta >SCREEN_ADDR,x
-        long m
-
-        lda >rowAddress
-        clc
-        adc >spriteX
-
-        clc
         adc #4
         tax
 
@@ -5300,6 +6186,22 @@ eraseSpriteDragon2 entry
         sta >SCREEN_ADDR,x
         long m
 
+
+eraseSpriteDragon2SkipRowErase77 anop
+
+        lda >rowCounter
+        clc
+        adc #1
+        sta >rowCounter
+
+
+        cmp #199
+        bcs eraseSpriteDragon2SkipRowEraseShortJump78
+        bra eraseSpriteDragon2SkipRowEraseDontSkipRow78
+
+eraseSpriteDragon2SkipRowEraseShortJump78 anop
+        brl eraseSpriteDragon2SkipRowErase78
+eraseSpriteDragon2SkipRowEraseDontSkipRow78 anop
         lda >spriteY
         clc
         adc #38
@@ -5321,7 +6223,75 @@ eraseSpriteDragon2 entry
         lda >BACKGROUND_ADDR,x
         sta >SCREEN_ADDR,x
         long m
+        lda >rowAddress
+        clc
+        adc >spriteX
 
+        clc
+        adc #1
+        tax
+
+
+        short m
+        lda >BACKGROUND_ADDR,x
+        sta >SCREEN_ADDR,x
+        long m
+        lda >rowAddress
+        clc
+        adc >spriteX
+
+        clc
+        adc #2
+        tax
+
+
+        short m
+        lda >BACKGROUND_ADDR,x
+        sta >SCREEN_ADDR,x
+        long m
+        lda >rowAddress
+        clc
+        adc >spriteX
+
+        clc
+        adc #3
+        tax
+
+
+        short m
+        lda >BACKGROUND_ADDR,x
+        sta >SCREEN_ADDR,x
+        long m
+        lda >rowAddress
+        clc
+        adc >spriteX
+
+        clc
+        adc #4
+        tax
+
+
+        short m
+        lda >BACKGROUND_ADDR,x
+        sta >SCREEN_ADDR,x
+        long m
+
+
+eraseSpriteDragon2SkipRowErase78 anop
+
+        lda >rowCounter
+        clc
+        adc #1
+        sta >rowCounter
+
+
+        cmp #199
+        bcs eraseSpriteDragon2SkipRowEraseShortJump79
+        bra eraseSpriteDragon2SkipRowEraseDontSkipRow79
+
+eraseSpriteDragon2SkipRowEraseShortJump79 anop
+        brl eraseSpriteDragon2SkipRowErase79
+eraseSpriteDragon2SkipRowEraseDontSkipRow79 anop
         lda >spriteY
         clc
         adc #39
@@ -5343,7 +6313,75 @@ eraseSpriteDragon2 entry
         lda >BACKGROUND_ADDR,x
         sta >SCREEN_ADDR,x
         long m
+        lda >rowAddress
+        clc
+        adc >spriteX
 
+        clc
+        adc #1
+        tax
+
+
+        short m
+        lda >BACKGROUND_ADDR,x
+        sta >SCREEN_ADDR,x
+        long m
+        lda >rowAddress
+        clc
+        adc >spriteX
+
+        clc
+        adc #2
+        tax
+
+
+        short m
+        lda >BACKGROUND_ADDR,x
+        sta >SCREEN_ADDR,x
+        long m
+        lda >rowAddress
+        clc
+        adc >spriteX
+
+        clc
+        adc #3
+        tax
+
+
+        short m
+        lda >BACKGROUND_ADDR,x
+        sta >SCREEN_ADDR,x
+        long m
+        lda >rowAddress
+        clc
+        adc >spriteX
+
+        clc
+        adc #4
+        tax
+
+
+        short m
+        lda >BACKGROUND_ADDR,x
+        sta >SCREEN_ADDR,x
+        long m
+
+
+eraseSpriteDragon2SkipRowErase79 anop
+
+        lda >rowCounter
+        clc
+        adc #1
+        sta >rowCounter
+
+
+        cmp #199
+        bcs eraseSpriteDragon2SkipRowEraseShortJump80
+        bra eraseSpriteDragon2SkipRowEraseDontSkipRow80
+
+eraseSpriteDragon2SkipRowEraseShortJump80 anop
+        brl eraseSpriteDragon2SkipRowErase80
+eraseSpriteDragon2SkipRowEraseDontSkipRow80 anop
         lda >spriteY
         clc
         adc #40
@@ -5366,34 +6404,22 @@ eraseSpriteDragon2 entry
         sta >SCREEN_ADDR,x
         long m
 
-        lda >rowAddress
-        clc
-        adc >spriteX
 
+eraseSpriteDragon2SkipRowErase80 anop
+
+        lda >rowCounter
         clc
         adc #1
-        tax
+        sta >rowCounter
 
 
-        short m
-        lda >BACKGROUND_ADDR,x
-        sta >SCREEN_ADDR,x
-        long m
+        cmp #199
+        bcs eraseSpriteDragon2SkipRowEraseShortJump81
+        bra eraseSpriteDragon2SkipRowEraseDontSkipRow81
 
-        lda >rowAddress
-        clc
-        adc >spriteX
-
-        clc
-        adc #2
-        tax
-
-
-        short m
-        lda >BACKGROUND_ADDR,x
-        sta >SCREEN_ADDR,x
-        long m
-
+eraseSpriteDragon2SkipRowEraseShortJump81 anop
+        brl eraseSpriteDragon2SkipRowErase81
+eraseSpriteDragon2SkipRowEraseDontSkipRow81 anop
         lda >spriteY
         clc
         adc #41
@@ -5416,6 +6442,43 @@ eraseSpriteDragon2 entry
         sta >SCREEN_ADDR,x
         long m
 
+
+eraseSpriteDragon2SkipRowErase81 anop
+
+        lda >rowCounter
+        clc
+        adc #1
+        sta >rowCounter
+
+
+        cmp #199
+        bcs eraseSpriteDragon2SkipRowEraseShortJump82
+        bra eraseSpriteDragon2SkipRowEraseDontSkipRow82
+
+eraseSpriteDragon2SkipRowEraseShortJump82 anop
+        brl eraseSpriteDragon2SkipRowErase82
+eraseSpriteDragon2SkipRowEraseDontSkipRow82 anop
+        lda >spriteY
+        clc
+        adc #42
+        asl a
+        tax
+        lda >screenRowOffsets,x
+        sta >rowAddress
+
+        lda >rowAddress
+        clc
+        adc >spriteX
+
+        clc
+        adc #0
+        tax
+
+
+        short m
+        lda >BACKGROUND_ADDR,x
+        sta >SCREEN_ADDR,x
+        long m
         lda >rowAddress
         clc
         adc >spriteX
@@ -5429,7 +6492,6 @@ eraseSpriteDragon2 entry
         lda >BACKGROUND_ADDR,x
         sta >SCREEN_ADDR,x
         long m
-
         lda >rowAddress
         clc
         adc >spriteX
@@ -5444,14 +6506,22 @@ eraseSpriteDragon2 entry
         sta >SCREEN_ADDR,x
         long m
 
-        lda >spriteY
-        clc
-        adc #42
-        asl a
-        tax
-        lda >screenRowOffsets,x
-        sta >rowAddress
 
+eraseSpriteDragon2SkipRowErase82 anop
+
+        lda >rowCounter
+        clc
+        adc #1
+        sta >rowCounter
+
+
+        cmp #199
+        bcs eraseSpriteDragon2SkipRowEraseShortJump83
+        bra eraseSpriteDragon2SkipRowEraseDontSkipRow83
+
+eraseSpriteDragon2SkipRowEraseShortJump83 anop
+        brl eraseSpriteDragon2SkipRowErase83
+eraseSpriteDragon2SkipRowEraseDontSkipRow83 anop
         lda >spriteY
         clc
         adc #43
@@ -5460,1701 +6530,53 @@ eraseSpriteDragon2 entry
         lda >screenRowOffsets,x
         sta >rowAddress
 
-        lda >spriteY
+        lda >rowAddress
         clc
-        adc #44
-        asl a
-        tax
-        lda >screenRowOffsets,x
-        sta >rowAddress
-
-        lda >spriteY
-        clc
-        adc #45
-        asl a
-        tax
-        lda >screenRowOffsets,x
-        sta >rowAddress
-
-        lda >spriteY
-        clc
-        adc #46
-        asl a
-        tax
-        lda >screenRowOffsets,x
-        sta >rowAddress
-
-        lda >spriteY
-        clc
-        adc #47
-        asl a
-        tax
-        lda >screenRowOffsets,x
-        sta >rowAddress
-
-        lda >spriteY
-        clc
-        adc #48
-        asl a
-        tax
-        lda >screenRowOffsets,x
-        sta >rowAddress
-
-        lda >spriteY
-        clc
-        adc #49
-        asl a
-        tax
-        lda >screenRowOffsets,x
-        sta >rowAddress
-
-        lda >spriteY
-        clc
-        adc #50
-        asl a
-        tax
-        lda >screenRowOffsets,x
-        sta >rowAddress
-
-        lda >spriteY
-        clc
-        adc #51
-        asl a
-        tax
-        lda >screenRowOffsets,x
-        sta >rowAddress
-
-        lda >spriteY
-        clc
-        adc #52
-        asl a
-        tax
-        lda >screenRowOffsets,x
-        sta >rowAddress
-
-        lda >spriteY
-        clc
-        adc #53
-        asl a
-        tax
-        lda >screenRowOffsets,x
-        sta >rowAddress
-
-        lda >spriteY
-        clc
-        adc #54
-        asl a
-        tax
-        lda >screenRowOffsets,x
-        sta >rowAddress
-
-        lda >spriteY
-        clc
-        adc #55
-        asl a
-        tax
-        lda >screenRowOffsets,x
-        sta >rowAddress
-
-        lda >spriteY
-        clc
-        adc #56
-        asl a
-        tax
-        lda >screenRowOffsets,x
-        sta >rowAddress
-
-        lda >spriteY
-        clc
-        adc #57
-        asl a
-        tax
-        lda >screenRowOffsets,x
-        sta >rowAddress
-
-        lda >spriteY
-        clc
-        adc #58
-        asl a
-        tax
-        lda >screenRowOffsets,x
-        sta >rowAddress
-
-        lda >spriteY
-        clc
-        adc #59
-        asl a
-        tax
-        lda >screenRowOffsets,x
-        sta >rowAddress
-
-        lda >spriteY
-        clc
-        adc #60
-        asl a
-        tax
-        lda >screenRowOffsets,x
-        sta >rowAddress
-
-        lda >spriteY
-        clc
-        adc #61
-        asl a
-        tax
-        lda >screenRowOffsets,x
-        sta >rowAddress
-
-        lda >spriteY
-        clc
-        adc #62
-        asl a
-        tax
-        lda >screenRowOffsets,x
-        sta >rowAddress
-
-        lda >spriteY
-        clc
-        adc #63
-        asl a
-        tax
-        lda >screenRowOffsets,x
-        sta >rowAddress
-
-        lda >spriteY
-        clc
-        adc #64
-        asl a
-        tax
-        lda >screenRowOffsets,x
-        sta >rowAddress
-
-        lda >spriteY
-        clc
-        adc #65
-        asl a
-        tax
-        lda >screenRowOffsets,x
-        sta >rowAddress
-
-        lda >spriteY
-        clc
-        adc #66
-        asl a
-        tax
-        lda >screenRowOffsets,x
-        sta >rowAddress
-
-        lda >spriteY
-        clc
-        adc #67
-        asl a
-        tax
-        lda >screenRowOffsets,x
-        sta >rowAddress
-
-        lda >spriteY
-        clc
-        adc #68
-        asl a
-        tax
-        lda >screenRowOffsets,x
-        sta >rowAddress
-
-        lda >spriteY
-        clc
-        adc #69
-        asl a
-        tax
-        lda >screenRowOffsets,x
-        sta >rowAddress
-
-        lda >spriteY
-        clc
-        adc #70
-        asl a
-        tax
-        lda >screenRowOffsets,x
-        sta >rowAddress
-
-        lda >spriteY
-        clc
-        adc #71
-        asl a
-        tax
-        lda >screenRowOffsets,x
-        sta >rowAddress
-
-        lda >spriteY
-        clc
-        adc #72
-        asl a
-        tax
-        lda >screenRowOffsets,x
-        sta >rowAddress
-
-        lda >spriteY
-        clc
-        adc #73
-        asl a
-        tax
-        lda >screenRowOffsets,x
-        sta >rowAddress
-
-        lda >spriteY
-        clc
-        adc #74
-        asl a
-        tax
-        lda >screenRowOffsets,x
-        sta >rowAddress
-
-        lda >spriteY
-        clc
-        adc #75
-        asl a
-        tax
-        lda >screenRowOffsets,x
-        sta >rowAddress
-
-        lda >spriteY
-        clc
-        adc #76
-        asl a
-        tax
-        lda >screenRowOffsets,x
-        sta >rowAddress
-
-        lda >spriteY
-        clc
-        adc #77
-        asl a
-        tax
-        lda >screenRowOffsets,x
-        sta >rowAddress
-
-        lda >spriteY
-        clc
-        adc #78
-        asl a
-        tax
-        lda >screenRowOffsets,x
-        sta >rowAddress
-
-        lda >spriteY
-        clc
-        adc #79
-        asl a
-        tax
-        lda >screenRowOffsets,x
-        sta >rowAddress
-
-        lda >spriteY
-        clc
-        adc #80
-        asl a
-        tax
-        lda >screenRowOffsets,x
-        sta >rowAddress
-
-        lda >spriteY
-        clc
-        adc #81
-        asl a
-        tax
-        lda >screenRowOffsets,x
-        sta >rowAddress
-
-        lda >spriteY
-        clc
-        adc #82
-        asl a
-        tax
-        lda >screenRowOffsets,x
-        sta >rowAddress
-
-        lda >spriteY
-        clc
-        adc #83
-        asl a
-        tax
-        lda >screenRowOffsets,x
-        sta >rowAddress
-
-        lda >spriteY
-        clc
-        adc #84
-        asl a
-        tax
-        lda >screenRowOffsets,x
-        sta >rowAddress
-
-        lda >spriteY
-        clc
-        adc #85
-        asl a
-        tax
-        lda >screenRowOffsets,x
-        sta >rowAddress
-
-        lda >spriteY
-        clc
-        adc #86
-        asl a
-        tax
-        lda >screenRowOffsets,x
-        sta >rowAddress
-
-        lda >spriteY
-        clc
-        adc #87
-        asl a
-        tax
-        lda >screenRowOffsets,x
-        sta >rowAddress
-
-        lda >spriteY
-        clc
-        adc #88
-        asl a
-        tax
-        lda >screenRowOffsets,x
-        sta >rowAddress
-
-        lda >spriteY
-        clc
-        adc #89
-        asl a
-        tax
-        lda >screenRowOffsets,x
-        sta >rowAddress
-
-        lda >spriteY
-        clc
-        adc #90
-        asl a
-        tax
-        lda >screenRowOffsets,x
-        sta >rowAddress
-
-        lda >spriteY
-        clc
-        adc #91
-        asl a
-        tax
-        lda >screenRowOffsets,x
-        sta >rowAddress
-
-        lda >spriteY
-        clc
-        adc #92
-        asl a
-        tax
-        lda >screenRowOffsets,x
-        sta >rowAddress
-
-        lda >spriteY
-        clc
-        adc #93
-        asl a
-        tax
-        lda >screenRowOffsets,x
-        sta >rowAddress
-
-        lda >spriteY
-        clc
-        adc #94
-        asl a
-        tax
-        lda >screenRowOffsets,x
-        sta >rowAddress
-
-        lda >spriteY
-        clc
-        adc #95
-        asl a
-        tax
-        lda >screenRowOffsets,x
-        sta >rowAddress
-
-        lda >spriteY
-        clc
-        adc #96
-        asl a
-        tax
-        lda >screenRowOffsets,x
-        sta >rowAddress
-
-        lda >spriteY
-        clc
-        adc #97
-        asl a
-        tax
-        lda >screenRowOffsets,x
-        sta >rowAddress
-
-        lda >spriteY
-        clc
-        adc #98
-        asl a
-        tax
-        lda >screenRowOffsets,x
-        sta >rowAddress
-
-        lda >spriteY
-        clc
-        adc #99
-        asl a
-        tax
-        lda >screenRowOffsets,x
-        sta >rowAddress
-
-        lda >spriteY
-        clc
-        adc #100
-        asl a
-        tax
-        lda >screenRowOffsets,x
-        sta >rowAddress
-
-        lda >spriteY
-        clc
-        adc #101
-        asl a
-        tax
-        lda >screenRowOffsets,x
-        sta >rowAddress
-
-        lda >spriteY
-        clc
-        adc #102
-        asl a
-        tax
-        lda >screenRowOffsets,x
-        sta >rowAddress
-
-        lda >spriteY
-        clc
-        adc #103
-        asl a
-        tax
-        lda >screenRowOffsets,x
-        sta >rowAddress
-
-        lda >spriteY
-        clc
-        adc #104
-        asl a
-        tax
-        lda >screenRowOffsets,x
-        sta >rowAddress
-
-        lda >spriteY
-        clc
-        adc #105
-        asl a
-        tax
-        lda >screenRowOffsets,x
-        sta >rowAddress
-
-        lda >spriteY
-        clc
-        adc #106
-        asl a
-        tax
-        lda >screenRowOffsets,x
-        sta >rowAddress
-
-        lda >spriteY
-        clc
-        adc #107
-        asl a
-        tax
-        lda >screenRowOffsets,x
-        sta >rowAddress
-
-        lda >spriteY
-        clc
-        adc #108
-        asl a
-        tax
-        lda >screenRowOffsets,x
-        sta >rowAddress
-
-        lda >spriteY
-        clc
-        adc #109
-        asl a
-        tax
-        lda >screenRowOffsets,x
-        sta >rowAddress
-
-        lda >spriteY
-        clc
-        adc #110
-        asl a
-        tax
-        lda >screenRowOffsets,x
-        sta >rowAddress
-
-        lda >spriteY
-        clc
-        adc #111
-        asl a
-        tax
-        lda >screenRowOffsets,x
-        sta >rowAddress
-
-        lda >spriteY
-        clc
-        adc #112
-        asl a
-        tax
-        lda >screenRowOffsets,x
-        sta >rowAddress
-
-        lda >spriteY
-        clc
-        adc #113
-        asl a
-        tax
-        lda >screenRowOffsets,x
-        sta >rowAddress
-
-        lda >spriteY
-        clc
-        adc #114
-        asl a
-        tax
-        lda >screenRowOffsets,x
-        sta >rowAddress
-
-        lda >spriteY
-        clc
-        adc #115
-        asl a
-        tax
-        lda >screenRowOffsets,x
-        sta >rowAddress
-
-        lda >spriteY
-        clc
-        adc #116
-        asl a
-        tax
-        lda >screenRowOffsets,x
-        sta >rowAddress
-
-        lda >spriteY
-        clc
-        adc #117
-        asl a
-        tax
-        lda >screenRowOffsets,x
-        sta >rowAddress
-
-        lda >spriteY
-        clc
-        adc #118
-        asl a
-        tax
-        lda >screenRowOffsets,x
-        sta >rowAddress
-
-        lda >spriteY
-        clc
-        adc #119
-        asl a
-        tax
-        lda >screenRowOffsets,x
-        sta >rowAddress
-
-        lda >spriteY
-        clc
-        adc #120
-        asl a
-        tax
-        lda >screenRowOffsets,x
-        sta >rowAddress
-
-        lda >spriteY
-        clc
-        adc #121
-        asl a
-        tax
-        lda >screenRowOffsets,x
-        sta >rowAddress
-
-        lda >spriteY
-        clc
-        adc #122
-        asl a
-        tax
-        lda >screenRowOffsets,x
-        sta >rowAddress
-
-        lda >spriteY
-        clc
-        adc #123
-        asl a
-        tax
-        lda >screenRowOffsets,x
-        sta >rowAddress
-
-        lda >spriteY
-        clc
-        adc #124
-        asl a
-        tax
-        lda >screenRowOffsets,x
-        sta >rowAddress
-
-        lda >spriteY
-        clc
-        adc #125
-        asl a
-        tax
-        lda >screenRowOffsets,x
-        sta >rowAddress
-
-        lda >spriteY
-        clc
-        adc #126
-        asl a
-        tax
-        lda >screenRowOffsets,x
-        sta >rowAddress
-
-        lda >spriteY
-        clc
-        adc #127
-        asl a
-        tax
-        lda >screenRowOffsets,x
-        sta >rowAddress
-
-        lda >spriteY
-        clc
-        adc #128
-        asl a
-        tax
-        lda >screenRowOffsets,x
-        sta >rowAddress
-
-        lda >spriteY
-        clc
-        adc #129
-        asl a
-        tax
-        lda >screenRowOffsets,x
-        sta >rowAddress
-
-        lda >spriteY
-        clc
-        adc #130
-        asl a
-        tax
-        lda >screenRowOffsets,x
-        sta >rowAddress
-
-        lda >spriteY
-        clc
-        adc #131
-        asl a
-        tax
-        lda >screenRowOffsets,x
-        sta >rowAddress
-
-        lda >spriteY
-        clc
-        adc #132
-        asl a
-        tax
-        lda >screenRowOffsets,x
-        sta >rowAddress
-
-        lda >spriteY
-        clc
-        adc #133
-        asl a
-        tax
-        lda >screenRowOffsets,x
-        sta >rowAddress
-
-        lda >spriteY
-        clc
-        adc #134
-        asl a
-        tax
-        lda >screenRowOffsets,x
-        sta >rowAddress
-
-        lda >spriteY
-        clc
-        adc #135
-        asl a
-        tax
-        lda >screenRowOffsets,x
-        sta >rowAddress
-
-        lda >spriteY
-        clc
-        adc #136
-        asl a
-        tax
-        lda >screenRowOffsets,x
-        sta >rowAddress
-
-        lda >spriteY
-        clc
-        adc #137
-        asl a
-        tax
-        lda >screenRowOffsets,x
-        sta >rowAddress
-
-        lda >spriteY
-        clc
-        adc #138
-        asl a
-        tax
-        lda >screenRowOffsets,x
-        sta >rowAddress
-
-        lda >spriteY
-        clc
-        adc #139
-        asl a
-        tax
-        lda >screenRowOffsets,x
-        sta >rowAddress
-
-        lda >spriteY
-        clc
-        adc #140
-        asl a
-        tax
-        lda >screenRowOffsets,x
-        sta >rowAddress
-
-        lda >spriteY
-        clc
-        adc #141
-        asl a
-        tax
-        lda >screenRowOffsets,x
-        sta >rowAddress
-
-        lda >spriteY
-        clc
-        adc #142
-        asl a
-        tax
-        lda >screenRowOffsets,x
-        sta >rowAddress
-
-        lda >spriteY
-        clc
-        adc #143
-        asl a
-        tax
-        lda >screenRowOffsets,x
-        sta >rowAddress
-
-        lda >spriteY
-        clc
-        adc #144
-        asl a
-        tax
-        lda >screenRowOffsets,x
-        sta >rowAddress
-
-        lda >spriteY
-        clc
-        adc #145
-        asl a
-        tax
-        lda >screenRowOffsets,x
-        sta >rowAddress
-
-        lda >spriteY
-        clc
-        adc #146
-        asl a
-        tax
-        lda >screenRowOffsets,x
-        sta >rowAddress
-
-        lda >spriteY
-        clc
-        adc #147
-        asl a
-        tax
-        lda >screenRowOffsets,x
-        sta >rowAddress
-
-        lda >spriteY
-        clc
-        adc #148
-        asl a
-        tax
-        lda >screenRowOffsets,x
-        sta >rowAddress
-
-        lda >spriteY
-        clc
-        adc #149
-        asl a
-        tax
-        lda >screenRowOffsets,x
-        sta >rowAddress
-
-        lda >spriteY
-        clc
-        adc #150
-        asl a
-        tax
-        lda >screenRowOffsets,x
-        sta >rowAddress
-
-        lda >spriteY
-        clc
-        adc #151
-        asl a
-        tax
-        lda >screenRowOffsets,x
-        sta >rowAddress
-
-        lda >spriteY
-        clc
-        adc #152
-        asl a
-        tax
-        lda >screenRowOffsets,x
-        sta >rowAddress
-
-        lda >spriteY
-        clc
-        adc #153
-        asl a
-        tax
-        lda >screenRowOffsets,x
-        sta >rowAddress
-
-        lda >spriteY
-        clc
-        adc #154
-        asl a
-        tax
-        lda >screenRowOffsets,x
-        sta >rowAddress
-
-        lda >spriteY
-        clc
-        adc #155
-        asl a
-        tax
-        lda >screenRowOffsets,x
-        sta >rowAddress
-
-        lda >spriteY
-        clc
-        adc #156
-        asl a
-        tax
-        lda >screenRowOffsets,x
-        sta >rowAddress
-
-        lda >spriteY
-        clc
-        adc #157
-        asl a
-        tax
-        lda >screenRowOffsets,x
-        sta >rowAddress
-
-        lda >spriteY
-        clc
-        adc #158
-        asl a
-        tax
-        lda >screenRowOffsets,x
-        sta >rowAddress
-
-        lda >spriteY
-        clc
-        adc #159
-        asl a
-        tax
-        lda >screenRowOffsets,x
-        sta >rowAddress
-
-        lda >spriteY
-        clc
-        adc #160
-        asl a
-        tax
-        lda >screenRowOffsets,x
-        sta >rowAddress
-
-        lda >spriteY
-        clc
-        adc #161
-        asl a
-        tax
-        lda >screenRowOffsets,x
-        sta >rowAddress
-
-        lda >spriteY
-        clc
-        adc #162
-        asl a
-        tax
-        lda >screenRowOffsets,x
-        sta >rowAddress
-
-        lda >spriteY
-        clc
-        adc #163
-        asl a
-        tax
-        lda >screenRowOffsets,x
-        sta >rowAddress
-
-        lda >spriteY
-        clc
-        adc #164
-        asl a
-        tax
-        lda >screenRowOffsets,x
-        sta >rowAddress
-
-        lda >spriteY
-        clc
-        adc #165
-        asl a
-        tax
-        lda >screenRowOffsets,x
-        sta >rowAddress
-
-        lda >spriteY
-        clc
-        adc #166
-        asl a
-        tax
-        lda >screenRowOffsets,x
-        sta >rowAddress
-
-        lda >spriteY
-        clc
-        adc #167
-        asl a
-        tax
-        lda >screenRowOffsets,x
-        sta >rowAddress
-
-        lda >spriteY
-        clc
-        adc #168
-        asl a
-        tax
-        lda >screenRowOffsets,x
-        sta >rowAddress
-
-        lda >spriteY
-        clc
-        adc #169
-        asl a
-        tax
-        lda >screenRowOffsets,x
-        sta >rowAddress
-
-        lda >spriteY
-        clc
-        adc #170
-        asl a
-        tax
-        lda >screenRowOffsets,x
-        sta >rowAddress
-
-        lda >spriteY
-        clc
-        adc #171
-        asl a
-        tax
-        lda >screenRowOffsets,x
-        sta >rowAddress
-
-        lda >spriteY
-        clc
-        adc #172
-        asl a
-        tax
-        lda >screenRowOffsets,x
-        sta >rowAddress
-
-        lda >spriteY
-        clc
-        adc #173
-        asl a
-        tax
-        lda >screenRowOffsets,x
-        sta >rowAddress
-
-        lda >spriteY
-        clc
-        adc #174
-        asl a
-        tax
-        lda >screenRowOffsets,x
-        sta >rowAddress
-
-        lda >spriteY
-        clc
-        adc #175
-        asl a
-        tax
-        lda >screenRowOffsets,x
-        sta >rowAddress
-
-        lda >spriteY
-        clc
-        adc #176
-        asl a
-        tax
-        lda >screenRowOffsets,x
-        sta >rowAddress
-
-        lda >spriteY
-        clc
-        adc #177
-        asl a
-        tax
-        lda >screenRowOffsets,x
-        sta >rowAddress
-
-        lda >spriteY
-        clc
-        adc #178
-        asl a
-        tax
-        lda >screenRowOffsets,x
-        sta >rowAddress
-
-        lda >spriteY
-        clc
-        adc #179
-        asl a
-        tax
-        lda >screenRowOffsets,x
-        sta >rowAddress
-
-        lda >spriteY
-        clc
-        adc #180
-        asl a
-        tax
-        lda >screenRowOffsets,x
-        sta >rowAddress
-
-        lda >spriteY
-        clc
-        adc #181
-        asl a
-        tax
-        lda >screenRowOffsets,x
-        sta >rowAddress
-
-        lda >spriteY
-        clc
-        adc #182
-        asl a
-        tax
-        lda >screenRowOffsets,x
-        sta >rowAddress
-
-        lda >spriteY
-        clc
-        adc #183
-        asl a
-        tax
-        lda >screenRowOffsets,x
-        sta >rowAddress
-
-        lda >spriteY
-        clc
-        adc #184
-        asl a
-        tax
-        lda >screenRowOffsets,x
-        sta >rowAddress
-
-        lda >spriteY
-        clc
-        adc #185
-        asl a
-        tax
-        lda >screenRowOffsets,x
-        sta >rowAddress
-
-        lda >spriteY
-        clc
-        adc #186
-        asl a
-        tax
-        lda >screenRowOffsets,x
-        sta >rowAddress
-
-        lda >spriteY
-        clc
-        adc #187
-        asl a
-        tax
-        lda >screenRowOffsets,x
-        sta >rowAddress
-
-        lda >spriteY
-        clc
-        adc #188
-        asl a
-        tax
-        lda >screenRowOffsets,x
-        sta >rowAddress
-
-        lda >spriteY
-        clc
-        adc #189
-        asl a
-        tax
-        lda >screenRowOffsets,x
-        sta >rowAddress
-
-        lda >spriteY
-        clc
-        adc #190
-        asl a
-        tax
-        lda >screenRowOffsets,x
-        sta >rowAddress
-
-        lda >spriteY
-        clc
-        adc #191
-        asl a
-        tax
-        lda >screenRowOffsets,x
-        sta >rowAddress
-
-        lda >spriteY
-        clc
-        adc #192
-        asl a
-        tax
-        lda >screenRowOffsets,x
-        sta >rowAddress
-
-        lda >spriteY
-        clc
-        adc #193
-        asl a
-        tax
-        lda >screenRowOffsets,x
-        sta >rowAddress
-
-        lda >spriteY
-        clc
-        adc #194
-        asl a
-        tax
-        lda >screenRowOffsets,x
-        sta >rowAddress
-
-        lda >spriteY
-        clc
-        adc #195
-        asl a
-        tax
-        lda >screenRowOffsets,x
-        sta >rowAddress
-
-        lda >spriteY
-        clc
-        adc #196
-        asl a
-        tax
-        lda >screenRowOffsets,x
-        sta >rowAddress
-
-        lda >spriteY
-        clc
-        adc #197
-        asl a
-        tax
-        lda >screenRowOffsets,x
-        sta >rowAddress
-
-        lda >spriteY
-        clc
-        adc #198
-        asl a
-        tax
-        lda >screenRowOffsets,x
-        sta >rowAddress
-
-        lda >spriteY
-        clc
-        adc #199
-        asl a
-        tax
-        lda >screenRowOffsets,x
-        sta >rowAddress
-
-        lda >spriteY
-        clc
-        adc #200
-        asl a
-        tax
-        lda >screenRowOffsets,x
-        sta >rowAddress
-
-        lda >spriteY
-        clc
-        adc #201
-        asl a
-        tax
-        lda >screenRowOffsets,x
-        sta >rowAddress
-
-        lda >spriteY
-        clc
-        adc #202
-        asl a
-        tax
-        lda >screenRowOffsets,x
-        sta >rowAddress
-
-        lda >spriteY
-        clc
-        adc #203
-        asl a
-        tax
-        lda >screenRowOffsets,x
-        sta >rowAddress
-
-        lda >spriteY
-        clc
-        adc #204
-        asl a
-        tax
-        lda >screenRowOffsets,x
-        sta >rowAddress
-
-        lda >spriteY
-        clc
-        adc #205
-        asl a
-        tax
-        lda >screenRowOffsets,x
-        sta >rowAddress
+        adc >spriteX
 
-        lda >spriteY
         clc
-        adc #206
-        asl a
+        adc #0
         tax
-        lda >screenRowOffsets,x
-        sta >rowAddress
 
-        lda >spriteY
-        clc
-        adc #207
-        asl a
-        tax
-        lda >screenRowOffsets,x
-        sta >rowAddress
-
-        lda >spriteY
-        clc
-        adc #208
-        asl a
-        tax
-        lda >screenRowOffsets,x
-        sta >rowAddress
-
-        lda >spriteY
-        clc
-        adc #209
-        asl a
-        tax
-        lda >screenRowOffsets,x
-        sta >rowAddress
-
-        lda >spriteY
-        clc
-        adc #210
-        asl a
-        tax
-        lda >screenRowOffsets,x
-        sta >rowAddress
-
-        lda >spriteY
-        clc
-        adc #211
-        asl a
-        tax
-        lda >screenRowOffsets,x
-        sta >rowAddress
-
-        lda >spriteY
-        clc
-        adc #212
-        asl a
-        tax
-        lda >screenRowOffsets,x
-        sta >rowAddress
-
-        lda >spriteY
-        clc
-        adc #213
-        asl a
-        tax
-        lda >screenRowOffsets,x
-        sta >rowAddress
-
-        lda >spriteY
-        clc
-        adc #214
-        asl a
-        tax
-        lda >screenRowOffsets,x
-        sta >rowAddress
-
-        lda >spriteY
-        clc
-        adc #215
-        asl a
-        tax
-        lda >screenRowOffsets,x
-        sta >rowAddress
-
-        lda >spriteY
-        clc
-        adc #216
-        asl a
-        tax
-        lda >screenRowOffsets,x
-        sta >rowAddress
-
-        lda >spriteY
-        clc
-        adc #217
-        asl a
-        tax
-        lda >screenRowOffsets,x
-        sta >rowAddress
-
-        lda >spriteY
-        clc
-        adc #218
-        asl a
-        tax
-        lda >screenRowOffsets,x
-        sta >rowAddress
-
-        lda >spriteY
-        clc
-        adc #219
-        asl a
-        tax
-        lda >screenRowOffsets,x
-        sta >rowAddress
-
-        lda >spriteY
-        clc
-        adc #220
-        asl a
-        tax
-        lda >screenRowOffsets,x
-        sta >rowAddress
-
-        lda >spriteY
-        clc
-        adc #221
-        asl a
-        tax
-        lda >screenRowOffsets,x
-        sta >rowAddress
-
-        lda >spriteY
-        clc
-        adc #222
-        asl a
-        tax
-        lda >screenRowOffsets,x
-        sta >rowAddress
-
-        lda >spriteY
-        clc
-        adc #223
-        asl a
-        tax
-        lda >screenRowOffsets,x
-        sta >rowAddress
-
-        lda >spriteY
-        clc
-        adc #224
-        asl a
-        tax
-        lda >screenRowOffsets,x
-        sta >rowAddress
-
-        lda >spriteY
-        clc
-        adc #225
-        asl a
-        tax
-        lda >screenRowOffsets,x
-        sta >rowAddress
-
-        lda >spriteY
-        clc
-        adc #226
-        asl a
-        tax
-        lda >screenRowOffsets,x
-        sta >rowAddress
-
-        lda >spriteY
-        clc
-        adc #227
-        asl a
-        tax
-        lda >screenRowOffsets,x
-        sta >rowAddress
-
-        lda >spriteY
-        clc
-        adc #228
-        asl a
-        tax
-        lda >screenRowOffsets,x
-        sta >rowAddress
-
-        lda >spriteY
-        clc
-        adc #229
-        asl a
-        tax
-        lda >screenRowOffsets,x
-        sta >rowAddress
-
-        lda >spriteY
-        clc
-        adc #230
-        asl a
-        tax
-        lda >screenRowOffsets,x
-        sta >rowAddress
-
-        lda >spriteY
-        clc
-        adc #231
-        asl a
-        tax
-        lda >screenRowOffsets,x
-        sta >rowAddress
-
-        lda >spriteY
-        clc
-        adc #232
-        asl a
-        tax
-        lda >screenRowOffsets,x
-        sta >rowAddress
-
-        lda >spriteY
-        clc
-        adc #233
-        asl a
-        tax
-        lda >screenRowOffsets,x
-        sta >rowAddress
-
-        lda >spriteY
-        clc
-        adc #234
-        asl a
-        tax
-        lda >screenRowOffsets,x
-        sta >rowAddress
-
-        lda >spriteY
-        clc
-        adc #235
-        asl a
-        tax
-        lda >screenRowOffsets,x
-        sta >rowAddress
-
-        lda >spriteY
-        clc
-        adc #236
-        asl a
-        tax
-        lda >screenRowOffsets,x
-        sta >rowAddress
-
-        lda >spriteY
-        clc
-        adc #237
-        asl a
-        tax
-        lda >screenRowOffsets,x
-        sta >rowAddress
-
-        lda >spriteY
-        clc
-        adc #238
-        asl a
-        tax
-        lda >screenRowOffsets,x
-        sta >rowAddress
-
-        lda >spriteY
-        clc
-        adc #239
-        asl a
-        tax
-        lda >screenRowOffsets,x
-        sta >rowAddress
-
-        lda >spriteY
-        clc
-        adc #240
-        asl a
-        tax
-        lda >screenRowOffsets,x
-        sta >rowAddress
-
-        lda >spriteY
-        clc
-        adc #241
-        asl a
-        tax
-        lda >screenRowOffsets,x
-        sta >rowAddress
-
-        lda >spriteY
-        clc
-        adc #242
-        asl a
-        tax
-        lda >screenRowOffsets,x
-        sta >rowAddress
-
-        lda >spriteY
-        clc
-        adc #243
-        asl a
-        tax
-        lda >screenRowOffsets,x
-        sta >rowAddress
-
-        lda >spriteY
-        clc
-        adc #244
-        asl a
-        tax
-        lda >screenRowOffsets,x
-        sta >rowAddress
-
-        lda >spriteY
-        clc
-        adc #245
-        asl a
-        tax
-        lda >screenRowOffsets,x
-        sta >rowAddress
 
-        lda >spriteY
+        short m
+        lda >BACKGROUND_ADDR,x
+        sta >SCREEN_ADDR,x
+        long m
+        lda >rowAddress
         clc
-        adc #246
-        asl a
-        tax
-        lda >screenRowOffsets,x
-        sta >rowAddress
+        adc >spriteX
 
-        lda >spriteY
         clc
-        adc #247
-        asl a
+        adc #1
         tax
-        lda >screenRowOffsets,x
-        sta >rowAddress
 
-        lda >spriteY
-        clc
-        adc #248
-        asl a
-        tax
-        lda >screenRowOffsets,x
-        sta >rowAddress
 
-        lda >spriteY
+        short m
+        lda >BACKGROUND_ADDR,x
+        sta >SCREEN_ADDR,x
+        long m
+        lda >rowAddress
         clc
-        adc #249
-        asl a
-        tax
-        lda >screenRowOffsets,x
-        sta >rowAddress
+        adc >spriteX
 
-        lda >spriteY
         clc
-        adc #250
-        asl a
+        adc #2
         tax
-        lda >screenRowOffsets,x
-        sta >rowAddress
 
-        lda >spriteY
-        clc
-        adc #251
-        asl a
-        tax
-        lda >screenRowOffsets,x
-        sta >rowAddress
 
-        lda >spriteY
-        clc
-        adc #252
-        asl a
-        tax
-        lda >screenRowOffsets,x
-        sta >rowAddress
+        short m
+        lda >BACKGROUND_ADDR,x
+        sta >SCREEN_ADDR,x
+        long m
 
-        lda >spriteY
-        clc
-        adc #253
-        asl a
-        tax
-        lda >screenRowOffsets,x
-        sta >rowAddress
 
-        lda >spriteY
-        clc
-        adc #254
-        asl a
-        tax
-        lda >screenRowOffsets,x
-        sta >rowAddress
+eraseSpriteDragon2SkipRowErase83 anop
 
-        lda >spriteY
+        lda >rowCounter
         clc
-        adc #255
-        asl a
-        tax
-        lda >screenRowOffsets,x
-        sta >rowAddress
+        adc #1
+        sta >rowCounter
 
 
         rtl
@@ -7164,6 +6586,16 @@ eraseSpriteDragon3 entry
         lda >spriteX
         lsr a
         sta >spriteX
+        lda >spriteY
+        sta >rowCounter
+
+        cmp #199
+        bcs eraseSpriteDragon3SkipRowEraseShortJump84
+        bra eraseSpriteDragon3SkipRowEraseDontSkipRow84
+
+eraseSpriteDragon3SkipRowEraseShortJump84 anop
+        brl eraseSpriteDragon3SkipRowErase84
+eraseSpriteDragon3SkipRowEraseDontSkipRow84 anop
         lda >spriteY
         clc
         adc #0
@@ -7185,7 +6617,6 @@ eraseSpriteDragon3 entry
         lda >BACKGROUND_ADDR,x
         sta >SCREEN_ADDR,x
         long m
-
         lda >rowAddress
         clc
         adc >spriteX
@@ -7200,6 +6631,22 @@ eraseSpriteDragon3 entry
         sta >SCREEN_ADDR,x
         long m
 
+
+eraseSpriteDragon3SkipRowErase84 anop
+
+        lda >rowCounter
+        clc
+        adc #1
+        sta >rowCounter
+
+
+        cmp #199
+        bcs eraseSpriteDragon3SkipRowEraseShortJump85
+        bra eraseSpriteDragon3SkipRowEraseDontSkipRow85
+
+eraseSpriteDragon3SkipRowEraseShortJump85 anop
+        brl eraseSpriteDragon3SkipRowErase85
+eraseSpriteDragon3SkipRowEraseDontSkipRow85 anop
         lda >spriteY
         clc
         adc #1
@@ -7221,7 +6668,6 @@ eraseSpriteDragon3 entry
         lda >BACKGROUND_ADDR,x
         sta >SCREEN_ADDR,x
         long m
-
         lda >rowAddress
         clc
         adc >spriteX
@@ -7236,6 +6682,22 @@ eraseSpriteDragon3 entry
         sta >SCREEN_ADDR,x
         long m
 
+
+eraseSpriteDragon3SkipRowErase85 anop
+
+        lda >rowCounter
+        clc
+        adc #1
+        sta >rowCounter
+
+
+        cmp #199
+        bcs eraseSpriteDragon3SkipRowEraseShortJump86
+        bra eraseSpriteDragon3SkipRowEraseDontSkipRow86
+
+eraseSpriteDragon3SkipRowEraseShortJump86 anop
+        brl eraseSpriteDragon3SkipRowErase86
+eraseSpriteDragon3SkipRowEraseDontSkipRow86 anop
         lda >spriteY
         clc
         adc #2
@@ -7257,7 +6719,6 @@ eraseSpriteDragon3 entry
         lda >BACKGROUND_ADDR,x
         sta >SCREEN_ADDR,x
         long m
-
         lda >rowAddress
         clc
         adc >spriteX
@@ -7272,6 +6733,22 @@ eraseSpriteDragon3 entry
         sta >SCREEN_ADDR,x
         long m
 
+
+eraseSpriteDragon3SkipRowErase86 anop
+
+        lda >rowCounter
+        clc
+        adc #1
+        sta >rowCounter
+
+
+        cmp #199
+        bcs eraseSpriteDragon3SkipRowEraseShortJump87
+        bra eraseSpriteDragon3SkipRowEraseDontSkipRow87
+
+eraseSpriteDragon3SkipRowEraseShortJump87 anop
+        brl eraseSpriteDragon3SkipRowErase87
+eraseSpriteDragon3SkipRowEraseDontSkipRow87 anop
         lda >spriteY
         clc
         adc #3
@@ -7293,7 +6770,6 @@ eraseSpriteDragon3 entry
         lda >BACKGROUND_ADDR,x
         sta >SCREEN_ADDR,x
         long m
-
         lda >rowAddress
         clc
         adc >spriteX
@@ -7308,6 +6784,22 @@ eraseSpriteDragon3 entry
         sta >SCREEN_ADDR,x
         long m
 
+
+eraseSpriteDragon3SkipRowErase87 anop
+
+        lda >rowCounter
+        clc
+        adc #1
+        sta >rowCounter
+
+
+        cmp #199
+        bcs eraseSpriteDragon3SkipRowEraseShortJump88
+        bra eraseSpriteDragon3SkipRowEraseDontSkipRow88
+
+eraseSpriteDragon3SkipRowEraseShortJump88 anop
+        brl eraseSpriteDragon3SkipRowErase88
+eraseSpriteDragon3SkipRowEraseDontSkipRow88 anop
         lda >spriteY
         clc
         adc #4
@@ -7329,7 +6821,6 @@ eraseSpriteDragon3 entry
         lda >BACKGROUND_ADDR,x
         sta >SCREEN_ADDR,x
         long m
-
         lda >rowAddress
         clc
         adc >spriteX
@@ -7344,20 +6835,22 @@ eraseSpriteDragon3 entry
         sta >SCREEN_ADDR,x
         long m
 
-        lda >rowAddress
+
+eraseSpriteDragon3SkipRowErase88 anop
+
+        lda >rowCounter
         clc
-        adc >spriteX
-
-        clc
-        adc #6
-        tax
+        adc #1
+        sta >rowCounter
 
 
-        short m
-        lda >BACKGROUND_ADDR,x
-        sta >SCREEN_ADDR,x
-        long m
+        cmp #199
+        bcs eraseSpriteDragon3SkipRowEraseShortJump89
+        bra eraseSpriteDragon3SkipRowEraseDontSkipRow89
 
+eraseSpriteDragon3SkipRowEraseShortJump89 anop
+        brl eraseSpriteDragon3SkipRowErase89
+eraseSpriteDragon3SkipRowEraseDontSkipRow89 anop
         lda >spriteY
         clc
         adc #5
@@ -7379,7 +6872,6 @@ eraseSpriteDragon3 entry
         lda >BACKGROUND_ADDR,x
         sta >SCREEN_ADDR,x
         long m
-
         lda >rowAddress
         clc
         adc >spriteX
@@ -7394,20 +6886,22 @@ eraseSpriteDragon3 entry
         sta >SCREEN_ADDR,x
         long m
 
-        lda >rowAddress
+
+eraseSpriteDragon3SkipRowErase89 anop
+
+        lda >rowCounter
         clc
-        adc >spriteX
-
-        clc
-        adc #6
-        tax
+        adc #1
+        sta >rowCounter
 
 
-        short m
-        lda >BACKGROUND_ADDR,x
-        sta >SCREEN_ADDR,x
-        long m
+        cmp #199
+        bcs eraseSpriteDragon3SkipRowEraseShortJump90
+        bra eraseSpriteDragon3SkipRowEraseDontSkipRow90
 
+eraseSpriteDragon3SkipRowEraseShortJump90 anop
+        brl eraseSpriteDragon3SkipRowErase90
+eraseSpriteDragon3SkipRowEraseDontSkipRow90 anop
         lda >spriteY
         clc
         adc #6
@@ -7415,20 +6909,6 @@ eraseSpriteDragon3 entry
         tax
         lda >screenRowOffsets,x
         sta >rowAddress
-
-        lda >rowAddress
-        clc
-        adc >spriteX
-
-        clc
-        adc #3
-        tax
-
-
-        short m
-        lda >BACKGROUND_ADDR,x
-        sta >SCREEN_ADDR,x
-        long m
 
         lda >rowAddress
         clc
@@ -7443,7 +6923,19 @@ eraseSpriteDragon3 entry
         lda >BACKGROUND_ADDR,x
         sta >SCREEN_ADDR,x
         long m
+        lda >rowAddress
+        clc
+        adc >spriteX
 
+        clc
+        adc #5
+        tax
+
+
+        short m
+        lda >BACKGROUND_ADDR,x
+        sta >SCREEN_ADDR,x
+        long m
         lda >rowAddress
         clc
         adc >spriteX
@@ -7458,41 +6950,29 @@ eraseSpriteDragon3 entry
         sta >SCREEN_ADDR,x
         long m
 
-        lda >rowAddress
-        clc
-        adc >spriteX
 
+eraseSpriteDragon3SkipRowErase90 anop
+
+        lda >rowCounter
+        clc
+        adc #1
+        sta >rowCounter
+
+
+        cmp #199
+        bcs eraseSpriteDragon3SkipRowEraseShortJump91
+        bra eraseSpriteDragon3SkipRowEraseDontSkipRow91
+
+eraseSpriteDragon3SkipRowEraseShortJump91 anop
+        brl eraseSpriteDragon3SkipRowErase91
+eraseSpriteDragon3SkipRowEraseDontSkipRow91 anop
+        lda >spriteY
         clc
         adc #7
-        tax
-
-
-        short m
-        lda >BACKGROUND_ADDR,x
-        sta >SCREEN_ADDR,x
-        long m
-
-        lda >spriteY
-        clc
-        adc #7
         asl a
         tax
         lda >screenRowOffsets,x
         sta >rowAddress
-
-        lda >rowAddress
-        clc
-        adc >spriteX
-
-        clc
-        adc #3
-        tax
-
-
-        short m
-        lda >BACKGROUND_ADDR,x
-        sta >SCREEN_ADDR,x
-        long m
 
         lda >rowAddress
         clc
@@ -7507,7 +6987,19 @@ eraseSpriteDragon3 entry
         lda >BACKGROUND_ADDR,x
         sta >SCREEN_ADDR,x
         long m
+        lda >rowAddress
+        clc
+        adc >spriteX
 
+        clc
+        adc #5
+        tax
+
+
+        short m
+        lda >BACKGROUND_ADDR,x
+        sta >SCREEN_ADDR,x
+        long m
         lda >rowAddress
         clc
         adc >spriteX
@@ -7522,20 +7014,22 @@ eraseSpriteDragon3 entry
         sta >SCREEN_ADDR,x
         long m
 
-        lda >rowAddress
+
+eraseSpriteDragon3SkipRowErase91 anop
+
+        lda >rowCounter
         clc
-        adc >spriteX
-
-        clc
-        adc #7
-        tax
+        adc #1
+        sta >rowCounter
 
 
-        short m
-        lda >BACKGROUND_ADDR,x
-        sta >SCREEN_ADDR,x
-        long m
+        cmp #199
+        bcs eraseSpriteDragon3SkipRowEraseShortJump92
+        bra eraseSpriteDragon3SkipRowEraseDontSkipRow92
 
+eraseSpriteDragon3SkipRowEraseShortJump92 anop
+        brl eraseSpriteDragon3SkipRowErase92
+eraseSpriteDragon3SkipRowEraseDontSkipRow92 anop
         lda >spriteY
         clc
         adc #8
@@ -7549,34 +7043,6 @@ eraseSpriteDragon3 entry
         adc >spriteX
 
         clc
-        adc #1
-        tax
-
-
-        short m
-        lda >BACKGROUND_ADDR,x
-        sta >SCREEN_ADDR,x
-        long m
-
-        lda >rowAddress
-        clc
-        adc >spriteX
-
-        clc
-        adc #2
-        tax
-
-
-        short m
-        lda >BACKGROUND_ADDR,x
-        sta >SCREEN_ADDR,x
-        long m
-
-        lda >rowAddress
-        clc
-        adc >spriteX
-
-        clc
         adc #3
         tax
 
@@ -7585,7 +7051,6 @@ eraseSpriteDragon3 entry
         lda >BACKGROUND_ADDR,x
         sta >SCREEN_ADDR,x
         long m
-
         lda >rowAddress
         clc
         adc >spriteX
@@ -7599,21 +7064,6 @@ eraseSpriteDragon3 entry
         lda >BACKGROUND_ADDR,x
         sta >SCREEN_ADDR,x
         long m
-
-        lda >rowAddress
-        clc
-        adc >spriteX
-
-        clc
-        adc #5
-        tax
-
-
-        short m
-        lda >BACKGROUND_ADDR,x
-        sta >SCREEN_ADDR,x
-        long m
-
         lda >rowAddress
         clc
         adc >spriteX
@@ -7627,7 +7077,6 @@ eraseSpriteDragon3 entry
         lda >BACKGROUND_ADDR,x
         sta >SCREEN_ADDR,x
         long m
-
         lda >rowAddress
         clc
         adc >spriteX
@@ -7642,6 +7091,22 @@ eraseSpriteDragon3 entry
         sta >SCREEN_ADDR,x
         long m
 
+
+eraseSpriteDragon3SkipRowErase92 anop
+
+        lda >rowCounter
+        clc
+        adc #1
+        sta >rowCounter
+
+
+        cmp #199
+        bcs eraseSpriteDragon3SkipRowEraseShortJump93
+        bra eraseSpriteDragon3SkipRowEraseDontSkipRow93
+
+eraseSpriteDragon3SkipRowEraseShortJump93 anop
+        brl eraseSpriteDragon3SkipRowErase93
+eraseSpriteDragon3SkipRowEraseDontSkipRow93 anop
         lda >spriteY
         clc
         adc #9
@@ -7655,34 +7120,6 @@ eraseSpriteDragon3 entry
         adc >spriteX
 
         clc
-        adc #1
-        tax
-
-
-        short m
-        lda >BACKGROUND_ADDR,x
-        sta >SCREEN_ADDR,x
-        long m
-
-        lda >rowAddress
-        clc
-        adc >spriteX
-
-        clc
-        adc #2
-        tax
-
-
-        short m
-        lda >BACKGROUND_ADDR,x
-        sta >SCREEN_ADDR,x
-        long m
-
-        lda >rowAddress
-        clc
-        adc >spriteX
-
-        clc
         adc #3
         tax
 
@@ -7691,7 +7128,6 @@ eraseSpriteDragon3 entry
         lda >BACKGROUND_ADDR,x
         sta >SCREEN_ADDR,x
         long m
-
         lda >rowAddress
         clc
         adc >spriteX
@@ -7705,21 +7141,6 @@ eraseSpriteDragon3 entry
         lda >BACKGROUND_ADDR,x
         sta >SCREEN_ADDR,x
         long m
-
-        lda >rowAddress
-        clc
-        adc >spriteX
-
-        clc
-        adc #5
-        tax
-
-
-        short m
-        lda >BACKGROUND_ADDR,x
-        sta >SCREEN_ADDR,x
-        long m
-
         lda >rowAddress
         clc
         adc >spriteX
@@ -7733,7 +7154,6 @@ eraseSpriteDragon3 entry
         lda >BACKGROUND_ADDR,x
         sta >SCREEN_ADDR,x
         long m
-
         lda >rowAddress
         clc
         adc >spriteX
@@ -7748,6 +7168,22 @@ eraseSpriteDragon3 entry
         sta >SCREEN_ADDR,x
         long m
 
+
+eraseSpriteDragon3SkipRowErase93 anop
+
+        lda >rowCounter
+        clc
+        adc #1
+        sta >rowCounter
+
+
+        cmp #199
+        bcs eraseSpriteDragon3SkipRowEraseShortJump94
+        bra eraseSpriteDragon3SkipRowEraseDontSkipRow94
+
+eraseSpriteDragon3SkipRowEraseShortJump94 anop
+        brl eraseSpriteDragon3SkipRowErase94
+eraseSpriteDragon3SkipRowEraseDontSkipRow94 anop
         lda >spriteY
         clc
         adc #10
@@ -7761,20 +7197,6 @@ eraseSpriteDragon3 entry
         adc >spriteX
 
         clc
-        adc #0
-        tax
-
-
-        short m
-        lda >BACKGROUND_ADDR,x
-        sta >SCREEN_ADDR,x
-        long m
-
-        lda >rowAddress
-        clc
-        adc >spriteX
-
-        clc
         adc #1
         tax
 
@@ -7783,7 +7205,32 @@ eraseSpriteDragon3 entry
         lda >BACKGROUND_ADDR,x
         sta >SCREEN_ADDR,x
         long m
+        lda >rowAddress
+        clc
+        adc >spriteX
 
+        clc
+        adc #2
+        tax
+
+
+        short m
+        lda >BACKGROUND_ADDR,x
+        sta >SCREEN_ADDR,x
+        long m
+        lda >rowAddress
+        clc
+        adc >spriteX
+
+        clc
+        adc #3
+        tax
+
+
+        short m
+        lda >BACKGROUND_ADDR,x
+        sta >SCREEN_ADDR,x
+        long m
         lda >rowAddress
         clc
         adc >spriteX
@@ -7797,7 +7244,6 @@ eraseSpriteDragon3 entry
         lda >BACKGROUND_ADDR,x
         sta >SCREEN_ADDR,x
         long m
-
         lda >rowAddress
         clc
         adc >spriteX
@@ -7811,7 +7257,6 @@ eraseSpriteDragon3 entry
         lda >BACKGROUND_ADDR,x
         sta >SCREEN_ADDR,x
         long m
-
         lda >rowAddress
         clc
         adc >spriteX
@@ -7825,7 +7270,36 @@ eraseSpriteDragon3 entry
         lda >BACKGROUND_ADDR,x
         sta >SCREEN_ADDR,x
         long m
+        lda >rowAddress
+        clc
+        adc >spriteX
 
+        clc
+        adc #7
+        tax
+
+
+        short m
+        lda >BACKGROUND_ADDR,x
+        sta >SCREEN_ADDR,x
+        long m
+
+
+eraseSpriteDragon3SkipRowErase94 anop
+
+        lda >rowCounter
+        clc
+        adc #1
+        sta >rowCounter
+
+
+        cmp #199
+        bcs eraseSpriteDragon3SkipRowEraseShortJump95
+        bra eraseSpriteDragon3SkipRowEraseDontSkipRow95
+
+eraseSpriteDragon3SkipRowEraseShortJump95 anop
+        brl eraseSpriteDragon3SkipRowErase95
+eraseSpriteDragon3SkipRowEraseDontSkipRow95 anop
         lda >spriteY
         clc
         adc #11
@@ -7839,20 +7313,6 @@ eraseSpriteDragon3 entry
         adc >spriteX
 
         clc
-        adc #0
-        tax
-
-
-        short m
-        lda >BACKGROUND_ADDR,x
-        sta >SCREEN_ADDR,x
-        long m
-
-        lda >rowAddress
-        clc
-        adc >spriteX
-
-        clc
         adc #1
         tax
 
@@ -7861,7 +7321,32 @@ eraseSpriteDragon3 entry
         lda >BACKGROUND_ADDR,x
         sta >SCREEN_ADDR,x
         long m
+        lda >rowAddress
+        clc
+        adc >spriteX
 
+        clc
+        adc #2
+        tax
+
+
+        short m
+        lda >BACKGROUND_ADDR,x
+        sta >SCREEN_ADDR,x
+        long m
+        lda >rowAddress
+        clc
+        adc >spriteX
+
+        clc
+        adc #3
+        tax
+
+
+        short m
+        lda >BACKGROUND_ADDR,x
+        sta >SCREEN_ADDR,x
+        long m
         lda >rowAddress
         clc
         adc >spriteX
@@ -7875,7 +7360,6 @@ eraseSpriteDragon3 entry
         lda >BACKGROUND_ADDR,x
         sta >SCREEN_ADDR,x
         long m
-
         lda >rowAddress
         clc
         adc >spriteX
@@ -7889,7 +7373,6 @@ eraseSpriteDragon3 entry
         lda >BACKGROUND_ADDR,x
         sta >SCREEN_ADDR,x
         long m
-
         lda >rowAddress
         clc
         adc >spriteX
@@ -7903,7 +7386,36 @@ eraseSpriteDragon3 entry
         lda >BACKGROUND_ADDR,x
         sta >SCREEN_ADDR,x
         long m
+        lda >rowAddress
+        clc
+        adc >spriteX
 
+        clc
+        adc #7
+        tax
+
+
+        short m
+        lda >BACKGROUND_ADDR,x
+        sta >SCREEN_ADDR,x
+        long m
+
+
+eraseSpriteDragon3SkipRowErase95 anop
+
+        lda >rowCounter
+        clc
+        adc #1
+        sta >rowCounter
+
+
+        cmp #199
+        bcs eraseSpriteDragon3SkipRowEraseShortJump96
+        bra eraseSpriteDragon3SkipRowEraseDontSkipRow96
+
+eraseSpriteDragon3SkipRowEraseShortJump96 anop
+        brl eraseSpriteDragon3SkipRowErase96
+eraseSpriteDragon3SkipRowEraseDontSkipRow96 anop
         lda >spriteY
         clc
         adc #12
@@ -7925,7 +7437,75 @@ eraseSpriteDragon3 entry
         lda >BACKGROUND_ADDR,x
         sta >SCREEN_ADDR,x
         long m
+        lda >rowAddress
+        clc
+        adc >spriteX
 
+        clc
+        adc #1
+        tax
+
+
+        short m
+        lda >BACKGROUND_ADDR,x
+        sta >SCREEN_ADDR,x
+        long m
+        lda >rowAddress
+        clc
+        adc >spriteX
+
+        clc
+        adc #4
+        tax
+
+
+        short m
+        lda >BACKGROUND_ADDR,x
+        sta >SCREEN_ADDR,x
+        long m
+        lda >rowAddress
+        clc
+        adc >spriteX
+
+        clc
+        adc #5
+        tax
+
+
+        short m
+        lda >BACKGROUND_ADDR,x
+        sta >SCREEN_ADDR,x
+        long m
+        lda >rowAddress
+        clc
+        adc >spriteX
+
+        clc
+        adc #6
+        tax
+
+
+        short m
+        lda >BACKGROUND_ADDR,x
+        sta >SCREEN_ADDR,x
+        long m
+
+
+eraseSpriteDragon3SkipRowErase96 anop
+
+        lda >rowCounter
+        clc
+        adc #1
+        sta >rowCounter
+
+
+        cmp #199
+        bcs eraseSpriteDragon3SkipRowEraseShortJump97
+        bra eraseSpriteDragon3SkipRowEraseDontSkipRow97
+
+eraseSpriteDragon3SkipRowEraseShortJump97 anop
+        brl eraseSpriteDragon3SkipRowErase97
+eraseSpriteDragon3SkipRowEraseDontSkipRow97 anop
         lda >spriteY
         clc
         adc #13
@@ -7947,7 +7527,75 @@ eraseSpriteDragon3 entry
         lda >BACKGROUND_ADDR,x
         sta >SCREEN_ADDR,x
         long m
+        lda >rowAddress
+        clc
+        adc >spriteX
 
+        clc
+        adc #1
+        tax
+
+
+        short m
+        lda >BACKGROUND_ADDR,x
+        sta >SCREEN_ADDR,x
+        long m
+        lda >rowAddress
+        clc
+        adc >spriteX
+
+        clc
+        adc #4
+        tax
+
+
+        short m
+        lda >BACKGROUND_ADDR,x
+        sta >SCREEN_ADDR,x
+        long m
+        lda >rowAddress
+        clc
+        adc >spriteX
+
+        clc
+        adc #5
+        tax
+
+
+        short m
+        lda >BACKGROUND_ADDR,x
+        sta >SCREEN_ADDR,x
+        long m
+        lda >rowAddress
+        clc
+        adc >spriteX
+
+        clc
+        adc #6
+        tax
+
+
+        short m
+        lda >BACKGROUND_ADDR,x
+        sta >SCREEN_ADDR,x
+        long m
+
+
+eraseSpriteDragon3SkipRowErase97 anop
+
+        lda >rowCounter
+        clc
+        adc #1
+        sta >rowCounter
+
+
+        cmp #199
+        bcs eraseSpriteDragon3SkipRowEraseShortJump98
+        bra eraseSpriteDragon3SkipRowEraseDontSkipRow98
+
+eraseSpriteDragon3SkipRowEraseShortJump98 anop
+        brl eraseSpriteDragon3SkipRowErase98
+eraseSpriteDragon3SkipRowEraseDontSkipRow98 anop
         lda >spriteY
         clc
         adc #14
@@ -7970,76 +7618,22 @@ eraseSpriteDragon3 entry
         sta >SCREEN_ADDR,x
         long m
 
-        lda >rowAddress
-        clc
-        adc >spriteX
 
+eraseSpriteDragon3SkipRowErase98 anop
+
+        lda >rowCounter
         clc
         adc #1
-        tax
+        sta >rowCounter
 
 
-        short m
-        lda >BACKGROUND_ADDR,x
-        sta >SCREEN_ADDR,x
-        long m
+        cmp #199
+        bcs eraseSpriteDragon3SkipRowEraseShortJump99
+        bra eraseSpriteDragon3SkipRowEraseDontSkipRow99
 
-        lda >rowAddress
-        clc
-        adc >spriteX
-
-        clc
-        adc #2
-        tax
-
-
-        short m
-        lda >BACKGROUND_ADDR,x
-        sta >SCREEN_ADDR,x
-        long m
-
-        lda >rowAddress
-        clc
-        adc >spriteX
-
-        clc
-        adc #3
-        tax
-
-
-        short m
-        lda >BACKGROUND_ADDR,x
-        sta >SCREEN_ADDR,x
-        long m
-
-        lda >rowAddress
-        clc
-        adc >spriteX
-
-        clc
-        adc #4
-        tax
-
-
-        short m
-        lda >BACKGROUND_ADDR,x
-        sta >SCREEN_ADDR,x
-        long m
-
-        lda >rowAddress
-        clc
-        adc >spriteX
-
-        clc
-        adc #5
-        tax
-
-
-        short m
-        lda >BACKGROUND_ADDR,x
-        sta >SCREEN_ADDR,x
-        long m
-
+eraseSpriteDragon3SkipRowEraseShortJump99 anop
+        brl eraseSpriteDragon3SkipRowErase99
+eraseSpriteDragon3SkipRowEraseDontSkipRow99 anop
         lda >spriteY
         clc
         adc #15
@@ -8062,76 +7656,22 @@ eraseSpriteDragon3 entry
         sta >SCREEN_ADDR,x
         long m
 
-        lda >rowAddress
-        clc
-        adc >spriteX
 
+eraseSpriteDragon3SkipRowErase99 anop
+
+        lda >rowCounter
         clc
         adc #1
-        tax
+        sta >rowCounter
 
 
-        short m
-        lda >BACKGROUND_ADDR,x
-        sta >SCREEN_ADDR,x
-        long m
+        cmp #199
+        bcs eraseSpriteDragon3SkipRowEraseShortJump100
+        bra eraseSpriteDragon3SkipRowEraseDontSkipRow100
 
-        lda >rowAddress
-        clc
-        adc >spriteX
-
-        clc
-        adc #2
-        tax
-
-
-        short m
-        lda >BACKGROUND_ADDR,x
-        sta >SCREEN_ADDR,x
-        long m
-
-        lda >rowAddress
-        clc
-        adc >spriteX
-
-        clc
-        adc #3
-        tax
-
-
-        short m
-        lda >BACKGROUND_ADDR,x
-        sta >SCREEN_ADDR,x
-        long m
-
-        lda >rowAddress
-        clc
-        adc >spriteX
-
-        clc
-        adc #4
-        tax
-
-
-        short m
-        lda >BACKGROUND_ADDR,x
-        sta >SCREEN_ADDR,x
-        long m
-
-        lda >rowAddress
-        clc
-        adc >spriteX
-
-        clc
-        adc #5
-        tax
-
-
-        short m
-        lda >BACKGROUND_ADDR,x
-        sta >SCREEN_ADDR,x
-        long m
-
+eraseSpriteDragon3SkipRowEraseShortJump100 anop
+        brl eraseSpriteDragon3SkipRowErase100
+eraseSpriteDragon3SkipRowEraseDontSkipRow100 anop
         lda >spriteY
         clc
         adc #16
@@ -8153,7 +7693,6 @@ eraseSpriteDragon3 entry
         lda >BACKGROUND_ADDR,x
         sta >SCREEN_ADDR,x
         long m
-
         lda >rowAddress
         clc
         adc >spriteX
@@ -8167,7 +7706,6 @@ eraseSpriteDragon3 entry
         lda >BACKGROUND_ADDR,x
         sta >SCREEN_ADDR,x
         long m
-
         lda >rowAddress
         clc
         adc >spriteX
@@ -8181,7 +7719,6 @@ eraseSpriteDragon3 entry
         lda >BACKGROUND_ADDR,x
         sta >SCREEN_ADDR,x
         long m
-
         lda >rowAddress
         clc
         adc >spriteX
@@ -8195,7 +7732,6 @@ eraseSpriteDragon3 entry
         lda >BACKGROUND_ADDR,x
         sta >SCREEN_ADDR,x
         long m
-
         lda >rowAddress
         clc
         adc >spriteX
@@ -8209,7 +7745,6 @@ eraseSpriteDragon3 entry
         lda >BACKGROUND_ADDR,x
         sta >SCREEN_ADDR,x
         long m
-
         lda >rowAddress
         clc
         adc >spriteX
@@ -8224,20 +7759,22 @@ eraseSpriteDragon3 entry
         sta >SCREEN_ADDR,x
         long m
 
-        lda >rowAddress
+
+eraseSpriteDragon3SkipRowErase100 anop
+
+        lda >rowCounter
         clc
-        adc >spriteX
-
-        clc
-        adc #6
-        tax
+        adc #1
+        sta >rowCounter
 
 
-        short m
-        lda >BACKGROUND_ADDR,x
-        sta >SCREEN_ADDR,x
-        long m
+        cmp #199
+        bcs eraseSpriteDragon3SkipRowEraseShortJump101
+        bra eraseSpriteDragon3SkipRowEraseDontSkipRow101
 
+eraseSpriteDragon3SkipRowEraseShortJump101 anop
+        brl eraseSpriteDragon3SkipRowErase101
+eraseSpriteDragon3SkipRowEraseDontSkipRow101 anop
         lda >spriteY
         clc
         adc #17
@@ -8259,7 +7796,6 @@ eraseSpriteDragon3 entry
         lda >BACKGROUND_ADDR,x
         sta >SCREEN_ADDR,x
         long m
-
         lda >rowAddress
         clc
         adc >spriteX
@@ -8273,7 +7809,6 @@ eraseSpriteDragon3 entry
         lda >BACKGROUND_ADDR,x
         sta >SCREEN_ADDR,x
         long m
-
         lda >rowAddress
         clc
         adc >spriteX
@@ -8287,7 +7822,6 @@ eraseSpriteDragon3 entry
         lda >BACKGROUND_ADDR,x
         sta >SCREEN_ADDR,x
         long m
-
         lda >rowAddress
         clc
         adc >spriteX
@@ -8301,7 +7835,6 @@ eraseSpriteDragon3 entry
         lda >BACKGROUND_ADDR,x
         sta >SCREEN_ADDR,x
         long m
-
         lda >rowAddress
         clc
         adc >spriteX
@@ -8315,7 +7848,6 @@ eraseSpriteDragon3 entry
         lda >BACKGROUND_ADDR,x
         sta >SCREEN_ADDR,x
         long m
-
         lda >rowAddress
         clc
         adc >spriteX
@@ -8330,20 +7862,22 @@ eraseSpriteDragon3 entry
         sta >SCREEN_ADDR,x
         long m
 
-        lda >rowAddress
+
+eraseSpriteDragon3SkipRowErase101 anop
+
+        lda >rowCounter
         clc
-        adc >spriteX
-
-        clc
-        adc #6
-        tax
+        adc #1
+        sta >rowCounter
 
 
-        short m
-        lda >BACKGROUND_ADDR,x
-        sta >SCREEN_ADDR,x
-        long m
+        cmp #199
+        bcs eraseSpriteDragon3SkipRowEraseShortJump102
+        bra eraseSpriteDragon3SkipRowEraseDontSkipRow102
 
+eraseSpriteDragon3SkipRowEraseShortJump102 anop
+        brl eraseSpriteDragon3SkipRowErase102
+eraseSpriteDragon3SkipRowEraseDontSkipRow102 anop
         lda >spriteY
         clc
         adc #18
@@ -8365,7 +7899,6 @@ eraseSpriteDragon3 entry
         lda >BACKGROUND_ADDR,x
         sta >SCREEN_ADDR,x
         long m
-
         lda >rowAddress
         clc
         adc >spriteX
@@ -8379,7 +7912,6 @@ eraseSpriteDragon3 entry
         lda >BACKGROUND_ADDR,x
         sta >SCREEN_ADDR,x
         long m
-
         lda >rowAddress
         clc
         adc >spriteX
@@ -8393,7 +7925,6 @@ eraseSpriteDragon3 entry
         lda >BACKGROUND_ADDR,x
         sta >SCREEN_ADDR,x
         long m
-
         lda >rowAddress
         clc
         adc >spriteX
@@ -8407,7 +7938,6 @@ eraseSpriteDragon3 entry
         lda >BACKGROUND_ADDR,x
         sta >SCREEN_ADDR,x
         long m
-
         lda >rowAddress
         clc
         adc >spriteX
@@ -8421,7 +7951,6 @@ eraseSpriteDragon3 entry
         lda >BACKGROUND_ADDR,x
         sta >SCREEN_ADDR,x
         long m
-
         lda >rowAddress
         clc
         adc >spriteX
@@ -8435,7 +7964,6 @@ eraseSpriteDragon3 entry
         lda >BACKGROUND_ADDR,x
         sta >SCREEN_ADDR,x
         long m
-
         lda >rowAddress
         clc
         adc >spriteX
@@ -8450,6 +7978,22 @@ eraseSpriteDragon3 entry
         sta >SCREEN_ADDR,x
         long m
 
+
+eraseSpriteDragon3SkipRowErase102 anop
+
+        lda >rowCounter
+        clc
+        adc #1
+        sta >rowCounter
+
+
+        cmp #199
+        bcs eraseSpriteDragon3SkipRowEraseShortJump103
+        bra eraseSpriteDragon3SkipRowEraseDontSkipRow103
+
+eraseSpriteDragon3SkipRowEraseShortJump103 anop
+        brl eraseSpriteDragon3SkipRowErase103
+eraseSpriteDragon3SkipRowEraseDontSkipRow103 anop
         lda >spriteY
         clc
         adc #19
@@ -8471,7 +8015,6 @@ eraseSpriteDragon3 entry
         lda >BACKGROUND_ADDR,x
         sta >SCREEN_ADDR,x
         long m
-
         lda >rowAddress
         clc
         adc >spriteX
@@ -8485,7 +8028,6 @@ eraseSpriteDragon3 entry
         lda >BACKGROUND_ADDR,x
         sta >SCREEN_ADDR,x
         long m
-
         lda >rowAddress
         clc
         adc >spriteX
@@ -8499,7 +8041,6 @@ eraseSpriteDragon3 entry
         lda >BACKGROUND_ADDR,x
         sta >SCREEN_ADDR,x
         long m
-
         lda >rowAddress
         clc
         adc >spriteX
@@ -8513,7 +8054,6 @@ eraseSpriteDragon3 entry
         lda >BACKGROUND_ADDR,x
         sta >SCREEN_ADDR,x
         long m
-
         lda >rowAddress
         clc
         adc >spriteX
@@ -8527,7 +8067,6 @@ eraseSpriteDragon3 entry
         lda >BACKGROUND_ADDR,x
         sta >SCREEN_ADDR,x
         long m
-
         lda >rowAddress
         clc
         adc >spriteX
@@ -8541,7 +8080,6 @@ eraseSpriteDragon3 entry
         lda >BACKGROUND_ADDR,x
         sta >SCREEN_ADDR,x
         long m
-
         lda >rowAddress
         clc
         adc >spriteX
@@ -8556,6 +8094,22 @@ eraseSpriteDragon3 entry
         sta >SCREEN_ADDR,x
         long m
 
+
+eraseSpriteDragon3SkipRowErase103 anop
+
+        lda >rowCounter
+        clc
+        adc #1
+        sta >rowCounter
+
+
+        cmp #199
+        bcs eraseSpriteDragon3SkipRowEraseShortJump104
+        bra eraseSpriteDragon3SkipRowEraseDontSkipRow104
+
+eraseSpriteDragon3SkipRowEraseShortJump104 anop
+        brl eraseSpriteDragon3SkipRowErase104
+eraseSpriteDragon3SkipRowEraseDontSkipRow104 anop
         lda >spriteY
         clc
         adc #20
@@ -8569,6 +8123,19 @@ eraseSpriteDragon3 entry
         adc >spriteX
 
         clc
+        adc #0
+        tax
+
+
+        short m
+        lda >BACKGROUND_ADDR,x
+        sta >SCREEN_ADDR,x
+        long m
+        lda >rowAddress
+        clc
+        adc >spriteX
+
+        clc
         adc #1
         tax
 
@@ -8577,7 +8144,6 @@ eraseSpriteDragon3 entry
         lda >BACKGROUND_ADDR,x
         sta >SCREEN_ADDR,x
         long m
-
         lda >rowAddress
         clc
         adc >spriteX
@@ -8591,7 +8157,6 @@ eraseSpriteDragon3 entry
         lda >BACKGROUND_ADDR,x
         sta >SCREEN_ADDR,x
         long m
-
         lda >rowAddress
         clc
         adc >spriteX
@@ -8605,7 +8170,6 @@ eraseSpriteDragon3 entry
         lda >BACKGROUND_ADDR,x
         sta >SCREEN_ADDR,x
         long m
-
         lda >rowAddress
         clc
         adc >spriteX
@@ -8619,7 +8183,6 @@ eraseSpriteDragon3 entry
         lda >BACKGROUND_ADDR,x
         sta >SCREEN_ADDR,x
         long m
-
         lda >rowAddress
         clc
         adc >spriteX
@@ -8633,7 +8196,6 @@ eraseSpriteDragon3 entry
         lda >BACKGROUND_ADDR,x
         sta >SCREEN_ADDR,x
         long m
-
         lda >rowAddress
         clc
         adc >spriteX
@@ -8648,6 +8210,22 @@ eraseSpriteDragon3 entry
         sta >SCREEN_ADDR,x
         long m
 
+
+eraseSpriteDragon3SkipRowErase104 anop
+
+        lda >rowCounter
+        clc
+        adc #1
+        sta >rowCounter
+
+
+        cmp #199
+        bcs eraseSpriteDragon3SkipRowEraseShortJump105
+        bra eraseSpriteDragon3SkipRowEraseDontSkipRow105
+
+eraseSpriteDragon3SkipRowEraseShortJump105 anop
+        brl eraseSpriteDragon3SkipRowErase105
+eraseSpriteDragon3SkipRowEraseDontSkipRow105 anop
         lda >spriteY
         clc
         adc #21
@@ -8661,6 +8239,19 @@ eraseSpriteDragon3 entry
         adc >spriteX
 
         clc
+        adc #0
+        tax
+
+
+        short m
+        lda >BACKGROUND_ADDR,x
+        sta >SCREEN_ADDR,x
+        long m
+        lda >rowAddress
+        clc
+        adc >spriteX
+
+        clc
         adc #1
         tax
 
@@ -8669,7 +8260,6 @@ eraseSpriteDragon3 entry
         lda >BACKGROUND_ADDR,x
         sta >SCREEN_ADDR,x
         long m
-
         lda >rowAddress
         clc
         adc >spriteX
@@ -8683,7 +8273,6 @@ eraseSpriteDragon3 entry
         lda >BACKGROUND_ADDR,x
         sta >SCREEN_ADDR,x
         long m
-
         lda >rowAddress
         clc
         adc >spriteX
@@ -8697,7 +8286,6 @@ eraseSpriteDragon3 entry
         lda >BACKGROUND_ADDR,x
         sta >SCREEN_ADDR,x
         long m
-
         lda >rowAddress
         clc
         adc >spriteX
@@ -8711,7 +8299,6 @@ eraseSpriteDragon3 entry
         lda >BACKGROUND_ADDR,x
         sta >SCREEN_ADDR,x
         long m
-
         lda >rowAddress
         clc
         adc >spriteX
@@ -8725,7 +8312,6 @@ eraseSpriteDragon3 entry
         lda >BACKGROUND_ADDR,x
         sta >SCREEN_ADDR,x
         long m
-
         lda >rowAddress
         clc
         adc >spriteX
@@ -8740,6 +8326,22 @@ eraseSpriteDragon3 entry
         sta >SCREEN_ADDR,x
         long m
 
+
+eraseSpriteDragon3SkipRowErase105 anop
+
+        lda >rowCounter
+        clc
+        adc #1
+        sta >rowCounter
+
+
+        cmp #199
+        bcs eraseSpriteDragon3SkipRowEraseShortJump106
+        bra eraseSpriteDragon3SkipRowEraseDontSkipRow106
+
+eraseSpriteDragon3SkipRowEraseShortJump106 anop
+        brl eraseSpriteDragon3SkipRowErase106
+eraseSpriteDragon3SkipRowEraseDontSkipRow106 anop
         lda >spriteY
         clc
         adc #22
@@ -8761,7 +8363,6 @@ eraseSpriteDragon3 entry
         lda >BACKGROUND_ADDR,x
         sta >SCREEN_ADDR,x
         long m
-
         lda >rowAddress
         clc
         adc >spriteX
@@ -8775,7 +8376,6 @@ eraseSpriteDragon3 entry
         lda >BACKGROUND_ADDR,x
         sta >SCREEN_ADDR,x
         long m
-
         lda >rowAddress
         clc
         adc >spriteX
@@ -8789,7 +8389,6 @@ eraseSpriteDragon3 entry
         lda >BACKGROUND_ADDR,x
         sta >SCREEN_ADDR,x
         long m
-
         lda >rowAddress
         clc
         adc >spriteX
@@ -8803,7 +8402,49 @@ eraseSpriteDragon3 entry
         lda >BACKGROUND_ADDR,x
         sta >SCREEN_ADDR,x
         long m
+        lda >rowAddress
+        clc
+        adc >spriteX
 
+        clc
+        adc #5
+        tax
+
+
+        short m
+        lda >BACKGROUND_ADDR,x
+        sta >SCREEN_ADDR,x
+        long m
+        lda >rowAddress
+        clc
+        adc >spriteX
+
+        clc
+        adc #6
+        tax
+
+
+        short m
+        lda >BACKGROUND_ADDR,x
+        sta >SCREEN_ADDR,x
+        long m
+
+
+eraseSpriteDragon3SkipRowErase106 anop
+
+        lda >rowCounter
+        clc
+        adc #1
+        sta >rowCounter
+
+
+        cmp #199
+        bcs eraseSpriteDragon3SkipRowEraseShortJump107
+        bra eraseSpriteDragon3SkipRowEraseDontSkipRow107
+
+eraseSpriteDragon3SkipRowEraseShortJump107 anop
+        brl eraseSpriteDragon3SkipRowErase107
+eraseSpriteDragon3SkipRowEraseDontSkipRow107 anop
         lda >spriteY
         clc
         adc #23
@@ -8825,7 +8466,6 @@ eraseSpriteDragon3 entry
         lda >BACKGROUND_ADDR,x
         sta >SCREEN_ADDR,x
         long m
-
         lda >rowAddress
         clc
         adc >spriteX
@@ -8839,7 +8479,6 @@ eraseSpriteDragon3 entry
         lda >BACKGROUND_ADDR,x
         sta >SCREEN_ADDR,x
         long m
-
         lda >rowAddress
         clc
         adc >spriteX
@@ -8853,7 +8492,109 @@ eraseSpriteDragon3 entry
         lda >BACKGROUND_ADDR,x
         sta >SCREEN_ADDR,x
         long m
+        lda >rowAddress
+        clc
+        adc >spriteX
 
+        clc
+        adc #4
+        tax
+
+
+        short m
+        lda >BACKGROUND_ADDR,x
+        sta >SCREEN_ADDR,x
+        long m
+        lda >rowAddress
+        clc
+        adc >spriteX
+
+        clc
+        adc #5
+        tax
+
+
+        short m
+        lda >BACKGROUND_ADDR,x
+        sta >SCREEN_ADDR,x
+        long m
+        lda >rowAddress
+        clc
+        adc >spriteX
+
+        clc
+        adc #6
+        tax
+
+
+        short m
+        lda >BACKGROUND_ADDR,x
+        sta >SCREEN_ADDR,x
+        long m
+
+
+eraseSpriteDragon3SkipRowErase107 anop
+
+        lda >rowCounter
+        clc
+        adc #1
+        sta >rowCounter
+
+
+        cmp #199
+        bcs eraseSpriteDragon3SkipRowEraseShortJump108
+        bra eraseSpriteDragon3SkipRowEraseDontSkipRow108
+
+eraseSpriteDragon3SkipRowEraseShortJump108 anop
+        brl eraseSpriteDragon3SkipRowErase108
+eraseSpriteDragon3SkipRowEraseDontSkipRow108 anop
+        lda >spriteY
+        clc
+        adc #24
+        asl a
+        tax
+        lda >screenRowOffsets,x
+        sta >rowAddress
+
+        lda >rowAddress
+        clc
+        adc >spriteX
+
+        clc
+        adc #1
+        tax
+
+
+        short m
+        lda >BACKGROUND_ADDR,x
+        sta >SCREEN_ADDR,x
+        long m
+        lda >rowAddress
+        clc
+        adc >spriteX
+
+        clc
+        adc #2
+        tax
+
+
+        short m
+        lda >BACKGROUND_ADDR,x
+        sta >SCREEN_ADDR,x
+        long m
+        lda >rowAddress
+        clc
+        adc >spriteX
+
+        clc
+        adc #3
+        tax
+
+
+        short m
+        lda >BACKGROUND_ADDR,x
+        sta >SCREEN_ADDR,x
+        long m
         lda >rowAddress
         clc
         adc >spriteX
@@ -8869,6 +8610,655 @@ eraseSpriteDragon3 entry
         long m
 
 
+eraseSpriteDragon3SkipRowErase108 anop
+
+        lda >rowCounter
+        clc
+        adc #1
+        sta >rowCounter
+
+
+        cmp #199
+        bcs eraseSpriteDragon3SkipRowEraseShortJump109
+        bra eraseSpriteDragon3SkipRowEraseDontSkipRow109
+
+eraseSpriteDragon3SkipRowEraseShortJump109 anop
+        brl eraseSpriteDragon3SkipRowErase109
+eraseSpriteDragon3SkipRowEraseDontSkipRow109 anop
+        lda >spriteY
+        clc
+        adc #25
+        asl a
+        tax
+        lda >screenRowOffsets,x
+        sta >rowAddress
+
+        lda >rowAddress
+        clc
+        adc >spriteX
+
+        clc
+        adc #1
+        tax
+
+
+        short m
+        lda >BACKGROUND_ADDR,x
+        sta >SCREEN_ADDR,x
+        long m
+        lda >rowAddress
+        clc
+        adc >spriteX
+
+        clc
+        adc #2
+        tax
+
+
+        short m
+        lda >BACKGROUND_ADDR,x
+        sta >SCREEN_ADDR,x
+        long m
+        lda >rowAddress
+        clc
+        adc >spriteX
+
+        clc
+        adc #3
+        tax
+
+
+        short m
+        lda >BACKGROUND_ADDR,x
+        sta >SCREEN_ADDR,x
+        long m
+        lda >rowAddress
+        clc
+        adc >spriteX
+
+        clc
+        adc #4
+        tax
+
+
+        short m
+        lda >BACKGROUND_ADDR,x
+        sta >SCREEN_ADDR,x
+        long m
+
+
+eraseSpriteDragon3SkipRowErase109 anop
+
+        lda >rowCounter
+        clc
+        adc #1
+        sta >rowCounter
+
+
+        cmp #199
+        bcs eraseSpriteDragon3SkipRowEraseShortJump110
+        bra eraseSpriteDragon3SkipRowEraseDontSkipRow110
+
+eraseSpriteDragon3SkipRowEraseShortJump110 anop
+        brl eraseSpriteDragon3SkipRowErase110
+eraseSpriteDragon3SkipRowEraseDontSkipRow110 anop
+        lda >spriteY
+        clc
+        adc #26
+        asl a
+        tax
+        lda >screenRowOffsets,x
+        sta >rowAddress
+
+        lda >rowAddress
+        clc
+        adc >spriteX
+
+        clc
+        adc #2
+        tax
+
+
+        short m
+        lda >BACKGROUND_ADDR,x
+        sta >SCREEN_ADDR,x
+        long m
+
+
+eraseSpriteDragon3SkipRowErase110 anop
+
+        lda >rowCounter
+        clc
+        adc #1
+        sta >rowCounter
+
+
+        cmp #199
+        bcs eraseSpriteDragon3SkipRowEraseShortJump111
+        bra eraseSpriteDragon3SkipRowEraseDontSkipRow111
+
+eraseSpriteDragon3SkipRowEraseShortJump111 anop
+        brl eraseSpriteDragon3SkipRowErase111
+eraseSpriteDragon3SkipRowEraseDontSkipRow111 anop
+        lda >spriteY
+        clc
+        adc #27
+        asl a
+        tax
+        lda >screenRowOffsets,x
+        sta >rowAddress
+
+        lda >rowAddress
+        clc
+        adc >spriteX
+
+        clc
+        adc #2
+        tax
+
+
+        short m
+        lda >BACKGROUND_ADDR,x
+        sta >SCREEN_ADDR,x
+        long m
+
+
+eraseSpriteDragon3SkipRowErase111 anop
+
+        lda >rowCounter
+        clc
+        adc #1
+        sta >rowCounter
+
+
+        cmp #199
+        bcs eraseSpriteDragon3SkipRowEraseShortJump112
+        bra eraseSpriteDragon3SkipRowEraseDontSkipRow112
+
+eraseSpriteDragon3SkipRowEraseShortJump112 anop
+        brl eraseSpriteDragon3SkipRowErase112
+eraseSpriteDragon3SkipRowEraseDontSkipRow112 anop
+        lda >spriteY
+        clc
+        adc #28
+        asl a
+        tax
+        lda >screenRowOffsets,x
+        sta >rowAddress
+
+        lda >rowAddress
+        clc
+        adc >spriteX
+
+        clc
+        adc #1
+        tax
+
+
+        short m
+        lda >BACKGROUND_ADDR,x
+        sta >SCREEN_ADDR,x
+        long m
+        lda >rowAddress
+        clc
+        adc >spriteX
+
+        clc
+        adc #2
+        tax
+
+
+        short m
+        lda >BACKGROUND_ADDR,x
+        sta >SCREEN_ADDR,x
+        long m
+        lda >rowAddress
+        clc
+        adc >spriteX
+
+        clc
+        adc #4
+        tax
+
+
+        short m
+        lda >BACKGROUND_ADDR,x
+        sta >SCREEN_ADDR,x
+        long m
+        lda >rowAddress
+        clc
+        adc >spriteX
+
+        clc
+        adc #5
+        tax
+
+
+        short m
+        lda >BACKGROUND_ADDR,x
+        sta >SCREEN_ADDR,x
+        long m
+        lda >rowAddress
+        clc
+        adc >spriteX
+
+        clc
+        adc #6
+        tax
+
+
+        short m
+        lda >BACKGROUND_ADDR,x
+        sta >SCREEN_ADDR,x
+        long m
+
+
+eraseSpriteDragon3SkipRowErase112 anop
+
+        lda >rowCounter
+        clc
+        adc #1
+        sta >rowCounter
+
+
+        cmp #199
+        bcs eraseSpriteDragon3SkipRowEraseShortJump113
+        bra eraseSpriteDragon3SkipRowEraseDontSkipRow113
+
+eraseSpriteDragon3SkipRowEraseShortJump113 anop
+        brl eraseSpriteDragon3SkipRowErase113
+eraseSpriteDragon3SkipRowEraseDontSkipRow113 anop
+        lda >spriteY
+        clc
+        adc #29
+        asl a
+        tax
+        lda >screenRowOffsets,x
+        sta >rowAddress
+
+        lda >rowAddress
+        clc
+        adc >spriteX
+
+        clc
+        adc #1
+        tax
+
+
+        short m
+        lda >BACKGROUND_ADDR,x
+        sta >SCREEN_ADDR,x
+        long m
+        lda >rowAddress
+        clc
+        adc >spriteX
+
+        clc
+        adc #2
+        tax
+
+
+        short m
+        lda >BACKGROUND_ADDR,x
+        sta >SCREEN_ADDR,x
+        long m
+        lda >rowAddress
+        clc
+        adc >spriteX
+
+        clc
+        adc #4
+        tax
+
+
+        short m
+        lda >BACKGROUND_ADDR,x
+        sta >SCREEN_ADDR,x
+        long m
+        lda >rowAddress
+        clc
+        adc >spriteX
+
+        clc
+        adc #5
+        tax
+
+
+        short m
+        lda >BACKGROUND_ADDR,x
+        sta >SCREEN_ADDR,x
+        long m
+        lda >rowAddress
+        clc
+        adc >spriteX
+
+        clc
+        adc #6
+        tax
+
+
+        short m
+        lda >BACKGROUND_ADDR,x
+        sta >SCREEN_ADDR,x
+        long m
+
+
+eraseSpriteDragon3SkipRowErase113 anop
+
+        lda >rowCounter
+        clc
+        adc #1
+        sta >rowCounter
+
+
+        cmp #199
+        bcs eraseSpriteDragon3SkipRowEraseShortJump114
+        bra eraseSpriteDragon3SkipRowEraseDontSkipRow114
+
+eraseSpriteDragon3SkipRowEraseShortJump114 anop
+        brl eraseSpriteDragon3SkipRowErase114
+eraseSpriteDragon3SkipRowEraseDontSkipRow114 anop
+        lda >spriteY
+        clc
+        adc #30
+        asl a
+        tax
+        lda >screenRowOffsets,x
+        sta >rowAddress
+
+        lda >rowAddress
+        clc
+        adc >spriteX
+
+        clc
+        adc #1
+        tax
+
+
+        short m
+        lda >BACKGROUND_ADDR,x
+        sta >SCREEN_ADDR,x
+        long m
+        lda >rowAddress
+        clc
+        adc >spriteX
+
+        clc
+        adc #6
+        tax
+
+
+        short m
+        lda >BACKGROUND_ADDR,x
+        sta >SCREEN_ADDR,x
+        long m
+
+
+eraseSpriteDragon3SkipRowErase114 anop
+
+        lda >rowCounter
+        clc
+        adc #1
+        sta >rowCounter
+
+
+        cmp #199
+        bcs eraseSpriteDragon3SkipRowEraseShortJump115
+        bra eraseSpriteDragon3SkipRowEraseDontSkipRow115
+
+eraseSpriteDragon3SkipRowEraseShortJump115 anop
+        brl eraseSpriteDragon3SkipRowErase115
+eraseSpriteDragon3SkipRowEraseDontSkipRow115 anop
+        lda >spriteY
+        clc
+        adc #31
+        asl a
+        tax
+        lda >screenRowOffsets,x
+        sta >rowAddress
+
+        lda >rowAddress
+        clc
+        adc >spriteX
+
+        clc
+        adc #1
+        tax
+
+
+        short m
+        lda >BACKGROUND_ADDR,x
+        sta >SCREEN_ADDR,x
+        long m
+        lda >rowAddress
+        clc
+        adc >spriteX
+
+        clc
+        adc #6
+        tax
+
+
+        short m
+        lda >BACKGROUND_ADDR,x
+        sta >SCREEN_ADDR,x
+        long m
+
+
+eraseSpriteDragon3SkipRowErase115 anop
+
+        lda >rowCounter
+        clc
+        adc #1
+        sta >rowCounter
+
+
+        cmp #199
+        bcs eraseSpriteDragon3SkipRowEraseShortJump116
+        bra eraseSpriteDragon3SkipRowEraseDontSkipRow116
+
+eraseSpriteDragon3SkipRowEraseShortJump116 anop
+        brl eraseSpriteDragon3SkipRowErase116
+eraseSpriteDragon3SkipRowEraseDontSkipRow116 anop
+        lda >spriteY
+        clc
+        adc #32
+        asl a
+        tax
+        lda >screenRowOffsets,x
+        sta >rowAddress
+
+        lda >rowAddress
+        clc
+        adc >spriteX
+
+        clc
+        adc #1
+        tax
+
+
+        short m
+        lda >BACKGROUND_ADDR,x
+        sta >SCREEN_ADDR,x
+        long m
+        lda >rowAddress
+        clc
+        adc >spriteX
+
+        clc
+        adc #2
+        tax
+
+
+        short m
+        lda >BACKGROUND_ADDR,x
+        sta >SCREEN_ADDR,x
+        long m
+        lda >rowAddress
+        clc
+        adc >spriteX
+
+        clc
+        adc #3
+        tax
+
+
+        short m
+        lda >BACKGROUND_ADDR,x
+        sta >SCREEN_ADDR,x
+        long m
+        lda >rowAddress
+        clc
+        adc >spriteX
+
+        clc
+        adc #4
+        tax
+
+
+        short m
+        lda >BACKGROUND_ADDR,x
+        sta >SCREEN_ADDR,x
+        long m
+        lda >rowAddress
+        clc
+        adc >spriteX
+
+        clc
+        adc #5
+        tax
+
+
+        short m
+        lda >BACKGROUND_ADDR,x
+        sta >SCREEN_ADDR,x
+        long m
+        lda >rowAddress
+        clc
+        adc >spriteX
+
+        clc
+        adc #6
+        tax
+
+
+        short m
+        lda >BACKGROUND_ADDR,x
+        sta >SCREEN_ADDR,x
+        long m
+
+
+eraseSpriteDragon3SkipRowErase116 anop
+
+        lda >rowCounter
+        clc
+        adc #1
+        sta >rowCounter
+
+
+        cmp #199
+        bcs eraseSpriteDragon3SkipRowEraseShortJump117
+        bra eraseSpriteDragon3SkipRowEraseDontSkipRow117
+
+eraseSpriteDragon3SkipRowEraseShortJump117 anop
+        brl eraseSpriteDragon3SkipRowErase117
+eraseSpriteDragon3SkipRowEraseDontSkipRow117 anop
+        lda >spriteY
+        clc
+        adc #33
+        asl a
+        tax
+        lda >screenRowOffsets,x
+        sta >rowAddress
+
+        lda >rowAddress
+        clc
+        adc >spriteX
+
+        clc
+        adc #1
+        tax
+
+
+        short m
+        lda >BACKGROUND_ADDR,x
+        sta >SCREEN_ADDR,x
+        long m
+        lda >rowAddress
+        clc
+        adc >spriteX
+
+        clc
+        adc #2
+        tax
+
+
+        short m
+        lda >BACKGROUND_ADDR,x
+        sta >SCREEN_ADDR,x
+        long m
+        lda >rowAddress
+        clc
+        adc >spriteX
+
+        clc
+        adc #3
+        tax
+
+
+        short m
+        lda >BACKGROUND_ADDR,x
+        sta >SCREEN_ADDR,x
+        long m
+        lda >rowAddress
+        clc
+        adc >spriteX
+
+        clc
+        adc #4
+        tax
+
+
+        short m
+        lda >BACKGROUND_ADDR,x
+        sta >SCREEN_ADDR,x
+        long m
+        lda >rowAddress
+        clc
+        adc >spriteX
+
+        clc
+        adc #5
+        tax
+
+
+        short m
+        lda >BACKGROUND_ADDR,x
+        sta >SCREEN_ADDR,x
+        long m
+        lda >rowAddress
+        clc
+        adc >spriteX
+
+        clc
+        adc #6
+        tax
+
+
+        short m
+        lda >BACKGROUND_ADDR,x
+        sta >SCREEN_ADDR,x
+        long m
+
+
+eraseSpriteDragon3SkipRowErase117 anop
+
+        lda >rowCounter
+        clc
+        adc #1
+        sta >rowCounter
+
+
         rtl
 
 eraseSpriteDragon1Fog entry
@@ -8876,6 +9266,16 @@ eraseSpriteDragon1Fog entry
         lda >spriteX
         lsr a
         sta >spriteX
+        lda >spriteY
+        sta >rowCounter
+
+        cmp #199
+        bcs eraseSpriteDragon1FogSkipRowEraseShortJump118
+        bra eraseSpriteDragon1FogSkipRowEraseDontSkipRow118
+
+eraseSpriteDragon1FogSkipRowEraseShortJump118 anop
+        brl eraseSpriteDragon1FogSkipRowErase118
+eraseSpriteDragon1FogSkipRowEraseDontSkipRow118 anop
         lda >spriteY
         clc
         adc #0
@@ -8904,7 +9304,6 @@ eraseSpriteDragon1Fog0a anop
         sta >SCREEN_ADDR,x
 eraseSpriteDragon1Fog0b anop
         long m
-
         lda >rowAddress
         clc
         adc >spriteX
@@ -8926,6 +9325,22 @@ eraseSpriteDragon1Fog1a anop
 eraseSpriteDragon1Fog1b anop
         long m
 
+
+eraseSpriteDragon1FogSkipRowErase118 anop
+
+        lda >rowCounter
+        clc
+        adc #1
+        sta >rowCounter
+
+
+        cmp #199
+        bcs eraseSpriteDragon1FogSkipRowEraseShortJump119
+        bra eraseSpriteDragon1FogSkipRowEraseDontSkipRow119
+
+eraseSpriteDragon1FogSkipRowEraseShortJump119 anop
+        brl eraseSpriteDragon1FogSkipRowErase119
+eraseSpriteDragon1FogSkipRowEraseDontSkipRow119 anop
         lda >spriteY
         clc
         adc #1
@@ -8954,7 +9369,6 @@ eraseSpriteDragon1Fog2a anop
         sta >SCREEN_ADDR,x
 eraseSpriteDragon1Fog2b anop
         long m
-
         lda >rowAddress
         clc
         adc >spriteX
@@ -8976,6 +9390,22 @@ eraseSpriteDragon1Fog3a anop
 eraseSpriteDragon1Fog3b anop
         long m
 
+
+eraseSpriteDragon1FogSkipRowErase119 anop
+
+        lda >rowCounter
+        clc
+        adc #1
+        sta >rowCounter
+
+
+        cmp #199
+        bcs eraseSpriteDragon1FogSkipRowEraseShortJump120
+        bra eraseSpriteDragon1FogSkipRowEraseDontSkipRow120
+
+eraseSpriteDragon1FogSkipRowEraseShortJump120 anop
+        brl eraseSpriteDragon1FogSkipRowErase120
+eraseSpriteDragon1FogSkipRowEraseDontSkipRow120 anop
         lda >spriteY
         clc
         adc #2
@@ -9004,7 +9434,6 @@ eraseSpriteDragon1Fog4a anop
         sta >SCREEN_ADDR,x
 eraseSpriteDragon1Fog4b anop
         long m
-
         lda >rowAddress
         clc
         adc >spriteX
@@ -9025,7 +9454,6 @@ eraseSpriteDragon1Fog5a anop
         sta >SCREEN_ADDR,x
 eraseSpriteDragon1Fog5b anop
         long m
-
         lda >rowAddress
         clc
         adc >spriteX
@@ -9046,7 +9474,6 @@ eraseSpriteDragon1Fog6a anop
         sta >SCREEN_ADDR,x
 eraseSpriteDragon1Fog6b anop
         long m
-
         lda >rowAddress
         clc
         adc >spriteX
@@ -9068,6 +9495,22 @@ eraseSpriteDragon1Fog7a anop
 eraseSpriteDragon1Fog7b anop
         long m
 
+
+eraseSpriteDragon1FogSkipRowErase120 anop
+
+        lda >rowCounter
+        clc
+        adc #1
+        sta >rowCounter
+
+
+        cmp #199
+        bcs eraseSpriteDragon1FogSkipRowEraseShortJump121
+        bra eraseSpriteDragon1FogSkipRowEraseDontSkipRow121
+
+eraseSpriteDragon1FogSkipRowEraseShortJump121 anop
+        brl eraseSpriteDragon1FogSkipRowErase121
+eraseSpriteDragon1FogSkipRowEraseDontSkipRow121 anop
         lda >spriteY
         clc
         adc #3
@@ -9096,7 +9539,6 @@ eraseSpriteDragon1Fog8a anop
         sta >SCREEN_ADDR,x
 eraseSpriteDragon1Fog8b anop
         long m
-
         lda >rowAddress
         clc
         adc >spriteX
@@ -9117,7 +9559,6 @@ eraseSpriteDragon1Fog9a anop
         sta >SCREEN_ADDR,x
 eraseSpriteDragon1Fog9b anop
         long m
-
         lda >rowAddress
         clc
         adc >spriteX
@@ -9138,7 +9579,6 @@ eraseSpriteDragon1Fog10a anop
         sta >SCREEN_ADDR,x
 eraseSpriteDragon1Fog10b anop
         long m
-
         lda >rowAddress
         clc
         adc >spriteX
@@ -9160,6 +9600,22 @@ eraseSpriteDragon1Fog11a anop
 eraseSpriteDragon1Fog11b anop
         long m
 
+
+eraseSpriteDragon1FogSkipRowErase121 anop
+
+        lda >rowCounter
+        clc
+        adc #1
+        sta >rowCounter
+
+
+        cmp #199
+        bcs eraseSpriteDragon1FogSkipRowEraseShortJump122
+        bra eraseSpriteDragon1FogSkipRowEraseDontSkipRow122
+
+eraseSpriteDragon1FogSkipRowEraseShortJump122 anop
+        brl eraseSpriteDragon1FogSkipRowErase122
+eraseSpriteDragon1FogSkipRowEraseDontSkipRow122 anop
         lda >spriteY
         clc
         adc #4
@@ -9188,7 +9644,6 @@ eraseSpriteDragon1Fog12a anop
         sta >SCREEN_ADDR,x
 eraseSpriteDragon1Fog12b anop
         long m
-
         lda >rowAddress
         clc
         adc >spriteX
@@ -9209,7 +9664,6 @@ eraseSpriteDragon1Fog13a anop
         sta >SCREEN_ADDR,x
 eraseSpriteDragon1Fog13b anop
         long m
-
         lda >rowAddress
         clc
         adc >spriteX
@@ -9230,7 +9684,6 @@ eraseSpriteDragon1Fog14a anop
         sta >SCREEN_ADDR,x
 eraseSpriteDragon1Fog14b anop
         long m
-
         lda >rowAddress
         clc
         adc >spriteX
@@ -9251,7 +9704,6 @@ eraseSpriteDragon1Fog15a anop
         sta >SCREEN_ADDR,x
 eraseSpriteDragon1Fog15b anop
         long m
-
         lda >rowAddress
         clc
         adc >spriteX
@@ -9272,7 +9724,6 @@ eraseSpriteDragon1Fog16a anop
         sta >SCREEN_ADDR,x
 eraseSpriteDragon1Fog16b anop
         long m
-
         lda >rowAddress
         clc
         adc >spriteX
@@ -9294,6 +9745,22 @@ eraseSpriteDragon1Fog17a anop
 eraseSpriteDragon1Fog17b anop
         long m
 
+
+eraseSpriteDragon1FogSkipRowErase122 anop
+
+        lda >rowCounter
+        clc
+        adc #1
+        sta >rowCounter
+
+
+        cmp #199
+        bcs eraseSpriteDragon1FogSkipRowEraseShortJump123
+        bra eraseSpriteDragon1FogSkipRowEraseDontSkipRow123
+
+eraseSpriteDragon1FogSkipRowEraseShortJump123 anop
+        brl eraseSpriteDragon1FogSkipRowErase123
+eraseSpriteDragon1FogSkipRowEraseDontSkipRow123 anop
         lda >spriteY
         clc
         adc #5
@@ -9322,7 +9789,6 @@ eraseSpriteDragon1Fog18a anop
         sta >SCREEN_ADDR,x
 eraseSpriteDragon1Fog18b anop
         long m
-
         lda >rowAddress
         clc
         adc >spriteX
@@ -9343,7 +9809,6 @@ eraseSpriteDragon1Fog19a anop
         sta >SCREEN_ADDR,x
 eraseSpriteDragon1Fog19b anop
         long m
-
         lda >rowAddress
         clc
         adc >spriteX
@@ -9364,7 +9829,6 @@ eraseSpriteDragon1Fog20a anop
         sta >SCREEN_ADDR,x
 eraseSpriteDragon1Fog20b anop
         long m
-
         lda >rowAddress
         clc
         adc >spriteX
@@ -9385,7 +9849,6 @@ eraseSpriteDragon1Fog21a anop
         sta >SCREEN_ADDR,x
 eraseSpriteDragon1Fog21b anop
         long m
-
         lda >rowAddress
         clc
         adc >spriteX
@@ -9406,7 +9869,6 @@ eraseSpriteDragon1Fog22a anop
         sta >SCREEN_ADDR,x
 eraseSpriteDragon1Fog22b anop
         long m
-
         lda >rowAddress
         clc
         adc >spriteX
@@ -9428,6 +9890,22 @@ eraseSpriteDragon1Fog23a anop
 eraseSpriteDragon1Fog23b anop
         long m
 
+
+eraseSpriteDragon1FogSkipRowErase123 anop
+
+        lda >rowCounter
+        clc
+        adc #1
+        sta >rowCounter
+
+
+        cmp #199
+        bcs eraseSpriteDragon1FogSkipRowEraseShortJump124
+        bra eraseSpriteDragon1FogSkipRowEraseDontSkipRow124
+
+eraseSpriteDragon1FogSkipRowEraseShortJump124 anop
+        brl eraseSpriteDragon1FogSkipRowErase124
+eraseSpriteDragon1FogSkipRowEraseDontSkipRow124 anop
         lda >spriteY
         clc
         adc #6
@@ -9456,7 +9934,6 @@ eraseSpriteDragon1Fog24a anop
         sta >SCREEN_ADDR,x
 eraseSpriteDragon1Fog24b anop
         long m
-
         lda >rowAddress
         clc
         adc >spriteX
@@ -9477,7 +9954,6 @@ eraseSpriteDragon1Fog25a anop
         sta >SCREEN_ADDR,x
 eraseSpriteDragon1Fog25b anop
         long m
-
         lda >rowAddress
         clc
         adc >spriteX
@@ -9498,7 +9974,6 @@ eraseSpriteDragon1Fog26a anop
         sta >SCREEN_ADDR,x
 eraseSpriteDragon1Fog26b anop
         long m
-
         lda >rowAddress
         clc
         adc >spriteX
@@ -9519,7 +9994,6 @@ eraseSpriteDragon1Fog27a anop
         sta >SCREEN_ADDR,x
 eraseSpriteDragon1Fog27b anop
         long m
-
         lda >rowAddress
         clc
         adc >spriteX
@@ -9540,7 +10014,6 @@ eraseSpriteDragon1Fog28a anop
         sta >SCREEN_ADDR,x
 eraseSpriteDragon1Fog28b anop
         long m
-
         lda >rowAddress
         clc
         adc >spriteX
@@ -9561,7 +10034,6 @@ eraseSpriteDragon1Fog29a anop
         sta >SCREEN_ADDR,x
 eraseSpriteDragon1Fog29b anop
         long m
-
         lda >rowAddress
         clc
         adc >spriteX
@@ -9583,6 +10055,22 @@ eraseSpriteDragon1Fog30a anop
 eraseSpriteDragon1Fog30b anop
         long m
 
+
+eraseSpriteDragon1FogSkipRowErase124 anop
+
+        lda >rowCounter
+        clc
+        adc #1
+        sta >rowCounter
+
+
+        cmp #199
+        bcs eraseSpriteDragon1FogSkipRowEraseShortJump125
+        bra eraseSpriteDragon1FogSkipRowEraseDontSkipRow125
+
+eraseSpriteDragon1FogSkipRowEraseShortJump125 anop
+        brl eraseSpriteDragon1FogSkipRowErase125
+eraseSpriteDragon1FogSkipRowEraseDontSkipRow125 anop
         lda >spriteY
         clc
         adc #7
@@ -9611,7 +10099,6 @@ eraseSpriteDragon1Fog31a anop
         sta >SCREEN_ADDR,x
 eraseSpriteDragon1Fog31b anop
         long m
-
         lda >rowAddress
         clc
         adc >spriteX
@@ -9632,7 +10119,6 @@ eraseSpriteDragon1Fog32a anop
         sta >SCREEN_ADDR,x
 eraseSpriteDragon1Fog32b anop
         long m
-
         lda >rowAddress
         clc
         adc >spriteX
@@ -9653,7 +10139,6 @@ eraseSpriteDragon1Fog33a anop
         sta >SCREEN_ADDR,x
 eraseSpriteDragon1Fog33b anop
         long m
-
         lda >rowAddress
         clc
         adc >spriteX
@@ -9674,7 +10159,6 @@ eraseSpriteDragon1Fog34a anop
         sta >SCREEN_ADDR,x
 eraseSpriteDragon1Fog34b anop
         long m
-
         lda >rowAddress
         clc
         adc >spriteX
@@ -9695,7 +10179,6 @@ eraseSpriteDragon1Fog35a anop
         sta >SCREEN_ADDR,x
 eraseSpriteDragon1Fog35b anop
         long m
-
         lda >rowAddress
         clc
         adc >spriteX
@@ -9716,7 +10199,6 @@ eraseSpriteDragon1Fog36a anop
         sta >SCREEN_ADDR,x
 eraseSpriteDragon1Fog36b anop
         long m
-
         lda >rowAddress
         clc
         adc >spriteX
@@ -9738,6 +10220,22 @@ eraseSpriteDragon1Fog37a anop
 eraseSpriteDragon1Fog37b anop
         long m
 
+
+eraseSpriteDragon1FogSkipRowErase125 anop
+
+        lda >rowCounter
+        clc
+        adc #1
+        sta >rowCounter
+
+
+        cmp #199
+        bcs eraseSpriteDragon1FogSkipRowEraseShortJump126
+        bra eraseSpriteDragon1FogSkipRowEraseDontSkipRow126
+
+eraseSpriteDragon1FogSkipRowEraseShortJump126 anop
+        brl eraseSpriteDragon1FogSkipRowErase126
+eraseSpriteDragon1FogSkipRowEraseDontSkipRow126 anop
         lda >spriteY
         clc
         adc #8
@@ -9766,7 +10264,6 @@ eraseSpriteDragon1Fog38a anop
         sta >SCREEN_ADDR,x
 eraseSpriteDragon1Fog38b anop
         long m
-
         lda >rowAddress
         clc
         adc >spriteX
@@ -9787,7 +10284,6 @@ eraseSpriteDragon1Fog39a anop
         sta >SCREEN_ADDR,x
 eraseSpriteDragon1Fog39b anop
         long m
-
         lda >rowAddress
         clc
         adc >spriteX
@@ -9809,6 +10305,22 @@ eraseSpriteDragon1Fog40a anop
 eraseSpriteDragon1Fog40b anop
         long m
 
+
+eraseSpriteDragon1FogSkipRowErase126 anop
+
+        lda >rowCounter
+        clc
+        adc #1
+        sta >rowCounter
+
+
+        cmp #199
+        bcs eraseSpriteDragon1FogSkipRowEraseShortJump127
+        bra eraseSpriteDragon1FogSkipRowEraseDontSkipRow127
+
+eraseSpriteDragon1FogSkipRowEraseShortJump127 anop
+        brl eraseSpriteDragon1FogSkipRowErase127
+eraseSpriteDragon1FogSkipRowEraseDontSkipRow127 anop
         lda >spriteY
         clc
         adc #9
@@ -9837,7 +10349,6 @@ eraseSpriteDragon1Fog41a anop
         sta >SCREEN_ADDR,x
 eraseSpriteDragon1Fog41b anop
         long m
-
         lda >rowAddress
         clc
         adc >spriteX
@@ -9858,7 +10369,6 @@ eraseSpriteDragon1Fog42a anop
         sta >SCREEN_ADDR,x
 eraseSpriteDragon1Fog42b anop
         long m
-
         lda >rowAddress
         clc
         adc >spriteX
@@ -9880,6 +10390,22 @@ eraseSpriteDragon1Fog43a anop
 eraseSpriteDragon1Fog43b anop
         long m
 
+
+eraseSpriteDragon1FogSkipRowErase127 anop
+
+        lda >rowCounter
+        clc
+        adc #1
+        sta >rowCounter
+
+
+        cmp #199
+        bcs eraseSpriteDragon1FogSkipRowEraseShortJump128
+        bra eraseSpriteDragon1FogSkipRowEraseDontSkipRow128
+
+eraseSpriteDragon1FogSkipRowEraseShortJump128 anop
+        brl eraseSpriteDragon1FogSkipRowErase128
+eraseSpriteDragon1FogSkipRowEraseDontSkipRow128 anop
         lda >spriteY
         clc
         adc #10
@@ -9909,6 +10435,22 @@ eraseSpriteDragon1Fog44a anop
 eraseSpriteDragon1Fog44b anop
         long m
 
+
+eraseSpriteDragon1FogSkipRowErase128 anop
+
+        lda >rowCounter
+        clc
+        adc #1
+        sta >rowCounter
+
+
+        cmp #199
+        bcs eraseSpriteDragon1FogSkipRowEraseShortJump129
+        bra eraseSpriteDragon1FogSkipRowEraseDontSkipRow129
+
+eraseSpriteDragon1FogSkipRowEraseShortJump129 anop
+        brl eraseSpriteDragon1FogSkipRowErase129
+eraseSpriteDragon1FogSkipRowEraseDontSkipRow129 anop
         lda >spriteY
         clc
         adc #11
@@ -9938,6 +10480,22 @@ eraseSpriteDragon1Fog45a anop
 eraseSpriteDragon1Fog45b anop
         long m
 
+
+eraseSpriteDragon1FogSkipRowErase129 anop
+
+        lda >rowCounter
+        clc
+        adc #1
+        sta >rowCounter
+
+
+        cmp #199
+        bcs eraseSpriteDragon1FogSkipRowEraseShortJump130
+        bra eraseSpriteDragon1FogSkipRowEraseDontSkipRow130
+
+eraseSpriteDragon1FogSkipRowEraseShortJump130 anop
+        brl eraseSpriteDragon1FogSkipRowErase130
+eraseSpriteDragon1FogSkipRowEraseDontSkipRow130 anop
         lda >spriteY
         clc
         adc #12
@@ -9967,6 +10525,22 @@ eraseSpriteDragon1Fog46a anop
 eraseSpriteDragon1Fog46b anop
         long m
 
+
+eraseSpriteDragon1FogSkipRowErase130 anop
+
+        lda >rowCounter
+        clc
+        adc #1
+        sta >rowCounter
+
+
+        cmp #199
+        bcs eraseSpriteDragon1FogSkipRowEraseShortJump131
+        bra eraseSpriteDragon1FogSkipRowEraseDontSkipRow131
+
+eraseSpriteDragon1FogSkipRowEraseShortJump131 anop
+        brl eraseSpriteDragon1FogSkipRowErase131
+eraseSpriteDragon1FogSkipRowEraseDontSkipRow131 anop
         lda >spriteY
         clc
         adc #13
@@ -9996,6 +10570,22 @@ eraseSpriteDragon1Fog47a anop
 eraseSpriteDragon1Fog47b anop
         long m
 
+
+eraseSpriteDragon1FogSkipRowErase131 anop
+
+        lda >rowCounter
+        clc
+        adc #1
+        sta >rowCounter
+
+
+        cmp #199
+        bcs eraseSpriteDragon1FogSkipRowEraseShortJump132
+        bra eraseSpriteDragon1FogSkipRowEraseDontSkipRow132
+
+eraseSpriteDragon1FogSkipRowEraseShortJump132 anop
+        brl eraseSpriteDragon1FogSkipRowErase132
+eraseSpriteDragon1FogSkipRowEraseDontSkipRow132 anop
         lda >spriteY
         clc
         adc #14
@@ -10024,7 +10614,6 @@ eraseSpriteDragon1Fog48a anop
         sta >SCREEN_ADDR,x
 eraseSpriteDragon1Fog48b anop
         long m
-
         lda >rowAddress
         clc
         adc >spriteX
@@ -10045,7 +10634,6 @@ eraseSpriteDragon1Fog49a anop
         sta >SCREEN_ADDR,x
 eraseSpriteDragon1Fog49b anop
         long m
-
         lda >rowAddress
         clc
         adc >spriteX
@@ -10066,7 +10654,6 @@ eraseSpriteDragon1Fog50a anop
         sta >SCREEN_ADDR,x
 eraseSpriteDragon1Fog50b anop
         long m
-
         lda >rowAddress
         clc
         adc >spriteX
@@ -10088,6 +10675,22 @@ eraseSpriteDragon1Fog51a anop
 eraseSpriteDragon1Fog51b anop
         long m
 
+
+eraseSpriteDragon1FogSkipRowErase132 anop
+
+        lda >rowCounter
+        clc
+        adc #1
+        sta >rowCounter
+
+
+        cmp #199
+        bcs eraseSpriteDragon1FogSkipRowEraseShortJump133
+        bra eraseSpriteDragon1FogSkipRowEraseDontSkipRow133
+
+eraseSpriteDragon1FogSkipRowEraseShortJump133 anop
+        brl eraseSpriteDragon1FogSkipRowErase133
+eraseSpriteDragon1FogSkipRowEraseDontSkipRow133 anop
         lda >spriteY
         clc
         adc #15
@@ -10116,7 +10719,6 @@ eraseSpriteDragon1Fog52a anop
         sta >SCREEN_ADDR,x
 eraseSpriteDragon1Fog52b anop
         long m
-
         lda >rowAddress
         clc
         adc >spriteX
@@ -10137,7 +10739,6 @@ eraseSpriteDragon1Fog53a anop
         sta >SCREEN_ADDR,x
 eraseSpriteDragon1Fog53b anop
         long m
-
         lda >rowAddress
         clc
         adc >spriteX
@@ -10158,7 +10759,6 @@ eraseSpriteDragon1Fog54a anop
         sta >SCREEN_ADDR,x
 eraseSpriteDragon1Fog54b anop
         long m
-
         lda >rowAddress
         clc
         adc >spriteX
@@ -10180,6 +10780,22 @@ eraseSpriteDragon1Fog55a anop
 eraseSpriteDragon1Fog55b anop
         long m
 
+
+eraseSpriteDragon1FogSkipRowErase133 anop
+
+        lda >rowCounter
+        clc
+        adc #1
+        sta >rowCounter
+
+
+        cmp #199
+        bcs eraseSpriteDragon1FogSkipRowEraseShortJump134
+        bra eraseSpriteDragon1FogSkipRowEraseDontSkipRow134
+
+eraseSpriteDragon1FogSkipRowEraseShortJump134 anop
+        brl eraseSpriteDragon1FogSkipRowErase134
+eraseSpriteDragon1FogSkipRowEraseDontSkipRow134 anop
         lda >spriteY
         clc
         adc #16
@@ -10208,7 +10824,6 @@ eraseSpriteDragon1Fog56a anop
         sta >SCREEN_ADDR,x
 eraseSpriteDragon1Fog56b anop
         long m
-
         lda >rowAddress
         clc
         adc >spriteX
@@ -10229,7 +10844,6 @@ eraseSpriteDragon1Fog57a anop
         sta >SCREEN_ADDR,x
 eraseSpriteDragon1Fog57b anop
         long m
-
         lda >rowAddress
         clc
         adc >spriteX
@@ -10250,7 +10864,6 @@ eraseSpriteDragon1Fog58a anop
         sta >SCREEN_ADDR,x
 eraseSpriteDragon1Fog58b anop
         long m
-
         lda >rowAddress
         clc
         adc >spriteX
@@ -10271,7 +10884,6 @@ eraseSpriteDragon1Fog59a anop
         sta >SCREEN_ADDR,x
 eraseSpriteDragon1Fog59b anop
         long m
-
         lda >rowAddress
         clc
         adc >spriteX
@@ -10292,7 +10904,6 @@ eraseSpriteDragon1Fog60a anop
         sta >SCREEN_ADDR,x
 eraseSpriteDragon1Fog60b anop
         long m
-
         lda >rowAddress
         clc
         adc >spriteX
@@ -10314,6 +10925,22 @@ eraseSpriteDragon1Fog61a anop
 eraseSpriteDragon1Fog61b anop
         long m
 
+
+eraseSpriteDragon1FogSkipRowErase134 anop
+
+        lda >rowCounter
+        clc
+        adc #1
+        sta >rowCounter
+
+
+        cmp #199
+        bcs eraseSpriteDragon1FogSkipRowEraseShortJump135
+        bra eraseSpriteDragon1FogSkipRowEraseDontSkipRow135
+
+eraseSpriteDragon1FogSkipRowEraseShortJump135 anop
+        brl eraseSpriteDragon1FogSkipRowErase135
+eraseSpriteDragon1FogSkipRowEraseDontSkipRow135 anop
         lda >spriteY
         clc
         adc #17
@@ -10342,7 +10969,6 @@ eraseSpriteDragon1Fog62a anop
         sta >SCREEN_ADDR,x
 eraseSpriteDragon1Fog62b anop
         long m
-
         lda >rowAddress
         clc
         adc >spriteX
@@ -10363,7 +10989,6 @@ eraseSpriteDragon1Fog63a anop
         sta >SCREEN_ADDR,x
 eraseSpriteDragon1Fog63b anop
         long m
-
         lda >rowAddress
         clc
         adc >spriteX
@@ -10384,7 +11009,6 @@ eraseSpriteDragon1Fog64a anop
         sta >SCREEN_ADDR,x
 eraseSpriteDragon1Fog64b anop
         long m
-
         lda >rowAddress
         clc
         adc >spriteX
@@ -10405,7 +11029,6 @@ eraseSpriteDragon1Fog65a anop
         sta >SCREEN_ADDR,x
 eraseSpriteDragon1Fog65b anop
         long m
-
         lda >rowAddress
         clc
         adc >spriteX
@@ -10426,7 +11049,6 @@ eraseSpriteDragon1Fog66a anop
         sta >SCREEN_ADDR,x
 eraseSpriteDragon1Fog66b anop
         long m
-
         lda >rowAddress
         clc
         adc >spriteX
@@ -10448,6 +11070,22 @@ eraseSpriteDragon1Fog67a anop
 eraseSpriteDragon1Fog67b anop
         long m
 
+
+eraseSpriteDragon1FogSkipRowErase135 anop
+
+        lda >rowCounter
+        clc
+        adc #1
+        sta >rowCounter
+
+
+        cmp #199
+        bcs eraseSpriteDragon1FogSkipRowEraseShortJump136
+        bra eraseSpriteDragon1FogSkipRowEraseDontSkipRow136
+
+eraseSpriteDragon1FogSkipRowEraseShortJump136 anop
+        brl eraseSpriteDragon1FogSkipRowErase136
+eraseSpriteDragon1FogSkipRowEraseDontSkipRow136 anop
         lda >spriteY
         clc
         adc #18
@@ -10476,7 +11114,6 @@ eraseSpriteDragon1Fog68a anop
         sta >SCREEN_ADDR,x
 eraseSpriteDragon1Fog68b anop
         long m
-
         lda >rowAddress
         clc
         adc >spriteX
@@ -10497,7 +11134,6 @@ eraseSpriteDragon1Fog69a anop
         sta >SCREEN_ADDR,x
 eraseSpriteDragon1Fog69b anop
         long m
-
         lda >rowAddress
         clc
         adc >spriteX
@@ -10518,7 +11154,6 @@ eraseSpriteDragon1Fog70a anop
         sta >SCREEN_ADDR,x
 eraseSpriteDragon1Fog70b anop
         long m
-
         lda >rowAddress
         clc
         adc >spriteX
@@ -10539,7 +11174,6 @@ eraseSpriteDragon1Fog71a anop
         sta >SCREEN_ADDR,x
 eraseSpriteDragon1Fog71b anop
         long m
-
         lda >rowAddress
         clc
         adc >spriteX
@@ -10560,7 +11194,6 @@ eraseSpriteDragon1Fog72a anop
         sta >SCREEN_ADDR,x
 eraseSpriteDragon1Fog72b anop
         long m
-
         lda >rowAddress
         clc
         adc >spriteX
@@ -10581,7 +11214,6 @@ eraseSpriteDragon1Fog73a anop
         sta >SCREEN_ADDR,x
 eraseSpriteDragon1Fog73b anop
         long m
-
         lda >rowAddress
         clc
         adc >spriteX
@@ -10603,6 +11235,22 @@ eraseSpriteDragon1Fog74a anop
 eraseSpriteDragon1Fog74b anop
         long m
 
+
+eraseSpriteDragon1FogSkipRowErase136 anop
+
+        lda >rowCounter
+        clc
+        adc #1
+        sta >rowCounter
+
+
+        cmp #199
+        bcs eraseSpriteDragon1FogSkipRowEraseShortJump137
+        bra eraseSpriteDragon1FogSkipRowEraseDontSkipRow137
+
+eraseSpriteDragon1FogSkipRowEraseShortJump137 anop
+        brl eraseSpriteDragon1FogSkipRowErase137
+eraseSpriteDragon1FogSkipRowEraseDontSkipRow137 anop
         lda >spriteY
         clc
         adc #19
@@ -10631,7 +11279,6 @@ eraseSpriteDragon1Fog75a anop
         sta >SCREEN_ADDR,x
 eraseSpriteDragon1Fog75b anop
         long m
-
         lda >rowAddress
         clc
         adc >spriteX
@@ -10652,7 +11299,6 @@ eraseSpriteDragon1Fog76a anop
         sta >SCREEN_ADDR,x
 eraseSpriteDragon1Fog76b anop
         long m
-
         lda >rowAddress
         clc
         adc >spriteX
@@ -10673,7 +11319,6 @@ eraseSpriteDragon1Fog77a anop
         sta >SCREEN_ADDR,x
 eraseSpriteDragon1Fog77b anop
         long m
-
         lda >rowAddress
         clc
         adc >spriteX
@@ -10694,7 +11339,6 @@ eraseSpriteDragon1Fog78a anop
         sta >SCREEN_ADDR,x
 eraseSpriteDragon1Fog78b anop
         long m
-
         lda >rowAddress
         clc
         adc >spriteX
@@ -10715,7 +11359,6 @@ eraseSpriteDragon1Fog79a anop
         sta >SCREEN_ADDR,x
 eraseSpriteDragon1Fog79b anop
         long m
-
         lda >rowAddress
         clc
         adc >spriteX
@@ -10736,7 +11379,6 @@ eraseSpriteDragon1Fog80a anop
         sta >SCREEN_ADDR,x
 eraseSpriteDragon1Fog80b anop
         long m
-
         lda >rowAddress
         clc
         adc >spriteX
@@ -10758,6 +11400,22 @@ eraseSpriteDragon1Fog81a anop
 eraseSpriteDragon1Fog81b anop
         long m
 
+
+eraseSpriteDragon1FogSkipRowErase137 anop
+
+        lda >rowCounter
+        clc
+        adc #1
+        sta >rowCounter
+
+
+        cmp #199
+        bcs eraseSpriteDragon1FogSkipRowEraseShortJump138
+        bra eraseSpriteDragon1FogSkipRowEraseDontSkipRow138
+
+eraseSpriteDragon1FogSkipRowEraseShortJump138 anop
+        brl eraseSpriteDragon1FogSkipRowErase138
+eraseSpriteDragon1FogSkipRowEraseDontSkipRow138 anop
         lda >spriteY
         clc
         adc #20
@@ -10786,7 +11444,6 @@ eraseSpriteDragon1Fog82a anop
         sta >SCREEN_ADDR,x
 eraseSpriteDragon1Fog82b anop
         long m
-
         lda >rowAddress
         clc
         adc >spriteX
@@ -10807,7 +11464,6 @@ eraseSpriteDragon1Fog83a anop
         sta >SCREEN_ADDR,x
 eraseSpriteDragon1Fog83b anop
         long m
-
         lda >rowAddress
         clc
         adc >spriteX
@@ -10828,7 +11484,6 @@ eraseSpriteDragon1Fog84a anop
         sta >SCREEN_ADDR,x
 eraseSpriteDragon1Fog84b anop
         long m
-
         lda >rowAddress
         clc
         adc >spriteX
@@ -10849,7 +11504,6 @@ eraseSpriteDragon1Fog85a anop
         sta >SCREEN_ADDR,x
 eraseSpriteDragon1Fog85b anop
         long m
-
         lda >rowAddress
         clc
         adc >spriteX
@@ -10871,6 +11525,22 @@ eraseSpriteDragon1Fog86a anop
 eraseSpriteDragon1Fog86b anop
         long m
 
+
+eraseSpriteDragon1FogSkipRowErase138 anop
+
+        lda >rowCounter
+        clc
+        adc #1
+        sta >rowCounter
+
+
+        cmp #199
+        bcs eraseSpriteDragon1FogSkipRowEraseShortJump139
+        bra eraseSpriteDragon1FogSkipRowEraseDontSkipRow139
+
+eraseSpriteDragon1FogSkipRowEraseShortJump139 anop
+        brl eraseSpriteDragon1FogSkipRowErase139
+eraseSpriteDragon1FogSkipRowEraseDontSkipRow139 anop
         lda >spriteY
         clc
         adc #21
@@ -10899,7 +11569,6 @@ eraseSpriteDragon1Fog87a anop
         sta >SCREEN_ADDR,x
 eraseSpriteDragon1Fog87b anop
         long m
-
         lda >rowAddress
         clc
         adc >spriteX
@@ -10920,7 +11589,6 @@ eraseSpriteDragon1Fog88a anop
         sta >SCREEN_ADDR,x
 eraseSpriteDragon1Fog88b anop
         long m
-
         lda >rowAddress
         clc
         adc >spriteX
@@ -10941,7 +11609,6 @@ eraseSpriteDragon1Fog89a anop
         sta >SCREEN_ADDR,x
 eraseSpriteDragon1Fog89b anop
         long m
-
         lda >rowAddress
         clc
         adc >spriteX
@@ -10962,7 +11629,6 @@ eraseSpriteDragon1Fog90a anop
         sta >SCREEN_ADDR,x
 eraseSpriteDragon1Fog90b anop
         long m
-
         lda >rowAddress
         clc
         adc >spriteX
@@ -10984,6 +11650,22 @@ eraseSpriteDragon1Fog91a anop
 eraseSpriteDragon1Fog91b anop
         long m
 
+
+eraseSpriteDragon1FogSkipRowErase139 anop
+
+        lda >rowCounter
+        clc
+        adc #1
+        sta >rowCounter
+
+
+        cmp #199
+        bcs eraseSpriteDragon1FogSkipRowEraseShortJump140
+        bra eraseSpriteDragon1FogSkipRowEraseDontSkipRow140
+
+eraseSpriteDragon1FogSkipRowEraseShortJump140 anop
+        brl eraseSpriteDragon1FogSkipRowErase140
+eraseSpriteDragon1FogSkipRowEraseDontSkipRow140 anop
         lda >spriteY
         clc
         adc #22
@@ -11012,7 +11694,6 @@ eraseSpriteDragon1Fog92a anop
         sta >SCREEN_ADDR,x
 eraseSpriteDragon1Fog92b anop
         long m
-
         lda >rowAddress
         clc
         adc >spriteX
@@ -11033,7 +11714,6 @@ eraseSpriteDragon1Fog93a anop
         sta >SCREEN_ADDR,x
 eraseSpriteDragon1Fog93b anop
         long m
-
         lda >rowAddress
         clc
         adc >spriteX
@@ -11054,7 +11734,6 @@ eraseSpriteDragon1Fog94a anop
         sta >SCREEN_ADDR,x
 eraseSpriteDragon1Fog94b anop
         long m
-
         lda >rowAddress
         clc
         adc >spriteX
@@ -11076,6 +11755,22 @@ eraseSpriteDragon1Fog95a anop
 eraseSpriteDragon1Fog95b anop
         long m
 
+
+eraseSpriteDragon1FogSkipRowErase140 anop
+
+        lda >rowCounter
+        clc
+        adc #1
+        sta >rowCounter
+
+
+        cmp #199
+        bcs eraseSpriteDragon1FogSkipRowEraseShortJump141
+        bra eraseSpriteDragon1FogSkipRowEraseDontSkipRow141
+
+eraseSpriteDragon1FogSkipRowEraseShortJump141 anop
+        brl eraseSpriteDragon1FogSkipRowErase141
+eraseSpriteDragon1FogSkipRowEraseDontSkipRow141 anop
         lda >spriteY
         clc
         adc #23
@@ -11104,7 +11799,6 @@ eraseSpriteDragon1Fog96a anop
         sta >SCREEN_ADDR,x
 eraseSpriteDragon1Fog96b anop
         long m
-
         lda >rowAddress
         clc
         adc >spriteX
@@ -11125,7 +11819,6 @@ eraseSpriteDragon1Fog97a anop
         sta >SCREEN_ADDR,x
 eraseSpriteDragon1Fog97b anop
         long m
-
         lda >rowAddress
         clc
         adc >spriteX
@@ -11146,7 +11839,6 @@ eraseSpriteDragon1Fog98a anop
         sta >SCREEN_ADDR,x
 eraseSpriteDragon1Fog98b anop
         long m
-
         lda >rowAddress
         clc
         adc >spriteX
@@ -11168,6 +11860,22 @@ eraseSpriteDragon1Fog99a anop
 eraseSpriteDragon1Fog99b anop
         long m
 
+
+eraseSpriteDragon1FogSkipRowErase141 anop
+
+        lda >rowCounter
+        clc
+        adc #1
+        sta >rowCounter
+
+
+        cmp #199
+        bcs eraseSpriteDragon1FogSkipRowEraseShortJump142
+        bra eraseSpriteDragon1FogSkipRowEraseDontSkipRow142
+
+eraseSpriteDragon1FogSkipRowEraseShortJump142 anop
+        brl eraseSpriteDragon1FogSkipRowErase142
+eraseSpriteDragon1FogSkipRowEraseDontSkipRow142 anop
         lda >spriteY
         clc
         adc #24
@@ -11196,7 +11904,6 @@ eraseSpriteDragon1Fog100a anop
         sta >SCREEN_ADDR,x
 eraseSpriteDragon1Fog100b anop
         long m
-
         lda >rowAddress
         clc
         adc >spriteX
@@ -11217,7 +11924,6 @@ eraseSpriteDragon1Fog101a anop
         sta >SCREEN_ADDR,x
 eraseSpriteDragon1Fog101b anop
         long m
-
         lda >rowAddress
         clc
         adc >spriteX
@@ -11238,7 +11944,6 @@ eraseSpriteDragon1Fog102a anop
         sta >SCREEN_ADDR,x
 eraseSpriteDragon1Fog102b anop
         long m
-
         lda >rowAddress
         clc
         adc >spriteX
@@ -11260,6 +11965,22 @@ eraseSpriteDragon1Fog103a anop
 eraseSpriteDragon1Fog103b anop
         long m
 
+
+eraseSpriteDragon1FogSkipRowErase142 anop
+
+        lda >rowCounter
+        clc
+        adc #1
+        sta >rowCounter
+
+
+        cmp #199
+        bcs eraseSpriteDragon1FogSkipRowEraseShortJump143
+        bra eraseSpriteDragon1FogSkipRowEraseDontSkipRow143
+
+eraseSpriteDragon1FogSkipRowEraseShortJump143 anop
+        brl eraseSpriteDragon1FogSkipRowErase143
+eraseSpriteDragon1FogSkipRowEraseDontSkipRow143 anop
         lda >spriteY
         clc
         adc #25
@@ -11288,7 +12009,6 @@ eraseSpriteDragon1Fog104a anop
         sta >SCREEN_ADDR,x
 eraseSpriteDragon1Fog104b anop
         long m
-
         lda >rowAddress
         clc
         adc >spriteX
@@ -11309,7 +12029,6 @@ eraseSpriteDragon1Fog105a anop
         sta >SCREEN_ADDR,x
 eraseSpriteDragon1Fog105b anop
         long m
-
         lda >rowAddress
         clc
         adc >spriteX
@@ -11330,7 +12049,6 @@ eraseSpriteDragon1Fog106a anop
         sta >SCREEN_ADDR,x
 eraseSpriteDragon1Fog106b anop
         long m
-
         lda >rowAddress
         clc
         adc >spriteX
@@ -11352,6 +12070,22 @@ eraseSpriteDragon1Fog107a anop
 eraseSpriteDragon1Fog107b anop
         long m
 
+
+eraseSpriteDragon1FogSkipRowErase143 anop
+
+        lda >rowCounter
+        clc
+        adc #1
+        sta >rowCounter
+
+
+        cmp #199
+        bcs eraseSpriteDragon1FogSkipRowEraseShortJump144
+        bra eraseSpriteDragon1FogSkipRowEraseDontSkipRow144
+
+eraseSpriteDragon1FogSkipRowEraseShortJump144 anop
+        brl eraseSpriteDragon1FogSkipRowErase144
+eraseSpriteDragon1FogSkipRowEraseDontSkipRow144 anop
         lda >spriteY
         clc
         adc #26
@@ -11380,7 +12114,6 @@ eraseSpriteDragon1Fog108a anop
         sta >SCREEN_ADDR,x
 eraseSpriteDragon1Fog108b anop
         long m
-
         lda >rowAddress
         clc
         adc >spriteX
@@ -11401,7 +12134,6 @@ eraseSpriteDragon1Fog109a anop
         sta >SCREEN_ADDR,x
 eraseSpriteDragon1Fog109b anop
         long m
-
         lda >rowAddress
         clc
         adc >spriteX
@@ -11422,7 +12154,6 @@ eraseSpriteDragon1Fog110a anop
         sta >SCREEN_ADDR,x
 eraseSpriteDragon1Fog110b anop
         long m
-
         lda >rowAddress
         clc
         adc >spriteX
@@ -11443,7 +12174,6 @@ eraseSpriteDragon1Fog111a anop
         sta >SCREEN_ADDR,x
 eraseSpriteDragon1Fog111b anop
         long m
-
         lda >rowAddress
         clc
         adc >spriteX
@@ -11465,6 +12195,22 @@ eraseSpriteDragon1Fog112a anop
 eraseSpriteDragon1Fog112b anop
         long m
 
+
+eraseSpriteDragon1FogSkipRowErase144 anop
+
+        lda >rowCounter
+        clc
+        adc #1
+        sta >rowCounter
+
+
+        cmp #199
+        bcs eraseSpriteDragon1FogSkipRowEraseShortJump145
+        bra eraseSpriteDragon1FogSkipRowEraseDontSkipRow145
+
+eraseSpriteDragon1FogSkipRowEraseShortJump145 anop
+        brl eraseSpriteDragon1FogSkipRowErase145
+eraseSpriteDragon1FogSkipRowEraseDontSkipRow145 anop
         lda >spriteY
         clc
         adc #27
@@ -11493,7 +12239,6 @@ eraseSpriteDragon1Fog113a anop
         sta >SCREEN_ADDR,x
 eraseSpriteDragon1Fog113b anop
         long m
-
         lda >rowAddress
         clc
         adc >spriteX
@@ -11514,7 +12259,6 @@ eraseSpriteDragon1Fog114a anop
         sta >SCREEN_ADDR,x
 eraseSpriteDragon1Fog114b anop
         long m
-
         lda >rowAddress
         clc
         adc >spriteX
@@ -11535,7 +12279,6 @@ eraseSpriteDragon1Fog115a anop
         sta >SCREEN_ADDR,x
 eraseSpriteDragon1Fog115b anop
         long m
-
         lda >rowAddress
         clc
         adc >spriteX
@@ -11556,7 +12299,6 @@ eraseSpriteDragon1Fog116a anop
         sta >SCREEN_ADDR,x
 eraseSpriteDragon1Fog116b anop
         long m
-
         lda >rowAddress
         clc
         adc >spriteX
@@ -11578,6 +12320,22 @@ eraseSpriteDragon1Fog117a anop
 eraseSpriteDragon1Fog117b anop
         long m
 
+
+eraseSpriteDragon1FogSkipRowErase145 anop
+
+        lda >rowCounter
+        clc
+        adc #1
+        sta >rowCounter
+
+
+        cmp #199
+        bcs eraseSpriteDragon1FogSkipRowEraseShortJump146
+        bra eraseSpriteDragon1FogSkipRowEraseDontSkipRow146
+
+eraseSpriteDragon1FogSkipRowEraseShortJump146 anop
+        brl eraseSpriteDragon1FogSkipRowErase146
+eraseSpriteDragon1FogSkipRowEraseDontSkipRow146 anop
         lda >spriteY
         clc
         adc #28
@@ -11606,7 +12364,6 @@ eraseSpriteDragon1Fog118a anop
         sta >SCREEN_ADDR,x
 eraseSpriteDragon1Fog118b anop
         long m
-
         lda >rowAddress
         clc
         adc >spriteX
@@ -11627,7 +12384,6 @@ eraseSpriteDragon1Fog119a anop
         sta >SCREEN_ADDR,x
 eraseSpriteDragon1Fog119b anop
         long m
-
         lda >rowAddress
         clc
         adc >spriteX
@@ -11648,7 +12404,6 @@ eraseSpriteDragon1Fog120a anop
         sta >SCREEN_ADDR,x
 eraseSpriteDragon1Fog120b anop
         long m
-
         lda >rowAddress
         clc
         adc >spriteX
@@ -11669,7 +12424,6 @@ eraseSpriteDragon1Fog121a anop
         sta >SCREEN_ADDR,x
 eraseSpriteDragon1Fog121b anop
         long m
-
         lda >rowAddress
         clc
         adc >spriteX
@@ -11690,7 +12444,6 @@ eraseSpriteDragon1Fog122a anop
         sta >SCREEN_ADDR,x
 eraseSpriteDragon1Fog122b anop
         long m
-
         lda >rowAddress
         clc
         adc >spriteX
@@ -11711,7 +12464,6 @@ eraseSpriteDragon1Fog123a anop
         sta >SCREEN_ADDR,x
 eraseSpriteDragon1Fog123b anop
         long m
-
         lda >rowAddress
         clc
         adc >spriteX
@@ -11732,7 +12484,6 @@ eraseSpriteDragon1Fog124a anop
         sta >SCREEN_ADDR,x
 eraseSpriteDragon1Fog124b anop
         long m
-
         lda >rowAddress
         clc
         adc >spriteX
@@ -11754,6 +12505,22 @@ eraseSpriteDragon1Fog125a anop
 eraseSpriteDragon1Fog125b anop
         long m
 
+
+eraseSpriteDragon1FogSkipRowErase146 anop
+
+        lda >rowCounter
+        clc
+        adc #1
+        sta >rowCounter
+
+
+        cmp #199
+        bcs eraseSpriteDragon1FogSkipRowEraseShortJump147
+        bra eraseSpriteDragon1FogSkipRowEraseDontSkipRow147
+
+eraseSpriteDragon1FogSkipRowEraseShortJump147 anop
+        brl eraseSpriteDragon1FogSkipRowErase147
+eraseSpriteDragon1FogSkipRowEraseDontSkipRow147 anop
         lda >spriteY
         clc
         adc #29
@@ -11782,7 +12549,6 @@ eraseSpriteDragon1Fog126a anop
         sta >SCREEN_ADDR,x
 eraseSpriteDragon1Fog126b anop
         long m
-
         lda >rowAddress
         clc
         adc >spriteX
@@ -11803,7 +12569,6 @@ eraseSpriteDragon1Fog127a anop
         sta >SCREEN_ADDR,x
 eraseSpriteDragon1Fog127b anop
         long m
-
         lda >rowAddress
         clc
         adc >spriteX
@@ -11824,7 +12589,6 @@ eraseSpriteDragon1Fog128a anop
         sta >SCREEN_ADDR,x
 eraseSpriteDragon1Fog128b anop
         long m
-
         lda >rowAddress
         clc
         adc >spriteX
@@ -11845,7 +12609,6 @@ eraseSpriteDragon1Fog129a anop
         sta >SCREEN_ADDR,x
 eraseSpriteDragon1Fog129b anop
         long m
-
         lda >rowAddress
         clc
         adc >spriteX
@@ -11866,7 +12629,6 @@ eraseSpriteDragon1Fog130a anop
         sta >SCREEN_ADDR,x
 eraseSpriteDragon1Fog130b anop
         long m
-
         lda >rowAddress
         clc
         adc >spriteX
@@ -11887,7 +12649,6 @@ eraseSpriteDragon1Fog131a anop
         sta >SCREEN_ADDR,x
 eraseSpriteDragon1Fog131b anop
         long m
-
         lda >rowAddress
         clc
         adc >spriteX
@@ -11908,7 +12669,6 @@ eraseSpriteDragon1Fog132a anop
         sta >SCREEN_ADDR,x
 eraseSpriteDragon1Fog132b anop
         long m
-
         lda >rowAddress
         clc
         adc >spriteX
@@ -11930,6 +12690,22 @@ eraseSpriteDragon1Fog133a anop
 eraseSpriteDragon1Fog133b anop
         long m
 
+
+eraseSpriteDragon1FogSkipRowErase147 anop
+
+        lda >rowCounter
+        clc
+        adc #1
+        sta >rowCounter
+
+
+        cmp #199
+        bcs eraseSpriteDragon1FogSkipRowEraseShortJump148
+        bra eraseSpriteDragon1FogSkipRowEraseDontSkipRow148
+
+eraseSpriteDragon1FogSkipRowEraseShortJump148 anop
+        brl eraseSpriteDragon1FogSkipRowErase148
+eraseSpriteDragon1FogSkipRowEraseDontSkipRow148 anop
         lda >spriteY
         clc
         adc #30
@@ -11958,7 +12734,6 @@ eraseSpriteDragon1Fog134a anop
         sta >SCREEN_ADDR,x
 eraseSpriteDragon1Fog134b anop
         long m
-
         lda >rowAddress
         clc
         adc >spriteX
@@ -11979,7 +12754,6 @@ eraseSpriteDragon1Fog135a anop
         sta >SCREEN_ADDR,x
 eraseSpriteDragon1Fog135b anop
         long m
-
         lda >rowAddress
         clc
         adc >spriteX
@@ -12000,7 +12774,6 @@ eraseSpriteDragon1Fog136a anop
         sta >SCREEN_ADDR,x
 eraseSpriteDragon1Fog136b anop
         long m
-
         lda >rowAddress
         clc
         adc >spriteX
@@ -12022,6 +12795,22 @@ eraseSpriteDragon1Fog137a anop
 eraseSpriteDragon1Fog137b anop
         long m
 
+
+eraseSpriteDragon1FogSkipRowErase148 anop
+
+        lda >rowCounter
+        clc
+        adc #1
+        sta >rowCounter
+
+
+        cmp #199
+        bcs eraseSpriteDragon1FogSkipRowEraseShortJump149
+        bra eraseSpriteDragon1FogSkipRowEraseDontSkipRow149
+
+eraseSpriteDragon1FogSkipRowEraseShortJump149 anop
+        brl eraseSpriteDragon1FogSkipRowErase149
+eraseSpriteDragon1FogSkipRowEraseDontSkipRow149 anop
         lda >spriteY
         clc
         adc #31
@@ -12050,7 +12839,6 @@ eraseSpriteDragon1Fog138a anop
         sta >SCREEN_ADDR,x
 eraseSpriteDragon1Fog138b anop
         long m
-
         lda >rowAddress
         clc
         adc >spriteX
@@ -12071,7 +12859,6 @@ eraseSpriteDragon1Fog139a anop
         sta >SCREEN_ADDR,x
 eraseSpriteDragon1Fog139b anop
         long m
-
         lda >rowAddress
         clc
         adc >spriteX
@@ -12092,7 +12879,6 @@ eraseSpriteDragon1Fog140a anop
         sta >SCREEN_ADDR,x
 eraseSpriteDragon1Fog140b anop
         long m
-
         lda >rowAddress
         clc
         adc >spriteX
@@ -12114,6 +12900,22 @@ eraseSpriteDragon1Fog141a anop
 eraseSpriteDragon1Fog141b anop
         long m
 
+
+eraseSpriteDragon1FogSkipRowErase149 anop
+
+        lda >rowCounter
+        clc
+        adc #1
+        sta >rowCounter
+
+
+        cmp #199
+        bcs eraseSpriteDragon1FogSkipRowEraseShortJump150
+        bra eraseSpriteDragon1FogSkipRowEraseDontSkipRow150
+
+eraseSpriteDragon1FogSkipRowEraseShortJump150 anop
+        brl eraseSpriteDragon1FogSkipRowErase150
+eraseSpriteDragon1FogSkipRowEraseDontSkipRow150 anop
         lda >spriteY
         clc
         adc #32
@@ -12143,6 +12945,22 @@ eraseSpriteDragon1Fog142a anop
 eraseSpriteDragon1Fog142b anop
         long m
 
+
+eraseSpriteDragon1FogSkipRowErase150 anop
+
+        lda >rowCounter
+        clc
+        adc #1
+        sta >rowCounter
+
+
+        cmp #199
+        bcs eraseSpriteDragon1FogSkipRowEraseShortJump151
+        bra eraseSpriteDragon1FogSkipRowEraseDontSkipRow151
+
+eraseSpriteDragon1FogSkipRowEraseShortJump151 anop
+        brl eraseSpriteDragon1FogSkipRowErase151
+eraseSpriteDragon1FogSkipRowEraseDontSkipRow151 anop
         lda >spriteY
         clc
         adc #33
@@ -12172,6 +12990,22 @@ eraseSpriteDragon1Fog143a anop
 eraseSpriteDragon1Fog143b anop
         long m
 
+
+eraseSpriteDragon1FogSkipRowErase151 anop
+
+        lda >rowCounter
+        clc
+        adc #1
+        sta >rowCounter
+
+
+        cmp #199
+        bcs eraseSpriteDragon1FogSkipRowEraseShortJump152
+        bra eraseSpriteDragon1FogSkipRowEraseDontSkipRow152
+
+eraseSpriteDragon1FogSkipRowEraseShortJump152 anop
+        brl eraseSpriteDragon1FogSkipRowErase152
+eraseSpriteDragon1FogSkipRowEraseDontSkipRow152 anop
         lda >spriteY
         clc
         adc #34
@@ -12200,7 +13034,6 @@ eraseSpriteDragon1Fog144a anop
         sta >SCREEN_ADDR,x
 eraseSpriteDragon1Fog144b anop
         long m
-
         lda >rowAddress
         clc
         adc >spriteX
@@ -12221,7 +13054,6 @@ eraseSpriteDragon1Fog145a anop
         sta >SCREEN_ADDR,x
 eraseSpriteDragon1Fog145b anop
         long m
-
         lda >rowAddress
         clc
         adc >spriteX
@@ -12242,7 +13074,6 @@ eraseSpriteDragon1Fog146a anop
         sta >SCREEN_ADDR,x
 eraseSpriteDragon1Fog146b anop
         long m
-
         lda >rowAddress
         clc
         adc >spriteX
@@ -12263,7 +13094,6 @@ eraseSpriteDragon1Fog147a anop
         sta >SCREEN_ADDR,x
 eraseSpriteDragon1Fog147b anop
         long m
-
         lda >rowAddress
         clc
         adc >spriteX
@@ -12285,6 +13115,22 @@ eraseSpriteDragon1Fog148a anop
 eraseSpriteDragon1Fog148b anop
         long m
 
+
+eraseSpriteDragon1FogSkipRowErase152 anop
+
+        lda >rowCounter
+        clc
+        adc #1
+        sta >rowCounter
+
+
+        cmp #199
+        bcs eraseSpriteDragon1FogSkipRowEraseShortJump153
+        bra eraseSpriteDragon1FogSkipRowEraseDontSkipRow153
+
+eraseSpriteDragon1FogSkipRowEraseShortJump153 anop
+        brl eraseSpriteDragon1FogSkipRowErase153
+eraseSpriteDragon1FogSkipRowEraseDontSkipRow153 anop
         lda >spriteY
         clc
         adc #35
@@ -12313,7 +13159,6 @@ eraseSpriteDragon1Fog149a anop
         sta >SCREEN_ADDR,x
 eraseSpriteDragon1Fog149b anop
         long m
-
         lda >rowAddress
         clc
         adc >spriteX
@@ -12334,7 +13179,6 @@ eraseSpriteDragon1Fog150a anop
         sta >SCREEN_ADDR,x
 eraseSpriteDragon1Fog150b anop
         long m
-
         lda >rowAddress
         clc
         adc >spriteX
@@ -12355,7 +13199,6 @@ eraseSpriteDragon1Fog151a anop
         sta >SCREEN_ADDR,x
 eraseSpriteDragon1Fog151b anop
         long m
-
         lda >rowAddress
         clc
         adc >spriteX
@@ -12376,7 +13219,6 @@ eraseSpriteDragon1Fog152a anop
         sta >SCREEN_ADDR,x
 eraseSpriteDragon1Fog152b anop
         long m
-
         lda >rowAddress
         clc
         adc >spriteX
@@ -12398,6 +13240,22 @@ eraseSpriteDragon1Fog153a anop
 eraseSpriteDragon1Fog153b anop
         long m
 
+
+eraseSpriteDragon1FogSkipRowErase153 anop
+
+        lda >rowCounter
+        clc
+        adc #1
+        sta >rowCounter
+
+
+        cmp #199
+        bcs eraseSpriteDragon1FogSkipRowEraseShortJump154
+        bra eraseSpriteDragon1FogSkipRowEraseDontSkipRow154
+
+eraseSpriteDragon1FogSkipRowEraseShortJump154 anop
+        brl eraseSpriteDragon1FogSkipRowErase154
+eraseSpriteDragon1FogSkipRowEraseDontSkipRow154 anop
         lda >spriteY
         clc
         adc #36
@@ -12426,7 +13284,6 @@ eraseSpriteDragon1Fog154a anop
         sta >SCREEN_ADDR,x
 eraseSpriteDragon1Fog154b anop
         long m
-
         lda >rowAddress
         clc
         adc >spriteX
@@ -12447,7 +13304,6 @@ eraseSpriteDragon1Fog155a anop
         sta >SCREEN_ADDR,x
 eraseSpriteDragon1Fog155b anop
         long m
-
         lda >rowAddress
         clc
         adc >spriteX
@@ -12468,7 +13324,6 @@ eraseSpriteDragon1Fog156a anop
         sta >SCREEN_ADDR,x
 eraseSpriteDragon1Fog156b anop
         long m
-
         lda >rowAddress
         clc
         adc >spriteX
@@ -12490,6 +13345,22 @@ eraseSpriteDragon1Fog157a anop
 eraseSpriteDragon1Fog157b anop
         long m
 
+
+eraseSpriteDragon1FogSkipRowErase154 anop
+
+        lda >rowCounter
+        clc
+        adc #1
+        sta >rowCounter
+
+
+        cmp #199
+        bcs eraseSpriteDragon1FogSkipRowEraseShortJump155
+        bra eraseSpriteDragon1FogSkipRowEraseDontSkipRow155
+
+eraseSpriteDragon1FogSkipRowEraseShortJump155 anop
+        brl eraseSpriteDragon1FogSkipRowErase155
+eraseSpriteDragon1FogSkipRowEraseDontSkipRow155 anop
         lda >spriteY
         clc
         adc #37
@@ -12518,7 +13389,6 @@ eraseSpriteDragon1Fog158a anop
         sta >SCREEN_ADDR,x
 eraseSpriteDragon1Fog158b anop
         long m
-
         lda >rowAddress
         clc
         adc >spriteX
@@ -12539,7 +13409,6 @@ eraseSpriteDragon1Fog159a anop
         sta >SCREEN_ADDR,x
 eraseSpriteDragon1Fog159b anop
         long m
-
         lda >rowAddress
         clc
         adc >spriteX
@@ -12560,7 +13429,6 @@ eraseSpriteDragon1Fog160a anop
         sta >SCREEN_ADDR,x
 eraseSpriteDragon1Fog160b anop
         long m
-
         lda >rowAddress
         clc
         adc >spriteX
@@ -12582,6 +13450,22 @@ eraseSpriteDragon1Fog161a anop
 eraseSpriteDragon1Fog161b anop
         long m
 
+
+eraseSpriteDragon1FogSkipRowErase155 anop
+
+        lda >rowCounter
+        clc
+        adc #1
+        sta >rowCounter
+
+
+        cmp #199
+        bcs eraseSpriteDragon1FogSkipRowEraseShortJump156
+        bra eraseSpriteDragon1FogSkipRowEraseDontSkipRow156
+
+eraseSpriteDragon1FogSkipRowEraseShortJump156 anop
+        brl eraseSpriteDragon1FogSkipRowErase156
+eraseSpriteDragon1FogSkipRowEraseDontSkipRow156 anop
         lda >spriteY
         clc
         adc #38
@@ -12610,7 +13494,6 @@ eraseSpriteDragon1Fog162a anop
         sta >SCREEN_ADDR,x
 eraseSpriteDragon1Fog162b anop
         long m
-
         lda >rowAddress
         clc
         adc >spriteX
@@ -12631,7 +13514,6 @@ eraseSpriteDragon1Fog163a anop
         sta >SCREEN_ADDR,x
 eraseSpriteDragon1Fog163b anop
         long m
-
         lda >rowAddress
         clc
         adc >spriteX
@@ -12652,7 +13534,6 @@ eraseSpriteDragon1Fog164a anop
         sta >SCREEN_ADDR,x
 eraseSpriteDragon1Fog164b anop
         long m
-
         lda >rowAddress
         clc
         adc >spriteX
@@ -12673,7 +13554,6 @@ eraseSpriteDragon1Fog165a anop
         sta >SCREEN_ADDR,x
 eraseSpriteDragon1Fog165b anop
         long m
-
         lda >rowAddress
         clc
         adc >spriteX
@@ -12694,7 +13574,6 @@ eraseSpriteDragon1Fog166a anop
         sta >SCREEN_ADDR,x
 eraseSpriteDragon1Fog166b anop
         long m
-
         lda >rowAddress
         clc
         adc >spriteX
@@ -12716,6 +13595,22 @@ eraseSpriteDragon1Fog167a anop
 eraseSpriteDragon1Fog167b anop
         long m
 
+
+eraseSpriteDragon1FogSkipRowErase156 anop
+
+        lda >rowCounter
+        clc
+        adc #1
+        sta >rowCounter
+
+
+        cmp #199
+        bcs eraseSpriteDragon1FogSkipRowEraseShortJump157
+        bra eraseSpriteDragon1FogSkipRowEraseDontSkipRow157
+
+eraseSpriteDragon1FogSkipRowEraseShortJump157 anop
+        brl eraseSpriteDragon1FogSkipRowErase157
+eraseSpriteDragon1FogSkipRowEraseDontSkipRow157 anop
         lda >spriteY
         clc
         adc #39
@@ -12744,7 +13639,6 @@ eraseSpriteDragon1Fog168a anop
         sta >SCREEN_ADDR,x
 eraseSpriteDragon1Fog168b anop
         long m
-
         lda >rowAddress
         clc
         adc >spriteX
@@ -12765,7 +13659,6 @@ eraseSpriteDragon1Fog169a anop
         sta >SCREEN_ADDR,x
 eraseSpriteDragon1Fog169b anop
         long m
-
         lda >rowAddress
         clc
         adc >spriteX
@@ -12786,7 +13679,6 @@ eraseSpriteDragon1Fog170a anop
         sta >SCREEN_ADDR,x
 eraseSpriteDragon1Fog170b anop
         long m
-
         lda >rowAddress
         clc
         adc >spriteX
@@ -12807,7 +13699,6 @@ eraseSpriteDragon1Fog171a anop
         sta >SCREEN_ADDR,x
 eraseSpriteDragon1Fog171b anop
         long m
-
         lda >rowAddress
         clc
         adc >spriteX
@@ -12828,7 +13719,6 @@ eraseSpriteDragon1Fog172a anop
         sta >SCREEN_ADDR,x
 eraseSpriteDragon1Fog172b anop
         long m
-
         lda >rowAddress
         clc
         adc >spriteX
@@ -12851,6 +13741,14 @@ eraseSpriteDragon1Fog173b anop
         long m
 
 
+eraseSpriteDragon1FogSkipRowErase157 anop
+
+        lda >rowCounter
+        clc
+        adc #1
+        sta >rowCounter
+
+
         rtl
 
 eraseSpriteDragon2Fog entry
@@ -12858,6 +13756,16 @@ eraseSpriteDragon2Fog entry
         lda >spriteX
         lsr a
         sta >spriteX
+        lda >spriteY
+        sta >rowCounter
+
+        cmp #199
+        bcs eraseSpriteDragon2FogSkipRowEraseShortJump158
+        bra eraseSpriteDragon2FogSkipRowEraseDontSkipRow158
+
+eraseSpriteDragon2FogSkipRowEraseShortJump158 anop
+        brl eraseSpriteDragon2FogSkipRowErase158
+eraseSpriteDragon2FogSkipRowEraseDontSkipRow158 anop
         lda >spriteY
         clc
         adc #0
@@ -12871,7 +13779,7 @@ eraseSpriteDragon2Fog entry
         adc >spriteX
 
         clc
-        adc #1
+        adc #0
         tax
 
 
@@ -12887,6 +13795,22 @@ eraseSpriteDragon2Fog174a anop
 eraseSpriteDragon2Fog174b anop
         long m
 
+
+eraseSpriteDragon2FogSkipRowErase158 anop
+
+        lda >rowCounter
+        clc
+        adc #1
+        sta >rowCounter
+
+
+        cmp #199
+        bcs eraseSpriteDragon2FogSkipRowEraseShortJump159
+        bra eraseSpriteDragon2FogSkipRowEraseDontSkipRow159
+
+eraseSpriteDragon2FogSkipRowEraseShortJump159 anop
+        brl eraseSpriteDragon2FogSkipRowErase159
+eraseSpriteDragon2FogSkipRowEraseDontSkipRow159 anop
         lda >spriteY
         clc
         adc #1
@@ -12900,7 +13824,7 @@ eraseSpriteDragon2Fog174b anop
         adc >spriteX
 
         clc
-        adc #1
+        adc #0
         tax
 
 
@@ -12916,6 +13840,22 @@ eraseSpriteDragon2Fog175a anop
 eraseSpriteDragon2Fog175b anop
         long m
 
+
+eraseSpriteDragon2FogSkipRowErase159 anop
+
+        lda >rowCounter
+        clc
+        adc #1
+        sta >rowCounter
+
+
+        cmp #199
+        bcs eraseSpriteDragon2FogSkipRowEraseShortJump160
+        bra eraseSpriteDragon2FogSkipRowEraseDontSkipRow160
+
+eraseSpriteDragon2FogSkipRowEraseShortJump160 anop
+        brl eraseSpriteDragon2FogSkipRowErase160
+eraseSpriteDragon2FogSkipRowEraseDontSkipRow160 anop
         lda >spriteY
         clc
         adc #2
@@ -12929,7 +13869,7 @@ eraseSpriteDragon2Fog175b anop
         adc >spriteX
 
         clc
-        adc #2
+        adc #1
         tax
 
 
@@ -12945,12 +13885,36 @@ eraseSpriteDragon2Fog176a anop
 eraseSpriteDragon2Fog176b anop
         long m
 
+
+eraseSpriteDragon2FogSkipRowErase160 anop
+
+        lda >rowCounter
+        clc
+        adc #1
+        sta >rowCounter
+
+
+        cmp #199
+        bcs eraseSpriteDragon2FogSkipRowEraseShortJump161
+        bra eraseSpriteDragon2FogSkipRowEraseDontSkipRow161
+
+eraseSpriteDragon2FogSkipRowEraseShortJump161 anop
+        brl eraseSpriteDragon2FogSkipRowErase161
+eraseSpriteDragon2FogSkipRowEraseDontSkipRow161 anop
+        lda >spriteY
+        clc
+        adc #3
+        asl a
+        tax
+        lda >screenRowOffsets,x
+        sta >rowAddress
+
         lda >rowAddress
         clc
         adc >spriteX
 
         clc
-        adc #5
+        adc #1
         tax
 
 
@@ -12966,30 +13930,25 @@ eraseSpriteDragon2Fog177a anop
 eraseSpriteDragon2Fog177b anop
         long m
 
-        lda >rowAddress
+
+eraseSpriteDragon2FogSkipRowErase161 anop
+
+        lda >rowCounter
         clc
-        adc >spriteX
-
-        clc
-        adc #6
-        tax
+        adc #1
+        sta >rowCounter
 
 
-        short m
-        lda >SURROUND_PIXEL_ADDR,x
-        cmp #$00
-        beq eraseSpriteDragon2Fog178a
-        sta >SCREEN_ADDR,x
-        bra eraseSpriteDragon2Fog178b
-eraseSpriteDragon2Fog178a anop
-        lda >BACKGROUND_ADDR,x
-        sta >SCREEN_ADDR,x
-eraseSpriteDragon2Fog178b anop
-        long m
+        cmp #199
+        bcs eraseSpriteDragon2FogSkipRowEraseShortJump162
+        bra eraseSpriteDragon2FogSkipRowEraseDontSkipRow162
 
+eraseSpriteDragon2FogSkipRowEraseShortJump162 anop
+        brl eraseSpriteDragon2FogSkipRowErase162
+eraseSpriteDragon2FogSkipRowEraseDontSkipRow162 anop
         lda >spriteY
         clc
-        adc #3
+        adc #4
         asl a
         tax
         lda >screenRowOffsets,x
@@ -13007,6 +13966,26 @@ eraseSpriteDragon2Fog178b anop
         short m
         lda >SURROUND_PIXEL_ADDR,x
         cmp #$00
+        beq eraseSpriteDragon2Fog178a
+        sta >SCREEN_ADDR,x
+        bra eraseSpriteDragon2Fog178b
+eraseSpriteDragon2Fog178a anop
+        lda >BACKGROUND_ADDR,x
+        sta >SCREEN_ADDR,x
+eraseSpriteDragon2Fog178b anop
+        long m
+        lda >rowAddress
+        clc
+        adc >spriteX
+
+        clc
+        adc #5
+        tax
+
+
+        short m
+        lda >SURROUND_PIXEL_ADDR,x
+        cmp #$00
         beq eraseSpriteDragon2Fog179a
         sta >SCREEN_ADDR,x
         bra eraseSpriteDragon2Fog179b
@@ -13015,13 +13994,12 @@ eraseSpriteDragon2Fog179a anop
         sta >SCREEN_ADDR,x
 eraseSpriteDragon2Fog179b anop
         long m
-
         lda >rowAddress
         clc
         adc >spriteX
 
         clc
-        adc #5
+        adc #6
         tax
 
 
@@ -13037,12 +14015,36 @@ eraseSpriteDragon2Fog180a anop
 eraseSpriteDragon2Fog180b anop
         long m
 
+
+eraseSpriteDragon2FogSkipRowErase162 anop
+
+        lda >rowCounter
+        clc
+        adc #1
+        sta >rowCounter
+
+
+        cmp #199
+        bcs eraseSpriteDragon2FogSkipRowEraseShortJump163
+        bra eraseSpriteDragon2FogSkipRowEraseDontSkipRow163
+
+eraseSpriteDragon2FogSkipRowEraseShortJump163 anop
+        brl eraseSpriteDragon2FogSkipRowErase163
+eraseSpriteDragon2FogSkipRowEraseDontSkipRow163 anop
+        lda >spriteY
+        clc
+        adc #5
+        asl a
+        tax
+        lda >screenRowOffsets,x
+        sta >rowAddress
+
         lda >rowAddress
         clc
         adc >spriteX
 
         clc
-        adc #6
+        adc #2
         tax
 
 
@@ -13057,21 +14059,12 @@ eraseSpriteDragon2Fog181a anop
         sta >SCREEN_ADDR,x
 eraseSpriteDragon2Fog181b anop
         long m
-
-        lda >spriteY
-        clc
-        adc #4
-        asl a
-        tax
-        lda >screenRowOffsets,x
-        sta >rowAddress
-
         lda >rowAddress
         clc
         adc >spriteX
 
         clc
-        adc #3
+        adc #5
         tax
 
 
@@ -13086,13 +14079,12 @@ eraseSpriteDragon2Fog182a anop
         sta >SCREEN_ADDR,x
 eraseSpriteDragon2Fog182b anop
         long m
-
         lda >rowAddress
         clc
         adc >spriteX
 
         clc
-        adc #4
+        adc #6
         tax
 
 
@@ -13108,72 +14100,25 @@ eraseSpriteDragon2Fog183a anop
 eraseSpriteDragon2Fog183b anop
         long m
 
-        lda >rowAddress
+
+eraseSpriteDragon2FogSkipRowErase163 anop
+
+        lda >rowCounter
         clc
-        adc >spriteX
-
-        clc
-        adc #5
-        tax
+        adc #1
+        sta >rowCounter
 
 
-        short m
-        lda >SURROUND_PIXEL_ADDR,x
-        cmp #$00
-        beq eraseSpriteDragon2Fog184a
-        sta >SCREEN_ADDR,x
-        bra eraseSpriteDragon2Fog184b
-eraseSpriteDragon2Fog184a anop
-        lda >BACKGROUND_ADDR,x
-        sta >SCREEN_ADDR,x
-eraseSpriteDragon2Fog184b anop
-        long m
+        cmp #199
+        bcs eraseSpriteDragon2FogSkipRowEraseShortJump164
+        bra eraseSpriteDragon2FogSkipRowEraseDontSkipRow164
 
-        lda >rowAddress
-        clc
-        adc >spriteX
-
-        clc
-        adc #6
-        tax
-
-
-        short m
-        lda >SURROUND_PIXEL_ADDR,x
-        cmp #$00
-        beq eraseSpriteDragon2Fog185a
-        sta >SCREEN_ADDR,x
-        bra eraseSpriteDragon2Fog185b
-eraseSpriteDragon2Fog185a anop
-        lda >BACKGROUND_ADDR,x
-        sta >SCREEN_ADDR,x
-eraseSpriteDragon2Fog185b anop
-        long m
-
-        lda >rowAddress
-        clc
-        adc >spriteX
-
-        clc
-        adc #7
-        tax
-
-
-        short m
-        lda >SURROUND_PIXEL_ADDR,x
-        cmp #$00
-        beq eraseSpriteDragon2Fog186a
-        sta >SCREEN_ADDR,x
-        bra eraseSpriteDragon2Fog186b
-eraseSpriteDragon2Fog186a anop
-        lda >BACKGROUND_ADDR,x
-        sta >SCREEN_ADDR,x
-eraseSpriteDragon2Fog186b anop
-        long m
-
+eraseSpriteDragon2FogSkipRowEraseShortJump164 anop
+        brl eraseSpriteDragon2FogSkipRowErase164
+eraseSpriteDragon2FogSkipRowEraseDontSkipRow164 anop
         lda >spriteY
         clc
-        adc #5
+        adc #6
         asl a
         tax
         lda >screenRowOffsets,x
@@ -13191,6 +14136,66 @@ eraseSpriteDragon2Fog186b anop
         short m
         lda >SURROUND_PIXEL_ADDR,x
         cmp #$00
+        beq eraseSpriteDragon2Fog184a
+        sta >SCREEN_ADDR,x
+        bra eraseSpriteDragon2Fog184b
+eraseSpriteDragon2Fog184a anop
+        lda >BACKGROUND_ADDR,x
+        sta >SCREEN_ADDR,x
+eraseSpriteDragon2Fog184b anop
+        long m
+        lda >rowAddress
+        clc
+        adc >spriteX
+
+        clc
+        adc #4
+        tax
+
+
+        short m
+        lda >SURROUND_PIXEL_ADDR,x
+        cmp #$00
+        beq eraseSpriteDragon2Fog185a
+        sta >SCREEN_ADDR,x
+        bra eraseSpriteDragon2Fog185b
+eraseSpriteDragon2Fog185a anop
+        lda >BACKGROUND_ADDR,x
+        sta >SCREEN_ADDR,x
+eraseSpriteDragon2Fog185b anop
+        long m
+        lda >rowAddress
+        clc
+        adc >spriteX
+
+        clc
+        adc #5
+        tax
+
+
+        short m
+        lda >SURROUND_PIXEL_ADDR,x
+        cmp #$00
+        beq eraseSpriteDragon2Fog186a
+        sta >SCREEN_ADDR,x
+        bra eraseSpriteDragon2Fog186b
+eraseSpriteDragon2Fog186a anop
+        lda >BACKGROUND_ADDR,x
+        sta >SCREEN_ADDR,x
+eraseSpriteDragon2Fog186b anop
+        long m
+        lda >rowAddress
+        clc
+        adc >spriteX
+
+        clc
+        adc #6
+        tax
+
+
+        short m
+        lda >SURROUND_PIXEL_ADDR,x
+        cmp #$00
         beq eraseSpriteDragon2Fog187a
         sta >SCREEN_ADDR,x
         bra eraseSpriteDragon2Fog187b
@@ -13199,13 +14204,12 @@ eraseSpriteDragon2Fog187a anop
         sta >SCREEN_ADDR,x
 eraseSpriteDragon2Fog187b anop
         long m
-
         lda >rowAddress
         clc
         adc >spriteX
 
         clc
-        adc #4
+        adc #7
         tax
 
 
@@ -13221,12 +14225,36 @@ eraseSpriteDragon2Fog188a anop
 eraseSpriteDragon2Fog188b anop
         long m
 
+
+eraseSpriteDragon2FogSkipRowErase164 anop
+
+        lda >rowCounter
+        clc
+        adc #1
+        sta >rowCounter
+
+
+        cmp #199
+        bcs eraseSpriteDragon2FogSkipRowEraseShortJump165
+        bra eraseSpriteDragon2FogSkipRowEraseDontSkipRow165
+
+eraseSpriteDragon2FogSkipRowEraseShortJump165 anop
+        brl eraseSpriteDragon2FogSkipRowErase165
+eraseSpriteDragon2FogSkipRowEraseDontSkipRow165 anop
+        lda >spriteY
+        clc
+        adc #7
+        asl a
+        tax
+        lda >screenRowOffsets,x
+        sta >rowAddress
+
         lda >rowAddress
         clc
         adc >spriteX
 
         clc
-        adc #5
+        adc #3
         tax
 
 
@@ -13241,13 +14269,12 @@ eraseSpriteDragon2Fog189a anop
         sta >SCREEN_ADDR,x
 eraseSpriteDragon2Fog189b anop
         long m
-
         lda >rowAddress
         clc
         adc >spriteX
 
         clc
-        adc #6
+        adc #4
         tax
 
 
@@ -13262,13 +14289,12 @@ eraseSpriteDragon2Fog190a anop
         sta >SCREEN_ADDR,x
 eraseSpriteDragon2Fog190b anop
         long m
-
         lda >rowAddress
         clc
         adc >spriteX
 
         clc
-        adc #7
+        adc #5
         tax
 
 
@@ -13283,21 +14309,12 @@ eraseSpriteDragon2Fog191a anop
         sta >SCREEN_ADDR,x
 eraseSpriteDragon2Fog191b anop
         long m
-
-        lda >spriteY
-        clc
-        adc #6
-        asl a
-        tax
-        lda >screenRowOffsets,x
-        sta >rowAddress
-
         lda >rowAddress
         clc
         adc >spriteX
 
         clc
-        adc #4
+        adc #6
         tax
 
 
@@ -13312,13 +14329,12 @@ eraseSpriteDragon2Fog192a anop
         sta >SCREEN_ADDR,x
 eraseSpriteDragon2Fog192b anop
         long m
-
         lda >rowAddress
         clc
         adc >spriteX
 
         clc
-        adc #6
+        adc #7
         tax
 
 
@@ -13334,98 +14350,22 @@ eraseSpriteDragon2Fog193a anop
 eraseSpriteDragon2Fog193b anop
         long m
 
-        lda >rowAddress
+
+eraseSpriteDragon2FogSkipRowErase165 anop
+
+        lda >rowCounter
         clc
-        adc >spriteX
-
-        clc
-        adc #7
-        tax
+        adc #1
+        sta >rowCounter
 
 
-        short m
-        lda >SURROUND_PIXEL_ADDR,x
-        cmp #$00
-        beq eraseSpriteDragon2Fog194a
-        sta >SCREEN_ADDR,x
-        bra eraseSpriteDragon2Fog194b
-eraseSpriteDragon2Fog194a anop
-        lda >BACKGROUND_ADDR,x
-        sta >SCREEN_ADDR,x
-eraseSpriteDragon2Fog194b anop
-        long m
+        cmp #199
+        bcs eraseSpriteDragon2FogSkipRowEraseShortJump166
+        bra eraseSpriteDragon2FogSkipRowEraseDontSkipRow166
 
-        lda >spriteY
-        clc
-        adc #7
-        asl a
-        tax
-        lda >screenRowOffsets,x
-        sta >rowAddress
-
-        lda >rowAddress
-        clc
-        adc >spriteX
-
-        clc
-        adc #4
-        tax
-
-
-        short m
-        lda >SURROUND_PIXEL_ADDR,x
-        cmp #$00
-        beq eraseSpriteDragon2Fog195a
-        sta >SCREEN_ADDR,x
-        bra eraseSpriteDragon2Fog195b
-eraseSpriteDragon2Fog195a anop
-        lda >BACKGROUND_ADDR,x
-        sta >SCREEN_ADDR,x
-eraseSpriteDragon2Fog195b anop
-        long m
-
-        lda >rowAddress
-        clc
-        adc >spriteX
-
-        clc
-        adc #6
-        tax
-
-
-        short m
-        lda >SURROUND_PIXEL_ADDR,x
-        cmp #$00
-        beq eraseSpriteDragon2Fog196a
-        sta >SCREEN_ADDR,x
-        bra eraseSpriteDragon2Fog196b
-eraseSpriteDragon2Fog196a anop
-        lda >BACKGROUND_ADDR,x
-        sta >SCREEN_ADDR,x
-eraseSpriteDragon2Fog196b anop
-        long m
-
-        lda >rowAddress
-        clc
-        adc >spriteX
-
-        clc
-        adc #7
-        tax
-
-
-        short m
-        lda >SURROUND_PIXEL_ADDR,x
-        cmp #$00
-        beq eraseSpriteDragon2Fog197a
-        sta >SCREEN_ADDR,x
-        bra eraseSpriteDragon2Fog197b
-eraseSpriteDragon2Fog197a anop
-        lda >BACKGROUND_ADDR,x
-        sta >SCREEN_ADDR,x
-eraseSpriteDragon2Fog197b anop
-        long m
-
+eraseSpriteDragon2FogSkipRowEraseShortJump166 anop
+        brl eraseSpriteDragon2FogSkipRowErase166
+eraseSpriteDragon2FogSkipRowEraseDontSkipRow166 anop
         lda >spriteY
         clc
         adc #8
@@ -13446,36 +14386,14 @@ eraseSpriteDragon2Fog197b anop
         short m
         lda >SURROUND_PIXEL_ADDR,x
         cmp #$00
-        beq eraseSpriteDragon2Fog198a
+        beq eraseSpriteDragon2Fog194a
         sta >SCREEN_ADDR,x
-        bra eraseSpriteDragon2Fog198b
-eraseSpriteDragon2Fog198a anop
+        bra eraseSpriteDragon2Fog194b
+eraseSpriteDragon2Fog194a anop
         lda >BACKGROUND_ADDR,x
         sta >SCREEN_ADDR,x
-eraseSpriteDragon2Fog198b anop
+eraseSpriteDragon2Fog194b anop
         long m
-
-        lda >rowAddress
-        clc
-        adc >spriteX
-
-        clc
-        adc #5
-        tax
-
-
-        short m
-        lda >SURROUND_PIXEL_ADDR,x
-        cmp #$00
-        beq eraseSpriteDragon2Fog199a
-        sta >SCREEN_ADDR,x
-        bra eraseSpriteDragon2Fog199b
-eraseSpriteDragon2Fog199a anop
-        lda >BACKGROUND_ADDR,x
-        sta >SCREEN_ADDR,x
-eraseSpriteDragon2Fog199b anop
-        long m
-
         lda >rowAddress
         clc
         adc >spriteX
@@ -13488,15 +14406,51 @@ eraseSpriteDragon2Fog199b anop
         short m
         lda >SURROUND_PIXEL_ADDR,x
         cmp #$00
-        beq eraseSpriteDragon2Fog200a
+        beq eraseSpriteDragon2Fog195a
         sta >SCREEN_ADDR,x
-        bra eraseSpriteDragon2Fog200b
-eraseSpriteDragon2Fog200a anop
+        bra eraseSpriteDragon2Fog195b
+eraseSpriteDragon2Fog195a anop
         lda >BACKGROUND_ADDR,x
         sta >SCREEN_ADDR,x
-eraseSpriteDragon2Fog200b anop
+eraseSpriteDragon2Fog195b anop
+        long m
+        lda >rowAddress
+        clc
+        adc >spriteX
+
+        clc
+        adc #7
+        tax
+
+
+        short m
+        lda >SURROUND_PIXEL_ADDR,x
+        cmp #$00
+        beq eraseSpriteDragon2Fog196a
+        sta >SCREEN_ADDR,x
+        bra eraseSpriteDragon2Fog196b
+eraseSpriteDragon2Fog196a anop
+        lda >BACKGROUND_ADDR,x
+        sta >SCREEN_ADDR,x
+eraseSpriteDragon2Fog196b anop
         long m
 
+
+eraseSpriteDragon2FogSkipRowErase166 anop
+
+        lda >rowCounter
+        clc
+        adc #1
+        sta >rowCounter
+
+
+        cmp #199
+        bcs eraseSpriteDragon2FogSkipRowEraseShortJump167
+        bra eraseSpriteDragon2FogSkipRowEraseDontSkipRow167
+
+eraseSpriteDragon2FogSkipRowEraseShortJump167 anop
+        brl eraseSpriteDragon2FogSkipRowErase167
+eraseSpriteDragon2FogSkipRowEraseDontSkipRow167 anop
         lda >spriteY
         clc
         adc #9
@@ -13517,6 +14471,111 @@ eraseSpriteDragon2Fog200b anop
         short m
         lda >SURROUND_PIXEL_ADDR,x
         cmp #$00
+        beq eraseSpriteDragon2Fog197a
+        sta >SCREEN_ADDR,x
+        bra eraseSpriteDragon2Fog197b
+eraseSpriteDragon2Fog197a anop
+        lda >BACKGROUND_ADDR,x
+        sta >SCREEN_ADDR,x
+eraseSpriteDragon2Fog197b anop
+        long m
+        lda >rowAddress
+        clc
+        adc >spriteX
+
+        clc
+        adc #6
+        tax
+
+
+        short m
+        lda >SURROUND_PIXEL_ADDR,x
+        cmp #$00
+        beq eraseSpriteDragon2Fog198a
+        sta >SCREEN_ADDR,x
+        bra eraseSpriteDragon2Fog198b
+eraseSpriteDragon2Fog198a anop
+        lda >BACKGROUND_ADDR,x
+        sta >SCREEN_ADDR,x
+eraseSpriteDragon2Fog198b anop
+        long m
+        lda >rowAddress
+        clc
+        adc >spriteX
+
+        clc
+        adc #7
+        tax
+
+
+        short m
+        lda >SURROUND_PIXEL_ADDR,x
+        cmp #$00
+        beq eraseSpriteDragon2Fog199a
+        sta >SCREEN_ADDR,x
+        bra eraseSpriteDragon2Fog199b
+eraseSpriteDragon2Fog199a anop
+        lda >BACKGROUND_ADDR,x
+        sta >SCREEN_ADDR,x
+eraseSpriteDragon2Fog199b anop
+        long m
+
+
+eraseSpriteDragon2FogSkipRowErase167 anop
+
+        lda >rowCounter
+        clc
+        adc #1
+        sta >rowCounter
+
+
+        cmp #199
+        bcs eraseSpriteDragon2FogSkipRowEraseShortJump168
+        bra eraseSpriteDragon2FogSkipRowEraseDontSkipRow168
+
+eraseSpriteDragon2FogSkipRowEraseShortJump168 anop
+        brl eraseSpriteDragon2FogSkipRowErase168
+eraseSpriteDragon2FogSkipRowEraseDontSkipRow168 anop
+        lda >spriteY
+        clc
+        adc #10
+        asl a
+        tax
+        lda >screenRowOffsets,x
+        sta >rowAddress
+
+        lda >rowAddress
+        clc
+        adc >spriteX
+
+        clc
+        adc #4
+        tax
+
+
+        short m
+        lda >SURROUND_PIXEL_ADDR,x
+        cmp #$00
+        beq eraseSpriteDragon2Fog200a
+        sta >SCREEN_ADDR,x
+        bra eraseSpriteDragon2Fog200b
+eraseSpriteDragon2Fog200a anop
+        lda >BACKGROUND_ADDR,x
+        sta >SCREEN_ADDR,x
+eraseSpriteDragon2Fog200b anop
+        long m
+        lda >rowAddress
+        clc
+        adc >spriteX
+
+        clc
+        adc #5
+        tax
+
+
+        short m
+        lda >SURROUND_PIXEL_ADDR,x
+        cmp #$00
         beq eraseSpriteDragon2Fog201a
         sta >SCREEN_ADDR,x
         bra eraseSpriteDragon2Fog201b
@@ -13525,13 +14584,12 @@ eraseSpriteDragon2Fog201a anop
         sta >SCREEN_ADDR,x
 eraseSpriteDragon2Fog201b anop
         long m
-
         lda >rowAddress
         clc
         adc >spriteX
 
         clc
-        adc #5
+        adc #6
         tax
 
 
@@ -13547,12 +14605,36 @@ eraseSpriteDragon2Fog202a anop
 eraseSpriteDragon2Fog202b anop
         long m
 
+
+eraseSpriteDragon2FogSkipRowErase168 anop
+
+        lda >rowCounter
+        clc
+        adc #1
+        sta >rowCounter
+
+
+        cmp #199
+        bcs eraseSpriteDragon2FogSkipRowEraseShortJump169
+        bra eraseSpriteDragon2FogSkipRowEraseDontSkipRow169
+
+eraseSpriteDragon2FogSkipRowEraseShortJump169 anop
+        brl eraseSpriteDragon2FogSkipRowErase169
+eraseSpriteDragon2FogSkipRowEraseDontSkipRow169 anop
+        lda >spriteY
+        clc
+        adc #11
+        asl a
+        tax
+        lda >screenRowOffsets,x
+        sta >rowAddress
+
         lda >rowAddress
         clc
         adc >spriteX
 
         clc
-        adc #6
+        adc #4
         tax
 
 
@@ -13567,21 +14649,12 @@ eraseSpriteDragon2Fog203a anop
         sta >SCREEN_ADDR,x
 eraseSpriteDragon2Fog203b anop
         long m
-
-        lda >spriteY
-        clc
-        adc #10
-        asl a
-        tax
-        lda >screenRowOffsets,x
-        sta >rowAddress
-
         lda >rowAddress
         clc
         adc >spriteX
 
         clc
-        adc #3
+        adc #5
         tax
 
 
@@ -13596,13 +14669,12 @@ eraseSpriteDragon2Fog204a anop
         sta >SCREEN_ADDR,x
 eraseSpriteDragon2Fog204b anop
         long m
-
         lda >rowAddress
         clc
         adc >spriteX
 
         clc
-        adc #4
+        adc #6
         tax
 
 
@@ -13618,51 +14690,25 @@ eraseSpriteDragon2Fog205a anop
 eraseSpriteDragon2Fog205b anop
         long m
 
-        lda >rowAddress
+
+eraseSpriteDragon2FogSkipRowErase169 anop
+
+        lda >rowCounter
         clc
-        adc >spriteX
-
-        clc
-        adc #5
-        tax
+        adc #1
+        sta >rowCounter
 
 
-        short m
-        lda >SURROUND_PIXEL_ADDR,x
-        cmp #$00
-        beq eraseSpriteDragon2Fog206a
-        sta >SCREEN_ADDR,x
-        bra eraseSpriteDragon2Fog206b
-eraseSpriteDragon2Fog206a anop
-        lda >BACKGROUND_ADDR,x
-        sta >SCREEN_ADDR,x
-eraseSpriteDragon2Fog206b anop
-        long m
+        cmp #199
+        bcs eraseSpriteDragon2FogSkipRowEraseShortJump170
+        bra eraseSpriteDragon2FogSkipRowEraseDontSkipRow170
 
-        lda >rowAddress
-        clc
-        adc >spriteX
-
-        clc
-        adc #6
-        tax
-
-
-        short m
-        lda >SURROUND_PIXEL_ADDR,x
-        cmp #$00
-        beq eraseSpriteDragon2Fog207a
-        sta >SCREEN_ADDR,x
-        bra eraseSpriteDragon2Fog207b
-eraseSpriteDragon2Fog207a anop
-        lda >BACKGROUND_ADDR,x
-        sta >SCREEN_ADDR,x
-eraseSpriteDragon2Fog207b anop
-        long m
-
+eraseSpriteDragon2FogSkipRowEraseShortJump170 anop
+        brl eraseSpriteDragon2FogSkipRowErase170
+eraseSpriteDragon2FogSkipRowEraseDontSkipRow170 anop
         lda >spriteY
         clc
-        adc #11
+        adc #12
         asl a
         tax
         lda >screenRowOffsets,x
@@ -13680,6 +14726,46 @@ eraseSpriteDragon2Fog207b anop
         short m
         lda >SURROUND_PIXEL_ADDR,x
         cmp #$00
+        beq eraseSpriteDragon2Fog206a
+        sta >SCREEN_ADDR,x
+        bra eraseSpriteDragon2Fog206b
+eraseSpriteDragon2Fog206a anop
+        lda >BACKGROUND_ADDR,x
+        sta >SCREEN_ADDR,x
+eraseSpriteDragon2Fog206b anop
+        long m
+        lda >rowAddress
+        clc
+        adc >spriteX
+
+        clc
+        adc #4
+        tax
+
+
+        short m
+        lda >SURROUND_PIXEL_ADDR,x
+        cmp #$00
+        beq eraseSpriteDragon2Fog207a
+        sta >SCREEN_ADDR,x
+        bra eraseSpriteDragon2Fog207b
+eraseSpriteDragon2Fog207a anop
+        lda >BACKGROUND_ADDR,x
+        sta >SCREEN_ADDR,x
+eraseSpriteDragon2Fog207b anop
+        long m
+        lda >rowAddress
+        clc
+        adc >spriteX
+
+        clc
+        adc #5
+        tax
+
+
+        short m
+        lda >SURROUND_PIXEL_ADDR,x
+        cmp #$00
         beq eraseSpriteDragon2Fog208a
         sta >SCREEN_ADDR,x
         bra eraseSpriteDragon2Fog208b
@@ -13688,13 +14774,12 @@ eraseSpriteDragon2Fog208a anop
         sta >SCREEN_ADDR,x
 eraseSpriteDragon2Fog208b anop
         long m
-
         lda >rowAddress
         clc
         adc >spriteX
 
         clc
-        adc #4
+        adc #6
         tax
 
 
@@ -13710,12 +14795,36 @@ eraseSpriteDragon2Fog209a anop
 eraseSpriteDragon2Fog209b anop
         long m
 
+
+eraseSpriteDragon2FogSkipRowErase170 anop
+
+        lda >rowCounter
+        clc
+        adc #1
+        sta >rowCounter
+
+
+        cmp #199
+        bcs eraseSpriteDragon2FogSkipRowEraseShortJump171
+        bra eraseSpriteDragon2FogSkipRowEraseDontSkipRow171
+
+eraseSpriteDragon2FogSkipRowEraseShortJump171 anop
+        brl eraseSpriteDragon2FogSkipRowErase171
+eraseSpriteDragon2FogSkipRowEraseDontSkipRow171 anop
+        lda >spriteY
+        clc
+        adc #13
+        asl a
+        tax
+        lda >screenRowOffsets,x
+        sta >rowAddress
+
         lda >rowAddress
         clc
         adc >spriteX
 
         clc
-        adc #5
+        adc #3
         tax
 
 
@@ -13730,13 +14839,12 @@ eraseSpriteDragon2Fog210a anop
         sta >SCREEN_ADDR,x
 eraseSpriteDragon2Fog210b anop
         long m
-
         lda >rowAddress
         clc
         adc >spriteX
 
         clc
-        adc #6
+        adc #4
         tax
 
 
@@ -13751,21 +14859,12 @@ eraseSpriteDragon2Fog211a anop
         sta >SCREEN_ADDR,x
 eraseSpriteDragon2Fog211b anop
         long m
-
-        lda >spriteY
-        clc
-        adc #12
-        asl a
-        tax
-        lda >screenRowOffsets,x
-        sta >rowAddress
-
         lda >rowAddress
         clc
         adc >spriteX
 
         clc
-        adc #2
+        adc #5
         tax
 
 
@@ -13780,13 +14879,12 @@ eraseSpriteDragon2Fog212a anop
         sta >SCREEN_ADDR,x
 eraseSpriteDragon2Fog212b anop
         long m
-
         lda >rowAddress
         clc
         adc >spriteX
 
         clc
-        adc #5
+        adc #6
         tax
 
 
@@ -13802,9 +14900,25 @@ eraseSpriteDragon2Fog213a anop
 eraseSpriteDragon2Fog213b anop
         long m
 
+
+eraseSpriteDragon2FogSkipRowErase171 anop
+
+        lda >rowCounter
+        clc
+        adc #1
+        sta >rowCounter
+
+
+        cmp #199
+        bcs eraseSpriteDragon2FogSkipRowEraseShortJump172
+        bra eraseSpriteDragon2FogSkipRowEraseDontSkipRow172
+
+eraseSpriteDragon2FogSkipRowEraseShortJump172 anop
+        brl eraseSpriteDragon2FogSkipRowErase172
+eraseSpriteDragon2FogSkipRowEraseDontSkipRow172 anop
         lda >spriteY
         clc
-        adc #13
+        adc #14
         asl a
         tax
         lda >screenRowOffsets,x
@@ -13830,7 +14944,6 @@ eraseSpriteDragon2Fog214a anop
         sta >SCREEN_ADDR,x
 eraseSpriteDragon2Fog214b anop
         long m
-
         lda >rowAddress
         clc
         adc >spriteX
@@ -13852,9 +14965,25 @@ eraseSpriteDragon2Fog215a anop
 eraseSpriteDragon2Fog215b anop
         long m
 
+
+eraseSpriteDragon2FogSkipRowErase172 anop
+
+        lda >rowCounter
+        clc
+        adc #1
+        sta >rowCounter
+
+
+        cmp #199
+        bcs eraseSpriteDragon2FogSkipRowEraseShortJump173
+        bra eraseSpriteDragon2FogSkipRowEraseDontSkipRow173
+
+eraseSpriteDragon2FogSkipRowEraseShortJump173 anop
+        brl eraseSpriteDragon2FogSkipRowErase173
+eraseSpriteDragon2FogSkipRowEraseDontSkipRow173 anop
         lda >spriteY
         clc
-        adc #14
+        adc #15
         asl a
         tax
         lda >screenRowOffsets,x
@@ -13865,7 +14994,7 @@ eraseSpriteDragon2Fog215b anop
         adc >spriteX
 
         clc
-        adc #1
+        adc #2
         tax
 
 
@@ -13880,7 +15009,6 @@ eraseSpriteDragon2Fog216a anop
         sta >SCREEN_ADDR,x
 eraseSpriteDragon2Fog216b anop
         long m
-
         lda >rowAddress
         clc
         adc >spriteX
@@ -13902,9 +15030,25 @@ eraseSpriteDragon2Fog217a anop
 eraseSpriteDragon2Fog217b anop
         long m
 
+
+eraseSpriteDragon2FogSkipRowErase173 anop
+
+        lda >rowCounter
+        clc
+        adc #1
+        sta >rowCounter
+
+
+        cmp #199
+        bcs eraseSpriteDragon2FogSkipRowEraseShortJump174
+        bra eraseSpriteDragon2FogSkipRowEraseDontSkipRow174
+
+eraseSpriteDragon2FogSkipRowEraseShortJump174 anop
+        brl eraseSpriteDragon2FogSkipRowErase174
+eraseSpriteDragon2FogSkipRowEraseDontSkipRow174 anop
         lda >spriteY
         clc
-        adc #15
+        adc #16
         asl a
         tax
         lda >screenRowOffsets,x
@@ -13930,7 +15074,6 @@ eraseSpriteDragon2Fog218a anop
         sta >SCREEN_ADDR,x
 eraseSpriteDragon2Fog218b anop
         long m
-
         lda >rowAddress
         clc
         adc >spriteX
@@ -13952,9 +15095,25 @@ eraseSpriteDragon2Fog219a anop
 eraseSpriteDragon2Fog219b anop
         long m
 
+
+eraseSpriteDragon2FogSkipRowErase174 anop
+
+        lda >rowCounter
+        clc
+        adc #1
+        sta >rowCounter
+
+
+        cmp #199
+        bcs eraseSpriteDragon2FogSkipRowEraseShortJump175
+        bra eraseSpriteDragon2FogSkipRowEraseDontSkipRow175
+
+eraseSpriteDragon2FogSkipRowEraseShortJump175 anop
+        brl eraseSpriteDragon2FogSkipRowErase175
+eraseSpriteDragon2FogSkipRowEraseDontSkipRow175 anop
         lda >spriteY
         clc
-        adc #16
+        adc #17
         asl a
         tax
         lda >screenRowOffsets,x
@@ -13965,7 +15124,7 @@ eraseSpriteDragon2Fog219b anop
         adc >spriteX
 
         clc
-        adc #0
+        adc #1
         tax
 
 
@@ -13980,13 +15139,12 @@ eraseSpriteDragon2Fog220a anop
         sta >SCREEN_ADDR,x
 eraseSpriteDragon2Fog220b anop
         long m
-
         lda >rowAddress
         clc
         adc >spriteX
 
         clc
-        adc #4
+        adc #5
         tax
 
 
@@ -14002,51 +15160,25 @@ eraseSpriteDragon2Fog221a anop
 eraseSpriteDragon2Fog221b anop
         long m
 
-        lda >rowAddress
+
+eraseSpriteDragon2FogSkipRowErase175 anop
+
+        lda >rowCounter
         clc
-        adc >spriteX
-
-        clc
-        adc #5
-        tax
+        adc #1
+        sta >rowCounter
 
 
-        short m
-        lda >SURROUND_PIXEL_ADDR,x
-        cmp #$00
-        beq eraseSpriteDragon2Fog222a
-        sta >SCREEN_ADDR,x
-        bra eraseSpriteDragon2Fog222b
-eraseSpriteDragon2Fog222a anop
-        lda >BACKGROUND_ADDR,x
-        sta >SCREEN_ADDR,x
-eraseSpriteDragon2Fog222b anop
-        long m
+        cmp #199
+        bcs eraseSpriteDragon2FogSkipRowEraseShortJump176
+        bra eraseSpriteDragon2FogSkipRowEraseDontSkipRow176
 
-        lda >rowAddress
-        clc
-        adc >spriteX
-
-        clc
-        adc #6
-        tax
-
-
-        short m
-        lda >SURROUND_PIXEL_ADDR,x
-        cmp #$00
-        beq eraseSpriteDragon2Fog223a
-        sta >SCREEN_ADDR,x
-        bra eraseSpriteDragon2Fog223b
-eraseSpriteDragon2Fog223a anop
-        lda >BACKGROUND_ADDR,x
-        sta >SCREEN_ADDR,x
-eraseSpriteDragon2Fog223b anop
-        long m
-
+eraseSpriteDragon2FogSkipRowEraseShortJump176 anop
+        brl eraseSpriteDragon2FogSkipRowErase176
+eraseSpriteDragon2FogSkipRowEraseDontSkipRow176 anop
         lda >spriteY
         clc
-        adc #17
+        adc #18
         asl a
         tax
         lda >screenRowOffsets,x
@@ -14064,6 +15196,46 @@ eraseSpriteDragon2Fog223b anop
         short m
         lda >SURROUND_PIXEL_ADDR,x
         cmp #$00
+        beq eraseSpriteDragon2Fog222a
+        sta >SCREEN_ADDR,x
+        bra eraseSpriteDragon2Fog222b
+eraseSpriteDragon2Fog222a anop
+        lda >BACKGROUND_ADDR,x
+        sta >SCREEN_ADDR,x
+eraseSpriteDragon2Fog222b anop
+        long m
+        lda >rowAddress
+        clc
+        adc >spriteX
+
+        clc
+        adc #4
+        tax
+
+
+        short m
+        lda >SURROUND_PIXEL_ADDR,x
+        cmp #$00
+        beq eraseSpriteDragon2Fog223a
+        sta >SCREEN_ADDR,x
+        bra eraseSpriteDragon2Fog223b
+eraseSpriteDragon2Fog223a anop
+        lda >BACKGROUND_ADDR,x
+        sta >SCREEN_ADDR,x
+eraseSpriteDragon2Fog223b anop
+        long m
+        lda >rowAddress
+        clc
+        adc >spriteX
+
+        clc
+        adc #5
+        tax
+
+
+        short m
+        lda >SURROUND_PIXEL_ADDR,x
+        cmp #$00
         beq eraseSpriteDragon2Fog224a
         sta >SCREEN_ADDR,x
         bra eraseSpriteDragon2Fog224b
@@ -14072,13 +15244,12 @@ eraseSpriteDragon2Fog224a anop
         sta >SCREEN_ADDR,x
 eraseSpriteDragon2Fog224b anop
         long m
-
         lda >rowAddress
         clc
         adc >spriteX
 
         clc
-        adc #4
+        adc #6
         tax
 
 
@@ -14094,12 +15265,36 @@ eraseSpriteDragon2Fog225a anop
 eraseSpriteDragon2Fog225b anop
         long m
 
+
+eraseSpriteDragon2FogSkipRowErase176 anop
+
+        lda >rowCounter
+        clc
+        adc #1
+        sta >rowCounter
+
+
+        cmp #199
+        bcs eraseSpriteDragon2FogSkipRowEraseShortJump177
+        bra eraseSpriteDragon2FogSkipRowEraseDontSkipRow177
+
+eraseSpriteDragon2FogSkipRowEraseShortJump177 anop
+        brl eraseSpriteDragon2FogSkipRowErase177
+eraseSpriteDragon2FogSkipRowEraseDontSkipRow177 anop
+        lda >spriteY
+        clc
+        adc #19
+        asl a
+        tax
+        lda >screenRowOffsets,x
+        sta >rowAddress
+
         lda >rowAddress
         clc
         adc >spriteX
 
         clc
-        adc #5
+        adc #0
         tax
 
 
@@ -14114,13 +15309,12 @@ eraseSpriteDragon2Fog226a anop
         sta >SCREEN_ADDR,x
 eraseSpriteDragon2Fog226b anop
         long m
-
         lda >rowAddress
         clc
         adc >spriteX
 
         clc
-        adc #6
+        adc #4
         tax
 
 
@@ -14135,21 +15329,12 @@ eraseSpriteDragon2Fog227a anop
         sta >SCREEN_ADDR,x
 eraseSpriteDragon2Fog227b anop
         long m
-
-        lda >spriteY
-        clc
-        adc #18
-        asl a
-        tax
-        lda >screenRowOffsets,x
-        sta >rowAddress
-
         lda >rowAddress
         clc
         adc >spriteX
 
         clc
-        adc #3
+        adc #5
         tax
 
 
@@ -14164,13 +15349,12 @@ eraseSpriteDragon2Fog228a anop
         sta >SCREEN_ADDR,x
 eraseSpriteDragon2Fog228b anop
         long m
-
         lda >rowAddress
         clc
         adc >spriteX
 
         clc
-        adc #4
+        adc #6
         tax
 
 
@@ -14186,51 +15370,25 @@ eraseSpriteDragon2Fog229a anop
 eraseSpriteDragon2Fog229b anop
         long m
 
-        lda >rowAddress
+
+eraseSpriteDragon2FogSkipRowErase177 anop
+
+        lda >rowCounter
         clc
-        adc >spriteX
-
-        clc
-        adc #5
-        tax
+        adc #1
+        sta >rowCounter
 
 
-        short m
-        lda >SURROUND_PIXEL_ADDR,x
-        cmp #$00
-        beq eraseSpriteDragon2Fog230a
-        sta >SCREEN_ADDR,x
-        bra eraseSpriteDragon2Fog230b
-eraseSpriteDragon2Fog230a anop
-        lda >BACKGROUND_ADDR,x
-        sta >SCREEN_ADDR,x
-eraseSpriteDragon2Fog230b anop
-        long m
+        cmp #199
+        bcs eraseSpriteDragon2FogSkipRowEraseShortJump178
+        bra eraseSpriteDragon2FogSkipRowEraseDontSkipRow178
 
-        lda >rowAddress
-        clc
-        adc >spriteX
-
-        clc
-        adc #6
-        tax
-
-
-        short m
-        lda >SURROUND_PIXEL_ADDR,x
-        cmp #$00
-        beq eraseSpriteDragon2Fog231a
-        sta >SCREEN_ADDR,x
-        bra eraseSpriteDragon2Fog231b
-eraseSpriteDragon2Fog231a anop
-        lda >BACKGROUND_ADDR,x
-        sta >SCREEN_ADDR,x
-eraseSpriteDragon2Fog231b anop
-        long m
-
+eraseSpriteDragon2FogSkipRowEraseShortJump178 anop
+        brl eraseSpriteDragon2FogSkipRowErase178
+eraseSpriteDragon2FogSkipRowEraseDontSkipRow178 anop
         lda >spriteY
         clc
-        adc #19
+        adc #20
         asl a
         tax
         lda >screenRowOffsets,x
@@ -14248,6 +15406,46 @@ eraseSpriteDragon2Fog231b anop
         short m
         lda >SURROUND_PIXEL_ADDR,x
         cmp #$00
+        beq eraseSpriteDragon2Fog230a
+        sta >SCREEN_ADDR,x
+        bra eraseSpriteDragon2Fog230b
+eraseSpriteDragon2Fog230a anop
+        lda >BACKGROUND_ADDR,x
+        sta >SCREEN_ADDR,x
+eraseSpriteDragon2Fog230b anop
+        long m
+        lda >rowAddress
+        clc
+        adc >spriteX
+
+        clc
+        adc #4
+        tax
+
+
+        short m
+        lda >SURROUND_PIXEL_ADDR,x
+        cmp #$00
+        beq eraseSpriteDragon2Fog231a
+        sta >SCREEN_ADDR,x
+        bra eraseSpriteDragon2Fog231b
+eraseSpriteDragon2Fog231a anop
+        lda >BACKGROUND_ADDR,x
+        sta >SCREEN_ADDR,x
+eraseSpriteDragon2Fog231b anop
+        long m
+        lda >rowAddress
+        clc
+        adc >spriteX
+
+        clc
+        adc #5
+        tax
+
+
+        short m
+        lda >SURROUND_PIXEL_ADDR,x
+        cmp #$00
         beq eraseSpriteDragon2Fog232a
         sta >SCREEN_ADDR,x
         bra eraseSpriteDragon2Fog232b
@@ -14256,13 +15454,12 @@ eraseSpriteDragon2Fog232a anop
         sta >SCREEN_ADDR,x
 eraseSpriteDragon2Fog232b anop
         long m
-
         lda >rowAddress
         clc
         adc >spriteX
 
         clc
-        adc #4
+        adc #6
         tax
 
 
@@ -14278,12 +15475,36 @@ eraseSpriteDragon2Fog233a anop
 eraseSpriteDragon2Fog233b anop
         long m
 
+
+eraseSpriteDragon2FogSkipRowErase178 anop
+
+        lda >rowCounter
+        clc
+        adc #1
+        sta >rowCounter
+
+
+        cmp #199
+        bcs eraseSpriteDragon2FogSkipRowEraseShortJump179
+        bra eraseSpriteDragon2FogSkipRowEraseDontSkipRow179
+
+eraseSpriteDragon2FogSkipRowEraseShortJump179 anop
+        brl eraseSpriteDragon2FogSkipRowErase179
+eraseSpriteDragon2FogSkipRowEraseDontSkipRow179 anop
+        lda >spriteY
+        clc
+        adc #21
+        asl a
+        tax
+        lda >screenRowOffsets,x
+        sta >rowAddress
+
         lda >rowAddress
         clc
         adc >spriteX
 
         clc
-        adc #5
+        adc #3
         tax
 
 
@@ -14298,13 +15519,12 @@ eraseSpriteDragon2Fog234a anop
         sta >SCREEN_ADDR,x
 eraseSpriteDragon2Fog234b anop
         long m
-
         lda >rowAddress
         clc
         adc >spriteX
 
         clc
-        adc #6
+        adc #4
         tax
 
 
@@ -14319,21 +15539,12 @@ eraseSpriteDragon2Fog235a anop
         sta >SCREEN_ADDR,x
 eraseSpriteDragon2Fog235b anop
         long m
-
-        lda >spriteY
-        clc
-        adc #20
-        asl a
-        tax
-        lda >screenRowOffsets,x
-        sta >rowAddress
-
         lda >rowAddress
         clc
         adc >spriteX
 
         clc
-        adc #2
+        adc #5
         tax
 
 
@@ -14348,13 +15559,12 @@ eraseSpriteDragon2Fog236a anop
         sta >SCREEN_ADDR,x
 eraseSpriteDragon2Fog236b anop
         long m
-
         lda >rowAddress
         clc
         adc >spriteX
 
         clc
-        adc #3
+        adc #6
         tax
 
 
@@ -14370,93 +15580,25 @@ eraseSpriteDragon2Fog237a anop
 eraseSpriteDragon2Fog237b anop
         long m
 
-        lda >rowAddress
+
+eraseSpriteDragon2FogSkipRowErase179 anop
+
+        lda >rowCounter
         clc
-        adc >spriteX
-
-        clc
-        adc #4
-        tax
+        adc #1
+        sta >rowCounter
 
 
-        short m
-        lda >SURROUND_PIXEL_ADDR,x
-        cmp #$00
-        beq eraseSpriteDragon2Fog238a
-        sta >SCREEN_ADDR,x
-        bra eraseSpriteDragon2Fog238b
-eraseSpriteDragon2Fog238a anop
-        lda >BACKGROUND_ADDR,x
-        sta >SCREEN_ADDR,x
-eraseSpriteDragon2Fog238b anop
-        long m
+        cmp #199
+        bcs eraseSpriteDragon2FogSkipRowEraseShortJump180
+        bra eraseSpriteDragon2FogSkipRowEraseDontSkipRow180
 
-        lda >rowAddress
-        clc
-        adc >spriteX
-
-        clc
-        adc #5
-        tax
-
-
-        short m
-        lda >SURROUND_PIXEL_ADDR,x
-        cmp #$00
-        beq eraseSpriteDragon2Fog239a
-        sta >SCREEN_ADDR,x
-        bra eraseSpriteDragon2Fog239b
-eraseSpriteDragon2Fog239a anop
-        lda >BACKGROUND_ADDR,x
-        sta >SCREEN_ADDR,x
-eraseSpriteDragon2Fog239b anop
-        long m
-
-        lda >rowAddress
-        clc
-        adc >spriteX
-
-        clc
-        adc #6
-        tax
-
-
-        short m
-        lda >SURROUND_PIXEL_ADDR,x
-        cmp #$00
-        beq eraseSpriteDragon2Fog240a
-        sta >SCREEN_ADDR,x
-        bra eraseSpriteDragon2Fog240b
-eraseSpriteDragon2Fog240a anop
-        lda >BACKGROUND_ADDR,x
-        sta >SCREEN_ADDR,x
-eraseSpriteDragon2Fog240b anop
-        long m
-
-        lda >rowAddress
-        clc
-        adc >spriteX
-
-        clc
-        adc #7
-        tax
-
-
-        short m
-        lda >SURROUND_PIXEL_ADDR,x
-        cmp #$00
-        beq eraseSpriteDragon2Fog241a
-        sta >SCREEN_ADDR,x
-        bra eraseSpriteDragon2Fog241b
-eraseSpriteDragon2Fog241a anop
-        lda >BACKGROUND_ADDR,x
-        sta >SCREEN_ADDR,x
-eraseSpriteDragon2Fog241b anop
-        long m
-
+eraseSpriteDragon2FogSkipRowEraseShortJump180 anop
+        brl eraseSpriteDragon2FogSkipRowErase180
+eraseSpriteDragon2FogSkipRowEraseDontSkipRow180 anop
         lda >spriteY
         clc
-        adc #21
+        adc #22
         asl a
         tax
         lda >screenRowOffsets,x
@@ -14474,6 +15616,86 @@ eraseSpriteDragon2Fog241b anop
         short m
         lda >SURROUND_PIXEL_ADDR,x
         cmp #$00
+        beq eraseSpriteDragon2Fog238a
+        sta >SCREEN_ADDR,x
+        bra eraseSpriteDragon2Fog238b
+eraseSpriteDragon2Fog238a anop
+        lda >BACKGROUND_ADDR,x
+        sta >SCREEN_ADDR,x
+eraseSpriteDragon2Fog238b anop
+        long m
+        lda >rowAddress
+        clc
+        adc >spriteX
+
+        clc
+        adc #3
+        tax
+
+
+        short m
+        lda >SURROUND_PIXEL_ADDR,x
+        cmp #$00
+        beq eraseSpriteDragon2Fog239a
+        sta >SCREEN_ADDR,x
+        bra eraseSpriteDragon2Fog239b
+eraseSpriteDragon2Fog239a anop
+        lda >BACKGROUND_ADDR,x
+        sta >SCREEN_ADDR,x
+eraseSpriteDragon2Fog239b anop
+        long m
+        lda >rowAddress
+        clc
+        adc >spriteX
+
+        clc
+        adc #4
+        tax
+
+
+        short m
+        lda >SURROUND_PIXEL_ADDR,x
+        cmp #$00
+        beq eraseSpriteDragon2Fog240a
+        sta >SCREEN_ADDR,x
+        bra eraseSpriteDragon2Fog240b
+eraseSpriteDragon2Fog240a anop
+        lda >BACKGROUND_ADDR,x
+        sta >SCREEN_ADDR,x
+eraseSpriteDragon2Fog240b anop
+        long m
+        lda >rowAddress
+        clc
+        adc >spriteX
+
+        clc
+        adc #5
+        tax
+
+
+        short m
+        lda >SURROUND_PIXEL_ADDR,x
+        cmp #$00
+        beq eraseSpriteDragon2Fog241a
+        sta >SCREEN_ADDR,x
+        bra eraseSpriteDragon2Fog241b
+eraseSpriteDragon2Fog241a anop
+        lda >BACKGROUND_ADDR,x
+        sta >SCREEN_ADDR,x
+eraseSpriteDragon2Fog241b anop
+        long m
+        lda >rowAddress
+        clc
+        adc >spriteX
+
+        clc
+        adc #6
+        tax
+
+
+        short m
+        lda >SURROUND_PIXEL_ADDR,x
+        cmp #$00
         beq eraseSpriteDragon2Fog242a
         sta >SCREEN_ADDR,x
         bra eraseSpriteDragon2Fog242b
@@ -14482,13 +15704,12 @@ eraseSpriteDragon2Fog242a anop
         sta >SCREEN_ADDR,x
 eraseSpriteDragon2Fog242b anop
         long m
-
         lda >rowAddress
         clc
         adc >spriteX
 
         clc
-        adc #3
+        adc #7
         tax
 
 
@@ -14504,12 +15725,36 @@ eraseSpriteDragon2Fog243a anop
 eraseSpriteDragon2Fog243b anop
         long m
 
+
+eraseSpriteDragon2FogSkipRowErase180 anop
+
+        lda >rowCounter
+        clc
+        adc #1
+        sta >rowCounter
+
+
+        cmp #199
+        bcs eraseSpriteDragon2FogSkipRowEraseShortJump181
+        bra eraseSpriteDragon2FogSkipRowEraseDontSkipRow181
+
+eraseSpriteDragon2FogSkipRowEraseShortJump181 anop
+        brl eraseSpriteDragon2FogSkipRowErase181
+eraseSpriteDragon2FogSkipRowEraseDontSkipRow181 anop
+        lda >spriteY
+        clc
+        adc #23
+        asl a
+        tax
+        lda >screenRowOffsets,x
+        sta >rowAddress
+
         lda >rowAddress
         clc
         adc >spriteX
 
         clc
-        adc #4
+        adc #2
         tax
 
 
@@ -14524,13 +15769,12 @@ eraseSpriteDragon2Fog244a anop
         sta >SCREEN_ADDR,x
 eraseSpriteDragon2Fog244b anop
         long m
-
         lda >rowAddress
         clc
         adc >spriteX
 
         clc
-        adc #5
+        adc #3
         tax
 
 
@@ -14545,13 +15789,12 @@ eraseSpriteDragon2Fog245a anop
         sta >SCREEN_ADDR,x
 eraseSpriteDragon2Fog245b anop
         long m
-
         lda >rowAddress
         clc
         adc >spriteX
 
         clc
-        adc #6
+        adc #4
         tax
 
 
@@ -14566,13 +15809,12 @@ eraseSpriteDragon2Fog246a anop
         sta >SCREEN_ADDR,x
 eraseSpriteDragon2Fog246b anop
         long m
-
         lda >rowAddress
         clc
         adc >spriteX
 
         clc
-        adc #7
+        adc #5
         tax
 
 
@@ -14587,21 +15829,12 @@ eraseSpriteDragon2Fog247a anop
         sta >SCREEN_ADDR,x
 eraseSpriteDragon2Fog247b anop
         long m
-
-        lda >spriteY
-        clc
-        adc #22
-        asl a
-        tax
-        lda >screenRowOffsets,x
-        sta >rowAddress
-
         lda >rowAddress
         clc
         adc >spriteX
 
         clc
-        adc #1
+        adc #6
         tax
 
 
@@ -14616,13 +15849,12 @@ eraseSpriteDragon2Fog248a anop
         sta >SCREEN_ADDR,x
 eraseSpriteDragon2Fog248b anop
         long m
-
         lda >rowAddress
         clc
         adc >spriteX
 
         clc
-        adc #2
+        adc #7
         tax
 
 
@@ -14638,266 +15870,22 @@ eraseSpriteDragon2Fog249a anop
 eraseSpriteDragon2Fog249b anop
         long m
 
-        lda >rowAddress
-        clc
-        adc >spriteX
 
-        clc
-        adc #3
-        tax
+eraseSpriteDragon2FogSkipRowErase181 anop
 
-
-        short m
-        lda >SURROUND_PIXEL_ADDR,x
-        cmp #$00
-        beq eraseSpriteDragon2Fog250a
-        sta >SCREEN_ADDR,x
-        bra eraseSpriteDragon2Fog250b
-eraseSpriteDragon2Fog250a anop
-        lda >BACKGROUND_ADDR,x
-        sta >SCREEN_ADDR,x
-eraseSpriteDragon2Fog250b anop
-        long m
-
-        lda >rowAddress
-        clc
-        adc >spriteX
-
-        clc
-        adc #4
-        tax
-
-
-        short m
-        lda >SURROUND_PIXEL_ADDR,x
-        cmp #$00
-        beq eraseSpriteDragon2Fog251a
-        sta >SCREEN_ADDR,x
-        bra eraseSpriteDragon2Fog251b
-eraseSpriteDragon2Fog251a anop
-        lda >BACKGROUND_ADDR,x
-        sta >SCREEN_ADDR,x
-eraseSpriteDragon2Fog251b anop
-        long m
-
-        lda >rowAddress
-        clc
-        adc >spriteX
-
-        clc
-        adc #5
-        tax
-
-
-        short m
-        lda >SURROUND_PIXEL_ADDR,x
-        cmp #$00
-        beq eraseSpriteDragon2Fog252a
-        sta >SCREEN_ADDR,x
-        bra eraseSpriteDragon2Fog252b
-eraseSpriteDragon2Fog252a anop
-        lda >BACKGROUND_ADDR,x
-        sta >SCREEN_ADDR,x
-eraseSpriteDragon2Fog252b anop
-        long m
-
-        lda >rowAddress
-        clc
-        adc >spriteX
-
-        clc
-        adc #6
-        tax
-
-
-        short m
-        lda >SURROUND_PIXEL_ADDR,x
-        cmp #$00
-        beq eraseSpriteDragon2Fog253a
-        sta >SCREEN_ADDR,x
-        bra eraseSpriteDragon2Fog253b
-eraseSpriteDragon2Fog253a anop
-        lda >BACKGROUND_ADDR,x
-        sta >SCREEN_ADDR,x
-eraseSpriteDragon2Fog253b anop
-        long m
-
-        lda >rowAddress
-        clc
-        adc >spriteX
-
-        clc
-        adc #7
-        tax
-
-
-        short m
-        lda >SURROUND_PIXEL_ADDR,x
-        cmp #$00
-        beq eraseSpriteDragon2Fog254a
-        sta >SCREEN_ADDR,x
-        bra eraseSpriteDragon2Fog254b
-eraseSpriteDragon2Fog254a anop
-        lda >BACKGROUND_ADDR,x
-        sta >SCREEN_ADDR,x
-eraseSpriteDragon2Fog254b anop
-        long m
-
-        lda >spriteY
-        clc
-        adc #23
-        asl a
-        tax
-        lda >screenRowOffsets,x
-        sta >rowAddress
-
-        lda >rowAddress
-        clc
-        adc >spriteX
-
+        lda >rowCounter
         clc
         adc #1
-        tax
+        sta >rowCounter
 
 
-        short m
-        lda >SURROUND_PIXEL_ADDR,x
-        cmp #$00
-        beq eraseSpriteDragon2Fog255a
-        sta >SCREEN_ADDR,x
-        bra eraseSpriteDragon2Fog255b
-eraseSpriteDragon2Fog255a anop
-        lda >BACKGROUND_ADDR,x
-        sta >SCREEN_ADDR,x
-eraseSpriteDragon2Fog255b anop
-        long m
+        cmp #199
+        bcs eraseSpriteDragon2FogSkipRowEraseShortJump182
+        bra eraseSpriteDragon2FogSkipRowEraseDontSkipRow182
 
-        lda >rowAddress
-        clc
-        adc >spriteX
-
-        clc
-        adc #2
-        tax
-
-
-        short m
-        lda >SURROUND_PIXEL_ADDR,x
-        cmp #$00
-        beq eraseSpriteDragon2Fog256a
-        sta >SCREEN_ADDR,x
-        bra eraseSpriteDragon2Fog256b
-eraseSpriteDragon2Fog256a anop
-        lda >BACKGROUND_ADDR,x
-        sta >SCREEN_ADDR,x
-eraseSpriteDragon2Fog256b anop
-        long m
-
-        lda >rowAddress
-        clc
-        adc >spriteX
-
-        clc
-        adc #3
-        tax
-
-
-        short m
-        lda >SURROUND_PIXEL_ADDR,x
-        cmp #$00
-        beq eraseSpriteDragon2Fog257a
-        sta >SCREEN_ADDR,x
-        bra eraseSpriteDragon2Fog257b
-eraseSpriteDragon2Fog257a anop
-        lda >BACKGROUND_ADDR,x
-        sta >SCREEN_ADDR,x
-eraseSpriteDragon2Fog257b anop
-        long m
-
-        lda >rowAddress
-        clc
-        adc >spriteX
-
-        clc
-        adc #4
-        tax
-
-
-        short m
-        lda >SURROUND_PIXEL_ADDR,x
-        cmp #$00
-        beq eraseSpriteDragon2Fog258a
-        sta >SCREEN_ADDR,x
-        bra eraseSpriteDragon2Fog258b
-eraseSpriteDragon2Fog258a anop
-        lda >BACKGROUND_ADDR,x
-        sta >SCREEN_ADDR,x
-eraseSpriteDragon2Fog258b anop
-        long m
-
-        lda >rowAddress
-        clc
-        adc >spriteX
-
-        clc
-        adc #5
-        tax
-
-
-        short m
-        lda >SURROUND_PIXEL_ADDR,x
-        cmp #$00
-        beq eraseSpriteDragon2Fog259a
-        sta >SCREEN_ADDR,x
-        bra eraseSpriteDragon2Fog259b
-eraseSpriteDragon2Fog259a anop
-        lda >BACKGROUND_ADDR,x
-        sta >SCREEN_ADDR,x
-eraseSpriteDragon2Fog259b anop
-        long m
-
-        lda >rowAddress
-        clc
-        adc >spriteX
-
-        clc
-        adc #6
-        tax
-
-
-        short m
-        lda >SURROUND_PIXEL_ADDR,x
-        cmp #$00
-        beq eraseSpriteDragon2Fog260a
-        sta >SCREEN_ADDR,x
-        bra eraseSpriteDragon2Fog260b
-eraseSpriteDragon2Fog260a anop
-        lda >BACKGROUND_ADDR,x
-        sta >SCREEN_ADDR,x
-eraseSpriteDragon2Fog260b anop
-        long m
-
-        lda >rowAddress
-        clc
-        adc >spriteX
-
-        clc
-        adc #7
-        tax
-
-
-        short m
-        lda >SURROUND_PIXEL_ADDR,x
-        cmp #$00
-        beq eraseSpriteDragon2Fog261a
-        sta >SCREEN_ADDR,x
-        bra eraseSpriteDragon2Fog261b
-eraseSpriteDragon2Fog261a anop
-        lda >BACKGROUND_ADDR,x
-        sta >SCREEN_ADDR,x
-eraseSpriteDragon2Fog261b anop
-        long m
-
+eraseSpriteDragon2FogSkipRowEraseShortJump182 anop
+        brl eraseSpriteDragon2FogSkipRowErase182
+eraseSpriteDragon2FogSkipRowEraseDontSkipRow182 anop
         lda >spriteY
         clc
         adc #24
@@ -14918,15 +15906,14 @@ eraseSpriteDragon2Fog261b anop
         short m
         lda >SURROUND_PIXEL_ADDR,x
         cmp #$00
-        beq eraseSpriteDragon2Fog262a
+        beq eraseSpriteDragon2Fog250a
         sta >SCREEN_ADDR,x
-        bra eraseSpriteDragon2Fog262b
-eraseSpriteDragon2Fog262a anop
+        bra eraseSpriteDragon2Fog250b
+eraseSpriteDragon2Fog250a anop
         lda >BACKGROUND_ADDR,x
         sta >SCREEN_ADDR,x
-eraseSpriteDragon2Fog262b anop
+eraseSpriteDragon2Fog250b anop
         long m
-
         lda >rowAddress
         clc
         adc >spriteX
@@ -14939,15 +15926,14 @@ eraseSpriteDragon2Fog262b anop
         short m
         lda >SURROUND_PIXEL_ADDR,x
         cmp #$00
-        beq eraseSpriteDragon2Fog263a
+        beq eraseSpriteDragon2Fog251a
         sta >SCREEN_ADDR,x
-        bra eraseSpriteDragon2Fog263b
-eraseSpriteDragon2Fog263a anop
+        bra eraseSpriteDragon2Fog251b
+eraseSpriteDragon2Fog251a anop
         lda >BACKGROUND_ADDR,x
         sta >SCREEN_ADDR,x
-eraseSpriteDragon2Fog263b anop
+eraseSpriteDragon2Fog251b anop
         long m
-
         lda >rowAddress
         clc
         adc >spriteX
@@ -14960,15 +15946,14 @@ eraseSpriteDragon2Fog263b anop
         short m
         lda >SURROUND_PIXEL_ADDR,x
         cmp #$00
-        beq eraseSpriteDragon2Fog264a
+        beq eraseSpriteDragon2Fog252a
         sta >SCREEN_ADDR,x
-        bra eraseSpriteDragon2Fog264b
-eraseSpriteDragon2Fog264a anop
+        bra eraseSpriteDragon2Fog252b
+eraseSpriteDragon2Fog252a anop
         lda >BACKGROUND_ADDR,x
         sta >SCREEN_ADDR,x
-eraseSpriteDragon2Fog264b anop
+eraseSpriteDragon2Fog252b anop
         long m
-
         lda >rowAddress
         clc
         adc >spriteX
@@ -14981,15 +15966,14 @@ eraseSpriteDragon2Fog264b anop
         short m
         lda >SURROUND_PIXEL_ADDR,x
         cmp #$00
-        beq eraseSpriteDragon2Fog265a
+        beq eraseSpriteDragon2Fog253a
         sta >SCREEN_ADDR,x
-        bra eraseSpriteDragon2Fog265b
-eraseSpriteDragon2Fog265a anop
+        bra eraseSpriteDragon2Fog253b
+eraseSpriteDragon2Fog253a anop
         lda >BACKGROUND_ADDR,x
         sta >SCREEN_ADDR,x
-eraseSpriteDragon2Fog265b anop
+eraseSpriteDragon2Fog253b anop
         long m
-
         lda >rowAddress
         clc
         adc >spriteX
@@ -15002,15 +15986,14 @@ eraseSpriteDragon2Fog265b anop
         short m
         lda >SURROUND_PIXEL_ADDR,x
         cmp #$00
-        beq eraseSpriteDragon2Fog266a
+        beq eraseSpriteDragon2Fog254a
         sta >SCREEN_ADDR,x
-        bra eraseSpriteDragon2Fog266b
-eraseSpriteDragon2Fog266a anop
+        bra eraseSpriteDragon2Fog254b
+eraseSpriteDragon2Fog254a anop
         lda >BACKGROUND_ADDR,x
         sta >SCREEN_ADDR,x
-eraseSpriteDragon2Fog266b anop
+eraseSpriteDragon2Fog254b anop
         long m
-
         lda >rowAddress
         clc
         adc >spriteX
@@ -15023,15 +16006,14 @@ eraseSpriteDragon2Fog266b anop
         short m
         lda >SURROUND_PIXEL_ADDR,x
         cmp #$00
-        beq eraseSpriteDragon2Fog267a
+        beq eraseSpriteDragon2Fog255a
         sta >SCREEN_ADDR,x
-        bra eraseSpriteDragon2Fog267b
-eraseSpriteDragon2Fog267a anop
+        bra eraseSpriteDragon2Fog255b
+eraseSpriteDragon2Fog255a anop
         lda >BACKGROUND_ADDR,x
         sta >SCREEN_ADDR,x
-eraseSpriteDragon2Fog267b anop
+eraseSpriteDragon2Fog255b anop
         long m
-
         lda >rowAddress
         clc
         adc >spriteX
@@ -15044,15 +16026,31 @@ eraseSpriteDragon2Fog267b anop
         short m
         lda >SURROUND_PIXEL_ADDR,x
         cmp #$00
-        beq eraseSpriteDragon2Fog268a
+        beq eraseSpriteDragon2Fog256a
         sta >SCREEN_ADDR,x
-        bra eraseSpriteDragon2Fog268b
-eraseSpriteDragon2Fog268a anop
+        bra eraseSpriteDragon2Fog256b
+eraseSpriteDragon2Fog256a anop
         lda >BACKGROUND_ADDR,x
         sta >SCREEN_ADDR,x
-eraseSpriteDragon2Fog268b anop
+eraseSpriteDragon2Fog256b anop
         long m
 
+
+eraseSpriteDragon2FogSkipRowErase182 anop
+
+        lda >rowCounter
+        clc
+        adc #1
+        sta >rowCounter
+
+
+        cmp #199
+        bcs eraseSpriteDragon2FogSkipRowEraseShortJump183
+        bra eraseSpriteDragon2FogSkipRowEraseDontSkipRow183
+
+eraseSpriteDragon2FogSkipRowEraseShortJump183 anop
+        brl eraseSpriteDragon2FogSkipRowErase183
+eraseSpriteDragon2FogSkipRowEraseDontSkipRow183 anop
         lda >spriteY
         clc
         adc #25
@@ -15073,15 +16071,14 @@ eraseSpriteDragon2Fog268b anop
         short m
         lda >SURROUND_PIXEL_ADDR,x
         cmp #$00
-        beq eraseSpriteDragon2Fog269a
+        beq eraseSpriteDragon2Fog257a
         sta >SCREEN_ADDR,x
-        bra eraseSpriteDragon2Fog269b
-eraseSpriteDragon2Fog269a anop
+        bra eraseSpriteDragon2Fog257b
+eraseSpriteDragon2Fog257a anop
         lda >BACKGROUND_ADDR,x
         sta >SCREEN_ADDR,x
-eraseSpriteDragon2Fog269b anop
+eraseSpriteDragon2Fog257b anop
         long m
-
         lda >rowAddress
         clc
         adc >spriteX
@@ -15094,15 +16091,14 @@ eraseSpriteDragon2Fog269b anop
         short m
         lda >SURROUND_PIXEL_ADDR,x
         cmp #$00
-        beq eraseSpriteDragon2Fog270a
+        beq eraseSpriteDragon2Fog258a
         sta >SCREEN_ADDR,x
-        bra eraseSpriteDragon2Fog270b
-eraseSpriteDragon2Fog270a anop
+        bra eraseSpriteDragon2Fog258b
+eraseSpriteDragon2Fog258a anop
         lda >BACKGROUND_ADDR,x
         sta >SCREEN_ADDR,x
-eraseSpriteDragon2Fog270b anop
+eraseSpriteDragon2Fog258b anop
         long m
-
         lda >rowAddress
         clc
         adc >spriteX
@@ -15115,15 +16111,14 @@ eraseSpriteDragon2Fog270b anop
         short m
         lda >SURROUND_PIXEL_ADDR,x
         cmp #$00
-        beq eraseSpriteDragon2Fog271a
+        beq eraseSpriteDragon2Fog259a
         sta >SCREEN_ADDR,x
-        bra eraseSpriteDragon2Fog271b
-eraseSpriteDragon2Fog271a anop
+        bra eraseSpriteDragon2Fog259b
+eraseSpriteDragon2Fog259a anop
         lda >BACKGROUND_ADDR,x
         sta >SCREEN_ADDR,x
-eraseSpriteDragon2Fog271b anop
+eraseSpriteDragon2Fog259b anop
         long m
-
         lda >rowAddress
         clc
         adc >spriteX
@@ -15136,15 +16131,14 @@ eraseSpriteDragon2Fog271b anop
         short m
         lda >SURROUND_PIXEL_ADDR,x
         cmp #$00
-        beq eraseSpriteDragon2Fog272a
+        beq eraseSpriteDragon2Fog260a
         sta >SCREEN_ADDR,x
-        bra eraseSpriteDragon2Fog272b
-eraseSpriteDragon2Fog272a anop
+        bra eraseSpriteDragon2Fog260b
+eraseSpriteDragon2Fog260a anop
         lda >BACKGROUND_ADDR,x
         sta >SCREEN_ADDR,x
-eraseSpriteDragon2Fog272b anop
+eraseSpriteDragon2Fog260b anop
         long m
-
         lda >rowAddress
         clc
         adc >spriteX
@@ -15157,15 +16151,14 @@ eraseSpriteDragon2Fog272b anop
         short m
         lda >SURROUND_PIXEL_ADDR,x
         cmp #$00
-        beq eraseSpriteDragon2Fog273a
+        beq eraseSpriteDragon2Fog261a
         sta >SCREEN_ADDR,x
-        bra eraseSpriteDragon2Fog273b
-eraseSpriteDragon2Fog273a anop
+        bra eraseSpriteDragon2Fog261b
+eraseSpriteDragon2Fog261a anop
         lda >BACKGROUND_ADDR,x
         sta >SCREEN_ADDR,x
-eraseSpriteDragon2Fog273b anop
+eraseSpriteDragon2Fog261b anop
         long m
-
         lda >rowAddress
         clc
         adc >spriteX
@@ -15178,15 +16171,14 @@ eraseSpriteDragon2Fog273b anop
         short m
         lda >SURROUND_PIXEL_ADDR,x
         cmp #$00
-        beq eraseSpriteDragon2Fog274a
+        beq eraseSpriteDragon2Fog262a
         sta >SCREEN_ADDR,x
-        bra eraseSpriteDragon2Fog274b
-eraseSpriteDragon2Fog274a anop
+        bra eraseSpriteDragon2Fog262b
+eraseSpriteDragon2Fog262a anop
         lda >BACKGROUND_ADDR,x
         sta >SCREEN_ADDR,x
-eraseSpriteDragon2Fog274b anop
+eraseSpriteDragon2Fog262b anop
         long m
-
         lda >rowAddress
         clc
         adc >spriteX
@@ -15199,15 +16191,31 @@ eraseSpriteDragon2Fog274b anop
         short m
         lda >SURROUND_PIXEL_ADDR,x
         cmp #$00
-        beq eraseSpriteDragon2Fog275a
+        beq eraseSpriteDragon2Fog263a
         sta >SCREEN_ADDR,x
-        bra eraseSpriteDragon2Fog275b
-eraseSpriteDragon2Fog275a anop
+        bra eraseSpriteDragon2Fog263b
+eraseSpriteDragon2Fog263a anop
         lda >BACKGROUND_ADDR,x
         sta >SCREEN_ADDR,x
-eraseSpriteDragon2Fog275b anop
+eraseSpriteDragon2Fog263b anop
         long m
 
+
+eraseSpriteDragon2FogSkipRowErase183 anop
+
+        lda >rowCounter
+        clc
+        adc #1
+        sta >rowCounter
+
+
+        cmp #199
+        bcs eraseSpriteDragon2FogSkipRowEraseShortJump184
+        bra eraseSpriteDragon2FogSkipRowEraseDontSkipRow184
+
+eraseSpriteDragon2FogSkipRowEraseShortJump184 anop
+        brl eraseSpriteDragon2FogSkipRowErase184
+eraseSpriteDragon2FogSkipRowEraseDontSkipRow184 anop
         lda >spriteY
         clc
         adc #26
@@ -15228,15 +16236,14 @@ eraseSpriteDragon2Fog275b anop
         short m
         lda >SURROUND_PIXEL_ADDR,x
         cmp #$00
-        beq eraseSpriteDragon2Fog276a
+        beq eraseSpriteDragon2Fog264a
         sta >SCREEN_ADDR,x
-        bra eraseSpriteDragon2Fog276b
-eraseSpriteDragon2Fog276a anop
+        bra eraseSpriteDragon2Fog264b
+eraseSpriteDragon2Fog264a anop
         lda >BACKGROUND_ADDR,x
         sta >SCREEN_ADDR,x
-eraseSpriteDragon2Fog276b anop
+eraseSpriteDragon2Fog264b anop
         long m
-
         lda >rowAddress
         clc
         adc >spriteX
@@ -15249,15 +16256,14 @@ eraseSpriteDragon2Fog276b anop
         short m
         lda >SURROUND_PIXEL_ADDR,x
         cmp #$00
-        beq eraseSpriteDragon2Fog277a
+        beq eraseSpriteDragon2Fog265a
         sta >SCREEN_ADDR,x
-        bra eraseSpriteDragon2Fog277b
-eraseSpriteDragon2Fog277a anop
+        bra eraseSpriteDragon2Fog265b
+eraseSpriteDragon2Fog265a anop
         lda >BACKGROUND_ADDR,x
         sta >SCREEN_ADDR,x
-eraseSpriteDragon2Fog277b anop
+eraseSpriteDragon2Fog265b anop
         long m
-
         lda >rowAddress
         clc
         adc >spriteX
@@ -15270,15 +16276,14 @@ eraseSpriteDragon2Fog277b anop
         short m
         lda >SURROUND_PIXEL_ADDR,x
         cmp #$00
-        beq eraseSpriteDragon2Fog278a
+        beq eraseSpriteDragon2Fog266a
         sta >SCREEN_ADDR,x
-        bra eraseSpriteDragon2Fog278b
-eraseSpriteDragon2Fog278a anop
+        bra eraseSpriteDragon2Fog266b
+eraseSpriteDragon2Fog266a anop
         lda >BACKGROUND_ADDR,x
         sta >SCREEN_ADDR,x
-eraseSpriteDragon2Fog278b anop
+eraseSpriteDragon2Fog266b anop
         long m
-
         lda >rowAddress
         clc
         adc >spriteX
@@ -15291,15 +16296,14 @@ eraseSpriteDragon2Fog278b anop
         short m
         lda >SURROUND_PIXEL_ADDR,x
         cmp #$00
-        beq eraseSpriteDragon2Fog279a
+        beq eraseSpriteDragon2Fog267a
         sta >SCREEN_ADDR,x
-        bra eraseSpriteDragon2Fog279b
-eraseSpriteDragon2Fog279a anop
+        bra eraseSpriteDragon2Fog267b
+eraseSpriteDragon2Fog267a anop
         lda >BACKGROUND_ADDR,x
         sta >SCREEN_ADDR,x
-eraseSpriteDragon2Fog279b anop
+eraseSpriteDragon2Fog267b anop
         long m
-
         lda >rowAddress
         clc
         adc >spriteX
@@ -15312,15 +16316,14 @@ eraseSpriteDragon2Fog279b anop
         short m
         lda >SURROUND_PIXEL_ADDR,x
         cmp #$00
-        beq eraseSpriteDragon2Fog280a
+        beq eraseSpriteDragon2Fog268a
         sta >SCREEN_ADDR,x
-        bra eraseSpriteDragon2Fog280b
-eraseSpriteDragon2Fog280a anop
+        bra eraseSpriteDragon2Fog268b
+eraseSpriteDragon2Fog268a anop
         lda >BACKGROUND_ADDR,x
         sta >SCREEN_ADDR,x
-eraseSpriteDragon2Fog280b anop
+eraseSpriteDragon2Fog268b anop
         long m
-
         lda >rowAddress
         clc
         adc >spriteX
@@ -15333,15 +16336,14 @@ eraseSpriteDragon2Fog280b anop
         short m
         lda >SURROUND_PIXEL_ADDR,x
         cmp #$00
-        beq eraseSpriteDragon2Fog281a
+        beq eraseSpriteDragon2Fog269a
         sta >SCREEN_ADDR,x
-        bra eraseSpriteDragon2Fog281b
-eraseSpriteDragon2Fog281a anop
+        bra eraseSpriteDragon2Fog269b
+eraseSpriteDragon2Fog269a anop
         lda >BACKGROUND_ADDR,x
         sta >SCREEN_ADDR,x
-eraseSpriteDragon2Fog281b anop
+eraseSpriteDragon2Fog269b anop
         long m
-
         lda >rowAddress
         clc
         adc >spriteX
@@ -15354,15 +16356,31 @@ eraseSpriteDragon2Fog281b anop
         short m
         lda >SURROUND_PIXEL_ADDR,x
         cmp #$00
-        beq eraseSpriteDragon2Fog282a
+        beq eraseSpriteDragon2Fog270a
         sta >SCREEN_ADDR,x
-        bra eraseSpriteDragon2Fog282b
-eraseSpriteDragon2Fog282a anop
+        bra eraseSpriteDragon2Fog270b
+eraseSpriteDragon2Fog270a anop
         lda >BACKGROUND_ADDR,x
         sta >SCREEN_ADDR,x
-eraseSpriteDragon2Fog282b anop
+eraseSpriteDragon2Fog270b anop
         long m
 
+
+eraseSpriteDragon2FogSkipRowErase184 anop
+
+        lda >rowCounter
+        clc
+        adc #1
+        sta >rowCounter
+
+
+        cmp #199
+        bcs eraseSpriteDragon2FogSkipRowEraseShortJump185
+        bra eraseSpriteDragon2FogSkipRowEraseDontSkipRow185
+
+eraseSpriteDragon2FogSkipRowEraseShortJump185 anop
+        brl eraseSpriteDragon2FogSkipRowErase185
+eraseSpriteDragon2FogSkipRowEraseDontSkipRow185 anop
         lda >spriteY
         clc
         adc #27
@@ -15383,15 +16401,14 @@ eraseSpriteDragon2Fog282b anop
         short m
         lda >SURROUND_PIXEL_ADDR,x
         cmp #$00
-        beq eraseSpriteDragon2Fog283a
+        beq eraseSpriteDragon2Fog271a
         sta >SCREEN_ADDR,x
-        bra eraseSpriteDragon2Fog283b
-eraseSpriteDragon2Fog283a anop
+        bra eraseSpriteDragon2Fog271b
+eraseSpriteDragon2Fog271a anop
         lda >BACKGROUND_ADDR,x
         sta >SCREEN_ADDR,x
-eraseSpriteDragon2Fog283b anop
+eraseSpriteDragon2Fog271b anop
         long m
-
         lda >rowAddress
         clc
         adc >spriteX
@@ -15404,15 +16421,14 @@ eraseSpriteDragon2Fog283b anop
         short m
         lda >SURROUND_PIXEL_ADDR,x
         cmp #$00
-        beq eraseSpriteDragon2Fog284a
+        beq eraseSpriteDragon2Fog272a
         sta >SCREEN_ADDR,x
-        bra eraseSpriteDragon2Fog284b
-eraseSpriteDragon2Fog284a anop
+        bra eraseSpriteDragon2Fog272b
+eraseSpriteDragon2Fog272a anop
         lda >BACKGROUND_ADDR,x
         sta >SCREEN_ADDR,x
-eraseSpriteDragon2Fog284b anop
+eraseSpriteDragon2Fog272b anop
         long m
-
         lda >rowAddress
         clc
         adc >spriteX
@@ -15425,15 +16441,14 @@ eraseSpriteDragon2Fog284b anop
         short m
         lda >SURROUND_PIXEL_ADDR,x
         cmp #$00
-        beq eraseSpriteDragon2Fog285a
+        beq eraseSpriteDragon2Fog273a
         sta >SCREEN_ADDR,x
-        bra eraseSpriteDragon2Fog285b
-eraseSpriteDragon2Fog285a anop
+        bra eraseSpriteDragon2Fog273b
+eraseSpriteDragon2Fog273a anop
         lda >BACKGROUND_ADDR,x
         sta >SCREEN_ADDR,x
-eraseSpriteDragon2Fog285b anop
+eraseSpriteDragon2Fog273b anop
         long m
-
         lda >rowAddress
         clc
         adc >spriteX
@@ -15446,15 +16461,14 @@ eraseSpriteDragon2Fog285b anop
         short m
         lda >SURROUND_PIXEL_ADDR,x
         cmp #$00
-        beq eraseSpriteDragon2Fog286a
+        beq eraseSpriteDragon2Fog274a
         sta >SCREEN_ADDR,x
-        bra eraseSpriteDragon2Fog286b
-eraseSpriteDragon2Fog286a anop
+        bra eraseSpriteDragon2Fog274b
+eraseSpriteDragon2Fog274a anop
         lda >BACKGROUND_ADDR,x
         sta >SCREEN_ADDR,x
-eraseSpriteDragon2Fog286b anop
+eraseSpriteDragon2Fog274b anop
         long m
-
         lda >rowAddress
         clc
         adc >spriteX
@@ -15467,15 +16481,14 @@ eraseSpriteDragon2Fog286b anop
         short m
         lda >SURROUND_PIXEL_ADDR,x
         cmp #$00
-        beq eraseSpriteDragon2Fog287a
+        beq eraseSpriteDragon2Fog275a
         sta >SCREEN_ADDR,x
-        bra eraseSpriteDragon2Fog287b
-eraseSpriteDragon2Fog287a anop
+        bra eraseSpriteDragon2Fog275b
+eraseSpriteDragon2Fog275a anop
         lda >BACKGROUND_ADDR,x
         sta >SCREEN_ADDR,x
-eraseSpriteDragon2Fog287b anop
+eraseSpriteDragon2Fog275b anop
         long m
-
         lda >rowAddress
         clc
         adc >spriteX
@@ -15488,15 +16501,14 @@ eraseSpriteDragon2Fog287b anop
         short m
         lda >SURROUND_PIXEL_ADDR,x
         cmp #$00
-        beq eraseSpriteDragon2Fog288a
+        beq eraseSpriteDragon2Fog276a
         sta >SCREEN_ADDR,x
-        bra eraseSpriteDragon2Fog288b
-eraseSpriteDragon2Fog288a anop
+        bra eraseSpriteDragon2Fog276b
+eraseSpriteDragon2Fog276a anop
         lda >BACKGROUND_ADDR,x
         sta >SCREEN_ADDR,x
-eraseSpriteDragon2Fog288b anop
+eraseSpriteDragon2Fog276b anop
         long m
-
         lda >rowAddress
         clc
         adc >spriteX
@@ -15509,15 +16521,31 @@ eraseSpriteDragon2Fog288b anop
         short m
         lda >SURROUND_PIXEL_ADDR,x
         cmp #$00
-        beq eraseSpriteDragon2Fog289a
+        beq eraseSpriteDragon2Fog277a
         sta >SCREEN_ADDR,x
-        bra eraseSpriteDragon2Fog289b
-eraseSpriteDragon2Fog289a anop
+        bra eraseSpriteDragon2Fog277b
+eraseSpriteDragon2Fog277a anop
         lda >BACKGROUND_ADDR,x
         sta >SCREEN_ADDR,x
-eraseSpriteDragon2Fog289b anop
+eraseSpriteDragon2Fog277b anop
         long m
 
+
+eraseSpriteDragon2FogSkipRowErase185 anop
+
+        lda >rowCounter
+        clc
+        adc #1
+        sta >rowCounter
+
+
+        cmp #199
+        bcs eraseSpriteDragon2FogSkipRowEraseShortJump186
+        bra eraseSpriteDragon2FogSkipRowEraseDontSkipRow186
+
+eraseSpriteDragon2FogSkipRowEraseShortJump186 anop
+        brl eraseSpriteDragon2FogSkipRowErase186
+eraseSpriteDragon2FogSkipRowEraseDontSkipRow186 anop
         lda >spriteY
         clc
         adc #28
@@ -15538,15 +16566,14 @@ eraseSpriteDragon2Fog289b anop
         short m
         lda >SURROUND_PIXEL_ADDR,x
         cmp #$00
-        beq eraseSpriteDragon2Fog290a
+        beq eraseSpriteDragon2Fog278a
         sta >SCREEN_ADDR,x
-        bra eraseSpriteDragon2Fog290b
-eraseSpriteDragon2Fog290a anop
+        bra eraseSpriteDragon2Fog278b
+eraseSpriteDragon2Fog278a anop
         lda >BACKGROUND_ADDR,x
         sta >SCREEN_ADDR,x
-eraseSpriteDragon2Fog290b anop
+eraseSpriteDragon2Fog278b anop
         long m
-
         lda >rowAddress
         clc
         adc >spriteX
@@ -15559,15 +16586,14 @@ eraseSpriteDragon2Fog290b anop
         short m
         lda >SURROUND_PIXEL_ADDR,x
         cmp #$00
-        beq eraseSpriteDragon2Fog291a
+        beq eraseSpriteDragon2Fog279a
         sta >SCREEN_ADDR,x
-        bra eraseSpriteDragon2Fog291b
-eraseSpriteDragon2Fog291a anop
+        bra eraseSpriteDragon2Fog279b
+eraseSpriteDragon2Fog279a anop
         lda >BACKGROUND_ADDR,x
         sta >SCREEN_ADDR,x
-eraseSpriteDragon2Fog291b anop
+eraseSpriteDragon2Fog279b anop
         long m
-
         lda >rowAddress
         clc
         adc >spriteX
@@ -15580,15 +16606,14 @@ eraseSpriteDragon2Fog291b anop
         short m
         lda >SURROUND_PIXEL_ADDR,x
         cmp #$00
-        beq eraseSpriteDragon2Fog292a
+        beq eraseSpriteDragon2Fog280a
         sta >SCREEN_ADDR,x
-        bra eraseSpriteDragon2Fog292b
-eraseSpriteDragon2Fog292a anop
+        bra eraseSpriteDragon2Fog280b
+eraseSpriteDragon2Fog280a anop
         lda >BACKGROUND_ADDR,x
         sta >SCREEN_ADDR,x
-eraseSpriteDragon2Fog292b anop
+eraseSpriteDragon2Fog280b anop
         long m
-
         lda >rowAddress
         clc
         adc >spriteX
@@ -15601,15 +16626,14 @@ eraseSpriteDragon2Fog292b anop
         short m
         lda >SURROUND_PIXEL_ADDR,x
         cmp #$00
-        beq eraseSpriteDragon2Fog293a
+        beq eraseSpriteDragon2Fog281a
         sta >SCREEN_ADDR,x
-        bra eraseSpriteDragon2Fog293b
-eraseSpriteDragon2Fog293a anop
+        bra eraseSpriteDragon2Fog281b
+eraseSpriteDragon2Fog281a anop
         lda >BACKGROUND_ADDR,x
         sta >SCREEN_ADDR,x
-eraseSpriteDragon2Fog293b anop
+eraseSpriteDragon2Fog281b anop
         long m
-
         lda >rowAddress
         clc
         adc >spriteX
@@ -15622,15 +16646,14 @@ eraseSpriteDragon2Fog293b anop
         short m
         lda >SURROUND_PIXEL_ADDR,x
         cmp #$00
-        beq eraseSpriteDragon2Fog294a
+        beq eraseSpriteDragon2Fog282a
         sta >SCREEN_ADDR,x
-        bra eraseSpriteDragon2Fog294b
-eraseSpriteDragon2Fog294a anop
+        bra eraseSpriteDragon2Fog282b
+eraseSpriteDragon2Fog282a anop
         lda >BACKGROUND_ADDR,x
         sta >SCREEN_ADDR,x
-eraseSpriteDragon2Fog294b anop
+eraseSpriteDragon2Fog282b anop
         long m
-
         lda >rowAddress
         clc
         adc >spriteX
@@ -15643,15 +16666,14 @@ eraseSpriteDragon2Fog294b anop
         short m
         lda >SURROUND_PIXEL_ADDR,x
         cmp #$00
-        beq eraseSpriteDragon2Fog295a
+        beq eraseSpriteDragon2Fog283a
         sta >SCREEN_ADDR,x
-        bra eraseSpriteDragon2Fog295b
-eraseSpriteDragon2Fog295a anop
+        bra eraseSpriteDragon2Fog283b
+eraseSpriteDragon2Fog283a anop
         lda >BACKGROUND_ADDR,x
         sta >SCREEN_ADDR,x
-eraseSpriteDragon2Fog295b anop
+eraseSpriteDragon2Fog283b anop
         long m
-
         lda >rowAddress
         clc
         adc >spriteX
@@ -15664,15 +16686,31 @@ eraseSpriteDragon2Fog295b anop
         short m
         lda >SURROUND_PIXEL_ADDR,x
         cmp #$00
-        beq eraseSpriteDragon2Fog296a
+        beq eraseSpriteDragon2Fog284a
         sta >SCREEN_ADDR,x
-        bra eraseSpriteDragon2Fog296b
-eraseSpriteDragon2Fog296a anop
+        bra eraseSpriteDragon2Fog284b
+eraseSpriteDragon2Fog284a anop
         lda >BACKGROUND_ADDR,x
         sta >SCREEN_ADDR,x
-eraseSpriteDragon2Fog296b anop
+eraseSpriteDragon2Fog284b anop
         long m
 
+
+eraseSpriteDragon2FogSkipRowErase186 anop
+
+        lda >rowCounter
+        clc
+        adc #1
+        sta >rowCounter
+
+
+        cmp #199
+        bcs eraseSpriteDragon2FogSkipRowEraseShortJump187
+        bra eraseSpriteDragon2FogSkipRowEraseDontSkipRow187
+
+eraseSpriteDragon2FogSkipRowEraseShortJump187 anop
+        brl eraseSpriteDragon2FogSkipRowErase187
+eraseSpriteDragon2FogSkipRowEraseDontSkipRow187 anop
         lda >spriteY
         clc
         adc #29
@@ -15693,6 +16731,271 @@ eraseSpriteDragon2Fog296b anop
         short m
         lda >SURROUND_PIXEL_ADDR,x
         cmp #$00
+        beq eraseSpriteDragon2Fog285a
+        sta >SCREEN_ADDR,x
+        bra eraseSpriteDragon2Fog285b
+eraseSpriteDragon2Fog285a anop
+        lda >BACKGROUND_ADDR,x
+        sta >SCREEN_ADDR,x
+eraseSpriteDragon2Fog285b anop
+        long m
+        lda >rowAddress
+        clc
+        adc >spriteX
+
+        clc
+        adc #2
+        tax
+
+
+        short m
+        lda >SURROUND_PIXEL_ADDR,x
+        cmp #$00
+        beq eraseSpriteDragon2Fog286a
+        sta >SCREEN_ADDR,x
+        bra eraseSpriteDragon2Fog286b
+eraseSpriteDragon2Fog286a anop
+        lda >BACKGROUND_ADDR,x
+        sta >SCREEN_ADDR,x
+eraseSpriteDragon2Fog286b anop
+        long m
+        lda >rowAddress
+        clc
+        adc >spriteX
+
+        clc
+        adc #3
+        tax
+
+
+        short m
+        lda >SURROUND_PIXEL_ADDR,x
+        cmp #$00
+        beq eraseSpriteDragon2Fog287a
+        sta >SCREEN_ADDR,x
+        bra eraseSpriteDragon2Fog287b
+eraseSpriteDragon2Fog287a anop
+        lda >BACKGROUND_ADDR,x
+        sta >SCREEN_ADDR,x
+eraseSpriteDragon2Fog287b anop
+        long m
+        lda >rowAddress
+        clc
+        adc >spriteX
+
+        clc
+        adc #4
+        tax
+
+
+        short m
+        lda >SURROUND_PIXEL_ADDR,x
+        cmp #$00
+        beq eraseSpriteDragon2Fog288a
+        sta >SCREEN_ADDR,x
+        bra eraseSpriteDragon2Fog288b
+eraseSpriteDragon2Fog288a anop
+        lda >BACKGROUND_ADDR,x
+        sta >SCREEN_ADDR,x
+eraseSpriteDragon2Fog288b anop
+        long m
+        lda >rowAddress
+        clc
+        adc >spriteX
+
+        clc
+        adc #5
+        tax
+
+
+        short m
+        lda >SURROUND_PIXEL_ADDR,x
+        cmp #$00
+        beq eraseSpriteDragon2Fog289a
+        sta >SCREEN_ADDR,x
+        bra eraseSpriteDragon2Fog289b
+eraseSpriteDragon2Fog289a anop
+        lda >BACKGROUND_ADDR,x
+        sta >SCREEN_ADDR,x
+eraseSpriteDragon2Fog289b anop
+        long m
+        lda >rowAddress
+        clc
+        adc >spriteX
+
+        clc
+        adc #6
+        tax
+
+
+        short m
+        lda >SURROUND_PIXEL_ADDR,x
+        cmp #$00
+        beq eraseSpriteDragon2Fog290a
+        sta >SCREEN_ADDR,x
+        bra eraseSpriteDragon2Fog290b
+eraseSpriteDragon2Fog290a anop
+        lda >BACKGROUND_ADDR,x
+        sta >SCREEN_ADDR,x
+eraseSpriteDragon2Fog290b anop
+        long m
+        lda >rowAddress
+        clc
+        adc >spriteX
+
+        clc
+        adc #7
+        tax
+
+
+        short m
+        lda >SURROUND_PIXEL_ADDR,x
+        cmp #$00
+        beq eraseSpriteDragon2Fog291a
+        sta >SCREEN_ADDR,x
+        bra eraseSpriteDragon2Fog291b
+eraseSpriteDragon2Fog291a anop
+        lda >BACKGROUND_ADDR,x
+        sta >SCREEN_ADDR,x
+eraseSpriteDragon2Fog291b anop
+        long m
+
+
+eraseSpriteDragon2FogSkipRowErase187 anop
+
+        lda >rowCounter
+        clc
+        adc #1
+        sta >rowCounter
+
+
+        cmp #199
+        bcs eraseSpriteDragon2FogSkipRowEraseShortJump188
+        bra eraseSpriteDragon2FogSkipRowEraseDontSkipRow188
+
+eraseSpriteDragon2FogSkipRowEraseShortJump188 anop
+        brl eraseSpriteDragon2FogSkipRowErase188
+eraseSpriteDragon2FogSkipRowEraseDontSkipRow188 anop
+        lda >spriteY
+        clc
+        adc #30
+        asl a
+        tax
+        lda >screenRowOffsets,x
+        sta >rowAddress
+
+        lda >rowAddress
+        clc
+        adc >spriteX
+
+        clc
+        adc #1
+        tax
+
+
+        short m
+        lda >SURROUND_PIXEL_ADDR,x
+        cmp #$00
+        beq eraseSpriteDragon2Fog292a
+        sta >SCREEN_ADDR,x
+        bra eraseSpriteDragon2Fog292b
+eraseSpriteDragon2Fog292a anop
+        lda >BACKGROUND_ADDR,x
+        sta >SCREEN_ADDR,x
+eraseSpriteDragon2Fog292b anop
+        long m
+        lda >rowAddress
+        clc
+        adc >spriteX
+
+        clc
+        adc #2
+        tax
+
+
+        short m
+        lda >SURROUND_PIXEL_ADDR,x
+        cmp #$00
+        beq eraseSpriteDragon2Fog293a
+        sta >SCREEN_ADDR,x
+        bra eraseSpriteDragon2Fog293b
+eraseSpriteDragon2Fog293a anop
+        lda >BACKGROUND_ADDR,x
+        sta >SCREEN_ADDR,x
+eraseSpriteDragon2Fog293b anop
+        long m
+        lda >rowAddress
+        clc
+        adc >spriteX
+
+        clc
+        adc #3
+        tax
+
+
+        short m
+        lda >SURROUND_PIXEL_ADDR,x
+        cmp #$00
+        beq eraseSpriteDragon2Fog294a
+        sta >SCREEN_ADDR,x
+        bra eraseSpriteDragon2Fog294b
+eraseSpriteDragon2Fog294a anop
+        lda >BACKGROUND_ADDR,x
+        sta >SCREEN_ADDR,x
+eraseSpriteDragon2Fog294b anop
+        long m
+        lda >rowAddress
+        clc
+        adc >spriteX
+
+        clc
+        adc #4
+        tax
+
+
+        short m
+        lda >SURROUND_PIXEL_ADDR,x
+        cmp #$00
+        beq eraseSpriteDragon2Fog295a
+        sta >SCREEN_ADDR,x
+        bra eraseSpriteDragon2Fog295b
+eraseSpriteDragon2Fog295a anop
+        lda >BACKGROUND_ADDR,x
+        sta >SCREEN_ADDR,x
+eraseSpriteDragon2Fog295b anop
+        long m
+        lda >rowAddress
+        clc
+        adc >spriteX
+
+        clc
+        adc #5
+        tax
+
+
+        short m
+        lda >SURROUND_PIXEL_ADDR,x
+        cmp #$00
+        beq eraseSpriteDragon2Fog296a
+        sta >SCREEN_ADDR,x
+        bra eraseSpriteDragon2Fog296b
+eraseSpriteDragon2Fog296a anop
+        lda >BACKGROUND_ADDR,x
+        sta >SCREEN_ADDR,x
+eraseSpriteDragon2Fog296b anop
+        long m
+        lda >rowAddress
+        clc
+        adc >spriteX
+
+        clc
+        adc #6
+        tax
+
+
+        short m
+        lda >SURROUND_PIXEL_ADDR,x
+        cmp #$00
         beq eraseSpriteDragon2Fog297a
         sta >SCREEN_ADDR,x
         bra eraseSpriteDragon2Fog297b
@@ -15701,13 +17004,12 @@ eraseSpriteDragon2Fog297a anop
         sta >SCREEN_ADDR,x
 eraseSpriteDragon2Fog297b anop
         long m
-
         lda >rowAddress
         clc
         adc >spriteX
 
         clc
-        adc #2
+        adc #7
         tax
 
 
@@ -15723,12 +17025,36 @@ eraseSpriteDragon2Fog298a anop
 eraseSpriteDragon2Fog298b anop
         long m
 
+
+eraseSpriteDragon2FogSkipRowErase188 anop
+
+        lda >rowCounter
+        clc
+        adc #1
+        sta >rowCounter
+
+
+        cmp #199
+        bcs eraseSpriteDragon2FogSkipRowEraseShortJump189
+        bra eraseSpriteDragon2FogSkipRowEraseDontSkipRow189
+
+eraseSpriteDragon2FogSkipRowEraseShortJump189 anop
+        brl eraseSpriteDragon2FogSkipRowErase189
+eraseSpriteDragon2FogSkipRowEraseDontSkipRow189 anop
+        lda >spriteY
+        clc
+        adc #31
+        asl a
+        tax
+        lda >screenRowOffsets,x
+        sta >rowAddress
+
         lda >rowAddress
         clc
         adc >spriteX
 
         clc
-        adc #3
+        adc #1
         tax
 
 
@@ -15743,13 +17069,12 @@ eraseSpriteDragon2Fog299a anop
         sta >SCREEN_ADDR,x
 eraseSpriteDragon2Fog299b anop
         long m
-
         lda >rowAddress
         clc
         adc >spriteX
 
         clc
-        adc #4
+        adc #2
         tax
 
 
@@ -15764,13 +17089,12 @@ eraseSpriteDragon2Fog300a anop
         sta >SCREEN_ADDR,x
 eraseSpriteDragon2Fog300b anop
         long m
-
         lda >rowAddress
         clc
         adc >spriteX
 
         clc
-        adc #5
+        adc #3
         tax
 
 
@@ -15785,13 +17109,12 @@ eraseSpriteDragon2Fog301a anop
         sta >SCREEN_ADDR,x
 eraseSpriteDragon2Fog301b anop
         long m
-
         lda >rowAddress
         clc
         adc >spriteX
 
         clc
-        adc #6
+        adc #4
         tax
 
 
@@ -15806,13 +17129,12 @@ eraseSpriteDragon2Fog302a anop
         sta >SCREEN_ADDR,x
 eraseSpriteDragon2Fog302b anop
         long m
-
         lda >rowAddress
         clc
         adc >spriteX
 
         clc
-        adc #7
+        adc #5
         tax
 
 
@@ -15827,21 +17149,12 @@ eraseSpriteDragon2Fog303a anop
         sta >SCREEN_ADDR,x
 eraseSpriteDragon2Fog303b anop
         long m
-
-        lda >spriteY
-        clc
-        adc #30
-        asl a
-        tax
-        lda >screenRowOffsets,x
-        sta >rowAddress
-
         lda >rowAddress
         clc
         adc >spriteX
 
         clc
-        adc #2
+        adc #6
         tax
 
 
@@ -15856,13 +17169,12 @@ eraseSpriteDragon2Fog304a anop
         sta >SCREEN_ADDR,x
 eraseSpriteDragon2Fog304b anop
         long m
-
         lda >rowAddress
         clc
         adc >spriteX
 
         clc
-        adc #3
+        adc #7
         tax
 
 
@@ -15878,72 +17190,25 @@ eraseSpriteDragon2Fog305a anop
 eraseSpriteDragon2Fog305b anop
         long m
 
-        lda >rowAddress
+
+eraseSpriteDragon2FogSkipRowErase189 anop
+
+        lda >rowCounter
         clc
-        adc >spriteX
-
-        clc
-        adc #4
-        tax
+        adc #1
+        sta >rowCounter
 
 
-        short m
-        lda >SURROUND_PIXEL_ADDR,x
-        cmp #$00
-        beq eraseSpriteDragon2Fog306a
-        sta >SCREEN_ADDR,x
-        bra eraseSpriteDragon2Fog306b
-eraseSpriteDragon2Fog306a anop
-        lda >BACKGROUND_ADDR,x
-        sta >SCREEN_ADDR,x
-eraseSpriteDragon2Fog306b anop
-        long m
+        cmp #199
+        bcs eraseSpriteDragon2FogSkipRowEraseShortJump190
+        bra eraseSpriteDragon2FogSkipRowEraseDontSkipRow190
 
-        lda >rowAddress
-        clc
-        adc >spriteX
-
-        clc
-        adc #5
-        tax
-
-
-        short m
-        lda >SURROUND_PIXEL_ADDR,x
-        cmp #$00
-        beq eraseSpriteDragon2Fog307a
-        sta >SCREEN_ADDR,x
-        bra eraseSpriteDragon2Fog307b
-eraseSpriteDragon2Fog307a anop
-        lda >BACKGROUND_ADDR,x
-        sta >SCREEN_ADDR,x
-eraseSpriteDragon2Fog307b anop
-        long m
-
-        lda >rowAddress
-        clc
-        adc >spriteX
-
-        clc
-        adc #6
-        tax
-
-
-        short m
-        lda >SURROUND_PIXEL_ADDR,x
-        cmp #$00
-        beq eraseSpriteDragon2Fog308a
-        sta >SCREEN_ADDR,x
-        bra eraseSpriteDragon2Fog308b
-eraseSpriteDragon2Fog308a anop
-        lda >BACKGROUND_ADDR,x
-        sta >SCREEN_ADDR,x
-eraseSpriteDragon2Fog308b anop
-        long m
-
+eraseSpriteDragon2FogSkipRowEraseShortJump190 anop
+        brl eraseSpriteDragon2FogSkipRowErase190
+eraseSpriteDragon2FogSkipRowEraseDontSkipRow190 anop
         lda >spriteY
         clc
-        adc #31
+        adc #32
         asl a
         tax
         lda >screenRowOffsets,x
@@ -15961,6 +17226,66 @@ eraseSpriteDragon2Fog308b anop
         short m
         lda >SURROUND_PIXEL_ADDR,x
         cmp #$00
+        beq eraseSpriteDragon2Fog306a
+        sta >SCREEN_ADDR,x
+        bra eraseSpriteDragon2Fog306b
+eraseSpriteDragon2Fog306a anop
+        lda >BACKGROUND_ADDR,x
+        sta >SCREEN_ADDR,x
+eraseSpriteDragon2Fog306b anop
+        long m
+        lda >rowAddress
+        clc
+        adc >spriteX
+
+        clc
+        adc #3
+        tax
+
+
+        short m
+        lda >SURROUND_PIXEL_ADDR,x
+        cmp #$00
+        beq eraseSpriteDragon2Fog307a
+        sta >SCREEN_ADDR,x
+        bra eraseSpriteDragon2Fog307b
+eraseSpriteDragon2Fog307a anop
+        lda >BACKGROUND_ADDR,x
+        sta >SCREEN_ADDR,x
+eraseSpriteDragon2Fog307b anop
+        long m
+        lda >rowAddress
+        clc
+        adc >spriteX
+
+        clc
+        adc #4
+        tax
+
+
+        short m
+        lda >SURROUND_PIXEL_ADDR,x
+        cmp #$00
+        beq eraseSpriteDragon2Fog308a
+        sta >SCREEN_ADDR,x
+        bra eraseSpriteDragon2Fog308b
+eraseSpriteDragon2Fog308a anop
+        lda >BACKGROUND_ADDR,x
+        sta >SCREEN_ADDR,x
+eraseSpriteDragon2Fog308b anop
+        long m
+        lda >rowAddress
+        clc
+        adc >spriteX
+
+        clc
+        adc #5
+        tax
+
+
+        short m
+        lda >SURROUND_PIXEL_ADDR,x
+        cmp #$00
         beq eraseSpriteDragon2Fog309a
         sta >SCREEN_ADDR,x
         bra eraseSpriteDragon2Fog309b
@@ -15969,13 +17294,12 @@ eraseSpriteDragon2Fog309a anop
         sta >SCREEN_ADDR,x
 eraseSpriteDragon2Fog309b anop
         long m
-
         lda >rowAddress
         clc
         adc >spriteX
 
         clc
-        adc #3
+        adc #6
         tax
 
 
@@ -15991,12 +17315,36 @@ eraseSpriteDragon2Fog310a anop
 eraseSpriteDragon2Fog310b anop
         long m
 
+
+eraseSpriteDragon2FogSkipRowErase190 anop
+
+        lda >rowCounter
+        clc
+        adc #1
+        sta >rowCounter
+
+
+        cmp #199
+        bcs eraseSpriteDragon2FogSkipRowEraseShortJump191
+        bra eraseSpriteDragon2FogSkipRowEraseDontSkipRow191
+
+eraseSpriteDragon2FogSkipRowEraseShortJump191 anop
+        brl eraseSpriteDragon2FogSkipRowErase191
+eraseSpriteDragon2FogSkipRowEraseDontSkipRow191 anop
+        lda >spriteY
+        clc
+        adc #33
+        asl a
+        tax
+        lda >screenRowOffsets,x
+        sta >rowAddress
+
         lda >rowAddress
         clc
         adc >spriteX
 
         clc
-        adc #4
+        adc #2
         tax
 
 
@@ -16011,13 +17359,12 @@ eraseSpriteDragon2Fog311a anop
         sta >SCREEN_ADDR,x
 eraseSpriteDragon2Fog311b anop
         long m
-
         lda >rowAddress
         clc
         adc >spriteX
 
         clc
-        adc #5
+        adc #3
         tax
 
 
@@ -16032,13 +17379,12 @@ eraseSpriteDragon2Fog312a anop
         sta >SCREEN_ADDR,x
 eraseSpriteDragon2Fog312b anop
         long m
-
         lda >rowAddress
         clc
         adc >spriteX
 
         clc
-        adc #6
+        adc #4
         tax
 
 
@@ -16053,21 +17399,12 @@ eraseSpriteDragon2Fog313a anop
         sta >SCREEN_ADDR,x
 eraseSpriteDragon2Fog313b anop
         long m
-
-        lda >spriteY
-        clc
-        adc #32
-        asl a
-        tax
-        lda >screenRowOffsets,x
-        sta >rowAddress
-
         lda >rowAddress
         clc
         adc >spriteX
 
         clc
-        adc #3
+        adc #5
         tax
 
 
@@ -16082,13 +17419,12 @@ eraseSpriteDragon2Fog314a anop
         sta >SCREEN_ADDR,x
 eraseSpriteDragon2Fog314b anop
         long m
-
         lda >rowAddress
         clc
         adc >spriteX
 
         clc
-        adc #4
+        adc #6
         tax
 
 
@@ -16104,30 +17440,25 @@ eraseSpriteDragon2Fog315a anop
 eraseSpriteDragon2Fog315b anop
         long m
 
-        lda >rowAddress
+
+eraseSpriteDragon2FogSkipRowErase191 anop
+
+        lda >rowCounter
         clc
-        adc >spriteX
-
-        clc
-        adc #5
-        tax
+        adc #1
+        sta >rowCounter
 
 
-        short m
-        lda >SURROUND_PIXEL_ADDR,x
-        cmp #$00
-        beq eraseSpriteDragon2Fog316a
-        sta >SCREEN_ADDR,x
-        bra eraseSpriteDragon2Fog316b
-eraseSpriteDragon2Fog316a anop
-        lda >BACKGROUND_ADDR,x
-        sta >SCREEN_ADDR,x
-eraseSpriteDragon2Fog316b anop
-        long m
+        cmp #199
+        bcs eraseSpriteDragon2FogSkipRowEraseShortJump192
+        bra eraseSpriteDragon2FogSkipRowEraseDontSkipRow192
 
+eraseSpriteDragon2FogSkipRowEraseShortJump192 anop
+        brl eraseSpriteDragon2FogSkipRowErase192
+eraseSpriteDragon2FogSkipRowEraseDontSkipRow192 anop
         lda >spriteY
         clc
-        adc #33
+        adc #34
         asl a
         tax
         lda >screenRowOffsets,x
@@ -16145,6 +17476,26 @@ eraseSpriteDragon2Fog316b anop
         short m
         lda >SURROUND_PIXEL_ADDR,x
         cmp #$00
+        beq eraseSpriteDragon2Fog316a
+        sta >SCREEN_ADDR,x
+        bra eraseSpriteDragon2Fog316b
+eraseSpriteDragon2Fog316a anop
+        lda >BACKGROUND_ADDR,x
+        sta >SCREEN_ADDR,x
+eraseSpriteDragon2Fog316b anop
+        long m
+        lda >rowAddress
+        clc
+        adc >spriteX
+
+        clc
+        adc #4
+        tax
+
+
+        short m
+        lda >SURROUND_PIXEL_ADDR,x
+        cmp #$00
         beq eraseSpriteDragon2Fog317a
         sta >SCREEN_ADDR,x
         bra eraseSpriteDragon2Fog317b
@@ -16153,13 +17504,12 @@ eraseSpriteDragon2Fog317a anop
         sta >SCREEN_ADDR,x
 eraseSpriteDragon2Fog317b anop
         long m
-
         lda >rowAddress
         clc
         adc >spriteX
 
         clc
-        adc #4
+        adc #5
         tax
 
 
@@ -16175,12 +17525,36 @@ eraseSpriteDragon2Fog318a anop
 eraseSpriteDragon2Fog318b anop
         long m
 
+
+eraseSpriteDragon2FogSkipRowErase192 anop
+
+        lda >rowCounter
+        clc
+        adc #1
+        sta >rowCounter
+
+
+        cmp #199
+        bcs eraseSpriteDragon2FogSkipRowEraseShortJump193
+        bra eraseSpriteDragon2FogSkipRowEraseDontSkipRow193
+
+eraseSpriteDragon2FogSkipRowEraseShortJump193 anop
+        brl eraseSpriteDragon2FogSkipRowErase193
+eraseSpriteDragon2FogSkipRowEraseDontSkipRow193 anop
+        lda >spriteY
+        clc
+        adc #35
+        asl a
+        tax
+        lda >screenRowOffsets,x
+        sta >rowAddress
+
         lda >rowAddress
         clc
         adc >spriteX
 
         clc
-        adc #5
+        adc #3
         tax
 
 
@@ -16195,15 +17569,6 @@ eraseSpriteDragon2Fog319a anop
         sta >SCREEN_ADDR,x
 eraseSpriteDragon2Fog319b anop
         long m
-
-        lda >spriteY
-        clc
-        adc #34
-        asl a
-        tax
-        lda >screenRowOffsets,x
-        sta >rowAddress
-
         lda >rowAddress
         clc
         adc >spriteX
@@ -16224,21 +17589,12 @@ eraseSpriteDragon2Fog320a anop
         sta >SCREEN_ADDR,x
 eraseSpriteDragon2Fog320b anop
         long m
-
-        lda >spriteY
-        clc
-        adc #35
-        asl a
-        tax
-        lda >screenRowOffsets,x
-        sta >rowAddress
-
         lda >rowAddress
         clc
         adc >spriteX
 
         clc
-        adc #4
+        adc #5
         tax
 
 
@@ -16254,6 +17610,22 @@ eraseSpriteDragon2Fog321a anop
 eraseSpriteDragon2Fog321b anop
         long m
 
+
+eraseSpriteDragon2FogSkipRowErase193 anop
+
+        lda >rowCounter
+        clc
+        adc #1
+        sta >rowCounter
+
+
+        cmp #199
+        bcs eraseSpriteDragon2FogSkipRowEraseShortJump194
+        bra eraseSpriteDragon2FogSkipRowEraseDontSkipRow194
+
+eraseSpriteDragon2FogSkipRowEraseShortJump194 anop
+        brl eraseSpriteDragon2FogSkipRowErase194
+eraseSpriteDragon2FogSkipRowEraseDontSkipRow194 anop
         lda >spriteY
         clc
         adc #36
@@ -16267,7 +17639,7 @@ eraseSpriteDragon2Fog321b anop
         adc >spriteX
 
         clc
-        adc #0
+        adc #4
         tax
 
 
@@ -16283,12 +17655,36 @@ eraseSpriteDragon2Fog322a anop
 eraseSpriteDragon2Fog322b anop
         long m
 
+
+eraseSpriteDragon2FogSkipRowErase194 anop
+
+        lda >rowCounter
+        clc
+        adc #1
+        sta >rowCounter
+
+
+        cmp #199
+        bcs eraseSpriteDragon2FogSkipRowEraseShortJump195
+        bra eraseSpriteDragon2FogSkipRowEraseDontSkipRow195
+
+eraseSpriteDragon2FogSkipRowEraseShortJump195 anop
+        brl eraseSpriteDragon2FogSkipRowErase195
+eraseSpriteDragon2FogSkipRowEraseDontSkipRow195 anop
+        lda >spriteY
+        clc
+        adc #37
+        asl a
+        tax
+        lda >screenRowOffsets,x
+        sta >rowAddress
+
         lda >rowAddress
         clc
         adc >spriteX
 
         clc
-        adc #1
+        adc #4
         tax
 
 
@@ -16304,182 +17700,22 @@ eraseSpriteDragon2Fog323a anop
 eraseSpriteDragon2Fog323b anop
         long m
 
-        lda >rowAddress
-        clc
-        adc >spriteX
 
-        clc
-        adc #2
-        tax
+eraseSpriteDragon2FogSkipRowErase195 anop
 
-
-        short m
-        lda >SURROUND_PIXEL_ADDR,x
-        cmp #$00
-        beq eraseSpriteDragon2Fog324a
-        sta >SCREEN_ADDR,x
-        bra eraseSpriteDragon2Fog324b
-eraseSpriteDragon2Fog324a anop
-        lda >BACKGROUND_ADDR,x
-        sta >SCREEN_ADDR,x
-eraseSpriteDragon2Fog324b anop
-        long m
-
-        lda >rowAddress
-        clc
-        adc >spriteX
-
-        clc
-        adc #3
-        tax
-
-
-        short m
-        lda >SURROUND_PIXEL_ADDR,x
-        cmp #$00
-        beq eraseSpriteDragon2Fog325a
-        sta >SCREEN_ADDR,x
-        bra eraseSpriteDragon2Fog325b
-eraseSpriteDragon2Fog325a anop
-        lda >BACKGROUND_ADDR,x
-        sta >SCREEN_ADDR,x
-eraseSpriteDragon2Fog325b anop
-        long m
-
-        lda >rowAddress
-        clc
-        adc >spriteX
-
-        clc
-        adc #4
-        tax
-
-
-        short m
-        lda >SURROUND_PIXEL_ADDR,x
-        cmp #$00
-        beq eraseSpriteDragon2Fog326a
-        sta >SCREEN_ADDR,x
-        bra eraseSpriteDragon2Fog326b
-eraseSpriteDragon2Fog326a anop
-        lda >BACKGROUND_ADDR,x
-        sta >SCREEN_ADDR,x
-eraseSpriteDragon2Fog326b anop
-        long m
-
-        lda >spriteY
-        clc
-        adc #37
-        asl a
-        tax
-        lda >screenRowOffsets,x
-        sta >rowAddress
-
-        lda >rowAddress
-        clc
-        adc >spriteX
-
-        clc
-        adc #0
-        tax
-
-
-        short m
-        lda >SURROUND_PIXEL_ADDR,x
-        cmp #$00
-        beq eraseSpriteDragon2Fog327a
-        sta >SCREEN_ADDR,x
-        bra eraseSpriteDragon2Fog327b
-eraseSpriteDragon2Fog327a anop
-        lda >BACKGROUND_ADDR,x
-        sta >SCREEN_ADDR,x
-eraseSpriteDragon2Fog327b anop
-        long m
-
-        lda >rowAddress
-        clc
-        adc >spriteX
-
+        lda >rowCounter
         clc
         adc #1
-        tax
+        sta >rowCounter
 
 
-        short m
-        lda >SURROUND_PIXEL_ADDR,x
-        cmp #$00
-        beq eraseSpriteDragon2Fog328a
-        sta >SCREEN_ADDR,x
-        bra eraseSpriteDragon2Fog328b
-eraseSpriteDragon2Fog328a anop
-        lda >BACKGROUND_ADDR,x
-        sta >SCREEN_ADDR,x
-eraseSpriteDragon2Fog328b anop
-        long m
+        cmp #199
+        bcs eraseSpriteDragon2FogSkipRowEraseShortJump196
+        bra eraseSpriteDragon2FogSkipRowEraseDontSkipRow196
 
-        lda >rowAddress
-        clc
-        adc >spriteX
-
-        clc
-        adc #2
-        tax
-
-
-        short m
-        lda >SURROUND_PIXEL_ADDR,x
-        cmp #$00
-        beq eraseSpriteDragon2Fog329a
-        sta >SCREEN_ADDR,x
-        bra eraseSpriteDragon2Fog329b
-eraseSpriteDragon2Fog329a anop
-        lda >BACKGROUND_ADDR,x
-        sta >SCREEN_ADDR,x
-eraseSpriteDragon2Fog329b anop
-        long m
-
-        lda >rowAddress
-        clc
-        adc >spriteX
-
-        clc
-        adc #3
-        tax
-
-
-        short m
-        lda >SURROUND_PIXEL_ADDR,x
-        cmp #$00
-        beq eraseSpriteDragon2Fog330a
-        sta >SCREEN_ADDR,x
-        bra eraseSpriteDragon2Fog330b
-eraseSpriteDragon2Fog330a anop
-        lda >BACKGROUND_ADDR,x
-        sta >SCREEN_ADDR,x
-eraseSpriteDragon2Fog330b anop
-        long m
-
-        lda >rowAddress
-        clc
-        adc >spriteX
-
-        clc
-        adc #4
-        tax
-
-
-        short m
-        lda >SURROUND_PIXEL_ADDR,x
-        cmp #$00
-        beq eraseSpriteDragon2Fog331a
-        sta >SCREEN_ADDR,x
-        bra eraseSpriteDragon2Fog331b
-eraseSpriteDragon2Fog331a anop
-        lda >BACKGROUND_ADDR,x
-        sta >SCREEN_ADDR,x
-eraseSpriteDragon2Fog331b anop
-        long m
-
+eraseSpriteDragon2FogSkipRowEraseShortJump196 anop
+        brl eraseSpriteDragon2FogSkipRowErase196
+eraseSpriteDragon2FogSkipRowEraseDontSkipRow196 anop
         lda >spriteY
         clc
         adc #38
@@ -16500,15 +17736,111 @@ eraseSpriteDragon2Fog331b anop
         short m
         lda >SURROUND_PIXEL_ADDR,x
         cmp #$00
-        beq eraseSpriteDragon2Fog332a
+        beq eraseSpriteDragon2Fog324a
         sta >SCREEN_ADDR,x
-        bra eraseSpriteDragon2Fog332b
-eraseSpriteDragon2Fog332a anop
+        bra eraseSpriteDragon2Fog324b
+eraseSpriteDragon2Fog324a anop
         lda >BACKGROUND_ADDR,x
         sta >SCREEN_ADDR,x
-eraseSpriteDragon2Fog332b anop
+eraseSpriteDragon2Fog324b anop
+        long m
+        lda >rowAddress
+        clc
+        adc >spriteX
+
+        clc
+        adc #1
+        tax
+
+
+        short m
+        lda >SURROUND_PIXEL_ADDR,x
+        cmp #$00
+        beq eraseSpriteDragon2Fog325a
+        sta >SCREEN_ADDR,x
+        bra eraseSpriteDragon2Fog325b
+eraseSpriteDragon2Fog325a anop
+        lda >BACKGROUND_ADDR,x
+        sta >SCREEN_ADDR,x
+eraseSpriteDragon2Fog325b anop
+        long m
+        lda >rowAddress
+        clc
+        adc >spriteX
+
+        clc
+        adc #2
+        tax
+
+
+        short m
+        lda >SURROUND_PIXEL_ADDR,x
+        cmp #$00
+        beq eraseSpriteDragon2Fog326a
+        sta >SCREEN_ADDR,x
+        bra eraseSpriteDragon2Fog326b
+eraseSpriteDragon2Fog326a anop
+        lda >BACKGROUND_ADDR,x
+        sta >SCREEN_ADDR,x
+eraseSpriteDragon2Fog326b anop
+        long m
+        lda >rowAddress
+        clc
+        adc >spriteX
+
+        clc
+        adc #3
+        tax
+
+
+        short m
+        lda >SURROUND_PIXEL_ADDR,x
+        cmp #$00
+        beq eraseSpriteDragon2Fog327a
+        sta >SCREEN_ADDR,x
+        bra eraseSpriteDragon2Fog327b
+eraseSpriteDragon2Fog327a anop
+        lda >BACKGROUND_ADDR,x
+        sta >SCREEN_ADDR,x
+eraseSpriteDragon2Fog327b anop
+        long m
+        lda >rowAddress
+        clc
+        adc >spriteX
+
+        clc
+        adc #4
+        tax
+
+
+        short m
+        lda >SURROUND_PIXEL_ADDR,x
+        cmp #$00
+        beq eraseSpriteDragon2Fog328a
+        sta >SCREEN_ADDR,x
+        bra eraseSpriteDragon2Fog328b
+eraseSpriteDragon2Fog328a anop
+        lda >BACKGROUND_ADDR,x
+        sta >SCREEN_ADDR,x
+eraseSpriteDragon2Fog328b anop
         long m
 
+
+eraseSpriteDragon2FogSkipRowErase196 anop
+
+        lda >rowCounter
+        clc
+        adc #1
+        sta >rowCounter
+
+
+        cmp #199
+        bcs eraseSpriteDragon2FogSkipRowEraseShortJump197
+        bra eraseSpriteDragon2FogSkipRowEraseDontSkipRow197
+
+eraseSpriteDragon2FogSkipRowEraseShortJump197 anop
+        brl eraseSpriteDragon2FogSkipRowErase197
+eraseSpriteDragon2FogSkipRowEraseDontSkipRow197 anop
         lda >spriteY
         clc
         adc #39
@@ -16529,6 +17861,86 @@ eraseSpriteDragon2Fog332b anop
         short m
         lda >SURROUND_PIXEL_ADDR,x
         cmp #$00
+        beq eraseSpriteDragon2Fog329a
+        sta >SCREEN_ADDR,x
+        bra eraseSpriteDragon2Fog329b
+eraseSpriteDragon2Fog329a anop
+        lda >BACKGROUND_ADDR,x
+        sta >SCREEN_ADDR,x
+eraseSpriteDragon2Fog329b anop
+        long m
+        lda >rowAddress
+        clc
+        adc >spriteX
+
+        clc
+        adc #1
+        tax
+
+
+        short m
+        lda >SURROUND_PIXEL_ADDR,x
+        cmp #$00
+        beq eraseSpriteDragon2Fog330a
+        sta >SCREEN_ADDR,x
+        bra eraseSpriteDragon2Fog330b
+eraseSpriteDragon2Fog330a anop
+        lda >BACKGROUND_ADDR,x
+        sta >SCREEN_ADDR,x
+eraseSpriteDragon2Fog330b anop
+        long m
+        lda >rowAddress
+        clc
+        adc >spriteX
+
+        clc
+        adc #2
+        tax
+
+
+        short m
+        lda >SURROUND_PIXEL_ADDR,x
+        cmp #$00
+        beq eraseSpriteDragon2Fog331a
+        sta >SCREEN_ADDR,x
+        bra eraseSpriteDragon2Fog331b
+eraseSpriteDragon2Fog331a anop
+        lda >BACKGROUND_ADDR,x
+        sta >SCREEN_ADDR,x
+eraseSpriteDragon2Fog331b anop
+        long m
+        lda >rowAddress
+        clc
+        adc >spriteX
+
+        clc
+        adc #3
+        tax
+
+
+        short m
+        lda >SURROUND_PIXEL_ADDR,x
+        cmp #$00
+        beq eraseSpriteDragon2Fog332a
+        sta >SCREEN_ADDR,x
+        bra eraseSpriteDragon2Fog332b
+eraseSpriteDragon2Fog332a anop
+        lda >BACKGROUND_ADDR,x
+        sta >SCREEN_ADDR,x
+eraseSpriteDragon2Fog332b anop
+        long m
+        lda >rowAddress
+        clc
+        adc >spriteX
+
+        clc
+        adc #4
+        tax
+
+
+        short m
+        lda >SURROUND_PIXEL_ADDR,x
+        cmp #$00
         beq eraseSpriteDragon2Fog333a
         sta >SCREEN_ADDR,x
         bra eraseSpriteDragon2Fog333b
@@ -16538,6 +17950,22 @@ eraseSpriteDragon2Fog333a anop
 eraseSpriteDragon2Fog333b anop
         long m
 
+
+eraseSpriteDragon2FogSkipRowErase197 anop
+
+        lda >rowCounter
+        clc
+        adc #1
+        sta >rowCounter
+
+
+        cmp #199
+        bcs eraseSpriteDragon2FogSkipRowEraseShortJump198
+        bra eraseSpriteDragon2FogSkipRowEraseDontSkipRow198
+
+eraseSpriteDragon2FogSkipRowEraseShortJump198 anop
+        brl eraseSpriteDragon2FogSkipRowErase198
+eraseSpriteDragon2FogSkipRowEraseDontSkipRow198 anop
         lda >spriteY
         clc
         adc #40
@@ -16567,48 +17995,22 @@ eraseSpriteDragon2Fog334a anop
 eraseSpriteDragon2Fog334b anop
         long m
 
-        lda >rowAddress
-        clc
-        adc >spriteX
 
+eraseSpriteDragon2FogSkipRowErase198 anop
+
+        lda >rowCounter
         clc
         adc #1
-        tax
+        sta >rowCounter
 
 
-        short m
-        lda >SURROUND_PIXEL_ADDR,x
-        cmp #$00
-        beq eraseSpriteDragon2Fog335a
-        sta >SCREEN_ADDR,x
-        bra eraseSpriteDragon2Fog335b
-eraseSpriteDragon2Fog335a anop
-        lda >BACKGROUND_ADDR,x
-        sta >SCREEN_ADDR,x
-eraseSpriteDragon2Fog335b anop
-        long m
+        cmp #199
+        bcs eraseSpriteDragon2FogSkipRowEraseShortJump199
+        bra eraseSpriteDragon2FogSkipRowEraseDontSkipRow199
 
-        lda >rowAddress
-        clc
-        adc >spriteX
-
-        clc
-        adc #2
-        tax
-
-
-        short m
-        lda >SURROUND_PIXEL_ADDR,x
-        cmp #$00
-        beq eraseSpriteDragon2Fog336a
-        sta >SCREEN_ADDR,x
-        bra eraseSpriteDragon2Fog336b
-eraseSpriteDragon2Fog336a anop
-        lda >BACKGROUND_ADDR,x
-        sta >SCREEN_ADDR,x
-eraseSpriteDragon2Fog336b anop
-        long m
-
+eraseSpriteDragon2FogSkipRowEraseShortJump199 anop
+        brl eraseSpriteDragon2FogSkipRowErase199
+eraseSpriteDragon2FogSkipRowEraseDontSkipRow199 anop
         lda >spriteY
         clc
         adc #41
@@ -16629,6 +18031,71 @@ eraseSpriteDragon2Fog336b anop
         short m
         lda >SURROUND_PIXEL_ADDR,x
         cmp #$00
+        beq eraseSpriteDragon2Fog335a
+        sta >SCREEN_ADDR,x
+        bra eraseSpriteDragon2Fog335b
+eraseSpriteDragon2Fog335a anop
+        lda >BACKGROUND_ADDR,x
+        sta >SCREEN_ADDR,x
+eraseSpriteDragon2Fog335b anop
+        long m
+
+
+eraseSpriteDragon2FogSkipRowErase199 anop
+
+        lda >rowCounter
+        clc
+        adc #1
+        sta >rowCounter
+
+
+        cmp #199
+        bcs eraseSpriteDragon2FogSkipRowEraseShortJump200
+        bra eraseSpriteDragon2FogSkipRowEraseDontSkipRow200
+
+eraseSpriteDragon2FogSkipRowEraseShortJump200 anop
+        brl eraseSpriteDragon2FogSkipRowErase200
+eraseSpriteDragon2FogSkipRowEraseDontSkipRow200 anop
+        lda >spriteY
+        clc
+        adc #42
+        asl a
+        tax
+        lda >screenRowOffsets,x
+        sta >rowAddress
+
+        lda >rowAddress
+        clc
+        adc >spriteX
+
+        clc
+        adc #0
+        tax
+
+
+        short m
+        lda >SURROUND_PIXEL_ADDR,x
+        cmp #$00
+        beq eraseSpriteDragon2Fog336a
+        sta >SCREEN_ADDR,x
+        bra eraseSpriteDragon2Fog336b
+eraseSpriteDragon2Fog336a anop
+        lda >BACKGROUND_ADDR,x
+        sta >SCREEN_ADDR,x
+eraseSpriteDragon2Fog336b anop
+        long m
+        lda >rowAddress
+        clc
+        adc >spriteX
+
+        clc
+        adc #1
+        tax
+
+
+        short m
+        lda >SURROUND_PIXEL_ADDR,x
+        cmp #$00
         beq eraseSpriteDragon2Fog337a
         sta >SCREEN_ADDR,x
         bra eraseSpriteDragon2Fog337b
@@ -16637,13 +18104,12 @@ eraseSpriteDragon2Fog337a anop
         sta >SCREEN_ADDR,x
 eraseSpriteDragon2Fog337b anop
         long m
-
         lda >rowAddress
         clc
         adc >spriteX
 
         clc
-        adc #1
+        adc #2
         tax
 
 
@@ -16659,12 +18125,36 @@ eraseSpriteDragon2Fog338a anop
 eraseSpriteDragon2Fog338b anop
         long m
 
+
+eraseSpriteDragon2FogSkipRowErase200 anop
+
+        lda >rowCounter
+        clc
+        adc #1
+        sta >rowCounter
+
+
+        cmp #199
+        bcs eraseSpriteDragon2FogSkipRowEraseShortJump201
+        bra eraseSpriteDragon2FogSkipRowEraseDontSkipRow201
+
+eraseSpriteDragon2FogSkipRowEraseShortJump201 anop
+        brl eraseSpriteDragon2FogSkipRowErase201
+eraseSpriteDragon2FogSkipRowEraseDontSkipRow201 anop
+        lda >spriteY
+        clc
+        adc #43
+        asl a
+        tax
+        lda >screenRowOffsets,x
+        sta >rowAddress
+
         lda >rowAddress
         clc
         adc >spriteX
 
         clc
-        adc #2
+        adc #0
         tax
 
 
@@ -16679,1718 +18169,54 @@ eraseSpriteDragon2Fog339a anop
         sta >SCREEN_ADDR,x
 eraseSpriteDragon2Fog339b anop
         long m
-
-        lda >spriteY
-        clc
-        adc #42
-        asl a
-        tax
-        lda >screenRowOffsets,x
-        sta >rowAddress
-
-        lda >spriteY
-        clc
-        adc #43
-        asl a
-        tax
-        lda >screenRowOffsets,x
-        sta >rowAddress
-
-        lda >spriteY
-        clc
-        adc #44
-        asl a
-        tax
-        lda >screenRowOffsets,x
-        sta >rowAddress
-
-        lda >spriteY
-        clc
-        adc #45
-        asl a
-        tax
-        lda >screenRowOffsets,x
-        sta >rowAddress
-
-        lda >spriteY
-        clc
-        adc #46
-        asl a
-        tax
-        lda >screenRowOffsets,x
-        sta >rowAddress
-
-        lda >spriteY
-        clc
-        adc #47
-        asl a
-        tax
-        lda >screenRowOffsets,x
-        sta >rowAddress
-
-        lda >spriteY
-        clc
-        adc #48
-        asl a
-        tax
-        lda >screenRowOffsets,x
-        sta >rowAddress
-
-        lda >spriteY
-        clc
-        adc #49
-        asl a
-        tax
-        lda >screenRowOffsets,x
-        sta >rowAddress
-
-        lda >spriteY
-        clc
-        adc #50
-        asl a
-        tax
-        lda >screenRowOffsets,x
-        sta >rowAddress
-
-        lda >spriteY
-        clc
-        adc #51
-        asl a
-        tax
-        lda >screenRowOffsets,x
-        sta >rowAddress
-
-        lda >spriteY
-        clc
-        adc #52
-        asl a
-        tax
-        lda >screenRowOffsets,x
-        sta >rowAddress
-
-        lda >spriteY
-        clc
-        adc #53
-        asl a
-        tax
-        lda >screenRowOffsets,x
-        sta >rowAddress
-
-        lda >spriteY
-        clc
-        adc #54
-        asl a
-        tax
-        lda >screenRowOffsets,x
-        sta >rowAddress
-
-        lda >spriteY
-        clc
-        adc #55
-        asl a
-        tax
-        lda >screenRowOffsets,x
-        sta >rowAddress
-
-        lda >spriteY
-        clc
-        adc #56
-        asl a
-        tax
-        lda >screenRowOffsets,x
-        sta >rowAddress
-
-        lda >spriteY
-        clc
-        adc #57
-        asl a
-        tax
-        lda >screenRowOffsets,x
-        sta >rowAddress
-
-        lda >spriteY
-        clc
-        adc #58
-        asl a
-        tax
-        lda >screenRowOffsets,x
-        sta >rowAddress
-
-        lda >spriteY
-        clc
-        adc #59
-        asl a
-        tax
-        lda >screenRowOffsets,x
-        sta >rowAddress
-
-        lda >spriteY
-        clc
-        adc #60
-        asl a
-        tax
-        lda >screenRowOffsets,x
-        sta >rowAddress
-
-        lda >spriteY
-        clc
-        adc #61
-        asl a
-        tax
-        lda >screenRowOffsets,x
-        sta >rowAddress
-
-        lda >spriteY
-        clc
-        adc #62
-        asl a
-        tax
-        lda >screenRowOffsets,x
-        sta >rowAddress
-
-        lda >spriteY
-        clc
-        adc #63
-        asl a
-        tax
-        lda >screenRowOffsets,x
-        sta >rowAddress
-
-        lda >spriteY
-        clc
-        adc #64
-        asl a
-        tax
-        lda >screenRowOffsets,x
-        sta >rowAddress
-
-        lda >spriteY
-        clc
-        adc #65
-        asl a
-        tax
-        lda >screenRowOffsets,x
-        sta >rowAddress
-
-        lda >spriteY
-        clc
-        adc #66
-        asl a
-        tax
-        lda >screenRowOffsets,x
-        sta >rowAddress
-
-        lda >spriteY
-        clc
-        adc #67
-        asl a
-        tax
-        lda >screenRowOffsets,x
-        sta >rowAddress
-
-        lda >spriteY
-        clc
-        adc #68
-        asl a
-        tax
-        lda >screenRowOffsets,x
-        sta >rowAddress
-
-        lda >spriteY
-        clc
-        adc #69
-        asl a
-        tax
-        lda >screenRowOffsets,x
-        sta >rowAddress
-
-        lda >spriteY
-        clc
-        adc #70
-        asl a
-        tax
-        lda >screenRowOffsets,x
-        sta >rowAddress
-
-        lda >spriteY
-        clc
-        adc #71
-        asl a
-        tax
-        lda >screenRowOffsets,x
-        sta >rowAddress
-
-        lda >spriteY
-        clc
-        adc #72
-        asl a
-        tax
-        lda >screenRowOffsets,x
-        sta >rowAddress
-
-        lda >spriteY
-        clc
-        adc #73
-        asl a
-        tax
-        lda >screenRowOffsets,x
-        sta >rowAddress
-
-        lda >spriteY
-        clc
-        adc #74
-        asl a
-        tax
-        lda >screenRowOffsets,x
-        sta >rowAddress
-
-        lda >spriteY
-        clc
-        adc #75
-        asl a
-        tax
-        lda >screenRowOffsets,x
-        sta >rowAddress
-
-        lda >spriteY
-        clc
-        adc #76
-        asl a
-        tax
-        lda >screenRowOffsets,x
-        sta >rowAddress
-
-        lda >spriteY
-        clc
-        adc #77
-        asl a
-        tax
-        lda >screenRowOffsets,x
-        sta >rowAddress
-
-        lda >spriteY
-        clc
-        adc #78
-        asl a
-        tax
-        lda >screenRowOffsets,x
-        sta >rowAddress
-
-        lda >spriteY
-        clc
-        adc #79
-        asl a
-        tax
-        lda >screenRowOffsets,x
-        sta >rowAddress
-
-        lda >spriteY
-        clc
-        adc #80
-        asl a
-        tax
-        lda >screenRowOffsets,x
-        sta >rowAddress
-
-        lda >spriteY
-        clc
-        adc #81
-        asl a
-        tax
-        lda >screenRowOffsets,x
-        sta >rowAddress
-
-        lda >spriteY
-        clc
-        adc #82
-        asl a
-        tax
-        lda >screenRowOffsets,x
-        sta >rowAddress
-
-        lda >spriteY
-        clc
-        adc #83
-        asl a
-        tax
-        lda >screenRowOffsets,x
-        sta >rowAddress
-
-        lda >spriteY
-        clc
-        adc #84
-        asl a
-        tax
-        lda >screenRowOffsets,x
-        sta >rowAddress
-
-        lda >spriteY
-        clc
-        adc #85
-        asl a
-        tax
-        lda >screenRowOffsets,x
-        sta >rowAddress
-
-        lda >spriteY
-        clc
-        adc #86
-        asl a
-        tax
-        lda >screenRowOffsets,x
-        sta >rowAddress
-
-        lda >spriteY
-        clc
-        adc #87
-        asl a
-        tax
-        lda >screenRowOffsets,x
-        sta >rowAddress
-
-        lda >spriteY
-        clc
-        adc #88
-        asl a
-        tax
-        lda >screenRowOffsets,x
-        sta >rowAddress
-
-        lda >spriteY
-        clc
-        adc #89
-        asl a
-        tax
-        lda >screenRowOffsets,x
-        sta >rowAddress
-
-        lda >spriteY
-        clc
-        adc #90
-        asl a
-        tax
-        lda >screenRowOffsets,x
-        sta >rowAddress
-
-        lda >spriteY
-        clc
-        adc #91
-        asl a
-        tax
-        lda >screenRowOffsets,x
-        sta >rowAddress
-
-        lda >spriteY
-        clc
-        adc #92
-        asl a
-        tax
-        lda >screenRowOffsets,x
-        sta >rowAddress
-
-        lda >spriteY
-        clc
-        adc #93
-        asl a
-        tax
-        lda >screenRowOffsets,x
-        sta >rowAddress
-
-        lda >spriteY
-        clc
-        adc #94
-        asl a
-        tax
-        lda >screenRowOffsets,x
-        sta >rowAddress
-
-        lda >spriteY
-        clc
-        adc #95
-        asl a
-        tax
-        lda >screenRowOffsets,x
-        sta >rowAddress
-
-        lda >spriteY
-        clc
-        adc #96
-        asl a
-        tax
-        lda >screenRowOffsets,x
-        sta >rowAddress
-
-        lda >spriteY
-        clc
-        adc #97
-        asl a
-        tax
-        lda >screenRowOffsets,x
-        sta >rowAddress
-
-        lda >spriteY
-        clc
-        adc #98
-        asl a
-        tax
-        lda >screenRowOffsets,x
-        sta >rowAddress
-
-        lda >spriteY
-        clc
-        adc #99
-        asl a
-        tax
-        lda >screenRowOffsets,x
-        sta >rowAddress
-
-        lda >spriteY
-        clc
-        adc #100
-        asl a
-        tax
-        lda >screenRowOffsets,x
-        sta >rowAddress
-
-        lda >spriteY
-        clc
-        adc #101
-        asl a
-        tax
-        lda >screenRowOffsets,x
-        sta >rowAddress
-
-        lda >spriteY
-        clc
-        adc #102
-        asl a
-        tax
-        lda >screenRowOffsets,x
-        sta >rowAddress
-
-        lda >spriteY
-        clc
-        adc #103
-        asl a
-        tax
-        lda >screenRowOffsets,x
-        sta >rowAddress
-
-        lda >spriteY
-        clc
-        adc #104
-        asl a
-        tax
-        lda >screenRowOffsets,x
-        sta >rowAddress
-
-        lda >spriteY
-        clc
-        adc #105
-        asl a
-        tax
-        lda >screenRowOffsets,x
-        sta >rowAddress
-
-        lda >spriteY
-        clc
-        adc #106
-        asl a
-        tax
-        lda >screenRowOffsets,x
-        sta >rowAddress
-
-        lda >spriteY
-        clc
-        adc #107
-        asl a
-        tax
-        lda >screenRowOffsets,x
-        sta >rowAddress
-
-        lda >spriteY
-        clc
-        adc #108
-        asl a
-        tax
-        lda >screenRowOffsets,x
-        sta >rowAddress
-
-        lda >spriteY
-        clc
-        adc #109
-        asl a
-        tax
-        lda >screenRowOffsets,x
-        sta >rowAddress
-
-        lda >spriteY
-        clc
-        adc #110
-        asl a
-        tax
-        lda >screenRowOffsets,x
-        sta >rowAddress
-
-        lda >spriteY
-        clc
-        adc #111
-        asl a
-        tax
-        lda >screenRowOffsets,x
-        sta >rowAddress
-
-        lda >spriteY
-        clc
-        adc #112
-        asl a
-        tax
-        lda >screenRowOffsets,x
-        sta >rowAddress
-
-        lda >spriteY
-        clc
-        adc #113
-        asl a
-        tax
-        lda >screenRowOffsets,x
-        sta >rowAddress
-
-        lda >spriteY
-        clc
-        adc #114
-        asl a
-        tax
-        lda >screenRowOffsets,x
-        sta >rowAddress
-
-        lda >spriteY
-        clc
-        adc #115
-        asl a
-        tax
-        lda >screenRowOffsets,x
-        sta >rowAddress
-
-        lda >spriteY
-        clc
-        adc #116
-        asl a
-        tax
-        lda >screenRowOffsets,x
-        sta >rowAddress
-
-        lda >spriteY
-        clc
-        adc #117
-        asl a
-        tax
-        lda >screenRowOffsets,x
-        sta >rowAddress
-
-        lda >spriteY
-        clc
-        adc #118
-        asl a
-        tax
-        lda >screenRowOffsets,x
-        sta >rowAddress
-
-        lda >spriteY
-        clc
-        adc #119
-        asl a
-        tax
-        lda >screenRowOffsets,x
-        sta >rowAddress
-
-        lda >spriteY
-        clc
-        adc #120
-        asl a
-        tax
-        lda >screenRowOffsets,x
-        sta >rowAddress
-
-        lda >spriteY
-        clc
-        adc #121
-        asl a
-        tax
-        lda >screenRowOffsets,x
-        sta >rowAddress
-
-        lda >spriteY
-        clc
-        adc #122
-        asl a
-        tax
-        lda >screenRowOffsets,x
-        sta >rowAddress
-
-        lda >spriteY
-        clc
-        adc #123
-        asl a
-        tax
-        lda >screenRowOffsets,x
-        sta >rowAddress
-
-        lda >spriteY
-        clc
-        adc #124
-        asl a
-        tax
-        lda >screenRowOffsets,x
-        sta >rowAddress
-
-        lda >spriteY
-        clc
-        adc #125
-        asl a
-        tax
-        lda >screenRowOffsets,x
-        sta >rowAddress
-
-        lda >spriteY
-        clc
-        adc #126
-        asl a
-        tax
-        lda >screenRowOffsets,x
-        sta >rowAddress
-
-        lda >spriteY
-        clc
-        adc #127
-        asl a
-        tax
-        lda >screenRowOffsets,x
-        sta >rowAddress
-
-        lda >spriteY
-        clc
-        adc #128
-        asl a
-        tax
-        lda >screenRowOffsets,x
-        sta >rowAddress
-
-        lda >spriteY
-        clc
-        adc #129
-        asl a
-        tax
-        lda >screenRowOffsets,x
-        sta >rowAddress
-
-        lda >spriteY
-        clc
-        adc #130
-        asl a
-        tax
-        lda >screenRowOffsets,x
-        sta >rowAddress
-
-        lda >spriteY
-        clc
-        adc #131
-        asl a
-        tax
-        lda >screenRowOffsets,x
-        sta >rowAddress
-
-        lda >spriteY
-        clc
-        adc #132
-        asl a
-        tax
-        lda >screenRowOffsets,x
-        sta >rowAddress
-
-        lda >spriteY
-        clc
-        adc #133
-        asl a
-        tax
-        lda >screenRowOffsets,x
-        sta >rowAddress
-
-        lda >spriteY
-        clc
-        adc #134
-        asl a
-        tax
-        lda >screenRowOffsets,x
-        sta >rowAddress
-
-        lda >spriteY
-        clc
-        adc #135
-        asl a
-        tax
-        lda >screenRowOffsets,x
-        sta >rowAddress
-
-        lda >spriteY
-        clc
-        adc #136
-        asl a
-        tax
-        lda >screenRowOffsets,x
-        sta >rowAddress
-
-        lda >spriteY
-        clc
-        adc #137
-        asl a
-        tax
-        lda >screenRowOffsets,x
-        sta >rowAddress
-
-        lda >spriteY
-        clc
-        adc #138
-        asl a
-        tax
-        lda >screenRowOffsets,x
-        sta >rowAddress
-
-        lda >spriteY
-        clc
-        adc #139
-        asl a
-        tax
-        lda >screenRowOffsets,x
-        sta >rowAddress
-
-        lda >spriteY
-        clc
-        adc #140
-        asl a
-        tax
-        lda >screenRowOffsets,x
-        sta >rowAddress
-
-        lda >spriteY
-        clc
-        adc #141
-        asl a
-        tax
-        lda >screenRowOffsets,x
-        sta >rowAddress
-
-        lda >spriteY
-        clc
-        adc #142
-        asl a
-        tax
-        lda >screenRowOffsets,x
-        sta >rowAddress
-
-        lda >spriteY
-        clc
-        adc #143
-        asl a
-        tax
-        lda >screenRowOffsets,x
-        sta >rowAddress
-
-        lda >spriteY
-        clc
-        adc #144
-        asl a
-        tax
-        lda >screenRowOffsets,x
-        sta >rowAddress
-
-        lda >spriteY
-        clc
-        adc #145
-        asl a
-        tax
-        lda >screenRowOffsets,x
-        sta >rowAddress
-
-        lda >spriteY
-        clc
-        adc #146
-        asl a
-        tax
-        lda >screenRowOffsets,x
-        sta >rowAddress
-
-        lda >spriteY
-        clc
-        adc #147
-        asl a
-        tax
-        lda >screenRowOffsets,x
-        sta >rowAddress
-
-        lda >spriteY
-        clc
-        adc #148
-        asl a
-        tax
-        lda >screenRowOffsets,x
-        sta >rowAddress
-
-        lda >spriteY
-        clc
-        adc #149
-        asl a
-        tax
-        lda >screenRowOffsets,x
-        sta >rowAddress
-
-        lda >spriteY
-        clc
-        adc #150
-        asl a
-        tax
-        lda >screenRowOffsets,x
-        sta >rowAddress
-
-        lda >spriteY
-        clc
-        adc #151
-        asl a
-        tax
-        lda >screenRowOffsets,x
-        sta >rowAddress
-
-        lda >spriteY
-        clc
-        adc #152
-        asl a
-        tax
-        lda >screenRowOffsets,x
-        sta >rowAddress
-
-        lda >spriteY
-        clc
-        adc #153
-        asl a
-        tax
-        lda >screenRowOffsets,x
-        sta >rowAddress
-
-        lda >spriteY
-        clc
-        adc #154
-        asl a
-        tax
-        lda >screenRowOffsets,x
-        sta >rowAddress
-
-        lda >spriteY
-        clc
-        adc #155
-        asl a
-        tax
-        lda >screenRowOffsets,x
-        sta >rowAddress
-
-        lda >spriteY
-        clc
-        adc #156
-        asl a
-        tax
-        lda >screenRowOffsets,x
-        sta >rowAddress
-
-        lda >spriteY
-        clc
-        adc #157
-        asl a
-        tax
-        lda >screenRowOffsets,x
-        sta >rowAddress
-
-        lda >spriteY
-        clc
-        adc #158
-        asl a
-        tax
-        lda >screenRowOffsets,x
-        sta >rowAddress
-
-        lda >spriteY
-        clc
-        adc #159
-        asl a
-        tax
-        lda >screenRowOffsets,x
-        sta >rowAddress
-
-        lda >spriteY
-        clc
-        adc #160
-        asl a
-        tax
-        lda >screenRowOffsets,x
-        sta >rowAddress
-
-        lda >spriteY
-        clc
-        adc #161
-        asl a
-        tax
-        lda >screenRowOffsets,x
-        sta >rowAddress
-
-        lda >spriteY
-        clc
-        adc #162
-        asl a
-        tax
-        lda >screenRowOffsets,x
-        sta >rowAddress
-
-        lda >spriteY
-        clc
-        adc #163
-        asl a
-        tax
-        lda >screenRowOffsets,x
-        sta >rowAddress
-
-        lda >spriteY
-        clc
-        adc #164
-        asl a
-        tax
-        lda >screenRowOffsets,x
-        sta >rowAddress
-
-        lda >spriteY
-        clc
-        adc #165
-        asl a
-        tax
-        lda >screenRowOffsets,x
-        sta >rowAddress
-
-        lda >spriteY
-        clc
-        adc #166
-        asl a
-        tax
-        lda >screenRowOffsets,x
-        sta >rowAddress
-
-        lda >spriteY
-        clc
-        adc #167
-        asl a
-        tax
-        lda >screenRowOffsets,x
-        sta >rowAddress
-
-        lda >spriteY
-        clc
-        adc #168
-        asl a
-        tax
-        lda >screenRowOffsets,x
-        sta >rowAddress
-
-        lda >spriteY
-        clc
-        adc #169
-        asl a
-        tax
-        lda >screenRowOffsets,x
-        sta >rowAddress
-
-        lda >spriteY
-        clc
-        adc #170
-        asl a
-        tax
-        lda >screenRowOffsets,x
-        sta >rowAddress
-
-        lda >spriteY
-        clc
-        adc #171
-        asl a
-        tax
-        lda >screenRowOffsets,x
-        sta >rowAddress
-
-        lda >spriteY
-        clc
-        adc #172
-        asl a
-        tax
-        lda >screenRowOffsets,x
-        sta >rowAddress
-
-        lda >spriteY
-        clc
-        adc #173
-        asl a
-        tax
-        lda >screenRowOffsets,x
-        sta >rowAddress
-
-        lda >spriteY
-        clc
-        adc #174
-        asl a
-        tax
-        lda >screenRowOffsets,x
-        sta >rowAddress
-
-        lda >spriteY
-        clc
-        adc #175
-        asl a
-        tax
-        lda >screenRowOffsets,x
-        sta >rowAddress
-
-        lda >spriteY
-        clc
-        adc #176
-        asl a
-        tax
-        lda >screenRowOffsets,x
-        sta >rowAddress
-
-        lda >spriteY
-        clc
-        adc #177
-        asl a
-        tax
-        lda >screenRowOffsets,x
-        sta >rowAddress
-
-        lda >spriteY
-        clc
-        adc #178
-        asl a
-        tax
-        lda >screenRowOffsets,x
-        sta >rowAddress
-
-        lda >spriteY
-        clc
-        adc #179
-        asl a
-        tax
-        lda >screenRowOffsets,x
-        sta >rowAddress
-
-        lda >spriteY
-        clc
-        adc #180
-        asl a
-        tax
-        lda >screenRowOffsets,x
-        sta >rowAddress
-
-        lda >spriteY
-        clc
-        adc #181
-        asl a
-        tax
-        lda >screenRowOffsets,x
-        sta >rowAddress
-
-        lda >spriteY
-        clc
-        adc #182
-        asl a
-        tax
-        lda >screenRowOffsets,x
-        sta >rowAddress
-
-        lda >spriteY
-        clc
-        adc #183
-        asl a
-        tax
-        lda >screenRowOffsets,x
-        sta >rowAddress
-
-        lda >spriteY
-        clc
-        adc #184
-        asl a
-        tax
-        lda >screenRowOffsets,x
-        sta >rowAddress
-
-        lda >spriteY
-        clc
-        adc #185
-        asl a
-        tax
-        lda >screenRowOffsets,x
-        sta >rowAddress
-
-        lda >spriteY
-        clc
-        adc #186
-        asl a
-        tax
-        lda >screenRowOffsets,x
-        sta >rowAddress
-
-        lda >spriteY
-        clc
-        adc #187
-        asl a
-        tax
-        lda >screenRowOffsets,x
-        sta >rowAddress
-
-        lda >spriteY
-        clc
-        adc #188
-        asl a
-        tax
-        lda >screenRowOffsets,x
-        sta >rowAddress
-
-        lda >spriteY
-        clc
-        adc #189
-        asl a
-        tax
-        lda >screenRowOffsets,x
-        sta >rowAddress
-
-        lda >spriteY
-        clc
-        adc #190
-        asl a
-        tax
-        lda >screenRowOffsets,x
-        sta >rowAddress
-
-        lda >spriteY
-        clc
-        adc #191
-        asl a
-        tax
-        lda >screenRowOffsets,x
-        sta >rowAddress
-
-        lda >spriteY
-        clc
-        adc #192
-        asl a
-        tax
-        lda >screenRowOffsets,x
-        sta >rowAddress
-
-        lda >spriteY
-        clc
-        adc #193
-        asl a
-        tax
-        lda >screenRowOffsets,x
-        sta >rowAddress
-
-        lda >spriteY
-        clc
-        adc #194
-        asl a
-        tax
-        lda >screenRowOffsets,x
-        sta >rowAddress
-
-        lda >spriteY
-        clc
-        adc #195
-        asl a
-        tax
-        lda >screenRowOffsets,x
-        sta >rowAddress
-
-        lda >spriteY
-        clc
-        adc #196
-        asl a
-        tax
-        lda >screenRowOffsets,x
-        sta >rowAddress
-
-        lda >spriteY
-        clc
-        adc #197
-        asl a
-        tax
-        lda >screenRowOffsets,x
-        sta >rowAddress
-
-        lda >spriteY
-        clc
-        adc #198
-        asl a
-        tax
-        lda >screenRowOffsets,x
-        sta >rowAddress
-
-        lda >spriteY
-        clc
-        adc #199
-        asl a
-        tax
-        lda >screenRowOffsets,x
-        sta >rowAddress
-
-        lda >spriteY
-        clc
-        adc #200
-        asl a
-        tax
-        lda >screenRowOffsets,x
-        sta >rowAddress
-
-        lda >spriteY
-        clc
-        adc #201
-        asl a
-        tax
-        lda >screenRowOffsets,x
-        sta >rowAddress
-
-        lda >spriteY
-        clc
-        adc #202
-        asl a
-        tax
-        lda >screenRowOffsets,x
-        sta >rowAddress
-
-        lda >spriteY
-        clc
-        adc #203
-        asl a
-        tax
-        lda >screenRowOffsets,x
-        sta >rowAddress
-
-        lda >spriteY
-        clc
-        adc #204
-        asl a
-        tax
-        lda >screenRowOffsets,x
-        sta >rowAddress
-
-        lda >spriteY
-        clc
-        adc #205
-        asl a
-        tax
-        lda >screenRowOffsets,x
-        sta >rowAddress
-
-        lda >spriteY
-        clc
-        adc #206
-        asl a
-        tax
-        lda >screenRowOffsets,x
-        sta >rowAddress
-
-        lda >spriteY
-        clc
-        adc #207
-        asl a
-        tax
-        lda >screenRowOffsets,x
-        sta >rowAddress
-
-        lda >spriteY
-        clc
-        adc #208
-        asl a
-        tax
-        lda >screenRowOffsets,x
-        sta >rowAddress
-
-        lda >spriteY
-        clc
-        adc #209
-        asl a
-        tax
-        lda >screenRowOffsets,x
-        sta >rowAddress
-
-        lda >spriteY
-        clc
-        adc #210
-        asl a
-        tax
-        lda >screenRowOffsets,x
-        sta >rowAddress
-
-        lda >spriteY
-        clc
-        adc #211
-        asl a
-        tax
-        lda >screenRowOffsets,x
-        sta >rowAddress
-
-        lda >spriteY
-        clc
-        adc #212
-        asl a
-        tax
-        lda >screenRowOffsets,x
-        sta >rowAddress
-
-        lda >spriteY
-        clc
-        adc #213
-        asl a
-        tax
-        lda >screenRowOffsets,x
-        sta >rowAddress
-
-        lda >spriteY
-        clc
-        adc #214
-        asl a
-        tax
-        lda >screenRowOffsets,x
-        sta >rowAddress
-
-        lda >spriteY
-        clc
-        adc #215
-        asl a
-        tax
-        lda >screenRowOffsets,x
-        sta >rowAddress
-
-        lda >spriteY
-        clc
-        adc #216
-        asl a
-        tax
-        lda >screenRowOffsets,x
-        sta >rowAddress
-
-        lda >spriteY
-        clc
-        adc #217
-        asl a
-        tax
-        lda >screenRowOffsets,x
-        sta >rowAddress
-
-        lda >spriteY
-        clc
-        adc #218
-        asl a
-        tax
-        lda >screenRowOffsets,x
-        sta >rowAddress
-
-        lda >spriteY
-        clc
-        adc #219
-        asl a
-        tax
-        lda >screenRowOffsets,x
-        sta >rowAddress
-
-        lda >spriteY
-        clc
-        adc #220
-        asl a
-        tax
-        lda >screenRowOffsets,x
-        sta >rowAddress
-
-        lda >spriteY
-        clc
-        adc #221
-        asl a
-        tax
-        lda >screenRowOffsets,x
-        sta >rowAddress
-
-        lda >spriteY
-        clc
-        adc #222
-        asl a
-        tax
-        lda >screenRowOffsets,x
-        sta >rowAddress
-
-        lda >spriteY
-        clc
-        adc #223
-        asl a
-        tax
-        lda >screenRowOffsets,x
-        sta >rowAddress
-
-        lda >spriteY
-        clc
-        adc #224
-        asl a
-        tax
-        lda >screenRowOffsets,x
-        sta >rowAddress
-
-        lda >spriteY
-        clc
-        adc #225
-        asl a
-        tax
-        lda >screenRowOffsets,x
-        sta >rowAddress
-
-        lda >spriteY
-        clc
-        adc #226
-        asl a
-        tax
-        lda >screenRowOffsets,x
-        sta >rowAddress
-
-        lda >spriteY
-        clc
-        adc #227
-        asl a
-        tax
-        lda >screenRowOffsets,x
-        sta >rowAddress
-
-        lda >spriteY
-        clc
-        adc #228
-        asl a
-        tax
-        lda >screenRowOffsets,x
-        sta >rowAddress
-
-        lda >spriteY
-        clc
-        adc #229
-        asl a
-        tax
-        lda >screenRowOffsets,x
-        sta >rowAddress
-
-        lda >spriteY
-        clc
-        adc #230
-        asl a
-        tax
-        lda >screenRowOffsets,x
-        sta >rowAddress
-
-        lda >spriteY
-        clc
-        adc #231
-        asl a
-        tax
-        lda >screenRowOffsets,x
-        sta >rowAddress
-
-        lda >spriteY
-        clc
-        adc #232
-        asl a
-        tax
-        lda >screenRowOffsets,x
-        sta >rowAddress
-
-        lda >spriteY
-        clc
-        adc #233
-        asl a
-        tax
-        lda >screenRowOffsets,x
-        sta >rowAddress
-
-        lda >spriteY
-        clc
-        adc #234
-        asl a
-        tax
-        lda >screenRowOffsets,x
-        sta >rowAddress
-
-        lda >spriteY
-        clc
-        adc #235
-        asl a
-        tax
-        lda >screenRowOffsets,x
-        sta >rowAddress
-
-        lda >spriteY
-        clc
-        adc #236
-        asl a
-        tax
-        lda >screenRowOffsets,x
-        sta >rowAddress
-
-        lda >spriteY
-        clc
-        adc #237
-        asl a
-        tax
-        lda >screenRowOffsets,x
-        sta >rowAddress
-
-        lda >spriteY
-        clc
-        adc #238
-        asl a
-        tax
-        lda >screenRowOffsets,x
-        sta >rowAddress
-
-        lda >spriteY
-        clc
-        adc #239
-        asl a
-        tax
-        lda >screenRowOffsets,x
-        sta >rowAddress
-
-        lda >spriteY
-        clc
-        adc #240
-        asl a
-        tax
-        lda >screenRowOffsets,x
-        sta >rowAddress
-
-        lda >spriteY
-        clc
-        adc #241
-        asl a
-        tax
-        lda >screenRowOffsets,x
-        sta >rowAddress
-
-        lda >spriteY
-        clc
-        adc #242
-        asl a
-        tax
-        lda >screenRowOffsets,x
-        sta >rowAddress
-
-        lda >spriteY
-        clc
-        adc #243
-        asl a
-        tax
-        lda >screenRowOffsets,x
-        sta >rowAddress
-
-        lda >spriteY
-        clc
-        adc #244
-        asl a
-        tax
-        lda >screenRowOffsets,x
-        sta >rowAddress
-
-        lda >spriteY
-        clc
-        adc #245
-        asl a
-        tax
-        lda >screenRowOffsets,x
-        sta >rowAddress
-
-        lda >spriteY
+        lda >rowAddress
         clc
-        adc #246
-        asl a
-        tax
-        lda >screenRowOffsets,x
-        sta >rowAddress
+        adc >spriteX
 
-        lda >spriteY
         clc
-        adc #247
-        asl a
+        adc #1
         tax
-        lda >screenRowOffsets,x
-        sta >rowAddress
 
-        lda >spriteY
-        clc
-        adc #248
-        asl a
-        tax
-        lda >screenRowOffsets,x
-        sta >rowAddress
 
-        lda >spriteY
+        short m
+        lda >SURROUND_PIXEL_ADDR,x
+        cmp #$00
+        beq eraseSpriteDragon2Fog340a
+        sta >SCREEN_ADDR,x
+        bra eraseSpriteDragon2Fog340b
+eraseSpriteDragon2Fog340a anop
+        lda >BACKGROUND_ADDR,x
+        sta >SCREEN_ADDR,x
+eraseSpriteDragon2Fog340b anop
+        long m
+        lda >rowAddress
         clc
-        adc #249
-        asl a
-        tax
-        lda >screenRowOffsets,x
-        sta >rowAddress
+        adc >spriteX
 
-        lda >spriteY
         clc
-        adc #250
-        asl a
+        adc #2
         tax
-        lda >screenRowOffsets,x
-        sta >rowAddress
 
-        lda >spriteY
-        clc
-        adc #251
-        asl a
-        tax
-        lda >screenRowOffsets,x
-        sta >rowAddress
 
-        lda >spriteY
-        clc
-        adc #252
-        asl a
-        tax
-        lda >screenRowOffsets,x
-        sta >rowAddress
+        short m
+        lda >SURROUND_PIXEL_ADDR,x
+        cmp #$00
+        beq eraseSpriteDragon2Fog341a
+        sta >SCREEN_ADDR,x
+        bra eraseSpriteDragon2Fog341b
+eraseSpriteDragon2Fog341a anop
+        lda >BACKGROUND_ADDR,x
+        sta >SCREEN_ADDR,x
+eraseSpriteDragon2Fog341b anop
+        long m
 
-        lda >spriteY
-        clc
-        adc #253
-        asl a
-        tax
-        lda >screenRowOffsets,x
-        sta >rowAddress
 
-        lda >spriteY
-        clc
-        adc #254
-        asl a
-        tax
-        lda >screenRowOffsets,x
-        sta >rowAddress
+eraseSpriteDragon2FogSkipRowErase201 anop
 
-        lda >spriteY
+        lda >rowCounter
         clc
-        adc #255
-        asl a
-        tax
-        lda >screenRowOffsets,x
-        sta >rowAddress
+        adc #1
+        sta >rowCounter
 
 
         rtl
@@ -18401,58 +18227,18 @@ eraseSpriteDragon3Fog entry
         lsr a
         sta >spriteX
         lda >spriteY
-        clc
-        adc #0
-        asl a
-        tax
-        lda >screenRowOffsets,x
-        sta >rowAddress
+        sta >rowCounter
 
-        lda >rowAddress
-        clc
-        adc >spriteX
+        cmp #199
+        bcs eraseSpriteDragon3FogSkipRowEraseShortJump202
+        bra eraseSpriteDragon3FogSkipRowEraseDontSkipRow202
 
-        clc
-        adc #4
-        tax
-
-
-        short m
-        lda >SURROUND_PIXEL_ADDR,x
-        cmp #$00
-        beq eraseSpriteDragon3Fog340a
-        sta >SCREEN_ADDR,x
-        bra eraseSpriteDragon3Fog340b
-eraseSpriteDragon3Fog340a anop
-        lda >BACKGROUND_ADDR,x
-        sta >SCREEN_ADDR,x
-eraseSpriteDragon3Fog340b anop
-        long m
-
-        lda >rowAddress
-        clc
-        adc >spriteX
-
-        clc
-        adc #5
-        tax
-
-
-        short m
-        lda >SURROUND_PIXEL_ADDR,x
-        cmp #$00
-        beq eraseSpriteDragon3Fog341a
-        sta >SCREEN_ADDR,x
-        bra eraseSpriteDragon3Fog341b
-eraseSpriteDragon3Fog341a anop
-        lda >BACKGROUND_ADDR,x
-        sta >SCREEN_ADDR,x
-eraseSpriteDragon3Fog341b anop
-        long m
-
+eraseSpriteDragon3FogSkipRowEraseShortJump202 anop
+        brl eraseSpriteDragon3FogSkipRowErase202
+eraseSpriteDragon3FogSkipRowEraseDontSkipRow202 anop
         lda >spriteY
         clc
-        adc #1
+        adc #0
         asl a
         tax
         lda >screenRowOffsets,x
@@ -18478,7 +18264,6 @@ eraseSpriteDragon3Fog342a anop
         sta >SCREEN_ADDR,x
 eraseSpriteDragon3Fog342b anop
         long m
-
         lda >rowAddress
         clc
         adc >spriteX
@@ -18500,9 +18285,25 @@ eraseSpriteDragon3Fog343a anop
 eraseSpriteDragon3Fog343b anop
         long m
 
+
+eraseSpriteDragon3FogSkipRowErase202 anop
+
+        lda >rowCounter
+        clc
+        adc #1
+        sta >rowCounter
+
+
+        cmp #199
+        bcs eraseSpriteDragon3FogSkipRowEraseShortJump203
+        bra eraseSpriteDragon3FogSkipRowEraseDontSkipRow203
+
+eraseSpriteDragon3FogSkipRowEraseShortJump203 anop
+        brl eraseSpriteDragon3FogSkipRowErase203
+eraseSpriteDragon3FogSkipRowEraseDontSkipRow203 anop
         lda >spriteY
         clc
-        adc #2
+        adc #1
         asl a
         tax
         lda >screenRowOffsets,x
@@ -18528,7 +18329,6 @@ eraseSpriteDragon3Fog344a anop
         sta >SCREEN_ADDR,x
 eraseSpriteDragon3Fog344b anop
         long m
-
         lda >rowAddress
         clc
         adc >spriteX
@@ -18550,9 +18350,25 @@ eraseSpriteDragon3Fog345a anop
 eraseSpriteDragon3Fog345b anop
         long m
 
+
+eraseSpriteDragon3FogSkipRowErase203 anop
+
+        lda >rowCounter
+        clc
+        adc #1
+        sta >rowCounter
+
+
+        cmp #199
+        bcs eraseSpriteDragon3FogSkipRowEraseShortJump204
+        bra eraseSpriteDragon3FogSkipRowEraseDontSkipRow204
+
+eraseSpriteDragon3FogSkipRowEraseShortJump204 anop
+        brl eraseSpriteDragon3FogSkipRowErase204
+eraseSpriteDragon3FogSkipRowEraseDontSkipRow204 anop
         lda >spriteY
         clc
-        adc #3
+        adc #2
         asl a
         tax
         lda >screenRowOffsets,x
@@ -18578,7 +18394,6 @@ eraseSpriteDragon3Fog346a anop
         sta >SCREEN_ADDR,x
 eraseSpriteDragon3Fog346b anop
         long m
-
         lda >rowAddress
         clc
         adc >spriteX
@@ -18600,9 +18415,25 @@ eraseSpriteDragon3Fog347a anop
 eraseSpriteDragon3Fog347b anop
         long m
 
+
+eraseSpriteDragon3FogSkipRowErase204 anop
+
+        lda >rowCounter
+        clc
+        adc #1
+        sta >rowCounter
+
+
+        cmp #199
+        bcs eraseSpriteDragon3FogSkipRowEraseShortJump205
+        bra eraseSpriteDragon3FogSkipRowEraseDontSkipRow205
+
+eraseSpriteDragon3FogSkipRowEraseShortJump205 anop
+        brl eraseSpriteDragon3FogSkipRowErase205
+eraseSpriteDragon3FogSkipRowEraseDontSkipRow205 anop
         lda >spriteY
         clc
-        adc #4
+        adc #3
         asl a
         tax
         lda >screenRowOffsets,x
@@ -18628,7 +18459,6 @@ eraseSpriteDragon3Fog348a anop
         sta >SCREEN_ADDR,x
 eraseSpriteDragon3Fog348b anop
         long m
-
         lda >rowAddress
         clc
         adc >spriteX
@@ -18650,12 +18480,36 @@ eraseSpriteDragon3Fog349a anop
 eraseSpriteDragon3Fog349b anop
         long m
 
+
+eraseSpriteDragon3FogSkipRowErase205 anop
+
+        lda >rowCounter
+        clc
+        adc #1
+        sta >rowCounter
+
+
+        cmp #199
+        bcs eraseSpriteDragon3FogSkipRowEraseShortJump206
+        bra eraseSpriteDragon3FogSkipRowEraseDontSkipRow206
+
+eraseSpriteDragon3FogSkipRowEraseShortJump206 anop
+        brl eraseSpriteDragon3FogSkipRowErase206
+eraseSpriteDragon3FogSkipRowEraseDontSkipRow206 anop
+        lda >spriteY
+        clc
+        adc #4
+        asl a
+        tax
+        lda >screenRowOffsets,x
+        sta >rowAddress
+
         lda >rowAddress
         clc
         adc >spriteX
 
         clc
-        adc #6
+        adc #4
         tax
 
 
@@ -18670,21 +18524,12 @@ eraseSpriteDragon3Fog350a anop
         sta >SCREEN_ADDR,x
 eraseSpriteDragon3Fog350b anop
         long m
-
-        lda >spriteY
-        clc
-        adc #5
-        asl a
-        tax
-        lda >screenRowOffsets,x
-        sta >rowAddress
-
         lda >rowAddress
         clc
         adc >spriteX
 
         clc
-        adc #4
+        adc #5
         tax
 
 
@@ -18700,12 +18545,36 @@ eraseSpriteDragon3Fog351a anop
 eraseSpriteDragon3Fog351b anop
         long m
 
+
+eraseSpriteDragon3FogSkipRowErase206 anop
+
+        lda >rowCounter
+        clc
+        adc #1
+        sta >rowCounter
+
+
+        cmp #199
+        bcs eraseSpriteDragon3FogSkipRowEraseShortJump207
+        bra eraseSpriteDragon3FogSkipRowEraseDontSkipRow207
+
+eraseSpriteDragon3FogSkipRowEraseShortJump207 anop
+        brl eraseSpriteDragon3FogSkipRowErase207
+eraseSpriteDragon3FogSkipRowEraseDontSkipRow207 anop
+        lda >spriteY
+        clc
+        adc #5
+        asl a
+        tax
+        lda >screenRowOffsets,x
+        sta >rowAddress
+
         lda >rowAddress
         clc
         adc >spriteX
 
         clc
-        adc #5
+        adc #4
         tax
 
 
@@ -18720,13 +18589,12 @@ eraseSpriteDragon3Fog352a anop
         sta >SCREEN_ADDR,x
 eraseSpriteDragon3Fog352b anop
         long m
-
         lda >rowAddress
         clc
         adc >spriteX
 
         clc
-        adc #6
+        adc #5
         tax
 
 
@@ -18742,6 +18610,22 @@ eraseSpriteDragon3Fog353a anop
 eraseSpriteDragon3Fog353b anop
         long m
 
+
+eraseSpriteDragon3FogSkipRowErase207 anop
+
+        lda >rowCounter
+        clc
+        adc #1
+        sta >rowCounter
+
+
+        cmp #199
+        bcs eraseSpriteDragon3FogSkipRowEraseShortJump208
+        bra eraseSpriteDragon3FogSkipRowEraseDontSkipRow208
+
+eraseSpriteDragon3FogSkipRowEraseShortJump208 anop
+        brl eraseSpriteDragon3FogSkipRowErase208
+eraseSpriteDragon3FogSkipRowEraseDontSkipRow208 anop
         lda >spriteY
         clc
         adc #6
@@ -18755,7 +18639,7 @@ eraseSpriteDragon3Fog353b anop
         adc >spriteX
 
         clc
-        adc #3
+        adc #4
         tax
 
 
@@ -18770,13 +18654,12 @@ eraseSpriteDragon3Fog354a anop
         sta >SCREEN_ADDR,x
 eraseSpriteDragon3Fog354b anop
         long m
-
         lda >rowAddress
         clc
         adc >spriteX
 
         clc
-        adc #4
+        adc #5
         tax
 
 
@@ -18791,7 +18674,6 @@ eraseSpriteDragon3Fog355a anop
         sta >SCREEN_ADDR,x
 eraseSpriteDragon3Fog355b anop
         long m
-
         lda >rowAddress
         clc
         adc >spriteX
@@ -18813,12 +18695,36 @@ eraseSpriteDragon3Fog356a anop
 eraseSpriteDragon3Fog356b anop
         long m
 
+
+eraseSpriteDragon3FogSkipRowErase208 anop
+
+        lda >rowCounter
+        clc
+        adc #1
+        sta >rowCounter
+
+
+        cmp #199
+        bcs eraseSpriteDragon3FogSkipRowEraseShortJump209
+        bra eraseSpriteDragon3FogSkipRowEraseDontSkipRow209
+
+eraseSpriteDragon3FogSkipRowEraseShortJump209 anop
+        brl eraseSpriteDragon3FogSkipRowErase209
+eraseSpriteDragon3FogSkipRowEraseDontSkipRow209 anop
+        lda >spriteY
+        clc
+        adc #7
+        asl a
+        tax
+        lda >screenRowOffsets,x
+        sta >rowAddress
+
         lda >rowAddress
         clc
         adc >spriteX
 
         clc
-        adc #7
+        adc #4
         tax
 
 
@@ -18833,10 +18739,66 @@ eraseSpriteDragon3Fog357a anop
         sta >SCREEN_ADDR,x
 eraseSpriteDragon3Fog357b anop
         long m
+        lda >rowAddress
+        clc
+        adc >spriteX
 
+        clc
+        adc #5
+        tax
+
+
+        short m
+        lda >SURROUND_PIXEL_ADDR,x
+        cmp #$00
+        beq eraseSpriteDragon3Fog358a
+        sta >SCREEN_ADDR,x
+        bra eraseSpriteDragon3Fog358b
+eraseSpriteDragon3Fog358a anop
+        lda >BACKGROUND_ADDR,x
+        sta >SCREEN_ADDR,x
+eraseSpriteDragon3Fog358b anop
+        long m
+        lda >rowAddress
+        clc
+        adc >spriteX
+
+        clc
+        adc #6
+        tax
+
+
+        short m
+        lda >SURROUND_PIXEL_ADDR,x
+        cmp #$00
+        beq eraseSpriteDragon3Fog359a
+        sta >SCREEN_ADDR,x
+        bra eraseSpriteDragon3Fog359b
+eraseSpriteDragon3Fog359a anop
+        lda >BACKGROUND_ADDR,x
+        sta >SCREEN_ADDR,x
+eraseSpriteDragon3Fog359b anop
+        long m
+
+
+eraseSpriteDragon3FogSkipRowErase209 anop
+
+        lda >rowCounter
+        clc
+        adc #1
+        sta >rowCounter
+
+
+        cmp #199
+        bcs eraseSpriteDragon3FogSkipRowEraseShortJump210
+        bra eraseSpriteDragon3FogSkipRowEraseDontSkipRow210
+
+eraseSpriteDragon3FogSkipRowEraseShortJump210 anop
+        brl eraseSpriteDragon3FogSkipRowErase210
+eraseSpriteDragon3FogSkipRowEraseDontSkipRow210 anop
         lda >spriteY
         clc
-        adc #7
+        adc #8
         asl a
         tax
         lda >screenRowOffsets,x
@@ -18854,48 +18816,6 @@ eraseSpriteDragon3Fog357b anop
         short m
         lda >SURROUND_PIXEL_ADDR,x
         cmp #$00
-        beq eraseSpriteDragon3Fog358a
-        sta >SCREEN_ADDR,x
-        bra eraseSpriteDragon3Fog358b
-eraseSpriteDragon3Fog358a anop
-        lda >BACKGROUND_ADDR,x
-        sta >SCREEN_ADDR,x
-eraseSpriteDragon3Fog358b anop
-        long m
-
-        lda >rowAddress
-        clc
-        adc >spriteX
-
-        clc
-        adc #4
-        tax
-
-
-        short m
-        lda >SURROUND_PIXEL_ADDR,x
-        cmp #$00
-        beq eraseSpriteDragon3Fog359a
-        sta >SCREEN_ADDR,x
-        bra eraseSpriteDragon3Fog359b
-eraseSpriteDragon3Fog359a anop
-        lda >BACKGROUND_ADDR,x
-        sta >SCREEN_ADDR,x
-eraseSpriteDragon3Fog359b anop
-        long m
-
-        lda >rowAddress
-        clc
-        adc >spriteX
-
-        clc
-        adc #6
-        tax
-
-
-        short m
-        lda >SURROUND_PIXEL_ADDR,x
-        cmp #$00
         beq eraseSpriteDragon3Fog360a
         sta >SCREEN_ADDR,x
         bra eraseSpriteDragon3Fog360b
@@ -18904,13 +18824,12 @@ eraseSpriteDragon3Fog360a anop
         sta >SCREEN_ADDR,x
 eraseSpriteDragon3Fog360b anop
         long m
-
         lda >rowAddress
         clc
         adc >spriteX
 
         clc
-        adc #7
+        adc #4
         tax
 
 
@@ -18925,21 +18844,12 @@ eraseSpriteDragon3Fog361a anop
         sta >SCREEN_ADDR,x
 eraseSpriteDragon3Fog361b anop
         long m
-
-        lda >spriteY
-        clc
-        adc #8
-        asl a
-        tax
-        lda >screenRowOffsets,x
-        sta >rowAddress
-
         lda >rowAddress
         clc
         adc >spriteX
 
         clc
-        adc #1
+        adc #6
         tax
 
 
@@ -18954,13 +18864,12 @@ eraseSpriteDragon3Fog362a anop
         sta >SCREEN_ADDR,x
 eraseSpriteDragon3Fog362b anop
         long m
-
         lda >rowAddress
         clc
         adc >spriteX
 
         clc
-        adc #2
+        adc #7
         tax
 
 
@@ -18975,6 +18884,30 @@ eraseSpriteDragon3Fog363a anop
         sta >SCREEN_ADDR,x
 eraseSpriteDragon3Fog363b anop
         long m
+
+
+eraseSpriteDragon3FogSkipRowErase210 anop
+
+        lda >rowCounter
+        clc
+        adc #1
+        sta >rowCounter
+
+
+        cmp #199
+        bcs eraseSpriteDragon3FogSkipRowEraseShortJump211
+        bra eraseSpriteDragon3FogSkipRowEraseDontSkipRow211
+
+eraseSpriteDragon3FogSkipRowEraseShortJump211 anop
+        brl eraseSpriteDragon3FogSkipRowErase211
+eraseSpriteDragon3FogSkipRowEraseDontSkipRow211 anop
+        lda >spriteY
+        clc
+        adc #9
+        asl a
+        tax
+        lda >screenRowOffsets,x
+        sta >rowAddress
 
         lda >rowAddress
         clc
@@ -18996,7 +18929,6 @@ eraseSpriteDragon3Fog364a anop
         sta >SCREEN_ADDR,x
 eraseSpriteDragon3Fog364b anop
         long m
-
         lda >rowAddress
         clc
         adc >spriteX
@@ -19017,13 +18949,12 @@ eraseSpriteDragon3Fog365a anop
         sta >SCREEN_ADDR,x
 eraseSpriteDragon3Fog365b anop
         long m
-
         lda >rowAddress
         clc
         adc >spriteX
 
         clc
-        adc #5
+        adc #6
         tax
 
 
@@ -19038,13 +18969,12 @@ eraseSpriteDragon3Fog366a anop
         sta >SCREEN_ADDR,x
 eraseSpriteDragon3Fog366b anop
         long m
-
         lda >rowAddress
         clc
         adc >spriteX
 
         clc
-        adc #6
+        adc #7
         tax
 
 
@@ -19060,30 +18990,25 @@ eraseSpriteDragon3Fog367a anop
 eraseSpriteDragon3Fog367b anop
         long m
 
-        lda >rowAddress
+
+eraseSpriteDragon3FogSkipRowErase211 anop
+
+        lda >rowCounter
         clc
-        adc >spriteX
-
-        clc
-        adc #7
-        tax
+        adc #1
+        sta >rowCounter
 
 
-        short m
-        lda >SURROUND_PIXEL_ADDR,x
-        cmp #$00
-        beq eraseSpriteDragon3Fog368a
-        sta >SCREEN_ADDR,x
-        bra eraseSpriteDragon3Fog368b
-eraseSpriteDragon3Fog368a anop
-        lda >BACKGROUND_ADDR,x
-        sta >SCREEN_ADDR,x
-eraseSpriteDragon3Fog368b anop
-        long m
+        cmp #199
+        bcs eraseSpriteDragon3FogSkipRowEraseShortJump212
+        bra eraseSpriteDragon3FogSkipRowEraseDontSkipRow212
 
+eraseSpriteDragon3FogSkipRowEraseShortJump212 anop
+        brl eraseSpriteDragon3FogSkipRowErase212
+eraseSpriteDragon3FogSkipRowEraseDontSkipRow212 anop
         lda >spriteY
         clc
-        adc #9
+        adc #10
         asl a
         tax
         lda >screenRowOffsets,x
@@ -19101,6 +19026,26 @@ eraseSpriteDragon3Fog368b anop
         short m
         lda >SURROUND_PIXEL_ADDR,x
         cmp #$00
+        beq eraseSpriteDragon3Fog368a
+        sta >SCREEN_ADDR,x
+        bra eraseSpriteDragon3Fog368b
+eraseSpriteDragon3Fog368a anop
+        lda >BACKGROUND_ADDR,x
+        sta >SCREEN_ADDR,x
+eraseSpriteDragon3Fog368b anop
+        long m
+        lda >rowAddress
+        clc
+        adc >spriteX
+
+        clc
+        adc #2
+        tax
+
+
+        short m
+        lda >SURROUND_PIXEL_ADDR,x
+        cmp #$00
         beq eraseSpriteDragon3Fog369a
         sta >SCREEN_ADDR,x
         bra eraseSpriteDragon3Fog369b
@@ -19109,13 +19054,12 @@ eraseSpriteDragon3Fog369a anop
         sta >SCREEN_ADDR,x
 eraseSpriteDragon3Fog369b anop
         long m
-
         lda >rowAddress
         clc
         adc >spriteX
 
         clc
-        adc #2
+        adc #3
         tax
 
 
@@ -19130,13 +19074,12 @@ eraseSpriteDragon3Fog370a anop
         sta >SCREEN_ADDR,x
 eraseSpriteDragon3Fog370b anop
         long m
-
         lda >rowAddress
         clc
         adc >spriteX
 
         clc
-        adc #3
+        adc #4
         tax
 
 
@@ -19151,13 +19094,12 @@ eraseSpriteDragon3Fog371a anop
         sta >SCREEN_ADDR,x
 eraseSpriteDragon3Fog371b anop
         long m
-
         lda >rowAddress
         clc
         adc >spriteX
 
         clc
-        adc #4
+        adc #5
         tax
 
 
@@ -19172,13 +19114,12 @@ eraseSpriteDragon3Fog372a anop
         sta >SCREEN_ADDR,x
 eraseSpriteDragon3Fog372b anop
         long m
-
         lda >rowAddress
         clc
         adc >spriteX
 
         clc
-        adc #5
+        adc #6
         tax
 
 
@@ -19193,13 +19134,12 @@ eraseSpriteDragon3Fog373a anop
         sta >SCREEN_ADDR,x
 eraseSpriteDragon3Fog373b anop
         long m
-
         lda >rowAddress
         clc
         adc >spriteX
 
         clc
-        adc #6
+        adc #7
         tax
 
 
@@ -19215,12 +19155,36 @@ eraseSpriteDragon3Fog374a anop
 eraseSpriteDragon3Fog374b anop
         long m
 
+
+eraseSpriteDragon3FogSkipRowErase212 anop
+
+        lda >rowCounter
+        clc
+        adc #1
+        sta >rowCounter
+
+
+        cmp #199
+        bcs eraseSpriteDragon3FogSkipRowEraseShortJump213
+        bra eraseSpriteDragon3FogSkipRowEraseDontSkipRow213
+
+eraseSpriteDragon3FogSkipRowEraseShortJump213 anop
+        brl eraseSpriteDragon3FogSkipRowErase213
+eraseSpriteDragon3FogSkipRowEraseDontSkipRow213 anop
+        lda >spriteY
+        clc
+        adc #11
+        asl a
+        tax
+        lda >screenRowOffsets,x
+        sta >rowAddress
+
         lda >rowAddress
         clc
         adc >spriteX
 
         clc
-        adc #7
+        adc #1
         tax
 
 
@@ -19235,21 +19199,12 @@ eraseSpriteDragon3Fog375a anop
         sta >SCREEN_ADDR,x
 eraseSpriteDragon3Fog375b anop
         long m
-
-        lda >spriteY
-        clc
-        adc #10
-        asl a
-        tax
-        lda >screenRowOffsets,x
-        sta >rowAddress
-
         lda >rowAddress
         clc
         adc >spriteX
 
         clc
-        adc #0
+        adc #2
         tax
 
 
@@ -19264,13 +19219,12 @@ eraseSpriteDragon3Fog376a anop
         sta >SCREEN_ADDR,x
 eraseSpriteDragon3Fog376b anop
         long m
-
         lda >rowAddress
         clc
         adc >spriteX
 
         clc
-        adc #1
+        adc #3
         tax
 
 
@@ -19285,7 +19239,6 @@ eraseSpriteDragon3Fog377a anop
         sta >SCREEN_ADDR,x
 eraseSpriteDragon3Fog377b anop
         long m
-
         lda >rowAddress
         clc
         adc >spriteX
@@ -19306,7 +19259,6 @@ eraseSpriteDragon3Fog378a anop
         sta >SCREEN_ADDR,x
 eraseSpriteDragon3Fog378b anop
         long m
-
         lda >rowAddress
         clc
         adc >spriteX
@@ -19327,7 +19279,6 @@ eraseSpriteDragon3Fog379a anop
         sta >SCREEN_ADDR,x
 eraseSpriteDragon3Fog379b anop
         long m
-
         lda >rowAddress
         clc
         adc >spriteX
@@ -19348,21 +19299,12 @@ eraseSpriteDragon3Fog380a anop
         sta >SCREEN_ADDR,x
 eraseSpriteDragon3Fog380b anop
         long m
-
-        lda >spriteY
-        clc
-        adc #11
-        asl a
-        tax
-        lda >screenRowOffsets,x
-        sta >rowAddress
-
         lda >rowAddress
         clc
         adc >spriteX
 
         clc
-        adc #0
+        adc #7
         tax
 
 
@@ -19378,90 +19320,22 @@ eraseSpriteDragon3Fog381a anop
 eraseSpriteDragon3Fog381b anop
         long m
 
-        lda >rowAddress
-        clc
-        adc >spriteX
 
+eraseSpriteDragon3FogSkipRowErase213 anop
+
+        lda >rowCounter
         clc
         adc #1
-        tax
+        sta >rowCounter
 
 
-        short m
-        lda >SURROUND_PIXEL_ADDR,x
-        cmp #$00
-        beq eraseSpriteDragon3Fog382a
-        sta >SCREEN_ADDR,x
-        bra eraseSpriteDragon3Fog382b
-eraseSpriteDragon3Fog382a anop
-        lda >BACKGROUND_ADDR,x
-        sta >SCREEN_ADDR,x
-eraseSpriteDragon3Fog382b anop
-        long m
+        cmp #199
+        bcs eraseSpriteDragon3FogSkipRowEraseShortJump214
+        bra eraseSpriteDragon3FogSkipRowEraseDontSkipRow214
 
-        lda >rowAddress
-        clc
-        adc >spriteX
-
-        clc
-        adc #4
-        tax
-
-
-        short m
-        lda >SURROUND_PIXEL_ADDR,x
-        cmp #$00
-        beq eraseSpriteDragon3Fog383a
-        sta >SCREEN_ADDR,x
-        bra eraseSpriteDragon3Fog383b
-eraseSpriteDragon3Fog383a anop
-        lda >BACKGROUND_ADDR,x
-        sta >SCREEN_ADDR,x
-eraseSpriteDragon3Fog383b anop
-        long m
-
-        lda >rowAddress
-        clc
-        adc >spriteX
-
-        clc
-        adc #5
-        tax
-
-
-        short m
-        lda >SURROUND_PIXEL_ADDR,x
-        cmp #$00
-        beq eraseSpriteDragon3Fog384a
-        sta >SCREEN_ADDR,x
-        bra eraseSpriteDragon3Fog384b
-eraseSpriteDragon3Fog384a anop
-        lda >BACKGROUND_ADDR,x
-        sta >SCREEN_ADDR,x
-eraseSpriteDragon3Fog384b anop
-        long m
-
-        lda >rowAddress
-        clc
-        adc >spriteX
-
-        clc
-        adc #6
-        tax
-
-
-        short m
-        lda >SURROUND_PIXEL_ADDR,x
-        cmp #$00
-        beq eraseSpriteDragon3Fog385a
-        sta >SCREEN_ADDR,x
-        bra eraseSpriteDragon3Fog385b
-eraseSpriteDragon3Fog385a anop
-        lda >BACKGROUND_ADDR,x
-        sta >SCREEN_ADDR,x
-eraseSpriteDragon3Fog385b anop
-        long m
-
+eraseSpriteDragon3FogSkipRowEraseShortJump214 anop
+        brl eraseSpriteDragon3FogSkipRowErase214
+eraseSpriteDragon3FogSkipRowEraseDontSkipRow214 anop
         lda >spriteY
         clc
         adc #12
@@ -19482,6 +19356,86 @@ eraseSpriteDragon3Fog385b anop
         short m
         lda >SURROUND_PIXEL_ADDR,x
         cmp #$00
+        beq eraseSpriteDragon3Fog382a
+        sta >SCREEN_ADDR,x
+        bra eraseSpriteDragon3Fog382b
+eraseSpriteDragon3Fog382a anop
+        lda >BACKGROUND_ADDR,x
+        sta >SCREEN_ADDR,x
+eraseSpriteDragon3Fog382b anop
+        long m
+        lda >rowAddress
+        clc
+        adc >spriteX
+
+        clc
+        adc #1
+        tax
+
+
+        short m
+        lda >SURROUND_PIXEL_ADDR,x
+        cmp #$00
+        beq eraseSpriteDragon3Fog383a
+        sta >SCREEN_ADDR,x
+        bra eraseSpriteDragon3Fog383b
+eraseSpriteDragon3Fog383a anop
+        lda >BACKGROUND_ADDR,x
+        sta >SCREEN_ADDR,x
+eraseSpriteDragon3Fog383b anop
+        long m
+        lda >rowAddress
+        clc
+        adc >spriteX
+
+        clc
+        adc #4
+        tax
+
+
+        short m
+        lda >SURROUND_PIXEL_ADDR,x
+        cmp #$00
+        beq eraseSpriteDragon3Fog384a
+        sta >SCREEN_ADDR,x
+        bra eraseSpriteDragon3Fog384b
+eraseSpriteDragon3Fog384a anop
+        lda >BACKGROUND_ADDR,x
+        sta >SCREEN_ADDR,x
+eraseSpriteDragon3Fog384b anop
+        long m
+        lda >rowAddress
+        clc
+        adc >spriteX
+
+        clc
+        adc #5
+        tax
+
+
+        short m
+        lda >SURROUND_PIXEL_ADDR,x
+        cmp #$00
+        beq eraseSpriteDragon3Fog385a
+        sta >SCREEN_ADDR,x
+        bra eraseSpriteDragon3Fog385b
+eraseSpriteDragon3Fog385a anop
+        lda >BACKGROUND_ADDR,x
+        sta >SCREEN_ADDR,x
+eraseSpriteDragon3Fog385b anop
+        long m
+        lda >rowAddress
+        clc
+        adc >spriteX
+
+        clc
+        adc #6
+        tax
+
+
+        short m
+        lda >SURROUND_PIXEL_ADDR,x
+        cmp #$00
         beq eraseSpriteDragon3Fog386a
         sta >SCREEN_ADDR,x
         bra eraseSpriteDragon3Fog386b
@@ -19491,6 +19445,22 @@ eraseSpriteDragon3Fog386a anop
 eraseSpriteDragon3Fog386b anop
         long m
 
+
+eraseSpriteDragon3FogSkipRowErase214 anop
+
+        lda >rowCounter
+        clc
+        adc #1
+        sta >rowCounter
+
+
+        cmp #199
+        bcs eraseSpriteDragon3FogSkipRowEraseShortJump215
+        bra eraseSpriteDragon3FogSkipRowEraseDontSkipRow215
+
+eraseSpriteDragon3FogSkipRowEraseShortJump215 anop
+        brl eraseSpriteDragon3FogSkipRowErase215
+eraseSpriteDragon3FogSkipRowEraseDontSkipRow215 anop
         lda >spriteY
         clc
         adc #13
@@ -19519,7 +19489,103 @@ eraseSpriteDragon3Fog387a anop
         sta >SCREEN_ADDR,x
 eraseSpriteDragon3Fog387b anop
         long m
+        lda >rowAddress
+        clc
+        adc >spriteX
 
+        clc
+        adc #1
+        tax
+
+
+        short m
+        lda >SURROUND_PIXEL_ADDR,x
+        cmp #$00
+        beq eraseSpriteDragon3Fog388a
+        sta >SCREEN_ADDR,x
+        bra eraseSpriteDragon3Fog388b
+eraseSpriteDragon3Fog388a anop
+        lda >BACKGROUND_ADDR,x
+        sta >SCREEN_ADDR,x
+eraseSpriteDragon3Fog388b anop
+        long m
+        lda >rowAddress
+        clc
+        adc >spriteX
+
+        clc
+        adc #4
+        tax
+
+
+        short m
+        lda >SURROUND_PIXEL_ADDR,x
+        cmp #$00
+        beq eraseSpriteDragon3Fog389a
+        sta >SCREEN_ADDR,x
+        bra eraseSpriteDragon3Fog389b
+eraseSpriteDragon3Fog389a anop
+        lda >BACKGROUND_ADDR,x
+        sta >SCREEN_ADDR,x
+eraseSpriteDragon3Fog389b anop
+        long m
+        lda >rowAddress
+        clc
+        adc >spriteX
+
+        clc
+        adc #5
+        tax
+
+
+        short m
+        lda >SURROUND_PIXEL_ADDR,x
+        cmp #$00
+        beq eraseSpriteDragon3Fog390a
+        sta >SCREEN_ADDR,x
+        bra eraseSpriteDragon3Fog390b
+eraseSpriteDragon3Fog390a anop
+        lda >BACKGROUND_ADDR,x
+        sta >SCREEN_ADDR,x
+eraseSpriteDragon3Fog390b anop
+        long m
+        lda >rowAddress
+        clc
+        adc >spriteX
+
+        clc
+        adc #6
+        tax
+
+
+        short m
+        lda >SURROUND_PIXEL_ADDR,x
+        cmp #$00
+        beq eraseSpriteDragon3Fog391a
+        sta >SCREEN_ADDR,x
+        bra eraseSpriteDragon3Fog391b
+eraseSpriteDragon3Fog391a anop
+        lda >BACKGROUND_ADDR,x
+        sta >SCREEN_ADDR,x
+eraseSpriteDragon3Fog391b anop
+        long m
+
+
+eraseSpriteDragon3FogSkipRowErase215 anop
+
+        lda >rowCounter
+        clc
+        adc #1
+        sta >rowCounter
+
+
+        cmp #199
+        bcs eraseSpriteDragon3FogSkipRowEraseShortJump216
+        bra eraseSpriteDragon3FogSkipRowEraseDontSkipRow216
+
+eraseSpriteDragon3FogSkipRowEraseShortJump216 anop
+        brl eraseSpriteDragon3FogSkipRowErase216
+eraseSpriteDragon3FogSkipRowEraseDontSkipRow216 anop
         lda >spriteY
         clc
         adc #14
@@ -19540,90 +19606,6 @@ eraseSpriteDragon3Fog387b anop
         short m
         lda >SURROUND_PIXEL_ADDR,x
         cmp #$00
-        beq eraseSpriteDragon3Fog388a
-        sta >SCREEN_ADDR,x
-        bra eraseSpriteDragon3Fog388b
-eraseSpriteDragon3Fog388a anop
-        lda >BACKGROUND_ADDR,x
-        sta >SCREEN_ADDR,x
-eraseSpriteDragon3Fog388b anop
-        long m
-
-        lda >rowAddress
-        clc
-        adc >spriteX
-
-        clc
-        adc #1
-        tax
-
-
-        short m
-        lda >SURROUND_PIXEL_ADDR,x
-        cmp #$00
-        beq eraseSpriteDragon3Fog389a
-        sta >SCREEN_ADDR,x
-        bra eraseSpriteDragon3Fog389b
-eraseSpriteDragon3Fog389a anop
-        lda >BACKGROUND_ADDR,x
-        sta >SCREEN_ADDR,x
-eraseSpriteDragon3Fog389b anop
-        long m
-
-        lda >rowAddress
-        clc
-        adc >spriteX
-
-        clc
-        adc #2
-        tax
-
-
-        short m
-        lda >SURROUND_PIXEL_ADDR,x
-        cmp #$00
-        beq eraseSpriteDragon3Fog390a
-        sta >SCREEN_ADDR,x
-        bra eraseSpriteDragon3Fog390b
-eraseSpriteDragon3Fog390a anop
-        lda >BACKGROUND_ADDR,x
-        sta >SCREEN_ADDR,x
-eraseSpriteDragon3Fog390b anop
-        long m
-
-        lda >rowAddress
-        clc
-        adc >spriteX
-
-        clc
-        adc #3
-        tax
-
-
-        short m
-        lda >SURROUND_PIXEL_ADDR,x
-        cmp #$00
-        beq eraseSpriteDragon3Fog391a
-        sta >SCREEN_ADDR,x
-        bra eraseSpriteDragon3Fog391b
-eraseSpriteDragon3Fog391a anop
-        lda >BACKGROUND_ADDR,x
-        sta >SCREEN_ADDR,x
-eraseSpriteDragon3Fog391b anop
-        long m
-
-        lda >rowAddress
-        clc
-        adc >spriteX
-
-        clc
-        adc #4
-        tax
-
-
-        short m
-        lda >SURROUND_PIXEL_ADDR,x
-        cmp #$00
         beq eraseSpriteDragon3Fog392a
         sta >SCREEN_ADDR,x
         bra eraseSpriteDragon3Fog392b
@@ -19633,12 +19615,36 @@ eraseSpriteDragon3Fog392a anop
 eraseSpriteDragon3Fog392b anop
         long m
 
+
+eraseSpriteDragon3FogSkipRowErase216 anop
+
+        lda >rowCounter
+        clc
+        adc #1
+        sta >rowCounter
+
+
+        cmp #199
+        bcs eraseSpriteDragon3FogSkipRowEraseShortJump217
+        bra eraseSpriteDragon3FogSkipRowEraseDontSkipRow217
+
+eraseSpriteDragon3FogSkipRowEraseShortJump217 anop
+        brl eraseSpriteDragon3FogSkipRowErase217
+eraseSpriteDragon3FogSkipRowEraseDontSkipRow217 anop
+        lda >spriteY
+        clc
+        adc #15
+        asl a
+        tax
+        lda >screenRowOffsets,x
+        sta >rowAddress
+
         lda >rowAddress
         clc
         adc >spriteX
 
         clc
-        adc #5
+        adc #0
         tax
 
 
@@ -19654,9 +19660,25 @@ eraseSpriteDragon3Fog393a anop
 eraseSpriteDragon3Fog393b anop
         long m
 
+
+eraseSpriteDragon3FogSkipRowErase217 anop
+
+        lda >rowCounter
+        clc
+        adc #1
+        sta >rowCounter
+
+
+        cmp #199
+        bcs eraseSpriteDragon3FogSkipRowEraseShortJump218
+        bra eraseSpriteDragon3FogSkipRowEraseDontSkipRow218
+
+eraseSpriteDragon3FogSkipRowEraseShortJump218 anop
+        brl eraseSpriteDragon3FogSkipRowErase218
+eraseSpriteDragon3FogSkipRowEraseDontSkipRow218 anop
         lda >spriteY
         clc
-        adc #15
+        adc #16
         asl a
         tax
         lda >screenRowOffsets,x
@@ -19682,7 +19704,6 @@ eraseSpriteDragon3Fog394a anop
         sta >SCREEN_ADDR,x
 eraseSpriteDragon3Fog394b anop
         long m
-
         lda >rowAddress
         clc
         adc >spriteX
@@ -19703,7 +19724,6 @@ eraseSpriteDragon3Fog395a anop
         sta >SCREEN_ADDR,x
 eraseSpriteDragon3Fog395b anop
         long m
-
         lda >rowAddress
         clc
         adc >spriteX
@@ -19724,7 +19744,6 @@ eraseSpriteDragon3Fog396a anop
         sta >SCREEN_ADDR,x
 eraseSpriteDragon3Fog396b anop
         long m
-
         lda >rowAddress
         clc
         adc >spriteX
@@ -19745,7 +19764,6 @@ eraseSpriteDragon3Fog397a anop
         sta >SCREEN_ADDR,x
 eraseSpriteDragon3Fog397b anop
         long m
-
         lda >rowAddress
         clc
         adc >spriteX
@@ -19766,7 +19784,6 @@ eraseSpriteDragon3Fog398a anop
         sta >SCREEN_ADDR,x
 eraseSpriteDragon3Fog398b anop
         long m
-
         lda >rowAddress
         clc
         adc >spriteX
@@ -19788,9 +19805,25 @@ eraseSpriteDragon3Fog399a anop
 eraseSpriteDragon3Fog399b anop
         long m
 
+
+eraseSpriteDragon3FogSkipRowErase218 anop
+
+        lda >rowCounter
+        clc
+        adc #1
+        sta >rowCounter
+
+
+        cmp #199
+        bcs eraseSpriteDragon3FogSkipRowEraseShortJump219
+        bra eraseSpriteDragon3FogSkipRowEraseDontSkipRow219
+
+eraseSpriteDragon3FogSkipRowEraseShortJump219 anop
+        brl eraseSpriteDragon3FogSkipRowErase219
+eraseSpriteDragon3FogSkipRowEraseDontSkipRow219 anop
         lda >spriteY
         clc
-        adc #16
+        adc #17
         asl a
         tax
         lda >screenRowOffsets,x
@@ -19816,7 +19849,6 @@ eraseSpriteDragon3Fog400a anop
         sta >SCREEN_ADDR,x
 eraseSpriteDragon3Fog400b anop
         long m
-
         lda >rowAddress
         clc
         adc >spriteX
@@ -19837,7 +19869,6 @@ eraseSpriteDragon3Fog401a anop
         sta >SCREEN_ADDR,x
 eraseSpriteDragon3Fog401b anop
         long m
-
         lda >rowAddress
         clc
         adc >spriteX
@@ -19858,7 +19889,6 @@ eraseSpriteDragon3Fog402a anop
         sta >SCREEN_ADDR,x
 eraseSpriteDragon3Fog402b anop
         long m
-
         lda >rowAddress
         clc
         adc >spriteX
@@ -19879,7 +19909,6 @@ eraseSpriteDragon3Fog403a anop
         sta >SCREEN_ADDR,x
 eraseSpriteDragon3Fog403b anop
         long m
-
         lda >rowAddress
         clc
         adc >spriteX
@@ -19900,7 +19929,6 @@ eraseSpriteDragon3Fog404a anop
         sta >SCREEN_ADDR,x
 eraseSpriteDragon3Fog404b anop
         long m
-
         lda >rowAddress
         clc
         adc >spriteX
@@ -19922,182 +19950,22 @@ eraseSpriteDragon3Fog405a anop
 eraseSpriteDragon3Fog405b anop
         long m
 
-        lda >rowAddress
-        clc
-        adc >spriteX
 
-        clc
-        adc #6
-        tax
+eraseSpriteDragon3FogSkipRowErase219 anop
 
-
-        short m
-        lda >SURROUND_PIXEL_ADDR,x
-        cmp #$00
-        beq eraseSpriteDragon3Fog406a
-        sta >SCREEN_ADDR,x
-        bra eraseSpriteDragon3Fog406b
-eraseSpriteDragon3Fog406a anop
-        lda >BACKGROUND_ADDR,x
-        sta >SCREEN_ADDR,x
-eraseSpriteDragon3Fog406b anop
-        long m
-
-        lda >spriteY
-        clc
-        adc #17
-        asl a
-        tax
-        lda >screenRowOffsets,x
-        sta >rowAddress
-
-        lda >rowAddress
-        clc
-        adc >spriteX
-
-        clc
-        adc #0
-        tax
-
-
-        short m
-        lda >SURROUND_PIXEL_ADDR,x
-        cmp #$00
-        beq eraseSpriteDragon3Fog407a
-        sta >SCREEN_ADDR,x
-        bra eraseSpriteDragon3Fog407b
-eraseSpriteDragon3Fog407a anop
-        lda >BACKGROUND_ADDR,x
-        sta >SCREEN_ADDR,x
-eraseSpriteDragon3Fog407b anop
-        long m
-
-        lda >rowAddress
-        clc
-        adc >spriteX
-
+        lda >rowCounter
         clc
         adc #1
-        tax
+        sta >rowCounter
 
 
-        short m
-        lda >SURROUND_PIXEL_ADDR,x
-        cmp #$00
-        beq eraseSpriteDragon3Fog408a
-        sta >SCREEN_ADDR,x
-        bra eraseSpriteDragon3Fog408b
-eraseSpriteDragon3Fog408a anop
-        lda >BACKGROUND_ADDR,x
-        sta >SCREEN_ADDR,x
-eraseSpriteDragon3Fog408b anop
-        long m
+        cmp #199
+        bcs eraseSpriteDragon3FogSkipRowEraseShortJump220
+        bra eraseSpriteDragon3FogSkipRowEraseDontSkipRow220
 
-        lda >rowAddress
-        clc
-        adc >spriteX
-
-        clc
-        adc #2
-        tax
-
-
-        short m
-        lda >SURROUND_PIXEL_ADDR,x
-        cmp #$00
-        beq eraseSpriteDragon3Fog409a
-        sta >SCREEN_ADDR,x
-        bra eraseSpriteDragon3Fog409b
-eraseSpriteDragon3Fog409a anop
-        lda >BACKGROUND_ADDR,x
-        sta >SCREEN_ADDR,x
-eraseSpriteDragon3Fog409b anop
-        long m
-
-        lda >rowAddress
-        clc
-        adc >spriteX
-
-        clc
-        adc #3
-        tax
-
-
-        short m
-        lda >SURROUND_PIXEL_ADDR,x
-        cmp #$00
-        beq eraseSpriteDragon3Fog410a
-        sta >SCREEN_ADDR,x
-        bra eraseSpriteDragon3Fog410b
-eraseSpriteDragon3Fog410a anop
-        lda >BACKGROUND_ADDR,x
-        sta >SCREEN_ADDR,x
-eraseSpriteDragon3Fog410b anop
-        long m
-
-        lda >rowAddress
-        clc
-        adc >spriteX
-
-        clc
-        adc #4
-        tax
-
-
-        short m
-        lda >SURROUND_PIXEL_ADDR,x
-        cmp #$00
-        beq eraseSpriteDragon3Fog411a
-        sta >SCREEN_ADDR,x
-        bra eraseSpriteDragon3Fog411b
-eraseSpriteDragon3Fog411a anop
-        lda >BACKGROUND_ADDR,x
-        sta >SCREEN_ADDR,x
-eraseSpriteDragon3Fog411b anop
-        long m
-
-        lda >rowAddress
-        clc
-        adc >spriteX
-
-        clc
-        adc #5
-        tax
-
-
-        short m
-        lda >SURROUND_PIXEL_ADDR,x
-        cmp #$00
-        beq eraseSpriteDragon3Fog412a
-        sta >SCREEN_ADDR,x
-        bra eraseSpriteDragon3Fog412b
-eraseSpriteDragon3Fog412a anop
-        lda >BACKGROUND_ADDR,x
-        sta >SCREEN_ADDR,x
-eraseSpriteDragon3Fog412b anop
-        long m
-
-        lda >rowAddress
-        clc
-        adc >spriteX
-
-        clc
-        adc #6
-        tax
-
-
-        short m
-        lda >SURROUND_PIXEL_ADDR,x
-        cmp #$00
-        beq eraseSpriteDragon3Fog413a
-        sta >SCREEN_ADDR,x
-        bra eraseSpriteDragon3Fog413b
-eraseSpriteDragon3Fog413a anop
-        lda >BACKGROUND_ADDR,x
-        sta >SCREEN_ADDR,x
-eraseSpriteDragon3Fog413b anop
-        long m
-
+eraseSpriteDragon3FogSkipRowEraseShortJump220 anop
+        brl eraseSpriteDragon3FogSkipRowErase220
+eraseSpriteDragon3FogSkipRowEraseDontSkipRow220 anop
         lda >spriteY
         clc
         adc #18
@@ -20118,15 +19986,14 @@ eraseSpriteDragon3Fog413b anop
         short m
         lda >SURROUND_PIXEL_ADDR,x
         cmp #$00
-        beq eraseSpriteDragon3Fog414a
+        beq eraseSpriteDragon3Fog406a
         sta >SCREEN_ADDR,x
-        bra eraseSpriteDragon3Fog414b
-eraseSpriteDragon3Fog414a anop
+        bra eraseSpriteDragon3Fog406b
+eraseSpriteDragon3Fog406a anop
         lda >BACKGROUND_ADDR,x
         sta >SCREEN_ADDR,x
-eraseSpriteDragon3Fog414b anop
+eraseSpriteDragon3Fog406b anop
         long m
-
         lda >rowAddress
         clc
         adc >spriteX
@@ -20139,15 +20006,14 @@ eraseSpriteDragon3Fog414b anop
         short m
         lda >SURROUND_PIXEL_ADDR,x
         cmp #$00
-        beq eraseSpriteDragon3Fog415a
+        beq eraseSpriteDragon3Fog407a
         sta >SCREEN_ADDR,x
-        bra eraseSpriteDragon3Fog415b
-eraseSpriteDragon3Fog415a anop
+        bra eraseSpriteDragon3Fog407b
+eraseSpriteDragon3Fog407a anop
         lda >BACKGROUND_ADDR,x
         sta >SCREEN_ADDR,x
-eraseSpriteDragon3Fog415b anop
+eraseSpriteDragon3Fog407b anop
         long m
-
         lda >rowAddress
         clc
         adc >spriteX
@@ -20160,15 +20026,14 @@ eraseSpriteDragon3Fog415b anop
         short m
         lda >SURROUND_PIXEL_ADDR,x
         cmp #$00
-        beq eraseSpriteDragon3Fog416a
+        beq eraseSpriteDragon3Fog408a
         sta >SCREEN_ADDR,x
-        bra eraseSpriteDragon3Fog416b
-eraseSpriteDragon3Fog416a anop
+        bra eraseSpriteDragon3Fog408b
+eraseSpriteDragon3Fog408a anop
         lda >BACKGROUND_ADDR,x
         sta >SCREEN_ADDR,x
-eraseSpriteDragon3Fog416b anop
+eraseSpriteDragon3Fog408b anop
         long m
-
         lda >rowAddress
         clc
         adc >spriteX
@@ -20181,15 +20046,14 @@ eraseSpriteDragon3Fog416b anop
         short m
         lda >SURROUND_PIXEL_ADDR,x
         cmp #$00
-        beq eraseSpriteDragon3Fog417a
+        beq eraseSpriteDragon3Fog409a
         sta >SCREEN_ADDR,x
-        bra eraseSpriteDragon3Fog417b
-eraseSpriteDragon3Fog417a anop
+        bra eraseSpriteDragon3Fog409b
+eraseSpriteDragon3Fog409a anop
         lda >BACKGROUND_ADDR,x
         sta >SCREEN_ADDR,x
-eraseSpriteDragon3Fog417b anop
+eraseSpriteDragon3Fog409b anop
         long m
-
         lda >rowAddress
         clc
         adc >spriteX
@@ -20202,15 +20066,14 @@ eraseSpriteDragon3Fog417b anop
         short m
         lda >SURROUND_PIXEL_ADDR,x
         cmp #$00
-        beq eraseSpriteDragon3Fog418a
+        beq eraseSpriteDragon3Fog410a
         sta >SCREEN_ADDR,x
-        bra eraseSpriteDragon3Fog418b
-eraseSpriteDragon3Fog418a anop
+        bra eraseSpriteDragon3Fog410b
+eraseSpriteDragon3Fog410a anop
         lda >BACKGROUND_ADDR,x
         sta >SCREEN_ADDR,x
-eraseSpriteDragon3Fog418b anop
+eraseSpriteDragon3Fog410b anop
         long m
-
         lda >rowAddress
         clc
         adc >spriteX
@@ -20223,15 +20086,14 @@ eraseSpriteDragon3Fog418b anop
         short m
         lda >SURROUND_PIXEL_ADDR,x
         cmp #$00
-        beq eraseSpriteDragon3Fog419a
+        beq eraseSpriteDragon3Fog411a
         sta >SCREEN_ADDR,x
-        bra eraseSpriteDragon3Fog419b
-eraseSpriteDragon3Fog419a anop
+        bra eraseSpriteDragon3Fog411b
+eraseSpriteDragon3Fog411a anop
         lda >BACKGROUND_ADDR,x
         sta >SCREEN_ADDR,x
-eraseSpriteDragon3Fog419b anop
+eraseSpriteDragon3Fog411b anop
         long m
-
         lda >rowAddress
         clc
         adc >spriteX
@@ -20244,15 +20106,31 @@ eraseSpriteDragon3Fog419b anop
         short m
         lda >SURROUND_PIXEL_ADDR,x
         cmp #$00
-        beq eraseSpriteDragon3Fog420a
+        beq eraseSpriteDragon3Fog412a
         sta >SCREEN_ADDR,x
-        bra eraseSpriteDragon3Fog420b
-eraseSpriteDragon3Fog420a anop
+        bra eraseSpriteDragon3Fog412b
+eraseSpriteDragon3Fog412a anop
         lda >BACKGROUND_ADDR,x
         sta >SCREEN_ADDR,x
-eraseSpriteDragon3Fog420b anop
+eraseSpriteDragon3Fog412b anop
         long m
 
+
+eraseSpriteDragon3FogSkipRowErase220 anop
+
+        lda >rowCounter
+        clc
+        adc #1
+        sta >rowCounter
+
+
+        cmp #199
+        bcs eraseSpriteDragon3FogSkipRowEraseShortJump221
+        bra eraseSpriteDragon3FogSkipRowEraseDontSkipRow221
+
+eraseSpriteDragon3FogSkipRowEraseShortJump221 anop
+        brl eraseSpriteDragon3FogSkipRowErase221
+eraseSpriteDragon3FogSkipRowEraseDontSkipRow221 anop
         lda >spriteY
         clc
         adc #19
@@ -20273,6 +20151,191 @@ eraseSpriteDragon3Fog420b anop
         short m
         lda >SURROUND_PIXEL_ADDR,x
         cmp #$00
+        beq eraseSpriteDragon3Fog413a
+        sta >SCREEN_ADDR,x
+        bra eraseSpriteDragon3Fog413b
+eraseSpriteDragon3Fog413a anop
+        lda >BACKGROUND_ADDR,x
+        sta >SCREEN_ADDR,x
+eraseSpriteDragon3Fog413b anop
+        long m
+        lda >rowAddress
+        clc
+        adc >spriteX
+
+        clc
+        adc #1
+        tax
+
+
+        short m
+        lda >SURROUND_PIXEL_ADDR,x
+        cmp #$00
+        beq eraseSpriteDragon3Fog414a
+        sta >SCREEN_ADDR,x
+        bra eraseSpriteDragon3Fog414b
+eraseSpriteDragon3Fog414a anop
+        lda >BACKGROUND_ADDR,x
+        sta >SCREEN_ADDR,x
+eraseSpriteDragon3Fog414b anop
+        long m
+        lda >rowAddress
+        clc
+        adc >spriteX
+
+        clc
+        adc #2
+        tax
+
+
+        short m
+        lda >SURROUND_PIXEL_ADDR,x
+        cmp #$00
+        beq eraseSpriteDragon3Fog415a
+        sta >SCREEN_ADDR,x
+        bra eraseSpriteDragon3Fog415b
+eraseSpriteDragon3Fog415a anop
+        lda >BACKGROUND_ADDR,x
+        sta >SCREEN_ADDR,x
+eraseSpriteDragon3Fog415b anop
+        long m
+        lda >rowAddress
+        clc
+        adc >spriteX
+
+        clc
+        adc #3
+        tax
+
+
+        short m
+        lda >SURROUND_PIXEL_ADDR,x
+        cmp #$00
+        beq eraseSpriteDragon3Fog416a
+        sta >SCREEN_ADDR,x
+        bra eraseSpriteDragon3Fog416b
+eraseSpriteDragon3Fog416a anop
+        lda >BACKGROUND_ADDR,x
+        sta >SCREEN_ADDR,x
+eraseSpriteDragon3Fog416b anop
+        long m
+        lda >rowAddress
+        clc
+        adc >spriteX
+
+        clc
+        adc #4
+        tax
+
+
+        short m
+        lda >SURROUND_PIXEL_ADDR,x
+        cmp #$00
+        beq eraseSpriteDragon3Fog417a
+        sta >SCREEN_ADDR,x
+        bra eraseSpriteDragon3Fog417b
+eraseSpriteDragon3Fog417a anop
+        lda >BACKGROUND_ADDR,x
+        sta >SCREEN_ADDR,x
+eraseSpriteDragon3Fog417b anop
+        long m
+        lda >rowAddress
+        clc
+        adc >spriteX
+
+        clc
+        adc #5
+        tax
+
+
+        short m
+        lda >SURROUND_PIXEL_ADDR,x
+        cmp #$00
+        beq eraseSpriteDragon3Fog418a
+        sta >SCREEN_ADDR,x
+        bra eraseSpriteDragon3Fog418b
+eraseSpriteDragon3Fog418a anop
+        lda >BACKGROUND_ADDR,x
+        sta >SCREEN_ADDR,x
+eraseSpriteDragon3Fog418b anop
+        long m
+        lda >rowAddress
+        clc
+        adc >spriteX
+
+        clc
+        adc #6
+        tax
+
+
+        short m
+        lda >SURROUND_PIXEL_ADDR,x
+        cmp #$00
+        beq eraseSpriteDragon3Fog419a
+        sta >SCREEN_ADDR,x
+        bra eraseSpriteDragon3Fog419b
+eraseSpriteDragon3Fog419a anop
+        lda >BACKGROUND_ADDR,x
+        sta >SCREEN_ADDR,x
+eraseSpriteDragon3Fog419b anop
+        long m
+
+
+eraseSpriteDragon3FogSkipRowErase221 anop
+
+        lda >rowCounter
+        clc
+        adc #1
+        sta >rowCounter
+
+
+        cmp #199
+        bcs eraseSpriteDragon3FogSkipRowEraseShortJump222
+        bra eraseSpriteDragon3FogSkipRowEraseDontSkipRow222
+
+eraseSpriteDragon3FogSkipRowEraseShortJump222 anop
+        brl eraseSpriteDragon3FogSkipRowErase222
+eraseSpriteDragon3FogSkipRowEraseDontSkipRow222 anop
+        lda >spriteY
+        clc
+        adc #20
+        asl a
+        tax
+        lda >screenRowOffsets,x
+        sta >rowAddress
+
+        lda >rowAddress
+        clc
+        adc >spriteX
+
+        clc
+        adc #0
+        tax
+
+
+        short m
+        lda >SURROUND_PIXEL_ADDR,x
+        cmp #$00
+        beq eraseSpriteDragon3Fog420a
+        sta >SCREEN_ADDR,x
+        bra eraseSpriteDragon3Fog420b
+eraseSpriteDragon3Fog420a anop
+        lda >BACKGROUND_ADDR,x
+        sta >SCREEN_ADDR,x
+eraseSpriteDragon3Fog420b anop
+        long m
+        lda >rowAddress
+        clc
+        adc >spriteX
+
+        clc
+        adc #1
+        tax
+
+
+        short m
+        lda >SURROUND_PIXEL_ADDR,x
+        cmp #$00
         beq eraseSpriteDragon3Fog421a
         sta >SCREEN_ADDR,x
         bra eraseSpriteDragon3Fog421b
@@ -20281,13 +20344,12 @@ eraseSpriteDragon3Fog421a anop
         sta >SCREEN_ADDR,x
 eraseSpriteDragon3Fog421b anop
         long m
-
         lda >rowAddress
         clc
         adc >spriteX
 
         clc
-        adc #1
+        adc #2
         tax
 
 
@@ -20302,13 +20364,12 @@ eraseSpriteDragon3Fog422a anop
         sta >SCREEN_ADDR,x
 eraseSpriteDragon3Fog422b anop
         long m
-
         lda >rowAddress
         clc
         adc >spriteX
 
         clc
-        adc #2
+        adc #3
         tax
 
 
@@ -20323,13 +20384,12 @@ eraseSpriteDragon3Fog423a anop
         sta >SCREEN_ADDR,x
 eraseSpriteDragon3Fog423b anop
         long m
-
         lda >rowAddress
         clc
         adc >spriteX
 
         clc
-        adc #3
+        adc #4
         tax
 
 
@@ -20344,13 +20404,12 @@ eraseSpriteDragon3Fog424a anop
         sta >SCREEN_ADDR,x
 eraseSpriteDragon3Fog424b anop
         long m
-
         lda >rowAddress
         clc
         adc >spriteX
 
         clc
-        adc #4
+        adc #5
         tax
 
 
@@ -20365,13 +20424,12 @@ eraseSpriteDragon3Fog425a anop
         sta >SCREEN_ADDR,x
 eraseSpriteDragon3Fog425b anop
         long m
-
         lda >rowAddress
         clc
         adc >spriteX
 
         clc
-        adc #5
+        adc #6
         tax
 
 
@@ -20387,12 +20445,36 @@ eraseSpriteDragon3Fog426a anop
 eraseSpriteDragon3Fog426b anop
         long m
 
+
+eraseSpriteDragon3FogSkipRowErase222 anop
+
+        lda >rowCounter
+        clc
+        adc #1
+        sta >rowCounter
+
+
+        cmp #199
+        bcs eraseSpriteDragon3FogSkipRowEraseShortJump223
+        bra eraseSpriteDragon3FogSkipRowEraseDontSkipRow223
+
+eraseSpriteDragon3FogSkipRowEraseShortJump223 anop
+        brl eraseSpriteDragon3FogSkipRowErase223
+eraseSpriteDragon3FogSkipRowEraseDontSkipRow223 anop
+        lda >spriteY
+        clc
+        adc #21
+        asl a
+        tax
+        lda >screenRowOffsets,x
+        sta >rowAddress
+
         lda >rowAddress
         clc
         adc >spriteX
 
         clc
-        adc #6
+        adc #0
         tax
 
 
@@ -20407,15 +20489,6 @@ eraseSpriteDragon3Fog427a anop
         sta >SCREEN_ADDR,x
 eraseSpriteDragon3Fog427b anop
         long m
-
-        lda >spriteY
-        clc
-        adc #20
-        asl a
-        tax
-        lda >screenRowOffsets,x
-        sta >rowAddress
-
         lda >rowAddress
         clc
         adc >spriteX
@@ -20436,7 +20509,6 @@ eraseSpriteDragon3Fog428a anop
         sta >SCREEN_ADDR,x
 eraseSpriteDragon3Fog428b anop
         long m
-
         lda >rowAddress
         clc
         adc >spriteX
@@ -20457,7 +20529,6 @@ eraseSpriteDragon3Fog429a anop
         sta >SCREEN_ADDR,x
 eraseSpriteDragon3Fog429b anop
         long m
-
         lda >rowAddress
         clc
         adc >spriteX
@@ -20478,7 +20549,6 @@ eraseSpriteDragon3Fog430a anop
         sta >SCREEN_ADDR,x
 eraseSpriteDragon3Fog430b anop
         long m
-
         lda >rowAddress
         clc
         adc >spriteX
@@ -20499,7 +20569,6 @@ eraseSpriteDragon3Fog431a anop
         sta >SCREEN_ADDR,x
 eraseSpriteDragon3Fog431b anop
         long m
-
         lda >rowAddress
         clc
         adc >spriteX
@@ -20520,7 +20589,6 @@ eraseSpriteDragon3Fog432a anop
         sta >SCREEN_ADDR,x
 eraseSpriteDragon3Fog432b anop
         long m
-
         lda >rowAddress
         clc
         adc >spriteX
@@ -20542,9 +20610,25 @@ eraseSpriteDragon3Fog433a anop
 eraseSpriteDragon3Fog433b anop
         long m
 
+
+eraseSpriteDragon3FogSkipRowErase223 anop
+
+        lda >rowCounter
+        clc
+        adc #1
+        sta >rowCounter
+
+
+        cmp #199
+        bcs eraseSpriteDragon3FogSkipRowEraseShortJump224
+        bra eraseSpriteDragon3FogSkipRowEraseDontSkipRow224
+
+eraseSpriteDragon3FogSkipRowEraseShortJump224 anop
+        brl eraseSpriteDragon3FogSkipRowErase224
+eraseSpriteDragon3FogSkipRowEraseDontSkipRow224 anop
         lda >spriteY
         clc
-        adc #21
+        adc #22
         asl a
         tax
         lda >screenRowOffsets,x
@@ -20570,7 +20654,6 @@ eraseSpriteDragon3Fog434a anop
         sta >SCREEN_ADDR,x
 eraseSpriteDragon3Fog434b anop
         long m
-
         lda >rowAddress
         clc
         adc >spriteX
@@ -20591,7 +20674,6 @@ eraseSpriteDragon3Fog435a anop
         sta >SCREEN_ADDR,x
 eraseSpriteDragon3Fog435b anop
         long m
-
         lda >rowAddress
         clc
         adc >spriteX
@@ -20612,7 +20694,6 @@ eraseSpriteDragon3Fog436a anop
         sta >SCREEN_ADDR,x
 eraseSpriteDragon3Fog436b anop
         long m
-
         lda >rowAddress
         clc
         adc >spriteX
@@ -20633,7 +20714,6 @@ eraseSpriteDragon3Fog437a anop
         sta >SCREEN_ADDR,x
 eraseSpriteDragon3Fog437b anop
         long m
-
         lda >rowAddress
         clc
         adc >spriteX
@@ -20654,7 +20734,6 @@ eraseSpriteDragon3Fog438a anop
         sta >SCREEN_ADDR,x
 eraseSpriteDragon3Fog438b anop
         long m
-
         lda >rowAddress
         clc
         adc >spriteX
@@ -20676,9 +20755,25 @@ eraseSpriteDragon3Fog439a anop
 eraseSpriteDragon3Fog439b anop
         long m
 
+
+eraseSpriteDragon3FogSkipRowErase224 anop
+
+        lda >rowCounter
+        clc
+        adc #1
+        sta >rowCounter
+
+
+        cmp #199
+        bcs eraseSpriteDragon3FogSkipRowEraseShortJump225
+        bra eraseSpriteDragon3FogSkipRowEraseDontSkipRow225
+
+eraseSpriteDragon3FogSkipRowEraseShortJump225 anop
+        brl eraseSpriteDragon3FogSkipRowErase225
+eraseSpriteDragon3FogSkipRowEraseDontSkipRow225 anop
         lda >spriteY
         clc
-        adc #22
+        adc #23
         asl a
         tax
         lda >screenRowOffsets,x
@@ -20704,7 +20799,6 @@ eraseSpriteDragon3Fog440a anop
         sta >SCREEN_ADDR,x
 eraseSpriteDragon3Fog440b anop
         long m
-
         lda >rowAddress
         clc
         adc >spriteX
@@ -20725,7 +20819,6 @@ eraseSpriteDragon3Fog441a anop
         sta >SCREEN_ADDR,x
 eraseSpriteDragon3Fog441b anop
         long m
-
         lda >rowAddress
         clc
         adc >spriteX
@@ -20746,7 +20839,6 @@ eraseSpriteDragon3Fog442a anop
         sta >SCREEN_ADDR,x
 eraseSpriteDragon3Fog442b anop
         long m
-
         lda >rowAddress
         clc
         adc >spriteX
@@ -20767,10 +20859,66 @@ eraseSpriteDragon3Fog443a anop
         sta >SCREEN_ADDR,x
 eraseSpriteDragon3Fog443b anop
         long m
+        lda >rowAddress
+        clc
+        adc >spriteX
 
+        clc
+        adc #5
+        tax
+
+
+        short m
+        lda >SURROUND_PIXEL_ADDR,x
+        cmp #$00
+        beq eraseSpriteDragon3Fog444a
+        sta >SCREEN_ADDR,x
+        bra eraseSpriteDragon3Fog444b
+eraseSpriteDragon3Fog444a anop
+        lda >BACKGROUND_ADDR,x
+        sta >SCREEN_ADDR,x
+eraseSpriteDragon3Fog444b anop
+        long m
+        lda >rowAddress
+        clc
+        adc >spriteX
+
+        clc
+        adc #6
+        tax
+
+
+        short m
+        lda >SURROUND_PIXEL_ADDR,x
+        cmp #$00
+        beq eraseSpriteDragon3Fog445a
+        sta >SCREEN_ADDR,x
+        bra eraseSpriteDragon3Fog445b
+eraseSpriteDragon3Fog445a anop
+        lda >BACKGROUND_ADDR,x
+        sta >SCREEN_ADDR,x
+eraseSpriteDragon3Fog445b anop
+        long m
+
+
+eraseSpriteDragon3FogSkipRowErase225 anop
+
+        lda >rowCounter
+        clc
+        adc #1
+        sta >rowCounter
+
+
+        cmp #199
+        bcs eraseSpriteDragon3FogSkipRowEraseShortJump226
+        bra eraseSpriteDragon3FogSkipRowEraseDontSkipRow226
+
+eraseSpriteDragon3FogSkipRowEraseShortJump226 anop
+        brl eraseSpriteDragon3FogSkipRowErase226
+eraseSpriteDragon3FogSkipRowEraseDontSkipRow226 anop
         lda >spriteY
         clc
-        adc #23
+        adc #24
         asl a
         tax
         lda >screenRowOffsets,x
@@ -20788,48 +20936,6 @@ eraseSpriteDragon3Fog443b anop
         short m
         lda >SURROUND_PIXEL_ADDR,x
         cmp #$00
-        beq eraseSpriteDragon3Fog444a
-        sta >SCREEN_ADDR,x
-        bra eraseSpriteDragon3Fog444b
-eraseSpriteDragon3Fog444a anop
-        lda >BACKGROUND_ADDR,x
-        sta >SCREEN_ADDR,x
-eraseSpriteDragon3Fog444b anop
-        long m
-
-        lda >rowAddress
-        clc
-        adc >spriteX
-
-        clc
-        adc #2
-        tax
-
-
-        short m
-        lda >SURROUND_PIXEL_ADDR,x
-        cmp #$00
-        beq eraseSpriteDragon3Fog445a
-        sta >SCREEN_ADDR,x
-        bra eraseSpriteDragon3Fog445b
-eraseSpriteDragon3Fog445a anop
-        lda >BACKGROUND_ADDR,x
-        sta >SCREEN_ADDR,x
-eraseSpriteDragon3Fog445b anop
-        long m
-
-        lda >rowAddress
-        clc
-        adc >spriteX
-
-        clc
-        adc #3
-        tax
-
-
-        short m
-        lda >SURROUND_PIXEL_ADDR,x
-        cmp #$00
         beq eraseSpriteDragon3Fog446a
         sta >SCREEN_ADDR,x
         bra eraseSpriteDragon3Fog446b
@@ -20838,13 +20944,12 @@ eraseSpriteDragon3Fog446a anop
         sta >SCREEN_ADDR,x
 eraseSpriteDragon3Fog446b anop
         long m
-
         lda >rowAddress
         clc
         adc >spriteX
 
         clc
-        adc #4
+        adc #2
         tax
 
 
@@ -20859,10 +20964,922 @@ eraseSpriteDragon3Fog447a anop
         sta >SCREEN_ADDR,x
 eraseSpriteDragon3Fog447b anop
         long m
+        lda >rowAddress
+        clc
+        adc >spriteX
+
+        clc
+        adc #3
+        tax
+
+
+        short m
+        lda >SURROUND_PIXEL_ADDR,x
+        cmp #$00
+        beq eraseSpriteDragon3Fog448a
+        sta >SCREEN_ADDR,x
+        bra eraseSpriteDragon3Fog448b
+eraseSpriteDragon3Fog448a anop
+        lda >BACKGROUND_ADDR,x
+        sta >SCREEN_ADDR,x
+eraseSpriteDragon3Fog448b anop
+        long m
+        lda >rowAddress
+        clc
+        adc >spriteX
+
+        clc
+        adc #4
+        tax
+
+
+        short m
+        lda >SURROUND_PIXEL_ADDR,x
+        cmp #$00
+        beq eraseSpriteDragon3Fog449a
+        sta >SCREEN_ADDR,x
+        bra eraseSpriteDragon3Fog449b
+eraseSpriteDragon3Fog449a anop
+        lda >BACKGROUND_ADDR,x
+        sta >SCREEN_ADDR,x
+eraseSpriteDragon3Fog449b anop
+        long m
+
+
+eraseSpriteDragon3FogSkipRowErase226 anop
+
+        lda >rowCounter
+        clc
+        adc #1
+        sta >rowCounter
+
+
+        cmp #199
+        bcs eraseSpriteDragon3FogSkipRowEraseShortJump227
+        bra eraseSpriteDragon3FogSkipRowEraseDontSkipRow227
+
+eraseSpriteDragon3FogSkipRowEraseShortJump227 anop
+        brl eraseSpriteDragon3FogSkipRowErase227
+eraseSpriteDragon3FogSkipRowEraseDontSkipRow227 anop
+        lda >spriteY
+        clc
+        adc #25
+        asl a
+        tax
+        lda >screenRowOffsets,x
+        sta >rowAddress
+
+        lda >rowAddress
+        clc
+        adc >spriteX
+
+        clc
+        adc #1
+        tax
+
+
+        short m
+        lda >SURROUND_PIXEL_ADDR,x
+        cmp #$00
+        beq eraseSpriteDragon3Fog450a
+        sta >SCREEN_ADDR,x
+        bra eraseSpriteDragon3Fog450b
+eraseSpriteDragon3Fog450a anop
+        lda >BACKGROUND_ADDR,x
+        sta >SCREEN_ADDR,x
+eraseSpriteDragon3Fog450b anop
+        long m
+        lda >rowAddress
+        clc
+        adc >spriteX
+
+        clc
+        adc #2
+        tax
+
+
+        short m
+        lda >SURROUND_PIXEL_ADDR,x
+        cmp #$00
+        beq eraseSpriteDragon3Fog451a
+        sta >SCREEN_ADDR,x
+        bra eraseSpriteDragon3Fog451b
+eraseSpriteDragon3Fog451a anop
+        lda >BACKGROUND_ADDR,x
+        sta >SCREEN_ADDR,x
+eraseSpriteDragon3Fog451b anop
+        long m
+        lda >rowAddress
+        clc
+        adc >spriteX
+
+        clc
+        adc #3
+        tax
+
+
+        short m
+        lda >SURROUND_PIXEL_ADDR,x
+        cmp #$00
+        beq eraseSpriteDragon3Fog452a
+        sta >SCREEN_ADDR,x
+        bra eraseSpriteDragon3Fog452b
+eraseSpriteDragon3Fog452a anop
+        lda >BACKGROUND_ADDR,x
+        sta >SCREEN_ADDR,x
+eraseSpriteDragon3Fog452b anop
+        long m
+        lda >rowAddress
+        clc
+        adc >spriteX
+
+        clc
+        adc #4
+        tax
+
+
+        short m
+        lda >SURROUND_PIXEL_ADDR,x
+        cmp #$00
+        beq eraseSpriteDragon3Fog453a
+        sta >SCREEN_ADDR,x
+        bra eraseSpriteDragon3Fog453b
+eraseSpriteDragon3Fog453a anop
+        lda >BACKGROUND_ADDR,x
+        sta >SCREEN_ADDR,x
+eraseSpriteDragon3Fog453b anop
+        long m
+
+
+eraseSpriteDragon3FogSkipRowErase227 anop
+
+        lda >rowCounter
+        clc
+        adc #1
+        sta >rowCounter
+
+
+        cmp #199
+        bcs eraseSpriteDragon3FogSkipRowEraseShortJump228
+        bra eraseSpriteDragon3FogSkipRowEraseDontSkipRow228
+
+eraseSpriteDragon3FogSkipRowEraseShortJump228 anop
+        brl eraseSpriteDragon3FogSkipRowErase228
+eraseSpriteDragon3FogSkipRowEraseDontSkipRow228 anop
+        lda >spriteY
+        clc
+        adc #26
+        asl a
+        tax
+        lda >screenRowOffsets,x
+        sta >rowAddress
+
+        lda >rowAddress
+        clc
+        adc >spriteX
+
+        clc
+        adc #2
+        tax
+
+
+        short m
+        lda >SURROUND_PIXEL_ADDR,x
+        cmp #$00
+        beq eraseSpriteDragon3Fog454a
+        sta >SCREEN_ADDR,x
+        bra eraseSpriteDragon3Fog454b
+eraseSpriteDragon3Fog454a anop
+        lda >BACKGROUND_ADDR,x
+        sta >SCREEN_ADDR,x
+eraseSpriteDragon3Fog454b anop
+        long m
+
+
+eraseSpriteDragon3FogSkipRowErase228 anop
+
+        lda >rowCounter
+        clc
+        adc #1
+        sta >rowCounter
+
+
+        cmp #199
+        bcs eraseSpriteDragon3FogSkipRowEraseShortJump229
+        bra eraseSpriteDragon3FogSkipRowEraseDontSkipRow229
+
+eraseSpriteDragon3FogSkipRowEraseShortJump229 anop
+        brl eraseSpriteDragon3FogSkipRowErase229
+eraseSpriteDragon3FogSkipRowEraseDontSkipRow229 anop
+        lda >spriteY
+        clc
+        adc #27
+        asl a
+        tax
+        lda >screenRowOffsets,x
+        sta >rowAddress
+
+        lda >rowAddress
+        clc
+        adc >spriteX
+
+        clc
+        adc #2
+        tax
+
+
+        short m
+        lda >SURROUND_PIXEL_ADDR,x
+        cmp #$00
+        beq eraseSpriteDragon3Fog455a
+        sta >SCREEN_ADDR,x
+        bra eraseSpriteDragon3Fog455b
+eraseSpriteDragon3Fog455a anop
+        lda >BACKGROUND_ADDR,x
+        sta >SCREEN_ADDR,x
+eraseSpriteDragon3Fog455b anop
+        long m
+
+
+eraseSpriteDragon3FogSkipRowErase229 anop
+
+        lda >rowCounter
+        clc
+        adc #1
+        sta >rowCounter
+
+
+        cmp #199
+        bcs eraseSpriteDragon3FogSkipRowEraseShortJump230
+        bra eraseSpriteDragon3FogSkipRowEraseDontSkipRow230
+
+eraseSpriteDragon3FogSkipRowEraseShortJump230 anop
+        brl eraseSpriteDragon3FogSkipRowErase230
+eraseSpriteDragon3FogSkipRowEraseDontSkipRow230 anop
+        lda >spriteY
+        clc
+        adc #28
+        asl a
+        tax
+        lda >screenRowOffsets,x
+        sta >rowAddress
+
+        lda >rowAddress
+        clc
+        adc >spriteX
+
+        clc
+        adc #1
+        tax
+
+
+        short m
+        lda >SURROUND_PIXEL_ADDR,x
+        cmp #$00
+        beq eraseSpriteDragon3Fog456a
+        sta >SCREEN_ADDR,x
+        bra eraseSpriteDragon3Fog456b
+eraseSpriteDragon3Fog456a anop
+        lda >BACKGROUND_ADDR,x
+        sta >SCREEN_ADDR,x
+eraseSpriteDragon3Fog456b anop
+        long m
+        lda >rowAddress
+        clc
+        adc >spriteX
+
+        clc
+        adc #2
+        tax
+
+
+        short m
+        lda >SURROUND_PIXEL_ADDR,x
+        cmp #$00
+        beq eraseSpriteDragon3Fog457a
+        sta >SCREEN_ADDR,x
+        bra eraseSpriteDragon3Fog457b
+eraseSpriteDragon3Fog457a anop
+        lda >BACKGROUND_ADDR,x
+        sta >SCREEN_ADDR,x
+eraseSpriteDragon3Fog457b anop
+        long m
+        lda >rowAddress
+        clc
+        adc >spriteX
+
+        clc
+        adc #4
+        tax
+
+
+        short m
+        lda >SURROUND_PIXEL_ADDR,x
+        cmp #$00
+        beq eraseSpriteDragon3Fog458a
+        sta >SCREEN_ADDR,x
+        bra eraseSpriteDragon3Fog458b
+eraseSpriteDragon3Fog458a anop
+        lda >BACKGROUND_ADDR,x
+        sta >SCREEN_ADDR,x
+eraseSpriteDragon3Fog458b anop
+        long m
+        lda >rowAddress
+        clc
+        adc >spriteX
+
+        clc
+        adc #5
+        tax
+
+
+        short m
+        lda >SURROUND_PIXEL_ADDR,x
+        cmp #$00
+        beq eraseSpriteDragon3Fog459a
+        sta >SCREEN_ADDR,x
+        bra eraseSpriteDragon3Fog459b
+eraseSpriteDragon3Fog459a anop
+        lda >BACKGROUND_ADDR,x
+        sta >SCREEN_ADDR,x
+eraseSpriteDragon3Fog459b anop
+        long m
+        lda >rowAddress
+        clc
+        adc >spriteX
+
+        clc
+        adc #6
+        tax
+
+
+        short m
+        lda >SURROUND_PIXEL_ADDR,x
+        cmp #$00
+        beq eraseSpriteDragon3Fog460a
+        sta >SCREEN_ADDR,x
+        bra eraseSpriteDragon3Fog460b
+eraseSpriteDragon3Fog460a anop
+        lda >BACKGROUND_ADDR,x
+        sta >SCREEN_ADDR,x
+eraseSpriteDragon3Fog460b anop
+        long m
+
+
+eraseSpriteDragon3FogSkipRowErase230 anop
+
+        lda >rowCounter
+        clc
+        adc #1
+        sta >rowCounter
+
+
+        cmp #199
+        bcs eraseSpriteDragon3FogSkipRowEraseShortJump231
+        bra eraseSpriteDragon3FogSkipRowEraseDontSkipRow231
+
+eraseSpriteDragon3FogSkipRowEraseShortJump231 anop
+        brl eraseSpriteDragon3FogSkipRowErase231
+eraseSpriteDragon3FogSkipRowEraseDontSkipRow231 anop
+        lda >spriteY
+        clc
+        adc #29
+        asl a
+        tax
+        lda >screenRowOffsets,x
+        sta >rowAddress
+
+        lda >rowAddress
+        clc
+        adc >spriteX
+
+        clc
+        adc #1
+        tax
+
+
+        short m
+        lda >SURROUND_PIXEL_ADDR,x
+        cmp #$00
+        beq eraseSpriteDragon3Fog461a
+        sta >SCREEN_ADDR,x
+        bra eraseSpriteDragon3Fog461b
+eraseSpriteDragon3Fog461a anop
+        lda >BACKGROUND_ADDR,x
+        sta >SCREEN_ADDR,x
+eraseSpriteDragon3Fog461b anop
+        long m
+        lda >rowAddress
+        clc
+        adc >spriteX
+
+        clc
+        adc #2
+        tax
+
+
+        short m
+        lda >SURROUND_PIXEL_ADDR,x
+        cmp #$00
+        beq eraseSpriteDragon3Fog462a
+        sta >SCREEN_ADDR,x
+        bra eraseSpriteDragon3Fog462b
+eraseSpriteDragon3Fog462a anop
+        lda >BACKGROUND_ADDR,x
+        sta >SCREEN_ADDR,x
+eraseSpriteDragon3Fog462b anop
+        long m
+        lda >rowAddress
+        clc
+        adc >spriteX
+
+        clc
+        adc #4
+        tax
+
+
+        short m
+        lda >SURROUND_PIXEL_ADDR,x
+        cmp #$00
+        beq eraseSpriteDragon3Fog463a
+        sta >SCREEN_ADDR,x
+        bra eraseSpriteDragon3Fog463b
+eraseSpriteDragon3Fog463a anop
+        lda >BACKGROUND_ADDR,x
+        sta >SCREEN_ADDR,x
+eraseSpriteDragon3Fog463b anop
+        long m
+        lda >rowAddress
+        clc
+        adc >spriteX
+
+        clc
+        adc #5
+        tax
+
+
+        short m
+        lda >SURROUND_PIXEL_ADDR,x
+        cmp #$00
+        beq eraseSpriteDragon3Fog464a
+        sta >SCREEN_ADDR,x
+        bra eraseSpriteDragon3Fog464b
+eraseSpriteDragon3Fog464a anop
+        lda >BACKGROUND_ADDR,x
+        sta >SCREEN_ADDR,x
+eraseSpriteDragon3Fog464b anop
+        long m
+        lda >rowAddress
+        clc
+        adc >spriteX
+
+        clc
+        adc #6
+        tax
+
+
+        short m
+        lda >SURROUND_PIXEL_ADDR,x
+        cmp #$00
+        beq eraseSpriteDragon3Fog465a
+        sta >SCREEN_ADDR,x
+        bra eraseSpriteDragon3Fog465b
+eraseSpriteDragon3Fog465a anop
+        lda >BACKGROUND_ADDR,x
+        sta >SCREEN_ADDR,x
+eraseSpriteDragon3Fog465b anop
+        long m
+
+
+eraseSpriteDragon3FogSkipRowErase231 anop
+
+        lda >rowCounter
+        clc
+        adc #1
+        sta >rowCounter
+
+
+        cmp #199
+        bcs eraseSpriteDragon3FogSkipRowEraseShortJump232
+        bra eraseSpriteDragon3FogSkipRowEraseDontSkipRow232
+
+eraseSpriteDragon3FogSkipRowEraseShortJump232 anop
+        brl eraseSpriteDragon3FogSkipRowErase232
+eraseSpriteDragon3FogSkipRowEraseDontSkipRow232 anop
+        lda >spriteY
+        clc
+        adc #30
+        asl a
+        tax
+        lda >screenRowOffsets,x
+        sta >rowAddress
+
+        lda >rowAddress
+        clc
+        adc >spriteX
+
+        clc
+        adc #1
+        tax
+
+
+        short m
+        lda >SURROUND_PIXEL_ADDR,x
+        cmp #$00
+        beq eraseSpriteDragon3Fog466a
+        sta >SCREEN_ADDR,x
+        bra eraseSpriteDragon3Fog466b
+eraseSpriteDragon3Fog466a anop
+        lda >BACKGROUND_ADDR,x
+        sta >SCREEN_ADDR,x
+eraseSpriteDragon3Fog466b anop
+        long m
+        lda >rowAddress
+        clc
+        adc >spriteX
+
+        clc
+        adc #6
+        tax
+
+
+        short m
+        lda >SURROUND_PIXEL_ADDR,x
+        cmp #$00
+        beq eraseSpriteDragon3Fog467a
+        sta >SCREEN_ADDR,x
+        bra eraseSpriteDragon3Fog467b
+eraseSpriteDragon3Fog467a anop
+        lda >BACKGROUND_ADDR,x
+        sta >SCREEN_ADDR,x
+eraseSpriteDragon3Fog467b anop
+        long m
+
+
+eraseSpriteDragon3FogSkipRowErase232 anop
+
+        lda >rowCounter
+        clc
+        adc #1
+        sta >rowCounter
+
+
+        cmp #199
+        bcs eraseSpriteDragon3FogSkipRowEraseShortJump233
+        bra eraseSpriteDragon3FogSkipRowEraseDontSkipRow233
+
+eraseSpriteDragon3FogSkipRowEraseShortJump233 anop
+        brl eraseSpriteDragon3FogSkipRowErase233
+eraseSpriteDragon3FogSkipRowEraseDontSkipRow233 anop
+        lda >spriteY
+        clc
+        adc #31
+        asl a
+        tax
+        lda >screenRowOffsets,x
+        sta >rowAddress
+
+        lda >rowAddress
+        clc
+        adc >spriteX
+
+        clc
+        adc #1
+        tax
+
+
+        short m
+        lda >SURROUND_PIXEL_ADDR,x
+        cmp #$00
+        beq eraseSpriteDragon3Fog468a
+        sta >SCREEN_ADDR,x
+        bra eraseSpriteDragon3Fog468b
+eraseSpriteDragon3Fog468a anop
+        lda >BACKGROUND_ADDR,x
+        sta >SCREEN_ADDR,x
+eraseSpriteDragon3Fog468b anop
+        long m
+        lda >rowAddress
+        clc
+        adc >spriteX
+
+        clc
+        adc #6
+        tax
+
+
+        short m
+        lda >SURROUND_PIXEL_ADDR,x
+        cmp #$00
+        beq eraseSpriteDragon3Fog469a
+        sta >SCREEN_ADDR,x
+        bra eraseSpriteDragon3Fog469b
+eraseSpriteDragon3Fog469a anop
+        lda >BACKGROUND_ADDR,x
+        sta >SCREEN_ADDR,x
+eraseSpriteDragon3Fog469b anop
+        long m
+
+
+eraseSpriteDragon3FogSkipRowErase233 anop
+
+        lda >rowCounter
+        clc
+        adc #1
+        sta >rowCounter
+
+
+        cmp #199
+        bcs eraseSpriteDragon3FogSkipRowEraseShortJump234
+        bra eraseSpriteDragon3FogSkipRowEraseDontSkipRow234
+
+eraseSpriteDragon3FogSkipRowEraseShortJump234 anop
+        brl eraseSpriteDragon3FogSkipRowErase234
+eraseSpriteDragon3FogSkipRowEraseDontSkipRow234 anop
+        lda >spriteY
+        clc
+        adc #32
+        asl a
+        tax
+        lda >screenRowOffsets,x
+        sta >rowAddress
+
+        lda >rowAddress
+        clc
+        adc >spriteX
+
+        clc
+        adc #1
+        tax
+
+
+        short m
+        lda >SURROUND_PIXEL_ADDR,x
+        cmp #$00
+        beq eraseSpriteDragon3Fog470a
+        sta >SCREEN_ADDR,x
+        bra eraseSpriteDragon3Fog470b
+eraseSpriteDragon3Fog470a anop
+        lda >BACKGROUND_ADDR,x
+        sta >SCREEN_ADDR,x
+eraseSpriteDragon3Fog470b anop
+        long m
+        lda >rowAddress
+        clc
+        adc >spriteX
+
+        clc
+        adc #2
+        tax
+
+
+        short m
+        lda >SURROUND_PIXEL_ADDR,x
+        cmp #$00
+        beq eraseSpriteDragon3Fog471a
+        sta >SCREEN_ADDR,x
+        bra eraseSpriteDragon3Fog471b
+eraseSpriteDragon3Fog471a anop
+        lda >BACKGROUND_ADDR,x
+        sta >SCREEN_ADDR,x
+eraseSpriteDragon3Fog471b anop
+        long m
+        lda >rowAddress
+        clc
+        adc >spriteX
+
+        clc
+        adc #3
+        tax
+
+
+        short m
+        lda >SURROUND_PIXEL_ADDR,x
+        cmp #$00
+        beq eraseSpriteDragon3Fog472a
+        sta >SCREEN_ADDR,x
+        bra eraseSpriteDragon3Fog472b
+eraseSpriteDragon3Fog472a anop
+        lda >BACKGROUND_ADDR,x
+        sta >SCREEN_ADDR,x
+eraseSpriteDragon3Fog472b anop
+        long m
+        lda >rowAddress
+        clc
+        adc >spriteX
+
+        clc
+        adc #4
+        tax
+
+
+        short m
+        lda >SURROUND_PIXEL_ADDR,x
+        cmp #$00
+        beq eraseSpriteDragon3Fog473a
+        sta >SCREEN_ADDR,x
+        bra eraseSpriteDragon3Fog473b
+eraseSpriteDragon3Fog473a anop
+        lda >BACKGROUND_ADDR,x
+        sta >SCREEN_ADDR,x
+eraseSpriteDragon3Fog473b anop
+        long m
+        lda >rowAddress
+        clc
+        adc >spriteX
+
+        clc
+        adc #5
+        tax
+
+
+        short m
+        lda >SURROUND_PIXEL_ADDR,x
+        cmp #$00
+        beq eraseSpriteDragon3Fog474a
+        sta >SCREEN_ADDR,x
+        bra eraseSpriteDragon3Fog474b
+eraseSpriteDragon3Fog474a anop
+        lda >BACKGROUND_ADDR,x
+        sta >SCREEN_ADDR,x
+eraseSpriteDragon3Fog474b anop
+        long m
+        lda >rowAddress
+        clc
+        adc >spriteX
+
+        clc
+        adc #6
+        tax
+
+
+        short m
+        lda >SURROUND_PIXEL_ADDR,x
+        cmp #$00
+        beq eraseSpriteDragon3Fog475a
+        sta >SCREEN_ADDR,x
+        bra eraseSpriteDragon3Fog475b
+eraseSpriteDragon3Fog475a anop
+        lda >BACKGROUND_ADDR,x
+        sta >SCREEN_ADDR,x
+eraseSpriteDragon3Fog475b anop
+        long m
+
+
+eraseSpriteDragon3FogSkipRowErase234 anop
+
+        lda >rowCounter
+        clc
+        adc #1
+        sta >rowCounter
+
+
+        cmp #199
+        bcs eraseSpriteDragon3FogSkipRowEraseShortJump235
+        bra eraseSpriteDragon3FogSkipRowEraseDontSkipRow235
+
+eraseSpriteDragon3FogSkipRowEraseShortJump235 anop
+        brl eraseSpriteDragon3FogSkipRowErase235
+eraseSpriteDragon3FogSkipRowEraseDontSkipRow235 anop
+        lda >spriteY
+        clc
+        adc #33
+        asl a
+        tax
+        lda >screenRowOffsets,x
+        sta >rowAddress
+
+        lda >rowAddress
+        clc
+        adc >spriteX
+
+        clc
+        adc #1
+        tax
+
+
+        short m
+        lda >SURROUND_PIXEL_ADDR,x
+        cmp #$00
+        beq eraseSpriteDragon3Fog476a
+        sta >SCREEN_ADDR,x
+        bra eraseSpriteDragon3Fog476b
+eraseSpriteDragon3Fog476a anop
+        lda >BACKGROUND_ADDR,x
+        sta >SCREEN_ADDR,x
+eraseSpriteDragon3Fog476b anop
+        long m
+        lda >rowAddress
+        clc
+        adc >spriteX
+
+        clc
+        adc #2
+        tax
+
+
+        short m
+        lda >SURROUND_PIXEL_ADDR,x
+        cmp #$00
+        beq eraseSpriteDragon3Fog477a
+        sta >SCREEN_ADDR,x
+        bra eraseSpriteDragon3Fog477b
+eraseSpriteDragon3Fog477a anop
+        lda >BACKGROUND_ADDR,x
+        sta >SCREEN_ADDR,x
+eraseSpriteDragon3Fog477b anop
+        long m
+        lda >rowAddress
+        clc
+        adc >spriteX
+
+        clc
+        adc #3
+        tax
+
+
+        short m
+        lda >SURROUND_PIXEL_ADDR,x
+        cmp #$00
+        beq eraseSpriteDragon3Fog478a
+        sta >SCREEN_ADDR,x
+        bra eraseSpriteDragon3Fog478b
+eraseSpriteDragon3Fog478a anop
+        lda >BACKGROUND_ADDR,x
+        sta >SCREEN_ADDR,x
+eraseSpriteDragon3Fog478b anop
+        long m
+        lda >rowAddress
+        clc
+        adc >spriteX
+
+        clc
+        adc #4
+        tax
+
+
+        short m
+        lda >SURROUND_PIXEL_ADDR,x
+        cmp #$00
+        beq eraseSpriteDragon3Fog479a
+        sta >SCREEN_ADDR,x
+        bra eraseSpriteDragon3Fog479b
+eraseSpriteDragon3Fog479a anop
+        lda >BACKGROUND_ADDR,x
+        sta >SCREEN_ADDR,x
+eraseSpriteDragon3Fog479b anop
+        long m
+        lda >rowAddress
+        clc
+        adc >spriteX
+
+        clc
+        adc #5
+        tax
+
+
+        short m
+        lda >SURROUND_PIXEL_ADDR,x
+        cmp #$00
+        beq eraseSpriteDragon3Fog480a
+        sta >SCREEN_ADDR,x
+        bra eraseSpriteDragon3Fog480b
+eraseSpriteDragon3Fog480a anop
+        lda >BACKGROUND_ADDR,x
+        sta >SCREEN_ADDR,x
+eraseSpriteDragon3Fog480b anop
+        long m
+        lda >rowAddress
+        clc
+        adc >spriteX
+
+        clc
+        adc #6
+        tax
+
+
+        short m
+        lda >SURROUND_PIXEL_ADDR,x
+        cmp #$00
+        beq eraseSpriteDragon3Fog481a
+        sta >SCREEN_ADDR,x
+        bra eraseSpriteDragon3Fog481b
+eraseSpriteDragon3Fog481a anop
+        lda >BACKGROUND_ADDR,x
+        sta >SCREEN_ADDR,x
+eraseSpriteDragon3Fog481b anop
+        long m
+
+
+eraseSpriteDragon3FogSkipRowErase235 anop
+
+        lda >rowCounter
+        clc
+        adc #1
+        sta >rowCounter
 
 
         rtl
-
 
 
         end

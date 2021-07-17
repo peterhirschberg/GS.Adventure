@@ -20,6 +20,11 @@ drawSpriteBat1 entry
         spriteGetDrawAddress
         _spriteHeader
 
+        lda >spriteY
+        sta >rowCounter
+
+        cmp #199
+        bcs drawSpriteBat1SkipRowDraw0
 
         lda >drawAddress
         clc
@@ -33,6 +38,16 @@ drawSpriteBat1 entry
         sta 7
         long m
 
+drawSpriteBat1SkipRowDraw0 anop
+
+        lda >rowCounter
+        clc
+        adc #1
+        sta >rowCounter
+
+        cmp #199
+        bcs drawSpriteBat1SkipRowDraw1
+
         lda >drawAddress
         clc
         adc #160
@@ -45,6 +60,16 @@ drawSpriteBat1 entry
         sta 7
         long m
 
+drawSpriteBat1SkipRowDraw1 anop
+
+        lda >rowCounter
+        clc
+        adc #1
+        sta >rowCounter
+
+        cmp #199
+        bcs drawSpriteBat1SkipRowDraw2
+
         lda >drawAddress
         clc
         adc #320
@@ -54,10 +79,18 @@ drawSpriteBat1 entry
         lda #$00
 
         sta 0
-        sta 1
-        sta 6
         sta 7
         long m
+
+drawSpriteBat1SkipRowDraw2 anop
+
+        lda >rowCounter
+        clc
+        adc #1
+        sta >rowCounter
+
+        cmp #199
+        bcs drawSpriteBat1SkipRowDraw3
 
         lda >drawAddress
         clc
@@ -68,10 +101,18 @@ drawSpriteBat1 entry
         lda #$00
 
         sta 0
-        sta 1
-        sta 6
         sta 7
         long m
+
+drawSpriteBat1SkipRowDraw3 anop
+
+        lda >rowCounter
+        clc
+        adc #1
+        sta >rowCounter
+
+        cmp #199
+        bcs drawSpriteBat1SkipRowDraw4
 
         lda >drawAddress
         clc
@@ -87,6 +128,16 @@ drawSpriteBat1 entry
         sta 7
         long m
 
+drawSpriteBat1SkipRowDraw4 anop
+
+        lda >rowCounter
+        clc
+        adc #1
+        sta >rowCounter
+
+        cmp #199
+        bcs drawSpriteBat1SkipRowDraw5
+
         lda >drawAddress
         clc
         adc #800
@@ -101,6 +152,16 @@ drawSpriteBat1 entry
         sta 7
         long m
 
+drawSpriteBat1SkipRowDraw5 anop
+
+        lda >rowCounter
+        clc
+        adc #1
+        sta >rowCounter
+
+        cmp #199
+        bcs drawSpriteBat1SkipRowDraw6
+
         lda >drawAddress
         clc
         adc #960
@@ -111,13 +172,19 @@ drawSpriteBat1 entry
 
         sta 0
         sta 1
-        sta 2
-        sta 3
-        sta 4
-        sta 5
         sta 6
         sta 7
         long m
+
+drawSpriteBat1SkipRowDraw6 anop
+
+        lda >rowCounter
+        clc
+        adc #1
+        sta >rowCounter
+
+        cmp #199
+        bcs drawSpriteBat1SkipRowDraw7
 
         lda >drawAddress
         clc
@@ -129,13 +196,19 @@ drawSpriteBat1 entry
 
         sta 0
         sta 1
-        sta 2
-        sta 3
-        sta 4
-        sta 5
         sta 6
         sta 7
         long m
+
+drawSpriteBat1SkipRowDraw7 anop
+
+        lda >rowCounter
+        clc
+        adc #1
+        sta >rowCounter
+
+        cmp #199
+        bcs drawSpriteBat1SkipRowDraw8
 
         lda >drawAddress
         clc
@@ -145,11 +218,25 @@ drawSpriteBat1 entry
         short m
         lda #$00
 
+        sta 0
         sta 1
+        sta 2
         sta 3
         sta 4
+        sta 5
         sta 6
+        sta 7
         long m
+
+drawSpriteBat1SkipRowDraw8 anop
+
+        lda >rowCounter
+        clc
+        adc #1
+        sta >rowCounter
+
+        cmp #199
+        bcs drawSpriteBat1SkipRowDraw9
 
         lda >drawAddress
         clc
@@ -159,11 +246,25 @@ drawSpriteBat1 entry
         short m
         lda #$00
 
+        sta 0
         sta 1
+        sta 2
         sta 3
         sta 4
+        sta 5
         sta 6
+        sta 7
         long m
+
+drawSpriteBat1SkipRowDraw9 anop
+
+        lda >rowCounter
+        clc
+        adc #1
+        sta >rowCounter
+
+        cmp #199
+        bcs drawSpriteBat1SkipRowDraw10
 
         lda >drawAddress
         clc
@@ -174,14 +275,48 @@ drawSpriteBat1 entry
         lda #$00
 
         sta 1
-        sta 2
-        sta 5
+        sta 3
+        sta 4
         sta 6
         long m
+
+drawSpriteBat1SkipRowDraw10 anop
+
+        lda >rowCounter
+        clc
+        adc #1
+        sta >rowCounter
+
+        cmp #199
+        bcs drawSpriteBat1SkipRowDraw11
 
         lda >drawAddress
         clc
         adc #1760
+        tcd
+
+        short m
+        lda #$00
+
+        sta 1
+        sta 3
+        sta 4
+        sta 6
+        long m
+
+drawSpriteBat1SkipRowDraw11 anop
+
+        lda >rowCounter
+        clc
+        adc #1
+        sta >rowCounter
+
+        cmp #199
+        bcs drawSpriteBat1SkipRowDraw12
+
+        lda >drawAddress
+        clc
+        adc #1920
         tcd
 
         short m
@@ -193,15 +328,15 @@ drawSpriteBat1 entry
         sta 6
         long m
 
-        lda >drawAddress
+drawSpriteBat1SkipRowDraw12 anop
+
+        lda >rowCounter
         clc
-        adc #1920
-        tcd
+        adc #1
+        sta >rowCounter
 
-        short m
-        lda #$00
-
-        long m
+        cmp #199
+        bcs drawSpriteBat1SkipRowDraw13
 
         lda >drawAddress
         clc
@@ -211,2447 +346,18 @@ drawSpriteBat1 entry
         short m
         lda #$00
 
+        sta 1
+        sta 2
+        sta 5
+        sta 6
         long m
 
-        lda >drawAddress
-        clc
-        adc #2240
-        tcd
-
-        short m
-        lda #$00
-
-        long m
-
-        lda >drawAddress
-        clc
-        adc #2400
-        tcd
-
-        short m
-        lda #$00
-
-        long m
-
-        lda >drawAddress
-        clc
-        adc #2560
-        tcd
-
-        short m
-        lda #$00
-
-        long m
-
-        lda >drawAddress
-        clc
-        adc #2720
-        tcd
-
-        short m
-        lda #$00
-
-        long m
-
-        lda >drawAddress
-        clc
-        adc #2880
-        tcd
-
-        short m
-        lda #$00
-
-        long m
-
-        lda >drawAddress
-        clc
-        adc #3040
-        tcd
-
-        short m
-        lda #$00
-
-        long m
-
-        lda >drawAddress
-        clc
-        adc #3200
-        tcd
-
-        short m
-        lda #$00
-
-        long m
-
-        lda >drawAddress
-        clc
-        adc #3360
-        tcd
-
-        short m
-        lda #$00
-
-        long m
-
-        lda >drawAddress
-        clc
-        adc #3520
-        tcd
-
-        short m
-        lda #$00
-
-        long m
-
-        lda >drawAddress
-        clc
-        adc #3680
-        tcd
-
-        short m
-        lda #$00
-
-        long m
-
-        lda >drawAddress
-        clc
-        adc #3840
-        tcd
-
-        short m
-        lda #$00
-
-        long m
-
-        lda >drawAddress
-        clc
-        adc #4000
-        tcd
-
-        short m
-        lda #$00
-
-        long m
-
-        lda >drawAddress
-        clc
-        adc #4160
-        tcd
-
-        short m
-        lda #$00
-
-        long m
-
-        lda >drawAddress
-        clc
-        adc #4320
-        tcd
-
-        short m
-        lda #$00
-
-        long m
-
-        lda >drawAddress
-        clc
-        adc #4480
-        tcd
-
-        short m
-        lda #$00
-
-        long m
-
-        lda >drawAddress
-        clc
-        adc #4640
-        tcd
-
-        short m
-        lda #$00
-
-        long m
-
-        lda >drawAddress
-        clc
-        adc #4800
-        tcd
-
-        short m
-        lda #$00
-
-        long m
-
-        lda >drawAddress
-        clc
-        adc #4960
-        tcd
-
-        short m
-        lda #$00
-
-        long m
-
-        lda >drawAddress
-        clc
-        adc #5120
-        tcd
-
-        short m
-        lda #$00
-
-        long m
-
-        lda >drawAddress
-        clc
-        adc #5280
-        tcd
-
-        short m
-        lda #$00
-
-        long m
-
-        lda >drawAddress
-        clc
-        adc #5440
-        tcd
-
-        short m
-        lda #$00
-
-        long m
-
-        lda >drawAddress
-        clc
-        adc #5600
-        tcd
-
-        short m
-        lda #$00
-
-        long m
-
-        lda >drawAddress
-        clc
-        adc #5760
-        tcd
-
-        short m
-        lda #$00
-
-        long m
-
-        lda >drawAddress
-        clc
-        adc #5920
-        tcd
-
-        short m
-        lda #$00
-
-        long m
-
-        lda >drawAddress
-        clc
-        adc #6080
-        tcd
-
-        short m
-        lda #$00
-
-        long m
-
-        lda >drawAddress
-        clc
-        adc #6240
-        tcd
-
-        short m
-        lda #$00
-
-        long m
-
-        lda >drawAddress
-        clc
-        adc #6400
-        tcd
-
-        short m
-        lda #$00
-
-        long m
-
-        lda >drawAddress
-        clc
-        adc #6560
-        tcd
-
-        short m
-        lda #$00
-
-        long m
-
-        lda >drawAddress
-        clc
-        adc #6720
-        tcd
-
-        short m
-        lda #$00
-
-        long m
-
-        lda >drawAddress
-        clc
-        adc #6880
-        tcd
-
-        short m
-        lda #$00
-
-        long m
-
-        lda >drawAddress
-        clc
-        adc #7040
-        tcd
-
-        short m
-        lda #$00
-
-        long m
-
-        lda >drawAddress
-        clc
-        adc #7200
-        tcd
-
-        short m
-        lda #$00
-
-        long m
-
-        lda >drawAddress
-        clc
-        adc #7360
-        tcd
-
-        short m
-        lda #$00
-
-        long m
-
-        lda >drawAddress
-        clc
-        adc #7520
-        tcd
-
-        short m
-        lda #$00
-
-        long m
-
-        lda >drawAddress
-        clc
-        adc #7680
-        tcd
-
-        short m
-        lda #$00
-
-        long m
-
-        lda >drawAddress
-        clc
-        adc #7840
-        tcd
-
-        short m
-        lda #$00
-
-        long m
-
-        lda >drawAddress
-        clc
-        adc #8000
-        tcd
-
-        short m
-        lda #$00
-
-        long m
-
-        lda >drawAddress
-        clc
-        adc #8160
-        tcd
-
-        short m
-        lda #$00
-
-        long m
-
-        lda >drawAddress
-        clc
-        adc #8320
-        tcd
-
-        short m
-        lda #$00
-
-        long m
-
-        lda >drawAddress
-        clc
-        adc #8480
-        tcd
-
-        short m
-        lda #$00
-
-        long m
-
-        lda >drawAddress
-        clc
-        adc #8640
-        tcd
-
-        short m
-        lda #$00
-
-        long m
-
-        lda >drawAddress
-        clc
-        adc #8800
-        tcd
-
-        short m
-        lda #$00
-
-        long m
-
-        lda >drawAddress
-        clc
-        adc #8960
-        tcd
-
-        short m
-        lda #$00
-
-        long m
-
-        lda >drawAddress
-        clc
-        adc #9120
-        tcd
-
-        short m
-        lda #$00
-
-        long m
-
-        lda >drawAddress
-        clc
-        adc #9280
-        tcd
-
-        short m
-        lda #$00
-
-        long m
-
-        lda >drawAddress
-        clc
-        adc #9440
-        tcd
-
-        short m
-        lda #$00
-
-        long m
-
-        lda >drawAddress
-        clc
-        adc #9600
-        tcd
-
-        short m
-        lda #$00
-
-        long m
-
-        lda >drawAddress
-        clc
-        adc #9760
-        tcd
-
-        short m
-        lda #$00
-
-        long m
-
-        lda >drawAddress
-        clc
-        adc #9920
-        tcd
-
-        short m
-        lda #$00
-
-        long m
-
-        lda >drawAddress
-        clc
-        adc #10080
-        tcd
-
-        short m
-        lda #$00
-
-        long m
-
-        lda >drawAddress
-        clc
-        adc #10240
-        tcd
-
-        short m
-        lda #$00
-
-        long m
-
-        lda >drawAddress
-        clc
-        adc #10400
-        tcd
-
-        short m
-        lda #$00
-
-        long m
-
-        lda >drawAddress
-        clc
-        adc #10560
-        tcd
-
-        short m
-        lda #$00
-
-        long m
-
-        lda >drawAddress
-        clc
-        adc #10720
-        tcd
-
-        short m
-        lda #$00
-
-        long m
-
-        lda >drawAddress
-        clc
-        adc #10880
-        tcd
-
-        short m
-        lda #$00
-
-        long m
-
-        lda >drawAddress
-        clc
-        adc #11040
-        tcd
-
-        short m
-        lda #$00
-
-        long m
-
-        lda >drawAddress
-        clc
-        adc #11200
-        tcd
-
-        short m
-        lda #$00
-
-        long m
-
-        lda >drawAddress
-        clc
-        adc #11360
-        tcd
-
-        short m
-        lda #$00
-
-        long m
-
-        lda >drawAddress
-        clc
-        adc #11520
-        tcd
-
-        short m
-        lda #$00
-
-        long m
-
-        lda >drawAddress
-        clc
-        adc #11680
-        tcd
-
-        short m
-        lda #$00
-
-        long m
-
-        lda >drawAddress
-        clc
-        adc #11840
-        tcd
-
-        short m
-        lda #$00
-
-        long m
-
-        lda >drawAddress
-        clc
-        adc #12000
-        tcd
-
-        short m
-        lda #$00
-
-        long m
-
-        lda >drawAddress
-        clc
-        adc #12160
-        tcd
-
-        short m
-        lda #$00
-
-        long m
-
-        lda >drawAddress
-        clc
-        adc #12320
-        tcd
-
-        short m
-        lda #$00
-
-        long m
-
-        lda >drawAddress
-        clc
-        adc #12480
-        tcd
-
-        short m
-        lda #$00
-
-        long m
-
-        lda >drawAddress
-        clc
-        adc #12640
-        tcd
-
-        short m
-        lda #$00
-
-        long m
-
-        lda >drawAddress
-        clc
-        adc #12800
-        tcd
-
-        short m
-        lda #$00
-
-        long m
-
-        lda >drawAddress
-        clc
-        adc #12960
-        tcd
-
-        short m
-        lda #$00
-
-        long m
-
-        lda >drawAddress
-        clc
-        adc #13120
-        tcd
-
-        short m
-        lda #$00
-
-        long m
-
-        lda >drawAddress
-        clc
-        adc #13280
-        tcd
-
-        short m
-        lda #$00
-
-        long m
-
-        lda >drawAddress
-        clc
-        adc #13440
-        tcd
-
-        short m
-        lda #$00
-
-        long m
-
-        lda >drawAddress
-        clc
-        adc #13600
-        tcd
-
-        short m
-        lda #$00
-
-        long m
-
-        lda >drawAddress
-        clc
-        adc #13760
-        tcd
-
-        short m
-        lda #$00
-
-        long m
-
-        lda >drawAddress
-        clc
-        adc #13920
-        tcd
-
-        short m
-        lda #$00
-
-        long m
-
-        lda >drawAddress
-        clc
-        adc #14080
-        tcd
-
-        short m
-        lda #$00
-
-        long m
-
-        lda >drawAddress
-        clc
-        adc #14240
-        tcd
-
-        short m
-        lda #$00
-
-        long m
-
-        lda >drawAddress
-        clc
-        adc #14400
-        tcd
-
-        short m
-        lda #$00
-
-        long m
-
-        lda >drawAddress
-        clc
-        adc #14560
-        tcd
-
-        short m
-        lda #$00
-
-        long m
-
-        lda >drawAddress
-        clc
-        adc #14720
-        tcd
-
-        short m
-        lda #$00
-
-        long m
-
-        lda >drawAddress
-        clc
-        adc #14880
-        tcd
-
-        short m
-        lda #$00
-
-        long m
-
-        lda >drawAddress
-        clc
-        adc #15040
-        tcd
-
-        short m
-        lda #$00
-
-        long m
-
-        lda >drawAddress
-        clc
-        adc #15200
-        tcd
-
-        short m
-        lda #$00
-
-        long m
-
-        lda >drawAddress
-        clc
-        adc #15360
-        tcd
-
-        short m
-        lda #$00
-
-        long m
-
-        lda >drawAddress
-        clc
-        adc #15520
-        tcd
-
-        short m
-        lda #$00
-
-        long m
-
-        lda >drawAddress
-        clc
-        adc #15680
-        tcd
-
-        short m
-        lda #$00
-
-        long m
-
-        lda >drawAddress
-        clc
-        adc #15840
-        tcd
-
-        short m
-        lda #$00
-
-        long m
-
-        lda >drawAddress
-        clc
-        adc #16000
-        tcd
-
-        short m
-        lda #$00
-
-        long m
-
-        lda >drawAddress
-        clc
-        adc #16160
-        tcd
-
-        short m
-        lda #$00
-
-        long m
-
-        lda >drawAddress
-        clc
-        adc #16320
-        tcd
-
-        short m
-        lda #$00
-
-        long m
-
-        lda >drawAddress
-        clc
-        adc #16480
-        tcd
-
-        short m
-        lda #$00
-
-        long m
-
-        lda >drawAddress
-        clc
-        adc #16640
-        tcd
-
-        short m
-        lda #$00
-
-        long m
-
-        lda >drawAddress
-        clc
-        adc #16800
-        tcd
-
-        short m
-        lda #$00
-
-        long m
-
-        lda >drawAddress
-        clc
-        adc #16960
-        tcd
-
-        short m
-        lda #$00
-
-        long m
-
-        lda >drawAddress
-        clc
-        adc #17120
-        tcd
-
-        short m
-        lda #$00
-
-        long m
-
-        lda >drawAddress
-        clc
-        adc #17280
-        tcd
-
-        short m
-        lda #$00
-
-        long m
-
-        lda >drawAddress
-        clc
-        adc #17440
-        tcd
-
-        short m
-        lda #$00
-
-        long m
-
-        lda >drawAddress
-        clc
-        adc #17600
-        tcd
-
-        short m
-        lda #$00
-
-        long m
-
-        lda >drawAddress
-        clc
-        adc #17760
-        tcd
-
-        short m
-        lda #$00
-
-        long m
-
-        lda >drawAddress
-        clc
-        adc #17920
-        tcd
-
-        short m
-        lda #$00
-
-        long m
-
-        lda >drawAddress
-        clc
-        adc #18080
-        tcd
-
-        short m
-        lda #$00
-
-        long m
-
-        lda >drawAddress
-        clc
-        adc #18240
-        tcd
-
-        short m
-        lda #$00
-
-        long m
-
-        lda >drawAddress
-        clc
-        adc #18400
-        tcd
-
-        short m
-        lda #$00
-
-        long m
-
-        lda >drawAddress
-        clc
-        adc #18560
-        tcd
-
-        short m
-        lda #$00
-
-        long m
-
-        lda >drawAddress
-        clc
-        adc #18720
-        tcd
-
-        short m
-        lda #$00
-
-        long m
-
-        lda >drawAddress
-        clc
-        adc #18880
-        tcd
-
-        short m
-        lda #$00
-
-        long m
-
-        lda >drawAddress
-        clc
-        adc #19040
-        tcd
-
-        short m
-        lda #$00
-
-        long m
-
-        lda >drawAddress
-        clc
-        adc #19200
-        tcd
-
-        short m
-        lda #$00
-
-        long m
-
-        lda >drawAddress
-        clc
-        adc #19360
-        tcd
-
-        short m
-        lda #$00
-
-        long m
-
-        lda >drawAddress
-        clc
-        adc #19520
-        tcd
-
-        short m
-        lda #$00
-
-        long m
-
-        lda >drawAddress
-        clc
-        adc #19680
-        tcd
-
-        short m
-        lda #$00
-
-        long m
-
-        lda >drawAddress
-        clc
-        adc #19840
-        tcd
-
-        short m
-        lda #$00
-
-        long m
-
-        lda >drawAddress
-        clc
-        adc #20000
-        tcd
-
-        short m
-        lda #$00
-
-        long m
-
-        lda >drawAddress
-        clc
-        adc #20160
-        tcd
-
-        short m
-        lda #$00
-
-        long m
-
-        lda >drawAddress
-        clc
-        adc #20320
-        tcd
-
-        short m
-        lda #$00
-
-        long m
-
-        lda >drawAddress
-        clc
-        adc #20480
-        tcd
-
-        short m
-        lda #$00
-
-        long m
-
-        lda >drawAddress
-        clc
-        adc #20640
-        tcd
-
-        short m
-        lda #$00
-
-        long m
-
-        lda >drawAddress
-        clc
-        adc #20800
-        tcd
-
-        short m
-        lda #$00
-
-        long m
-
-        lda >drawAddress
-        clc
-        adc #20960
-        tcd
-
-        short m
-        lda #$00
-
-        long m
-
-        lda >drawAddress
-        clc
-        adc #21120
-        tcd
-
-        short m
-        lda #$00
-
-        long m
-
-        lda >drawAddress
-        clc
-        adc #21280
-        tcd
-
-        short m
-        lda #$00
-
-        long m
-
-        lda >drawAddress
-        clc
-        adc #21440
-        tcd
-
-        short m
-        lda #$00
-
-        long m
-
-        lda >drawAddress
-        clc
-        adc #21600
-        tcd
-
-        short m
-        lda #$00
-
-        long m
-
-        lda >drawAddress
-        clc
-        adc #21760
-        tcd
-
-        short m
-        lda #$00
-
-        long m
-
-        lda >drawAddress
-        clc
-        adc #21920
-        tcd
-
-        short m
-        lda #$00
-
-        long m
-
-        lda >drawAddress
-        clc
-        adc #22080
-        tcd
-
-        short m
-        lda #$00
-
-        long m
-
-        lda >drawAddress
-        clc
-        adc #22240
-        tcd
-
-        short m
-        lda #$00
-
-        long m
-
-        lda >drawAddress
-        clc
-        adc #22400
-        tcd
-
-        short m
-        lda #$00
-
-        long m
-
-        lda >drawAddress
-        clc
-        adc #22560
-        tcd
-
-        short m
-        lda #$00
-
-        long m
-
-        lda >drawAddress
-        clc
-        adc #22720
-        tcd
-
-        short m
-        lda #$00
-
-        long m
-
-        lda >drawAddress
-        clc
-        adc #22880
-        tcd
-
-        short m
-        lda #$00
-
-        long m
-
-        lda >drawAddress
-        clc
-        adc #23040
-        tcd
-
-        short m
-        lda #$00
-
-        long m
-
-        lda >drawAddress
-        clc
-        adc #23200
-        tcd
-
-        short m
-        lda #$00
-
-        long m
-
-        lda >drawAddress
-        clc
-        adc #23360
-        tcd
-
-        short m
-        lda #$00
-
-        long m
-
-        lda >drawAddress
-        clc
-        adc #23520
-        tcd
-
-        short m
-        lda #$00
-
-        long m
-
-        lda >drawAddress
-        clc
-        adc #23680
-        tcd
-
-        short m
-        lda #$00
-
-        long m
-
-        lda >drawAddress
-        clc
-        adc #23840
-        tcd
-
-        short m
-        lda #$00
-
-        long m
-
-        lda >drawAddress
-        clc
-        adc #24000
-        tcd
-
-        short m
-        lda #$00
-
-        long m
-
-        lda >drawAddress
-        clc
-        adc #24160
-        tcd
-
-        short m
-        lda #$00
-
-        long m
-
-        lda >drawAddress
-        clc
-        adc #24320
-        tcd
-
-        short m
-        lda #$00
-
-        long m
-
-        lda >drawAddress
-        clc
-        adc #24480
-        tcd
-
-        short m
-        lda #$00
-
-        long m
-
-        lda >drawAddress
-        clc
-        adc #24640
-        tcd
-
-        short m
-        lda #$00
-
-        long m
-
-        lda >drawAddress
-        clc
-        adc #24800
-        tcd
-
-        short m
-        lda #$00
-
-        long m
-
-        lda >drawAddress
-        clc
-        adc #24960
-        tcd
-
-        short m
-        lda #$00
-
-        long m
-
-        lda >drawAddress
-        clc
-        adc #25120
-        tcd
-
-        short m
-        lda #$00
-
-        long m
-
-        lda >drawAddress
-        clc
-        adc #25280
-        tcd
-
-        short m
-        lda #$00
-
-        long m
-
-        lda >drawAddress
-        clc
-        adc #25440
-        tcd
-
-        short m
-        lda #$00
-
-        long m
-
-        lda >drawAddress
-        clc
-        adc #25600
-        tcd
-
-        short m
-        lda #$00
-
-        long m
-
-        lda >drawAddress
-        clc
-        adc #25760
-        tcd
-
-        short m
-        lda #$00
-
-        long m
-
-        lda >drawAddress
-        clc
-        adc #25920
-        tcd
-
-        short m
-        lda #$00
-
-        long m
-
-        lda >drawAddress
-        clc
-        adc #26080
-        tcd
-
-        short m
-        lda #$00
-
-        long m
-
-        lda >drawAddress
-        clc
-        adc #26240
-        tcd
-
-        short m
-        lda #$00
-
-        long m
-
-        lda >drawAddress
-        clc
-        adc #26400
-        tcd
-
-        short m
-        lda #$00
-
-        long m
-
-        lda >drawAddress
-        clc
-        adc #26560
-        tcd
-
-        short m
-        lda #$00
-
-        long m
-
-        lda >drawAddress
-        clc
-        adc #26720
-        tcd
-
-        short m
-        lda #$00
-
-        long m
-
-        lda >drawAddress
-        clc
-        adc #26880
-        tcd
-
-        short m
-        lda #$00
-
-        long m
-
-        lda >drawAddress
-        clc
-        adc #27040
-        tcd
-
-        short m
-        lda #$00
-
-        long m
-
-        lda >drawAddress
-        clc
-        adc #27200
-        tcd
-
-        short m
-        lda #$00
-
-        long m
-
-        lda >drawAddress
-        clc
-        adc #27360
-        tcd
-
-        short m
-        lda #$00
-
-        long m
-
-        lda >drawAddress
-        clc
-        adc #27520
-        tcd
-
-        short m
-        lda #$00
-
-        long m
-
-        lda >drawAddress
-        clc
-        adc #27680
-        tcd
-
-        short m
-        lda #$00
-
-        long m
-
-        lda >drawAddress
-        clc
-        adc #27840
-        tcd
-
-        short m
-        lda #$00
-
-        long m
-
-        lda >drawAddress
-        clc
-        adc #28000
-        tcd
-
-        short m
-        lda #$00
-
-        long m
-
-        lda >drawAddress
-        clc
-        adc #28160
-        tcd
-
-        short m
-        lda #$00
-
-        long m
-
-        lda >drawAddress
-        clc
-        adc #28320
-        tcd
-
-        short m
-        lda #$00
-
-        long m
-
-        lda >drawAddress
-        clc
-        adc #28480
-        tcd
-
-        short m
-        lda #$00
-
-        long m
-
-        lda >drawAddress
-        clc
-        adc #28640
-        tcd
-
-        short m
-        lda #$00
-
-        long m
-
-        lda >drawAddress
-        clc
-        adc #28800
-        tcd
-
-        short m
-        lda #$00
-
-        long m
-
-        lda >drawAddress
-        clc
-        adc #28960
-        tcd
-
-        short m
-        lda #$00
-
-        long m
-
-        lda >drawAddress
-        clc
-        adc #29120
-        tcd
-
-        short m
-        lda #$00
-
-        long m
-
-        lda >drawAddress
-        clc
-        adc #29280
-        tcd
-
-        short m
-        lda #$00
-
-        long m
-
-        lda >drawAddress
-        clc
-        adc #29440
-        tcd
-
-        short m
-        lda #$00
-
-        long m
-
-        lda >drawAddress
-        clc
-        adc #29600
-        tcd
-
-        short m
-        lda #$00
-
-        long m
-
-        lda >drawAddress
-        clc
-        adc #29760
-        tcd
-
-        short m
-        lda #$00
-
-        long m
-
-        lda >drawAddress
-        clc
-        adc #29920
-        tcd
-
-        short m
-        lda #$00
-
-        long m
-
-        lda >drawAddress
-        clc
-        adc #30080
-        tcd
-
-        short m
-        lda #$00
-
-        long m
-
-        lda >drawAddress
-        clc
-        adc #30240
-        tcd
-
-        short m
-        lda #$00
-
-        long m
-
-        lda >drawAddress
-        clc
-        adc #30400
-        tcd
-
-        short m
-        lda #$00
-
-        long m
-
-        lda >drawAddress
-        clc
-        adc #30560
-        tcd
-
-        short m
-        lda #$00
-
-        long m
-
-        lda >drawAddress
-        clc
-        adc #30720
-        tcd
-
-        short m
-        lda #$00
-
-        long m
-
-        lda >drawAddress
-        clc
-        adc #30880
-        tcd
-
-        short m
-        lda #$00
-
-        long m
-
-        lda >drawAddress
-        clc
-        adc #31040
-        tcd
-
-        short m
-        lda #$00
-
-        long m
-
-        lda >drawAddress
-        clc
-        adc #31200
-        tcd
-
-        short m
-        lda #$00
-
-        long m
-
-        lda >drawAddress
-        clc
-        adc #31360
-        tcd
-
-        short m
-        lda #$00
-
-        long m
-
-        lda >drawAddress
-        clc
-        adc #31520
-        tcd
-
-        short m
-        lda #$00
-
-        long m
-
-        lda >drawAddress
-        clc
-        adc #31680
-        tcd
-
-        short m
-        lda #$00
-
-        long m
-
-        lda >drawAddress
-        clc
-        adc #31840
-        tcd
-
-        short m
-        lda #$00
-
-        long m
-
-        lda >drawAddress
-        clc
-        adc #32000
-        tcd
-
-        short m
-        lda #$00
-
-        long m
-
-        lda >drawAddress
-        clc
-        adc #32160
-        tcd
-
-        short m
-        lda #$00
-
-        long m
-
-        lda >drawAddress
-        clc
-        adc #32320
-        tcd
-
-        short m
-        lda #$00
-
-        long m
-
-        lda >drawAddress
-        clc
-        adc #32480
-        tcd
-
-        short m
-        lda #$00
-
-        long m
-
-        lda >drawAddress
-        clc
-        adc #32640
-        tcd
-
-        short m
-        lda #$00
-
-        long m
-
-        lda >drawAddress
-        clc
-        adc #32800
-        tcd
-
-        short m
-        lda #$00
-
-        long m
-
-        lda >drawAddress
-        clc
-        adc #32960
-        tcd
-
-        short m
-        lda #$00
-
-        long m
-
-        lda >drawAddress
-        clc
-        adc #33120
-        tcd
-
-        short m
-        lda #$00
-
-        long m
-
-        lda >drawAddress
-        clc
-        adc #33280
-        tcd
-
-        short m
-        lda #$00
-
-        long m
-
-        lda >drawAddress
-        clc
-        adc #33440
-        tcd
-
-        short m
-        lda #$00
-
-        long m
-
-        lda >drawAddress
-        clc
-        adc #33600
-        tcd
-
-        short m
-        lda #$00
-
-        long m
-
-        lda >drawAddress
-        clc
-        adc #33760
-        tcd
-
-        short m
-        lda #$00
-
-        long m
-
-        lda >drawAddress
-        clc
-        adc #33920
-        tcd
-
-        short m
-        lda #$00
-
-        long m
-
-        lda >drawAddress
-        clc
-        adc #34080
-        tcd
-
-        short m
-        lda #$00
-
-        long m
-
-        lda >drawAddress
-        clc
-        adc #34240
-        tcd
-
-        short m
-        lda #$00
-
-        long m
-
-        lda >drawAddress
-        clc
-        adc #34400
-        tcd
-
-        short m
-        lda #$00
-
-        long m
-
-        lda >drawAddress
-        clc
-        adc #34560
-        tcd
-
-        short m
-        lda #$00
-
-        long m
-
-        lda >drawAddress
-        clc
-        adc #34720
-        tcd
-
-        short m
-        lda #$00
-
-        long m
-
-        lda >drawAddress
-        clc
-        adc #34880
-        tcd
-
-        short m
-        lda #$00
-
-        long m
-
-        lda >drawAddress
-        clc
-        adc #35040
-        tcd
-
-        short m
-        lda #$00
-
-        long m
-
-        lda >drawAddress
-        clc
-        adc #35200
-        tcd
-
-        short m
-        lda #$00
-
-        long m
-
-        lda >drawAddress
-        clc
-        adc #35360
-        tcd
-
-        short m
-        lda #$00
-
-        long m
-
-        lda >drawAddress
-        clc
-        adc #35520
-        tcd
-
-        short m
-        lda #$00
-
-        long m
-
-        lda >drawAddress
-        clc
-        adc #35680
-        tcd
-
-        short m
-        lda #$00
-
-        long m
-
-        lda >drawAddress
-        clc
-        adc #35840
-        tcd
-
-        short m
-        lda #$00
-
-        long m
-
-        lda >drawAddress
-        clc
-        adc #36000
-        tcd
-
-        short m
-        lda #$00
-
-        long m
-
-        lda >drawAddress
-        clc
-        adc #36160
-        tcd
-
-        short m
-        lda #$00
-
-        long m
-
-        lda >drawAddress
-        clc
-        adc #36320
-        tcd
-
-        short m
-        lda #$00
-
-        long m
-
-        lda >drawAddress
-        clc
-        adc #36480
-        tcd
-
-        short m
-        lda #$00
-
-        long m
-
-        lda >drawAddress
-        clc
-        adc #36640
-        tcd
-
-        short m
-        lda #$00
-
-        long m
-
-        lda >drawAddress
-        clc
-        adc #36800
-        tcd
-
-        short m
-        lda #$00
-
-        long m
-
-        lda >drawAddress
-        clc
-        adc #36960
-        tcd
-
-        short m
-        lda #$00
-
-        long m
-
-        lda >drawAddress
-        clc
-        adc #37120
-        tcd
-
-        short m
-        lda #$00
-
-        long m
-
-        lda >drawAddress
-        clc
-        adc #37280
-        tcd
-
-        short m
-        lda #$00
-
-        long m
-
-        lda >drawAddress
-        clc
-        adc #37440
-        tcd
-
-        short m
-        lda #$00
-
-        long m
-
-        lda >drawAddress
-        clc
-        adc #37600
-        tcd
-
-        short m
-        lda #$00
-
-        long m
-
-        lda >drawAddress
-        clc
-        adc #37760
-        tcd
-
-        short m
-        lda #$00
-
-        long m
-
-        lda >drawAddress
-        clc
-        adc #37920
-        tcd
-
-        short m
-        lda #$00
-
-        long m
-
-        lda >drawAddress
-        clc
-        adc #38080
-        tcd
-
-        short m
-        lda #$00
-
-        long m
-
-        lda >drawAddress
-        clc
-        adc #38240
-        tcd
-
-        short m
-        lda #$00
-
-        long m
-
-        lda >drawAddress
-        clc
-        adc #38400
-        tcd
-
-        short m
-        lda #$00
-
-        long m
-
-        lda >drawAddress
-        clc
-        adc #38560
-        tcd
-
-        short m
-        lda #$00
-
-        long m
-
-        lda >drawAddress
-        clc
-        adc #38720
-        tcd
-
-        short m
-        lda #$00
-
-        long m
-
-        lda >drawAddress
-        clc
-        adc #38880
-        tcd
-
-        short m
-        lda #$00
-
-        long m
-
-        lda >drawAddress
-        clc
-        adc #39040
-        tcd
-
-        short m
-        lda #$00
+drawSpriteBat1SkipRowDraw13 anop
 
-        long m
-
-        lda >drawAddress
-        clc
-        adc #39200
-        tcd
-
-        short m
-        lda #$00
-
-        long m
-
-        lda >drawAddress
-        clc
-        adc #39360
-        tcd
-
-        short m
-        lda #$00
-
-        long m
-
-        lda >drawAddress
-        clc
-        adc #39520
-        tcd
-
-        short m
-        lda #$00
-
-        long m
-
-        lda >drawAddress
-        clc
-        adc #39680
-        tcd
-
-        short m
-        lda #$00
-
-        long m
-
-        lda >drawAddress
-        clc
-        adc #39840
-        tcd
-
-        short m
-        lda #$00
-
-        long m
-
-        lda >drawAddress
-        clc
-        adc #40000
-        tcd
-
-        short m
-        lda #$00
-
-        long m
-
-        lda >drawAddress
+        lda >rowCounter
         clc
-        adc #40160
-        tcd
-
-        short m
-        lda #$00
-
-        long m
-
-        lda >drawAddress
-        clc
-        adc #40320
-        tcd
-
-        short m
-        lda #$00
-
-        long m
-
-        lda >drawAddress
-        clc
-        adc #40480
-        tcd
-
-        short m
-        lda #$00
-
-        long m
-
-        lda >drawAddress
-        clc
-        adc #40640
-        tcd
-
-        short m
-        lda #$00
-
-        long m
-
-        lda >drawAddress
-        clc
-        adc #40800
-        tcd
-
-        short m
-        lda #$00
-
-        long m
-
-        lda >drawAddress
-        clc
-        adc #40960
-        tcd
-
-        short m
-        lda #$00
-
-        long m
-
-        lda >drawAddress
-        clc
-        adc #41120
-        tcd
-
-        short m
-        lda #$00
-
-        long m
+        adc #1
+        sta >rowCounter
 
         long m
 
@@ -2663,6 +369,11 @@ drawSpriteBat2 entry
         spriteGetDrawAddress
         _spriteHeader
 
+        lda >spriteY
+        sta >rowCounter
+
+        cmp #199
+        bcs drawSpriteBat2SkipRowDraw14
 
         lda >drawAddress
         clc
@@ -2672,8 +383,18 @@ drawSpriteBat2 entry
         short m
         lda #$00
 
-        sta 0
+        sta 7
         long m
+
+drawSpriteBat2SkipRowDraw14 anop
+
+        lda >rowCounter
+        clc
+        adc #1
+        sta >rowCounter
+
+        cmp #199
+        bcs drawSpriteBat2SkipRowDraw15
 
         lda >drawAddress
         clc
@@ -2683,8 +404,465 @@ drawSpriteBat2 entry
         short m
         lda #$00
 
+        sta 7
+        long m
+
+drawSpriteBat2SkipRowDraw15 anop
+
+        lda >rowCounter
+        clc
+        adc #1
+        sta >rowCounter
+
+        cmp #199
+        bcs drawSpriteBat2SkipRowDraw16
+
+        lda >drawAddress
+        clc
+        adc #320
+        tcd
+
+        short m
+        lda #$00
+
         sta 0
         long m
+
+drawSpriteBat2SkipRowDraw16 anop
+
+        lda >rowCounter
+        clc
+        adc #1
+        sta >rowCounter
+
+        cmp #199
+        bcs drawSpriteBat2SkipRowDraw17
+
+        lda >drawAddress
+        clc
+        adc #480
+        tcd
+
+        short m
+        lda #$00
+
+        sta 0
+        long m
+
+drawSpriteBat2SkipRowDraw17 anop
+
+        lda >rowCounter
+        clc
+        adc #1
+        sta >rowCounter
+
+        cmp #199
+        bcs drawSpriteBat2SkipRowDraw18
+
+        lda >drawAddress
+        clc
+        adc #640
+        tcd
+
+        short m
+        lda #$00
+
+        sta 7
+        long m
+
+drawSpriteBat2SkipRowDraw18 anop
+
+        lda >rowCounter
+        clc
+        adc #1
+        sta >rowCounter
+
+        cmp #199
+        bcs drawSpriteBat2SkipRowDraw19
+
+        lda >drawAddress
+        clc
+        adc #800
+        tcd
+
+        short m
+        lda #$00
+
+        sta 7
+        long m
+
+drawSpriteBat2SkipRowDraw19 anop
+
+        lda >rowCounter
+        clc
+        adc #1
+        sta >rowCounter
+
+        cmp #199
+        bcs drawSpriteBat2SkipRowDraw20
+
+        lda >drawAddress
+        clc
+        adc #960
+        tcd
+
+        short m
+        lda #$00
+
+        sta 0
+        long m
+
+drawSpriteBat2SkipRowDraw20 anop
+
+        lda >rowCounter
+        clc
+        adc #1
+        sta >rowCounter
+
+        cmp #199
+        bcs drawSpriteBat2SkipRowDraw21
+
+        lda >drawAddress
+        clc
+        adc #1120
+        tcd
+
+        short m
+        lda #$00
+
+        sta 0
+        long m
+
+drawSpriteBat2SkipRowDraw21 anop
+
+        lda >rowCounter
+        clc
+        adc #1
+        sta >rowCounter
+
+        cmp #199
+        bcs drawSpriteBat2SkipRowDraw22
+
+        lda >drawAddress
+        clc
+        adc #1280
+        tcd
+
+        short m
+        lda #$00
+
+        sta 2
+        sta 3
+        sta 4
+        sta 5
+        long m
+
+drawSpriteBat2SkipRowDraw22 anop
+
+        lda >rowCounter
+        clc
+        adc #1
+        sta >rowCounter
+
+        cmp #199
+        bcs drawSpriteBat2SkipRowDraw23
+
+        lda >drawAddress
+        clc
+        adc #1440
+        tcd
+
+        short m
+        lda #$00
+
+        sta 2
+        sta 3
+        sta 4
+        sta 5
+        long m
+
+drawSpriteBat2SkipRowDraw23 anop
+
+        lda >rowCounter
+        clc
+        adc #1
+        sta >rowCounter
+
+        cmp #199
+        bcs drawSpriteBat2SkipRowDraw24
+
+        lda >drawAddress
+        clc
+        adc #1600
+        tcd
+
+        short m
+        lda #$00
+
+        sta 1
+        sta 3
+        sta 4
+        sta 6
+        long m
+
+drawSpriteBat2SkipRowDraw24 anop
+
+        lda >rowCounter
+        clc
+        adc #1
+        sta >rowCounter
+
+        cmp #199
+        bcs drawSpriteBat2SkipRowDraw25
+
+        lda >drawAddress
+        clc
+        adc #1760
+        tcd
+
+        short m
+        lda #$00
+
+        sta 1
+        sta 3
+        sta 4
+        sta 6
+        long m
+
+drawSpriteBat2SkipRowDraw25 anop
+
+        lda >rowCounter
+        clc
+        adc #1
+        sta >rowCounter
+
+        cmp #199
+        bcs drawSpriteBat2SkipRowDraw26
+
+        lda >drawAddress
+        clc
+        adc #1920
+        tcd
+
+        short m
+        lda #$00
+
+        sta 1
+        sta 2
+        sta 5
+        sta 6
+        long m
+
+drawSpriteBat2SkipRowDraw26 anop
+
+        lda >rowCounter
+        clc
+        adc #1
+        sta >rowCounter
+
+        cmp #199
+        bcs drawSpriteBat2SkipRowDraw27
+
+        lda >drawAddress
+        clc
+        adc #2080
+        tcd
+
+        short m
+        lda #$00
+
+        sta 1
+        sta 2
+        sta 5
+        sta 6
+        long m
+
+drawSpriteBat2SkipRowDraw27 anop
+
+        lda >rowCounter
+        clc
+        adc #1
+        sta >rowCounter
+
+        cmp #199
+        bcs drawSpriteBat2SkipRowDraw28
+
+        lda >drawAddress
+        clc
+        adc #2240
+        tcd
+
+        short m
+        lda #$00
+
+        sta 0
+        sta 1
+        sta 6
+        sta 7
+        long m
+
+drawSpriteBat2SkipRowDraw28 anop
+
+        lda >rowCounter
+        clc
+        adc #1
+        sta >rowCounter
+
+        cmp #199
+        bcs drawSpriteBat2SkipRowDraw29
+
+        lda >drawAddress
+        clc
+        adc #2400
+        tcd
+
+        short m
+        lda #$00
+
+        sta 0
+        sta 1
+        sta 6
+        sta 7
+        long m
+
+drawSpriteBat2SkipRowDraw29 anop
+
+        lda >rowCounter
+        clc
+        adc #1
+        sta >rowCounter
+
+        cmp #199
+        bcs drawSpriteBat2SkipRowDraw30
+
+        lda >drawAddress
+        clc
+        adc #2560
+        tcd
+
+        short m
+        lda #$00
+
+        sta 0
+        sta 7
+        long m
+
+drawSpriteBat2SkipRowDraw30 anop
+
+        lda >rowCounter
+        clc
+        adc #1
+        sta >rowCounter
+
+        cmp #199
+        bcs drawSpriteBat2SkipRowDraw31
+
+        lda >drawAddress
+        clc
+        adc #2720
+        tcd
+
+        short m
+        lda #$00
+
+        sta 0
+        sta 7
+        long m
+
+drawSpriteBat2SkipRowDraw31 anop
+
+        lda >rowCounter
+        clc
+        adc #1
+        sta >rowCounter
+
+        cmp #199
+        bcs drawSpriteBat2SkipRowDraw32
+
+        lda >drawAddress
+        clc
+        adc #2880
+        tcd
+
+        short m
+        lda #$00
+
+        sta 0
+        sta 7
+        long m
+
+drawSpriteBat2SkipRowDraw32 anop
+
+        lda >rowCounter
+        clc
+        adc #1
+        sta >rowCounter
+
+        cmp #199
+        bcs drawSpriteBat2SkipRowDraw33
+
+        lda >drawAddress
+        clc
+        adc #3040
+        tcd
+
+        short m
+        lda #$00
+
+        sta 0
+        sta 7
+        long m
+
+drawSpriteBat2SkipRowDraw33 anop
+
+        lda >rowCounter
+        clc
+        adc #1
+        sta >rowCounter
+
+        cmp #199
+        bcs drawSpriteBat2SkipRowDraw34
+
+        lda >drawAddress
+        clc
+        adc #3200
+        tcd
+
+        short m
+        lda #$00
+
+        sta 0
+        sta 7
+        long m
+
+drawSpriteBat2SkipRowDraw34 anop
+
+        lda >rowCounter
+        clc
+        adc #1
+        sta >rowCounter
+
+        cmp #199
+        bcs drawSpriteBat2SkipRowDraw35
+
+        lda >drawAddress
+        clc
+        adc #3360
+        tcd
+
+        short m
+        lda #$00
+
+        sta 0
+        sta 7
+        long m
+
+drawSpriteBat2SkipRowDraw35 anop
+
+        lda >rowCounter
+        clc
+        adc #1
+        sta >rowCounter
 
         long m
 
@@ -2697,6 +875,16 @@ eraseSpriteBat1 entry
         lsr a
         sta >spriteX
         lda >spriteY
+        sta >rowCounter
+
+        cmp #199
+        bcs eraseSpriteBat1SkipRowEraseShortJump36
+        bra eraseSpriteBat1SkipRowEraseDontSkipRow36
+
+eraseSpriteBat1SkipRowEraseShortJump36 anop
+        brl eraseSpriteBat1SkipRowErase36
+eraseSpriteBat1SkipRowEraseDontSkipRow36 anop
+        lda >spriteY
         clc
         adc #0
         asl a
@@ -2717,7 +905,6 @@ eraseSpriteBat1 entry
         lda >BACKGROUND_ADDR,x
         sta >SCREEN_ADDR,x
         long m
-
         lda >rowAddress
         clc
         adc >spriteX
@@ -2732,6 +919,22 @@ eraseSpriteBat1 entry
         sta >SCREEN_ADDR,x
         long m
 
+
+eraseSpriteBat1SkipRowErase36 anop
+
+        lda >rowCounter
+        clc
+        adc #1
+        sta >rowCounter
+
+
+        cmp #199
+        bcs eraseSpriteBat1SkipRowEraseShortJump37
+        bra eraseSpriteBat1SkipRowEraseDontSkipRow37
+
+eraseSpriteBat1SkipRowEraseShortJump37 anop
+        brl eraseSpriteBat1SkipRowErase37
+eraseSpriteBat1SkipRowEraseDontSkipRow37 anop
         lda >spriteY
         clc
         adc #1
@@ -2753,7 +956,6 @@ eraseSpriteBat1 entry
         lda >BACKGROUND_ADDR,x
         sta >SCREEN_ADDR,x
         long m
-
         lda >rowAddress
         clc
         adc >spriteX
@@ -2768,6 +970,22 @@ eraseSpriteBat1 entry
         sta >SCREEN_ADDR,x
         long m
 
+
+eraseSpriteBat1SkipRowErase37 anop
+
+        lda >rowCounter
+        clc
+        adc #1
+        sta >rowCounter
+
+
+        cmp #199
+        bcs eraseSpriteBat1SkipRowEraseShortJump38
+        bra eraseSpriteBat1SkipRowEraseDontSkipRow38
+
+eraseSpriteBat1SkipRowEraseShortJump38 anop
+        brl eraseSpriteBat1SkipRowErase38
+eraseSpriteBat1SkipRowEraseDontSkipRow38 anop
         lda >spriteY
         clc
         adc #2
@@ -2789,35 +1007,6 @@ eraseSpriteBat1 entry
         lda >BACKGROUND_ADDR,x
         sta >SCREEN_ADDR,x
         long m
-
-        lda >rowAddress
-        clc
-        adc >spriteX
-
-        clc
-        adc #1
-        tax
-
-
-        short m
-        lda >BACKGROUND_ADDR,x
-        sta >SCREEN_ADDR,x
-        long m
-
-        lda >rowAddress
-        clc
-        adc >spriteX
-
-        clc
-        adc #6
-        tax
-
-
-        short m
-        lda >BACKGROUND_ADDR,x
-        sta >SCREEN_ADDR,x
-        long m
-
         lda >rowAddress
         clc
         adc >spriteX
@@ -2832,6 +1021,22 @@ eraseSpriteBat1 entry
         sta >SCREEN_ADDR,x
         long m
 
+
+eraseSpriteBat1SkipRowErase38 anop
+
+        lda >rowCounter
+        clc
+        adc #1
+        sta >rowCounter
+
+
+        cmp #199
+        bcs eraseSpriteBat1SkipRowEraseShortJump39
+        bra eraseSpriteBat1SkipRowEraseDontSkipRow39
+
+eraseSpriteBat1SkipRowEraseShortJump39 anop
+        brl eraseSpriteBat1SkipRowErase39
+eraseSpriteBat1SkipRowEraseDontSkipRow39 anop
         lda >spriteY
         clc
         adc #3
@@ -2853,35 +1058,6 @@ eraseSpriteBat1 entry
         lda >BACKGROUND_ADDR,x
         sta >SCREEN_ADDR,x
         long m
-
-        lda >rowAddress
-        clc
-        adc >spriteX
-
-        clc
-        adc #1
-        tax
-
-
-        short m
-        lda >BACKGROUND_ADDR,x
-        sta >SCREEN_ADDR,x
-        long m
-
-        lda >rowAddress
-        clc
-        adc >spriteX
-
-        clc
-        adc #6
-        tax
-
-
-        short m
-        lda >BACKGROUND_ADDR,x
-        sta >SCREEN_ADDR,x
-        long m
-
         lda >rowAddress
         clc
         adc >spriteX
@@ -2896,6 +1072,22 @@ eraseSpriteBat1 entry
         sta >SCREEN_ADDR,x
         long m
 
+
+eraseSpriteBat1SkipRowErase39 anop
+
+        lda >rowCounter
+        clc
+        adc #1
+        sta >rowCounter
+
+
+        cmp #199
+        bcs eraseSpriteBat1SkipRowEraseShortJump40
+        bra eraseSpriteBat1SkipRowEraseDontSkipRow40
+
+eraseSpriteBat1SkipRowEraseShortJump40 anop
+        brl eraseSpriteBat1SkipRowErase40
+eraseSpriteBat1SkipRowEraseDontSkipRow40 anop
         lda >spriteY
         clc
         adc #4
@@ -2917,7 +1109,6 @@ eraseSpriteBat1 entry
         lda >BACKGROUND_ADDR,x
         sta >SCREEN_ADDR,x
         long m
-
         lda >rowAddress
         clc
         adc >spriteX
@@ -2931,7 +1122,6 @@ eraseSpriteBat1 entry
         lda >BACKGROUND_ADDR,x
         sta >SCREEN_ADDR,x
         long m
-
         lda >rowAddress
         clc
         adc >spriteX
@@ -2945,7 +1135,6 @@ eraseSpriteBat1 entry
         lda >BACKGROUND_ADDR,x
         sta >SCREEN_ADDR,x
         long m
-
         lda >rowAddress
         clc
         adc >spriteX
@@ -2960,6 +1149,22 @@ eraseSpriteBat1 entry
         sta >SCREEN_ADDR,x
         long m
 
+
+eraseSpriteBat1SkipRowErase40 anop
+
+        lda >rowCounter
+        clc
+        adc #1
+        sta >rowCounter
+
+
+        cmp #199
+        bcs eraseSpriteBat1SkipRowEraseShortJump41
+        bra eraseSpriteBat1SkipRowEraseDontSkipRow41
+
+eraseSpriteBat1SkipRowEraseShortJump41 anop
+        brl eraseSpriteBat1SkipRowErase41
+eraseSpriteBat1SkipRowEraseDontSkipRow41 anop
         lda >spriteY
         clc
         adc #5
@@ -2981,7 +1186,6 @@ eraseSpriteBat1 entry
         lda >BACKGROUND_ADDR,x
         sta >SCREEN_ADDR,x
         long m
-
         lda >rowAddress
         clc
         adc >spriteX
@@ -2995,7 +1199,6 @@ eraseSpriteBat1 entry
         lda >BACKGROUND_ADDR,x
         sta >SCREEN_ADDR,x
         long m
-
         lda >rowAddress
         clc
         adc >spriteX
@@ -3009,7 +1212,6 @@ eraseSpriteBat1 entry
         lda >BACKGROUND_ADDR,x
         sta >SCREEN_ADDR,x
         long m
-
         lda >rowAddress
         clc
         adc >spriteX
@@ -3024,6 +1226,22 @@ eraseSpriteBat1 entry
         sta >SCREEN_ADDR,x
         long m
 
+
+eraseSpriteBat1SkipRowErase41 anop
+
+        lda >rowCounter
+        clc
+        adc #1
+        sta >rowCounter
+
+
+        cmp #199
+        bcs eraseSpriteBat1SkipRowEraseShortJump42
+        bra eraseSpriteBat1SkipRowEraseDontSkipRow42
+
+eraseSpriteBat1SkipRowEraseShortJump42 anop
+        brl eraseSpriteBat1SkipRowErase42
+eraseSpriteBat1SkipRowEraseDontSkipRow42 anop
         lda >spriteY
         clc
         adc #6
@@ -3045,7 +1263,6 @@ eraseSpriteBat1 entry
         lda >BACKGROUND_ADDR,x
         sta >SCREEN_ADDR,x
         long m
-
         lda >rowAddress
         clc
         adc >spriteX
@@ -3059,63 +1276,6 @@ eraseSpriteBat1 entry
         lda >BACKGROUND_ADDR,x
         sta >SCREEN_ADDR,x
         long m
-
-        lda >rowAddress
-        clc
-        adc >spriteX
-
-        clc
-        adc #2
-        tax
-
-
-        short m
-        lda >BACKGROUND_ADDR,x
-        sta >SCREEN_ADDR,x
-        long m
-
-        lda >rowAddress
-        clc
-        adc >spriteX
-
-        clc
-        adc #3
-        tax
-
-
-        short m
-        lda >BACKGROUND_ADDR,x
-        sta >SCREEN_ADDR,x
-        long m
-
-        lda >rowAddress
-        clc
-        adc >spriteX
-
-        clc
-        adc #4
-        tax
-
-
-        short m
-        lda >BACKGROUND_ADDR,x
-        sta >SCREEN_ADDR,x
-        long m
-
-        lda >rowAddress
-        clc
-        adc >spriteX
-
-        clc
-        adc #5
-        tax
-
-
-        short m
-        lda >BACKGROUND_ADDR,x
-        sta >SCREEN_ADDR,x
-        long m
-
         lda >rowAddress
         clc
         adc >spriteX
@@ -3129,7 +1289,6 @@ eraseSpriteBat1 entry
         lda >BACKGROUND_ADDR,x
         sta >SCREEN_ADDR,x
         long m
-
         lda >rowAddress
         clc
         adc >spriteX
@@ -3144,6 +1303,22 @@ eraseSpriteBat1 entry
         sta >SCREEN_ADDR,x
         long m
 
+
+eraseSpriteBat1SkipRowErase42 anop
+
+        lda >rowCounter
+        clc
+        adc #1
+        sta >rowCounter
+
+
+        cmp #199
+        bcs eraseSpriteBat1SkipRowEraseShortJump43
+        bra eraseSpriteBat1SkipRowEraseDontSkipRow43
+
+eraseSpriteBat1SkipRowEraseShortJump43 anop
+        brl eraseSpriteBat1SkipRowErase43
+eraseSpriteBat1SkipRowEraseDontSkipRow43 anop
         lda >spriteY
         clc
         adc #7
@@ -3165,7 +1340,6 @@ eraseSpriteBat1 entry
         lda >BACKGROUND_ADDR,x
         sta >SCREEN_ADDR,x
         long m
-
         lda >rowAddress
         clc
         adc >spriteX
@@ -3179,63 +1353,6 @@ eraseSpriteBat1 entry
         lda >BACKGROUND_ADDR,x
         sta >SCREEN_ADDR,x
         long m
-
-        lda >rowAddress
-        clc
-        adc >spriteX
-
-        clc
-        adc #2
-        tax
-
-
-        short m
-        lda >BACKGROUND_ADDR,x
-        sta >SCREEN_ADDR,x
-        long m
-
-        lda >rowAddress
-        clc
-        adc >spriteX
-
-        clc
-        adc #3
-        tax
-
-
-        short m
-        lda >BACKGROUND_ADDR,x
-        sta >SCREEN_ADDR,x
-        long m
-
-        lda >rowAddress
-        clc
-        adc >spriteX
-
-        clc
-        adc #4
-        tax
-
-
-        short m
-        lda >BACKGROUND_ADDR,x
-        sta >SCREEN_ADDR,x
-        long m
-
-        lda >rowAddress
-        clc
-        adc >spriteX
-
-        clc
-        adc #5
-        tax
-
-
-        short m
-        lda >BACKGROUND_ADDR,x
-        sta >SCREEN_ADDR,x
-        long m
-
         lda >rowAddress
         clc
         adc >spriteX
@@ -3249,7 +1366,6 @@ eraseSpriteBat1 entry
         lda >BACKGROUND_ADDR,x
         sta >SCREEN_ADDR,x
         long m
-
         lda >rowAddress
         clc
         adc >spriteX
@@ -3264,6 +1380,22 @@ eraseSpriteBat1 entry
         sta >SCREEN_ADDR,x
         long m
 
+
+eraseSpriteBat1SkipRowErase43 anop
+
+        lda >rowCounter
+        clc
+        adc #1
+        sta >rowCounter
+
+
+        cmp #199
+        bcs eraseSpriteBat1SkipRowEraseShortJump44
+        bra eraseSpriteBat1SkipRowEraseDontSkipRow44
+
+eraseSpriteBat1SkipRowEraseShortJump44 anop
+        brl eraseSpriteBat1SkipRowErase44
+eraseSpriteBat1SkipRowEraseDontSkipRow44 anop
         lda >spriteY
         clc
         adc #8
@@ -3277,6 +1409,19 @@ eraseSpriteBat1 entry
         adc >spriteX
 
         clc
+        adc #0
+        tax
+
+
+        short m
+        lda >BACKGROUND_ADDR,x
+        sta >SCREEN_ADDR,x
+        long m
+        lda >rowAddress
+        clc
+        adc >spriteX
+
+        clc
         adc #1
         tax
 
@@ -3285,7 +1430,19 @@ eraseSpriteBat1 entry
         lda >BACKGROUND_ADDR,x
         sta >SCREEN_ADDR,x
         long m
+        lda >rowAddress
+        clc
+        adc >spriteX
 
+        clc
+        adc #2
+        tax
+
+
+        short m
+        lda >BACKGROUND_ADDR,x
+        sta >SCREEN_ADDR,x
+        long m
         lda >rowAddress
         clc
         adc >spriteX
@@ -3299,7 +1456,6 @@ eraseSpriteBat1 entry
         lda >BACKGROUND_ADDR,x
         sta >SCREEN_ADDR,x
         long m
-
         lda >rowAddress
         clc
         adc >spriteX
@@ -3313,7 +1469,19 @@ eraseSpriteBat1 entry
         lda >BACKGROUND_ADDR,x
         sta >SCREEN_ADDR,x
         long m
+        lda >rowAddress
+        clc
+        adc >spriteX
 
+        clc
+        adc #5
+        tax
+
+
+        short m
+        lda >BACKGROUND_ADDR,x
+        sta >SCREEN_ADDR,x
+        long m
         lda >rowAddress
         clc
         adc >spriteX
@@ -3327,7 +1495,36 @@ eraseSpriteBat1 entry
         lda >BACKGROUND_ADDR,x
         sta >SCREEN_ADDR,x
         long m
+        lda >rowAddress
+        clc
+        adc >spriteX
 
+        clc
+        adc #7
+        tax
+
+
+        short m
+        lda >BACKGROUND_ADDR,x
+        sta >SCREEN_ADDR,x
+        long m
+
+
+eraseSpriteBat1SkipRowErase44 anop
+
+        lda >rowCounter
+        clc
+        adc #1
+        sta >rowCounter
+
+
+        cmp #199
+        bcs eraseSpriteBat1SkipRowEraseShortJump45
+        bra eraseSpriteBat1SkipRowEraseDontSkipRow45
+
+eraseSpriteBat1SkipRowEraseShortJump45 anop
+        brl eraseSpriteBat1SkipRowErase45
+eraseSpriteBat1SkipRowEraseDontSkipRow45 anop
         lda >spriteY
         clc
         adc #9
@@ -3341,6 +1538,19 @@ eraseSpriteBat1 entry
         adc >spriteX
 
         clc
+        adc #0
+        tax
+
+
+        short m
+        lda >BACKGROUND_ADDR,x
+        sta >SCREEN_ADDR,x
+        long m
+        lda >rowAddress
+        clc
+        adc >spriteX
+
+        clc
         adc #1
         tax
 
@@ -3349,7 +1559,19 @@ eraseSpriteBat1 entry
         lda >BACKGROUND_ADDR,x
         sta >SCREEN_ADDR,x
         long m
+        lda >rowAddress
+        clc
+        adc >spriteX
 
+        clc
+        adc #2
+        tax
+
+
+        short m
+        lda >BACKGROUND_ADDR,x
+        sta >SCREEN_ADDR,x
+        long m
         lda >rowAddress
         clc
         adc >spriteX
@@ -3363,7 +1585,6 @@ eraseSpriteBat1 entry
         lda >BACKGROUND_ADDR,x
         sta >SCREEN_ADDR,x
         long m
-
         lda >rowAddress
         clc
         adc >spriteX
@@ -3377,7 +1598,19 @@ eraseSpriteBat1 entry
         lda >BACKGROUND_ADDR,x
         sta >SCREEN_ADDR,x
         long m
+        lda >rowAddress
+        clc
+        adc >spriteX
 
+        clc
+        adc #5
+        tax
+
+
+        short m
+        lda >BACKGROUND_ADDR,x
+        sta >SCREEN_ADDR,x
+        long m
         lda >rowAddress
         clc
         adc >spriteX
@@ -3391,7 +1624,36 @@ eraseSpriteBat1 entry
         lda >BACKGROUND_ADDR,x
         sta >SCREEN_ADDR,x
         long m
+        lda >rowAddress
+        clc
+        adc >spriteX
 
+        clc
+        adc #7
+        tax
+
+
+        short m
+        lda >BACKGROUND_ADDR,x
+        sta >SCREEN_ADDR,x
+        long m
+
+
+eraseSpriteBat1SkipRowErase45 anop
+
+        lda >rowCounter
+        clc
+        adc #1
+        sta >rowCounter
+
+
+        cmp #199
+        bcs eraseSpriteBat1SkipRowEraseShortJump46
+        bra eraseSpriteBat1SkipRowEraseDontSkipRow46
+
+eraseSpriteBat1SkipRowEraseShortJump46 anop
+        brl eraseSpriteBat1SkipRowErase46
+eraseSpriteBat1SkipRowEraseDontSkipRow46 anop
         lda >spriteY
         clc
         adc #10
@@ -3413,13 +1675,12 @@ eraseSpriteBat1 entry
         lda >BACKGROUND_ADDR,x
         sta >SCREEN_ADDR,x
         long m
-
         lda >rowAddress
         clc
         adc >spriteX
 
         clc
-        adc #2
+        adc #3
         tax
 
 
@@ -3427,13 +1688,12 @@ eraseSpriteBat1 entry
         lda >BACKGROUND_ADDR,x
         sta >SCREEN_ADDR,x
         long m
-
         lda >rowAddress
         clc
         adc >spriteX
 
         clc
-        adc #5
+        adc #4
         tax
 
 
@@ -3441,7 +1701,6 @@ eraseSpriteBat1 entry
         lda >BACKGROUND_ADDR,x
         sta >SCREEN_ADDR,x
         long m
-
         lda >rowAddress
         clc
         adc >spriteX
@@ -3456,6 +1715,22 @@ eraseSpriteBat1 entry
         sta >SCREEN_ADDR,x
         long m
 
+
+eraseSpriteBat1SkipRowErase46 anop
+
+        lda >rowCounter
+        clc
+        adc #1
+        sta >rowCounter
+
+
+        cmp #199
+        bcs eraseSpriteBat1SkipRowEraseShortJump47
+        bra eraseSpriteBat1SkipRowEraseDontSkipRow47
+
+eraseSpriteBat1SkipRowEraseShortJump47 anop
+        brl eraseSpriteBat1SkipRowErase47
+eraseSpriteBat1SkipRowEraseDontSkipRow47 anop
         lda >spriteY
         clc
         adc #11
@@ -3477,13 +1752,12 @@ eraseSpriteBat1 entry
         lda >BACKGROUND_ADDR,x
         sta >SCREEN_ADDR,x
         long m
-
         lda >rowAddress
         clc
         adc >spriteX
 
         clc
-        adc #2
+        adc #3
         tax
 
 
@@ -3491,13 +1765,12 @@ eraseSpriteBat1 entry
         lda >BACKGROUND_ADDR,x
         sta >SCREEN_ADDR,x
         long m
-
         lda >rowAddress
         clc
         adc >spriteX
 
         clc
-        adc #5
+        adc #4
         tax
 
 
@@ -3505,7 +1778,6 @@ eraseSpriteBat1 entry
         lda >BACKGROUND_ADDR,x
         sta >SCREEN_ADDR,x
         long m
-
         lda >rowAddress
         clc
         adc >spriteX
@@ -3520,6 +1792,22 @@ eraseSpriteBat1 entry
         sta >SCREEN_ADDR,x
         long m
 
+
+eraseSpriteBat1SkipRowErase47 anop
+
+        lda >rowCounter
+        clc
+        adc #1
+        sta >rowCounter
+
+
+        cmp #199
+        bcs eraseSpriteBat1SkipRowEraseShortJump48
+        bra eraseSpriteBat1SkipRowEraseDontSkipRow48
+
+eraseSpriteBat1SkipRowEraseShortJump48 anop
+        brl eraseSpriteBat1SkipRowErase48
+eraseSpriteBat1SkipRowEraseDontSkipRow48 anop
         lda >spriteY
         clc
         adc #12
@@ -3528,6 +1816,75 @@ eraseSpriteBat1 entry
         lda >screenRowOffsets,x
         sta >rowAddress
 
+        lda >rowAddress
+        clc
+        adc >spriteX
+
+        clc
+        adc #1
+        tax
+
+
+        short m
+        lda >BACKGROUND_ADDR,x
+        sta >SCREEN_ADDR,x
+        long m
+        lda >rowAddress
+        clc
+        adc >spriteX
+
+        clc
+        adc #2
+        tax
+
+
+        short m
+        lda >BACKGROUND_ADDR,x
+        sta >SCREEN_ADDR,x
+        long m
+        lda >rowAddress
+        clc
+        adc >spriteX
+
+        clc
+        adc #5
+        tax
+
+
+        short m
+        lda >BACKGROUND_ADDR,x
+        sta >SCREEN_ADDR,x
+        long m
+        lda >rowAddress
+        clc
+        adc >spriteX
+
+        clc
+        adc #6
+        tax
+
+
+        short m
+        lda >BACKGROUND_ADDR,x
+        sta >SCREEN_ADDR,x
+        long m
+
+
+eraseSpriteBat1SkipRowErase48 anop
+
+        lda >rowCounter
+        clc
+        adc #1
+        sta >rowCounter
+
+
+        cmp #199
+        bcs eraseSpriteBat1SkipRowEraseShortJump49
+        bra eraseSpriteBat1SkipRowEraseDontSkipRow49
+
+eraseSpriteBat1SkipRowEraseShortJump49 anop
+        brl eraseSpriteBat1SkipRowErase49
+eraseSpriteBat1SkipRowEraseDontSkipRow49 anop
         lda >spriteY
         clc
         adc #13
@@ -3536,1957 +1893,66 @@ eraseSpriteBat1 entry
         lda >screenRowOffsets,x
         sta >rowAddress
 
-        lda >spriteY
+        lda >rowAddress
         clc
-        adc #14
-        asl a
-        tax
-        lda >screenRowOffsets,x
-        sta >rowAddress
-
-        lda >spriteY
-        clc
-        adc #15
-        asl a
-        tax
-        lda >screenRowOffsets,x
-        sta >rowAddress
-
-        lda >spriteY
-        clc
-        adc #16
-        asl a
-        tax
-        lda >screenRowOffsets,x
-        sta >rowAddress
-
-        lda >spriteY
-        clc
-        adc #17
-        asl a
-        tax
-        lda >screenRowOffsets,x
-        sta >rowAddress
-
-        lda >spriteY
-        clc
-        adc #18
-        asl a
-        tax
-        lda >screenRowOffsets,x
-        sta >rowAddress
-
-        lda >spriteY
-        clc
-        adc #19
-        asl a
-        tax
-        lda >screenRowOffsets,x
-        sta >rowAddress
-
-        lda >spriteY
-        clc
-        adc #20
-        asl a
-        tax
-        lda >screenRowOffsets,x
-        sta >rowAddress
-
-        lda >spriteY
-        clc
-        adc #21
-        asl a
-        tax
-        lda >screenRowOffsets,x
-        sta >rowAddress
-
-        lda >spriteY
-        clc
-        adc #22
-        asl a
-        tax
-        lda >screenRowOffsets,x
-        sta >rowAddress
-
-        lda >spriteY
-        clc
-        adc #23
-        asl a
-        tax
-        lda >screenRowOffsets,x
-        sta >rowAddress
-
-        lda >spriteY
-        clc
-        adc #24
-        asl a
-        tax
-        lda >screenRowOffsets,x
-        sta >rowAddress
-
-        lda >spriteY
-        clc
-        adc #25
-        asl a
-        tax
-        lda >screenRowOffsets,x
-        sta >rowAddress
-
-        lda >spriteY
-        clc
-        adc #26
-        asl a
-        tax
-        lda >screenRowOffsets,x
-        sta >rowAddress
-
-        lda >spriteY
-        clc
-        adc #27
-        asl a
-        tax
-        lda >screenRowOffsets,x
-        sta >rowAddress
-
-        lda >spriteY
-        clc
-        adc #28
-        asl a
-        tax
-        lda >screenRowOffsets,x
-        sta >rowAddress
-
-        lda >spriteY
-        clc
-        adc #29
-        asl a
-        tax
-        lda >screenRowOffsets,x
-        sta >rowAddress
-
-        lda >spriteY
-        clc
-        adc #30
-        asl a
-        tax
-        lda >screenRowOffsets,x
-        sta >rowAddress
-
-        lda >spriteY
-        clc
-        adc #31
-        asl a
-        tax
-        lda >screenRowOffsets,x
-        sta >rowAddress
-
-        lda >spriteY
-        clc
-        adc #32
-        asl a
-        tax
-        lda >screenRowOffsets,x
-        sta >rowAddress
-
-        lda >spriteY
-        clc
-        adc #33
-        asl a
-        tax
-        lda >screenRowOffsets,x
-        sta >rowAddress
-
-        lda >spriteY
-        clc
-        adc #34
-        asl a
-        tax
-        lda >screenRowOffsets,x
-        sta >rowAddress
-
-        lda >spriteY
-        clc
-        adc #35
-        asl a
-        tax
-        lda >screenRowOffsets,x
-        sta >rowAddress
-
-        lda >spriteY
-        clc
-        adc #36
-        asl a
-        tax
-        lda >screenRowOffsets,x
-        sta >rowAddress
-
-        lda >spriteY
-        clc
-        adc #37
-        asl a
-        tax
-        lda >screenRowOffsets,x
-        sta >rowAddress
-
-        lda >spriteY
-        clc
-        adc #38
-        asl a
-        tax
-        lda >screenRowOffsets,x
-        sta >rowAddress
-
-        lda >spriteY
-        clc
-        adc #39
-        asl a
-        tax
-        lda >screenRowOffsets,x
-        sta >rowAddress
-
-        lda >spriteY
-        clc
-        adc #40
-        asl a
-        tax
-        lda >screenRowOffsets,x
-        sta >rowAddress
-
-        lda >spriteY
-        clc
-        adc #41
-        asl a
-        tax
-        lda >screenRowOffsets,x
-        sta >rowAddress
-
-        lda >spriteY
-        clc
-        adc #42
-        asl a
-        tax
-        lda >screenRowOffsets,x
-        sta >rowAddress
-
-        lda >spriteY
-        clc
-        adc #43
-        asl a
-        tax
-        lda >screenRowOffsets,x
-        sta >rowAddress
-
-        lda >spriteY
-        clc
-        adc #44
-        asl a
-        tax
-        lda >screenRowOffsets,x
-        sta >rowAddress
-
-        lda >spriteY
-        clc
-        adc #45
-        asl a
-        tax
-        lda >screenRowOffsets,x
-        sta >rowAddress
-
-        lda >spriteY
-        clc
-        adc #46
-        asl a
-        tax
-        lda >screenRowOffsets,x
-        sta >rowAddress
-
-        lda >spriteY
-        clc
-        adc #47
-        asl a
-        tax
-        lda >screenRowOffsets,x
-        sta >rowAddress
-
-        lda >spriteY
-        clc
-        adc #48
-        asl a
-        tax
-        lda >screenRowOffsets,x
-        sta >rowAddress
-
-        lda >spriteY
-        clc
-        adc #49
-        asl a
-        tax
-        lda >screenRowOffsets,x
-        sta >rowAddress
-
-        lda >spriteY
-        clc
-        adc #50
-        asl a
-        tax
-        lda >screenRowOffsets,x
-        sta >rowAddress
-
-        lda >spriteY
-        clc
-        adc #51
-        asl a
-        tax
-        lda >screenRowOffsets,x
-        sta >rowAddress
-
-        lda >spriteY
-        clc
-        adc #52
-        asl a
-        tax
-        lda >screenRowOffsets,x
-        sta >rowAddress
-
-        lda >spriteY
-        clc
-        adc #53
-        asl a
-        tax
-        lda >screenRowOffsets,x
-        sta >rowAddress
-
-        lda >spriteY
-        clc
-        adc #54
-        asl a
-        tax
-        lda >screenRowOffsets,x
-        sta >rowAddress
-
-        lda >spriteY
-        clc
-        adc #55
-        asl a
-        tax
-        lda >screenRowOffsets,x
-        sta >rowAddress
-
-        lda >spriteY
-        clc
-        adc #56
-        asl a
-        tax
-        lda >screenRowOffsets,x
-        sta >rowAddress
-
-        lda >spriteY
-        clc
-        adc #57
-        asl a
-        tax
-        lda >screenRowOffsets,x
-        sta >rowAddress
-
-        lda >spriteY
-        clc
-        adc #58
-        asl a
-        tax
-        lda >screenRowOffsets,x
-        sta >rowAddress
-
-        lda >spriteY
-        clc
-        adc #59
-        asl a
-        tax
-        lda >screenRowOffsets,x
-        sta >rowAddress
-
-        lda >spriteY
-        clc
-        adc #60
-        asl a
-        tax
-        lda >screenRowOffsets,x
-        sta >rowAddress
-
-        lda >spriteY
-        clc
-        adc #61
-        asl a
-        tax
-        lda >screenRowOffsets,x
-        sta >rowAddress
-
-        lda >spriteY
-        clc
-        adc #62
-        asl a
-        tax
-        lda >screenRowOffsets,x
-        sta >rowAddress
-
-        lda >spriteY
-        clc
-        adc #63
-        asl a
-        tax
-        lda >screenRowOffsets,x
-        sta >rowAddress
-
-        lda >spriteY
-        clc
-        adc #64
-        asl a
-        tax
-        lda >screenRowOffsets,x
-        sta >rowAddress
-
-        lda >spriteY
-        clc
-        adc #65
-        asl a
-        tax
-        lda >screenRowOffsets,x
-        sta >rowAddress
-
-        lda >spriteY
-        clc
-        adc #66
-        asl a
-        tax
-        lda >screenRowOffsets,x
-        sta >rowAddress
-
-        lda >spriteY
-        clc
-        adc #67
-        asl a
-        tax
-        lda >screenRowOffsets,x
-        sta >rowAddress
-
-        lda >spriteY
-        clc
-        adc #68
-        asl a
-        tax
-        lda >screenRowOffsets,x
-        sta >rowAddress
-
-        lda >spriteY
-        clc
-        adc #69
-        asl a
-        tax
-        lda >screenRowOffsets,x
-        sta >rowAddress
-
-        lda >spriteY
-        clc
-        adc #70
-        asl a
-        tax
-        lda >screenRowOffsets,x
-        sta >rowAddress
-
-        lda >spriteY
-        clc
-        adc #71
-        asl a
-        tax
-        lda >screenRowOffsets,x
-        sta >rowAddress
-
-        lda >spriteY
-        clc
-        adc #72
-        asl a
-        tax
-        lda >screenRowOffsets,x
-        sta >rowAddress
-
-        lda >spriteY
-        clc
-        adc #73
-        asl a
-        tax
-        lda >screenRowOffsets,x
-        sta >rowAddress
-
-        lda >spriteY
-        clc
-        adc #74
-        asl a
-        tax
-        lda >screenRowOffsets,x
-        sta >rowAddress
-
-        lda >spriteY
-        clc
-        adc #75
-        asl a
-        tax
-        lda >screenRowOffsets,x
-        sta >rowAddress
-
-        lda >spriteY
-        clc
-        adc #76
-        asl a
-        tax
-        lda >screenRowOffsets,x
-        sta >rowAddress
-
-        lda >spriteY
-        clc
-        adc #77
-        asl a
-        tax
-        lda >screenRowOffsets,x
-        sta >rowAddress
-
-        lda >spriteY
-        clc
-        adc #78
-        asl a
-        tax
-        lda >screenRowOffsets,x
-        sta >rowAddress
-
-        lda >spriteY
-        clc
-        adc #79
-        asl a
-        tax
-        lda >screenRowOffsets,x
-        sta >rowAddress
-
-        lda >spriteY
-        clc
-        adc #80
-        asl a
-        tax
-        lda >screenRowOffsets,x
-        sta >rowAddress
-
-        lda >spriteY
-        clc
-        adc #81
-        asl a
-        tax
-        lda >screenRowOffsets,x
-        sta >rowAddress
-
-        lda >spriteY
-        clc
-        adc #82
-        asl a
-        tax
-        lda >screenRowOffsets,x
-        sta >rowAddress
-
-        lda >spriteY
-        clc
-        adc #83
-        asl a
-        tax
-        lda >screenRowOffsets,x
-        sta >rowAddress
-
-        lda >spriteY
-        clc
-        adc #84
-        asl a
-        tax
-        lda >screenRowOffsets,x
-        sta >rowAddress
-
-        lda >spriteY
-        clc
-        adc #85
-        asl a
-        tax
-        lda >screenRowOffsets,x
-        sta >rowAddress
-
-        lda >spriteY
-        clc
-        adc #86
-        asl a
-        tax
-        lda >screenRowOffsets,x
-        sta >rowAddress
-
-        lda >spriteY
-        clc
-        adc #87
-        asl a
-        tax
-        lda >screenRowOffsets,x
-        sta >rowAddress
-
-        lda >spriteY
-        clc
-        adc #88
-        asl a
-        tax
-        lda >screenRowOffsets,x
-        sta >rowAddress
-
-        lda >spriteY
-        clc
-        adc #89
-        asl a
-        tax
-        lda >screenRowOffsets,x
-        sta >rowAddress
-
-        lda >spriteY
-        clc
-        adc #90
-        asl a
-        tax
-        lda >screenRowOffsets,x
-        sta >rowAddress
-
-        lda >spriteY
-        clc
-        adc #91
-        asl a
-        tax
-        lda >screenRowOffsets,x
-        sta >rowAddress
-
-        lda >spriteY
-        clc
-        adc #92
-        asl a
-        tax
-        lda >screenRowOffsets,x
-        sta >rowAddress
-
-        lda >spriteY
-        clc
-        adc #93
-        asl a
-        tax
-        lda >screenRowOffsets,x
-        sta >rowAddress
-
-        lda >spriteY
-        clc
-        adc #94
-        asl a
-        tax
-        lda >screenRowOffsets,x
-        sta >rowAddress
-
-        lda >spriteY
-        clc
-        adc #95
-        asl a
-        tax
-        lda >screenRowOffsets,x
-        sta >rowAddress
-
-        lda >spriteY
-        clc
-        adc #96
-        asl a
-        tax
-        lda >screenRowOffsets,x
-        sta >rowAddress
-
-        lda >spriteY
-        clc
-        adc #97
-        asl a
-        tax
-        lda >screenRowOffsets,x
-        sta >rowAddress
-
-        lda >spriteY
-        clc
-        adc #98
-        asl a
-        tax
-        lda >screenRowOffsets,x
-        sta >rowAddress
-
-        lda >spriteY
-        clc
-        adc #99
-        asl a
-        tax
-        lda >screenRowOffsets,x
-        sta >rowAddress
-
-        lda >spriteY
-        clc
-        adc #100
-        asl a
-        tax
-        lda >screenRowOffsets,x
-        sta >rowAddress
-
-        lda >spriteY
-        clc
-        adc #101
-        asl a
-        tax
-        lda >screenRowOffsets,x
-        sta >rowAddress
-
-        lda >spriteY
-        clc
-        adc #102
-        asl a
-        tax
-        lda >screenRowOffsets,x
-        sta >rowAddress
-
-        lda >spriteY
-        clc
-        adc #103
-        asl a
-        tax
-        lda >screenRowOffsets,x
-        sta >rowAddress
-
-        lda >spriteY
-        clc
-        adc #104
-        asl a
-        tax
-        lda >screenRowOffsets,x
-        sta >rowAddress
-
-        lda >spriteY
-        clc
-        adc #105
-        asl a
-        tax
-        lda >screenRowOffsets,x
-        sta >rowAddress
-
-        lda >spriteY
-        clc
-        adc #106
-        asl a
-        tax
-        lda >screenRowOffsets,x
-        sta >rowAddress
-
-        lda >spriteY
-        clc
-        adc #107
-        asl a
-        tax
-        lda >screenRowOffsets,x
-        sta >rowAddress
-
-        lda >spriteY
-        clc
-        adc #108
-        asl a
-        tax
-        lda >screenRowOffsets,x
-        sta >rowAddress
-
-        lda >spriteY
-        clc
-        adc #109
-        asl a
-        tax
-        lda >screenRowOffsets,x
-        sta >rowAddress
-
-        lda >spriteY
-        clc
-        adc #110
-        asl a
-        tax
-        lda >screenRowOffsets,x
-        sta >rowAddress
-
-        lda >spriteY
-        clc
-        adc #111
-        asl a
-        tax
-        lda >screenRowOffsets,x
-        sta >rowAddress
-
-        lda >spriteY
-        clc
-        adc #112
-        asl a
-        tax
-        lda >screenRowOffsets,x
-        sta >rowAddress
-
-        lda >spriteY
-        clc
-        adc #113
-        asl a
-        tax
-        lda >screenRowOffsets,x
-        sta >rowAddress
-
-        lda >spriteY
-        clc
-        adc #114
-        asl a
-        tax
-        lda >screenRowOffsets,x
-        sta >rowAddress
-
-        lda >spriteY
-        clc
-        adc #115
-        asl a
-        tax
-        lda >screenRowOffsets,x
-        sta >rowAddress
-
-        lda >spriteY
-        clc
-        adc #116
-        asl a
-        tax
-        lda >screenRowOffsets,x
-        sta >rowAddress
-
-        lda >spriteY
-        clc
-        adc #117
-        asl a
-        tax
-        lda >screenRowOffsets,x
-        sta >rowAddress
-
-        lda >spriteY
-        clc
-        adc #118
-        asl a
-        tax
-        lda >screenRowOffsets,x
-        sta >rowAddress
-
-        lda >spriteY
-        clc
-        adc #119
-        asl a
-        tax
-        lda >screenRowOffsets,x
-        sta >rowAddress
-
-        lda >spriteY
-        clc
-        adc #120
-        asl a
-        tax
-        lda >screenRowOffsets,x
-        sta >rowAddress
-
-        lda >spriteY
-        clc
-        adc #121
-        asl a
-        tax
-        lda >screenRowOffsets,x
-        sta >rowAddress
-
-        lda >spriteY
-        clc
-        adc #122
-        asl a
-        tax
-        lda >screenRowOffsets,x
-        sta >rowAddress
-
-        lda >spriteY
-        clc
-        adc #123
-        asl a
-        tax
-        lda >screenRowOffsets,x
-        sta >rowAddress
-
-        lda >spriteY
-        clc
-        adc #124
-        asl a
-        tax
-        lda >screenRowOffsets,x
-        sta >rowAddress
-
-        lda >spriteY
-        clc
-        adc #125
-        asl a
-        tax
-        lda >screenRowOffsets,x
-        sta >rowAddress
-
-        lda >spriteY
-        clc
-        adc #126
-        asl a
-        tax
-        lda >screenRowOffsets,x
-        sta >rowAddress
-
-        lda >spriteY
-        clc
-        adc #127
-        asl a
-        tax
-        lda >screenRowOffsets,x
-        sta >rowAddress
-
-        lda >spriteY
-        clc
-        adc #128
-        asl a
-        tax
-        lda >screenRowOffsets,x
-        sta >rowAddress
-
-        lda >spriteY
-        clc
-        adc #129
-        asl a
-        tax
-        lda >screenRowOffsets,x
-        sta >rowAddress
-
-        lda >spriteY
-        clc
-        adc #130
-        asl a
-        tax
-        lda >screenRowOffsets,x
-        sta >rowAddress
-
-        lda >spriteY
-        clc
-        adc #131
-        asl a
-        tax
-        lda >screenRowOffsets,x
-        sta >rowAddress
-
-        lda >spriteY
-        clc
-        adc #132
-        asl a
-        tax
-        lda >screenRowOffsets,x
-        sta >rowAddress
-
-        lda >spriteY
-        clc
-        adc #133
-        asl a
-        tax
-        lda >screenRowOffsets,x
-        sta >rowAddress
-
-        lda >spriteY
-        clc
-        adc #134
-        asl a
-        tax
-        lda >screenRowOffsets,x
-        sta >rowAddress
-
-        lda >spriteY
-        clc
-        adc #135
-        asl a
-        tax
-        lda >screenRowOffsets,x
-        sta >rowAddress
-
-        lda >spriteY
-        clc
-        adc #136
-        asl a
-        tax
-        lda >screenRowOffsets,x
-        sta >rowAddress
-
-        lda >spriteY
-        clc
-        adc #137
-        asl a
-        tax
-        lda >screenRowOffsets,x
-        sta >rowAddress
-
-        lda >spriteY
-        clc
-        adc #138
-        asl a
-        tax
-        lda >screenRowOffsets,x
-        sta >rowAddress
-
-        lda >spriteY
-        clc
-        adc #139
-        asl a
-        tax
-        lda >screenRowOffsets,x
-        sta >rowAddress
-
-        lda >spriteY
-        clc
-        adc #140
-        asl a
-        tax
-        lda >screenRowOffsets,x
-        sta >rowAddress
-
-        lda >spriteY
-        clc
-        adc #141
-        asl a
-        tax
-        lda >screenRowOffsets,x
-        sta >rowAddress
-
-        lda >spriteY
-        clc
-        adc #142
-        asl a
-        tax
-        lda >screenRowOffsets,x
-        sta >rowAddress
-
-        lda >spriteY
-        clc
-        adc #143
-        asl a
-        tax
-        lda >screenRowOffsets,x
-        sta >rowAddress
-
-        lda >spriteY
-        clc
-        adc #144
-        asl a
-        tax
-        lda >screenRowOffsets,x
-        sta >rowAddress
-
-        lda >spriteY
-        clc
-        adc #145
-        asl a
-        tax
-        lda >screenRowOffsets,x
-        sta >rowAddress
-
-        lda >spriteY
-        clc
-        adc #146
-        asl a
-        tax
-        lda >screenRowOffsets,x
-        sta >rowAddress
-
-        lda >spriteY
-        clc
-        adc #147
-        asl a
-        tax
-        lda >screenRowOffsets,x
-        sta >rowAddress
-
-        lda >spriteY
-        clc
-        adc #148
-        asl a
-        tax
-        lda >screenRowOffsets,x
-        sta >rowAddress
-
-        lda >spriteY
-        clc
-        adc #149
-        asl a
-        tax
-        lda >screenRowOffsets,x
-        sta >rowAddress
-
-        lda >spriteY
-        clc
-        adc #150
-        asl a
-        tax
-        lda >screenRowOffsets,x
-        sta >rowAddress
-
-        lda >spriteY
-        clc
-        adc #151
-        asl a
-        tax
-        lda >screenRowOffsets,x
-        sta >rowAddress
-
-        lda >spriteY
-        clc
-        adc #152
-        asl a
-        tax
-        lda >screenRowOffsets,x
-        sta >rowAddress
-
-        lda >spriteY
-        clc
-        adc #153
-        asl a
-        tax
-        lda >screenRowOffsets,x
-        sta >rowAddress
-
-        lda >spriteY
-        clc
-        adc #154
-        asl a
-        tax
-        lda >screenRowOffsets,x
-        sta >rowAddress
-
-        lda >spriteY
-        clc
-        adc #155
-        asl a
-        tax
-        lda >screenRowOffsets,x
-        sta >rowAddress
-
-        lda >spriteY
-        clc
-        adc #156
-        asl a
-        tax
-        lda >screenRowOffsets,x
-        sta >rowAddress
-
-        lda >spriteY
-        clc
-        adc #157
-        asl a
-        tax
-        lda >screenRowOffsets,x
-        sta >rowAddress
-
-        lda >spriteY
-        clc
-        adc #158
-        asl a
-        tax
-        lda >screenRowOffsets,x
-        sta >rowAddress
-
-        lda >spriteY
-        clc
-        adc #159
-        asl a
-        tax
-        lda >screenRowOffsets,x
-        sta >rowAddress
-
-        lda >spriteY
-        clc
-        adc #160
-        asl a
-        tax
-        lda >screenRowOffsets,x
-        sta >rowAddress
-
-        lda >spriteY
-        clc
-        adc #161
-        asl a
-        tax
-        lda >screenRowOffsets,x
-        sta >rowAddress
-
-        lda >spriteY
-        clc
-        adc #162
-        asl a
-        tax
-        lda >screenRowOffsets,x
-        sta >rowAddress
-
-        lda >spriteY
-        clc
-        adc #163
-        asl a
-        tax
-        lda >screenRowOffsets,x
-        sta >rowAddress
-
-        lda >spriteY
-        clc
-        adc #164
-        asl a
-        tax
-        lda >screenRowOffsets,x
-        sta >rowAddress
-
-        lda >spriteY
-        clc
-        adc #165
-        asl a
-        tax
-        lda >screenRowOffsets,x
-        sta >rowAddress
-
-        lda >spriteY
-        clc
-        adc #166
-        asl a
-        tax
-        lda >screenRowOffsets,x
-        sta >rowAddress
-
-        lda >spriteY
-        clc
-        adc #167
-        asl a
-        tax
-        lda >screenRowOffsets,x
-        sta >rowAddress
-
-        lda >spriteY
-        clc
-        adc #168
-        asl a
-        tax
-        lda >screenRowOffsets,x
-        sta >rowAddress
-
-        lda >spriteY
-        clc
-        adc #169
-        asl a
-        tax
-        lda >screenRowOffsets,x
-        sta >rowAddress
-
-        lda >spriteY
-        clc
-        adc #170
-        asl a
-        tax
-        lda >screenRowOffsets,x
-        sta >rowAddress
-
-        lda >spriteY
-        clc
-        adc #171
-        asl a
-        tax
-        lda >screenRowOffsets,x
-        sta >rowAddress
-
-        lda >spriteY
-        clc
-        adc #172
-        asl a
-        tax
-        lda >screenRowOffsets,x
-        sta >rowAddress
-
-        lda >spriteY
-        clc
-        adc #173
-        asl a
-        tax
-        lda >screenRowOffsets,x
-        sta >rowAddress
-
-        lda >spriteY
-        clc
-        adc #174
-        asl a
-        tax
-        lda >screenRowOffsets,x
-        sta >rowAddress
-
-        lda >spriteY
-        clc
-        adc #175
-        asl a
-        tax
-        lda >screenRowOffsets,x
-        sta >rowAddress
-
-        lda >spriteY
-        clc
-        adc #176
-        asl a
-        tax
-        lda >screenRowOffsets,x
-        sta >rowAddress
-
-        lda >spriteY
-        clc
-        adc #177
-        asl a
-        tax
-        lda >screenRowOffsets,x
-        sta >rowAddress
-
-        lda >spriteY
-        clc
-        adc #178
-        asl a
-        tax
-        lda >screenRowOffsets,x
-        sta >rowAddress
-
-        lda >spriteY
-        clc
-        adc #179
-        asl a
-        tax
-        lda >screenRowOffsets,x
-        sta >rowAddress
-
-        lda >spriteY
-        clc
-        adc #180
-        asl a
-        tax
-        lda >screenRowOffsets,x
-        sta >rowAddress
-
-        lda >spriteY
-        clc
-        adc #181
-        asl a
-        tax
-        lda >screenRowOffsets,x
-        sta >rowAddress
-
-        lda >spriteY
-        clc
-        adc #182
-        asl a
-        tax
-        lda >screenRowOffsets,x
-        sta >rowAddress
-
-        lda >spriteY
-        clc
-        adc #183
-        asl a
-        tax
-        lda >screenRowOffsets,x
-        sta >rowAddress
-
-        lda >spriteY
-        clc
-        adc #184
-        asl a
-        tax
-        lda >screenRowOffsets,x
-        sta >rowAddress
-
-        lda >spriteY
-        clc
-        adc #185
-        asl a
-        tax
-        lda >screenRowOffsets,x
-        sta >rowAddress
-
-        lda >spriteY
-        clc
-        adc #186
-        asl a
-        tax
-        lda >screenRowOffsets,x
-        sta >rowAddress
-
-        lda >spriteY
-        clc
-        adc #187
-        asl a
-        tax
-        lda >screenRowOffsets,x
-        sta >rowAddress
-
-        lda >spriteY
-        clc
-        adc #188
-        asl a
-        tax
-        lda >screenRowOffsets,x
-        sta >rowAddress
-
-        lda >spriteY
-        clc
-        adc #189
-        asl a
-        tax
-        lda >screenRowOffsets,x
-        sta >rowAddress
-
-        lda >spriteY
-        clc
-        adc #190
-        asl a
-        tax
-        lda >screenRowOffsets,x
-        sta >rowAddress
-
-        lda >spriteY
-        clc
-        adc #191
-        asl a
-        tax
-        lda >screenRowOffsets,x
-        sta >rowAddress
-
-        lda >spriteY
-        clc
-        adc #192
-        asl a
-        tax
-        lda >screenRowOffsets,x
-        sta >rowAddress
-
-        lda >spriteY
-        clc
-        adc #193
-        asl a
-        tax
-        lda >screenRowOffsets,x
-        sta >rowAddress
-
-        lda >spriteY
-        clc
-        adc #194
-        asl a
-        tax
-        lda >screenRowOffsets,x
-        sta >rowAddress
-
-        lda >spriteY
-        clc
-        adc #195
-        asl a
-        tax
-        lda >screenRowOffsets,x
-        sta >rowAddress
-
-        lda >spriteY
-        clc
-        adc #196
-        asl a
-        tax
-        lda >screenRowOffsets,x
-        sta >rowAddress
-
-        lda >spriteY
-        clc
-        adc #197
-        asl a
-        tax
-        lda >screenRowOffsets,x
-        sta >rowAddress
-
-        lda >spriteY
-        clc
-        adc #198
-        asl a
-        tax
-        lda >screenRowOffsets,x
-        sta >rowAddress
-
-        lda >spriteY
-        clc
-        adc #199
-        asl a
-        tax
-        lda >screenRowOffsets,x
-        sta >rowAddress
-
-        lda >spriteY
-        clc
-        adc #200
-        asl a
-        tax
-        lda >screenRowOffsets,x
-        sta >rowAddress
-
-        lda >spriteY
-        clc
-        adc #201
-        asl a
-        tax
-        lda >screenRowOffsets,x
-        sta >rowAddress
-
-        lda >spriteY
-        clc
-        adc #202
-        asl a
-        tax
-        lda >screenRowOffsets,x
-        sta >rowAddress
-
-        lda >spriteY
-        clc
-        adc #203
-        asl a
-        tax
-        lda >screenRowOffsets,x
-        sta >rowAddress
-
-        lda >spriteY
-        clc
-        adc #204
-        asl a
-        tax
-        lda >screenRowOffsets,x
-        sta >rowAddress
-
-        lda >spriteY
-        clc
-        adc #205
-        asl a
-        tax
-        lda >screenRowOffsets,x
-        sta >rowAddress
+        adc >spriteX
 
-        lda >spriteY
         clc
-        adc #206
-        asl a
+        adc #1
         tax
-        lda >screenRowOffsets,x
-        sta >rowAddress
 
-        lda >spriteY
-        clc
-        adc #207
-        asl a
-        tax
-        lda >screenRowOffsets,x
-        sta >rowAddress
-
-        lda >spriteY
-        clc
-        adc #208
-        asl a
-        tax
-        lda >screenRowOffsets,x
-        sta >rowAddress
-
-        lda >spriteY
-        clc
-        adc #209
-        asl a
-        tax
-        lda >screenRowOffsets,x
-        sta >rowAddress
-
-        lda >spriteY
-        clc
-        adc #210
-        asl a
-        tax
-        lda >screenRowOffsets,x
-        sta >rowAddress
-
-        lda >spriteY
-        clc
-        adc #211
-        asl a
-        tax
-        lda >screenRowOffsets,x
-        sta >rowAddress
-
-        lda >spriteY
-        clc
-        adc #212
-        asl a
-        tax
-        lda >screenRowOffsets,x
-        sta >rowAddress
-
-        lda >spriteY
-        clc
-        adc #213
-        asl a
-        tax
-        lda >screenRowOffsets,x
-        sta >rowAddress
-
-        lda >spriteY
-        clc
-        adc #214
-        asl a
-        tax
-        lda >screenRowOffsets,x
-        sta >rowAddress
-
-        lda >spriteY
-        clc
-        adc #215
-        asl a
-        tax
-        lda >screenRowOffsets,x
-        sta >rowAddress
-
-        lda >spriteY
-        clc
-        adc #216
-        asl a
-        tax
-        lda >screenRowOffsets,x
-        sta >rowAddress
-
-        lda >spriteY
-        clc
-        adc #217
-        asl a
-        tax
-        lda >screenRowOffsets,x
-        sta >rowAddress
-
-        lda >spriteY
-        clc
-        adc #218
-        asl a
-        tax
-        lda >screenRowOffsets,x
-        sta >rowAddress
-
-        lda >spriteY
-        clc
-        adc #219
-        asl a
-        tax
-        lda >screenRowOffsets,x
-        sta >rowAddress
-
-        lda >spriteY
-        clc
-        adc #220
-        asl a
-        tax
-        lda >screenRowOffsets,x
-        sta >rowAddress
-
-        lda >spriteY
-        clc
-        adc #221
-        asl a
-        tax
-        lda >screenRowOffsets,x
-        sta >rowAddress
-
-        lda >spriteY
-        clc
-        adc #222
-        asl a
-        tax
-        lda >screenRowOffsets,x
-        sta >rowAddress
-
-        lda >spriteY
-        clc
-        adc #223
-        asl a
-        tax
-        lda >screenRowOffsets,x
-        sta >rowAddress
-
-        lda >spriteY
-        clc
-        adc #224
-        asl a
-        tax
-        lda >screenRowOffsets,x
-        sta >rowAddress
-
-        lda >spriteY
-        clc
-        adc #225
-        asl a
-        tax
-        lda >screenRowOffsets,x
-        sta >rowAddress
-
-        lda >spriteY
-        clc
-        adc #226
-        asl a
-        tax
-        lda >screenRowOffsets,x
-        sta >rowAddress
-
-        lda >spriteY
-        clc
-        adc #227
-        asl a
-        tax
-        lda >screenRowOffsets,x
-        sta >rowAddress
-
-        lda >spriteY
-        clc
-        adc #228
-        asl a
-        tax
-        lda >screenRowOffsets,x
-        sta >rowAddress
-
-        lda >spriteY
-        clc
-        adc #229
-        asl a
-        tax
-        lda >screenRowOffsets,x
-        sta >rowAddress
-
-        lda >spriteY
-        clc
-        adc #230
-        asl a
-        tax
-        lda >screenRowOffsets,x
-        sta >rowAddress
-
-        lda >spriteY
-        clc
-        adc #231
-        asl a
-        tax
-        lda >screenRowOffsets,x
-        sta >rowAddress
-
-        lda >spriteY
-        clc
-        adc #232
-        asl a
-        tax
-        lda >screenRowOffsets,x
-        sta >rowAddress
-
-        lda >spriteY
-        clc
-        adc #233
-        asl a
-        tax
-        lda >screenRowOffsets,x
-        sta >rowAddress
-
-        lda >spriteY
-        clc
-        adc #234
-        asl a
-        tax
-        lda >screenRowOffsets,x
-        sta >rowAddress
-
-        lda >spriteY
-        clc
-        adc #235
-        asl a
-        tax
-        lda >screenRowOffsets,x
-        sta >rowAddress
-
-        lda >spriteY
-        clc
-        adc #236
-        asl a
-        tax
-        lda >screenRowOffsets,x
-        sta >rowAddress
-
-        lda >spriteY
-        clc
-        adc #237
-        asl a
-        tax
-        lda >screenRowOffsets,x
-        sta >rowAddress
-
-        lda >spriteY
-        clc
-        adc #238
-        asl a
-        tax
-        lda >screenRowOffsets,x
-        sta >rowAddress
-
-        lda >spriteY
-        clc
-        adc #239
-        asl a
-        tax
-        lda >screenRowOffsets,x
-        sta >rowAddress
-
-        lda >spriteY
-        clc
-        adc #240
-        asl a
-        tax
-        lda >screenRowOffsets,x
-        sta >rowAddress
-
-        lda >spriteY
-        clc
-        adc #241
-        asl a
-        tax
-        lda >screenRowOffsets,x
-        sta >rowAddress
-
-        lda >spriteY
-        clc
-        adc #242
-        asl a
-        tax
-        lda >screenRowOffsets,x
-        sta >rowAddress
-
-        lda >spriteY
-        clc
-        adc #243
-        asl a
-        tax
-        lda >screenRowOffsets,x
-        sta >rowAddress
-
-        lda >spriteY
-        clc
-        adc #244
-        asl a
-        tax
-        lda >screenRowOffsets,x
-        sta >rowAddress
 
-        lda >spriteY
+        short m
+        lda >BACKGROUND_ADDR,x
+        sta >SCREEN_ADDR,x
+        long m
+        lda >rowAddress
         clc
-        adc #245
-        asl a
-        tax
-        lda >screenRowOffsets,x
-        sta >rowAddress
+        adc >spriteX
 
-        lda >spriteY
         clc
-        adc #246
-        asl a
+        adc #2
         tax
-        lda >screenRowOffsets,x
-        sta >rowAddress
 
-        lda >spriteY
-        clc
-        adc #247
-        asl a
-        tax
-        lda >screenRowOffsets,x
-        sta >rowAddress
 
-        lda >spriteY
+        short m
+        lda >BACKGROUND_ADDR,x
+        sta >SCREEN_ADDR,x
+        long m
+        lda >rowAddress
         clc
-        adc #248
-        asl a
-        tax
-        lda >screenRowOffsets,x
-        sta >rowAddress
+        adc >spriteX
 
-        lda >spriteY
         clc
-        adc #249
-        asl a
+        adc #5
         tax
-        lda >screenRowOffsets,x
-        sta >rowAddress
 
-        lda >spriteY
-        clc
-        adc #250
-        asl a
-        tax
-        lda >screenRowOffsets,x
-        sta >rowAddress
 
-        lda >spriteY
+        short m
+        lda >BACKGROUND_ADDR,x
+        sta >SCREEN_ADDR,x
+        long m
+        lda >rowAddress
         clc
-        adc #251
-        asl a
-        tax
-        lda >screenRowOffsets,x
-        sta >rowAddress
+        adc >spriteX
 
-        lda >spriteY
         clc
-        adc #252
-        asl a
+        adc #6
         tax
-        lda >screenRowOffsets,x
-        sta >rowAddress
 
-        lda >spriteY
-        clc
-        adc #253
-        asl a
-        tax
-        lda >screenRowOffsets,x
-        sta >rowAddress
 
-        lda >spriteY
-        clc
-        adc #254
-        asl a
-        tax
-        lda >screenRowOffsets,x
-        sta >rowAddress
+        short m
+        lda >BACKGROUND_ADDR,x
+        sta >SCREEN_ADDR,x
+        long m
 
-        lda >spriteY
-        clc
-        adc #255
-        asl a
-        tax
-        lda >screenRowOffsets,x
-        sta >rowAddress
 
-        lda >spriteY
-        clc
-        adc #256
-        asl a
-        tax
-        lda >screenRowOffsets,x
-        sta >rowAddress
+eraseSpriteBat1SkipRowErase49 anop
 
-        lda >spriteY
+        lda >rowCounter
         clc
-        adc #257
-        asl a
-        tax
-        lda >screenRowOffsets,x
-        sta >rowAddress
+        adc #1
+        sta >rowCounter
 
 
         rtl
@@ -5496,6 +1962,16 @@ eraseSpriteBat2 entry
         lda >spriteX
         lsr a
         sta >spriteX
+        lda >spriteY
+        sta >rowCounter
+
+        cmp #199
+        bcs eraseSpriteBat2SkipRowEraseShortJump50
+        bra eraseSpriteBat2SkipRowEraseDontSkipRow50
+
+eraseSpriteBat2SkipRowEraseShortJump50 anop
+        brl eraseSpriteBat2SkipRowErase50
+eraseSpriteBat2SkipRowEraseDontSkipRow50 anop
         lda >spriteY
         clc
         adc #0
@@ -5509,7 +1985,7 @@ eraseSpriteBat2 entry
         adc >spriteX
 
         clc
-        adc #0
+        adc #7
         tax
 
 
@@ -5518,6 +1994,22 @@ eraseSpriteBat2 entry
         sta >SCREEN_ADDR,x
         long m
 
+
+eraseSpriteBat2SkipRowErase50 anop
+
+        lda >rowCounter
+        clc
+        adc #1
+        sta >rowCounter
+
+
+        cmp #199
+        bcs eraseSpriteBat2SkipRowEraseShortJump51
+        bra eraseSpriteBat2SkipRowEraseDontSkipRow51
+
+eraseSpriteBat2SkipRowEraseShortJump51 anop
+        brl eraseSpriteBat2SkipRowErase51
+eraseSpriteBat2SkipRowEraseDontSkipRow51 anop
         lda >spriteY
         clc
         adc #1
@@ -5531,6 +2023,44 @@ eraseSpriteBat2 entry
         adc >spriteX
 
         clc
+        adc #7
+        tax
+
+
+        short m
+        lda >BACKGROUND_ADDR,x
+        sta >SCREEN_ADDR,x
+        long m
+
+
+eraseSpriteBat2SkipRowErase51 anop
+
+        lda >rowCounter
+        clc
+        adc #1
+        sta >rowCounter
+
+
+        cmp #199
+        bcs eraseSpriteBat2SkipRowEraseShortJump52
+        bra eraseSpriteBat2SkipRowEraseDontSkipRow52
+
+eraseSpriteBat2SkipRowEraseShortJump52 anop
+        brl eraseSpriteBat2SkipRowErase52
+eraseSpriteBat2SkipRowEraseDontSkipRow52 anop
+        lda >spriteY
+        clc
+        adc #2
+        asl a
+        tax
+        lda >screenRowOffsets,x
+        sta >rowAddress
+
+        lda >rowAddress
+        clc
+        adc >spriteX
+
+        clc
         adc #0
         tax
 
@@ -5541,6 +2071,1126 @@ eraseSpriteBat2 entry
         long m
 
 
+eraseSpriteBat2SkipRowErase52 anop
+
+        lda >rowCounter
+        clc
+        adc #1
+        sta >rowCounter
+
+
+        cmp #199
+        bcs eraseSpriteBat2SkipRowEraseShortJump53
+        bra eraseSpriteBat2SkipRowEraseDontSkipRow53
+
+eraseSpriteBat2SkipRowEraseShortJump53 anop
+        brl eraseSpriteBat2SkipRowErase53
+eraseSpriteBat2SkipRowEraseDontSkipRow53 anop
+        lda >spriteY
+        clc
+        adc #3
+        asl a
+        tax
+        lda >screenRowOffsets,x
+        sta >rowAddress
+
+        lda >rowAddress
+        clc
+        adc >spriteX
+
+        clc
+        adc #0
+        tax
+
+
+        short m
+        lda >BACKGROUND_ADDR,x
+        sta >SCREEN_ADDR,x
+        long m
+
+
+eraseSpriteBat2SkipRowErase53 anop
+
+        lda >rowCounter
+        clc
+        adc #1
+        sta >rowCounter
+
+
+        cmp #199
+        bcs eraseSpriteBat2SkipRowEraseShortJump54
+        bra eraseSpriteBat2SkipRowEraseDontSkipRow54
+
+eraseSpriteBat2SkipRowEraseShortJump54 anop
+        brl eraseSpriteBat2SkipRowErase54
+eraseSpriteBat2SkipRowEraseDontSkipRow54 anop
+        lda >spriteY
+        clc
+        adc #4
+        asl a
+        tax
+        lda >screenRowOffsets,x
+        sta >rowAddress
+
+        lda >rowAddress
+        clc
+        adc >spriteX
+
+        clc
+        adc #7
+        tax
+
+
+        short m
+        lda >BACKGROUND_ADDR,x
+        sta >SCREEN_ADDR,x
+        long m
+
+
+eraseSpriteBat2SkipRowErase54 anop
+
+        lda >rowCounter
+        clc
+        adc #1
+        sta >rowCounter
+
+
+        cmp #199
+        bcs eraseSpriteBat2SkipRowEraseShortJump55
+        bra eraseSpriteBat2SkipRowEraseDontSkipRow55
+
+eraseSpriteBat2SkipRowEraseShortJump55 anop
+        brl eraseSpriteBat2SkipRowErase55
+eraseSpriteBat2SkipRowEraseDontSkipRow55 anop
+        lda >spriteY
+        clc
+        adc #5
+        asl a
+        tax
+        lda >screenRowOffsets,x
+        sta >rowAddress
+
+        lda >rowAddress
+        clc
+        adc >spriteX
+
+        clc
+        adc #7
+        tax
+
+
+        short m
+        lda >BACKGROUND_ADDR,x
+        sta >SCREEN_ADDR,x
+        long m
+
+
+eraseSpriteBat2SkipRowErase55 anop
+
+        lda >rowCounter
+        clc
+        adc #1
+        sta >rowCounter
+
+
+        cmp #199
+        bcs eraseSpriteBat2SkipRowEraseShortJump56
+        bra eraseSpriteBat2SkipRowEraseDontSkipRow56
+
+eraseSpriteBat2SkipRowEraseShortJump56 anop
+        brl eraseSpriteBat2SkipRowErase56
+eraseSpriteBat2SkipRowEraseDontSkipRow56 anop
+        lda >spriteY
+        clc
+        adc #6
+        asl a
+        tax
+        lda >screenRowOffsets,x
+        sta >rowAddress
+
+        lda >rowAddress
+        clc
+        adc >spriteX
+
+        clc
+        adc #0
+        tax
+
+
+        short m
+        lda >BACKGROUND_ADDR,x
+        sta >SCREEN_ADDR,x
+        long m
+
+
+eraseSpriteBat2SkipRowErase56 anop
+
+        lda >rowCounter
+        clc
+        adc #1
+        sta >rowCounter
+
+
+        cmp #199
+        bcs eraseSpriteBat2SkipRowEraseShortJump57
+        bra eraseSpriteBat2SkipRowEraseDontSkipRow57
+
+eraseSpriteBat2SkipRowEraseShortJump57 anop
+        brl eraseSpriteBat2SkipRowErase57
+eraseSpriteBat2SkipRowEraseDontSkipRow57 anop
+        lda >spriteY
+        clc
+        adc #7
+        asl a
+        tax
+        lda >screenRowOffsets,x
+        sta >rowAddress
+
+        lda >rowAddress
+        clc
+        adc >spriteX
+
+        clc
+        adc #0
+        tax
+
+
+        short m
+        lda >BACKGROUND_ADDR,x
+        sta >SCREEN_ADDR,x
+        long m
+
+
+eraseSpriteBat2SkipRowErase57 anop
+
+        lda >rowCounter
+        clc
+        adc #1
+        sta >rowCounter
+
+
+        cmp #199
+        bcs eraseSpriteBat2SkipRowEraseShortJump58
+        bra eraseSpriteBat2SkipRowEraseDontSkipRow58
+
+eraseSpriteBat2SkipRowEraseShortJump58 anop
+        brl eraseSpriteBat2SkipRowErase58
+eraseSpriteBat2SkipRowEraseDontSkipRow58 anop
+        lda >spriteY
+        clc
+        adc #8
+        asl a
+        tax
+        lda >screenRowOffsets,x
+        sta >rowAddress
+
+        lda >rowAddress
+        clc
+        adc >spriteX
+
+        clc
+        adc #2
+        tax
+
+
+        short m
+        lda >BACKGROUND_ADDR,x
+        sta >SCREEN_ADDR,x
+        long m
+        lda >rowAddress
+        clc
+        adc >spriteX
+
+        clc
+        adc #3
+        tax
+
+
+        short m
+        lda >BACKGROUND_ADDR,x
+        sta >SCREEN_ADDR,x
+        long m
+        lda >rowAddress
+        clc
+        adc >spriteX
+
+        clc
+        adc #4
+        tax
+
+
+        short m
+        lda >BACKGROUND_ADDR,x
+        sta >SCREEN_ADDR,x
+        long m
+        lda >rowAddress
+        clc
+        adc >spriteX
+
+        clc
+        adc #5
+        tax
+
+
+        short m
+        lda >BACKGROUND_ADDR,x
+        sta >SCREEN_ADDR,x
+        long m
+
+
+eraseSpriteBat2SkipRowErase58 anop
+
+        lda >rowCounter
+        clc
+        adc #1
+        sta >rowCounter
+
+
+        cmp #199
+        bcs eraseSpriteBat2SkipRowEraseShortJump59
+        bra eraseSpriteBat2SkipRowEraseDontSkipRow59
+
+eraseSpriteBat2SkipRowEraseShortJump59 anop
+        brl eraseSpriteBat2SkipRowErase59
+eraseSpriteBat2SkipRowEraseDontSkipRow59 anop
+        lda >spriteY
+        clc
+        adc #9
+        asl a
+        tax
+        lda >screenRowOffsets,x
+        sta >rowAddress
+
+        lda >rowAddress
+        clc
+        adc >spriteX
+
+        clc
+        adc #2
+        tax
+
+
+        short m
+        lda >BACKGROUND_ADDR,x
+        sta >SCREEN_ADDR,x
+        long m
+        lda >rowAddress
+        clc
+        adc >spriteX
+
+        clc
+        adc #3
+        tax
+
+
+        short m
+        lda >BACKGROUND_ADDR,x
+        sta >SCREEN_ADDR,x
+        long m
+        lda >rowAddress
+        clc
+        adc >spriteX
+
+        clc
+        adc #4
+        tax
+
+
+        short m
+        lda >BACKGROUND_ADDR,x
+        sta >SCREEN_ADDR,x
+        long m
+        lda >rowAddress
+        clc
+        adc >spriteX
+
+        clc
+        adc #5
+        tax
+
+
+        short m
+        lda >BACKGROUND_ADDR,x
+        sta >SCREEN_ADDR,x
+        long m
+
+
+eraseSpriteBat2SkipRowErase59 anop
+
+        lda >rowCounter
+        clc
+        adc #1
+        sta >rowCounter
+
+
+        cmp #199
+        bcs eraseSpriteBat2SkipRowEraseShortJump60
+        bra eraseSpriteBat2SkipRowEraseDontSkipRow60
+
+eraseSpriteBat2SkipRowEraseShortJump60 anop
+        brl eraseSpriteBat2SkipRowErase60
+eraseSpriteBat2SkipRowEraseDontSkipRow60 anop
+        lda >spriteY
+        clc
+        adc #10
+        asl a
+        tax
+        lda >screenRowOffsets,x
+        sta >rowAddress
+
+        lda >rowAddress
+        clc
+        adc >spriteX
+
+        clc
+        adc #1
+        tax
+
+
+        short m
+        lda >BACKGROUND_ADDR,x
+        sta >SCREEN_ADDR,x
+        long m
+        lda >rowAddress
+        clc
+        adc >spriteX
+
+        clc
+        adc #3
+        tax
+
+
+        short m
+        lda >BACKGROUND_ADDR,x
+        sta >SCREEN_ADDR,x
+        long m
+        lda >rowAddress
+        clc
+        adc >spriteX
+
+        clc
+        adc #4
+        tax
+
+
+        short m
+        lda >BACKGROUND_ADDR,x
+        sta >SCREEN_ADDR,x
+        long m
+        lda >rowAddress
+        clc
+        adc >spriteX
+
+        clc
+        adc #6
+        tax
+
+
+        short m
+        lda >BACKGROUND_ADDR,x
+        sta >SCREEN_ADDR,x
+        long m
+
+
+eraseSpriteBat2SkipRowErase60 anop
+
+        lda >rowCounter
+        clc
+        adc #1
+        sta >rowCounter
+
+
+        cmp #199
+        bcs eraseSpriteBat2SkipRowEraseShortJump61
+        bra eraseSpriteBat2SkipRowEraseDontSkipRow61
+
+eraseSpriteBat2SkipRowEraseShortJump61 anop
+        brl eraseSpriteBat2SkipRowErase61
+eraseSpriteBat2SkipRowEraseDontSkipRow61 anop
+        lda >spriteY
+        clc
+        adc #11
+        asl a
+        tax
+        lda >screenRowOffsets,x
+        sta >rowAddress
+
+        lda >rowAddress
+        clc
+        adc >spriteX
+
+        clc
+        adc #1
+        tax
+
+
+        short m
+        lda >BACKGROUND_ADDR,x
+        sta >SCREEN_ADDR,x
+        long m
+        lda >rowAddress
+        clc
+        adc >spriteX
+
+        clc
+        adc #3
+        tax
+
+
+        short m
+        lda >BACKGROUND_ADDR,x
+        sta >SCREEN_ADDR,x
+        long m
+        lda >rowAddress
+        clc
+        adc >spriteX
+
+        clc
+        adc #4
+        tax
+
+
+        short m
+        lda >BACKGROUND_ADDR,x
+        sta >SCREEN_ADDR,x
+        long m
+        lda >rowAddress
+        clc
+        adc >spriteX
+
+        clc
+        adc #6
+        tax
+
+
+        short m
+        lda >BACKGROUND_ADDR,x
+        sta >SCREEN_ADDR,x
+        long m
+
+
+eraseSpriteBat2SkipRowErase61 anop
+
+        lda >rowCounter
+        clc
+        adc #1
+        sta >rowCounter
+
+
+        cmp #199
+        bcs eraseSpriteBat2SkipRowEraseShortJump62
+        bra eraseSpriteBat2SkipRowEraseDontSkipRow62
+
+eraseSpriteBat2SkipRowEraseShortJump62 anop
+        brl eraseSpriteBat2SkipRowErase62
+eraseSpriteBat2SkipRowEraseDontSkipRow62 anop
+        lda >spriteY
+        clc
+        adc #12
+        asl a
+        tax
+        lda >screenRowOffsets,x
+        sta >rowAddress
+
+        lda >rowAddress
+        clc
+        adc >spriteX
+
+        clc
+        adc #1
+        tax
+
+
+        short m
+        lda >BACKGROUND_ADDR,x
+        sta >SCREEN_ADDR,x
+        long m
+        lda >rowAddress
+        clc
+        adc >spriteX
+
+        clc
+        adc #2
+        tax
+
+
+        short m
+        lda >BACKGROUND_ADDR,x
+        sta >SCREEN_ADDR,x
+        long m
+        lda >rowAddress
+        clc
+        adc >spriteX
+
+        clc
+        adc #5
+        tax
+
+
+        short m
+        lda >BACKGROUND_ADDR,x
+        sta >SCREEN_ADDR,x
+        long m
+        lda >rowAddress
+        clc
+        adc >spriteX
+
+        clc
+        adc #6
+        tax
+
+
+        short m
+        lda >BACKGROUND_ADDR,x
+        sta >SCREEN_ADDR,x
+        long m
+
+
+eraseSpriteBat2SkipRowErase62 anop
+
+        lda >rowCounter
+        clc
+        adc #1
+        sta >rowCounter
+
+
+        cmp #199
+        bcs eraseSpriteBat2SkipRowEraseShortJump63
+        bra eraseSpriteBat2SkipRowEraseDontSkipRow63
+
+eraseSpriteBat2SkipRowEraseShortJump63 anop
+        brl eraseSpriteBat2SkipRowErase63
+eraseSpriteBat2SkipRowEraseDontSkipRow63 anop
+        lda >spriteY
+        clc
+        adc #13
+        asl a
+        tax
+        lda >screenRowOffsets,x
+        sta >rowAddress
+
+        lda >rowAddress
+        clc
+        adc >spriteX
+
+        clc
+        adc #1
+        tax
+
+
+        short m
+        lda >BACKGROUND_ADDR,x
+        sta >SCREEN_ADDR,x
+        long m
+        lda >rowAddress
+        clc
+        adc >spriteX
+
+        clc
+        adc #2
+        tax
+
+
+        short m
+        lda >BACKGROUND_ADDR,x
+        sta >SCREEN_ADDR,x
+        long m
+        lda >rowAddress
+        clc
+        adc >spriteX
+
+        clc
+        adc #5
+        tax
+
+
+        short m
+        lda >BACKGROUND_ADDR,x
+        sta >SCREEN_ADDR,x
+        long m
+        lda >rowAddress
+        clc
+        adc >spriteX
+
+        clc
+        adc #6
+        tax
+
+
+        short m
+        lda >BACKGROUND_ADDR,x
+        sta >SCREEN_ADDR,x
+        long m
+
+
+eraseSpriteBat2SkipRowErase63 anop
+
+        lda >rowCounter
+        clc
+        adc #1
+        sta >rowCounter
+
+
+        cmp #199
+        bcs eraseSpriteBat2SkipRowEraseShortJump64
+        bra eraseSpriteBat2SkipRowEraseDontSkipRow64
+
+eraseSpriteBat2SkipRowEraseShortJump64 anop
+        brl eraseSpriteBat2SkipRowErase64
+eraseSpriteBat2SkipRowEraseDontSkipRow64 anop
+        lda >spriteY
+        clc
+        adc #14
+        asl a
+        tax
+        lda >screenRowOffsets,x
+        sta >rowAddress
+
+        lda >rowAddress
+        clc
+        adc >spriteX
+
+        clc
+        adc #0
+        tax
+
+
+        short m
+        lda >BACKGROUND_ADDR,x
+        sta >SCREEN_ADDR,x
+        long m
+        lda >rowAddress
+        clc
+        adc >spriteX
+
+        clc
+        adc #1
+        tax
+
+
+        short m
+        lda >BACKGROUND_ADDR,x
+        sta >SCREEN_ADDR,x
+        long m
+        lda >rowAddress
+        clc
+        adc >spriteX
+
+        clc
+        adc #6
+        tax
+
+
+        short m
+        lda >BACKGROUND_ADDR,x
+        sta >SCREEN_ADDR,x
+        long m
+        lda >rowAddress
+        clc
+        adc >spriteX
+
+        clc
+        adc #7
+        tax
+
+
+        short m
+        lda >BACKGROUND_ADDR,x
+        sta >SCREEN_ADDR,x
+        long m
+
+
+eraseSpriteBat2SkipRowErase64 anop
+
+        lda >rowCounter
+        clc
+        adc #1
+        sta >rowCounter
+
+
+        cmp #199
+        bcs eraseSpriteBat2SkipRowEraseShortJump65
+        bra eraseSpriteBat2SkipRowEraseDontSkipRow65
+
+eraseSpriteBat2SkipRowEraseShortJump65 anop
+        brl eraseSpriteBat2SkipRowErase65
+eraseSpriteBat2SkipRowEraseDontSkipRow65 anop
+        lda >spriteY
+        clc
+        adc #15
+        asl a
+        tax
+        lda >screenRowOffsets,x
+        sta >rowAddress
+
+        lda >rowAddress
+        clc
+        adc >spriteX
+
+        clc
+        adc #0
+        tax
+
+
+        short m
+        lda >BACKGROUND_ADDR,x
+        sta >SCREEN_ADDR,x
+        long m
+        lda >rowAddress
+        clc
+        adc >spriteX
+
+        clc
+        adc #1
+        tax
+
+
+        short m
+        lda >BACKGROUND_ADDR,x
+        sta >SCREEN_ADDR,x
+        long m
+        lda >rowAddress
+        clc
+        adc >spriteX
+
+        clc
+        adc #6
+        tax
+
+
+        short m
+        lda >BACKGROUND_ADDR,x
+        sta >SCREEN_ADDR,x
+        long m
+        lda >rowAddress
+        clc
+        adc >spriteX
+
+        clc
+        adc #7
+        tax
+
+
+        short m
+        lda >BACKGROUND_ADDR,x
+        sta >SCREEN_ADDR,x
+        long m
+
+
+eraseSpriteBat2SkipRowErase65 anop
+
+        lda >rowCounter
+        clc
+        adc #1
+        sta >rowCounter
+
+
+        cmp #199
+        bcs eraseSpriteBat2SkipRowEraseShortJump66
+        bra eraseSpriteBat2SkipRowEraseDontSkipRow66
+
+eraseSpriteBat2SkipRowEraseShortJump66 anop
+        brl eraseSpriteBat2SkipRowErase66
+eraseSpriteBat2SkipRowEraseDontSkipRow66 anop
+        lda >spriteY
+        clc
+        adc #16
+        asl a
+        tax
+        lda >screenRowOffsets,x
+        sta >rowAddress
+
+        lda >rowAddress
+        clc
+        adc >spriteX
+
+        clc
+        adc #0
+        tax
+
+
+        short m
+        lda >BACKGROUND_ADDR,x
+        sta >SCREEN_ADDR,x
+        long m
+        lda >rowAddress
+        clc
+        adc >spriteX
+
+        clc
+        adc #7
+        tax
+
+
+        short m
+        lda >BACKGROUND_ADDR,x
+        sta >SCREEN_ADDR,x
+        long m
+
+
+eraseSpriteBat2SkipRowErase66 anop
+
+        lda >rowCounter
+        clc
+        adc #1
+        sta >rowCounter
+
+
+        cmp #199
+        bcs eraseSpriteBat2SkipRowEraseShortJump67
+        bra eraseSpriteBat2SkipRowEraseDontSkipRow67
+
+eraseSpriteBat2SkipRowEraseShortJump67 anop
+        brl eraseSpriteBat2SkipRowErase67
+eraseSpriteBat2SkipRowEraseDontSkipRow67 anop
+        lda >spriteY
+        clc
+        adc #17
+        asl a
+        tax
+        lda >screenRowOffsets,x
+        sta >rowAddress
+
+        lda >rowAddress
+        clc
+        adc >spriteX
+
+        clc
+        adc #0
+        tax
+
+
+        short m
+        lda >BACKGROUND_ADDR,x
+        sta >SCREEN_ADDR,x
+        long m
+        lda >rowAddress
+        clc
+        adc >spriteX
+
+        clc
+        adc #7
+        tax
+
+
+        short m
+        lda >BACKGROUND_ADDR,x
+        sta >SCREEN_ADDR,x
+        long m
+
+
+eraseSpriteBat2SkipRowErase67 anop
+
+        lda >rowCounter
+        clc
+        adc #1
+        sta >rowCounter
+
+
+        cmp #199
+        bcs eraseSpriteBat2SkipRowEraseShortJump68
+        bra eraseSpriteBat2SkipRowEraseDontSkipRow68
+
+eraseSpriteBat2SkipRowEraseShortJump68 anop
+        brl eraseSpriteBat2SkipRowErase68
+eraseSpriteBat2SkipRowEraseDontSkipRow68 anop
+        lda >spriteY
+        clc
+        adc #18
+        asl a
+        tax
+        lda >screenRowOffsets,x
+        sta >rowAddress
+
+        lda >rowAddress
+        clc
+        adc >spriteX
+
+        clc
+        adc #0
+        tax
+
+
+        short m
+        lda >BACKGROUND_ADDR,x
+        sta >SCREEN_ADDR,x
+        long m
+        lda >rowAddress
+        clc
+        adc >spriteX
+
+        clc
+        adc #7
+        tax
+
+
+        short m
+        lda >BACKGROUND_ADDR,x
+        sta >SCREEN_ADDR,x
+        long m
+
+
+eraseSpriteBat2SkipRowErase68 anop
+
+        lda >rowCounter
+        clc
+        adc #1
+        sta >rowCounter
+
+
+        cmp #199
+        bcs eraseSpriteBat2SkipRowEraseShortJump69
+        bra eraseSpriteBat2SkipRowEraseDontSkipRow69
+
+eraseSpriteBat2SkipRowEraseShortJump69 anop
+        brl eraseSpriteBat2SkipRowErase69
+eraseSpriteBat2SkipRowEraseDontSkipRow69 anop
+        lda >spriteY
+        clc
+        adc #19
+        asl a
+        tax
+        lda >screenRowOffsets,x
+        sta >rowAddress
+
+        lda >rowAddress
+        clc
+        adc >spriteX
+
+        clc
+        adc #0
+        tax
+
+
+        short m
+        lda >BACKGROUND_ADDR,x
+        sta >SCREEN_ADDR,x
+        long m
+        lda >rowAddress
+        clc
+        adc >spriteX
+
+        clc
+        adc #7
+        tax
+
+
+        short m
+        lda >BACKGROUND_ADDR,x
+        sta >SCREEN_ADDR,x
+        long m
+
+
+eraseSpriteBat2SkipRowErase69 anop
+
+        lda >rowCounter
+        clc
+        adc #1
+        sta >rowCounter
+
+
+        cmp #199
+        bcs eraseSpriteBat2SkipRowEraseShortJump70
+        bra eraseSpriteBat2SkipRowEraseDontSkipRow70
+
+eraseSpriteBat2SkipRowEraseShortJump70 anop
+        brl eraseSpriteBat2SkipRowErase70
+eraseSpriteBat2SkipRowEraseDontSkipRow70 anop
+        lda >spriteY
+        clc
+        adc #20
+        asl a
+        tax
+        lda >screenRowOffsets,x
+        sta >rowAddress
+
+        lda >rowAddress
+        clc
+        adc >spriteX
+
+        clc
+        adc #0
+        tax
+
+
+        short m
+        lda >BACKGROUND_ADDR,x
+        sta >SCREEN_ADDR,x
+        long m
+        lda >rowAddress
+        clc
+        adc >spriteX
+
+        clc
+        adc #7
+        tax
+
+
+        short m
+        lda >BACKGROUND_ADDR,x
+        sta >SCREEN_ADDR,x
+        long m
+
+
+eraseSpriteBat2SkipRowErase70 anop
+
+        lda >rowCounter
+        clc
+        adc #1
+        sta >rowCounter
+
+
+        cmp #199
+        bcs eraseSpriteBat2SkipRowEraseShortJump71
+        bra eraseSpriteBat2SkipRowEraseDontSkipRow71
+
+eraseSpriteBat2SkipRowEraseShortJump71 anop
+        brl eraseSpriteBat2SkipRowErase71
+eraseSpriteBat2SkipRowEraseDontSkipRow71 anop
+        lda >spriteY
+        clc
+        adc #21
+        asl a
+        tax
+        lda >screenRowOffsets,x
+        sta >rowAddress
+
+        lda >rowAddress
+        clc
+        adc >spriteX
+
+        clc
+        adc #0
+        tax
+
+
+        short m
+        lda >BACKGROUND_ADDR,x
+        sta >SCREEN_ADDR,x
+        long m
+        lda >rowAddress
+        clc
+        adc >spriteX
+
+        clc
+        adc #7
+        tax
+
+
+        short m
+        lda >BACKGROUND_ADDR,x
+        sta >SCREEN_ADDR,x
+        long m
+
+
+eraseSpriteBat2SkipRowErase71 anop
+
+        lda >rowCounter
+        clc
+        adc #1
+        sta >rowCounter
+
+
         rtl
 
 eraseSpriteBat1Fog entry
@@ -5548,6 +3198,16 @@ eraseSpriteBat1Fog entry
         lda >spriteX
         lsr a
         sta >spriteX
+        lda >spriteY
+        sta >rowCounter
+
+        cmp #199
+        bcs eraseSpriteBat1FogSkipRowEraseShortJump72
+        bra eraseSpriteBat1FogSkipRowEraseDontSkipRow72
+
+eraseSpriteBat1FogSkipRowEraseShortJump72 anop
+        brl eraseSpriteBat1FogSkipRowErase72
+eraseSpriteBat1FogSkipRowEraseDontSkipRow72 anop
         lda >spriteY
         clc
         adc #0
@@ -5576,7 +3236,6 @@ eraseSpriteBat1Fog0a anop
         sta >SCREEN_ADDR,x
 eraseSpriteBat1Fog0b anop
         long m
-
         lda >rowAddress
         clc
         adc >spriteX
@@ -5598,6 +3257,22 @@ eraseSpriteBat1Fog1a anop
 eraseSpriteBat1Fog1b anop
         long m
 
+
+eraseSpriteBat1FogSkipRowErase72 anop
+
+        lda >rowCounter
+        clc
+        adc #1
+        sta >rowCounter
+
+
+        cmp #199
+        bcs eraseSpriteBat1FogSkipRowEraseShortJump73
+        bra eraseSpriteBat1FogSkipRowEraseDontSkipRow73
+
+eraseSpriteBat1FogSkipRowEraseShortJump73 anop
+        brl eraseSpriteBat1FogSkipRowErase73
+eraseSpriteBat1FogSkipRowEraseDontSkipRow73 anop
         lda >spriteY
         clc
         adc #1
@@ -5626,7 +3301,6 @@ eraseSpriteBat1Fog2a anop
         sta >SCREEN_ADDR,x
 eraseSpriteBat1Fog2b anop
         long m
-
         lda >rowAddress
         clc
         adc >spriteX
@@ -5648,6 +3322,22 @@ eraseSpriteBat1Fog3a anop
 eraseSpriteBat1Fog3b anop
         long m
 
+
+eraseSpriteBat1FogSkipRowErase73 anop
+
+        lda >rowCounter
+        clc
+        adc #1
+        sta >rowCounter
+
+
+        cmp #199
+        bcs eraseSpriteBat1FogSkipRowEraseShortJump74
+        bra eraseSpriteBat1FogSkipRowEraseDontSkipRow74
+
+eraseSpriteBat1FogSkipRowEraseShortJump74 anop
+        brl eraseSpriteBat1FogSkipRowErase74
+eraseSpriteBat1FogSkipRowEraseDontSkipRow74 anop
         lda >spriteY
         clc
         adc #2
@@ -5676,13 +3366,12 @@ eraseSpriteBat1Fog4a anop
         sta >SCREEN_ADDR,x
 eraseSpriteBat1Fog4b anop
         long m
-
         lda >rowAddress
         clc
         adc >spriteX
 
         clc
-        adc #1
+        adc #7
         tax
 
 
@@ -5698,12 +3387,36 @@ eraseSpriteBat1Fog5a anop
 eraseSpriteBat1Fog5b anop
         long m
 
+
+eraseSpriteBat1FogSkipRowErase74 anop
+
+        lda >rowCounter
+        clc
+        adc #1
+        sta >rowCounter
+
+
+        cmp #199
+        bcs eraseSpriteBat1FogSkipRowEraseShortJump75
+        bra eraseSpriteBat1FogSkipRowEraseDontSkipRow75
+
+eraseSpriteBat1FogSkipRowEraseShortJump75 anop
+        brl eraseSpriteBat1FogSkipRowErase75
+eraseSpriteBat1FogSkipRowEraseDontSkipRow75 anop
+        lda >spriteY
+        clc
+        adc #3
+        asl a
+        tax
+        lda >screenRowOffsets,x
+        sta >rowAddress
+
         lda >rowAddress
         clc
         adc >spriteX
 
         clc
-        adc #6
+        adc #0
         tax
 
 
@@ -5718,7 +3431,6 @@ eraseSpriteBat1Fog6a anop
         sta >SCREEN_ADDR,x
 eraseSpriteBat1Fog6b anop
         long m
-
         lda >rowAddress
         clc
         adc >spriteX
@@ -5740,9 +3452,25 @@ eraseSpriteBat1Fog7a anop
 eraseSpriteBat1Fog7b anop
         long m
 
+
+eraseSpriteBat1FogSkipRowErase75 anop
+
+        lda >rowCounter
+        clc
+        adc #1
+        sta >rowCounter
+
+
+        cmp #199
+        bcs eraseSpriteBat1FogSkipRowEraseShortJump76
+        bra eraseSpriteBat1FogSkipRowEraseDontSkipRow76
+
+eraseSpriteBat1FogSkipRowEraseShortJump76 anop
+        brl eraseSpriteBat1FogSkipRowErase76
+eraseSpriteBat1FogSkipRowEraseDontSkipRow76 anop
         lda >spriteY
         clc
-        adc #3
+        adc #4
         asl a
         tax
         lda >screenRowOffsets,x
@@ -5768,7 +3496,6 @@ eraseSpriteBat1Fog8a anop
         sta >SCREEN_ADDR,x
 eraseSpriteBat1Fog8b anop
         long m
-
         lda >rowAddress
         clc
         adc >spriteX
@@ -5789,7 +3516,6 @@ eraseSpriteBat1Fog9a anop
         sta >SCREEN_ADDR,x
 eraseSpriteBat1Fog9b anop
         long m
-
         lda >rowAddress
         clc
         adc >spriteX
@@ -5810,7 +3536,6 @@ eraseSpriteBat1Fog10a anop
         sta >SCREEN_ADDR,x
 eraseSpriteBat1Fog10b anop
         long m
-
         lda >rowAddress
         clc
         adc >spriteX
@@ -5832,9 +3557,25 @@ eraseSpriteBat1Fog11a anop
 eraseSpriteBat1Fog11b anop
         long m
 
+
+eraseSpriteBat1FogSkipRowErase76 anop
+
+        lda >rowCounter
+        clc
+        adc #1
+        sta >rowCounter
+
+
+        cmp #199
+        bcs eraseSpriteBat1FogSkipRowEraseShortJump77
+        bra eraseSpriteBat1FogSkipRowEraseDontSkipRow77
+
+eraseSpriteBat1FogSkipRowEraseShortJump77 anop
+        brl eraseSpriteBat1FogSkipRowErase77
+eraseSpriteBat1FogSkipRowEraseDontSkipRow77 anop
         lda >spriteY
         clc
-        adc #4
+        adc #5
         asl a
         tax
         lda >screenRowOffsets,x
@@ -5860,7 +3601,6 @@ eraseSpriteBat1Fog12a anop
         sta >SCREEN_ADDR,x
 eraseSpriteBat1Fog12b anop
         long m
-
         lda >rowAddress
         clc
         adc >spriteX
@@ -5881,7 +3621,6 @@ eraseSpriteBat1Fog13a anop
         sta >SCREEN_ADDR,x
 eraseSpriteBat1Fog13b anop
         long m
-
         lda >rowAddress
         clc
         adc >spriteX
@@ -5902,7 +3641,6 @@ eraseSpriteBat1Fog14a anop
         sta >SCREEN_ADDR,x
 eraseSpriteBat1Fog14b anop
         long m
-
         lda >rowAddress
         clc
         adc >spriteX
@@ -5924,9 +3662,25 @@ eraseSpriteBat1Fog15a anop
 eraseSpriteBat1Fog15b anop
         long m
 
+
+eraseSpriteBat1FogSkipRowErase77 anop
+
+        lda >rowCounter
+        clc
+        adc #1
+        sta >rowCounter
+
+
+        cmp #199
+        bcs eraseSpriteBat1FogSkipRowEraseShortJump78
+        bra eraseSpriteBat1FogSkipRowEraseDontSkipRow78
+
+eraseSpriteBat1FogSkipRowEraseShortJump78 anop
+        brl eraseSpriteBat1FogSkipRowErase78
+eraseSpriteBat1FogSkipRowEraseDontSkipRow78 anop
         lda >spriteY
         clc
-        adc #5
+        adc #6
         asl a
         tax
         lda >screenRowOffsets,x
@@ -5952,7 +3706,6 @@ eraseSpriteBat1Fog16a anop
         sta >SCREEN_ADDR,x
 eraseSpriteBat1Fog16b anop
         long m
-
         lda >rowAddress
         clc
         adc >spriteX
@@ -5973,7 +3726,6 @@ eraseSpriteBat1Fog17a anop
         sta >SCREEN_ADDR,x
 eraseSpriteBat1Fog17b anop
         long m
-
         lda >rowAddress
         clc
         adc >spriteX
@@ -5994,7 +3746,6 @@ eraseSpriteBat1Fog18a anop
         sta >SCREEN_ADDR,x
 eraseSpriteBat1Fog18b anop
         long m
-
         lda >rowAddress
         clc
         adc >spriteX
@@ -6016,9 +3767,25 @@ eraseSpriteBat1Fog19a anop
 eraseSpriteBat1Fog19b anop
         long m
 
+
+eraseSpriteBat1FogSkipRowErase78 anop
+
+        lda >rowCounter
+        clc
+        adc #1
+        sta >rowCounter
+
+
+        cmp #199
+        bcs eraseSpriteBat1FogSkipRowEraseShortJump79
+        bra eraseSpriteBat1FogSkipRowEraseDontSkipRow79
+
+eraseSpriteBat1FogSkipRowEraseShortJump79 anop
+        brl eraseSpriteBat1FogSkipRowErase79
+eraseSpriteBat1FogSkipRowEraseDontSkipRow79 anop
         lda >spriteY
         clc
-        adc #6
+        adc #7
         asl a
         tax
         lda >screenRowOffsets,x
@@ -6044,7 +3811,6 @@ eraseSpriteBat1Fog20a anop
         sta >SCREEN_ADDR,x
 eraseSpriteBat1Fog20b anop
         long m
-
         lda >rowAddress
         clc
         adc >spriteX
@@ -6065,13 +3831,12 @@ eraseSpriteBat1Fog21a anop
         sta >SCREEN_ADDR,x
 eraseSpriteBat1Fog21b anop
         long m
-
         lda >rowAddress
         clc
         adc >spriteX
 
         clc
-        adc #2
+        adc #6
         tax
 
 
@@ -6086,13 +3851,12 @@ eraseSpriteBat1Fog22a anop
         sta >SCREEN_ADDR,x
 eraseSpriteBat1Fog22b anop
         long m
-
         lda >rowAddress
         clc
         adc >spriteX
 
         clc
-        adc #3
+        adc #7
         tax
 
 
@@ -6108,93 +3872,25 @@ eraseSpriteBat1Fog23a anop
 eraseSpriteBat1Fog23b anop
         long m
 
-        lda >rowAddress
+
+eraseSpriteBat1FogSkipRowErase79 anop
+
+        lda >rowCounter
         clc
-        adc >spriteX
-
-        clc
-        adc #4
-        tax
+        adc #1
+        sta >rowCounter
 
 
-        short m
-        lda >SURROUND_PIXEL_ADDR,x
-        cmp #$00
-        beq eraseSpriteBat1Fog24a
-        sta >SCREEN_ADDR,x
-        bra eraseSpriteBat1Fog24b
-eraseSpriteBat1Fog24a anop
-        lda >BACKGROUND_ADDR,x
-        sta >SCREEN_ADDR,x
-eraseSpriteBat1Fog24b anop
-        long m
+        cmp #199
+        bcs eraseSpriteBat1FogSkipRowEraseShortJump80
+        bra eraseSpriteBat1FogSkipRowEraseDontSkipRow80
 
-        lda >rowAddress
-        clc
-        adc >spriteX
-
-        clc
-        adc #5
-        tax
-
-
-        short m
-        lda >SURROUND_PIXEL_ADDR,x
-        cmp #$00
-        beq eraseSpriteBat1Fog25a
-        sta >SCREEN_ADDR,x
-        bra eraseSpriteBat1Fog25b
-eraseSpriteBat1Fog25a anop
-        lda >BACKGROUND_ADDR,x
-        sta >SCREEN_ADDR,x
-eraseSpriteBat1Fog25b anop
-        long m
-
-        lda >rowAddress
-        clc
-        adc >spriteX
-
-        clc
-        adc #6
-        tax
-
-
-        short m
-        lda >SURROUND_PIXEL_ADDR,x
-        cmp #$00
-        beq eraseSpriteBat1Fog26a
-        sta >SCREEN_ADDR,x
-        bra eraseSpriteBat1Fog26b
-eraseSpriteBat1Fog26a anop
-        lda >BACKGROUND_ADDR,x
-        sta >SCREEN_ADDR,x
-eraseSpriteBat1Fog26b anop
-        long m
-
-        lda >rowAddress
-        clc
-        adc >spriteX
-
-        clc
-        adc #7
-        tax
-
-
-        short m
-        lda >SURROUND_PIXEL_ADDR,x
-        cmp #$00
-        beq eraseSpriteBat1Fog27a
-        sta >SCREEN_ADDR,x
-        bra eraseSpriteBat1Fog27b
-eraseSpriteBat1Fog27a anop
-        lda >BACKGROUND_ADDR,x
-        sta >SCREEN_ADDR,x
-eraseSpriteBat1Fog27b anop
-        long m
-
+eraseSpriteBat1FogSkipRowEraseShortJump80 anop
+        brl eraseSpriteBat1FogSkipRowErase80
+eraseSpriteBat1FogSkipRowEraseDontSkipRow80 anop
         lda >spriteY
         clc
-        adc #7
+        adc #8
         asl a
         tax
         lda >screenRowOffsets,x
@@ -6212,6 +3908,86 @@ eraseSpriteBat1Fog27b anop
         short m
         lda >SURROUND_PIXEL_ADDR,x
         cmp #$00
+        beq eraseSpriteBat1Fog24a
+        sta >SCREEN_ADDR,x
+        bra eraseSpriteBat1Fog24b
+eraseSpriteBat1Fog24a anop
+        lda >BACKGROUND_ADDR,x
+        sta >SCREEN_ADDR,x
+eraseSpriteBat1Fog24b anop
+        long m
+        lda >rowAddress
+        clc
+        adc >spriteX
+
+        clc
+        adc #1
+        tax
+
+
+        short m
+        lda >SURROUND_PIXEL_ADDR,x
+        cmp #$00
+        beq eraseSpriteBat1Fog25a
+        sta >SCREEN_ADDR,x
+        bra eraseSpriteBat1Fog25b
+eraseSpriteBat1Fog25a anop
+        lda >BACKGROUND_ADDR,x
+        sta >SCREEN_ADDR,x
+eraseSpriteBat1Fog25b anop
+        long m
+        lda >rowAddress
+        clc
+        adc >spriteX
+
+        clc
+        adc #2
+        tax
+
+
+        short m
+        lda >SURROUND_PIXEL_ADDR,x
+        cmp #$00
+        beq eraseSpriteBat1Fog26a
+        sta >SCREEN_ADDR,x
+        bra eraseSpriteBat1Fog26b
+eraseSpriteBat1Fog26a anop
+        lda >BACKGROUND_ADDR,x
+        sta >SCREEN_ADDR,x
+eraseSpriteBat1Fog26b anop
+        long m
+        lda >rowAddress
+        clc
+        adc >spriteX
+
+        clc
+        adc #3
+        tax
+
+
+        short m
+        lda >SURROUND_PIXEL_ADDR,x
+        cmp #$00
+        beq eraseSpriteBat1Fog27a
+        sta >SCREEN_ADDR,x
+        bra eraseSpriteBat1Fog27b
+eraseSpriteBat1Fog27a anop
+        lda >BACKGROUND_ADDR,x
+        sta >SCREEN_ADDR,x
+eraseSpriteBat1Fog27b anop
+        long m
+        lda >rowAddress
+        clc
+        adc >spriteX
+
+        clc
+        adc #4
+        tax
+
+
+        short m
+        lda >SURROUND_PIXEL_ADDR,x
+        cmp #$00
         beq eraseSpriteBat1Fog28a
         sta >SCREEN_ADDR,x
         bra eraseSpriteBat1Fog28b
@@ -6220,13 +3996,12 @@ eraseSpriteBat1Fog28a anop
         sta >SCREEN_ADDR,x
 eraseSpriteBat1Fog28b anop
         long m
-
         lda >rowAddress
         clc
         adc >spriteX
 
         clc
-        adc #1
+        adc #5
         tax
 
 
@@ -6241,13 +4016,12 @@ eraseSpriteBat1Fog29a anop
         sta >SCREEN_ADDR,x
 eraseSpriteBat1Fog29b anop
         long m
-
         lda >rowAddress
         clc
         adc >spriteX
 
         clc
-        adc #2
+        adc #6
         tax
 
 
@@ -6262,13 +4036,12 @@ eraseSpriteBat1Fog30a anop
         sta >SCREEN_ADDR,x
 eraseSpriteBat1Fog30b anop
         long m
-
         lda >rowAddress
         clc
         adc >spriteX
 
         clc
-        adc #3
+        adc #7
         tax
 
 
@@ -6284,12 +4057,36 @@ eraseSpriteBat1Fog31a anop
 eraseSpriteBat1Fog31b anop
         long m
 
+
+eraseSpriteBat1FogSkipRowErase80 anop
+
+        lda >rowCounter
+        clc
+        adc #1
+        sta >rowCounter
+
+
+        cmp #199
+        bcs eraseSpriteBat1FogSkipRowEraseShortJump81
+        bra eraseSpriteBat1FogSkipRowEraseDontSkipRow81
+
+eraseSpriteBat1FogSkipRowEraseShortJump81 anop
+        brl eraseSpriteBat1FogSkipRowErase81
+eraseSpriteBat1FogSkipRowEraseDontSkipRow81 anop
+        lda >spriteY
+        clc
+        adc #9
+        asl a
+        tax
+        lda >screenRowOffsets,x
+        sta >rowAddress
+
         lda >rowAddress
         clc
         adc >spriteX
 
         clc
-        adc #4
+        adc #0
         tax
 
 
@@ -6304,13 +4101,12 @@ eraseSpriteBat1Fog32a anop
         sta >SCREEN_ADDR,x
 eraseSpriteBat1Fog32b anop
         long m
-
         lda >rowAddress
         clc
         adc >spriteX
 
         clc
-        adc #5
+        adc #1
         tax
 
 
@@ -6325,13 +4121,12 @@ eraseSpriteBat1Fog33a anop
         sta >SCREEN_ADDR,x
 eraseSpriteBat1Fog33b anop
         long m
-
         lda >rowAddress
         clc
         adc >spriteX
 
         clc
-        adc #6
+        adc #2
         tax
 
 
@@ -6346,13 +4141,12 @@ eraseSpriteBat1Fog34a anop
         sta >SCREEN_ADDR,x
 eraseSpriteBat1Fog34b anop
         long m
-
         lda >rowAddress
         clc
         adc >spriteX
 
         clc
-        adc #7
+        adc #3
         tax
 
 
@@ -6367,21 +4161,12 @@ eraseSpriteBat1Fog35a anop
         sta >SCREEN_ADDR,x
 eraseSpriteBat1Fog35b anop
         long m
-
-        lda >spriteY
-        clc
-        adc #8
-        asl a
-        tax
-        lda >screenRowOffsets,x
-        sta >rowAddress
-
         lda >rowAddress
         clc
         adc >spriteX
 
         clc
-        adc #1
+        adc #4
         tax
 
 
@@ -6396,13 +4181,12 @@ eraseSpriteBat1Fog36a anop
         sta >SCREEN_ADDR,x
 eraseSpriteBat1Fog36b anop
         long m
-
         lda >rowAddress
         clc
         adc >spriteX
 
         clc
-        adc #3
+        adc #5
         tax
 
 
@@ -6417,13 +4201,12 @@ eraseSpriteBat1Fog37a anop
         sta >SCREEN_ADDR,x
 eraseSpriteBat1Fog37b anop
         long m
-
         lda >rowAddress
         clc
         adc >spriteX
 
         clc
-        adc #4
+        adc #6
         tax
 
 
@@ -6438,13 +4221,12 @@ eraseSpriteBat1Fog38a anop
         sta >SCREEN_ADDR,x
 eraseSpriteBat1Fog38b anop
         long m
-
         lda >rowAddress
         clc
         adc >spriteX
 
         clc
-        adc #6
+        adc #7
         tax
 
 
@@ -6460,9 +4242,25 @@ eraseSpriteBat1Fog39a anop
 eraseSpriteBat1Fog39b anop
         long m
 
+
+eraseSpriteBat1FogSkipRowErase81 anop
+
+        lda >rowCounter
+        clc
+        adc #1
+        sta >rowCounter
+
+
+        cmp #199
+        bcs eraseSpriteBat1FogSkipRowEraseShortJump82
+        bra eraseSpriteBat1FogSkipRowEraseDontSkipRow82
+
+eraseSpriteBat1FogSkipRowEraseShortJump82 anop
+        brl eraseSpriteBat1FogSkipRowErase82
+eraseSpriteBat1FogSkipRowEraseDontSkipRow82 anop
         lda >spriteY
         clc
-        adc #9
+        adc #10
         asl a
         tax
         lda >screenRowOffsets,x
@@ -6488,7 +4286,6 @@ eraseSpriteBat1Fog40a anop
         sta >SCREEN_ADDR,x
 eraseSpriteBat1Fog40b anop
         long m
-
         lda >rowAddress
         clc
         adc >spriteX
@@ -6509,7 +4306,6 @@ eraseSpriteBat1Fog41a anop
         sta >SCREEN_ADDR,x
 eraseSpriteBat1Fog41b anop
         long m
-
         lda >rowAddress
         clc
         adc >spriteX
@@ -6530,7 +4326,6 @@ eraseSpriteBat1Fog42a anop
         sta >SCREEN_ADDR,x
 eraseSpriteBat1Fog42b anop
         long m
-
         lda >rowAddress
         clc
         adc >spriteX
@@ -6552,9 +4347,25 @@ eraseSpriteBat1Fog43a anop
 eraseSpriteBat1Fog43b anop
         long m
 
+
+eraseSpriteBat1FogSkipRowErase82 anop
+
+        lda >rowCounter
+        clc
+        adc #1
+        sta >rowCounter
+
+
+        cmp #199
+        bcs eraseSpriteBat1FogSkipRowEraseShortJump83
+        bra eraseSpriteBat1FogSkipRowEraseDontSkipRow83
+
+eraseSpriteBat1FogSkipRowEraseShortJump83 anop
+        brl eraseSpriteBat1FogSkipRowErase83
+eraseSpriteBat1FogSkipRowEraseDontSkipRow83 anop
         lda >spriteY
         clc
-        adc #10
+        adc #11
         asl a
         tax
         lda >screenRowOffsets,x
@@ -6580,13 +4391,12 @@ eraseSpriteBat1Fog44a anop
         sta >SCREEN_ADDR,x
 eraseSpriteBat1Fog44b anop
         long m
-
         lda >rowAddress
         clc
         adc >spriteX
 
         clc
-        adc #2
+        adc #3
         tax
 
 
@@ -6601,13 +4411,12 @@ eraseSpriteBat1Fog45a anop
         sta >SCREEN_ADDR,x
 eraseSpriteBat1Fog45b anop
         long m
-
         lda >rowAddress
         clc
         adc >spriteX
 
         clc
-        adc #5
+        adc #4
         tax
 
 
@@ -6622,7 +4431,6 @@ eraseSpriteBat1Fog46a anop
         sta >SCREEN_ADDR,x
 eraseSpriteBat1Fog46b anop
         long m
-
         lda >rowAddress
         clc
         adc >spriteX
@@ -6644,9 +4452,25 @@ eraseSpriteBat1Fog47a anop
 eraseSpriteBat1Fog47b anop
         long m
 
+
+eraseSpriteBat1FogSkipRowErase83 anop
+
+        lda >rowCounter
+        clc
+        adc #1
+        sta >rowCounter
+
+
+        cmp #199
+        bcs eraseSpriteBat1FogSkipRowEraseShortJump84
+        bra eraseSpriteBat1FogSkipRowEraseDontSkipRow84
+
+eraseSpriteBat1FogSkipRowEraseShortJump84 anop
+        brl eraseSpriteBat1FogSkipRowErase84
+eraseSpriteBat1FogSkipRowEraseDontSkipRow84 anop
         lda >spriteY
         clc
-        adc #11
+        adc #12
         asl a
         tax
         lda >screenRowOffsets,x
@@ -6672,7 +4496,6 @@ eraseSpriteBat1Fog48a anop
         sta >SCREEN_ADDR,x
 eraseSpriteBat1Fog48b anop
         long m
-
         lda >rowAddress
         clc
         adc >spriteX
@@ -6693,7 +4516,6 @@ eraseSpriteBat1Fog49a anop
         sta >SCREEN_ADDR,x
 eraseSpriteBat1Fog49b anop
         long m
-
         lda >rowAddress
         clc
         adc >spriteX
@@ -6714,7 +4536,6 @@ eraseSpriteBat1Fog50a anop
         sta >SCREEN_ADDR,x
 eraseSpriteBat1Fog50b anop
         long m
-
         lda >rowAddress
         clc
         adc >spriteX
@@ -6736,14 +4557,22 @@ eraseSpriteBat1Fog51a anop
 eraseSpriteBat1Fog51b anop
         long m
 
-        lda >spriteY
-        clc
-        adc #12
-        asl a
-        tax
-        lda >screenRowOffsets,x
-        sta >rowAddress
 
+eraseSpriteBat1FogSkipRowErase84 anop
+
+        lda >rowCounter
+        clc
+        adc #1
+        sta >rowCounter
+
+
+        cmp #199
+        bcs eraseSpriteBat1FogSkipRowEraseShortJump85
+        bra eraseSpriteBat1FogSkipRowEraseDontSkipRow85
+
+eraseSpriteBat1FogSkipRowEraseShortJump85 anop
+        brl eraseSpriteBat1FogSkipRowErase85
+eraseSpriteBat1FogSkipRowEraseDontSkipRow85 anop
         lda >spriteY
         clc
         adc #13
@@ -6752,1957 +4581,94 @@ eraseSpriteBat1Fog51b anop
         lda >screenRowOffsets,x
         sta >rowAddress
 
-        lda >spriteY
+        lda >rowAddress
         clc
-        adc #14
-        asl a
-        tax
-        lda >screenRowOffsets,x
-        sta >rowAddress
-
-        lda >spriteY
-        clc
-        adc #15
-        asl a
-        tax
-        lda >screenRowOffsets,x
-        sta >rowAddress
-
-        lda >spriteY
-        clc
-        adc #16
-        asl a
-        tax
-        lda >screenRowOffsets,x
-        sta >rowAddress
-
-        lda >spriteY
-        clc
-        adc #17
-        asl a
-        tax
-        lda >screenRowOffsets,x
-        sta >rowAddress
-
-        lda >spriteY
-        clc
-        adc #18
-        asl a
-        tax
-        lda >screenRowOffsets,x
-        sta >rowAddress
-
-        lda >spriteY
-        clc
-        adc #19
-        asl a
-        tax
-        lda >screenRowOffsets,x
-        sta >rowAddress
-
-        lda >spriteY
-        clc
-        adc #20
-        asl a
-        tax
-        lda >screenRowOffsets,x
-        sta >rowAddress
-
-        lda >spriteY
-        clc
-        adc #21
-        asl a
-        tax
-        lda >screenRowOffsets,x
-        sta >rowAddress
-
-        lda >spriteY
-        clc
-        adc #22
-        asl a
-        tax
-        lda >screenRowOffsets,x
-        sta >rowAddress
-
-        lda >spriteY
-        clc
-        adc #23
-        asl a
-        tax
-        lda >screenRowOffsets,x
-        sta >rowAddress
-
-        lda >spriteY
-        clc
-        adc #24
-        asl a
-        tax
-        lda >screenRowOffsets,x
-        sta >rowAddress
-
-        lda >spriteY
-        clc
-        adc #25
-        asl a
-        tax
-        lda >screenRowOffsets,x
-        sta >rowAddress
-
-        lda >spriteY
-        clc
-        adc #26
-        asl a
-        tax
-        lda >screenRowOffsets,x
-        sta >rowAddress
-
-        lda >spriteY
-        clc
-        adc #27
-        asl a
-        tax
-        lda >screenRowOffsets,x
-        sta >rowAddress
-
-        lda >spriteY
-        clc
-        adc #28
-        asl a
-        tax
-        lda >screenRowOffsets,x
-        sta >rowAddress
-
-        lda >spriteY
-        clc
-        adc #29
-        asl a
-        tax
-        lda >screenRowOffsets,x
-        sta >rowAddress
-
-        lda >spriteY
-        clc
-        adc #30
-        asl a
-        tax
-        lda >screenRowOffsets,x
-        sta >rowAddress
-
-        lda >spriteY
-        clc
-        adc #31
-        asl a
-        tax
-        lda >screenRowOffsets,x
-        sta >rowAddress
-
-        lda >spriteY
-        clc
-        adc #32
-        asl a
-        tax
-        lda >screenRowOffsets,x
-        sta >rowAddress
-
-        lda >spriteY
-        clc
-        adc #33
-        asl a
-        tax
-        lda >screenRowOffsets,x
-        sta >rowAddress
-
-        lda >spriteY
-        clc
-        adc #34
-        asl a
-        tax
-        lda >screenRowOffsets,x
-        sta >rowAddress
-
-        lda >spriteY
-        clc
-        adc #35
-        asl a
-        tax
-        lda >screenRowOffsets,x
-        sta >rowAddress
-
-        lda >spriteY
-        clc
-        adc #36
-        asl a
-        tax
-        lda >screenRowOffsets,x
-        sta >rowAddress
-
-        lda >spriteY
-        clc
-        adc #37
-        asl a
-        tax
-        lda >screenRowOffsets,x
-        sta >rowAddress
-
-        lda >spriteY
-        clc
-        adc #38
-        asl a
-        tax
-        lda >screenRowOffsets,x
-        sta >rowAddress
-
-        lda >spriteY
-        clc
-        adc #39
-        asl a
-        tax
-        lda >screenRowOffsets,x
-        sta >rowAddress
-
-        lda >spriteY
-        clc
-        adc #40
-        asl a
-        tax
-        lda >screenRowOffsets,x
-        sta >rowAddress
-
-        lda >spriteY
-        clc
-        adc #41
-        asl a
-        tax
-        lda >screenRowOffsets,x
-        sta >rowAddress
-
-        lda >spriteY
-        clc
-        adc #42
-        asl a
-        tax
-        lda >screenRowOffsets,x
-        sta >rowAddress
-
-        lda >spriteY
-        clc
-        adc #43
-        asl a
-        tax
-        lda >screenRowOffsets,x
-        sta >rowAddress
-
-        lda >spriteY
-        clc
-        adc #44
-        asl a
-        tax
-        lda >screenRowOffsets,x
-        sta >rowAddress
-
-        lda >spriteY
-        clc
-        adc #45
-        asl a
-        tax
-        lda >screenRowOffsets,x
-        sta >rowAddress
-
-        lda >spriteY
-        clc
-        adc #46
-        asl a
-        tax
-        lda >screenRowOffsets,x
-        sta >rowAddress
-
-        lda >spriteY
-        clc
-        adc #47
-        asl a
-        tax
-        lda >screenRowOffsets,x
-        sta >rowAddress
-
-        lda >spriteY
-        clc
-        adc #48
-        asl a
-        tax
-        lda >screenRowOffsets,x
-        sta >rowAddress
-
-        lda >spriteY
-        clc
-        adc #49
-        asl a
-        tax
-        lda >screenRowOffsets,x
-        sta >rowAddress
-
-        lda >spriteY
-        clc
-        adc #50
-        asl a
-        tax
-        lda >screenRowOffsets,x
-        sta >rowAddress
-
-        lda >spriteY
-        clc
-        adc #51
-        asl a
-        tax
-        lda >screenRowOffsets,x
-        sta >rowAddress
-
-        lda >spriteY
-        clc
-        adc #52
-        asl a
-        tax
-        lda >screenRowOffsets,x
-        sta >rowAddress
-
-        lda >spriteY
-        clc
-        adc #53
-        asl a
-        tax
-        lda >screenRowOffsets,x
-        sta >rowAddress
-
-        lda >spriteY
-        clc
-        adc #54
-        asl a
-        tax
-        lda >screenRowOffsets,x
-        sta >rowAddress
-
-        lda >spriteY
-        clc
-        adc #55
-        asl a
-        tax
-        lda >screenRowOffsets,x
-        sta >rowAddress
-
-        lda >spriteY
-        clc
-        adc #56
-        asl a
-        tax
-        lda >screenRowOffsets,x
-        sta >rowAddress
-
-        lda >spriteY
-        clc
-        adc #57
-        asl a
-        tax
-        lda >screenRowOffsets,x
-        sta >rowAddress
-
-        lda >spriteY
-        clc
-        adc #58
-        asl a
-        tax
-        lda >screenRowOffsets,x
-        sta >rowAddress
-
-        lda >spriteY
-        clc
-        adc #59
-        asl a
-        tax
-        lda >screenRowOffsets,x
-        sta >rowAddress
-
-        lda >spriteY
-        clc
-        adc #60
-        asl a
-        tax
-        lda >screenRowOffsets,x
-        sta >rowAddress
-
-        lda >spriteY
-        clc
-        adc #61
-        asl a
-        tax
-        lda >screenRowOffsets,x
-        sta >rowAddress
-
-        lda >spriteY
-        clc
-        adc #62
-        asl a
-        tax
-        lda >screenRowOffsets,x
-        sta >rowAddress
-
-        lda >spriteY
-        clc
-        adc #63
-        asl a
-        tax
-        lda >screenRowOffsets,x
-        sta >rowAddress
-
-        lda >spriteY
-        clc
-        adc #64
-        asl a
-        tax
-        lda >screenRowOffsets,x
-        sta >rowAddress
-
-        lda >spriteY
-        clc
-        adc #65
-        asl a
-        tax
-        lda >screenRowOffsets,x
-        sta >rowAddress
-
-        lda >spriteY
-        clc
-        adc #66
-        asl a
-        tax
-        lda >screenRowOffsets,x
-        sta >rowAddress
-
-        lda >spriteY
-        clc
-        adc #67
-        asl a
-        tax
-        lda >screenRowOffsets,x
-        sta >rowAddress
-
-        lda >spriteY
-        clc
-        adc #68
-        asl a
-        tax
-        lda >screenRowOffsets,x
-        sta >rowAddress
-
-        lda >spriteY
-        clc
-        adc #69
-        asl a
-        tax
-        lda >screenRowOffsets,x
-        sta >rowAddress
-
-        lda >spriteY
-        clc
-        adc #70
-        asl a
-        tax
-        lda >screenRowOffsets,x
-        sta >rowAddress
-
-        lda >spriteY
-        clc
-        adc #71
-        asl a
-        tax
-        lda >screenRowOffsets,x
-        sta >rowAddress
-
-        lda >spriteY
-        clc
-        adc #72
-        asl a
-        tax
-        lda >screenRowOffsets,x
-        sta >rowAddress
-
-        lda >spriteY
-        clc
-        adc #73
-        asl a
-        tax
-        lda >screenRowOffsets,x
-        sta >rowAddress
-
-        lda >spriteY
-        clc
-        adc #74
-        asl a
-        tax
-        lda >screenRowOffsets,x
-        sta >rowAddress
-
-        lda >spriteY
-        clc
-        adc #75
-        asl a
-        tax
-        lda >screenRowOffsets,x
-        sta >rowAddress
-
-        lda >spriteY
-        clc
-        adc #76
-        asl a
-        tax
-        lda >screenRowOffsets,x
-        sta >rowAddress
-
-        lda >spriteY
-        clc
-        adc #77
-        asl a
-        tax
-        lda >screenRowOffsets,x
-        sta >rowAddress
-
-        lda >spriteY
-        clc
-        adc #78
-        asl a
-        tax
-        lda >screenRowOffsets,x
-        sta >rowAddress
-
-        lda >spriteY
-        clc
-        adc #79
-        asl a
-        tax
-        lda >screenRowOffsets,x
-        sta >rowAddress
-
-        lda >spriteY
-        clc
-        adc #80
-        asl a
-        tax
-        lda >screenRowOffsets,x
-        sta >rowAddress
-
-        lda >spriteY
-        clc
-        adc #81
-        asl a
-        tax
-        lda >screenRowOffsets,x
-        sta >rowAddress
-
-        lda >spriteY
-        clc
-        adc #82
-        asl a
-        tax
-        lda >screenRowOffsets,x
-        sta >rowAddress
-
-        lda >spriteY
-        clc
-        adc #83
-        asl a
-        tax
-        lda >screenRowOffsets,x
-        sta >rowAddress
-
-        lda >spriteY
-        clc
-        adc #84
-        asl a
-        tax
-        lda >screenRowOffsets,x
-        sta >rowAddress
-
-        lda >spriteY
-        clc
-        adc #85
-        asl a
-        tax
-        lda >screenRowOffsets,x
-        sta >rowAddress
-
-        lda >spriteY
-        clc
-        adc #86
-        asl a
-        tax
-        lda >screenRowOffsets,x
-        sta >rowAddress
-
-        lda >spriteY
-        clc
-        adc #87
-        asl a
-        tax
-        lda >screenRowOffsets,x
-        sta >rowAddress
-
-        lda >spriteY
-        clc
-        adc #88
-        asl a
-        tax
-        lda >screenRowOffsets,x
-        sta >rowAddress
-
-        lda >spriteY
-        clc
-        adc #89
-        asl a
-        tax
-        lda >screenRowOffsets,x
-        sta >rowAddress
-
-        lda >spriteY
-        clc
-        adc #90
-        asl a
-        tax
-        lda >screenRowOffsets,x
-        sta >rowAddress
-
-        lda >spriteY
-        clc
-        adc #91
-        asl a
-        tax
-        lda >screenRowOffsets,x
-        sta >rowAddress
-
-        lda >spriteY
-        clc
-        adc #92
-        asl a
-        tax
-        lda >screenRowOffsets,x
-        sta >rowAddress
-
-        lda >spriteY
-        clc
-        adc #93
-        asl a
-        tax
-        lda >screenRowOffsets,x
-        sta >rowAddress
-
-        lda >spriteY
-        clc
-        adc #94
-        asl a
-        tax
-        lda >screenRowOffsets,x
-        sta >rowAddress
-
-        lda >spriteY
-        clc
-        adc #95
-        asl a
-        tax
-        lda >screenRowOffsets,x
-        sta >rowAddress
-
-        lda >spriteY
-        clc
-        adc #96
-        asl a
-        tax
-        lda >screenRowOffsets,x
-        sta >rowAddress
-
-        lda >spriteY
-        clc
-        adc #97
-        asl a
-        tax
-        lda >screenRowOffsets,x
-        sta >rowAddress
-
-        lda >spriteY
-        clc
-        adc #98
-        asl a
-        tax
-        lda >screenRowOffsets,x
-        sta >rowAddress
-
-        lda >spriteY
-        clc
-        adc #99
-        asl a
-        tax
-        lda >screenRowOffsets,x
-        sta >rowAddress
-
-        lda >spriteY
-        clc
-        adc #100
-        asl a
-        tax
-        lda >screenRowOffsets,x
-        sta >rowAddress
-
-        lda >spriteY
-        clc
-        adc #101
-        asl a
-        tax
-        lda >screenRowOffsets,x
-        sta >rowAddress
-
-        lda >spriteY
-        clc
-        adc #102
-        asl a
-        tax
-        lda >screenRowOffsets,x
-        sta >rowAddress
-
-        lda >spriteY
-        clc
-        adc #103
-        asl a
-        tax
-        lda >screenRowOffsets,x
-        sta >rowAddress
-
-        lda >spriteY
-        clc
-        adc #104
-        asl a
-        tax
-        lda >screenRowOffsets,x
-        sta >rowAddress
-
-        lda >spriteY
-        clc
-        adc #105
-        asl a
-        tax
-        lda >screenRowOffsets,x
-        sta >rowAddress
-
-        lda >spriteY
-        clc
-        adc #106
-        asl a
-        tax
-        lda >screenRowOffsets,x
-        sta >rowAddress
-
-        lda >spriteY
-        clc
-        adc #107
-        asl a
-        tax
-        lda >screenRowOffsets,x
-        sta >rowAddress
-
-        lda >spriteY
-        clc
-        adc #108
-        asl a
-        tax
-        lda >screenRowOffsets,x
-        sta >rowAddress
-
-        lda >spriteY
-        clc
-        adc #109
-        asl a
-        tax
-        lda >screenRowOffsets,x
-        sta >rowAddress
-
-        lda >spriteY
-        clc
-        adc #110
-        asl a
-        tax
-        lda >screenRowOffsets,x
-        sta >rowAddress
-
-        lda >spriteY
-        clc
-        adc #111
-        asl a
-        tax
-        lda >screenRowOffsets,x
-        sta >rowAddress
-
-        lda >spriteY
-        clc
-        adc #112
-        asl a
-        tax
-        lda >screenRowOffsets,x
-        sta >rowAddress
-
-        lda >spriteY
-        clc
-        adc #113
-        asl a
-        tax
-        lda >screenRowOffsets,x
-        sta >rowAddress
-
-        lda >spriteY
-        clc
-        adc #114
-        asl a
-        tax
-        lda >screenRowOffsets,x
-        sta >rowAddress
-
-        lda >spriteY
-        clc
-        adc #115
-        asl a
-        tax
-        lda >screenRowOffsets,x
-        sta >rowAddress
-
-        lda >spriteY
-        clc
-        adc #116
-        asl a
-        tax
-        lda >screenRowOffsets,x
-        sta >rowAddress
-
-        lda >spriteY
-        clc
-        adc #117
-        asl a
-        tax
-        lda >screenRowOffsets,x
-        sta >rowAddress
-
-        lda >spriteY
-        clc
-        adc #118
-        asl a
-        tax
-        lda >screenRowOffsets,x
-        sta >rowAddress
-
-        lda >spriteY
-        clc
-        adc #119
-        asl a
-        tax
-        lda >screenRowOffsets,x
-        sta >rowAddress
-
-        lda >spriteY
-        clc
-        adc #120
-        asl a
-        tax
-        lda >screenRowOffsets,x
-        sta >rowAddress
-
-        lda >spriteY
-        clc
-        adc #121
-        asl a
-        tax
-        lda >screenRowOffsets,x
-        sta >rowAddress
-
-        lda >spriteY
-        clc
-        adc #122
-        asl a
-        tax
-        lda >screenRowOffsets,x
-        sta >rowAddress
-
-        lda >spriteY
-        clc
-        adc #123
-        asl a
-        tax
-        lda >screenRowOffsets,x
-        sta >rowAddress
-
-        lda >spriteY
-        clc
-        adc #124
-        asl a
-        tax
-        lda >screenRowOffsets,x
-        sta >rowAddress
-
-        lda >spriteY
-        clc
-        adc #125
-        asl a
-        tax
-        lda >screenRowOffsets,x
-        sta >rowAddress
-
-        lda >spriteY
-        clc
-        adc #126
-        asl a
-        tax
-        lda >screenRowOffsets,x
-        sta >rowAddress
-
-        lda >spriteY
-        clc
-        adc #127
-        asl a
-        tax
-        lda >screenRowOffsets,x
-        sta >rowAddress
-
-        lda >spriteY
-        clc
-        adc #128
-        asl a
-        tax
-        lda >screenRowOffsets,x
-        sta >rowAddress
-
-        lda >spriteY
-        clc
-        adc #129
-        asl a
-        tax
-        lda >screenRowOffsets,x
-        sta >rowAddress
-
-        lda >spriteY
-        clc
-        adc #130
-        asl a
-        tax
-        lda >screenRowOffsets,x
-        sta >rowAddress
-
-        lda >spriteY
-        clc
-        adc #131
-        asl a
-        tax
-        lda >screenRowOffsets,x
-        sta >rowAddress
-
-        lda >spriteY
-        clc
-        adc #132
-        asl a
-        tax
-        lda >screenRowOffsets,x
-        sta >rowAddress
-
-        lda >spriteY
-        clc
-        adc #133
-        asl a
-        tax
-        lda >screenRowOffsets,x
-        sta >rowAddress
-
-        lda >spriteY
-        clc
-        adc #134
-        asl a
-        tax
-        lda >screenRowOffsets,x
-        sta >rowAddress
-
-        lda >spriteY
-        clc
-        adc #135
-        asl a
-        tax
-        lda >screenRowOffsets,x
-        sta >rowAddress
-
-        lda >spriteY
-        clc
-        adc #136
-        asl a
-        tax
-        lda >screenRowOffsets,x
-        sta >rowAddress
-
-        lda >spriteY
-        clc
-        adc #137
-        asl a
-        tax
-        lda >screenRowOffsets,x
-        sta >rowAddress
-
-        lda >spriteY
-        clc
-        adc #138
-        asl a
-        tax
-        lda >screenRowOffsets,x
-        sta >rowAddress
-
-        lda >spriteY
-        clc
-        adc #139
-        asl a
-        tax
-        lda >screenRowOffsets,x
-        sta >rowAddress
-
-        lda >spriteY
-        clc
-        adc #140
-        asl a
-        tax
-        lda >screenRowOffsets,x
-        sta >rowAddress
-
-        lda >spriteY
-        clc
-        adc #141
-        asl a
-        tax
-        lda >screenRowOffsets,x
-        sta >rowAddress
-
-        lda >spriteY
-        clc
-        adc #142
-        asl a
-        tax
-        lda >screenRowOffsets,x
-        sta >rowAddress
-
-        lda >spriteY
-        clc
-        adc #143
-        asl a
-        tax
-        lda >screenRowOffsets,x
-        sta >rowAddress
-
-        lda >spriteY
-        clc
-        adc #144
-        asl a
-        tax
-        lda >screenRowOffsets,x
-        sta >rowAddress
-
-        lda >spriteY
-        clc
-        adc #145
-        asl a
-        tax
-        lda >screenRowOffsets,x
-        sta >rowAddress
-
-        lda >spriteY
-        clc
-        adc #146
-        asl a
-        tax
-        lda >screenRowOffsets,x
-        sta >rowAddress
-
-        lda >spriteY
-        clc
-        adc #147
-        asl a
-        tax
-        lda >screenRowOffsets,x
-        sta >rowAddress
-
-        lda >spriteY
-        clc
-        adc #148
-        asl a
-        tax
-        lda >screenRowOffsets,x
-        sta >rowAddress
-
-        lda >spriteY
-        clc
-        adc #149
-        asl a
-        tax
-        lda >screenRowOffsets,x
-        sta >rowAddress
-
-        lda >spriteY
-        clc
-        adc #150
-        asl a
-        tax
-        lda >screenRowOffsets,x
-        sta >rowAddress
-
-        lda >spriteY
-        clc
-        adc #151
-        asl a
-        tax
-        lda >screenRowOffsets,x
-        sta >rowAddress
-
-        lda >spriteY
-        clc
-        adc #152
-        asl a
-        tax
-        lda >screenRowOffsets,x
-        sta >rowAddress
-
-        lda >spriteY
-        clc
-        adc #153
-        asl a
-        tax
-        lda >screenRowOffsets,x
-        sta >rowAddress
-
-        lda >spriteY
-        clc
-        adc #154
-        asl a
-        tax
-        lda >screenRowOffsets,x
-        sta >rowAddress
-
-        lda >spriteY
-        clc
-        adc #155
-        asl a
-        tax
-        lda >screenRowOffsets,x
-        sta >rowAddress
-
-        lda >spriteY
-        clc
-        adc #156
-        asl a
-        tax
-        lda >screenRowOffsets,x
-        sta >rowAddress
-
-        lda >spriteY
-        clc
-        adc #157
-        asl a
-        tax
-        lda >screenRowOffsets,x
-        sta >rowAddress
-
-        lda >spriteY
-        clc
-        adc #158
-        asl a
-        tax
-        lda >screenRowOffsets,x
-        sta >rowAddress
-
-        lda >spriteY
-        clc
-        adc #159
-        asl a
-        tax
-        lda >screenRowOffsets,x
-        sta >rowAddress
-
-        lda >spriteY
-        clc
-        adc #160
-        asl a
-        tax
-        lda >screenRowOffsets,x
-        sta >rowAddress
-
-        lda >spriteY
-        clc
-        adc #161
-        asl a
-        tax
-        lda >screenRowOffsets,x
-        sta >rowAddress
-
-        lda >spriteY
-        clc
-        adc #162
-        asl a
-        tax
-        lda >screenRowOffsets,x
-        sta >rowAddress
-
-        lda >spriteY
-        clc
-        adc #163
-        asl a
-        tax
-        lda >screenRowOffsets,x
-        sta >rowAddress
-
-        lda >spriteY
-        clc
-        adc #164
-        asl a
-        tax
-        lda >screenRowOffsets,x
-        sta >rowAddress
-
-        lda >spriteY
-        clc
-        adc #165
-        asl a
-        tax
-        lda >screenRowOffsets,x
-        sta >rowAddress
-
-        lda >spriteY
-        clc
-        adc #166
-        asl a
-        tax
-        lda >screenRowOffsets,x
-        sta >rowAddress
-
-        lda >spriteY
-        clc
-        adc #167
-        asl a
-        tax
-        lda >screenRowOffsets,x
-        sta >rowAddress
-
-        lda >spriteY
-        clc
-        adc #168
-        asl a
-        tax
-        lda >screenRowOffsets,x
-        sta >rowAddress
-
-        lda >spriteY
-        clc
-        adc #169
-        asl a
-        tax
-        lda >screenRowOffsets,x
-        sta >rowAddress
-
-        lda >spriteY
-        clc
-        adc #170
-        asl a
-        tax
-        lda >screenRowOffsets,x
-        sta >rowAddress
-
-        lda >spriteY
-        clc
-        adc #171
-        asl a
-        tax
-        lda >screenRowOffsets,x
-        sta >rowAddress
-
-        lda >spriteY
-        clc
-        adc #172
-        asl a
-        tax
-        lda >screenRowOffsets,x
-        sta >rowAddress
-
-        lda >spriteY
-        clc
-        adc #173
-        asl a
-        tax
-        lda >screenRowOffsets,x
-        sta >rowAddress
-
-        lda >spriteY
-        clc
-        adc #174
-        asl a
-        tax
-        lda >screenRowOffsets,x
-        sta >rowAddress
-
-        lda >spriteY
-        clc
-        adc #175
-        asl a
-        tax
-        lda >screenRowOffsets,x
-        sta >rowAddress
-
-        lda >spriteY
-        clc
-        adc #176
-        asl a
-        tax
-        lda >screenRowOffsets,x
-        sta >rowAddress
-
-        lda >spriteY
-        clc
-        adc #177
-        asl a
-        tax
-        lda >screenRowOffsets,x
-        sta >rowAddress
-
-        lda >spriteY
-        clc
-        adc #178
-        asl a
-        tax
-        lda >screenRowOffsets,x
-        sta >rowAddress
-
-        lda >spriteY
-        clc
-        adc #179
-        asl a
-        tax
-        lda >screenRowOffsets,x
-        sta >rowAddress
-
-        lda >spriteY
-        clc
-        adc #180
-        asl a
-        tax
-        lda >screenRowOffsets,x
-        sta >rowAddress
-
-        lda >spriteY
-        clc
-        adc #181
-        asl a
-        tax
-        lda >screenRowOffsets,x
-        sta >rowAddress
-
-        lda >spriteY
-        clc
-        adc #182
-        asl a
-        tax
-        lda >screenRowOffsets,x
-        sta >rowAddress
-
-        lda >spriteY
-        clc
-        adc #183
-        asl a
-        tax
-        lda >screenRowOffsets,x
-        sta >rowAddress
-
-        lda >spriteY
-        clc
-        adc #184
-        asl a
-        tax
-        lda >screenRowOffsets,x
-        sta >rowAddress
-
-        lda >spriteY
-        clc
-        adc #185
-        asl a
-        tax
-        lda >screenRowOffsets,x
-        sta >rowAddress
-
-        lda >spriteY
-        clc
-        adc #186
-        asl a
-        tax
-        lda >screenRowOffsets,x
-        sta >rowAddress
-
-        lda >spriteY
-        clc
-        adc #187
-        asl a
-        tax
-        lda >screenRowOffsets,x
-        sta >rowAddress
-
-        lda >spriteY
-        clc
-        adc #188
-        asl a
-        tax
-        lda >screenRowOffsets,x
-        sta >rowAddress
-
-        lda >spriteY
-        clc
-        adc #189
-        asl a
-        tax
-        lda >screenRowOffsets,x
-        sta >rowAddress
-
-        lda >spriteY
-        clc
-        adc #190
-        asl a
-        tax
-        lda >screenRowOffsets,x
-        sta >rowAddress
-
-        lda >spriteY
-        clc
-        adc #191
-        asl a
-        tax
-        lda >screenRowOffsets,x
-        sta >rowAddress
-
-        lda >spriteY
-        clc
-        adc #192
-        asl a
-        tax
-        lda >screenRowOffsets,x
-        sta >rowAddress
-
-        lda >spriteY
-        clc
-        adc #193
-        asl a
-        tax
-        lda >screenRowOffsets,x
-        sta >rowAddress
-
-        lda >spriteY
-        clc
-        adc #194
-        asl a
-        tax
-        lda >screenRowOffsets,x
-        sta >rowAddress
-
-        lda >spriteY
-        clc
-        adc #195
-        asl a
-        tax
-        lda >screenRowOffsets,x
-        sta >rowAddress
-
-        lda >spriteY
-        clc
-        adc #196
-        asl a
-        tax
-        lda >screenRowOffsets,x
-        sta >rowAddress
-
-        lda >spriteY
-        clc
-        adc #197
-        asl a
-        tax
-        lda >screenRowOffsets,x
-        sta >rowAddress
-
-        lda >spriteY
-        clc
-        adc #198
-        asl a
-        tax
-        lda >screenRowOffsets,x
-        sta >rowAddress
-
-        lda >spriteY
-        clc
-        adc #199
-        asl a
-        tax
-        lda >screenRowOffsets,x
-        sta >rowAddress
-
-        lda >spriteY
-        clc
-        adc #200
-        asl a
-        tax
-        lda >screenRowOffsets,x
-        sta >rowAddress
-
-        lda >spriteY
-        clc
-        adc #201
-        asl a
-        tax
-        lda >screenRowOffsets,x
-        sta >rowAddress
-
-        lda >spriteY
-        clc
-        adc #202
-        asl a
-        tax
-        lda >screenRowOffsets,x
-        sta >rowAddress
-
-        lda >spriteY
-        clc
-        adc #203
-        asl a
-        tax
-        lda >screenRowOffsets,x
-        sta >rowAddress
-
-        lda >spriteY
-        clc
-        adc #204
-        asl a
-        tax
-        lda >screenRowOffsets,x
-        sta >rowAddress
-
-        lda >spriteY
-        clc
-        adc #205
-        asl a
-        tax
-        lda >screenRowOffsets,x
-        sta >rowAddress
+        adc >spriteX
 
-        lda >spriteY
         clc
-        adc #206
-        asl a
+        adc #1
         tax
-        lda >screenRowOffsets,x
-        sta >rowAddress
 
-        lda >spriteY
-        clc
-        adc #207
-        asl a
-        tax
-        lda >screenRowOffsets,x
-        sta >rowAddress
-
-        lda >spriteY
-        clc
-        adc #208
-        asl a
-        tax
-        lda >screenRowOffsets,x
-        sta >rowAddress
-
-        lda >spriteY
-        clc
-        adc #209
-        asl a
-        tax
-        lda >screenRowOffsets,x
-        sta >rowAddress
-
-        lda >spriteY
-        clc
-        adc #210
-        asl a
-        tax
-        lda >screenRowOffsets,x
-        sta >rowAddress
-
-        lda >spriteY
-        clc
-        adc #211
-        asl a
-        tax
-        lda >screenRowOffsets,x
-        sta >rowAddress
-
-        lda >spriteY
-        clc
-        adc #212
-        asl a
-        tax
-        lda >screenRowOffsets,x
-        sta >rowAddress
-
-        lda >spriteY
-        clc
-        adc #213
-        asl a
-        tax
-        lda >screenRowOffsets,x
-        sta >rowAddress
-
-        lda >spriteY
-        clc
-        adc #214
-        asl a
-        tax
-        lda >screenRowOffsets,x
-        sta >rowAddress
-
-        lda >spriteY
-        clc
-        adc #215
-        asl a
-        tax
-        lda >screenRowOffsets,x
-        sta >rowAddress
-
-        lda >spriteY
-        clc
-        adc #216
-        asl a
-        tax
-        lda >screenRowOffsets,x
-        sta >rowAddress
-
-        lda >spriteY
-        clc
-        adc #217
-        asl a
-        tax
-        lda >screenRowOffsets,x
-        sta >rowAddress
-
-        lda >spriteY
-        clc
-        adc #218
-        asl a
-        tax
-        lda >screenRowOffsets,x
-        sta >rowAddress
-
-        lda >spriteY
-        clc
-        adc #219
-        asl a
-        tax
-        lda >screenRowOffsets,x
-        sta >rowAddress
-
-        lda >spriteY
-        clc
-        adc #220
-        asl a
-        tax
-        lda >screenRowOffsets,x
-        sta >rowAddress
-
-        lda >spriteY
-        clc
-        adc #221
-        asl a
-        tax
-        lda >screenRowOffsets,x
-        sta >rowAddress
-
-        lda >spriteY
-        clc
-        adc #222
-        asl a
-        tax
-        lda >screenRowOffsets,x
-        sta >rowAddress
-
-        lda >spriteY
-        clc
-        adc #223
-        asl a
-        tax
-        lda >screenRowOffsets,x
-        sta >rowAddress
-
-        lda >spriteY
-        clc
-        adc #224
-        asl a
-        tax
-        lda >screenRowOffsets,x
-        sta >rowAddress
-
-        lda >spriteY
-        clc
-        adc #225
-        asl a
-        tax
-        lda >screenRowOffsets,x
-        sta >rowAddress
-
-        lda >spriteY
-        clc
-        adc #226
-        asl a
-        tax
-        lda >screenRowOffsets,x
-        sta >rowAddress
-
-        lda >spriteY
-        clc
-        adc #227
-        asl a
-        tax
-        lda >screenRowOffsets,x
-        sta >rowAddress
-
-        lda >spriteY
-        clc
-        adc #228
-        asl a
-        tax
-        lda >screenRowOffsets,x
-        sta >rowAddress
-
-        lda >spriteY
-        clc
-        adc #229
-        asl a
-        tax
-        lda >screenRowOffsets,x
-        sta >rowAddress
-
-        lda >spriteY
-        clc
-        adc #230
-        asl a
-        tax
-        lda >screenRowOffsets,x
-        sta >rowAddress
-
-        lda >spriteY
-        clc
-        adc #231
-        asl a
-        tax
-        lda >screenRowOffsets,x
-        sta >rowAddress
-
-        lda >spriteY
-        clc
-        adc #232
-        asl a
-        tax
-        lda >screenRowOffsets,x
-        sta >rowAddress
-
-        lda >spriteY
-        clc
-        adc #233
-        asl a
-        tax
-        lda >screenRowOffsets,x
-        sta >rowAddress
-
-        lda >spriteY
-        clc
-        adc #234
-        asl a
-        tax
-        lda >screenRowOffsets,x
-        sta >rowAddress
-
-        lda >spriteY
-        clc
-        adc #235
-        asl a
-        tax
-        lda >screenRowOffsets,x
-        sta >rowAddress
-
-        lda >spriteY
-        clc
-        adc #236
-        asl a
-        tax
-        lda >screenRowOffsets,x
-        sta >rowAddress
-
-        lda >spriteY
-        clc
-        adc #237
-        asl a
-        tax
-        lda >screenRowOffsets,x
-        sta >rowAddress
-
-        lda >spriteY
-        clc
-        adc #238
-        asl a
-        tax
-        lda >screenRowOffsets,x
-        sta >rowAddress
-
-        lda >spriteY
-        clc
-        adc #239
-        asl a
-        tax
-        lda >screenRowOffsets,x
-        sta >rowAddress
-
-        lda >spriteY
-        clc
-        adc #240
-        asl a
-        tax
-        lda >screenRowOffsets,x
-        sta >rowAddress
-
-        lda >spriteY
-        clc
-        adc #241
-        asl a
-        tax
-        lda >screenRowOffsets,x
-        sta >rowAddress
-
-        lda >spriteY
-        clc
-        adc #242
-        asl a
-        tax
-        lda >screenRowOffsets,x
-        sta >rowAddress
-
-        lda >spriteY
-        clc
-        adc #243
-        asl a
-        tax
-        lda >screenRowOffsets,x
-        sta >rowAddress
-
-        lda >spriteY
-        clc
-        adc #244
-        asl a
-        tax
-        lda >screenRowOffsets,x
-        sta >rowAddress
 
-        lda >spriteY
+        short m
+        lda >SURROUND_PIXEL_ADDR,x
+        cmp #$00
+        beq eraseSpriteBat1Fog52a
+        sta >SCREEN_ADDR,x
+        bra eraseSpriteBat1Fog52b
+eraseSpriteBat1Fog52a anop
+        lda >BACKGROUND_ADDR,x
+        sta >SCREEN_ADDR,x
+eraseSpriteBat1Fog52b anop
+        long m
+        lda >rowAddress
         clc
-        adc #245
-        asl a
-        tax
-        lda >screenRowOffsets,x
-        sta >rowAddress
+        adc >spriteX
 
-        lda >spriteY
         clc
-        adc #246
-        asl a
+        adc #2
         tax
-        lda >screenRowOffsets,x
-        sta >rowAddress
 
-        lda >spriteY
-        clc
-        adc #247
-        asl a
-        tax
-        lda >screenRowOffsets,x
-        sta >rowAddress
 
-        lda >spriteY
+        short m
+        lda >SURROUND_PIXEL_ADDR,x
+        cmp #$00
+        beq eraseSpriteBat1Fog53a
+        sta >SCREEN_ADDR,x
+        bra eraseSpriteBat1Fog53b
+eraseSpriteBat1Fog53a anop
+        lda >BACKGROUND_ADDR,x
+        sta >SCREEN_ADDR,x
+eraseSpriteBat1Fog53b anop
+        long m
+        lda >rowAddress
         clc
-        adc #248
-        asl a
-        tax
-        lda >screenRowOffsets,x
-        sta >rowAddress
+        adc >spriteX
 
-        lda >spriteY
         clc
-        adc #249
-        asl a
+        adc #5
         tax
-        lda >screenRowOffsets,x
-        sta >rowAddress
 
-        lda >spriteY
-        clc
-        adc #250
-        asl a
-        tax
-        lda >screenRowOffsets,x
-        sta >rowAddress
 
-        lda >spriteY
+        short m
+        lda >SURROUND_PIXEL_ADDR,x
+        cmp #$00
+        beq eraseSpriteBat1Fog54a
+        sta >SCREEN_ADDR,x
+        bra eraseSpriteBat1Fog54b
+eraseSpriteBat1Fog54a anop
+        lda >BACKGROUND_ADDR,x
+        sta >SCREEN_ADDR,x
+eraseSpriteBat1Fog54b anop
+        long m
+        lda >rowAddress
         clc
-        adc #251
-        asl a
-        tax
-        lda >screenRowOffsets,x
-        sta >rowAddress
+        adc >spriteX
 
-        lda >spriteY
         clc
-        adc #252
-        asl a
+        adc #6
         tax
-        lda >screenRowOffsets,x
-        sta >rowAddress
 
-        lda >spriteY
-        clc
-        adc #253
-        asl a
-        tax
-        lda >screenRowOffsets,x
-        sta >rowAddress
 
-        lda >spriteY
-        clc
-        adc #254
-        asl a
-        tax
-        lda >screenRowOffsets,x
-        sta >rowAddress
+        short m
+        lda >SURROUND_PIXEL_ADDR,x
+        cmp #$00
+        beq eraseSpriteBat1Fog55a
+        sta >SCREEN_ADDR,x
+        bra eraseSpriteBat1Fog55b
+eraseSpriteBat1Fog55a anop
+        lda >BACKGROUND_ADDR,x
+        sta >SCREEN_ADDR,x
+eraseSpriteBat1Fog55b anop
+        long m
 
-        lda >spriteY
-        clc
-        adc #255
-        asl a
-        tax
-        lda >screenRowOffsets,x
-        sta >rowAddress
 
-        lda >spriteY
-        clc
-        adc #256
-        asl a
-        tax
-        lda >screenRowOffsets,x
-        sta >rowAddress
+eraseSpriteBat1FogSkipRowErase85 anop
 
-        lda >spriteY
+        lda >rowCounter
         clc
-        adc #257
-        asl a
-        tax
-        lda >screenRowOffsets,x
-        sta >rowAddress
+        adc #1
+        sta >rowCounter
 
 
         rtl
@@ -8712,6 +4678,16 @@ eraseSpriteBat2Fog entry
         lda >spriteX
         lsr a
         sta >spriteX
+        lda >spriteY
+        sta >rowCounter
+
+        cmp #199
+        bcs eraseSpriteBat2FogSkipRowEraseShortJump86
+        bra eraseSpriteBat2FogSkipRowEraseDontSkipRow86
+
+eraseSpriteBat2FogSkipRowEraseShortJump86 anop
+        brl eraseSpriteBat2FogSkipRowErase86
+eraseSpriteBat2FogSkipRowEraseDontSkipRow86 anop
         lda >spriteY
         clc
         adc #0
@@ -8725,22 +4701,38 @@ eraseSpriteBat2Fog entry
         adc >spriteX
 
         clc
-        adc #0
+        adc #7
         tax
 
 
         short m
         lda >SURROUND_PIXEL_ADDR,x
         cmp #$00
-        beq eraseSpriteBat2Fog52a
+        beq eraseSpriteBat2Fog56a
         sta >SCREEN_ADDR,x
-        bra eraseSpriteBat2Fog52b
-eraseSpriteBat2Fog52a anop
+        bra eraseSpriteBat2Fog56b
+eraseSpriteBat2Fog56a anop
         lda >BACKGROUND_ADDR,x
         sta >SCREEN_ADDR,x
-eraseSpriteBat2Fog52b anop
+eraseSpriteBat2Fog56b anop
         long m
 
+
+eraseSpriteBat2FogSkipRowErase86 anop
+
+        lda >rowCounter
+        clc
+        adc #1
+        sta >rowCounter
+
+
+        cmp #199
+        bcs eraseSpriteBat2FogSkipRowEraseShortJump87
+        bra eraseSpriteBat2FogSkipRowEraseDontSkipRow87
+
+eraseSpriteBat2FogSkipRowEraseShortJump87 anop
+        brl eraseSpriteBat2FogSkipRowErase87
+eraseSpriteBat2FogSkipRowEraseDontSkipRow87 anop
         lda >spriteY
         clc
         adc #1
@@ -8754,6 +4746,51 @@ eraseSpriteBat2Fog52b anop
         adc >spriteX
 
         clc
+        adc #7
+        tax
+
+
+        short m
+        lda >SURROUND_PIXEL_ADDR,x
+        cmp #$00
+        beq eraseSpriteBat2Fog57a
+        sta >SCREEN_ADDR,x
+        bra eraseSpriteBat2Fog57b
+eraseSpriteBat2Fog57a anop
+        lda >BACKGROUND_ADDR,x
+        sta >SCREEN_ADDR,x
+eraseSpriteBat2Fog57b anop
+        long m
+
+
+eraseSpriteBat2FogSkipRowErase87 anop
+
+        lda >rowCounter
+        clc
+        adc #1
+        sta >rowCounter
+
+
+        cmp #199
+        bcs eraseSpriteBat2FogSkipRowEraseShortJump88
+        bra eraseSpriteBat2FogSkipRowEraseDontSkipRow88
+
+eraseSpriteBat2FogSkipRowEraseShortJump88 anop
+        brl eraseSpriteBat2FogSkipRowErase88
+eraseSpriteBat2FogSkipRowEraseDontSkipRow88 anop
+        lda >spriteY
+        clc
+        adc #2
+        asl a
+        tax
+        lda >screenRowOffsets,x
+        sta >rowAddress
+
+        lda >rowAddress
+        clc
+        adc >spriteX
+
+        clc
         adc #0
         tax
 
@@ -8761,14 +4798,1477 @@ eraseSpriteBat2Fog52b anop
         short m
         lda >SURROUND_PIXEL_ADDR,x
         cmp #$00
-        beq eraseSpriteBat2Fog53a
+        beq eraseSpriteBat2Fog58a
         sta >SCREEN_ADDR,x
-        bra eraseSpriteBat2Fog53b
-eraseSpriteBat2Fog53a anop
+        bra eraseSpriteBat2Fog58b
+eraseSpriteBat2Fog58a anop
         lda >BACKGROUND_ADDR,x
         sta >SCREEN_ADDR,x
-eraseSpriteBat2Fog53b anop
+eraseSpriteBat2Fog58b anop
         long m
+
+
+eraseSpriteBat2FogSkipRowErase88 anop
+
+        lda >rowCounter
+        clc
+        adc #1
+        sta >rowCounter
+
+
+        cmp #199
+        bcs eraseSpriteBat2FogSkipRowEraseShortJump89
+        bra eraseSpriteBat2FogSkipRowEraseDontSkipRow89
+
+eraseSpriteBat2FogSkipRowEraseShortJump89 anop
+        brl eraseSpriteBat2FogSkipRowErase89
+eraseSpriteBat2FogSkipRowEraseDontSkipRow89 anop
+        lda >spriteY
+        clc
+        adc #3
+        asl a
+        tax
+        lda >screenRowOffsets,x
+        sta >rowAddress
+
+        lda >rowAddress
+        clc
+        adc >spriteX
+
+        clc
+        adc #0
+        tax
+
+
+        short m
+        lda >SURROUND_PIXEL_ADDR,x
+        cmp #$00
+        beq eraseSpriteBat2Fog59a
+        sta >SCREEN_ADDR,x
+        bra eraseSpriteBat2Fog59b
+eraseSpriteBat2Fog59a anop
+        lda >BACKGROUND_ADDR,x
+        sta >SCREEN_ADDR,x
+eraseSpriteBat2Fog59b anop
+        long m
+
+
+eraseSpriteBat2FogSkipRowErase89 anop
+
+        lda >rowCounter
+        clc
+        adc #1
+        sta >rowCounter
+
+
+        cmp #199
+        bcs eraseSpriteBat2FogSkipRowEraseShortJump90
+        bra eraseSpriteBat2FogSkipRowEraseDontSkipRow90
+
+eraseSpriteBat2FogSkipRowEraseShortJump90 anop
+        brl eraseSpriteBat2FogSkipRowErase90
+eraseSpriteBat2FogSkipRowEraseDontSkipRow90 anop
+        lda >spriteY
+        clc
+        adc #4
+        asl a
+        tax
+        lda >screenRowOffsets,x
+        sta >rowAddress
+
+        lda >rowAddress
+        clc
+        adc >spriteX
+
+        clc
+        adc #7
+        tax
+
+
+        short m
+        lda >SURROUND_PIXEL_ADDR,x
+        cmp #$00
+        beq eraseSpriteBat2Fog60a
+        sta >SCREEN_ADDR,x
+        bra eraseSpriteBat2Fog60b
+eraseSpriteBat2Fog60a anop
+        lda >BACKGROUND_ADDR,x
+        sta >SCREEN_ADDR,x
+eraseSpriteBat2Fog60b anop
+        long m
+
+
+eraseSpriteBat2FogSkipRowErase90 anop
+
+        lda >rowCounter
+        clc
+        adc #1
+        sta >rowCounter
+
+
+        cmp #199
+        bcs eraseSpriteBat2FogSkipRowEraseShortJump91
+        bra eraseSpriteBat2FogSkipRowEraseDontSkipRow91
+
+eraseSpriteBat2FogSkipRowEraseShortJump91 anop
+        brl eraseSpriteBat2FogSkipRowErase91
+eraseSpriteBat2FogSkipRowEraseDontSkipRow91 anop
+        lda >spriteY
+        clc
+        adc #5
+        asl a
+        tax
+        lda >screenRowOffsets,x
+        sta >rowAddress
+
+        lda >rowAddress
+        clc
+        adc >spriteX
+
+        clc
+        adc #7
+        tax
+
+
+        short m
+        lda >SURROUND_PIXEL_ADDR,x
+        cmp #$00
+        beq eraseSpriteBat2Fog61a
+        sta >SCREEN_ADDR,x
+        bra eraseSpriteBat2Fog61b
+eraseSpriteBat2Fog61a anop
+        lda >BACKGROUND_ADDR,x
+        sta >SCREEN_ADDR,x
+eraseSpriteBat2Fog61b anop
+        long m
+
+
+eraseSpriteBat2FogSkipRowErase91 anop
+
+        lda >rowCounter
+        clc
+        adc #1
+        sta >rowCounter
+
+
+        cmp #199
+        bcs eraseSpriteBat2FogSkipRowEraseShortJump92
+        bra eraseSpriteBat2FogSkipRowEraseDontSkipRow92
+
+eraseSpriteBat2FogSkipRowEraseShortJump92 anop
+        brl eraseSpriteBat2FogSkipRowErase92
+eraseSpriteBat2FogSkipRowEraseDontSkipRow92 anop
+        lda >spriteY
+        clc
+        adc #6
+        asl a
+        tax
+        lda >screenRowOffsets,x
+        sta >rowAddress
+
+        lda >rowAddress
+        clc
+        adc >spriteX
+
+        clc
+        adc #0
+        tax
+
+
+        short m
+        lda >SURROUND_PIXEL_ADDR,x
+        cmp #$00
+        beq eraseSpriteBat2Fog62a
+        sta >SCREEN_ADDR,x
+        bra eraseSpriteBat2Fog62b
+eraseSpriteBat2Fog62a anop
+        lda >BACKGROUND_ADDR,x
+        sta >SCREEN_ADDR,x
+eraseSpriteBat2Fog62b anop
+        long m
+
+
+eraseSpriteBat2FogSkipRowErase92 anop
+
+        lda >rowCounter
+        clc
+        adc #1
+        sta >rowCounter
+
+
+        cmp #199
+        bcs eraseSpriteBat2FogSkipRowEraseShortJump93
+        bra eraseSpriteBat2FogSkipRowEraseDontSkipRow93
+
+eraseSpriteBat2FogSkipRowEraseShortJump93 anop
+        brl eraseSpriteBat2FogSkipRowErase93
+eraseSpriteBat2FogSkipRowEraseDontSkipRow93 anop
+        lda >spriteY
+        clc
+        adc #7
+        asl a
+        tax
+        lda >screenRowOffsets,x
+        sta >rowAddress
+
+        lda >rowAddress
+        clc
+        adc >spriteX
+
+        clc
+        adc #0
+        tax
+
+
+        short m
+        lda >SURROUND_PIXEL_ADDR,x
+        cmp #$00
+        beq eraseSpriteBat2Fog63a
+        sta >SCREEN_ADDR,x
+        bra eraseSpriteBat2Fog63b
+eraseSpriteBat2Fog63a anop
+        lda >BACKGROUND_ADDR,x
+        sta >SCREEN_ADDR,x
+eraseSpriteBat2Fog63b anop
+        long m
+
+
+eraseSpriteBat2FogSkipRowErase93 anop
+
+        lda >rowCounter
+        clc
+        adc #1
+        sta >rowCounter
+
+
+        cmp #199
+        bcs eraseSpriteBat2FogSkipRowEraseShortJump94
+        bra eraseSpriteBat2FogSkipRowEraseDontSkipRow94
+
+eraseSpriteBat2FogSkipRowEraseShortJump94 anop
+        brl eraseSpriteBat2FogSkipRowErase94
+eraseSpriteBat2FogSkipRowEraseDontSkipRow94 anop
+        lda >spriteY
+        clc
+        adc #8
+        asl a
+        tax
+        lda >screenRowOffsets,x
+        sta >rowAddress
+
+        lda >rowAddress
+        clc
+        adc >spriteX
+
+        clc
+        adc #2
+        tax
+
+
+        short m
+        lda >SURROUND_PIXEL_ADDR,x
+        cmp #$00
+        beq eraseSpriteBat2Fog64a
+        sta >SCREEN_ADDR,x
+        bra eraseSpriteBat2Fog64b
+eraseSpriteBat2Fog64a anop
+        lda >BACKGROUND_ADDR,x
+        sta >SCREEN_ADDR,x
+eraseSpriteBat2Fog64b anop
+        long m
+        lda >rowAddress
+        clc
+        adc >spriteX
+
+        clc
+        adc #3
+        tax
+
+
+        short m
+        lda >SURROUND_PIXEL_ADDR,x
+        cmp #$00
+        beq eraseSpriteBat2Fog65a
+        sta >SCREEN_ADDR,x
+        bra eraseSpriteBat2Fog65b
+eraseSpriteBat2Fog65a anop
+        lda >BACKGROUND_ADDR,x
+        sta >SCREEN_ADDR,x
+eraseSpriteBat2Fog65b anop
+        long m
+        lda >rowAddress
+        clc
+        adc >spriteX
+
+        clc
+        adc #4
+        tax
+
+
+        short m
+        lda >SURROUND_PIXEL_ADDR,x
+        cmp #$00
+        beq eraseSpriteBat2Fog66a
+        sta >SCREEN_ADDR,x
+        bra eraseSpriteBat2Fog66b
+eraseSpriteBat2Fog66a anop
+        lda >BACKGROUND_ADDR,x
+        sta >SCREEN_ADDR,x
+eraseSpriteBat2Fog66b anop
+        long m
+        lda >rowAddress
+        clc
+        adc >spriteX
+
+        clc
+        adc #5
+        tax
+
+
+        short m
+        lda >SURROUND_PIXEL_ADDR,x
+        cmp #$00
+        beq eraseSpriteBat2Fog67a
+        sta >SCREEN_ADDR,x
+        bra eraseSpriteBat2Fog67b
+eraseSpriteBat2Fog67a anop
+        lda >BACKGROUND_ADDR,x
+        sta >SCREEN_ADDR,x
+eraseSpriteBat2Fog67b anop
+        long m
+
+
+eraseSpriteBat2FogSkipRowErase94 anop
+
+        lda >rowCounter
+        clc
+        adc #1
+        sta >rowCounter
+
+
+        cmp #199
+        bcs eraseSpriteBat2FogSkipRowEraseShortJump95
+        bra eraseSpriteBat2FogSkipRowEraseDontSkipRow95
+
+eraseSpriteBat2FogSkipRowEraseShortJump95 anop
+        brl eraseSpriteBat2FogSkipRowErase95
+eraseSpriteBat2FogSkipRowEraseDontSkipRow95 anop
+        lda >spriteY
+        clc
+        adc #9
+        asl a
+        tax
+        lda >screenRowOffsets,x
+        sta >rowAddress
+
+        lda >rowAddress
+        clc
+        adc >spriteX
+
+        clc
+        adc #2
+        tax
+
+
+        short m
+        lda >SURROUND_PIXEL_ADDR,x
+        cmp #$00
+        beq eraseSpriteBat2Fog68a
+        sta >SCREEN_ADDR,x
+        bra eraseSpriteBat2Fog68b
+eraseSpriteBat2Fog68a anop
+        lda >BACKGROUND_ADDR,x
+        sta >SCREEN_ADDR,x
+eraseSpriteBat2Fog68b anop
+        long m
+        lda >rowAddress
+        clc
+        adc >spriteX
+
+        clc
+        adc #3
+        tax
+
+
+        short m
+        lda >SURROUND_PIXEL_ADDR,x
+        cmp #$00
+        beq eraseSpriteBat2Fog69a
+        sta >SCREEN_ADDR,x
+        bra eraseSpriteBat2Fog69b
+eraseSpriteBat2Fog69a anop
+        lda >BACKGROUND_ADDR,x
+        sta >SCREEN_ADDR,x
+eraseSpriteBat2Fog69b anop
+        long m
+        lda >rowAddress
+        clc
+        adc >spriteX
+
+        clc
+        adc #4
+        tax
+
+
+        short m
+        lda >SURROUND_PIXEL_ADDR,x
+        cmp #$00
+        beq eraseSpriteBat2Fog70a
+        sta >SCREEN_ADDR,x
+        bra eraseSpriteBat2Fog70b
+eraseSpriteBat2Fog70a anop
+        lda >BACKGROUND_ADDR,x
+        sta >SCREEN_ADDR,x
+eraseSpriteBat2Fog70b anop
+        long m
+        lda >rowAddress
+        clc
+        adc >spriteX
+
+        clc
+        adc #5
+        tax
+
+
+        short m
+        lda >SURROUND_PIXEL_ADDR,x
+        cmp #$00
+        beq eraseSpriteBat2Fog71a
+        sta >SCREEN_ADDR,x
+        bra eraseSpriteBat2Fog71b
+eraseSpriteBat2Fog71a anop
+        lda >BACKGROUND_ADDR,x
+        sta >SCREEN_ADDR,x
+eraseSpriteBat2Fog71b anop
+        long m
+
+
+eraseSpriteBat2FogSkipRowErase95 anop
+
+        lda >rowCounter
+        clc
+        adc #1
+        sta >rowCounter
+
+
+        cmp #199
+        bcs eraseSpriteBat2FogSkipRowEraseShortJump96
+        bra eraseSpriteBat2FogSkipRowEraseDontSkipRow96
+
+eraseSpriteBat2FogSkipRowEraseShortJump96 anop
+        brl eraseSpriteBat2FogSkipRowErase96
+eraseSpriteBat2FogSkipRowEraseDontSkipRow96 anop
+        lda >spriteY
+        clc
+        adc #10
+        asl a
+        tax
+        lda >screenRowOffsets,x
+        sta >rowAddress
+
+        lda >rowAddress
+        clc
+        adc >spriteX
+
+        clc
+        adc #1
+        tax
+
+
+        short m
+        lda >SURROUND_PIXEL_ADDR,x
+        cmp #$00
+        beq eraseSpriteBat2Fog72a
+        sta >SCREEN_ADDR,x
+        bra eraseSpriteBat2Fog72b
+eraseSpriteBat2Fog72a anop
+        lda >BACKGROUND_ADDR,x
+        sta >SCREEN_ADDR,x
+eraseSpriteBat2Fog72b anop
+        long m
+        lda >rowAddress
+        clc
+        adc >spriteX
+
+        clc
+        adc #3
+        tax
+
+
+        short m
+        lda >SURROUND_PIXEL_ADDR,x
+        cmp #$00
+        beq eraseSpriteBat2Fog73a
+        sta >SCREEN_ADDR,x
+        bra eraseSpriteBat2Fog73b
+eraseSpriteBat2Fog73a anop
+        lda >BACKGROUND_ADDR,x
+        sta >SCREEN_ADDR,x
+eraseSpriteBat2Fog73b anop
+        long m
+        lda >rowAddress
+        clc
+        adc >spriteX
+
+        clc
+        adc #4
+        tax
+
+
+        short m
+        lda >SURROUND_PIXEL_ADDR,x
+        cmp #$00
+        beq eraseSpriteBat2Fog74a
+        sta >SCREEN_ADDR,x
+        bra eraseSpriteBat2Fog74b
+eraseSpriteBat2Fog74a anop
+        lda >BACKGROUND_ADDR,x
+        sta >SCREEN_ADDR,x
+eraseSpriteBat2Fog74b anop
+        long m
+        lda >rowAddress
+        clc
+        adc >spriteX
+
+        clc
+        adc #6
+        tax
+
+
+        short m
+        lda >SURROUND_PIXEL_ADDR,x
+        cmp #$00
+        beq eraseSpriteBat2Fog75a
+        sta >SCREEN_ADDR,x
+        bra eraseSpriteBat2Fog75b
+eraseSpriteBat2Fog75a anop
+        lda >BACKGROUND_ADDR,x
+        sta >SCREEN_ADDR,x
+eraseSpriteBat2Fog75b anop
+        long m
+
+
+eraseSpriteBat2FogSkipRowErase96 anop
+
+        lda >rowCounter
+        clc
+        adc #1
+        sta >rowCounter
+
+
+        cmp #199
+        bcs eraseSpriteBat2FogSkipRowEraseShortJump97
+        bra eraseSpriteBat2FogSkipRowEraseDontSkipRow97
+
+eraseSpriteBat2FogSkipRowEraseShortJump97 anop
+        brl eraseSpriteBat2FogSkipRowErase97
+eraseSpriteBat2FogSkipRowEraseDontSkipRow97 anop
+        lda >spriteY
+        clc
+        adc #11
+        asl a
+        tax
+        lda >screenRowOffsets,x
+        sta >rowAddress
+
+        lda >rowAddress
+        clc
+        adc >spriteX
+
+        clc
+        adc #1
+        tax
+
+
+        short m
+        lda >SURROUND_PIXEL_ADDR,x
+        cmp #$00
+        beq eraseSpriteBat2Fog76a
+        sta >SCREEN_ADDR,x
+        bra eraseSpriteBat2Fog76b
+eraseSpriteBat2Fog76a anop
+        lda >BACKGROUND_ADDR,x
+        sta >SCREEN_ADDR,x
+eraseSpriteBat2Fog76b anop
+        long m
+        lda >rowAddress
+        clc
+        adc >spriteX
+
+        clc
+        adc #3
+        tax
+
+
+        short m
+        lda >SURROUND_PIXEL_ADDR,x
+        cmp #$00
+        beq eraseSpriteBat2Fog77a
+        sta >SCREEN_ADDR,x
+        bra eraseSpriteBat2Fog77b
+eraseSpriteBat2Fog77a anop
+        lda >BACKGROUND_ADDR,x
+        sta >SCREEN_ADDR,x
+eraseSpriteBat2Fog77b anop
+        long m
+        lda >rowAddress
+        clc
+        adc >spriteX
+
+        clc
+        adc #4
+        tax
+
+
+        short m
+        lda >SURROUND_PIXEL_ADDR,x
+        cmp #$00
+        beq eraseSpriteBat2Fog78a
+        sta >SCREEN_ADDR,x
+        bra eraseSpriteBat2Fog78b
+eraseSpriteBat2Fog78a anop
+        lda >BACKGROUND_ADDR,x
+        sta >SCREEN_ADDR,x
+eraseSpriteBat2Fog78b anop
+        long m
+        lda >rowAddress
+        clc
+        adc >spriteX
+
+        clc
+        adc #6
+        tax
+
+
+        short m
+        lda >SURROUND_PIXEL_ADDR,x
+        cmp #$00
+        beq eraseSpriteBat2Fog79a
+        sta >SCREEN_ADDR,x
+        bra eraseSpriteBat2Fog79b
+eraseSpriteBat2Fog79a anop
+        lda >BACKGROUND_ADDR,x
+        sta >SCREEN_ADDR,x
+eraseSpriteBat2Fog79b anop
+        long m
+
+
+eraseSpriteBat2FogSkipRowErase97 anop
+
+        lda >rowCounter
+        clc
+        adc #1
+        sta >rowCounter
+
+
+        cmp #199
+        bcs eraseSpriteBat2FogSkipRowEraseShortJump98
+        bra eraseSpriteBat2FogSkipRowEraseDontSkipRow98
+
+eraseSpriteBat2FogSkipRowEraseShortJump98 anop
+        brl eraseSpriteBat2FogSkipRowErase98
+eraseSpriteBat2FogSkipRowEraseDontSkipRow98 anop
+        lda >spriteY
+        clc
+        adc #12
+        asl a
+        tax
+        lda >screenRowOffsets,x
+        sta >rowAddress
+
+        lda >rowAddress
+        clc
+        adc >spriteX
+
+        clc
+        adc #1
+        tax
+
+
+        short m
+        lda >SURROUND_PIXEL_ADDR,x
+        cmp #$00
+        beq eraseSpriteBat2Fog80a
+        sta >SCREEN_ADDR,x
+        bra eraseSpriteBat2Fog80b
+eraseSpriteBat2Fog80a anop
+        lda >BACKGROUND_ADDR,x
+        sta >SCREEN_ADDR,x
+eraseSpriteBat2Fog80b anop
+        long m
+        lda >rowAddress
+        clc
+        adc >spriteX
+
+        clc
+        adc #2
+        tax
+
+
+        short m
+        lda >SURROUND_PIXEL_ADDR,x
+        cmp #$00
+        beq eraseSpriteBat2Fog81a
+        sta >SCREEN_ADDR,x
+        bra eraseSpriteBat2Fog81b
+eraseSpriteBat2Fog81a anop
+        lda >BACKGROUND_ADDR,x
+        sta >SCREEN_ADDR,x
+eraseSpriteBat2Fog81b anop
+        long m
+        lda >rowAddress
+        clc
+        adc >spriteX
+
+        clc
+        adc #5
+        tax
+
+
+        short m
+        lda >SURROUND_PIXEL_ADDR,x
+        cmp #$00
+        beq eraseSpriteBat2Fog82a
+        sta >SCREEN_ADDR,x
+        bra eraseSpriteBat2Fog82b
+eraseSpriteBat2Fog82a anop
+        lda >BACKGROUND_ADDR,x
+        sta >SCREEN_ADDR,x
+eraseSpriteBat2Fog82b anop
+        long m
+        lda >rowAddress
+        clc
+        adc >spriteX
+
+        clc
+        adc #6
+        tax
+
+
+        short m
+        lda >SURROUND_PIXEL_ADDR,x
+        cmp #$00
+        beq eraseSpriteBat2Fog83a
+        sta >SCREEN_ADDR,x
+        bra eraseSpriteBat2Fog83b
+eraseSpriteBat2Fog83a anop
+        lda >BACKGROUND_ADDR,x
+        sta >SCREEN_ADDR,x
+eraseSpriteBat2Fog83b anop
+        long m
+
+
+eraseSpriteBat2FogSkipRowErase98 anop
+
+        lda >rowCounter
+        clc
+        adc #1
+        sta >rowCounter
+
+
+        cmp #199
+        bcs eraseSpriteBat2FogSkipRowEraseShortJump99
+        bra eraseSpriteBat2FogSkipRowEraseDontSkipRow99
+
+eraseSpriteBat2FogSkipRowEraseShortJump99 anop
+        brl eraseSpriteBat2FogSkipRowErase99
+eraseSpriteBat2FogSkipRowEraseDontSkipRow99 anop
+        lda >spriteY
+        clc
+        adc #13
+        asl a
+        tax
+        lda >screenRowOffsets,x
+        sta >rowAddress
+
+        lda >rowAddress
+        clc
+        adc >spriteX
+
+        clc
+        adc #1
+        tax
+
+
+        short m
+        lda >SURROUND_PIXEL_ADDR,x
+        cmp #$00
+        beq eraseSpriteBat2Fog84a
+        sta >SCREEN_ADDR,x
+        bra eraseSpriteBat2Fog84b
+eraseSpriteBat2Fog84a anop
+        lda >BACKGROUND_ADDR,x
+        sta >SCREEN_ADDR,x
+eraseSpriteBat2Fog84b anop
+        long m
+        lda >rowAddress
+        clc
+        adc >spriteX
+
+        clc
+        adc #2
+        tax
+
+
+        short m
+        lda >SURROUND_PIXEL_ADDR,x
+        cmp #$00
+        beq eraseSpriteBat2Fog85a
+        sta >SCREEN_ADDR,x
+        bra eraseSpriteBat2Fog85b
+eraseSpriteBat2Fog85a anop
+        lda >BACKGROUND_ADDR,x
+        sta >SCREEN_ADDR,x
+eraseSpriteBat2Fog85b anop
+        long m
+        lda >rowAddress
+        clc
+        adc >spriteX
+
+        clc
+        adc #5
+        tax
+
+
+        short m
+        lda >SURROUND_PIXEL_ADDR,x
+        cmp #$00
+        beq eraseSpriteBat2Fog86a
+        sta >SCREEN_ADDR,x
+        bra eraseSpriteBat2Fog86b
+eraseSpriteBat2Fog86a anop
+        lda >BACKGROUND_ADDR,x
+        sta >SCREEN_ADDR,x
+eraseSpriteBat2Fog86b anop
+        long m
+        lda >rowAddress
+        clc
+        adc >spriteX
+
+        clc
+        adc #6
+        tax
+
+
+        short m
+        lda >SURROUND_PIXEL_ADDR,x
+        cmp #$00
+        beq eraseSpriteBat2Fog87a
+        sta >SCREEN_ADDR,x
+        bra eraseSpriteBat2Fog87b
+eraseSpriteBat2Fog87a anop
+        lda >BACKGROUND_ADDR,x
+        sta >SCREEN_ADDR,x
+eraseSpriteBat2Fog87b anop
+        long m
+
+
+eraseSpriteBat2FogSkipRowErase99 anop
+
+        lda >rowCounter
+        clc
+        adc #1
+        sta >rowCounter
+
+
+        cmp #199
+        bcs eraseSpriteBat2FogSkipRowEraseShortJump100
+        bra eraseSpriteBat2FogSkipRowEraseDontSkipRow100
+
+eraseSpriteBat2FogSkipRowEraseShortJump100 anop
+        brl eraseSpriteBat2FogSkipRowErase100
+eraseSpriteBat2FogSkipRowEraseDontSkipRow100 anop
+        lda >spriteY
+        clc
+        adc #14
+        asl a
+        tax
+        lda >screenRowOffsets,x
+        sta >rowAddress
+
+        lda >rowAddress
+        clc
+        adc >spriteX
+
+        clc
+        adc #0
+        tax
+
+
+        short m
+        lda >SURROUND_PIXEL_ADDR,x
+        cmp #$00
+        beq eraseSpriteBat2Fog88a
+        sta >SCREEN_ADDR,x
+        bra eraseSpriteBat2Fog88b
+eraseSpriteBat2Fog88a anop
+        lda >BACKGROUND_ADDR,x
+        sta >SCREEN_ADDR,x
+eraseSpriteBat2Fog88b anop
+        long m
+        lda >rowAddress
+        clc
+        adc >spriteX
+
+        clc
+        adc #1
+        tax
+
+
+        short m
+        lda >SURROUND_PIXEL_ADDR,x
+        cmp #$00
+        beq eraseSpriteBat2Fog89a
+        sta >SCREEN_ADDR,x
+        bra eraseSpriteBat2Fog89b
+eraseSpriteBat2Fog89a anop
+        lda >BACKGROUND_ADDR,x
+        sta >SCREEN_ADDR,x
+eraseSpriteBat2Fog89b anop
+        long m
+        lda >rowAddress
+        clc
+        adc >spriteX
+
+        clc
+        adc #6
+        tax
+
+
+        short m
+        lda >SURROUND_PIXEL_ADDR,x
+        cmp #$00
+        beq eraseSpriteBat2Fog90a
+        sta >SCREEN_ADDR,x
+        bra eraseSpriteBat2Fog90b
+eraseSpriteBat2Fog90a anop
+        lda >BACKGROUND_ADDR,x
+        sta >SCREEN_ADDR,x
+eraseSpriteBat2Fog90b anop
+        long m
+        lda >rowAddress
+        clc
+        adc >spriteX
+
+        clc
+        adc #7
+        tax
+
+
+        short m
+        lda >SURROUND_PIXEL_ADDR,x
+        cmp #$00
+        beq eraseSpriteBat2Fog91a
+        sta >SCREEN_ADDR,x
+        bra eraseSpriteBat2Fog91b
+eraseSpriteBat2Fog91a anop
+        lda >BACKGROUND_ADDR,x
+        sta >SCREEN_ADDR,x
+eraseSpriteBat2Fog91b anop
+        long m
+
+
+eraseSpriteBat2FogSkipRowErase100 anop
+
+        lda >rowCounter
+        clc
+        adc #1
+        sta >rowCounter
+
+
+        cmp #199
+        bcs eraseSpriteBat2FogSkipRowEraseShortJump101
+        bra eraseSpriteBat2FogSkipRowEraseDontSkipRow101
+
+eraseSpriteBat2FogSkipRowEraseShortJump101 anop
+        brl eraseSpriteBat2FogSkipRowErase101
+eraseSpriteBat2FogSkipRowEraseDontSkipRow101 anop
+        lda >spriteY
+        clc
+        adc #15
+        asl a
+        tax
+        lda >screenRowOffsets,x
+        sta >rowAddress
+
+        lda >rowAddress
+        clc
+        adc >spriteX
+
+        clc
+        adc #0
+        tax
+
+
+        short m
+        lda >SURROUND_PIXEL_ADDR,x
+        cmp #$00
+        beq eraseSpriteBat2Fog92a
+        sta >SCREEN_ADDR,x
+        bra eraseSpriteBat2Fog92b
+eraseSpriteBat2Fog92a anop
+        lda >BACKGROUND_ADDR,x
+        sta >SCREEN_ADDR,x
+eraseSpriteBat2Fog92b anop
+        long m
+        lda >rowAddress
+        clc
+        adc >spriteX
+
+        clc
+        adc #1
+        tax
+
+
+        short m
+        lda >SURROUND_PIXEL_ADDR,x
+        cmp #$00
+        beq eraseSpriteBat2Fog93a
+        sta >SCREEN_ADDR,x
+        bra eraseSpriteBat2Fog93b
+eraseSpriteBat2Fog93a anop
+        lda >BACKGROUND_ADDR,x
+        sta >SCREEN_ADDR,x
+eraseSpriteBat2Fog93b anop
+        long m
+        lda >rowAddress
+        clc
+        adc >spriteX
+
+        clc
+        adc #6
+        tax
+
+
+        short m
+        lda >SURROUND_PIXEL_ADDR,x
+        cmp #$00
+        beq eraseSpriteBat2Fog94a
+        sta >SCREEN_ADDR,x
+        bra eraseSpriteBat2Fog94b
+eraseSpriteBat2Fog94a anop
+        lda >BACKGROUND_ADDR,x
+        sta >SCREEN_ADDR,x
+eraseSpriteBat2Fog94b anop
+        long m
+        lda >rowAddress
+        clc
+        adc >spriteX
+
+        clc
+        adc #7
+        tax
+
+
+        short m
+        lda >SURROUND_PIXEL_ADDR,x
+        cmp #$00
+        beq eraseSpriteBat2Fog95a
+        sta >SCREEN_ADDR,x
+        bra eraseSpriteBat2Fog95b
+eraseSpriteBat2Fog95a anop
+        lda >BACKGROUND_ADDR,x
+        sta >SCREEN_ADDR,x
+eraseSpriteBat2Fog95b anop
+        long m
+
+
+eraseSpriteBat2FogSkipRowErase101 anop
+
+        lda >rowCounter
+        clc
+        adc #1
+        sta >rowCounter
+
+
+        cmp #199
+        bcs eraseSpriteBat2FogSkipRowEraseShortJump102
+        bra eraseSpriteBat2FogSkipRowEraseDontSkipRow102
+
+eraseSpriteBat2FogSkipRowEraseShortJump102 anop
+        brl eraseSpriteBat2FogSkipRowErase102
+eraseSpriteBat2FogSkipRowEraseDontSkipRow102 anop
+        lda >spriteY
+        clc
+        adc #16
+        asl a
+        tax
+        lda >screenRowOffsets,x
+        sta >rowAddress
+
+        lda >rowAddress
+        clc
+        adc >spriteX
+
+        clc
+        adc #0
+        tax
+
+
+        short m
+        lda >SURROUND_PIXEL_ADDR,x
+        cmp #$00
+        beq eraseSpriteBat2Fog96a
+        sta >SCREEN_ADDR,x
+        bra eraseSpriteBat2Fog96b
+eraseSpriteBat2Fog96a anop
+        lda >BACKGROUND_ADDR,x
+        sta >SCREEN_ADDR,x
+eraseSpriteBat2Fog96b anop
+        long m
+        lda >rowAddress
+        clc
+        adc >spriteX
+
+        clc
+        adc #7
+        tax
+
+
+        short m
+        lda >SURROUND_PIXEL_ADDR,x
+        cmp #$00
+        beq eraseSpriteBat2Fog97a
+        sta >SCREEN_ADDR,x
+        bra eraseSpriteBat2Fog97b
+eraseSpriteBat2Fog97a anop
+        lda >BACKGROUND_ADDR,x
+        sta >SCREEN_ADDR,x
+eraseSpriteBat2Fog97b anop
+        long m
+
+
+eraseSpriteBat2FogSkipRowErase102 anop
+
+        lda >rowCounter
+        clc
+        adc #1
+        sta >rowCounter
+
+
+        cmp #199
+        bcs eraseSpriteBat2FogSkipRowEraseShortJump103
+        bra eraseSpriteBat2FogSkipRowEraseDontSkipRow103
+
+eraseSpriteBat2FogSkipRowEraseShortJump103 anop
+        brl eraseSpriteBat2FogSkipRowErase103
+eraseSpriteBat2FogSkipRowEraseDontSkipRow103 anop
+        lda >spriteY
+        clc
+        adc #17
+        asl a
+        tax
+        lda >screenRowOffsets,x
+        sta >rowAddress
+
+        lda >rowAddress
+        clc
+        adc >spriteX
+
+        clc
+        adc #0
+        tax
+
+
+        short m
+        lda >SURROUND_PIXEL_ADDR,x
+        cmp #$00
+        beq eraseSpriteBat2Fog98a
+        sta >SCREEN_ADDR,x
+        bra eraseSpriteBat2Fog98b
+eraseSpriteBat2Fog98a anop
+        lda >BACKGROUND_ADDR,x
+        sta >SCREEN_ADDR,x
+eraseSpriteBat2Fog98b anop
+        long m
+        lda >rowAddress
+        clc
+        adc >spriteX
+
+        clc
+        adc #7
+        tax
+
+
+        short m
+        lda >SURROUND_PIXEL_ADDR,x
+        cmp #$00
+        beq eraseSpriteBat2Fog99a
+        sta >SCREEN_ADDR,x
+        bra eraseSpriteBat2Fog99b
+eraseSpriteBat2Fog99a anop
+        lda >BACKGROUND_ADDR,x
+        sta >SCREEN_ADDR,x
+eraseSpriteBat2Fog99b anop
+        long m
+
+
+eraseSpriteBat2FogSkipRowErase103 anop
+
+        lda >rowCounter
+        clc
+        adc #1
+        sta >rowCounter
+
+
+        cmp #199
+        bcs eraseSpriteBat2FogSkipRowEraseShortJump104
+        bra eraseSpriteBat2FogSkipRowEraseDontSkipRow104
+
+eraseSpriteBat2FogSkipRowEraseShortJump104 anop
+        brl eraseSpriteBat2FogSkipRowErase104
+eraseSpriteBat2FogSkipRowEraseDontSkipRow104 anop
+        lda >spriteY
+        clc
+        adc #18
+        asl a
+        tax
+        lda >screenRowOffsets,x
+        sta >rowAddress
+
+        lda >rowAddress
+        clc
+        adc >spriteX
+
+        clc
+        adc #0
+        tax
+
+
+        short m
+        lda >SURROUND_PIXEL_ADDR,x
+        cmp #$00
+        beq eraseSpriteBat2Fog100a
+        sta >SCREEN_ADDR,x
+        bra eraseSpriteBat2Fog100b
+eraseSpriteBat2Fog100a anop
+        lda >BACKGROUND_ADDR,x
+        sta >SCREEN_ADDR,x
+eraseSpriteBat2Fog100b anop
+        long m
+        lda >rowAddress
+        clc
+        adc >spriteX
+
+        clc
+        adc #7
+        tax
+
+
+        short m
+        lda >SURROUND_PIXEL_ADDR,x
+        cmp #$00
+        beq eraseSpriteBat2Fog101a
+        sta >SCREEN_ADDR,x
+        bra eraseSpriteBat2Fog101b
+eraseSpriteBat2Fog101a anop
+        lda >BACKGROUND_ADDR,x
+        sta >SCREEN_ADDR,x
+eraseSpriteBat2Fog101b anop
+        long m
+
+
+eraseSpriteBat2FogSkipRowErase104 anop
+
+        lda >rowCounter
+        clc
+        adc #1
+        sta >rowCounter
+
+
+        cmp #199
+        bcs eraseSpriteBat2FogSkipRowEraseShortJump105
+        bra eraseSpriteBat2FogSkipRowEraseDontSkipRow105
+
+eraseSpriteBat2FogSkipRowEraseShortJump105 anop
+        brl eraseSpriteBat2FogSkipRowErase105
+eraseSpriteBat2FogSkipRowEraseDontSkipRow105 anop
+        lda >spriteY
+        clc
+        adc #19
+        asl a
+        tax
+        lda >screenRowOffsets,x
+        sta >rowAddress
+
+        lda >rowAddress
+        clc
+        adc >spriteX
+
+        clc
+        adc #0
+        tax
+
+
+        short m
+        lda >SURROUND_PIXEL_ADDR,x
+        cmp #$00
+        beq eraseSpriteBat2Fog102a
+        sta >SCREEN_ADDR,x
+        bra eraseSpriteBat2Fog102b
+eraseSpriteBat2Fog102a anop
+        lda >BACKGROUND_ADDR,x
+        sta >SCREEN_ADDR,x
+eraseSpriteBat2Fog102b anop
+        long m
+        lda >rowAddress
+        clc
+        adc >spriteX
+
+        clc
+        adc #7
+        tax
+
+
+        short m
+        lda >SURROUND_PIXEL_ADDR,x
+        cmp #$00
+        beq eraseSpriteBat2Fog103a
+        sta >SCREEN_ADDR,x
+        bra eraseSpriteBat2Fog103b
+eraseSpriteBat2Fog103a anop
+        lda >BACKGROUND_ADDR,x
+        sta >SCREEN_ADDR,x
+eraseSpriteBat2Fog103b anop
+        long m
+
+
+eraseSpriteBat2FogSkipRowErase105 anop
+
+        lda >rowCounter
+        clc
+        adc #1
+        sta >rowCounter
+
+
+        cmp #199
+        bcs eraseSpriteBat2FogSkipRowEraseShortJump106
+        bra eraseSpriteBat2FogSkipRowEraseDontSkipRow106
+
+eraseSpriteBat2FogSkipRowEraseShortJump106 anop
+        brl eraseSpriteBat2FogSkipRowErase106
+eraseSpriteBat2FogSkipRowEraseDontSkipRow106 anop
+        lda >spriteY
+        clc
+        adc #20
+        asl a
+        tax
+        lda >screenRowOffsets,x
+        sta >rowAddress
+
+        lda >rowAddress
+        clc
+        adc >spriteX
+
+        clc
+        adc #0
+        tax
+
+
+        short m
+        lda >SURROUND_PIXEL_ADDR,x
+        cmp #$00
+        beq eraseSpriteBat2Fog104a
+        sta >SCREEN_ADDR,x
+        bra eraseSpriteBat2Fog104b
+eraseSpriteBat2Fog104a anop
+        lda >BACKGROUND_ADDR,x
+        sta >SCREEN_ADDR,x
+eraseSpriteBat2Fog104b anop
+        long m
+        lda >rowAddress
+        clc
+        adc >spriteX
+
+        clc
+        adc #7
+        tax
+
+
+        short m
+        lda >SURROUND_PIXEL_ADDR,x
+        cmp #$00
+        beq eraseSpriteBat2Fog105a
+        sta >SCREEN_ADDR,x
+        bra eraseSpriteBat2Fog105b
+eraseSpriteBat2Fog105a anop
+        lda >BACKGROUND_ADDR,x
+        sta >SCREEN_ADDR,x
+eraseSpriteBat2Fog105b anop
+        long m
+
+
+eraseSpriteBat2FogSkipRowErase106 anop
+
+        lda >rowCounter
+        clc
+        adc #1
+        sta >rowCounter
+
+
+        cmp #199
+        bcs eraseSpriteBat2FogSkipRowEraseShortJump107
+        bra eraseSpriteBat2FogSkipRowEraseDontSkipRow107
+
+eraseSpriteBat2FogSkipRowEraseShortJump107 anop
+        brl eraseSpriteBat2FogSkipRowErase107
+eraseSpriteBat2FogSkipRowEraseDontSkipRow107 anop
+        lda >spriteY
+        clc
+        adc #21
+        asl a
+        tax
+        lda >screenRowOffsets,x
+        sta >rowAddress
+
+        lda >rowAddress
+        clc
+        adc >spriteX
+
+        clc
+        adc #0
+        tax
+
+
+        short m
+        lda >SURROUND_PIXEL_ADDR,x
+        cmp #$00
+        beq eraseSpriteBat2Fog106a
+        sta >SCREEN_ADDR,x
+        bra eraseSpriteBat2Fog106b
+eraseSpriteBat2Fog106a anop
+        lda >BACKGROUND_ADDR,x
+        sta >SCREEN_ADDR,x
+eraseSpriteBat2Fog106b anop
+        long m
+        lda >rowAddress
+        clc
+        adc >spriteX
+
+        clc
+        adc #7
+        tax
+
+
+        short m
+        lda >SURROUND_PIXEL_ADDR,x
+        cmp #$00
+        beq eraseSpriteBat2Fog107a
+        sta >SCREEN_ADDR,x
+        bra eraseSpriteBat2Fog107b
+eraseSpriteBat2Fog107a anop
+        lda >BACKGROUND_ADDR,x
+        sta >SCREEN_ADDR,x
+eraseSpriteBat2Fog107b anop
+        long m
+
+
+eraseSpriteBat2FogSkipRowErase107 anop
+
+        lda >rowCounter
+        clc
+        adc #1
+        sta >rowCounter
 
 
         rtl

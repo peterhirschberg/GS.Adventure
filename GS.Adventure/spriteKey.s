@@ -20,6 +20,11 @@ drawSpriteKey entry
         spriteGetDrawAddress
         _spriteHeader
 
+        lda >spriteY
+        sta >rowCounter
+
+        cmp #199
+        bcs drawSpriteKeySkipRowDraw0
 
         lda >drawAddress
         clc
@@ -34,6 +39,16 @@ drawSpriteKey entry
         sta 7
         long m
 
+drawSpriteKeySkipRowDraw0 anop
+
+        lda >rowCounter
+        clc
+        adc #1
+        sta >rowCounter
+
+        cmp #199
+        bcs drawSpriteKeySkipRowDraw1
+
         lda >drawAddress
         clc
         adc #160
@@ -46,6 +61,16 @@ drawSpriteKey entry
         sta 6
         sta 7
         long m
+
+drawSpriteKeySkipRowDraw1 anop
+
+        lda >rowCounter
+        clc
+        adc #1
+        sta >rowCounter
+
+        cmp #199
+        bcs drawSpriteKeySkipRowDraw2
 
         lda >drawAddress
         clc
@@ -64,6 +89,16 @@ drawSpriteKey entry
         sta 7
         long m
 
+drawSpriteKeySkipRowDraw2 anop
+
+        lda >rowCounter
+        clc
+        adc #1
+        sta >rowCounter
+
+        cmp #199
+        bcs drawSpriteKeySkipRowDraw3
+
         lda >drawAddress
         clc
         adc #480
@@ -81,6 +116,16 @@ drawSpriteKey entry
         sta 7
         long m
 
+drawSpriteKeySkipRowDraw3 anop
+
+        lda >rowCounter
+        clc
+        adc #1
+        sta >rowCounter
+
+        cmp #199
+        bcs drawSpriteKeySkipRowDraw4
+
         lda >drawAddress
         clc
         adc #640
@@ -95,6 +140,16 @@ drawSpriteKey entry
         sta 6
         sta 7
         long m
+
+drawSpriteKeySkipRowDraw4 anop
+
+        lda >rowCounter
+        clc
+        adc #1
+        sta >rowCounter
+
+        cmp #199
+        bcs drawSpriteKeySkipRowDraw5
 
         lda >drawAddress
         clc
@@ -111,11 +166,17 @@ drawSpriteKey entry
         sta 7
         long m
 
+drawSpriteKeySkipRowDraw5 anop
+
+        lda >rowCounter
+        clc
+        adc #1
+        sta >rowCounter
+
         long m
 
         _spriteFooter
         rtl
-
 
 eraseSpriteKey entry
 
@@ -123,6 +184,16 @@ eraseSpriteKey entry
         lsr a
         sta >spriteX
         lda >spriteY
+        sta >rowCounter
+
+        cmp #199
+        bcs eraseSpriteKeySkipRowEraseShortJump6
+        bra eraseSpriteKeySkipRowEraseDontSkipRow6
+
+eraseSpriteKeySkipRowEraseShortJump6 anop
+        brl eraseSpriteKeySkipRowErase6
+eraseSpriteKeySkipRowEraseDontSkipRow6 anop
+        lda >spriteY
         clc
         adc #0
         asl a
@@ -143,7 +214,6 @@ eraseSpriteKey entry
         lda >BACKGROUND_ADDR,x
         sta >SCREEN_ADDR,x
         long m
-
         lda >rowAddress
         clc
         adc >spriteX
@@ -157,7 +227,6 @@ eraseSpriteKey entry
         lda >BACKGROUND_ADDR,x
         sta >SCREEN_ADDR,x
         long m
-
         lda >rowAddress
         clc
         adc >spriteX
@@ -172,6 +241,22 @@ eraseSpriteKey entry
         sta >SCREEN_ADDR,x
         long m
 
+
+eraseSpriteKeySkipRowErase6 anop
+
+        lda >rowCounter
+        clc
+        adc #1
+        sta >rowCounter
+
+
+        cmp #199
+        bcs eraseSpriteKeySkipRowEraseShortJump7
+        bra eraseSpriteKeySkipRowEraseDontSkipRow7
+
+eraseSpriteKeySkipRowEraseShortJump7 anop
+        brl eraseSpriteKeySkipRowErase7
+eraseSpriteKeySkipRowEraseDontSkipRow7 anop
         lda >spriteY
         clc
         adc #1
@@ -193,7 +278,6 @@ eraseSpriteKey entry
         lda >BACKGROUND_ADDR,x
         sta >SCREEN_ADDR,x
         long m
-
         lda >rowAddress
         clc
         adc >spriteX
@@ -207,7 +291,6 @@ eraseSpriteKey entry
         lda >BACKGROUND_ADDR,x
         sta >SCREEN_ADDR,x
         long m
-
         lda >rowAddress
         clc
         adc >spriteX
@@ -222,6 +305,22 @@ eraseSpriteKey entry
         sta >SCREEN_ADDR,x
         long m
 
+
+eraseSpriteKeySkipRowErase7 anop
+
+        lda >rowCounter
+        clc
+        adc #1
+        sta >rowCounter
+
+
+        cmp #199
+        bcs eraseSpriteKeySkipRowEraseShortJump8
+        bra eraseSpriteKeySkipRowEraseDontSkipRow8
+
+eraseSpriteKeySkipRowEraseShortJump8 anop
+        brl eraseSpriteKeySkipRowErase8
+eraseSpriteKeySkipRowEraseDontSkipRow8 anop
         lda >spriteY
         clc
         adc #2
@@ -243,7 +342,6 @@ eraseSpriteKey entry
         lda >BACKGROUND_ADDR,x
         sta >SCREEN_ADDR,x
         long m
-
         lda >rowAddress
         clc
         adc >spriteX
@@ -257,7 +355,6 @@ eraseSpriteKey entry
         lda >BACKGROUND_ADDR,x
         sta >SCREEN_ADDR,x
         long m
-
         lda >rowAddress
         clc
         adc >spriteX
@@ -271,7 +368,6 @@ eraseSpriteKey entry
         lda >BACKGROUND_ADDR,x
         sta >SCREEN_ADDR,x
         long m
-
         lda >rowAddress
         clc
         adc >spriteX
@@ -285,7 +381,6 @@ eraseSpriteKey entry
         lda >BACKGROUND_ADDR,x
         sta >SCREEN_ADDR,x
         long m
-
         lda >rowAddress
         clc
         adc >spriteX
@@ -299,7 +394,6 @@ eraseSpriteKey entry
         lda >BACKGROUND_ADDR,x
         sta >SCREEN_ADDR,x
         long m
-
         lda >rowAddress
         clc
         adc >spriteX
@@ -313,7 +407,6 @@ eraseSpriteKey entry
         lda >BACKGROUND_ADDR,x
         sta >SCREEN_ADDR,x
         long m
-
         lda >rowAddress
         clc
         adc >spriteX
@@ -328,6 +421,22 @@ eraseSpriteKey entry
         sta >SCREEN_ADDR,x
         long m
 
+
+eraseSpriteKeySkipRowErase8 anop
+
+        lda >rowCounter
+        clc
+        adc #1
+        sta >rowCounter
+
+
+        cmp #199
+        bcs eraseSpriteKeySkipRowEraseShortJump9
+        bra eraseSpriteKeySkipRowEraseDontSkipRow9
+
+eraseSpriteKeySkipRowEraseShortJump9 anop
+        brl eraseSpriteKeySkipRowErase9
+eraseSpriteKeySkipRowEraseDontSkipRow9 anop
         lda >spriteY
         clc
         adc #3
@@ -349,7 +458,6 @@ eraseSpriteKey entry
         lda >BACKGROUND_ADDR,x
         sta >SCREEN_ADDR,x
         long m
-
         lda >rowAddress
         clc
         adc >spriteX
@@ -363,7 +471,6 @@ eraseSpriteKey entry
         lda >BACKGROUND_ADDR,x
         sta >SCREEN_ADDR,x
         long m
-
         lda >rowAddress
         clc
         adc >spriteX
@@ -377,7 +484,6 @@ eraseSpriteKey entry
         lda >BACKGROUND_ADDR,x
         sta >SCREEN_ADDR,x
         long m
-
         lda >rowAddress
         clc
         adc >spriteX
@@ -391,7 +497,6 @@ eraseSpriteKey entry
         lda >BACKGROUND_ADDR,x
         sta >SCREEN_ADDR,x
         long m
-
         lda >rowAddress
         clc
         adc >spriteX
@@ -405,7 +510,6 @@ eraseSpriteKey entry
         lda >BACKGROUND_ADDR,x
         sta >SCREEN_ADDR,x
         long m
-
         lda >rowAddress
         clc
         adc >spriteX
@@ -419,7 +523,6 @@ eraseSpriteKey entry
         lda >BACKGROUND_ADDR,x
         sta >SCREEN_ADDR,x
         long m
-
         lda >rowAddress
         clc
         adc >spriteX
@@ -434,6 +537,22 @@ eraseSpriteKey entry
         sta >SCREEN_ADDR,x
         long m
 
+
+eraseSpriteKeySkipRowErase9 anop
+
+        lda >rowCounter
+        clc
+        adc #1
+        sta >rowCounter
+
+
+        cmp #199
+        bcs eraseSpriteKeySkipRowEraseShortJump10
+        bra eraseSpriteKeySkipRowEraseDontSkipRow10
+
+eraseSpriteKeySkipRowEraseShortJump10 anop
+        brl eraseSpriteKeySkipRowErase10
+eraseSpriteKeySkipRowEraseDontSkipRow10 anop
         lda >spriteY
         clc
         adc #4
@@ -455,7 +574,6 @@ eraseSpriteKey entry
         lda >BACKGROUND_ADDR,x
         sta >SCREEN_ADDR,x
         long m
-
         lda >rowAddress
         clc
         adc >spriteX
@@ -469,7 +587,6 @@ eraseSpriteKey entry
         lda >BACKGROUND_ADDR,x
         sta >SCREEN_ADDR,x
         long m
-
         lda >rowAddress
         clc
         adc >spriteX
@@ -483,7 +600,6 @@ eraseSpriteKey entry
         lda >BACKGROUND_ADDR,x
         sta >SCREEN_ADDR,x
         long m
-
         lda >rowAddress
         clc
         adc >spriteX
@@ -497,7 +613,6 @@ eraseSpriteKey entry
         lda >BACKGROUND_ADDR,x
         sta >SCREEN_ADDR,x
         long m
-
         lda >rowAddress
         clc
         adc >spriteX
@@ -512,6 +627,22 @@ eraseSpriteKey entry
         sta >SCREEN_ADDR,x
         long m
 
+
+eraseSpriteKeySkipRowErase10 anop
+
+        lda >rowCounter
+        clc
+        adc #1
+        sta >rowCounter
+
+
+        cmp #199
+        bcs eraseSpriteKeySkipRowEraseShortJump11
+        bra eraseSpriteKeySkipRowEraseDontSkipRow11
+
+eraseSpriteKeySkipRowEraseShortJump11 anop
+        brl eraseSpriteKeySkipRowErase11
+eraseSpriteKeySkipRowEraseDontSkipRow11 anop
         lda >spriteY
         clc
         adc #5
@@ -533,7 +664,6 @@ eraseSpriteKey entry
         lda >BACKGROUND_ADDR,x
         sta >SCREEN_ADDR,x
         long m
-
         lda >rowAddress
         clc
         adc >spriteX
@@ -547,7 +677,6 @@ eraseSpriteKey entry
         lda >BACKGROUND_ADDR,x
         sta >SCREEN_ADDR,x
         long m
-
         lda >rowAddress
         clc
         adc >spriteX
@@ -561,7 +690,6 @@ eraseSpriteKey entry
         lda >BACKGROUND_ADDR,x
         sta >SCREEN_ADDR,x
         long m
-
         lda >rowAddress
         clc
         adc >spriteX
@@ -575,7 +703,6 @@ eraseSpriteKey entry
         lda >BACKGROUND_ADDR,x
         sta >SCREEN_ADDR,x
         long m
-
         lda >rowAddress
         clc
         adc >spriteX
@@ -589,6 +716,14 @@ eraseSpriteKey entry
         lda >BACKGROUND_ADDR,x
         sta >SCREEN_ADDR,x
         long m
+
+
+eraseSpriteKeySkipRowErase11 anop
+
+        lda >rowCounter
+        clc
+        adc #1
+        sta >rowCounter
 
 
         rtl
@@ -598,6 +733,16 @@ eraseSpriteKeyFog entry
         lda >spriteX
         lsr a
         sta >spriteX
+        lda >spriteY
+        sta >rowCounter
+
+        cmp #199
+        bcs eraseSpriteKeyFogSkipRowEraseShortJump12
+        bra eraseSpriteKeyFogSkipRowEraseDontSkipRow12
+
+eraseSpriteKeyFogSkipRowEraseShortJump12 anop
+        brl eraseSpriteKeyFogSkipRowErase12
+eraseSpriteKeyFogSkipRowEraseDontSkipRow12 anop
         lda >spriteY
         clc
         adc #0
@@ -626,7 +771,6 @@ eraseSpriteKeyFog0a anop
         sta >SCREEN_ADDR,x
 eraseSpriteKeyFog0b anop
         long m
-
         lda >rowAddress
         clc
         adc >spriteX
@@ -647,7 +791,6 @@ eraseSpriteKeyFog1a anop
         sta >SCREEN_ADDR,x
 eraseSpriteKeyFog1b anop
         long m
-
         lda >rowAddress
         clc
         adc >spriteX
@@ -669,6 +812,22 @@ eraseSpriteKeyFog2a anop
 eraseSpriteKeyFog2b anop
         long m
 
+
+eraseSpriteKeyFogSkipRowErase12 anop
+
+        lda >rowCounter
+        clc
+        adc #1
+        sta >rowCounter
+
+
+        cmp #199
+        bcs eraseSpriteKeyFogSkipRowEraseShortJump13
+        bra eraseSpriteKeyFogSkipRowEraseDontSkipRow13
+
+eraseSpriteKeyFogSkipRowEraseShortJump13 anop
+        brl eraseSpriteKeyFogSkipRowErase13
+eraseSpriteKeyFogSkipRowEraseDontSkipRow13 anop
         lda >spriteY
         clc
         adc #1
@@ -697,7 +856,6 @@ eraseSpriteKeyFog3a anop
         sta >SCREEN_ADDR,x
 eraseSpriteKeyFog3b anop
         long m
-
         lda >rowAddress
         clc
         adc >spriteX
@@ -718,7 +876,6 @@ eraseSpriteKeyFog4a anop
         sta >SCREEN_ADDR,x
 eraseSpriteKeyFog4b anop
         long m
-
         lda >rowAddress
         clc
         adc >spriteX
@@ -740,6 +897,22 @@ eraseSpriteKeyFog5a anop
 eraseSpriteKeyFog5b anop
         long m
 
+
+eraseSpriteKeyFogSkipRowErase13 anop
+
+        lda >rowCounter
+        clc
+        adc #1
+        sta >rowCounter
+
+
+        cmp #199
+        bcs eraseSpriteKeyFogSkipRowEraseShortJump14
+        bra eraseSpriteKeyFogSkipRowEraseDontSkipRow14
+
+eraseSpriteKeyFogSkipRowEraseShortJump14 anop
+        brl eraseSpriteKeyFogSkipRowErase14
+eraseSpriteKeyFogSkipRowEraseDontSkipRow14 anop
         lda >spriteY
         clc
         adc #2
@@ -768,7 +941,6 @@ eraseSpriteKeyFog6a anop
         sta >SCREEN_ADDR,x
 eraseSpriteKeyFog6b anop
         long m
-
         lda >rowAddress
         clc
         adc >spriteX
@@ -789,7 +961,6 @@ eraseSpriteKeyFog7a anop
         sta >SCREEN_ADDR,x
 eraseSpriteKeyFog7b anop
         long m
-
         lda >rowAddress
         clc
         adc >spriteX
@@ -810,7 +981,6 @@ eraseSpriteKeyFog8a anop
         sta >SCREEN_ADDR,x
 eraseSpriteKeyFog8b anop
         long m
-
         lda >rowAddress
         clc
         adc >spriteX
@@ -831,7 +1001,6 @@ eraseSpriteKeyFog9a anop
         sta >SCREEN_ADDR,x
 eraseSpriteKeyFog9b anop
         long m
-
         lda >rowAddress
         clc
         adc >spriteX
@@ -852,7 +1021,6 @@ eraseSpriteKeyFog10a anop
         sta >SCREEN_ADDR,x
 eraseSpriteKeyFog10b anop
         long m
-
         lda >rowAddress
         clc
         adc >spriteX
@@ -873,7 +1041,6 @@ eraseSpriteKeyFog11a anop
         sta >SCREEN_ADDR,x
 eraseSpriteKeyFog11b anop
         long m
-
         lda >rowAddress
         clc
         adc >spriteX
@@ -895,6 +1062,22 @@ eraseSpriteKeyFog12a anop
 eraseSpriteKeyFog12b anop
         long m
 
+
+eraseSpriteKeyFogSkipRowErase14 anop
+
+        lda >rowCounter
+        clc
+        adc #1
+        sta >rowCounter
+
+
+        cmp #199
+        bcs eraseSpriteKeyFogSkipRowEraseShortJump15
+        bra eraseSpriteKeyFogSkipRowEraseDontSkipRow15
+
+eraseSpriteKeyFogSkipRowEraseShortJump15 anop
+        brl eraseSpriteKeyFogSkipRowErase15
+eraseSpriteKeyFogSkipRowEraseDontSkipRow15 anop
         lda >spriteY
         clc
         adc #3
@@ -923,7 +1106,6 @@ eraseSpriteKeyFog13a anop
         sta >SCREEN_ADDR,x
 eraseSpriteKeyFog13b anop
         long m
-
         lda >rowAddress
         clc
         adc >spriteX
@@ -944,7 +1126,6 @@ eraseSpriteKeyFog14a anop
         sta >SCREEN_ADDR,x
 eraseSpriteKeyFog14b anop
         long m
-
         lda >rowAddress
         clc
         adc >spriteX
@@ -965,7 +1146,6 @@ eraseSpriteKeyFog15a anop
         sta >SCREEN_ADDR,x
 eraseSpriteKeyFog15b anop
         long m
-
         lda >rowAddress
         clc
         adc >spriteX
@@ -986,7 +1166,6 @@ eraseSpriteKeyFog16a anop
         sta >SCREEN_ADDR,x
 eraseSpriteKeyFog16b anop
         long m
-
         lda >rowAddress
         clc
         adc >spriteX
@@ -1007,7 +1186,6 @@ eraseSpriteKeyFog17a anop
         sta >SCREEN_ADDR,x
 eraseSpriteKeyFog17b anop
         long m
-
         lda >rowAddress
         clc
         adc >spriteX
@@ -1028,7 +1206,6 @@ eraseSpriteKeyFog18a anop
         sta >SCREEN_ADDR,x
 eraseSpriteKeyFog18b anop
         long m
-
         lda >rowAddress
         clc
         adc >spriteX
@@ -1050,6 +1227,22 @@ eraseSpriteKeyFog19a anop
 eraseSpriteKeyFog19b anop
         long m
 
+
+eraseSpriteKeyFogSkipRowErase15 anop
+
+        lda >rowCounter
+        clc
+        adc #1
+        sta >rowCounter
+
+
+        cmp #199
+        bcs eraseSpriteKeyFogSkipRowEraseShortJump16
+        bra eraseSpriteKeyFogSkipRowEraseDontSkipRow16
+
+eraseSpriteKeyFogSkipRowEraseShortJump16 anop
+        brl eraseSpriteKeyFogSkipRowErase16
+eraseSpriteKeyFogSkipRowEraseDontSkipRow16 anop
         lda >spriteY
         clc
         adc #4
@@ -1078,7 +1271,6 @@ eraseSpriteKeyFog20a anop
         sta >SCREEN_ADDR,x
 eraseSpriteKeyFog20b anop
         long m
-
         lda >rowAddress
         clc
         adc >spriteX
@@ -1099,7 +1291,6 @@ eraseSpriteKeyFog21a anop
         sta >SCREEN_ADDR,x
 eraseSpriteKeyFog21b anop
         long m
-
         lda >rowAddress
         clc
         adc >spriteX
@@ -1120,7 +1311,6 @@ eraseSpriteKeyFog22a anop
         sta >SCREEN_ADDR,x
 eraseSpriteKeyFog22b anop
         long m
-
         lda >rowAddress
         clc
         adc >spriteX
@@ -1141,7 +1331,6 @@ eraseSpriteKeyFog23a anop
         sta >SCREEN_ADDR,x
 eraseSpriteKeyFog23b anop
         long m
-
         lda >rowAddress
         clc
         adc >spriteX
@@ -1163,6 +1352,22 @@ eraseSpriteKeyFog24a anop
 eraseSpriteKeyFog24b anop
         long m
 
+
+eraseSpriteKeyFogSkipRowErase16 anop
+
+        lda >rowCounter
+        clc
+        adc #1
+        sta >rowCounter
+
+
+        cmp #199
+        bcs eraseSpriteKeyFogSkipRowEraseShortJump17
+        bra eraseSpriteKeyFogSkipRowEraseDontSkipRow17
+
+eraseSpriteKeyFogSkipRowEraseShortJump17 anop
+        brl eraseSpriteKeyFogSkipRowErase17
+eraseSpriteKeyFogSkipRowEraseDontSkipRow17 anop
         lda >spriteY
         clc
         adc #5
@@ -1191,7 +1396,6 @@ eraseSpriteKeyFog25a anop
         sta >SCREEN_ADDR,x
 eraseSpriteKeyFog25b anop
         long m
-
         lda >rowAddress
         clc
         adc >spriteX
@@ -1212,7 +1416,6 @@ eraseSpriteKeyFog26a anop
         sta >SCREEN_ADDR,x
 eraseSpriteKeyFog26b anop
         long m
-
         lda >rowAddress
         clc
         adc >spriteX
@@ -1233,7 +1436,6 @@ eraseSpriteKeyFog27a anop
         sta >SCREEN_ADDR,x
 eraseSpriteKeyFog27b anop
         long m
-
         lda >rowAddress
         clc
         adc >spriteX
@@ -1254,7 +1456,6 @@ eraseSpriteKeyFog28a anop
         sta >SCREEN_ADDR,x
 eraseSpriteKeyFog28b anop
         long m
-
         lda >rowAddress
         clc
         adc >spriteX
@@ -1275,6 +1476,14 @@ eraseSpriteKeyFog29a anop
         sta >SCREEN_ADDR,x
 eraseSpriteKeyFog29b anop
         long m
+
+
+eraseSpriteKeyFogSkipRowErase17 anop
+
+        lda >rowCounter
+        clc
+        adc #1
+        sta >rowCounter
 
 
         rtl

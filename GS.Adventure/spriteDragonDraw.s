@@ -15,12 +15,16 @@ spriteDragonDraw start spriteDragonDrawSeg
         using spriteData
 
 
-
 drawSpriteDragon1 entry
 
         spriteGetDrawAddress
         _spriteHeader
 
+        lda >spriteY
+        sta >rowCounter
+
+        cmp #199
+        bcs drawSpriteDragon1SkipRowDraw0
 
         lda >drawAddress
         clc
@@ -34,6 +38,16 @@ drawSpriteDragon1 entry
         sta 6
         long m
 
+drawSpriteDragon1SkipRowDraw0 anop
+
+        lda >rowCounter
+        clc
+        adc #1
+        sta >rowCounter
+
+        cmp #199
+        bcs drawSpriteDragon1SkipRowDraw1
+
         lda >drawAddress
         clc
         adc #160
@@ -45,6 +59,16 @@ drawSpriteDragon1 entry
         sta 5
         sta 6
         long m
+
+drawSpriteDragon1SkipRowDraw1 anop
+
+        lda >rowCounter
+        clc
+        adc #1
+        sta >rowCounter
+
+        cmp #199
+        bcs drawSpriteDragon1SkipRowDraw2
 
         lda >drawAddress
         clc
@@ -60,6 +84,16 @@ drawSpriteDragon1 entry
         sta 7
         long m
 
+drawSpriteDragon1SkipRowDraw2 anop
+
+        lda >rowCounter
+        clc
+        adc #1
+        sta >rowCounter
+
+        cmp #199
+        bcs drawSpriteDragon1SkipRowDraw3
+
         lda >drawAddress
         clc
         adc #480
@@ -73,6 +107,16 @@ drawSpriteDragon1 entry
         sta 6
         sta 7
         long m
+
+drawSpriteDragon1SkipRowDraw3 anop
+
+        lda >rowCounter
+        clc
+        adc #1
+        sta >rowCounter
+
+        cmp #199
+        bcs drawSpriteDragon1SkipRowDraw4
 
         lda >drawAddress
         clc
@@ -90,6 +134,16 @@ drawSpriteDragon1 entry
         sta 7
         long m
 
+drawSpriteDragon1SkipRowDraw4 anop
+
+        lda >rowCounter
+        clc
+        adc #1
+        sta >rowCounter
+
+        cmp #199
+        bcs drawSpriteDragon1SkipRowDraw5
+
         lda >drawAddress
         clc
         adc #800
@@ -105,6 +159,16 @@ drawSpriteDragon1 entry
         sta 6
         sta 7
         long m
+
+drawSpriteDragon1SkipRowDraw5 anop
+
+        lda >rowCounter
+        clc
+        adc #1
+        sta >rowCounter
+
+        cmp #199
+        bcs drawSpriteDragon1SkipRowDraw6
 
         lda >drawAddress
         clc
@@ -123,6 +187,16 @@ drawSpriteDragon1 entry
         sta 6
         long m
 
+drawSpriteDragon1SkipRowDraw6 anop
+
+        lda >rowCounter
+        clc
+        adc #1
+        sta >rowCounter
+
+        cmp #199
+        bcs drawSpriteDragon1SkipRowDraw7
+
         lda >drawAddress
         clc
         adc #1120
@@ -140,6 +214,16 @@ drawSpriteDragon1 entry
         sta 6
         long m
 
+drawSpriteDragon1SkipRowDraw7 anop
+
+        lda >rowCounter
+        clc
+        adc #1
+        sta >rowCounter
+
+        cmp #199
+        bcs drawSpriteDragon1SkipRowDraw8
+
         lda >drawAddress
         clc
         adc #1280
@@ -152,6 +236,16 @@ drawSpriteDragon1 entry
         sta 5
         sta 6
         long m
+
+drawSpriteDragon1SkipRowDraw8 anop
+
+        lda >rowCounter
+        clc
+        adc #1
+        sta >rowCounter
+
+        cmp #199
+        bcs drawSpriteDragon1SkipRowDraw9
 
         lda >drawAddress
         clc
@@ -166,6 +260,16 @@ drawSpriteDragon1 entry
         sta 6
         long m
 
+drawSpriteDragon1SkipRowDraw9 anop
+
+        lda >rowCounter
+        clc
+        adc #1
+        sta >rowCounter
+
+        cmp #199
+        bcs drawSpriteDragon1SkipRowDraw10
+
         lda >drawAddress
         clc
         adc #1600
@@ -176,6 +280,16 @@ drawSpriteDragon1 entry
 
         sta 5
         long m
+
+drawSpriteDragon1SkipRowDraw10 anop
+
+        lda >rowCounter
+        clc
+        adc #1
+        sta >rowCounter
+
+        cmp #199
+        bcs drawSpriteDragon1SkipRowDraw11
 
         lda >drawAddress
         clc
@@ -188,6 +302,16 @@ drawSpriteDragon1 entry
         sta 5
         long m
 
+drawSpriteDragon1SkipRowDraw11 anop
+
+        lda >rowCounter
+        clc
+        adc #1
+        sta >rowCounter
+
+        cmp #199
+        bcs drawSpriteDragon1SkipRowDraw12
+
         lda >drawAddress
         clc
         adc #1920
@@ -199,6 +323,16 @@ drawSpriteDragon1 entry
         sta 5
         long m
 
+drawSpriteDragon1SkipRowDraw12 anop
+
+        lda >rowCounter
+        clc
+        adc #1
+        sta >rowCounter
+
+        cmp #199
+        bcs drawSpriteDragon1SkipRowDraw13
+
         lda >drawAddress
         clc
         adc #2080
@@ -209,6 +343,16 @@ drawSpriteDragon1 entry
 
         sta 5
         long m
+
+drawSpriteDragon1SkipRowDraw13 anop
+
+        lda >rowCounter
+        clc
+        adc #1
+        sta >rowCounter
+
+        cmp #199
+        bcs drawSpriteDragon1SkipRowDraw14
 
         lda >drawAddress
         clc
@@ -224,6 +368,16 @@ drawSpriteDragon1 entry
         sta 6
         long m
 
+drawSpriteDragon1SkipRowDraw14 anop
+
+        lda >rowCounter
+        clc
+        adc #1
+        sta >rowCounter
+
+        cmp #199
+        bcs drawSpriteDragon1SkipRowDraw15
+
         lda >drawAddress
         clc
         adc #2400
@@ -237,6 +391,16 @@ drawSpriteDragon1 entry
         sta 5
         sta 6
         long m
+
+drawSpriteDragon1SkipRowDraw15 anop
+
+        lda >rowCounter
+        clc
+        adc #1
+        sta >rowCounter
+
+        cmp #199
+        bcs drawSpriteDragon1SkipRowDraw16
 
         lda >drawAddress
         clc
@@ -254,6 +418,16 @@ drawSpriteDragon1 entry
         sta 7
         long m
 
+drawSpriteDragon1SkipRowDraw16 anop
+
+        lda >rowCounter
+        clc
+        adc #1
+        sta >rowCounter
+
+        cmp #199
+        bcs drawSpriteDragon1SkipRowDraw17
+
         lda >drawAddress
         clc
         adc #2720
@@ -269,6 +443,16 @@ drawSpriteDragon1 entry
         sta 6
         sta 7
         long m
+
+drawSpriteDragon1SkipRowDraw17 anop
+
+        lda >rowCounter
+        clc
+        adc #1
+        sta >rowCounter
+
+        cmp #199
+        bcs drawSpriteDragon1SkipRowDraw18
 
         lda >drawAddress
         clc
@@ -287,6 +471,16 @@ drawSpriteDragon1 entry
         sta 7
         long m
 
+drawSpriteDragon1SkipRowDraw18 anop
+
+        lda >rowCounter
+        clc
+        adc #1
+        sta >rowCounter
+
+        cmp #199
+        bcs drawSpriteDragon1SkipRowDraw19
+
         lda >drawAddress
         clc
         adc #3040
@@ -304,6 +498,16 @@ drawSpriteDragon1 entry
         sta 7
         long m
 
+drawSpriteDragon1SkipRowDraw19 anop
+
+        lda >rowCounter
+        clc
+        adc #1
+        sta >rowCounter
+
+        cmp #199
+        bcs drawSpriteDragon1SkipRowDraw20
+
         lda >drawAddress
         clc
         adc #3200
@@ -318,6 +522,16 @@ drawSpriteDragon1 entry
         sta 6
         sta 7
         long m
+
+drawSpriteDragon1SkipRowDraw20 anop
+
+        lda >rowCounter
+        clc
+        adc #1
+        sta >rowCounter
+
+        cmp #199
+        bcs drawSpriteDragon1SkipRowDraw21
 
         lda >drawAddress
         clc
@@ -334,6 +548,16 @@ drawSpriteDragon1 entry
         sta 7
         long m
 
+drawSpriteDragon1SkipRowDraw21 anop
+
+        lda >rowCounter
+        clc
+        adc #1
+        sta >rowCounter
+
+        cmp #199
+        bcs drawSpriteDragon1SkipRowDraw22
+
         lda >drawAddress
         clc
         adc #3520
@@ -347,6 +571,16 @@ drawSpriteDragon1 entry
         sta 6
         sta 7
         long m
+
+drawSpriteDragon1SkipRowDraw22 anop
+
+        lda >rowCounter
+        clc
+        adc #1
+        sta >rowCounter
+
+        cmp #199
+        bcs drawSpriteDragon1SkipRowDraw23
 
         lda >drawAddress
         clc
@@ -362,6 +596,16 @@ drawSpriteDragon1 entry
         sta 7
         long m
 
+drawSpriteDragon1SkipRowDraw23 anop
+
+        lda >rowCounter
+        clc
+        adc #1
+        sta >rowCounter
+
+        cmp #199
+        bcs drawSpriteDragon1SkipRowDraw24
+
         lda >drawAddress
         clc
         adc #3840
@@ -376,6 +620,16 @@ drawSpriteDragon1 entry
         sta 7
         long m
 
+drawSpriteDragon1SkipRowDraw24 anop
+
+        lda >rowCounter
+        clc
+        adc #1
+        sta >rowCounter
+
+        cmp #199
+        bcs drawSpriteDragon1SkipRowDraw25
+
         lda >drawAddress
         clc
         adc #4000
@@ -389,6 +643,16 @@ drawSpriteDragon1 entry
         sta 6
         sta 7
         long m
+
+drawSpriteDragon1SkipRowDraw25 anop
+
+        lda >rowCounter
+        clc
+        adc #1
+        sta >rowCounter
+
+        cmp #199
+        bcs drawSpriteDragon1SkipRowDraw26
 
         lda >drawAddress
         clc
@@ -405,6 +669,16 @@ drawSpriteDragon1 entry
         sta 7
         long m
 
+drawSpriteDragon1SkipRowDraw26 anop
+
+        lda >rowCounter
+        clc
+        adc #1
+        sta >rowCounter
+
+        cmp #199
+        bcs drawSpriteDragon1SkipRowDraw27
+
         lda >drawAddress
         clc
         adc #4320
@@ -419,6 +693,16 @@ drawSpriteDragon1 entry
         sta 6
         sta 7
         long m
+
+drawSpriteDragon1SkipRowDraw27 anop
+
+        lda >rowCounter
+        clc
+        adc #1
+        sta >rowCounter
+
+        cmp #199
+        bcs drawSpriteDragon1SkipRowDraw28
 
         lda >drawAddress
         clc
@@ -438,6 +722,16 @@ drawSpriteDragon1 entry
         sta 7
         long m
 
+drawSpriteDragon1SkipRowDraw28 anop
+
+        lda >rowCounter
+        clc
+        adc #1
+        sta >rowCounter
+
+        cmp #199
+        bcs drawSpriteDragon1SkipRowDraw29
+
         lda >drawAddress
         clc
         adc #4640
@@ -456,6 +750,16 @@ drawSpriteDragon1 entry
         sta 7
         long m
 
+drawSpriteDragon1SkipRowDraw29 anop
+
+        lda >rowCounter
+        clc
+        adc #1
+        sta >rowCounter
+
+        cmp #199
+        bcs drawSpriteDragon1SkipRowDraw30
+
         lda >drawAddress
         clc
         adc #4800
@@ -469,6 +773,16 @@ drawSpriteDragon1 entry
         sta 4
         sta 5
         long m
+
+drawSpriteDragon1SkipRowDraw30 anop
+
+        lda >rowCounter
+        clc
+        adc #1
+        sta >rowCounter
+
+        cmp #199
+        bcs drawSpriteDragon1SkipRowDraw31
 
         lda >drawAddress
         clc
@@ -484,6 +798,16 @@ drawSpriteDragon1 entry
         sta 5
         long m
 
+drawSpriteDragon1SkipRowDraw31 anop
+
+        lda >rowCounter
+        clc
+        adc #1
+        sta >rowCounter
+
+        cmp #199
+        bcs drawSpriteDragon1SkipRowDraw32
+
         lda >drawAddress
         clc
         adc #5120
@@ -495,6 +819,16 @@ drawSpriteDragon1 entry
         sta 4
         long m
 
+drawSpriteDragon1SkipRowDraw32 anop
+
+        lda >rowCounter
+        clc
+        adc #1
+        sta >rowCounter
+
+        cmp #199
+        bcs drawSpriteDragon1SkipRowDraw33
+
         lda >drawAddress
         clc
         adc #5280
@@ -505,6 +839,16 @@ drawSpriteDragon1 entry
 
         sta 4
         long m
+
+drawSpriteDragon1SkipRowDraw33 anop
+
+        lda >rowCounter
+        clc
+        adc #1
+        sta >rowCounter
+
+        cmp #199
+        bcs drawSpriteDragon1SkipRowDraw34
 
         lda >drawAddress
         clc
@@ -521,6 +865,16 @@ drawSpriteDragon1 entry
         sta 7
         long m
 
+drawSpriteDragon1SkipRowDraw34 anop
+
+        lda >rowCounter
+        clc
+        adc #1
+        sta >rowCounter
+
+        cmp #199
+        bcs drawSpriteDragon1SkipRowDraw35
+
         lda >drawAddress
         clc
         adc #5600
@@ -536,6 +890,16 @@ drawSpriteDragon1 entry
         sta 7
         long m
 
+drawSpriteDragon1SkipRowDraw35 anop
+
+        lda >rowCounter
+        clc
+        adc #1
+        sta >rowCounter
+
+        cmp #199
+        bcs drawSpriteDragon1SkipRowDraw36
+
         lda >drawAddress
         clc
         adc #5760
@@ -550,6 +914,16 @@ drawSpriteDragon1 entry
         sta 7
         long m
 
+drawSpriteDragon1SkipRowDraw36 anop
+
+        lda >rowCounter
+        clc
+        adc #1
+        sta >rowCounter
+
+        cmp #199
+        bcs drawSpriteDragon1SkipRowDraw37
+
         lda >drawAddress
         clc
         adc #5920
@@ -563,6 +937,16 @@ drawSpriteDragon1 entry
         sta 2
         sta 7
         long m
+
+drawSpriteDragon1SkipRowDraw37 anop
+
+        lda >rowCounter
+        clc
+        adc #1
+        sta >rowCounter
+
+        cmp #199
+        bcs drawSpriteDragon1SkipRowDraw38
 
         lda >drawAddress
         clc
@@ -580,6 +964,16 @@ drawSpriteDragon1 entry
         sta 7
         long m
 
+drawSpriteDragon1SkipRowDraw38 anop
+
+        lda >rowCounter
+        clc
+        adc #1
+        sta >rowCounter
+
+        cmp #199
+        bcs drawSpriteDragon1SkipRowDraw39
+
         lda >drawAddress
         clc
         adc #6240
@@ -595,6 +989,13 @@ drawSpriteDragon1 entry
         sta 6
         sta 7
         long m
+
+drawSpriteDragon1SkipRowDraw39 anop
+
+        lda >rowCounter
+        clc
+        adc #1
+        sta >rowCounter
 
         long m
 
@@ -606,6 +1007,11 @@ drawSpriteDragon2 entry
         spriteGetDrawAddress
         _spriteHeader
 
+        lda >spriteY
+        sta >rowCounter
+
+        cmp #199
+        bcs drawSpriteDragon2SkipRowDraw40
 
         lda >drawAddress
         clc
@@ -615,8 +1021,18 @@ drawSpriteDragon2 entry
         short m
         lda >spriteColor
 
-        sta 1
+        sta 0
         long m
+
+drawSpriteDragon2SkipRowDraw40 anop
+
+        lda >rowCounter
+        clc
+        adc #1
+        sta >rowCounter
+
+        cmp #199
+        bcs drawSpriteDragon2SkipRowDraw41
 
         lda >drawAddress
         clc
@@ -626,8 +1042,18 @@ drawSpriteDragon2 entry
         short m
         lda >spriteColor
 
-        sta 1
+        sta 0
         long m
+
+drawSpriteDragon2SkipRowDraw41 anop
+
+        lda >rowCounter
+        clc
+        adc #1
+        sta >rowCounter
+
+        cmp #199
+        bcs drawSpriteDragon2SkipRowDraw42
 
         lda >drawAddress
         clc
@@ -637,10 +1063,18 @@ drawSpriteDragon2 entry
         short m
         lda >spriteColor
 
-        sta 2
-        sta 5
-        sta 6
+        sta 1
         long m
+
+drawSpriteDragon2SkipRowDraw42 anop
+
+        lda >rowCounter
+        clc
+        adc #1
+        sta >rowCounter
+
+        cmp #199
+        bcs drawSpriteDragon2SkipRowDraw43
 
         lda >drawAddress
         clc
@@ -650,10 +1084,18 @@ drawSpriteDragon2 entry
         short m
         lda >spriteColor
 
-        sta 2
-        sta 5
-        sta 6
+        sta 1
         long m
+
+drawSpriteDragon2SkipRowDraw43 anop
+
+        lda >rowCounter
+        clc
+        adc #1
+        sta >rowCounter
+
+        cmp #199
+        bcs drawSpriteDragon2SkipRowDraw44
 
         lda >drawAddress
         clc
@@ -663,12 +1105,20 @@ drawSpriteDragon2 entry
         short m
         lda >spriteColor
 
-        sta 3
-        sta 4
+        sta 2
         sta 5
         sta 6
-        sta 7
         long m
+
+drawSpriteDragon2SkipRowDraw44 anop
+
+        lda >rowCounter
+        clc
+        adc #1
+        sta >rowCounter
+
+        cmp #199
+        bcs drawSpriteDragon2SkipRowDraw45
 
         lda >drawAddress
         clc
@@ -678,12 +1128,20 @@ drawSpriteDragon2 entry
         short m
         lda >spriteColor
 
-        sta 3
-        sta 4
+        sta 2
         sta 5
         sta 6
-        sta 7
         long m
+
+drawSpriteDragon2SkipRowDraw45 anop
+
+        lda >rowCounter
+        clc
+        adc #1
+        sta >rowCounter
+
+        cmp #199
+        bcs drawSpriteDragon2SkipRowDraw46
 
         lda >drawAddress
         clc
@@ -693,10 +1151,22 @@ drawSpriteDragon2 entry
         short m
         lda >spriteColor
 
+        sta 3
         sta 4
+        sta 5
         sta 6
         sta 7
         long m
+
+drawSpriteDragon2SkipRowDraw46 anop
+
+        lda >rowCounter
+        clc
+        adc #1
+        sta >rowCounter
+
+        cmp #199
+        bcs drawSpriteDragon2SkipRowDraw47
 
         lda >drawAddress
         clc
@@ -706,10 +1176,22 @@ drawSpriteDragon2 entry
         short m
         lda >spriteColor
 
+        sta 3
         sta 4
+        sta 5
         sta 6
         sta 7
         long m
+
+drawSpriteDragon2SkipRowDraw47 anop
+
+        lda >rowCounter
+        clc
+        adc #1
+        sta >rowCounter
+
+        cmp #199
+        bcs drawSpriteDragon2SkipRowDraw48
 
         lda >drawAddress
         clc
@@ -720,9 +1202,19 @@ drawSpriteDragon2 entry
         lda >spriteColor
 
         sta 4
-        sta 5
         sta 6
+        sta 7
         long m
+
+drawSpriteDragon2SkipRowDraw48 anop
+
+        lda >rowCounter
+        clc
+        adc #1
+        sta >rowCounter
+
+        cmp #199
+        bcs drawSpriteDragon2SkipRowDraw49
 
         lda >drawAddress
         clc
@@ -733,9 +1225,19 @@ drawSpriteDragon2 entry
         lda >spriteColor
 
         sta 4
-        sta 5
         sta 6
+        sta 7
         long m
+
+drawSpriteDragon2SkipRowDraw49 anop
+
+        lda >rowCounter
+        clc
+        adc #1
+        sta >rowCounter
+
+        cmp #199
+        bcs drawSpriteDragon2SkipRowDraw50
 
         lda >drawAddress
         clc
@@ -745,11 +1247,20 @@ drawSpriteDragon2 entry
         short m
         lda >spriteColor
 
-        sta 3
         sta 4
         sta 5
         sta 6
         long m
+
+drawSpriteDragon2SkipRowDraw50 anop
+
+        lda >rowCounter
+        clc
+        adc #1
+        sta >rowCounter
+
+        cmp #199
+        bcs drawSpriteDragon2SkipRowDraw51
 
         lda >drawAddress
         clc
@@ -759,11 +1270,20 @@ drawSpriteDragon2 entry
         short m
         lda >spriteColor
 
-        sta 3
         sta 4
         sta 5
         sta 6
         long m
+
+drawSpriteDragon2SkipRowDraw51 anop
+
+        lda >rowCounter
+        clc
+        adc #1
+        sta >rowCounter
+
+        cmp #199
+        bcs drawSpriteDragon2SkipRowDraw52
 
         lda >drawAddress
         clc
@@ -773,9 +1293,21 @@ drawSpriteDragon2 entry
         short m
         lda >spriteColor
 
-        sta 2
+        sta 3
+        sta 4
         sta 5
+        sta 6
         long m
+
+drawSpriteDragon2SkipRowDraw52 anop
+
+        lda >rowCounter
+        clc
+        adc #1
+        sta >rowCounter
+
+        cmp #199
+        bcs drawSpriteDragon2SkipRowDraw53
 
         lda >drawAddress
         clc
@@ -785,9 +1317,21 @@ drawSpriteDragon2 entry
         short m
         lda >spriteColor
 
-        sta 2
+        sta 3
+        sta 4
         sta 5
+        sta 6
         long m
+
+drawSpriteDragon2SkipRowDraw53 anop
+
+        lda >rowCounter
+        clc
+        adc #1
+        sta >rowCounter
+
+        cmp #199
+        bcs drawSpriteDragon2SkipRowDraw54
 
         lda >drawAddress
         clc
@@ -797,9 +1341,19 @@ drawSpriteDragon2 entry
         short m
         lda >spriteColor
 
-        sta 1
+        sta 2
         sta 5
         long m
+
+drawSpriteDragon2SkipRowDraw54 anop
+
+        lda >rowCounter
+        clc
+        adc #1
+        sta >rowCounter
+
+        cmp #199
+        bcs drawSpriteDragon2SkipRowDraw55
 
         lda >drawAddress
         clc
@@ -809,9 +1363,19 @@ drawSpriteDragon2 entry
         short m
         lda >spriteColor
 
-        sta 1
+        sta 2
         sta 5
         long m
+
+drawSpriteDragon2SkipRowDraw55 anop
+
+        lda >rowCounter
+        clc
+        adc #1
+        sta >rowCounter
+
+        cmp #199
+        bcs drawSpriteDragon2SkipRowDraw56
 
         lda >drawAddress
         clc
@@ -821,11 +1385,19 @@ drawSpriteDragon2 entry
         short m
         lda >spriteColor
 
-        sta 0
-        sta 4
+        sta 1
         sta 5
-        sta 6
         long m
+
+drawSpriteDragon2SkipRowDraw56 anop
+
+        lda >rowCounter
+        clc
+        adc #1
+        sta >rowCounter
+
+        cmp #199
+        bcs drawSpriteDragon2SkipRowDraw57
 
         lda >drawAddress
         clc
@@ -835,11 +1407,19 @@ drawSpriteDragon2 entry
         short m
         lda >spriteColor
 
-        sta 0
-        sta 4
+        sta 1
         sta 5
-        sta 6
         long m
+
+drawSpriteDragon2SkipRowDraw57 anop
+
+        lda >rowCounter
+        clc
+        adc #1
+        sta >rowCounter
+
+        cmp #199
+        bcs drawSpriteDragon2SkipRowDraw58
 
         lda >drawAddress
         clc
@@ -849,11 +1429,21 @@ drawSpriteDragon2 entry
         short m
         lda >spriteColor
 
-        sta 3
+        sta 0
         sta 4
         sta 5
         sta 6
         long m
+
+drawSpriteDragon2SkipRowDraw58 anop
+
+        lda >rowCounter
+        clc
+        adc #1
+        sta >rowCounter
+
+        cmp #199
+        bcs drawSpriteDragon2SkipRowDraw59
 
         lda >drawAddress
         clc
@@ -863,11 +1453,21 @@ drawSpriteDragon2 entry
         short m
         lda >spriteColor
 
-        sta 3
+        sta 0
         sta 4
         sta 5
         sta 6
         long m
+
+drawSpriteDragon2SkipRowDraw59 anop
+
+        lda >rowCounter
+        clc
+        adc #1
+        sta >rowCounter
+
+        cmp #199
+        bcs drawSpriteDragon2SkipRowDraw60
 
         lda >drawAddress
         clc
@@ -877,13 +1477,21 @@ drawSpriteDragon2 entry
         short m
         lda >spriteColor
 
-        sta 2
         sta 3
         sta 4
         sta 5
         sta 6
-        sta 7
         long m
+
+drawSpriteDragon2SkipRowDraw60 anop
+
+        lda >rowCounter
+        clc
+        adc #1
+        sta >rowCounter
+
+        cmp #199
+        bcs drawSpriteDragon2SkipRowDraw61
 
         lda >drawAddress
         clc
@@ -893,13 +1501,21 @@ drawSpriteDragon2 entry
         short m
         lda >spriteColor
 
-        sta 2
         sta 3
         sta 4
         sta 5
         sta 6
-        sta 7
         long m
+
+drawSpriteDragon2SkipRowDraw61 anop
+
+        lda >rowCounter
+        clc
+        adc #1
+        sta >rowCounter
+
+        cmp #199
+        bcs drawSpriteDragon2SkipRowDraw62
 
         lda >drawAddress
         clc
@@ -909,7 +1525,6 @@ drawSpriteDragon2 entry
         short m
         lda >spriteColor
 
-        sta 1
         sta 2
         sta 3
         sta 4
@@ -917,6 +1532,16 @@ drawSpriteDragon2 entry
         sta 6
         sta 7
         long m
+
+drawSpriteDragon2SkipRowDraw62 anop
+
+        lda >rowCounter
+        clc
+        adc #1
+        sta >rowCounter
+
+        cmp #199
+        bcs drawSpriteDragon2SkipRowDraw63
 
         lda >drawAddress
         clc
@@ -926,7 +1551,6 @@ drawSpriteDragon2 entry
         short m
         lda >spriteColor
 
-        sta 1
         sta 2
         sta 3
         sta 4
@@ -934,6 +1558,16 @@ drawSpriteDragon2 entry
         sta 6
         sta 7
         long m
+
+drawSpriteDragon2SkipRowDraw63 anop
+
+        lda >rowCounter
+        clc
+        adc #1
+        sta >rowCounter
+
+        cmp #199
+        bcs drawSpriteDragon2SkipRowDraw64
 
         lda >drawAddress
         clc
@@ -952,6 +1586,16 @@ drawSpriteDragon2 entry
         sta 7
         long m
 
+drawSpriteDragon2SkipRowDraw64 anop
+
+        lda >rowCounter
+        clc
+        adc #1
+        sta >rowCounter
+
+        cmp #199
+        bcs drawSpriteDragon2SkipRowDraw65
+
         lda >drawAddress
         clc
         adc #4000
@@ -968,6 +1612,16 @@ drawSpriteDragon2 entry
         sta 6
         sta 7
         long m
+
+drawSpriteDragon2SkipRowDraw65 anop
+
+        lda >rowCounter
+        clc
+        adc #1
+        sta >rowCounter
+
+        cmp #199
+        bcs drawSpriteDragon2SkipRowDraw66
 
         lda >drawAddress
         clc
@@ -986,6 +1640,16 @@ drawSpriteDragon2 entry
         sta 7
         long m
 
+drawSpriteDragon2SkipRowDraw66 anop
+
+        lda >rowCounter
+        clc
+        adc #1
+        sta >rowCounter
+
+        cmp #199
+        bcs drawSpriteDragon2SkipRowDraw67
+
         lda >drawAddress
         clc
         adc #4320
@@ -1002,6 +1666,16 @@ drawSpriteDragon2 entry
         sta 6
         sta 7
         long m
+
+drawSpriteDragon2SkipRowDraw67 anop
+
+        lda >rowCounter
+        clc
+        adc #1
+        sta >rowCounter
+
+        cmp #199
+        bcs drawSpriteDragon2SkipRowDraw68
 
         lda >drawAddress
         clc
@@ -1020,6 +1694,16 @@ drawSpriteDragon2 entry
         sta 7
         long m
 
+drawSpriteDragon2SkipRowDraw68 anop
+
+        lda >rowCounter
+        clc
+        adc #1
+        sta >rowCounter
+
+        cmp #199
+        bcs drawSpriteDragon2SkipRowDraw69
+
         lda >drawAddress
         clc
         adc #4640
@@ -1037,6 +1721,16 @@ drawSpriteDragon2 entry
         sta 7
         long m
 
+drawSpriteDragon2SkipRowDraw69 anop
+
+        lda >rowCounter
+        clc
+        adc #1
+        sta >rowCounter
+
+        cmp #199
+        bcs drawSpriteDragon2SkipRowDraw70
+
         lda >drawAddress
         clc
         adc #4800
@@ -1045,12 +1739,24 @@ drawSpriteDragon2 entry
         short m
         lda >spriteColor
 
+        sta 1
         sta 2
         sta 3
         sta 4
         sta 5
         sta 6
+        sta 7
         long m
+
+drawSpriteDragon2SkipRowDraw70 anop
+
+        lda >rowCounter
+        clc
+        adc #1
+        sta >rowCounter
+
+        cmp #199
+        bcs drawSpriteDragon2SkipRowDraw71
 
         lda >drawAddress
         clc
@@ -1060,12 +1766,24 @@ drawSpriteDragon2 entry
         short m
         lda >spriteColor
 
+        sta 1
         sta 2
         sta 3
         sta 4
         sta 5
         sta 6
+        sta 7
         long m
+
+drawSpriteDragon2SkipRowDraw71 anop
+
+        lda >rowCounter
+        clc
+        adc #1
+        sta >rowCounter
+
+        cmp #199
+        bcs drawSpriteDragon2SkipRowDraw72
 
         lda >drawAddress
         clc
@@ -1075,10 +1793,22 @@ drawSpriteDragon2 entry
         short m
         lda >spriteColor
 
+        sta 2
         sta 3
         sta 4
         sta 5
+        sta 6
         long m
+
+drawSpriteDragon2SkipRowDraw72 anop
+
+        lda >rowCounter
+        clc
+        adc #1
+        sta >rowCounter
+
+        cmp #199
+        bcs drawSpriteDragon2SkipRowDraw73
 
         lda >drawAddress
         clc
@@ -1088,10 +1818,22 @@ drawSpriteDragon2 entry
         short m
         lda >spriteColor
 
+        sta 2
         sta 3
         sta 4
         sta 5
+        sta 6
         long m
+
+drawSpriteDragon2SkipRowDraw73 anop
+
+        lda >rowCounter
+        clc
+        adc #1
+        sta >rowCounter
+
+        cmp #199
+        bcs drawSpriteDragon2SkipRowDraw74
 
         lda >drawAddress
         clc
@@ -1101,8 +1843,20 @@ drawSpriteDragon2 entry
         short m
         lda >spriteColor
 
+        sta 3
         sta 4
+        sta 5
         long m
+
+drawSpriteDragon2SkipRowDraw74 anop
+
+        lda >rowCounter
+        clc
+        adc #1
+        sta >rowCounter
+
+        cmp #199
+        bcs drawSpriteDragon2SkipRowDraw75
 
         lda >drawAddress
         clc
@@ -1112,8 +1866,20 @@ drawSpriteDragon2 entry
         short m
         lda >spriteColor
 
+        sta 3
         sta 4
+        sta 5
         long m
+
+drawSpriteDragon2SkipRowDraw75 anop
+
+        lda >rowCounter
+        clc
+        adc #1
+        sta >rowCounter
+
+        cmp #199
+        bcs drawSpriteDragon2SkipRowDraw76
 
         lda >drawAddress
         clc
@@ -1123,12 +1889,18 @@ drawSpriteDragon2 entry
         short m
         lda >spriteColor
 
-        sta 0
-        sta 1
-        sta 2
-        sta 3
         sta 4
         long m
+
+drawSpriteDragon2SkipRowDraw76 anop
+
+        lda >rowCounter
+        clc
+        adc #1
+        sta >rowCounter
+
+        cmp #199
+        bcs drawSpriteDragon2SkipRowDraw77
 
         lda >drawAddress
         clc
@@ -1138,12 +1910,18 @@ drawSpriteDragon2 entry
         short m
         lda >spriteColor
 
-        sta 0
-        sta 1
-        sta 2
-        sta 3
         sta 4
         long m
+
+drawSpriteDragon2SkipRowDraw77 anop
+
+        lda >rowCounter
+        clc
+        adc #1
+        sta >rowCounter
+
+        cmp #199
+        bcs drawSpriteDragon2SkipRowDraw78
 
         lda >drawAddress
         clc
@@ -1154,7 +1932,21 @@ drawSpriteDragon2 entry
         lda >spriteColor
 
         sta 0
+        sta 1
+        sta 2
+        sta 3
+        sta 4
         long m
+
+drawSpriteDragon2SkipRowDraw78 anop
+
+        lda >rowCounter
+        clc
+        adc #1
+        sta >rowCounter
+
+        cmp #199
+        bcs drawSpriteDragon2SkipRowDraw79
 
         lda >drawAddress
         clc
@@ -1165,7 +1957,21 @@ drawSpriteDragon2 entry
         lda >spriteColor
 
         sta 0
+        sta 1
+        sta 2
+        sta 3
+        sta 4
         long m
+
+drawSpriteDragon2SkipRowDraw79 anop
+
+        lda >rowCounter
+        clc
+        adc #1
+        sta >rowCounter
+
+        cmp #199
+        bcs drawSpriteDragon2SkipRowDraw80
 
         lda >drawAddress
         clc
@@ -1176,9 +1982,17 @@ drawSpriteDragon2 entry
         lda >spriteColor
 
         sta 0
-        sta 1
-        sta 2
         long m
+
+drawSpriteDragon2SkipRowDraw80 anop
+
+        lda >rowCounter
+        clc
+        adc #1
+        sta >rowCounter
+
+        cmp #199
+        bcs drawSpriteDragon2SkipRowDraw81
 
         lda >drawAddress
         clc
@@ -1189,9 +2003,17 @@ drawSpriteDragon2 entry
         lda >spriteColor
 
         sta 0
-        sta 1
-        sta 2
         long m
+
+drawSpriteDragon2SkipRowDraw81 anop
+
+        lda >rowCounter
+        clc
+        adc #1
+        sta >rowCounter
+
+        cmp #199
+        bcs drawSpriteDragon2SkipRowDraw82
 
         lda >drawAddress
         clc
@@ -1201,7 +2023,20 @@ drawSpriteDragon2 entry
         short m
         lda >spriteColor
 
+        sta 0
+        sta 1
+        sta 2
         long m
+
+drawSpriteDragon2SkipRowDraw82 anop
+
+        lda >rowCounter
+        clc
+        adc #1
+        sta >rowCounter
+
+        cmp #199
+        bcs drawSpriteDragon2SkipRowDraw83
 
         lda >drawAddress
         clc
@@ -1211,2127 +2046,17 @@ drawSpriteDragon2 entry
         short m
         lda >spriteColor
 
+        sta 0
+        sta 1
+        sta 2
         long m
 
-        lda >drawAddress
-        clc
-        adc #7040
-        tcd
-
-        short m
-        lda >spriteColor
-
-        long m
-
-        lda >drawAddress
-        clc
-        adc #7200
-        tcd
-
-        short m
-        lda >spriteColor
-
-        long m
-
-        lda >drawAddress
-        clc
-        adc #7360
-        tcd
-
-        short m
-        lda >spriteColor
-
-        long m
-
-        lda >drawAddress
-        clc
-        adc #7520
-        tcd
-
-        short m
-        lda >spriteColor
-
-        long m
-
-        lda >drawAddress
-        clc
-        adc #7680
-        tcd
-
-        short m
-        lda >spriteColor
-
-        long m
-
-        lda >drawAddress
-        clc
-        adc #7840
-        tcd
-
-        short m
-        lda >spriteColor
-
-        long m
-
-        lda >drawAddress
-        clc
-        adc #8000
-        tcd
-
-        short m
-        lda >spriteColor
-
-        long m
-
-        lda >drawAddress
-        clc
-        adc #8160
-        tcd
-
-        short m
-        lda >spriteColor
-
-        long m
-
-        lda >drawAddress
-        clc
-        adc #8320
-        tcd
-
-        short m
-        lda >spriteColor
-
-        long m
-
-        lda >drawAddress
-        clc
-        adc #8480
-        tcd
-
-        short m
-        lda >spriteColor
-
-        long m
-
-        lda >drawAddress
-        clc
-        adc #8640
-        tcd
-
-        short m
-        lda >spriteColor
-
-        long m
-
-        lda >drawAddress
-        clc
-        adc #8800
-        tcd
-
-        short m
-        lda >spriteColor
-
-        long m
-
-        lda >drawAddress
-        clc
-        adc #8960
-        tcd
-
-        short m
-        lda >spriteColor
-
-        long m
-
-        lda >drawAddress
-        clc
-        adc #9120
-        tcd
-
-        short m
-        lda >spriteColor
-
-        long m
-
-        lda >drawAddress
-        clc
-        adc #9280
-        tcd
-
-        short m
-        lda >spriteColor
-
-        long m
-
-        lda >drawAddress
-        clc
-        adc #9440
-        tcd
-
-        short m
-        lda >spriteColor
-
-        long m
-
-        lda >drawAddress
-        clc
-        adc #9600
-        tcd
-
-        short m
-        lda >spriteColor
-
-        long m
-
-        lda >drawAddress
-        clc
-        adc #9760
-        tcd
-
-        short m
-        lda >spriteColor
-
-        long m
-
-        lda >drawAddress
-        clc
-        adc #9920
-        tcd
-
-        short m
-        lda >spriteColor
-
-        long m
-
-        lda >drawAddress
-        clc
-        adc #10080
-        tcd
-
-        short m
-        lda >spriteColor
-
-        long m
-
-        lda >drawAddress
-        clc
-        adc #10240
-        tcd
-
-        short m
-        lda >spriteColor
-
-        long m
-
-        lda >drawAddress
-        clc
-        adc #10400
-        tcd
-
-        short m
-        lda >spriteColor
-
-        long m
-
-        lda >drawAddress
-        clc
-        adc #10560
-        tcd
-
-        short m
-        lda >spriteColor
-
-        long m
-
-        lda >drawAddress
-        clc
-        adc #10720
-        tcd
-
-        short m
-        lda >spriteColor
-
-        long m
-
-        lda >drawAddress
-        clc
-        adc #10880
-        tcd
-
-        short m
-        lda >spriteColor
-
-        long m
-
-        lda >drawAddress
-        clc
-        adc #11040
-        tcd
-
-        short m
-        lda >spriteColor
-
-        long m
-
-        lda >drawAddress
-        clc
-        adc #11200
-        tcd
-
-        short m
-        lda >spriteColor
-
-        long m
-
-        lda >drawAddress
-        clc
-        adc #11360
-        tcd
-
-        short m
-        lda >spriteColor
-
-        long m
-
-        lda >drawAddress
-        clc
-        adc #11520
-        tcd
-
-        short m
-        lda >spriteColor
-
-        long m
-
-        lda >drawAddress
-        clc
-        adc #11680
-        tcd
-
-        short m
-        lda >spriteColor
-
-        long m
-
-        lda >drawAddress
-        clc
-        adc #11840
-        tcd
-
-        short m
-        lda >spriteColor
-
-        long m
-
-        lda >drawAddress
-        clc
-        adc #12000
-        tcd
-
-        short m
-        lda >spriteColor
-
-        long m
-
-        lda >drawAddress
-        clc
-        adc #12160
-        tcd
-
-        short m
-        lda >spriteColor
-
-        long m
-
-        lda >drawAddress
-        clc
-        adc #12320
-        tcd
-
-        short m
-        lda >spriteColor
-
-        long m
-
-        lda >drawAddress
-        clc
-        adc #12480
-        tcd
-
-        short m
-        lda >spriteColor
-
-        long m
-
-        lda >drawAddress
-        clc
-        adc #12640
-        tcd
-
-        short m
-        lda >spriteColor
-
-        long m
-
-        lda >drawAddress
-        clc
-        adc #12800
-        tcd
-
-        short m
-        lda >spriteColor
-
-        long m
-
-        lda >drawAddress
-        clc
-        adc #12960
-        tcd
-
-        short m
-        lda >spriteColor
-
-        long m
-
-        lda >drawAddress
-        clc
-        adc #13120
-        tcd
-
-        short m
-        lda >spriteColor
-
-        long m
-
-        lda >drawAddress
-        clc
-        adc #13280
-        tcd
-
-        short m
-        lda >spriteColor
-
-        long m
-
-        lda >drawAddress
-        clc
-        adc #13440
-        tcd
-
-        short m
-        lda >spriteColor
-
-        long m
-
-        lda >drawAddress
-        clc
-        adc #13600
-        tcd
-
-        short m
-        lda >spriteColor
-
-        long m
-
-        lda >drawAddress
-        clc
-        adc #13760
-        tcd
-
-        short m
-        lda >spriteColor
-
-        long m
-
-        lda >drawAddress
-        clc
-        adc #13920
-        tcd
-
-        short m
-        lda >spriteColor
-
-        long m
-
-        lda >drawAddress
-        clc
-        adc #14080
-        tcd
-
-        short m
-        lda >spriteColor
-
-        long m
-
-        lda >drawAddress
-        clc
-        adc #14240
-        tcd
-
-        short m
-        lda >spriteColor
-
-        long m
-
-        lda >drawAddress
-        clc
-        adc #14400
-        tcd
-
-        short m
-        lda >spriteColor
-
-        long m
-
-        lda >drawAddress
-        clc
-        adc #14560
-        tcd
-
-        short m
-        lda >spriteColor
-
-        long m
-
-        lda >drawAddress
-        clc
-        adc #14720
-        tcd
-
-        short m
-        lda >spriteColor
-
-        long m
-
-        lda >drawAddress
-        clc
-        adc #14880
-        tcd
-
-        short m
-        lda >spriteColor
-
-        long m
-
-        lda >drawAddress
-        clc
-        adc #15040
-        tcd
-
-        short m
-        lda >spriteColor
-
-        long m
-
-        lda >drawAddress
-        clc
-        adc #15200
-        tcd
-
-        short m
-        lda >spriteColor
-
-        long m
-
-        lda >drawAddress
-        clc
-        adc #15360
-        tcd
-
-        short m
-        lda >spriteColor
-
-        long m
-
-        lda >drawAddress
-        clc
-        adc #15520
-        tcd
-
-        short m
-        lda >spriteColor
-
-        long m
-
-        lda >drawAddress
-        clc
-        adc #15680
-        tcd
-
-        short m
-        lda >spriteColor
-
-        long m
-
-        lda >drawAddress
-        clc
-        adc #15840
-        tcd
-
-        short m
-        lda >spriteColor
-
-        long m
-
-        lda >drawAddress
-        clc
-        adc #16000
-        tcd
-
-        short m
-        lda >spriteColor
-
-        long m
-
-        lda >drawAddress
-        clc
-        adc #16160
-        tcd
-
-        short m
-        lda >spriteColor
-
-        long m
-
-        lda >drawAddress
-        clc
-        adc #16320
-        tcd
-
-        short m
-        lda >spriteColor
-
-        long m
-
-        lda >drawAddress
-        clc
-        adc #16480
-        tcd
-
-        short m
-        lda >spriteColor
-
-        long m
-
-        lda >drawAddress
-        clc
-        adc #16640
-        tcd
-
-        short m
-        lda >spriteColor
-
-        long m
-
-        lda >drawAddress
-        clc
-        adc #16800
-        tcd
-
-        short m
-        lda >spriteColor
-
-        long m
-
-        lda >drawAddress
-        clc
-        adc #16960
-        tcd
-
-        short m
-        lda >spriteColor
-
-        long m
-
-        lda >drawAddress
-        clc
-        adc #17120
-        tcd
-
-        short m
-        lda >spriteColor
-
-        long m
-
-        lda >drawAddress
-        clc
-        adc #17280
-        tcd
-
-        short m
-        lda >spriteColor
-
-        long m
-
-        lda >drawAddress
-        clc
-        adc #17440
-        tcd
-
-        short m
-        lda >spriteColor
-
-        long m
-
-        lda >drawAddress
-        clc
-        adc #17600
-        tcd
-
-        short m
-        lda >spriteColor
-
-        long m
-
-        lda >drawAddress
-        clc
-        adc #17760
-        tcd
-
-        short m
-        lda >spriteColor
-
-        long m
-
-        lda >drawAddress
-        clc
-        adc #17920
-        tcd
-
-        short m
-        lda >spriteColor
-
-        long m
-
-        lda >drawAddress
-        clc
-        adc #18080
-        tcd
-
-        short m
-        lda >spriteColor
-
-        long m
-
-        lda >drawAddress
-        clc
-        adc #18240
-        tcd
-
-        short m
-        lda >spriteColor
-
-        long m
-
-        lda >drawAddress
-        clc
-        adc #18400
-        tcd
-
-        short m
-        lda >spriteColor
-
-        long m
-
-        lda >drawAddress
-        clc
-        adc #18560
-        tcd
-
-        short m
-        lda >spriteColor
-
-        long m
-
-        lda >drawAddress
-        clc
-        adc #18720
-        tcd
-
-        short m
-        lda >spriteColor
-
-        long m
-
-        lda >drawAddress
-        clc
-        adc #18880
-        tcd
-
-        short m
-        lda >spriteColor
-
-        long m
-
-        lda >drawAddress
-        clc
-        adc #19040
-        tcd
-
-        short m
-        lda >spriteColor
-
-        long m
-
-        lda >drawAddress
-        clc
-        adc #19200
-        tcd
-
-        short m
-        lda >spriteColor
-
-        long m
-
-        lda >drawAddress
-        clc
-        adc #19360
-        tcd
-
-        short m
-        lda >spriteColor
-
-        long m
-
-        lda >drawAddress
-        clc
-        adc #19520
-        tcd
-
-        short m
-        lda >spriteColor
-
-        long m
-
-        lda >drawAddress
-        clc
-        adc #19680
-        tcd
-
-        short m
-        lda >spriteColor
-
-        long m
-
-        lda >drawAddress
-        clc
-        adc #19840
-        tcd
-
-        short m
-        lda >spriteColor
-
-        long m
-
-        lda >drawAddress
-        clc
-        adc #20000
-        tcd
-
-        short m
-        lda >spriteColor
-
-        long m
-
-        lda >drawAddress
-        clc
-        adc #20160
-        tcd
-
-        short m
-        lda >spriteColor
-
-        long m
-
-        lda >drawAddress
-        clc
-        adc #20320
-        tcd
-
-        short m
-        lda >spriteColor
-
-        long m
-
-        lda >drawAddress
-        clc
-        adc #20480
-        tcd
-
-        short m
-        lda >spriteColor
-
-        long m
-
-        lda >drawAddress
-        clc
-        adc #20640
-        tcd
-
-        short m
-        lda >spriteColor
-
-        long m
-
-        lda >drawAddress
-        clc
-        adc #20800
-        tcd
-
-        short m
-        lda >spriteColor
-
-        long m
-
-        lda >drawAddress
-        clc
-        adc #20960
-        tcd
-
-        short m
-        lda >spriteColor
-
-        long m
-
-        lda >drawAddress
-        clc
-        adc #21120
-        tcd
-
-        short m
-        lda >spriteColor
-
-        long m
-
-        lda >drawAddress
-        clc
-        adc #21280
-        tcd
-
-        short m
-        lda >spriteColor
-
-        long m
-
-        lda >drawAddress
-        clc
-        adc #21440
-        tcd
-
-        short m
-        lda >spriteColor
-
-        long m
-
-        lda >drawAddress
-        clc
-        adc #21600
-        tcd
-
-        short m
-        lda >spriteColor
-
-        long m
-
-        lda >drawAddress
-        clc
-        adc #21760
-        tcd
-
-        short m
-        lda >spriteColor
-
-        long m
-
-        lda >drawAddress
-        clc
-        adc #21920
-        tcd
-
-        short m
-        lda >spriteColor
-
-        long m
-
-        lda >drawAddress
-        clc
-        adc #22080
-        tcd
-
-        short m
-        lda >spriteColor
-
-        long m
-
-        lda >drawAddress
-        clc
-        adc #22240
-        tcd
-
-        short m
-        lda >spriteColor
-
-        long m
-
-        lda >drawAddress
-        clc
-        adc #22400
-        tcd
-
-        short m
-        lda >spriteColor
-
-        long m
-
-        lda >drawAddress
-        clc
-        adc #22560
-        tcd
-
-        short m
-        lda >spriteColor
-
-        long m
-
-        lda >drawAddress
-        clc
-        adc #22720
-        tcd
-
-        short m
-        lda >spriteColor
-
-        long m
-
-        lda >drawAddress
-        clc
-        adc #22880
-        tcd
-
-        short m
-        lda >spriteColor
-
-        long m
-
-        lda >drawAddress
-        clc
-        adc #23040
-        tcd
-
-        short m
-        lda >spriteColor
-
-        long m
-
-        lda >drawAddress
-        clc
-        adc #23200
-        tcd
-
-        short m
-        lda >spriteColor
-
-        long m
-
-        lda >drawAddress
-        clc
-        adc #23360
-        tcd
-
-        short m
-        lda >spriteColor
-
-        long m
-
-        lda >drawAddress
-        clc
-        adc #23520
-        tcd
-
-        short m
-        lda >spriteColor
-
-        long m
-
-        lda >drawAddress
-        clc
-        adc #23680
-        tcd
-
-        short m
-        lda >spriteColor
-
-        long m
-
-        lda >drawAddress
-        clc
-        adc #23840
-        tcd
-
-        short m
-        lda >spriteColor
-
-        long m
-
-        lda >drawAddress
-        clc
-        adc #24000
-        tcd
-
-        short m
-        lda >spriteColor
-
-        long m
-
-        lda >drawAddress
-        clc
-        adc #24160
-        tcd
-
-        short m
-        lda >spriteColor
-
-        long m
-
-        lda >drawAddress
-        clc
-        adc #24320
-        tcd
-
-        short m
-        lda >spriteColor
-
-        long m
-
-        lda >drawAddress
-        clc
-        adc #24480
-        tcd
-
-        short m
-        lda >spriteColor
-
-        long m
-
-        lda >drawAddress
-        clc
-        adc #24640
-        tcd
-
-        short m
-        lda >spriteColor
-
-        long m
-
-        lda >drawAddress
-        clc
-        adc #24800
-        tcd
-
-        short m
-        lda >spriteColor
-
-        long m
-
-        lda >drawAddress
-        clc
-        adc #24960
-        tcd
-
-        short m
-        lda >spriteColor
-
-        long m
-
-        lda >drawAddress
-        clc
-        adc #25120
-        tcd
-
-        short m
-        lda >spriteColor
-
-        long m
-
-        lda >drawAddress
-        clc
-        adc #25280
-        tcd
-
-        short m
-        lda >spriteColor
-
-        long m
-
-        lda >drawAddress
-        clc
-        adc #25440
-        tcd
-
-        short m
-        lda >spriteColor
-
-        long m
-
-        lda >drawAddress
-        clc
-        adc #25600
-        tcd
-
-        short m
-        lda >spriteColor
-
-        long m
-
-        lda >drawAddress
-        clc
-        adc #25760
-        tcd
-
-        short m
-        lda >spriteColor
-
-        long m
-
-        lda >drawAddress
-        clc
-        adc #25920
-        tcd
-
-        short m
-        lda >spriteColor
-
-        long m
-
-        lda >drawAddress
-        clc
-        adc #26080
-        tcd
-
-        short m
-        lda >spriteColor
-
-        long m
-
-        lda >drawAddress
-        clc
-        adc #26240
-        tcd
-
-        short m
-        lda >spriteColor
-
-        long m
-
-        lda >drawAddress
-        clc
-        adc #26400
-        tcd
-
-        short m
-        lda >spriteColor
-
-        long m
-
-        lda >drawAddress
-        clc
-        adc #26560
-        tcd
-
-        short m
-        lda >spriteColor
-
-        long m
-
-        lda >drawAddress
-        clc
-        adc #26720
-        tcd
-
-        short m
-        lda >spriteColor
-
-        long m
-
-        lda >drawAddress
-        clc
-        adc #26880
-        tcd
-
-        short m
-        lda >spriteColor
-
-        long m
-
-        lda >drawAddress
-        clc
-        adc #27040
-        tcd
-
-        short m
-        lda >spriteColor
-
-        long m
-
-        lda >drawAddress
-        clc
-        adc #27200
-        tcd
-
-        short m
-        lda >spriteColor
-
-        long m
-
-        lda >drawAddress
-        clc
-        adc #27360
-        tcd
-
-        short m
-        lda >spriteColor
-
-        long m
-
-        lda >drawAddress
-        clc
-        adc #27520
-        tcd
-
-        short m
-        lda >spriteColor
-
-        long m
-
-        lda >drawAddress
-        clc
-        adc #27680
-        tcd
-
-        short m
-        lda >spriteColor
-
-        long m
-
-        lda >drawAddress
-        clc
-        adc #27840
-        tcd
-
-        short m
-        lda >spriteColor
-
-        long m
-
-        lda >drawAddress
-        clc
-        adc #28000
-        tcd
-
-        short m
-        lda >spriteColor
-
-        long m
-
-        lda >drawAddress
-        clc
-        adc #28160
-        tcd
-
-        short m
-        lda >spriteColor
-
-        long m
-
-        lda >drawAddress
-        clc
-        adc #28320
-        tcd
-
-        short m
-        lda >spriteColor
-
-        long m
-
-        lda >drawAddress
-        clc
-        adc #28480
-        tcd
-
-        short m
-        lda >spriteColor
-
-        long m
-
-        lda >drawAddress
-        clc
-        adc #28640
-        tcd
-
-        short m
-        lda >spriteColor
-
-        long m
-
-        lda >drawAddress
-        clc
-        adc #28800
-        tcd
-
-        short m
-        lda >spriteColor
-
-        long m
-
-        lda >drawAddress
-        clc
-        adc #28960
-        tcd
-
-        short m
-        lda >spriteColor
-
-        long m
-
-        lda >drawAddress
-        clc
-        adc #29120
-        tcd
-
-        short m
-        lda >spriteColor
-
-        long m
-
-        lda >drawAddress
-        clc
-        adc #29280
-        tcd
-
-        short m
-        lda >spriteColor
-
-        long m
-
-        lda >drawAddress
-        clc
-        adc #29440
-        tcd
-
-        short m
-        lda >spriteColor
-
-        long m
-
-        lda >drawAddress
-        clc
-        adc #29600
-        tcd
-
-        short m
-        lda >spriteColor
-
-        long m
-
-        lda >drawAddress
-        clc
-        adc #29760
-        tcd
-
-        short m
-        lda >spriteColor
-
-        long m
-
-        lda >drawAddress
-        clc
-        adc #29920
-        tcd
-
-        short m
-        lda >spriteColor
-
-        long m
-
-        lda >drawAddress
-        clc
-        adc #30080
-        tcd
-
-        short m
-        lda >spriteColor
-
-        long m
-
-        lda >drawAddress
-        clc
-        adc #30240
-        tcd
-
-        short m
-        lda >spriteColor
-
-        long m
-
-        lda >drawAddress
-        clc
-        adc #30400
-        tcd
-
-        short m
-        lda >spriteColor
-
-        long m
-
-        lda >drawAddress
-        clc
-        adc #30560
-        tcd
-
-        short m
-        lda >spriteColor
-
-        long m
-
-        lda >drawAddress
-        clc
-        adc #30720
-        tcd
-
-        short m
-        lda >spriteColor
-
-        long m
-
-        lda >drawAddress
-        clc
-        adc #30880
-        tcd
-
-        short m
-        lda >spriteColor
-
-        long m
-
-        lda >drawAddress
-        clc
-        adc #31040
-        tcd
-
-        short m
-        lda >spriteColor
-
-        long m
-
-        lda >drawAddress
-        clc
-        adc #31200
-        tcd
-
-        short m
-        lda >spriteColor
-
-        long m
-
-        lda >drawAddress
-        clc
-        adc #31360
-        tcd
-
-        short m
-        lda >spriteColor
-
-        long m
-
-        lda >drawAddress
-        clc
-        adc #31520
-        tcd
-
-        short m
-        lda >spriteColor
-
-        long m
-
-        lda >drawAddress
-        clc
-        adc #31680
-        tcd
-
-        short m
-        lda >spriteColor
-
-        long m
-
-        lda >drawAddress
-        clc
-        adc #31840
-        tcd
-
-        short m
-        lda >spriteColor
-
-        long m
-
-        lda >drawAddress
-        clc
-        adc #32000
-        tcd
-
-        short m
-        lda >spriteColor
-
-        long m
-
-        lda >drawAddress
-        clc
-        adc #32160
-        tcd
-
-        short m
-        lda >spriteColor
-
-        long m
-
-        lda >drawAddress
-        clc
-        adc #32320
-        tcd
-
-        short m
-        lda >spriteColor
-
-        long m
-
-        lda >drawAddress
-        clc
-        adc #32480
-        tcd
-
-        short m
-        lda >spriteColor
-
-        long m
-
-        lda >drawAddress
-        clc
-        adc #32640
-        tcd
-
-        short m
-        lda >spriteColor
-
-        long m
-
-        lda >drawAddress
-        clc
-        adc #32800
-        tcd
-
-        short m
-        lda >spriteColor
-
-        long m
-
-        lda >drawAddress
-        clc
-        adc #32960
-        tcd
-
-        short m
-        lda >spriteColor
-
-        long m
-
-        lda >drawAddress
-        clc
-        adc #33120
-        tcd
-
-        short m
-        lda >spriteColor
-
-        long m
-
-        lda >drawAddress
-        clc
-        adc #33280
-        tcd
-
-        short m
-        lda >spriteColor
-
-        long m
-
-        lda >drawAddress
-        clc
-        adc #33440
-        tcd
-
-        short m
-        lda >spriteColor
-
-        long m
-
-        lda >drawAddress
-        clc
-        adc #33600
-        tcd
-
-        short m
-        lda >spriteColor
-
-        long m
-
-        lda >drawAddress
-        clc
-        adc #33760
-        tcd
-
-        short m
-        lda >spriteColor
-
-        long m
-
-        lda >drawAddress
-        clc
-        adc #33920
-        tcd
-
-        short m
-        lda >spriteColor
-
-        long m
-
-        lda >drawAddress
-        clc
-        adc #34080
-        tcd
-
-        short m
-        lda >spriteColor
-
-        long m
-
-        lda >drawAddress
-        clc
-        adc #34240
-        tcd
-
-        short m
-        lda >spriteColor
-
-        long m
-
-        lda >drawAddress
-        clc
-        adc #34400
-        tcd
-
-        short m
-        lda >spriteColor
-
-        long m
-
-        lda >drawAddress
-        clc
-        adc #34560
-        tcd
-
-        short m
-        lda >spriteColor
-
-        long m
-
-        lda >drawAddress
-        clc
-        adc #34720
-        tcd
-
-        short m
-        lda >spriteColor
-
-        long m
-
-        lda >drawAddress
-        clc
-        adc #34880
-        tcd
-
-        short m
-        lda >spriteColor
-
-        long m
-
-        lda >drawAddress
-        clc
-        adc #35040
-        tcd
-
-        short m
-        lda >spriteColor
-
-        long m
-
-        lda >drawAddress
-        clc
-        adc #35200
-        tcd
-
-        short m
-        lda >spriteColor
-
-        long m
-
-        lda >drawAddress
-        clc
-        adc #35360
-        tcd
-
-        short m
-        lda >spriteColor
-
-        long m
-
-        lda >drawAddress
-        clc
-        adc #35520
-        tcd
-
-        short m
-        lda >spriteColor
-
-        long m
-
-        lda >drawAddress
-        clc
-        adc #35680
-        tcd
-
-        short m
-        lda >spriteColor
-
-        long m
-
-        lda >drawAddress
-        clc
-        adc #35840
-        tcd
-
-        short m
-        lda >spriteColor
-
-        long m
-
-        lda >drawAddress
-        clc
-        adc #36000
-        tcd
-
-        short m
-        lda >spriteColor
-
-        long m
-
-        lda >drawAddress
-        clc
-        adc #36160
-        tcd
-
-        short m
-        lda >spriteColor
-
-        long m
-
-        lda >drawAddress
-        clc
-        adc #36320
-        tcd
-
-        short m
-        lda >spriteColor
-
-        long m
-
-        lda >drawAddress
-        clc
-        adc #36480
-        tcd
-
-        short m
-        lda >spriteColor
-
-        long m
-
-        lda >drawAddress
-        clc
-        adc #36640
-        tcd
-
-        short m
-        lda >spriteColor
-
-        long m
-
-        lda >drawAddress
-        clc
-        adc #36800
-        tcd
-
-        short m
-        lda >spriteColor
-
-        long m
-
-        lda >drawAddress
-        clc
-        adc #36960
-        tcd
-
-        short m
-        lda >spriteColor
-
-        long m
-
-        lda >drawAddress
-        clc
-        adc #37120
-        tcd
-
-        short m
-        lda >spriteColor
-
-        long m
-
-        lda >drawAddress
-        clc
-        adc #37280
-        tcd
-
-        short m
-        lda >spriteColor
-
-        long m
-
-        lda >drawAddress
-        clc
-        adc #37440
-        tcd
-
-        short m
-        lda >spriteColor
-
-        long m
-
-        lda >drawAddress
-        clc
-        adc #37600
-        tcd
-
-        short m
-        lda >spriteColor
-
-        long m
-
-        lda >drawAddress
-        clc
-        adc #37760
-        tcd
-
-        short m
-        lda >spriteColor
-
-        long m
-
-        lda >drawAddress
-        clc
-        adc #37920
-        tcd
-
-        short m
-        lda >spriteColor
-
-        long m
-
-        lda >drawAddress
-        clc
-        adc #38080
-        tcd
-
-        short m
-        lda >spriteColor
-
-        long m
-
-        lda >drawAddress
-        clc
-        adc #38240
-        tcd
-
-        short m
-        lda >spriteColor
-
-        long m
-
-        lda >drawAddress
-        clc
-        adc #38400
-        tcd
-
-        short m
-        lda >spriteColor
-
-        long m
-
-        lda >drawAddress
-        clc
-        adc #38560
-        tcd
-
-        short m
-        lda >spriteColor
-
-        long m
-
-        lda >drawAddress
-        clc
-        adc #38720
-        tcd
-
-        short m
-        lda >spriteColor
+drawSpriteDragon2SkipRowDraw83 anop
 
-        long m
-
-        lda >drawAddress
-        clc
-        adc #38880
-        tcd
-
-        short m
-        lda >spriteColor
-
-        long m
-
-        lda >drawAddress
-        clc
-        adc #39040
-        tcd
-
-        short m
-        lda >spriteColor
-
-        long m
-
-        lda >drawAddress
-        clc
-        adc #39200
-        tcd
-
-        short m
-        lda >spriteColor
-
-        long m
-
-        lda >drawAddress
-        clc
-        adc #39360
-        tcd
-
-        short m
-        lda >spriteColor
-
-        long m
-
-        lda >drawAddress
-        clc
-        adc #39520
-        tcd
-
-        short m
-        lda >spriteColor
-
-        long m
-
-        lda >drawAddress
-        clc
-        adc #39680
-        tcd
-
-        short m
-        lda >spriteColor
-
-        long m
-
-        lda >drawAddress
+        lda >rowCounter
         clc
-        adc #39840
-        tcd
-
-        short m
-        lda >spriteColor
-
-        long m
-
-        lda >drawAddress
-        clc
-        adc #40000
-        tcd
-
-        short m
-        lda >spriteColor
-
-        long m
-
-        lda >drawAddress
-        clc
-        adc #40160
-        tcd
-
-        short m
-        lda >spriteColor
-
-        long m
-
-        lda >drawAddress
-        clc
-        adc #40320
-        tcd
-
-        short m
-        lda >spriteColor
-
-        long m
-
-        lda >drawAddress
-        clc
-        adc #40480
-        tcd
-
-        short m
-        lda >spriteColor
-
-        long m
-
-        lda >drawAddress
-        clc
-        adc #40640
-        tcd
-
-        short m
-        lda >spriteColor
-
-        long m
-
-        lda >drawAddress
-        clc
-        adc #40800
-        tcd
-
-        short m
-        lda >spriteColor
-
-        long m
+        adc #1
+        sta >rowCounter
 
         long m
 
@@ -3343,6 +2068,11 @@ drawSpriteDragon3 entry
         spriteGetDrawAddress
         _spriteHeader
 
+        lda >spriteY
+        sta >rowCounter
+
+        cmp #199
+        bcs drawSpriteDragon3SkipRowDraw84
 
         lda >drawAddress
         clc
@@ -3356,6 +2086,16 @@ drawSpriteDragon3 entry
         sta 5
         long m
 
+drawSpriteDragon3SkipRowDraw84 anop
+
+        lda >rowCounter
+        clc
+        adc #1
+        sta >rowCounter
+
+        cmp #199
+        bcs drawSpriteDragon3SkipRowDraw85
+
         lda >drawAddress
         clc
         adc #160
@@ -3367,6 +2107,16 @@ drawSpriteDragon3 entry
         sta 4
         sta 5
         long m
+
+drawSpriteDragon3SkipRowDraw85 anop
+
+        lda >rowCounter
+        clc
+        adc #1
+        sta >rowCounter
+
+        cmp #199
+        bcs drawSpriteDragon3SkipRowDraw86
 
         lda >drawAddress
         clc
@@ -3380,6 +2130,16 @@ drawSpriteDragon3 entry
         sta 5
         long m
 
+drawSpriteDragon3SkipRowDraw86 anop
+
+        lda >rowCounter
+        clc
+        adc #1
+        sta >rowCounter
+
+        cmp #199
+        bcs drawSpriteDragon3SkipRowDraw87
+
         lda >drawAddress
         clc
         adc #480
@@ -3392,6 +2152,16 @@ drawSpriteDragon3 entry
         sta 5
         long m
 
+drawSpriteDragon3SkipRowDraw87 anop
+
+        lda >rowCounter
+        clc
+        adc #1
+        sta >rowCounter
+
+        cmp #199
+        bcs drawSpriteDragon3SkipRowDraw88
+
         lda >drawAddress
         clc
         adc #640
@@ -3402,8 +2172,17 @@ drawSpriteDragon3 entry
 
         sta 4
         sta 5
-        sta 6
         long m
+
+drawSpriteDragon3SkipRowDraw88 anop
+
+        lda >rowCounter
+        clc
+        adc #1
+        sta >rowCounter
+
+        cmp #199
+        bcs drawSpriteDragon3SkipRowDraw89
 
         lda >drawAddress
         clc
@@ -3415,8 +2194,17 @@ drawSpriteDragon3 entry
 
         sta 4
         sta 5
-        sta 6
         long m
+
+drawSpriteDragon3SkipRowDraw89 anop
+
+        lda >rowCounter
+        clc
+        adc #1
+        sta >rowCounter
+
+        cmp #199
+        bcs drawSpriteDragon3SkipRowDraw90
 
         lda >drawAddress
         clc
@@ -3426,11 +2214,20 @@ drawSpriteDragon3 entry
         short m
         lda >spriteColor
 
-        sta 3
         sta 4
+        sta 5
         sta 6
-        sta 7
         long m
+
+drawSpriteDragon3SkipRowDraw90 anop
+
+        lda >rowCounter
+        clc
+        adc #1
+        sta >rowCounter
+
+        cmp #199
+        bcs drawSpriteDragon3SkipRowDraw91
 
         lda >drawAddress
         clc
@@ -3440,11 +2237,20 @@ drawSpriteDragon3 entry
         short m
         lda >spriteColor
 
-        sta 3
         sta 4
+        sta 5
         sta 6
-        sta 7
         long m
+
+drawSpriteDragon3SkipRowDraw91 anop
+
+        lda >rowCounter
+        clc
+        adc #1
+        sta >rowCounter
+
+        cmp #199
+        bcs drawSpriteDragon3SkipRowDraw92
 
         lda >drawAddress
         clc
@@ -3454,14 +2260,21 @@ drawSpriteDragon3 entry
         short m
         lda >spriteColor
 
-        sta 1
-        sta 2
         sta 3
         sta 4
-        sta 5
         sta 6
         sta 7
         long m
+
+drawSpriteDragon3SkipRowDraw92 anop
+
+        lda >rowCounter
+        clc
+        adc #1
+        sta >rowCounter
+
+        cmp #199
+        bcs drawSpriteDragon3SkipRowDraw93
 
         lda >drawAddress
         clc
@@ -3471,14 +2284,21 @@ drawSpriteDragon3 entry
         short m
         lda >spriteColor
 
-        sta 1
-        sta 2
         sta 3
         sta 4
-        sta 5
         sta 6
         sta 7
         long m
+
+drawSpriteDragon3SkipRowDraw93 anop
+
+        lda >rowCounter
+        clc
+        adc #1
+        sta >rowCounter
+
+        cmp #199
+        bcs drawSpriteDragon3SkipRowDraw94
 
         lda >drawAddress
         clc
@@ -3488,12 +2308,24 @@ drawSpriteDragon3 entry
         short m
         lda >spriteColor
 
-        sta 0
         sta 1
+        sta 2
+        sta 3
         sta 4
         sta 5
         sta 6
+        sta 7
         long m
+
+drawSpriteDragon3SkipRowDraw94 anop
+
+        lda >rowCounter
+        clc
+        adc #1
+        sta >rowCounter
+
+        cmp #199
+        bcs drawSpriteDragon3SkipRowDraw95
 
         lda >drawAddress
         clc
@@ -3503,12 +2335,24 @@ drawSpriteDragon3 entry
         short m
         lda >spriteColor
 
-        sta 0
         sta 1
+        sta 2
+        sta 3
         sta 4
         sta 5
         sta 6
+        sta 7
         long m
+
+drawSpriteDragon3SkipRowDraw95 anop
+
+        lda >rowCounter
+        clc
+        adc #1
+        sta >rowCounter
+
+        cmp #199
+        bcs drawSpriteDragon3SkipRowDraw96
 
         lda >drawAddress
         clc
@@ -3519,7 +2363,21 @@ drawSpriteDragon3 entry
         lda >spriteColor
 
         sta 0
+        sta 1
+        sta 4
+        sta 5
+        sta 6
         long m
+
+drawSpriteDragon3SkipRowDraw96 anop
+
+        lda >rowCounter
+        clc
+        adc #1
+        sta >rowCounter
+
+        cmp #199
+        bcs drawSpriteDragon3SkipRowDraw97
 
         lda >drawAddress
         clc
@@ -3530,7 +2388,21 @@ drawSpriteDragon3 entry
         lda >spriteColor
 
         sta 0
+        sta 1
+        sta 4
+        sta 5
+        sta 6
         long m
+
+drawSpriteDragon3SkipRowDraw97 anop
+
+        lda >rowCounter
+        clc
+        adc #1
+        sta >rowCounter
+
+        cmp #199
+        bcs drawSpriteDragon3SkipRowDraw98
 
         lda >drawAddress
         clc
@@ -3541,12 +2413,17 @@ drawSpriteDragon3 entry
         lda >spriteColor
 
         sta 0
-        sta 1
-        sta 2
-        sta 3
-        sta 4
-        sta 5
         long m
+
+drawSpriteDragon3SkipRowDraw98 anop
+
+        lda >rowCounter
+        clc
+        adc #1
+        sta >rowCounter
+
+        cmp #199
+        bcs drawSpriteDragon3SkipRowDraw99
 
         lda >drawAddress
         clc
@@ -3557,12 +2434,17 @@ drawSpriteDragon3 entry
         lda >spriteColor
 
         sta 0
-        sta 1
-        sta 2
-        sta 3
-        sta 4
-        sta 5
         long m
+
+drawSpriteDragon3SkipRowDraw99 anop
+
+        lda >rowCounter
+        clc
+        adc #1
+        sta >rowCounter
+
+        cmp #199
+        bcs drawSpriteDragon3SkipRowDraw100
 
         lda >drawAddress
         clc
@@ -3578,8 +2460,17 @@ drawSpriteDragon3 entry
         sta 3
         sta 4
         sta 5
-        sta 6
         long m
+
+drawSpriteDragon3SkipRowDraw100 anop
+
+        lda >rowCounter
+        clc
+        adc #1
+        sta >rowCounter
+
+        cmp #199
+        bcs drawSpriteDragon3SkipRowDraw101
 
         lda >drawAddress
         clc
@@ -3595,8 +2486,17 @@ drawSpriteDragon3 entry
         sta 3
         sta 4
         sta 5
-        sta 6
         long m
+
+drawSpriteDragon3SkipRowDraw101 anop
+
+        lda >rowCounter
+        clc
+        adc #1
+        sta >rowCounter
+
+        cmp #199
+        bcs drawSpriteDragon3SkipRowDraw102
 
         lda >drawAddress
         clc
@@ -3615,6 +2515,16 @@ drawSpriteDragon3 entry
         sta 6
         long m
 
+drawSpriteDragon3SkipRowDraw102 anop
+
+        lda >rowCounter
+        clc
+        adc #1
+        sta >rowCounter
+
+        cmp #199
+        bcs drawSpriteDragon3SkipRowDraw103
+
         lda >drawAddress
         clc
         adc #3040
@@ -3632,6 +2542,16 @@ drawSpriteDragon3 entry
         sta 6
         long m
 
+drawSpriteDragon3SkipRowDraw103 anop
+
+        lda >rowCounter
+        clc
+        adc #1
+        sta >rowCounter
+
+        cmp #199
+        bcs drawSpriteDragon3SkipRowDraw104
+
         lda >drawAddress
         clc
         adc #3200
@@ -3640,6 +2560,7 @@ drawSpriteDragon3 entry
         short m
         lda >spriteColor
 
+        sta 0
         sta 1
         sta 2
         sta 3
@@ -3647,6 +2568,16 @@ drawSpriteDragon3 entry
         sta 5
         sta 6
         long m
+
+drawSpriteDragon3SkipRowDraw104 anop
+
+        lda >rowCounter
+        clc
+        adc #1
+        sta >rowCounter
+
+        cmp #199
+        bcs drawSpriteDragon3SkipRowDraw105
 
         lda >drawAddress
         clc
@@ -3656,6 +2587,7 @@ drawSpriteDragon3 entry
         short m
         lda >spriteColor
 
+        sta 0
         sta 1
         sta 2
         sta 3
@@ -3663,6 +2595,16 @@ drawSpriteDragon3 entry
         sta 5
         sta 6
         long m
+
+drawSpriteDragon3SkipRowDraw105 anop
+
+        lda >rowCounter
+        clc
+        adc #1
+        sta >rowCounter
+
+        cmp #199
+        bcs drawSpriteDragon3SkipRowDraw106
 
         lda >drawAddress
         clc
@@ -3676,7 +2618,19 @@ drawSpriteDragon3 entry
         sta 2
         sta 3
         sta 4
+        sta 5
+        sta 6
         long m
+
+drawSpriteDragon3SkipRowDraw106 anop
+
+        lda >rowCounter
+        clc
+        adc #1
+        sta >rowCounter
+
+        cmp #199
+        bcs drawSpriteDragon3SkipRowDraw107
 
         lda >drawAddress
         clc
@@ -3690,7 +2644,252 @@ drawSpriteDragon3 entry
         sta 2
         sta 3
         sta 4
+        sta 5
+        sta 6
         long m
+
+drawSpriteDragon3SkipRowDraw107 anop
+
+        lda >rowCounter
+        clc
+        adc #1
+        sta >rowCounter
+
+        cmp #199
+        bcs drawSpriteDragon3SkipRowDraw108
+
+        lda >drawAddress
+        clc
+        adc #3840
+        tcd
+
+        short m
+        lda >spriteColor
+
+        sta 1
+        sta 2
+        sta 3
+        sta 4
+        long m
+
+drawSpriteDragon3SkipRowDraw108 anop
+
+        lda >rowCounter
+        clc
+        adc #1
+        sta >rowCounter
+
+        cmp #199
+        bcs drawSpriteDragon3SkipRowDraw109
+
+        lda >drawAddress
+        clc
+        adc #4000
+        tcd
+
+        short m
+        lda >spriteColor
+
+        sta 1
+        sta 2
+        sta 3
+        sta 4
+        long m
+
+drawSpriteDragon3SkipRowDraw109 anop
+
+        lda >rowCounter
+        clc
+        adc #1
+        sta >rowCounter
+
+        cmp #199
+        bcs drawSpriteDragon3SkipRowDraw110
+
+        lda >drawAddress
+        clc
+        adc #4160
+        tcd
+
+        short m
+        lda >spriteColor
+
+        sta 2
+        long m
+
+drawSpriteDragon3SkipRowDraw110 anop
+
+        lda >rowCounter
+        clc
+        adc #1
+        sta >rowCounter
+
+        cmp #199
+        bcs drawSpriteDragon3SkipRowDraw111
+
+        lda >drawAddress
+        clc
+        adc #4320
+        tcd
+
+        short m
+        lda >spriteColor
+
+        sta 2
+        long m
+
+drawSpriteDragon3SkipRowDraw111 anop
+
+        lda >rowCounter
+        clc
+        adc #1
+        sta >rowCounter
+
+        cmp #199
+        bcs drawSpriteDragon3SkipRowDraw112
+
+        lda >drawAddress
+        clc
+        adc #4480
+        tcd
+
+        short m
+        lda >spriteColor
+
+        sta 1
+        sta 2
+        sta 4
+        sta 5
+        sta 6
+        long m
+
+drawSpriteDragon3SkipRowDraw112 anop
+
+        lda >rowCounter
+        clc
+        adc #1
+        sta >rowCounter
+
+        cmp #199
+        bcs drawSpriteDragon3SkipRowDraw113
+
+        lda >drawAddress
+        clc
+        adc #4640
+        tcd
+
+        short m
+        lda >spriteColor
+
+        sta 1
+        sta 2
+        sta 4
+        sta 5
+        sta 6
+        long m
+
+drawSpriteDragon3SkipRowDraw113 anop
+
+        lda >rowCounter
+        clc
+        adc #1
+        sta >rowCounter
+
+        cmp #199
+        bcs drawSpriteDragon3SkipRowDraw114
+
+        lda >drawAddress
+        clc
+        adc #4800
+        tcd
+
+        short m
+        lda >spriteColor
+
+        sta 1
+        sta 6
+        long m
+
+drawSpriteDragon3SkipRowDraw114 anop
+
+        lda >rowCounter
+        clc
+        adc #1
+        sta >rowCounter
+
+        cmp #199
+        bcs drawSpriteDragon3SkipRowDraw115
+
+        lda >drawAddress
+        clc
+        adc #4960
+        tcd
+
+        short m
+        lda >spriteColor
+
+        sta 1
+        sta 6
+        long m
+
+drawSpriteDragon3SkipRowDraw115 anop
+
+        lda >rowCounter
+        clc
+        adc #1
+        sta >rowCounter
+
+        cmp #199
+        bcs drawSpriteDragon3SkipRowDraw116
+
+        lda >drawAddress
+        clc
+        adc #5120
+        tcd
+
+        short m
+        lda >spriteColor
+
+        sta 1
+        sta 2
+        sta 3
+        sta 4
+        sta 5
+        sta 6
+        long m
+
+drawSpriteDragon3SkipRowDraw116 anop
+
+        lda >rowCounter
+        clc
+        adc #1
+        sta >rowCounter
+
+        cmp #199
+        bcs drawSpriteDragon3SkipRowDraw117
+
+        lda >drawAddress
+        clc
+        adc #5280
+        tcd
+
+        short m
+        lda >spriteColor
+
+        sta 1
+        sta 2
+        sta 3
+        sta 4
+        sta 5
+        sta 6
+        long m
+
+drawSpriteDragon3SkipRowDraw117 anop
+
+        lda >rowCounter
+        clc
+        adc #1
+        sta >rowCounter
 
         long m
 
