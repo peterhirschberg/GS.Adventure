@@ -31,7 +31,7 @@ drawRoom entry
 ; Playfields are always just the left half of the screen and
 ; the right half is either mirrored or repeated from the left.
 ;
-        jsr eraseRoom
+        jsl eraseRoom
 
 ; draw room as mirrored or repeated
 
@@ -79,7 +79,7 @@ drawLeftBarrier anop
         lda #COLOR_BLACK
         sta rectColor
 
-        jsr drawBackgroundRectThin
+        jsl drawBackgroundRectThin
 
         bra drawRoomDone
 
@@ -101,11 +101,11 @@ drawRightBarrier anop
         lda #COLOR_BLACK
         sta rectColor
 
-        jsr drawBackgroundRectThin
+        jsl drawBackgroundRectThin
 
 drawRoomDone anop
 
-        jsr blitRoom
+        jsl blitRoom
         rts
 
 
@@ -214,7 +214,7 @@ doneShift anop
         lda roomColorList,x
         sta rectColor
 
-        jsr drawBackgroundRectChunk
+        jsl drawBackgroundRectChunk
 
 bitNotSet anop
         inc cx
@@ -355,7 +355,7 @@ doneShift2 anop
         asl a
         sta rectX
 
-        jsr drawBackgroundRectChunk
+        jsl drawBackgroundRectChunk
 
 bitNotSet2 anop
         dec cx
@@ -479,7 +479,7 @@ doneShift3 anop
         lda roomColorList,x
         sta rectColor
 
-        jsr drawBackgroundRectChunk
+        jsl drawBackgroundRectChunk
 
         lda cx
         asl a
@@ -492,7 +492,7 @@ doneShift3 anop
         lda #CELL_WIDTH
         sta rectWidth
 
-        jsr drawBackgroundRectChunk
+        jsl drawBackgroundRectChunk
 
 bitNotSet3 anop
         inc cx

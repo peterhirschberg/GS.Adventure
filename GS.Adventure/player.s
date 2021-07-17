@@ -180,7 +180,7 @@ drawPlayer entry
         lda roomColorList,x
         sta rectColor
 
-        jsr drawSpriteRect
+        jsl drawSpriteRect
 
         rts
 
@@ -208,13 +208,13 @@ doErase anop
         jsr roomHasFog
         cmp #1
         beq hasFog
-        jsr eraseSpriteRect
+        jsl eraseSpriteRect
         rts
 
 hasFog anop
         lda #COLOR_ORANGE
         sta rectColor
-        jsr drawSpriteRect
+        jsl drawSpriteRect
         rts
 
 
@@ -235,7 +235,7 @@ erasePlayerHit entry
         jsr roomHasFog
         cmp #1
         beq hasFog2
-        jsr eraseSpriteRect
+        jsl eraseSpriteRect
         rts
 
 hasFog2 anop

@@ -762,7 +762,7 @@ renderSurroundHLoop anop
         lda #COLOR_ORANGE
         sta rectColor
 
-        jsr drawSurroundChunk
+        jsl drawSurroundChunk
 
 renderSurroundSkipBlock anop
         inc colCounter
@@ -1301,7 +1301,7 @@ eraseSurroundHLoop anop
         lda #COLOR_ORANGE
         sta rectColor
 
-        jsr eraseSurroundChunk
+        jsl eraseSurroundChunk
         
 ; clear the grid position
 

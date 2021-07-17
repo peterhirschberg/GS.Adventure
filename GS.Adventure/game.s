@@ -144,7 +144,7 @@ pass2 anop
 
         jsr moveCarriedObject
 
-        jsr eraseRoomSprites
+        jsl eraseRoomSprites
 
 passDone anop
 

@@ -12,7 +12,7 @@
         keep global
 
 
-screen start
+screen start screenSeg
         using globalData
         using screenData
         using colorData
@@ -25,22 +25,22 @@ eraseRoom entry
         ldy #COLOR_LTGRAY
 
         lda #0
-        sta rowCounter
+        sta >rowCounter
 
 fillVLoop anop
-        lda rowCounter
+        lda >rowCounter
         asl a
         tax
-        lda screenRowOffsets,x
-        sta rowAddress
+        lda >screenRowOffsets,x
+        sta >rowAddress
 
         lda #0
-        sta columnCounter
+        sta >columnCounter
 
 fillHLoop anop
-        lda rowAddress
+        lda >rowAddress
         clc
-        adc columnCounter
+        adc >columnCounter
         tax
 
         tya
@@ -223,30 +223,30 @@ fillHLoop anop
 
 fillRowDone anop
         inc rowCounter
-        lda rowCounter
+        lda >rowCounter
         cmp #199
         beq fillDone
         jmp fillVLoop
 
 fillDone anop
-        rts
+        rtl
 
 
 
 blitRoom entry
 
         lda #0
-        sta rowCounter
+        sta >rowCounter
 
 blitVLoop anop
-        lda rowCounter
+        lda >rowCounter
         asl a
         tax
-        lda screenRowOffsets,x
-        sta rowAddress
+        lda >screenRowOffsets,x
+        sta >rowAddress
 
 blitHLoop anop
-        lda rowAddress
+        lda >rowAddress
         tax
 
         blitBackgroundWord
@@ -427,245 +427,29 @@ blitHLoop anop
 
 blitRowDone anop
         inc rowCounter
-        lda rowCounter
+        lda >rowCounter
         cmp #199
         beq blitDone
         jmp blitVLoop
 
 blitDone anop
-        rts
-
-
-
-; fills the screen only (not the room buffer) with the fog color
-fillScreenWithFog entry
-
-        lda #0
-        sta rowCounter
-
-		ldy #COLOR_LTGRAY
-
-fogVLoop anop
-        lda rowCounter
-        asl a
-        tax
-        lda screenRowOffsets,x
-        sta rowAddress
-
-        lda #0
-        sta columnCounter
-
-fogHLoop anop
-        lda rowAddress
-        clc
-        adc columnCounter
-        tax
-
-        tya
-
-        writeScreenWord
-        writeScreenWord
-        writeScreenWord
-        writeScreenWord
-        writeScreenWord
-        writeScreenWord
-        writeScreenWord
-        writeScreenWord
-        writeScreenWord
-        writeScreenWord
-
-        writeScreenWord
-        writeScreenWord
-        writeScreenWord
-        writeScreenWord
-        writeScreenWord
-        writeScreenWord
-        writeScreenWord
-        writeScreenWord
-        writeScreenWord
-        writeScreenWord
-
-        writeScreenWord
-        writeScreenWord
-        writeScreenWord
-        writeScreenWord
-        writeScreenWord
-        writeScreenWord
-        writeScreenWord
-        writeScreenWord
-        writeScreenWord
-        writeScreenWord
-
-        writeScreenWord
-        writeScreenWord
-        writeScreenWord
-        writeScreenWord
-        writeScreenWord
-        writeScreenWord
-        writeScreenWord
-        writeScreenWord
-        writeScreenWord
-        writeScreenWord
-
-        writeScreenWord
-        writeScreenWord
-        writeScreenWord
-        writeScreenWord
-        writeScreenWord
-        writeScreenWord
-        writeScreenWord
-        writeScreenWord
-        writeScreenWord
-        writeScreenWord
-
-        writeScreenWord
-        writeScreenWord
-        writeScreenWord
-        writeScreenWord
-        writeScreenWord
-        writeScreenWord
-        writeScreenWord
-        writeScreenWord
-        writeScreenWord
-        writeScreenWord
-
-        writeScreenWord
-        writeScreenWord
-        writeScreenWord
-        writeScreenWord
-        writeScreenWord
-        writeScreenWord
-        writeScreenWord
-        writeScreenWord
-        writeScreenWord
-        writeScreenWord
-
-        writeScreenWord
-        writeScreenWord
-        writeScreenWord
-        writeScreenWord
-        writeScreenWord
-        writeScreenWord
-        writeScreenWord
-        writeScreenWord
-        writeScreenWord
-        writeScreenWord
-
-        writeScreenWord
-        writeScreenWord
-        writeScreenWord
-        writeScreenWord
-        writeScreenWord
-        writeScreenWord
-        writeScreenWord
-        writeScreenWord
-        writeScreenWord
-        writeScreenWord
-
-        writeScreenWord
-        writeScreenWord
-        writeScreenWord
-        writeScreenWord
-        writeScreenWord
-        writeScreenWord
-        writeScreenWord
-        writeScreenWord
-        writeScreenWord
-        writeScreenWord
-
-        writeScreenWord
-        writeScreenWord
-        writeScreenWord
-        writeScreenWord
-        writeScreenWord
-        writeScreenWord
-        writeScreenWord
-        writeScreenWord
-        writeScreenWord
-        writeScreenWord
-
-        writeScreenWord
-        writeScreenWord
-        writeScreenWord
-        writeScreenWord
-        writeScreenWord
-        writeScreenWord
-        writeScreenWord
-        writeScreenWord
-        writeScreenWord
-        writeScreenWord
-
-        writeScreenWord
-        writeScreenWord
-        writeScreenWord
-        writeScreenWord
-        writeScreenWord
-        writeScreenWord
-        writeScreenWord
-        writeScreenWord
-        writeScreenWord
-        writeScreenWord
-
-        writeScreenWord
-        writeScreenWord
-        writeScreenWord
-        writeScreenWord
-        writeScreenWord
-        writeScreenWord
-        writeScreenWord
-        writeScreenWord
-        writeScreenWord
-        writeScreenWord
-
-        writeScreenWord
-        writeScreenWord
-        writeScreenWord
-        writeScreenWord
-        writeScreenWord
-        writeScreenWord
-        writeScreenWord
-        writeScreenWord
-        writeScreenWord
-        writeScreenWord
-
-        writeScreenWord
-        writeScreenWord
-        writeScreenWord
-        writeScreenWord
-        writeScreenWord
-        writeScreenWord
-        writeScreenWord
-        writeScreenWord
-        writeScreenWord
-        writeScreenWord
-
-fogRowDone anop
-        inc rowCounter
-        lda rowCounter
-        cmp #199
-        beq fogDone
-        jmp fogVLoop
-
-fogDone anop
-        rts
-
-
+        rtl
 
 
 
 drawBackgroundRectChunk entry
 
-        lda rectX
+        lda >rectX
         lsr a
-        sta rectX
+        sta >rectX
 
         lda #0
-        sta rowCounter
+        sta >rowCounter
 
 fillLoop1 anop
-        lda rowCounter
+        lda >rowCounter
         clc
-        adc rectY
+        adc >rectY
 
 ; bounds check
         bmi nextRow1
@@ -674,11 +458,11 @@ fillLoop1 anop
 
         asl a
         tax
-        lda screenRowOffsets,x
+        lda >screenRowOffsets,x
         clc
-        adc rectX
+        adc >rectX
         tax
-        lda rectColor
+        lda >rectColor
 
         sta >BACKGROUND_ADDR,x
 
@@ -690,32 +474,32 @@ fillLoop1 anop
 
 nextRow1 anop
         inc rowCounter
-        lda rowCounter
-        cmp rectHeight
+        lda >rowCounter
+        cmp >rectHeight
         beq fillDone1
         bra fillLoop1
 
 fillDone1 anop
-        rts
+        rtl
 
 
 drawBackgroundRectThin entry
 
-        lda rectX
+        lda >rectX
         lsr a
-        sta rectX
+        sta >rectX
 
-        lda rectWidth
+        lda >rectWidth
         lsr a
-        sta rectWidth
+        sta >rectWidth
 
         lda #0
-        sta rowCounter
+        sta >rowCounter
 
 fillLoop1b anop
-        lda rowCounter
+        lda >rowCounter
         clc
-        adc rectY
+        adc >rectY
 
 ; bounds check
         bmi nextRow1b
@@ -724,23 +508,23 @@ fillLoop1b anop
 
         asl a
         tax
-        lda screenRowOffsets,x
+        lda >screenRowOffsets,x
         clc
-        adc rectX
+        adc >rectX
         tax
-        lda rectColor
+        lda >rectColor
 
         sta >BACKGROUND_ADDR,x
 
 nextRow1b anop
         inc rowCounter
-        lda rowCounter
-        cmp rectHeight
+        lda >rowCounter
+        cmp >rectHeight
         beq fillDone1b
         bra fillLoop1b
 
 fillDone1b anop
-        rts
+        rtl
 
 
 
@@ -753,33 +537,34 @@ drawSpriteRect entry
         lda #$2000
         tcd
 
-        ldy rectColor
+        lda >rectColor
+        tay
 
-        lda rectX
+        lda >rectX
         lsr a
-        sta rectX
+        sta >rectX
 
-        lda rectWidth
+        lda >rectWidth
         lsr a
-        sta rectWidth
+        sta >rectWidth
 
         lda #0
-        sta rowCounter
+        sta >rowCounter
 
 fillVLoop2 anop
-        lda rowCounter
+        lda >rowCounter
         clc
-        adc rectY
+        adc >rectY
 
         asl a
         tax
-        lda screenRowOffsets,x
+        lda >screenRowOffsets,x
         clc
-        adc rectX
+        adc >rectX
         tax
 
-        lda rectWidth
-        sta columnCounter
+        lda >rectWidth
+        sta >columnCounter
 
 fillHLoop2 anop
 
@@ -792,14 +577,14 @@ fillHLoop2 anop
         dec columnCounter
         dec columnCounter
 
-        lda columnCounter
+        lda >columnCounter
         bmi nextRow2
         bra fillHLoop2
 
 nextRow2 anop
         inc rowCounter
-        lda rowCounter
-        cmp rectHeight
+        lda >rowCounter
+        cmp >rectHeight
         beq fillDone2
         bra fillVLoop2
 
@@ -812,7 +597,7 @@ fillDone2 anop
 
         pld                     ; restore the direct page
 
-        rts
+        rtl
 
 
 
@@ -825,31 +610,31 @@ eraseSpriteRect entry
         tcd
 
 
-        lda rectX
+        lda >rectX
         lsr a
-        sta rectX
+        sta >rectX
 
-        lda rectWidth
+        lda >rectWidth
         lsr a
-        sta rectWidth
+        sta >rectWidth
 
         lda #0
-        sta rowCounter
+        sta >rowCounter
 
 eraseVLoop2 anop
-        lda rowCounter
+        lda >rowCounter
         clc
-        adc rectY
+        adc >rectY
 
         asl a
         tax
-        lda screenRowOffsets,x
+        lda >screenRowOffsets,x
         clc
-        adc rectX
+        adc >rectX
         tax
 
-        lda rectWidth
-        sta columnCounter
+        lda >rectWidth
+        sta >columnCounter
 
 eraseHLoop2 anop
 
@@ -862,14 +647,14 @@ eraseHLoop2 anop
         dec columnCounter
         dec columnCounter
 
-        lda columnCounter
+        lda >columnCounter
         bmi nextRow3
         jmp eraseHLoop2
 
 nextRow3 anop
         inc rowCounter
-        lda rowCounter
-        cmp rectHeight
+        lda >rowCounter
+        cmp >rectHeight
         beq eraseDone2
         bra eraseVLoop2
 
@@ -882,29 +667,30 @@ eraseDone2 anop
 
         pld                     ; restore the direct page
 
-        rts
+        rtl
 
 
 
 drawSurroundChunk entry
 
-        ldy rectColor
+        lda >rectColor
+        tay
 
-        lda rectX
+        lda >rectX
         lsr a
-        sta rectX
+        sta >rectX
 
-        lda rectWidth
+        lda >rectWidth
         lsr a
-        sta rectWidth
+        sta >rectWidth
 
         lda #0
-        sta rowCounter
+        sta >rowCounter
 
 drawSurroundVLoop2 anop
-        lda rowCounter
+        lda >rowCounter
         clc
-        adc rectY
+        adc >rectY
 
 ; TODO - FIX THIS
 ; bounds check
@@ -914,13 +700,13 @@ drawSurroundVLoop2 anop
         
         asl a
         tax
-        lda screenRowOffsets,x
+        lda >screenRowOffsets,x
         clc
-        adc rectX
+        adc >rectX
         tax
 
-        lda rectWidth
-        sta columnCounter
+        lda >rectWidth
+        sta >columnCounter
 
 ; paint the row
         tya
@@ -937,36 +723,37 @@ drawSurroundVLoop2 anop
 nextRow4 anop
 
         inc rowCounter
-        lda rowCounter
-        cmp rectHeight
+        lda >rowCounter
+        cmp >rectHeight
         beq drawSurroundDone2
         jmp drawSurroundVLoop2
 
 drawSurroundDone2 anop
 
-        rts
+        rtl
 
 
 
 eraseSurroundChunk entry
 
-        ldy rectColor
+        lda >rectColor
+        tay
 
-        lda rectX
+        lda >rectX
         lsr a
-        sta rectX
+        sta >rectX
 
-        lda rectWidth
+        lda >rectWidth
         lsr a
-        sta rectWidth
+        sta >rectWidth
 
         lda #0
-        sta rowCounter
+        sta >rowCounter
 
 eraseSurroundVLoop2 anop
-        lda rowCounter
+        lda >rowCounter
         clc
-        adc rectY
+        adc >rectY
 
 ; TODO FIX ME
 ; bounds check
@@ -976,13 +763,13 @@ eraseSurroundVLoop2 anop
 
         asl a
         tax
-        lda screenRowOffsets,x
+        lda >screenRowOffsets,x
         clc
-        adc rectX
+        adc >rectX
         tax
 
-        lda rectWidth
-        sta columnCounter
+        lda >rectWidth
+        sta >columnCounter
 
 ; erase the row
 
@@ -1000,14 +787,14 @@ eraseSurroundVLoop2 anop
 nextRow5 anop
 
         inc rowCounter
-        lda rowCounter
-        cmp rectHeight
+        lda >rowCounter
+        cmp >rectHeight
         beq eraseSurroundDone2
         jmp eraseSurroundVLoop2
 
 eraseSurroundDone2 anop
 
-        rts
+        rtl
         
         
         
