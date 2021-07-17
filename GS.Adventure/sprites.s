@@ -245,6 +245,8 @@ drawRedDragon entry
         lda >objectPositionYList,x
         sta >spriteY
         bmi drawRedDragonDone
+        lda #COLOR_RED
+        sta >spriteColor
         jsl drawSpriteYellowDragon1
 drawRedDragonDone anop
         rts
@@ -269,6 +271,8 @@ drawGreenDragon entry
         lda >objectPositionYList,x
         bmi drawGreenDragonDone
         sta >spriteY
+        lda #COLOR_LIMEGREEN
+        sta >spriteColor
         jsl drawSpriteYellowDragon1
 drawGreenDragonDone anop
         rts
@@ -293,6 +297,8 @@ drawYellowDragon entry
         lda >objectPositionYList,x
         bmi drawYellowDragonDone
         sta >spriteY
+        lda #COLOR_YELLOW
+        sta >spriteColor
         jsl drawSpriteYellowDragon1
 drawYellowDragonDone anop
         rts
@@ -561,5 +567,7 @@ backupStack dc i4'0'
 
 spriteX dc i2'0'
 spriteY dc i2'0'
+
+spriteColor dc i2'0'
     
         end

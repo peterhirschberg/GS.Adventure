@@ -28,7 +28,7 @@ drawSpriteYellowDragon1 entry
         tcd
 
         short m
-        lda #$33
+        lda >spriteColor
 
         sta 5
         sta 6
@@ -40,7 +40,7 @@ drawSpriteYellowDragon1 entry
         tcd
 
         short m
-        lda #$33
+        lda >spriteColor
 
         sta 5
         sta 6
@@ -52,7 +52,7 @@ drawSpriteYellowDragon1 entry
         tcd
 
         short m
-        lda #$33
+        lda >spriteColor
 
         sta 4
         sta 5
@@ -66,7 +66,7 @@ drawSpriteYellowDragon1 entry
         tcd
 
         short m
-        lda #$33
+        lda >spriteColor
 
         sta 4
         sta 5
@@ -80,7 +80,7 @@ drawSpriteYellowDragon1 entry
         tcd
 
         short m
-        lda #$33
+        lda >spriteColor
 
         sta 0
         sta 1
@@ -96,7 +96,7 @@ drawSpriteYellowDragon1 entry
         tcd
 
         short m
-        lda #$33
+        lda >spriteColor
 
         sta 0
         sta 1
@@ -112,7 +112,7 @@ drawSpriteYellowDragon1 entry
         tcd
 
         short m
-        lda #$33
+        lda >spriteColor
 
         sta 0
         sta 1
@@ -129,7 +129,7 @@ drawSpriteYellowDragon1 entry
         tcd
 
         short m
-        lda #$33
+        lda >spriteColor
 
         sta 0
         sta 1
@@ -146,7 +146,7 @@ drawSpriteYellowDragon1 entry
         tcd
 
         short m
-        lda #$33
+        lda >spriteColor
 
         sta 4
         sta 5
@@ -159,7 +159,7 @@ drawSpriteYellowDragon1 entry
         tcd
 
         short m
-        lda #$33
+        lda >spriteColor
 
         sta 4
         sta 5
@@ -172,7 +172,7 @@ drawSpriteYellowDragon1 entry
         tcd
 
         short m
-        lda #$33
+        lda >spriteColor
 
         sta 5
         long m
@@ -183,7 +183,7 @@ drawSpriteYellowDragon1 entry
         tcd
 
         short m
-        lda #$33
+        lda >spriteColor
 
         sta 5
         long m
@@ -194,7 +194,7 @@ drawSpriteYellowDragon1 entry
         tcd
 
         short m
-        lda #$33
+        lda >spriteColor
 
         sta 5
         long m
@@ -205,7 +205,7 @@ drawSpriteYellowDragon1 entry
         tcd
 
         short m
-        lda #$33
+        lda >spriteColor
 
         sta 5
         long m
@@ -216,7 +216,7 @@ drawSpriteYellowDragon1 entry
         tcd
 
         short m
-        lda #$33
+        lda >spriteColor
 
         sta 3
         sta 4
@@ -230,7 +230,7 @@ drawSpriteYellowDragon1 entry
         tcd
 
         short m
-        lda #$33
+        lda >spriteColor
 
         sta 3
         sta 4
@@ -244,7 +244,7 @@ drawSpriteYellowDragon1 entry
         tcd
 
         short m
-        lda #$33
+        lda >spriteColor
 
         sta 2
         sta 3
@@ -260,7 +260,7 @@ drawSpriteYellowDragon1 entry
         tcd
 
         short m
-        lda #$33
+        lda >spriteColor
 
         sta 2
         sta 3
@@ -276,7 +276,7 @@ drawSpriteYellowDragon1 entry
         tcd
 
         short m
-        lda #$33
+        lda >spriteColor
 
         sta 1
         sta 2
@@ -293,7 +293,7 @@ drawSpriteYellowDragon1 entry
         tcd
 
         short m
-        lda #$33
+        lda >spriteColor
 
         sta 1
         sta 2
@@ -310,7 +310,7 @@ drawSpriteYellowDragon1 entry
         tcd
 
         short m
-        lda #$33
+        lda >spriteColor
 
         sta 0
         sta 1
@@ -325,7 +325,7 @@ drawSpriteYellowDragon1 entry
         tcd
 
         short m
-        lda #$33
+        lda >spriteColor
 
         sta 0
         sta 1
@@ -340,7 +340,7 @@ drawSpriteYellowDragon1 entry
         tcd
 
         short m
-        lda #$33
+        lda >spriteColor
 
         sta 0
         sta 1
@@ -354,7 +354,7 @@ drawSpriteYellowDragon1 entry
         tcd
 
         short m
-        lda #$33
+        lda >spriteColor
 
         sta 0
         sta 1
@@ -368,7 +368,7 @@ drawSpriteYellowDragon1 entry
         tcd
 
         short m
-        lda #$33
+        lda >spriteColor
 
         sta 0
         sta 1
@@ -382,7 +382,7 @@ drawSpriteYellowDragon1 entry
         tcd
 
         short m
-        lda #$33
+        lda >spriteColor
 
         sta 0
         sta 1
@@ -396,7 +396,7 @@ drawSpriteYellowDragon1 entry
         tcd
 
         short m
-        lda #$33
+        lda >spriteColor
 
         sta 0
         sta 1
@@ -411,7 +411,7 @@ drawSpriteYellowDragon1 entry
         tcd
 
         short m
-        lda #$33
+        lda >spriteColor
 
         sta 0
         sta 1
@@ -426,7 +426,7 @@ drawSpriteYellowDragon1 entry
         tcd
 
         short m
-        lda #$33
+        lda >spriteColor
 
         sta 0
         sta 1
@@ -444,7 +444,7 @@ drawSpriteYellowDragon1 entry
         tcd
 
         short m
-        lda #$33
+        lda >spriteColor
 
         sta 0
         sta 1
@@ -462,7 +462,7 @@ drawSpriteYellowDragon1 entry
         tcd
 
         short m
-        lda #$33
+        lda >spriteColor
 
         sta 2
         sta 3
@@ -476,7 +476,7 @@ drawSpriteYellowDragon1 entry
         tcd
 
         short m
-        lda #$33
+        lda >spriteColor
 
         sta 2
         sta 3
@@ -490,7 +490,7 @@ drawSpriteYellowDragon1 entry
         tcd
 
         short m
-        lda #$33
+        lda >spriteColor
 
         sta 4
         long m
@@ -501,7 +501,7 @@ drawSpriteYellowDragon1 entry
         tcd
 
         short m
-        lda #$33
+        lda >spriteColor
 
         sta 4
         long m
@@ -512,7 +512,7 @@ drawSpriteYellowDragon1 entry
         tcd
 
         short m
-        lda #$33
+        lda >spriteColor
 
         sta 0
         sta 4
@@ -527,7 +527,7 @@ drawSpriteYellowDragon1 entry
         tcd
 
         short m
-        lda #$33
+        lda >spriteColor
 
         sta 0
         sta 4
@@ -542,7 +542,7 @@ drawSpriteYellowDragon1 entry
         tcd
 
         short m
-        lda #$33
+        lda >spriteColor
 
         sta 0
         sta 1
@@ -556,7 +556,7 @@ drawSpriteYellowDragon1 entry
         tcd
 
         short m
-        lda #$33
+        lda >spriteColor
 
         sta 0
         sta 1
@@ -570,7 +570,7 @@ drawSpriteYellowDragon1 entry
         tcd
 
         short m
-        lda #$33
+        lda >spriteColor
 
         sta 2
         sta 3
@@ -586,7 +586,7 @@ drawSpriteYellowDragon1 entry
         tcd
 
         short m
-        lda #$33
+        lda >spriteColor
 
         sta 2
         sta 3
@@ -613,7 +613,7 @@ drawSpriteYellowDragon2 entry
         tcd
 
         short m
-        lda #$33
+        lda >spriteColor
 
         sta 1
         long m
@@ -624,7 +624,7 @@ drawSpriteYellowDragon2 entry
         tcd
 
         short m
-        lda #$33
+        lda >spriteColor
 
         sta 1
         long m
@@ -635,7 +635,7 @@ drawSpriteYellowDragon2 entry
         tcd
 
         short m
-        lda #$33
+        lda >spriteColor
 
         sta 2
         sta 5
@@ -648,7 +648,7 @@ drawSpriteYellowDragon2 entry
         tcd
 
         short m
-        lda #$33
+        lda >spriteColor
 
         sta 2
         sta 5
@@ -661,7 +661,7 @@ drawSpriteYellowDragon2 entry
         tcd
 
         short m
-        lda #$33
+        lda >spriteColor
 
         sta 3
         sta 4
@@ -676,7 +676,7 @@ drawSpriteYellowDragon2 entry
         tcd
 
         short m
-        lda #$33
+        lda >spriteColor
 
         sta 3
         sta 4
@@ -691,7 +691,7 @@ drawSpriteYellowDragon2 entry
         tcd
 
         short m
-        lda #$33
+        lda >spriteColor
 
         sta 4
         sta 6
@@ -704,7 +704,7 @@ drawSpriteYellowDragon2 entry
         tcd
 
         short m
-        lda #$33
+        lda >spriteColor
 
         sta 4
         sta 6
@@ -717,7 +717,7 @@ drawSpriteYellowDragon2 entry
         tcd
 
         short m
-        lda #$33
+        lda >spriteColor
 
         sta 4
         sta 5
@@ -730,7 +730,7 @@ drawSpriteYellowDragon2 entry
         tcd
 
         short m
-        lda #$33
+        lda >spriteColor
 
         sta 4
         sta 5
@@ -743,7 +743,7 @@ drawSpriteYellowDragon2 entry
         tcd
 
         short m
-        lda #$33
+        lda >spriteColor
 
         sta 3
         sta 4
@@ -757,7 +757,7 @@ drawSpriteYellowDragon2 entry
         tcd
 
         short m
-        lda #$33
+        lda >spriteColor
 
         sta 3
         sta 4
@@ -771,7 +771,7 @@ drawSpriteYellowDragon2 entry
         tcd
 
         short m
-        lda #$33
+        lda >spriteColor
 
         sta 2
         sta 5
@@ -783,7 +783,7 @@ drawSpriteYellowDragon2 entry
         tcd
 
         short m
-        lda #$33
+        lda >spriteColor
 
         sta 2
         sta 5
@@ -795,7 +795,7 @@ drawSpriteYellowDragon2 entry
         tcd
 
         short m
-        lda #$33
+        lda >spriteColor
 
         sta 1
         sta 5
@@ -807,7 +807,7 @@ drawSpriteYellowDragon2 entry
         tcd
 
         short m
-        lda #$33
+        lda >spriteColor
 
         sta 1
         sta 5
@@ -819,7 +819,7 @@ drawSpriteYellowDragon2 entry
         tcd
 
         short m
-        lda #$33
+        lda >spriteColor
 
         sta 0
         sta 4
@@ -833,7 +833,7 @@ drawSpriteYellowDragon2 entry
         tcd
 
         short m
-        lda #$33
+        lda >spriteColor
 
         sta 0
         sta 4
@@ -847,7 +847,7 @@ drawSpriteYellowDragon2 entry
         tcd
 
         short m
-        lda #$33
+        lda >spriteColor
 
         sta 3
         sta 4
@@ -861,7 +861,7 @@ drawSpriteYellowDragon2 entry
         tcd
 
         short m
-        lda #$33
+        lda >spriteColor
 
         sta 3
         sta 4
@@ -875,7 +875,7 @@ drawSpriteYellowDragon2 entry
         tcd
 
         short m
-        lda #$33
+        lda >spriteColor
 
         sta 2
         sta 3
@@ -891,7 +891,7 @@ drawSpriteYellowDragon2 entry
         tcd
 
         short m
-        lda #$33
+        lda >spriteColor
 
         sta 2
         sta 3
@@ -907,7 +907,7 @@ drawSpriteYellowDragon2 entry
         tcd
 
         short m
-        lda #$33
+        lda >spriteColor
 
         sta 1
         sta 2
@@ -924,7 +924,7 @@ drawSpriteYellowDragon2 entry
         tcd
 
         short m
-        lda #$33
+        lda >spriteColor
 
         sta 1
         sta 2
@@ -941,7 +941,7 @@ drawSpriteYellowDragon2 entry
         tcd
 
         short m
-        lda #$33
+        lda >spriteColor
 
         sta 1
         sta 2
@@ -958,7 +958,7 @@ drawSpriteYellowDragon2 entry
         tcd
 
         short m
-        lda #$33
+        lda >spriteColor
 
         sta 1
         sta 2
@@ -975,7 +975,7 @@ drawSpriteYellowDragon2 entry
         tcd
 
         short m
-        lda #$33
+        lda >spriteColor
 
         sta 1
         sta 2
@@ -992,7 +992,7 @@ drawSpriteYellowDragon2 entry
         tcd
 
         short m
-        lda #$33
+        lda >spriteColor
 
         sta 1
         sta 2
@@ -1009,7 +1009,7 @@ drawSpriteYellowDragon2 entry
         tcd
 
         short m
-        lda #$33
+        lda >spriteColor
 
         sta 1
         sta 2
@@ -1026,7 +1026,7 @@ drawSpriteYellowDragon2 entry
         tcd
 
         short m
-        lda #$33
+        lda >spriteColor
 
         sta 1
         sta 2
@@ -1043,7 +1043,7 @@ drawSpriteYellowDragon2 entry
         tcd
 
         short m
-        lda #$33
+        lda >spriteColor
 
         sta 2
         sta 3
@@ -1058,7 +1058,7 @@ drawSpriteYellowDragon2 entry
         tcd
 
         short m
-        lda #$33
+        lda >spriteColor
 
         sta 2
         sta 3
@@ -1073,7 +1073,7 @@ drawSpriteYellowDragon2 entry
         tcd
 
         short m
-        lda #$33
+        lda >spriteColor
 
         sta 3
         sta 4
@@ -1086,7 +1086,7 @@ drawSpriteYellowDragon2 entry
         tcd
 
         short m
-        lda #$33
+        lda >spriteColor
 
         sta 3
         sta 4
@@ -1099,7 +1099,7 @@ drawSpriteYellowDragon2 entry
         tcd
 
         short m
-        lda #$33
+        lda >spriteColor
 
         sta 4
         long m
@@ -1110,7 +1110,7 @@ drawSpriteYellowDragon2 entry
         tcd
 
         short m
-        lda #$33
+        lda >spriteColor
 
         sta 4
         long m
@@ -1121,7 +1121,7 @@ drawSpriteYellowDragon2 entry
         tcd
 
         short m
-        lda #$33
+        lda >spriteColor
 
         sta 0
         sta 1
@@ -1136,7 +1136,7 @@ drawSpriteYellowDragon2 entry
         tcd
 
         short m
-        lda #$33
+        lda >spriteColor
 
         sta 0
         sta 1
@@ -1151,7 +1151,7 @@ drawSpriteYellowDragon2 entry
         tcd
 
         short m
-        lda #$33
+        lda >spriteColor
 
         sta 0
         long m
@@ -1162,7 +1162,7 @@ drawSpriteYellowDragon2 entry
         tcd
 
         short m
-        lda #$33
+        lda >spriteColor
 
         sta 0
         long m
@@ -1173,7 +1173,7 @@ drawSpriteYellowDragon2 entry
         tcd
 
         short m
-        lda #$33
+        lda >spriteColor
 
         sta 0
         sta 1
@@ -1186,7 +1186,7 @@ drawSpriteYellowDragon2 entry
         tcd
 
         short m
-        lda #$33
+        lda >spriteColor
 
         sta 0
         sta 1
@@ -1199,7 +1199,7 @@ drawSpriteYellowDragon2 entry
         tcd
 
         short m
-        lda #$33
+        lda >spriteColor
 
         long m
 
@@ -1209,7 +1209,7 @@ drawSpriteYellowDragon2 entry
         tcd
 
         short m
-        lda #$33
+        lda >spriteColor
 
         long m
 
@@ -1219,7 +1219,7 @@ drawSpriteYellowDragon2 entry
         tcd
 
         short m
-        lda #$33
+        lda >spriteColor
 
         long m
 
@@ -1229,7 +1229,7 @@ drawSpriteYellowDragon2 entry
         tcd
 
         short m
-        lda #$33
+        lda >spriteColor
 
         long m
 
@@ -1239,7 +1239,7 @@ drawSpriteYellowDragon2 entry
         tcd
 
         short m
-        lda #$33
+        lda >spriteColor
 
         long m
 
@@ -1249,7 +1249,7 @@ drawSpriteYellowDragon2 entry
         tcd
 
         short m
-        lda #$33
+        lda >spriteColor
 
         long m
 
@@ -1259,7 +1259,7 @@ drawSpriteYellowDragon2 entry
         tcd
 
         short m
-        lda #$33
+        lda >spriteColor
 
         long m
 
@@ -1269,7 +1269,7 @@ drawSpriteYellowDragon2 entry
         tcd
 
         short m
-        lda #$33
+        lda >spriteColor
 
         long m
 
@@ -1279,7 +1279,7 @@ drawSpriteYellowDragon2 entry
         tcd
 
         short m
-        lda #$33
+        lda >spriteColor
 
         long m
 
@@ -1289,7 +1289,7 @@ drawSpriteYellowDragon2 entry
         tcd
 
         short m
-        lda #$33
+        lda >spriteColor
 
         long m
 
@@ -1299,7 +1299,7 @@ drawSpriteYellowDragon2 entry
         tcd
 
         short m
-        lda #$33
+        lda >spriteColor
 
         long m
 
@@ -1309,7 +1309,7 @@ drawSpriteYellowDragon2 entry
         tcd
 
         short m
-        lda #$33
+        lda >spriteColor
 
         long m
 
@@ -1319,7 +1319,7 @@ drawSpriteYellowDragon2 entry
         tcd
 
         short m
-        lda #$33
+        lda >spriteColor
 
         long m
 
@@ -1329,7 +1329,7 @@ drawSpriteYellowDragon2 entry
         tcd
 
         short m
-        lda #$33
+        lda >spriteColor
 
         long m
 
@@ -1339,7 +1339,7 @@ drawSpriteYellowDragon2 entry
         tcd
 
         short m
-        lda #$33
+        lda >spriteColor
 
         long m
 
@@ -1349,7 +1349,7 @@ drawSpriteYellowDragon2 entry
         tcd
 
         short m
-        lda #$33
+        lda >spriteColor
 
         long m
 
@@ -1359,7 +1359,7 @@ drawSpriteYellowDragon2 entry
         tcd
 
         short m
-        lda #$33
+        lda >spriteColor
 
         long m
 
@@ -1369,7 +1369,7 @@ drawSpriteYellowDragon2 entry
         tcd
 
         short m
-        lda #$33
+        lda >spriteColor
 
         long m
 
@@ -1379,7 +1379,7 @@ drawSpriteYellowDragon2 entry
         tcd
 
         short m
-        lda #$33
+        lda >spriteColor
 
         long m
 
@@ -1389,7 +1389,7 @@ drawSpriteYellowDragon2 entry
         tcd
 
         short m
-        lda #$33
+        lda >spriteColor
 
         long m
 
@@ -1399,7 +1399,7 @@ drawSpriteYellowDragon2 entry
         tcd
 
         short m
-        lda #$33
+        lda >spriteColor
 
         long m
 
@@ -1409,7 +1409,7 @@ drawSpriteYellowDragon2 entry
         tcd
 
         short m
-        lda #$33
+        lda >spriteColor
 
         long m
 
@@ -1419,7 +1419,7 @@ drawSpriteYellowDragon2 entry
         tcd
 
         short m
-        lda #$33
+        lda >spriteColor
 
         long m
 
@@ -1429,7 +1429,7 @@ drawSpriteYellowDragon2 entry
         tcd
 
         short m
-        lda #$33
+        lda >spriteColor
 
         long m
 
@@ -1439,7 +1439,7 @@ drawSpriteYellowDragon2 entry
         tcd
 
         short m
-        lda #$33
+        lda >spriteColor
 
         long m
 
@@ -1449,7 +1449,7 @@ drawSpriteYellowDragon2 entry
         tcd
 
         short m
-        lda #$33
+        lda >spriteColor
 
         long m
 
@@ -1459,7 +1459,7 @@ drawSpriteYellowDragon2 entry
         tcd
 
         short m
-        lda #$33
+        lda >spriteColor
 
         long m
 
@@ -1469,7 +1469,7 @@ drawSpriteYellowDragon2 entry
         tcd
 
         short m
-        lda #$33
+        lda >spriteColor
 
         long m
 
@@ -1479,7 +1479,7 @@ drawSpriteYellowDragon2 entry
         tcd
 
         short m
-        lda #$33
+        lda >spriteColor
 
         long m
 
@@ -1489,7 +1489,7 @@ drawSpriteYellowDragon2 entry
         tcd
 
         short m
-        lda #$33
+        lda >spriteColor
 
         long m
 
@@ -1499,7 +1499,7 @@ drawSpriteYellowDragon2 entry
         tcd
 
         short m
-        lda #$33
+        lda >spriteColor
 
         long m
 
@@ -1509,7 +1509,7 @@ drawSpriteYellowDragon2 entry
         tcd
 
         short m
-        lda #$33
+        lda >spriteColor
 
         long m
 
@@ -1519,7 +1519,7 @@ drawSpriteYellowDragon2 entry
         tcd
 
         short m
-        lda #$33
+        lda >spriteColor
 
         long m
 
@@ -1529,7 +1529,7 @@ drawSpriteYellowDragon2 entry
         tcd
 
         short m
-        lda #$33
+        lda >spriteColor
 
         long m
 
@@ -1539,7 +1539,7 @@ drawSpriteYellowDragon2 entry
         tcd
 
         short m
-        lda #$33
+        lda >spriteColor
 
         long m
 
@@ -1549,7 +1549,7 @@ drawSpriteYellowDragon2 entry
         tcd
 
         short m
-        lda #$33
+        lda >spriteColor
 
         long m
 
@@ -1559,7 +1559,7 @@ drawSpriteYellowDragon2 entry
         tcd
 
         short m
-        lda #$33
+        lda >spriteColor
 
         long m
 
@@ -1569,7 +1569,7 @@ drawSpriteYellowDragon2 entry
         tcd
 
         short m
-        lda #$33
+        lda >spriteColor
 
         long m
 
@@ -1579,7 +1579,7 @@ drawSpriteYellowDragon2 entry
         tcd
 
         short m
-        lda #$33
+        lda >spriteColor
 
         long m
 
@@ -1589,7 +1589,7 @@ drawSpriteYellowDragon2 entry
         tcd
 
         short m
-        lda #$33
+        lda >spriteColor
 
         long m
 
@@ -1599,7 +1599,7 @@ drawSpriteYellowDragon2 entry
         tcd
 
         short m
-        lda #$33
+        lda >spriteColor
 
         long m
 
@@ -1609,7 +1609,7 @@ drawSpriteYellowDragon2 entry
         tcd
 
         short m
-        lda #$33
+        lda >spriteColor
 
         long m
 
@@ -1619,7 +1619,7 @@ drawSpriteYellowDragon2 entry
         tcd
 
         short m
-        lda #$33
+        lda >spriteColor
 
         long m
 
@@ -1629,7 +1629,7 @@ drawSpriteYellowDragon2 entry
         tcd
 
         short m
-        lda #$33
+        lda >spriteColor
 
         long m
 
@@ -1639,7 +1639,7 @@ drawSpriteYellowDragon2 entry
         tcd
 
         short m
-        lda #$33
+        lda >spriteColor
 
         long m
 
@@ -1649,7 +1649,7 @@ drawSpriteYellowDragon2 entry
         tcd
 
         short m
-        lda #$33
+        lda >spriteColor
 
         long m
 
@@ -1659,7 +1659,7 @@ drawSpriteYellowDragon2 entry
         tcd
 
         short m
-        lda #$33
+        lda >spriteColor
 
         long m
 
@@ -1669,7 +1669,7 @@ drawSpriteYellowDragon2 entry
         tcd
 
         short m
-        lda #$33
+        lda >spriteColor
 
         long m
 
@@ -1679,7 +1679,7 @@ drawSpriteYellowDragon2 entry
         tcd
 
         short m
-        lda #$33
+        lda >spriteColor
 
         long m
 
@@ -1689,7 +1689,7 @@ drawSpriteYellowDragon2 entry
         tcd
 
         short m
-        lda #$33
+        lda >spriteColor
 
         long m
 
@@ -1699,7 +1699,7 @@ drawSpriteYellowDragon2 entry
         tcd
 
         short m
-        lda #$33
+        lda >spriteColor
 
         long m
 
@@ -1709,7 +1709,7 @@ drawSpriteYellowDragon2 entry
         tcd
 
         short m
-        lda #$33
+        lda >spriteColor
 
         long m
 
@@ -1719,7 +1719,7 @@ drawSpriteYellowDragon2 entry
         tcd
 
         short m
-        lda #$33
+        lda >spriteColor
 
         long m
 
@@ -1729,7 +1729,7 @@ drawSpriteYellowDragon2 entry
         tcd
 
         short m
-        lda #$33
+        lda >spriteColor
 
         long m
 
@@ -1739,7 +1739,7 @@ drawSpriteYellowDragon2 entry
         tcd
 
         short m
-        lda #$33
+        lda >spriteColor
 
         long m
 
@@ -1749,7 +1749,7 @@ drawSpriteYellowDragon2 entry
         tcd
 
         short m
-        lda #$33
+        lda >spriteColor
 
         long m
 
@@ -1759,7 +1759,7 @@ drawSpriteYellowDragon2 entry
         tcd
 
         short m
-        lda #$33
+        lda >spriteColor
 
         long m
 
@@ -1769,7 +1769,7 @@ drawSpriteYellowDragon2 entry
         tcd
 
         short m
-        lda #$33
+        lda >spriteColor
 
         long m
 
@@ -1779,7 +1779,7 @@ drawSpriteYellowDragon2 entry
         tcd
 
         short m
-        lda #$33
+        lda >spriteColor
 
         long m
 
@@ -1789,7 +1789,7 @@ drawSpriteYellowDragon2 entry
         tcd
 
         short m
-        lda #$33
+        lda >spriteColor
 
         long m
 
@@ -1799,7 +1799,7 @@ drawSpriteYellowDragon2 entry
         tcd
 
         short m
-        lda #$33
+        lda >spriteColor
 
         long m
 
@@ -1809,7 +1809,7 @@ drawSpriteYellowDragon2 entry
         tcd
 
         short m
-        lda #$33
+        lda >spriteColor
 
         long m
 
@@ -1819,7 +1819,7 @@ drawSpriteYellowDragon2 entry
         tcd
 
         short m
-        lda #$33
+        lda >spriteColor
 
         long m
 
@@ -1829,7 +1829,7 @@ drawSpriteYellowDragon2 entry
         tcd
 
         short m
-        lda #$33
+        lda >spriteColor
 
         long m
 
@@ -1839,7 +1839,7 @@ drawSpriteYellowDragon2 entry
         tcd
 
         short m
-        lda #$33
+        lda >spriteColor
 
         long m
 
@@ -1849,7 +1849,7 @@ drawSpriteYellowDragon2 entry
         tcd
 
         short m
-        lda #$33
+        lda >spriteColor
 
         long m
 
@@ -1859,7 +1859,7 @@ drawSpriteYellowDragon2 entry
         tcd
 
         short m
-        lda #$33
+        lda >spriteColor
 
         long m
 
@@ -1869,7 +1869,7 @@ drawSpriteYellowDragon2 entry
         tcd
 
         short m
-        lda #$33
+        lda >spriteColor
 
         long m
 
@@ -1879,7 +1879,7 @@ drawSpriteYellowDragon2 entry
         tcd
 
         short m
-        lda #$33
+        lda >spriteColor
 
         long m
 
@@ -1889,7 +1889,7 @@ drawSpriteYellowDragon2 entry
         tcd
 
         short m
-        lda #$33
+        lda >spriteColor
 
         long m
 
@@ -1899,7 +1899,7 @@ drawSpriteYellowDragon2 entry
         tcd
 
         short m
-        lda #$33
+        lda >spriteColor
 
         long m
 
@@ -1909,7 +1909,7 @@ drawSpriteYellowDragon2 entry
         tcd
 
         short m
-        lda #$33
+        lda >spriteColor
 
         long m
 
@@ -1919,7 +1919,7 @@ drawSpriteYellowDragon2 entry
         tcd
 
         short m
-        lda #$33
+        lda >spriteColor
 
         long m
 
@@ -1929,7 +1929,7 @@ drawSpriteYellowDragon2 entry
         tcd
 
         short m
-        lda #$33
+        lda >spriteColor
 
         long m
 
@@ -1939,7 +1939,7 @@ drawSpriteYellowDragon2 entry
         tcd
 
         short m
-        lda #$33
+        lda >spriteColor
 
         long m
 
@@ -1949,7 +1949,7 @@ drawSpriteYellowDragon2 entry
         tcd
 
         short m
-        lda #$33
+        lda >spriteColor
 
         long m
 
@@ -1959,7 +1959,7 @@ drawSpriteYellowDragon2 entry
         tcd
 
         short m
-        lda #$33
+        lda >spriteColor
 
         long m
 
@@ -1969,7 +1969,7 @@ drawSpriteYellowDragon2 entry
         tcd
 
         short m
-        lda #$33
+        lda >spriteColor
 
         long m
 
@@ -1979,7 +1979,7 @@ drawSpriteYellowDragon2 entry
         tcd
 
         short m
-        lda #$33
+        lda >spriteColor
 
         long m
 
@@ -1989,7 +1989,7 @@ drawSpriteYellowDragon2 entry
         tcd
 
         short m
-        lda #$33
+        lda >spriteColor
 
         long m
 
@@ -1999,7 +1999,7 @@ drawSpriteYellowDragon2 entry
         tcd
 
         short m
-        lda #$33
+        lda >spriteColor
 
         long m
 
@@ -2009,7 +2009,7 @@ drawSpriteYellowDragon2 entry
         tcd
 
         short m
-        lda #$33
+        lda >spriteColor
 
         long m
 
@@ -2019,7 +2019,7 @@ drawSpriteYellowDragon2 entry
         tcd
 
         short m
-        lda #$33
+        lda >spriteColor
 
         long m
 
@@ -2029,7 +2029,7 @@ drawSpriteYellowDragon2 entry
         tcd
 
         short m
-        lda #$33
+        lda >spriteColor
 
         long m
 
@@ -2039,7 +2039,7 @@ drawSpriteYellowDragon2 entry
         tcd
 
         short m
-        lda #$33
+        lda >spriteColor
 
         long m
 
@@ -2049,7 +2049,7 @@ drawSpriteYellowDragon2 entry
         tcd
 
         short m
-        lda #$33
+        lda >spriteColor
 
         long m
 
@@ -2059,7 +2059,7 @@ drawSpriteYellowDragon2 entry
         tcd
 
         short m
-        lda #$33
+        lda >spriteColor
 
         long m
 
@@ -2069,7 +2069,7 @@ drawSpriteYellowDragon2 entry
         tcd
 
         short m
-        lda #$33
+        lda >spriteColor
 
         long m
 
@@ -2079,7 +2079,7 @@ drawSpriteYellowDragon2 entry
         tcd
 
         short m
-        lda #$33
+        lda >spriteColor
 
         long m
 
@@ -2089,7 +2089,7 @@ drawSpriteYellowDragon2 entry
         tcd
 
         short m
-        lda #$33
+        lda >spriteColor
 
         long m
 
@@ -2099,7 +2099,7 @@ drawSpriteYellowDragon2 entry
         tcd
 
         short m
-        lda #$33
+        lda >spriteColor
 
         long m
 
@@ -2109,7 +2109,7 @@ drawSpriteYellowDragon2 entry
         tcd
 
         short m
-        lda #$33
+        lda >spriteColor
 
         long m
 
@@ -2119,7 +2119,7 @@ drawSpriteYellowDragon2 entry
         tcd
 
         short m
-        lda #$33
+        lda >spriteColor
 
         long m
 
@@ -2129,7 +2129,7 @@ drawSpriteYellowDragon2 entry
         tcd
 
         short m
-        lda #$33
+        lda >spriteColor
 
         long m
 
@@ -2139,7 +2139,7 @@ drawSpriteYellowDragon2 entry
         tcd
 
         short m
-        lda #$33
+        lda >spriteColor
 
         long m
 
@@ -2149,7 +2149,7 @@ drawSpriteYellowDragon2 entry
         tcd
 
         short m
-        lda #$33
+        lda >spriteColor
 
         long m
 
@@ -2159,7 +2159,7 @@ drawSpriteYellowDragon2 entry
         tcd
 
         short m
-        lda #$33
+        lda >spriteColor
 
         long m
 
@@ -2169,7 +2169,7 @@ drawSpriteYellowDragon2 entry
         tcd
 
         short m
-        lda #$33
+        lda >spriteColor
 
         long m
 
@@ -2179,7 +2179,7 @@ drawSpriteYellowDragon2 entry
         tcd
 
         short m
-        lda #$33
+        lda >spriteColor
 
         long m
 
@@ -2189,7 +2189,7 @@ drawSpriteYellowDragon2 entry
         tcd
 
         short m
-        lda #$33
+        lda >spriteColor
 
         long m
 
@@ -2199,7 +2199,7 @@ drawSpriteYellowDragon2 entry
         tcd
 
         short m
-        lda #$33
+        lda >spriteColor
 
         long m
 
@@ -2209,7 +2209,7 @@ drawSpriteYellowDragon2 entry
         tcd
 
         short m
-        lda #$33
+        lda >spriteColor
 
         long m
 
@@ -2219,7 +2219,7 @@ drawSpriteYellowDragon2 entry
         tcd
 
         short m
-        lda #$33
+        lda >spriteColor
 
         long m
 
@@ -2229,7 +2229,7 @@ drawSpriteYellowDragon2 entry
         tcd
 
         short m
-        lda #$33
+        lda >spriteColor
 
         long m
 
@@ -2239,7 +2239,7 @@ drawSpriteYellowDragon2 entry
         tcd
 
         short m
-        lda #$33
+        lda >spriteColor
 
         long m
 
@@ -2249,7 +2249,7 @@ drawSpriteYellowDragon2 entry
         tcd
 
         short m
-        lda #$33
+        lda >spriteColor
 
         long m
 
@@ -2259,7 +2259,7 @@ drawSpriteYellowDragon2 entry
         tcd
 
         short m
-        lda #$33
+        lda >spriteColor
 
         long m
 
@@ -2269,7 +2269,7 @@ drawSpriteYellowDragon2 entry
         tcd
 
         short m
-        lda #$33
+        lda >spriteColor
 
         long m
 
@@ -2279,7 +2279,7 @@ drawSpriteYellowDragon2 entry
         tcd
 
         short m
-        lda #$33
+        lda >spriteColor
 
         long m
 
@@ -2289,7 +2289,7 @@ drawSpriteYellowDragon2 entry
         tcd
 
         short m
-        lda #$33
+        lda >spriteColor
 
         long m
 
@@ -2299,7 +2299,7 @@ drawSpriteYellowDragon2 entry
         tcd
 
         short m
-        lda #$33
+        lda >spriteColor
 
         long m
 
@@ -2309,7 +2309,7 @@ drawSpriteYellowDragon2 entry
         tcd
 
         short m
-        lda #$33
+        lda >spriteColor
 
         long m
 
@@ -2319,7 +2319,7 @@ drawSpriteYellowDragon2 entry
         tcd
 
         short m
-        lda #$33
+        lda >spriteColor
 
         long m
 
@@ -2329,7 +2329,7 @@ drawSpriteYellowDragon2 entry
         tcd
 
         short m
-        lda #$33
+        lda >spriteColor
 
         long m
 
@@ -2339,7 +2339,7 @@ drawSpriteYellowDragon2 entry
         tcd
 
         short m
-        lda #$33
+        lda >spriteColor
 
         long m
 
@@ -2349,7 +2349,7 @@ drawSpriteYellowDragon2 entry
         tcd
 
         short m
-        lda #$33
+        lda >spriteColor
 
         long m
 
@@ -2359,7 +2359,7 @@ drawSpriteYellowDragon2 entry
         tcd
 
         short m
-        lda #$33
+        lda >spriteColor
 
         long m
 
@@ -2369,7 +2369,7 @@ drawSpriteYellowDragon2 entry
         tcd
 
         short m
-        lda #$33
+        lda >spriteColor
 
         long m
 
@@ -2379,7 +2379,7 @@ drawSpriteYellowDragon2 entry
         tcd
 
         short m
-        lda #$33
+        lda >spriteColor
 
         long m
 
@@ -2389,7 +2389,7 @@ drawSpriteYellowDragon2 entry
         tcd
 
         short m
-        lda #$33
+        lda >spriteColor
 
         long m
 
@@ -2399,7 +2399,7 @@ drawSpriteYellowDragon2 entry
         tcd
 
         short m
-        lda #$33
+        lda >spriteColor
 
         long m
 
@@ -2409,7 +2409,7 @@ drawSpriteYellowDragon2 entry
         tcd
 
         short m
-        lda #$33
+        lda >spriteColor
 
         long m
 
@@ -2419,7 +2419,7 @@ drawSpriteYellowDragon2 entry
         tcd
 
         short m
-        lda #$33
+        lda >spriteColor
 
         long m
 
@@ -2429,7 +2429,7 @@ drawSpriteYellowDragon2 entry
         tcd
 
         short m
-        lda #$33
+        lda >spriteColor
 
         long m
 
@@ -2439,7 +2439,7 @@ drawSpriteYellowDragon2 entry
         tcd
 
         short m
-        lda #$33
+        lda >spriteColor
 
         long m
 
@@ -2449,7 +2449,7 @@ drawSpriteYellowDragon2 entry
         tcd
 
         short m
-        lda #$33
+        lda >spriteColor
 
         long m
 
@@ -2459,7 +2459,7 @@ drawSpriteYellowDragon2 entry
         tcd
 
         short m
-        lda #$33
+        lda >spriteColor
 
         long m
 
@@ -2469,7 +2469,7 @@ drawSpriteYellowDragon2 entry
         tcd
 
         short m
-        lda #$33
+        lda >spriteColor
 
         long m
 
@@ -2479,7 +2479,7 @@ drawSpriteYellowDragon2 entry
         tcd
 
         short m
-        lda #$33
+        lda >spriteColor
 
         long m
 
@@ -2489,7 +2489,7 @@ drawSpriteYellowDragon2 entry
         tcd
 
         short m
-        lda #$33
+        lda >spriteColor
 
         long m
 
@@ -2499,7 +2499,7 @@ drawSpriteYellowDragon2 entry
         tcd
 
         short m
-        lda #$33
+        lda >spriteColor
 
         long m
 
@@ -2509,7 +2509,7 @@ drawSpriteYellowDragon2 entry
         tcd
 
         short m
-        lda #$33
+        lda >spriteColor
 
         long m
 
@@ -2519,7 +2519,7 @@ drawSpriteYellowDragon2 entry
         tcd
 
         short m
-        lda #$33
+        lda >spriteColor
 
         long m
 
@@ -2529,7 +2529,7 @@ drawSpriteYellowDragon2 entry
         tcd
 
         short m
-        lda #$33
+        lda >spriteColor
 
         long m
 
@@ -2539,7 +2539,7 @@ drawSpriteYellowDragon2 entry
         tcd
 
         short m
-        lda #$33
+        lda >spriteColor
 
         long m
 
@@ -2549,7 +2549,7 @@ drawSpriteYellowDragon2 entry
         tcd
 
         short m
-        lda #$33
+        lda >spriteColor
 
         long m
 
@@ -2559,7 +2559,7 @@ drawSpriteYellowDragon2 entry
         tcd
 
         short m
-        lda #$33
+        lda >spriteColor
 
         long m
 
@@ -2569,7 +2569,7 @@ drawSpriteYellowDragon2 entry
         tcd
 
         short m
-        lda #$33
+        lda >spriteColor
 
         long m
 
@@ -2579,7 +2579,7 @@ drawSpriteYellowDragon2 entry
         tcd
 
         short m
-        lda #$33
+        lda >spriteColor
 
         long m
 
@@ -2589,7 +2589,7 @@ drawSpriteYellowDragon2 entry
         tcd
 
         short m
-        lda #$33
+        lda >spriteColor
 
         long m
 
@@ -2599,7 +2599,7 @@ drawSpriteYellowDragon2 entry
         tcd
 
         short m
-        lda #$33
+        lda >spriteColor
 
         long m
 
@@ -2609,7 +2609,7 @@ drawSpriteYellowDragon2 entry
         tcd
 
         short m
-        lda #$33
+        lda >spriteColor
 
         long m
 
@@ -2619,7 +2619,7 @@ drawSpriteYellowDragon2 entry
         tcd
 
         short m
-        lda #$33
+        lda >spriteColor
 
         long m
 
@@ -2629,7 +2629,7 @@ drawSpriteYellowDragon2 entry
         tcd
 
         short m
-        lda #$33
+        lda >spriteColor
 
         long m
 
@@ -2639,7 +2639,7 @@ drawSpriteYellowDragon2 entry
         tcd
 
         short m
-        lda #$33
+        lda >spriteColor
 
         long m
 
@@ -2649,7 +2649,7 @@ drawSpriteYellowDragon2 entry
         tcd
 
         short m
-        lda #$33
+        lda >spriteColor
 
         long m
 
@@ -2659,7 +2659,7 @@ drawSpriteYellowDragon2 entry
         tcd
 
         short m
-        lda #$33
+        lda >spriteColor
 
         long m
 
@@ -2669,7 +2669,7 @@ drawSpriteYellowDragon2 entry
         tcd
 
         short m
-        lda #$33
+        lda >spriteColor
 
         long m
 
@@ -2679,7 +2679,7 @@ drawSpriteYellowDragon2 entry
         tcd
 
         short m
-        lda #$33
+        lda >spriteColor
 
         long m
 
@@ -2689,7 +2689,7 @@ drawSpriteYellowDragon2 entry
         tcd
 
         short m
-        lda #$33
+        lda >spriteColor
 
         long m
 
@@ -2699,7 +2699,7 @@ drawSpriteYellowDragon2 entry
         tcd
 
         short m
-        lda #$33
+        lda >spriteColor
 
         long m
 
@@ -2709,7 +2709,7 @@ drawSpriteYellowDragon2 entry
         tcd
 
         short m
-        lda #$33
+        lda >spriteColor
 
         long m
 
@@ -2719,7 +2719,7 @@ drawSpriteYellowDragon2 entry
         tcd
 
         short m
-        lda #$33
+        lda >spriteColor
 
         long m
 
@@ -2729,7 +2729,7 @@ drawSpriteYellowDragon2 entry
         tcd
 
         short m
-        lda #$33
+        lda >spriteColor
 
         long m
 
@@ -2739,7 +2739,7 @@ drawSpriteYellowDragon2 entry
         tcd
 
         short m
-        lda #$33
+        lda >spriteColor
 
         long m
 
@@ -2749,7 +2749,7 @@ drawSpriteYellowDragon2 entry
         tcd
 
         short m
-        lda #$33
+        lda >spriteColor
 
         long m
 
@@ -2759,7 +2759,7 @@ drawSpriteYellowDragon2 entry
         tcd
 
         short m
-        lda #$33
+        lda >spriteColor
 
         long m
 
@@ -2769,7 +2769,7 @@ drawSpriteYellowDragon2 entry
         tcd
 
         short m
-        lda #$33
+        lda >spriteColor
 
         long m
 
@@ -2779,7 +2779,7 @@ drawSpriteYellowDragon2 entry
         tcd
 
         short m
-        lda #$33
+        lda >spriteColor
 
         long m
 
@@ -2789,7 +2789,7 @@ drawSpriteYellowDragon2 entry
         tcd
 
         short m
-        lda #$33
+        lda >spriteColor
 
         long m
 
@@ -2799,7 +2799,7 @@ drawSpriteYellowDragon2 entry
         tcd
 
         short m
-        lda #$33
+        lda >spriteColor
 
         long m
 
@@ -2809,7 +2809,7 @@ drawSpriteYellowDragon2 entry
         tcd
 
         short m
-        lda #$33
+        lda >spriteColor
 
         long m
 
@@ -2819,7 +2819,7 @@ drawSpriteYellowDragon2 entry
         tcd
 
         short m
-        lda #$33
+        lda >spriteColor
 
         long m
 
@@ -2829,7 +2829,7 @@ drawSpriteYellowDragon2 entry
         tcd
 
         short m
-        lda #$33
+        lda >spriteColor
 
         long m
 
@@ -2839,7 +2839,7 @@ drawSpriteYellowDragon2 entry
         tcd
 
         short m
-        lda #$33
+        lda >spriteColor
 
         long m
 
@@ -2849,7 +2849,7 @@ drawSpriteYellowDragon2 entry
         tcd
 
         short m
-        lda #$33
+        lda >spriteColor
 
         long m
 
@@ -2859,7 +2859,7 @@ drawSpriteYellowDragon2 entry
         tcd
 
         short m
-        lda #$33
+        lda >spriteColor
 
         long m
 
@@ -2869,7 +2869,7 @@ drawSpriteYellowDragon2 entry
         tcd
 
         short m
-        lda #$33
+        lda >spriteColor
 
         long m
 
@@ -2879,7 +2879,7 @@ drawSpriteYellowDragon2 entry
         tcd
 
         short m
-        lda #$33
+        lda >spriteColor
 
         long m
 
@@ -2889,7 +2889,7 @@ drawSpriteYellowDragon2 entry
         tcd
 
         short m
-        lda #$33
+        lda >spriteColor
 
         long m
 
@@ -2899,7 +2899,7 @@ drawSpriteYellowDragon2 entry
         tcd
 
         short m
-        lda #$33
+        lda >spriteColor
 
         long m
 
@@ -2909,7 +2909,7 @@ drawSpriteYellowDragon2 entry
         tcd
 
         short m
-        lda #$33
+        lda >spriteColor
 
         long m
 
@@ -2919,7 +2919,7 @@ drawSpriteYellowDragon2 entry
         tcd
 
         short m
-        lda #$33
+        lda >spriteColor
 
         long m
 
@@ -2929,7 +2929,7 @@ drawSpriteYellowDragon2 entry
         tcd
 
         short m
-        lda #$33
+        lda >spriteColor
 
         long m
 
@@ -2939,7 +2939,7 @@ drawSpriteYellowDragon2 entry
         tcd
 
         short m
-        lda #$33
+        lda >spriteColor
 
         long m
 
@@ -2949,7 +2949,7 @@ drawSpriteYellowDragon2 entry
         tcd
 
         short m
-        lda #$33
+        lda >spriteColor
 
         long m
 
@@ -2959,7 +2959,7 @@ drawSpriteYellowDragon2 entry
         tcd
 
         short m
-        lda #$33
+        lda >spriteColor
 
         long m
 
@@ -2969,7 +2969,7 @@ drawSpriteYellowDragon2 entry
         tcd
 
         short m
-        lda #$33
+        lda >spriteColor
 
         long m
 
@@ -2979,7 +2979,7 @@ drawSpriteYellowDragon2 entry
         tcd
 
         short m
-        lda #$33
+        lda >spriteColor
 
         long m
 
@@ -2989,7 +2989,7 @@ drawSpriteYellowDragon2 entry
         tcd
 
         short m
-        lda #$33
+        lda >spriteColor
 
         long m
 
@@ -2999,7 +2999,7 @@ drawSpriteYellowDragon2 entry
         tcd
 
         short m
-        lda #$33
+        lda >spriteColor
 
         long m
 
@@ -3009,7 +3009,7 @@ drawSpriteYellowDragon2 entry
         tcd
 
         short m
-        lda #$33
+        lda >spriteColor
 
         long m
 
@@ -3019,7 +3019,7 @@ drawSpriteYellowDragon2 entry
         tcd
 
         short m
-        lda #$33
+        lda >spriteColor
 
         long m
 
@@ -3029,7 +3029,7 @@ drawSpriteYellowDragon2 entry
         tcd
 
         short m
-        lda #$33
+        lda >spriteColor
 
         long m
 
@@ -3039,7 +3039,7 @@ drawSpriteYellowDragon2 entry
         tcd
 
         short m
-        lda #$33
+        lda >spriteColor
 
         long m
 
@@ -3049,7 +3049,7 @@ drawSpriteYellowDragon2 entry
         tcd
 
         short m
-        lda #$33
+        lda >spriteColor
 
         long m
 
@@ -3059,7 +3059,7 @@ drawSpriteYellowDragon2 entry
         tcd
 
         short m
-        lda #$33
+        lda >spriteColor
 
         long m
 
@@ -3069,7 +3069,7 @@ drawSpriteYellowDragon2 entry
         tcd
 
         short m
-        lda #$33
+        lda >spriteColor
 
         long m
 
@@ -3079,7 +3079,7 @@ drawSpriteYellowDragon2 entry
         tcd
 
         short m
-        lda #$33
+        lda >spriteColor
 
         long m
 
@@ -3089,7 +3089,7 @@ drawSpriteYellowDragon2 entry
         tcd
 
         short m
-        lda #$33
+        lda >spriteColor
 
         long m
 
@@ -3099,7 +3099,7 @@ drawSpriteYellowDragon2 entry
         tcd
 
         short m
-        lda #$33
+        lda >spriteColor
 
         long m
 
@@ -3109,7 +3109,7 @@ drawSpriteYellowDragon2 entry
         tcd
 
         short m
-        lda #$33
+        lda >spriteColor
 
         long m
 
@@ -3119,7 +3119,7 @@ drawSpriteYellowDragon2 entry
         tcd
 
         short m
-        lda #$33
+        lda >spriteColor
 
         long m
 
@@ -3129,7 +3129,7 @@ drawSpriteYellowDragon2 entry
         tcd
 
         short m
-        lda #$33
+        lda >spriteColor
 
         long m
 
@@ -3139,7 +3139,7 @@ drawSpriteYellowDragon2 entry
         tcd
 
         short m
-        lda #$33
+        lda >spriteColor
 
         long m
 
@@ -3149,7 +3149,7 @@ drawSpriteYellowDragon2 entry
         tcd
 
         short m
-        lda #$33
+        lda >spriteColor
 
         long m
 
@@ -3159,7 +3159,7 @@ drawSpriteYellowDragon2 entry
         tcd
 
         short m
-        lda #$33
+        lda >spriteColor
 
         long m
 
@@ -3169,7 +3169,7 @@ drawSpriteYellowDragon2 entry
         tcd
 
         short m
-        lda #$33
+        lda >spriteColor
 
         long m
 
@@ -3179,7 +3179,7 @@ drawSpriteYellowDragon2 entry
         tcd
 
         short m
-        lda #$33
+        lda >spriteColor
 
         long m
 
@@ -3189,7 +3189,7 @@ drawSpriteYellowDragon2 entry
         tcd
 
         short m
-        lda #$33
+        lda >spriteColor
 
         long m
 
@@ -3199,7 +3199,7 @@ drawSpriteYellowDragon2 entry
         tcd
 
         short m
-        lda #$33
+        lda >spriteColor
 
         long m
 
@@ -3209,7 +3209,7 @@ drawSpriteYellowDragon2 entry
         tcd
 
         short m
-        lda #$33
+        lda >spriteColor
 
         long m
 
@@ -3219,7 +3219,7 @@ drawSpriteYellowDragon2 entry
         tcd
 
         short m
-        lda #$33
+        lda >spriteColor
 
         long m
 
@@ -3229,7 +3229,7 @@ drawSpriteYellowDragon2 entry
         tcd
 
         short m
-        lda #$33
+        lda >spriteColor
 
         long m
 
@@ -3239,7 +3239,7 @@ drawSpriteYellowDragon2 entry
         tcd
 
         short m
-        lda #$33
+        lda >spriteColor
 
         long m
 
@@ -3249,7 +3249,7 @@ drawSpriteYellowDragon2 entry
         tcd
 
         short m
-        lda #$33
+        lda >spriteColor
 
         long m
 
@@ -3259,7 +3259,7 @@ drawSpriteYellowDragon2 entry
         tcd
 
         short m
-        lda #$33
+        lda >spriteColor
 
         long m
 
@@ -3269,7 +3269,7 @@ drawSpriteYellowDragon2 entry
         tcd
 
         short m
-        lda #$33
+        lda >spriteColor
 
         long m
 
@@ -3279,7 +3279,7 @@ drawSpriteYellowDragon2 entry
         tcd
 
         short m
-        lda #$33
+        lda >spriteColor
 
         long m
 
@@ -3289,7 +3289,7 @@ drawSpriteYellowDragon2 entry
         tcd
 
         short m
-        lda #$33
+        lda >spriteColor
 
         long m
 
@@ -3299,7 +3299,7 @@ drawSpriteYellowDragon2 entry
         tcd
 
         short m
-        lda #$33
+        lda >spriteColor
 
         long m
 
@@ -3309,7 +3309,7 @@ drawSpriteYellowDragon2 entry
         tcd
 
         short m
-        lda #$33
+        lda >spriteColor
 
         long m
 
@@ -3319,7 +3319,7 @@ drawSpriteYellowDragon2 entry
         tcd
 
         short m
-        lda #$33
+        lda >spriteColor
 
         long m
 
@@ -3329,7 +3329,7 @@ drawSpriteYellowDragon2 entry
         tcd
 
         short m
-        lda #$33
+        lda >spriteColor
 
         long m
 
@@ -3350,7 +3350,7 @@ drawSpriteYellowDragon3 entry
         tcd
 
         short m
-        lda #$33
+        lda >spriteColor
 
         sta 4
         sta 5
@@ -3362,7 +3362,7 @@ drawSpriteYellowDragon3 entry
         tcd
 
         short m
-        lda #$33
+        lda >spriteColor
 
         sta 4
         sta 5
@@ -3374,7 +3374,7 @@ drawSpriteYellowDragon3 entry
         tcd
 
         short m
-        lda #$33
+        lda >spriteColor
 
         sta 4
         sta 5
@@ -3386,7 +3386,7 @@ drawSpriteYellowDragon3 entry
         tcd
 
         short m
-        lda #$33
+        lda >spriteColor
 
         sta 4
         sta 5
@@ -3398,7 +3398,7 @@ drawSpriteYellowDragon3 entry
         tcd
 
         short m
-        lda #$33
+        lda >spriteColor
 
         sta 4
         sta 5
@@ -3411,7 +3411,7 @@ drawSpriteYellowDragon3 entry
         tcd
 
         short m
-        lda #$33
+        lda >spriteColor
 
         sta 4
         sta 5
@@ -3424,7 +3424,7 @@ drawSpriteYellowDragon3 entry
         tcd
 
         short m
-        lda #$33
+        lda >spriteColor
 
         sta 3
         sta 4
@@ -3438,7 +3438,7 @@ drawSpriteYellowDragon3 entry
         tcd
 
         short m
-        lda #$33
+        lda >spriteColor
 
         sta 3
         sta 4
@@ -3452,7 +3452,7 @@ drawSpriteYellowDragon3 entry
         tcd
 
         short m
-        lda #$33
+        lda >spriteColor
 
         sta 1
         sta 2
@@ -3469,7 +3469,7 @@ drawSpriteYellowDragon3 entry
         tcd
 
         short m
-        lda #$33
+        lda >spriteColor
 
         sta 1
         sta 2
@@ -3486,7 +3486,7 @@ drawSpriteYellowDragon3 entry
         tcd
 
         short m
-        lda #$33
+        lda >spriteColor
 
         sta 0
         sta 1
@@ -3501,7 +3501,7 @@ drawSpriteYellowDragon3 entry
         tcd
 
         short m
-        lda #$33
+        lda >spriteColor
 
         sta 0
         sta 1
@@ -3516,7 +3516,7 @@ drawSpriteYellowDragon3 entry
         tcd
 
         short m
-        lda #$33
+        lda >spriteColor
 
         sta 0
         long m
@@ -3527,7 +3527,7 @@ drawSpriteYellowDragon3 entry
         tcd
 
         short m
-        lda #$33
+        lda >spriteColor
 
         sta 0
         long m
@@ -3538,7 +3538,7 @@ drawSpriteYellowDragon3 entry
         tcd
 
         short m
-        lda #$33
+        lda >spriteColor
 
         sta 0
         sta 1
@@ -3554,7 +3554,7 @@ drawSpriteYellowDragon3 entry
         tcd
 
         short m
-        lda #$33
+        lda >spriteColor
 
         sta 0
         sta 1
@@ -3570,7 +3570,7 @@ drawSpriteYellowDragon3 entry
         tcd
 
         short m
-        lda #$33
+        lda >spriteColor
 
         sta 0
         sta 1
@@ -3587,7 +3587,7 @@ drawSpriteYellowDragon3 entry
         tcd
 
         short m
-        lda #$33
+        lda >spriteColor
 
         sta 0
         sta 1
@@ -3604,7 +3604,7 @@ drawSpriteYellowDragon3 entry
         tcd
 
         short m
-        lda #$33
+        lda >spriteColor
 
         sta 0
         sta 1
@@ -3621,7 +3621,7 @@ drawSpriteYellowDragon3 entry
         tcd
 
         short m
-        lda #$33
+        lda >spriteColor
 
         sta 0
         sta 1
@@ -3638,7 +3638,7 @@ drawSpriteYellowDragon3 entry
         tcd
 
         short m
-        lda #$33
+        lda >spriteColor
 
         sta 1
         sta 2
@@ -3654,7 +3654,7 @@ drawSpriteYellowDragon3 entry
         tcd
 
         short m
-        lda #$33
+        lda >spriteColor
 
         sta 1
         sta 2
@@ -3670,7 +3670,7 @@ drawSpriteYellowDragon3 entry
         tcd
 
         short m
-        lda #$33
+        lda >spriteColor
 
         sta 1
         sta 2
@@ -3684,7 +3684,7 @@ drawSpriteYellowDragon3 entry
         tcd
 
         short m
-        lda #$33
+        lda >spriteColor
 
         sta 1
         sta 2
