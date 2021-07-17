@@ -16,7 +16,7 @@ spriteDragonDraw start spriteDragonDrawSeg
 
 
 
-drawSpriteYellowDragon1 entry
+drawSpriteDragon1 entry
 
         spriteGetDrawAddress
         _spriteHeader
@@ -601,7 +601,7 @@ drawSpriteYellowDragon1 entry
         _spriteFooter
         rtl
 
-drawSpriteYellowDragon2 entry
+drawSpriteDragon2 entry
 
         spriteGetDrawAddress
         _spriteHeader
@@ -3338,7 +3338,7 @@ drawSpriteYellowDragon2 entry
         _spriteFooter
         rtl
 
-drawSpriteYellowDragon3 entry
+drawSpriteDragon3 entry
 
         spriteGetDrawAddress
         _spriteHeader
@@ -3696,8 +3696,6 @@ drawSpriteYellowDragon3 entry
 
         _spriteFooter
         rtl
-
-
 
 
 

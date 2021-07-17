@@ -185,8 +185,8 @@ hitObject anop
 
         ldx #OBJECT_PLAYER
         lda >objectLinkedObjectList,x
-        cmp #OBJECT_NONE
-        bne alreadyCarrying
+;        cmp #OBJECT_NONE
+;        bne alreadyCarrying
 
 ; Pick up the object!
 

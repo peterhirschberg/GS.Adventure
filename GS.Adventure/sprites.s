@@ -101,7 +101,9 @@ drawYellowKey entry
         lda >objectPositionYList,x
         bmi drawYellowKeyDone
         sta >spriteY
-        jsl drawSpriteYellowKey
+        lda #COLOR_YELLOW
+        sta >spriteColor
+        jsl drawSpriteKey
 drawYellowKeyDone anop
         rts
 
@@ -125,7 +127,9 @@ drawWhiteKey entry
         lda >objectPositionYList,x
         bmi drawWhiteKeyDone
         sta >spriteY
-        jsl drawSpriteWhiteKey
+        lda #COLOR_WHITE
+        sta >spriteColor
+        jsl drawSpriteKey
 drawWhiteKeyDone anop
         rts
 
@@ -149,7 +153,9 @@ drawBlackKey entry
         lda >objectPositionYList,x
         bmi drawBlackKeyDone
         sta >spriteY
-        jsl drawSpriteBlackKey
+        lda #COLOR_BLACK
+        sta >spriteColor
+        jsl drawSpriteKey
 drawBlackKeyDone anop
         rts
 
@@ -247,7 +253,7 @@ drawRedDragon entry
         bmi drawRedDragonDone
         lda #COLOR_RED
         sta >spriteColor
-        jsl drawSpriteYellowDragon1
+        jsl drawSpriteDragon1
 drawRedDragonDone anop
         rts
 
@@ -273,7 +279,7 @@ drawGreenDragon entry
         sta >spriteY
         lda #COLOR_LIMEGREEN
         sta >spriteColor
-        jsl drawSpriteYellowDragon1
+        jsl drawSpriteDragon1
 drawGreenDragonDone anop
         rts
 
@@ -299,7 +305,7 @@ drawYellowDragon entry
         sta >spriteY
         lda #COLOR_YELLOW
         sta >spriteColor
-        jsl drawSpriteYellowDragon1
+        jsl drawSpriteDragon1
 drawYellowDragonDone anop
         rts
 

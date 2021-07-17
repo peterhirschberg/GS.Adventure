@@ -15,7 +15,7 @@ spriteKey start spriteKeySeg
         using spriteData
 
 
-drawSpriteYellowKey entry
+drawSpriteKey entry
 
         spriteGetDrawAddress
         _spriteHeader
@@ -27,7 +27,7 @@ drawSpriteYellowKey entry
         tcd
 
         short m
-        lda #$33
+        lda >spriteColor
 
         sta 5
         sta 6
@@ -40,7 +40,7 @@ drawSpriteYellowKey entry
         tcd
 
         short m
-        lda #$33
+        lda >spriteColor
 
         sta 5
         sta 6
@@ -53,7 +53,7 @@ drawSpriteYellowKey entry
         tcd
 
         short m
-        lda #$33
+        lda >spriteColor
 
         sta 0
         sta 1
@@ -70,7 +70,7 @@ drawSpriteYellowKey entry
         tcd
 
         short m
-        lda #$33
+        lda >spriteColor
 
         sta 0
         sta 1
@@ -87,7 +87,7 @@ drawSpriteYellowKey entry
         tcd
 
         short m
-        lda #$33
+        lda >spriteColor
 
         sta 0
         sta 2
@@ -102,7 +102,7 @@ drawSpriteYellowKey entry
         tcd
 
         short m
-        lda #$33
+        lda >spriteColor
 
         sta 0
         sta 2
@@ -116,207 +116,6 @@ drawSpriteYellowKey entry
         _spriteFooter
         rtl
 
-drawSpriteWhiteKey entry
-
-        spriteGetDrawAddress
-        _spriteHeader
-
-
-        lda >drawAddress
-        clc
-        adc #0
-        tcd
-
-        short m
-        lda #$22
-
-        sta 5
-        sta 6
-        sta 7
-        long m
-
-        lda >drawAddress
-        clc
-        adc #160
-        tcd
-
-        short m
-        lda #$22
-
-        sta 5
-        sta 6
-        sta 7
-        long m
-
-        lda >drawAddress
-        clc
-        adc #320
-        tcd
-
-        short m
-        lda #$22
-
-        sta 0
-        sta 1
-        sta 2
-        sta 3
-        sta 4
-        sta 5
-        sta 7
-        long m
-
-        lda >drawAddress
-        clc
-        adc #480
-        tcd
-
-        short m
-        lda #$22
-
-        sta 0
-        sta 1
-        sta 2
-        sta 3
-        sta 4
-        sta 5
-        sta 7
-        long m
-
-        lda >drawAddress
-        clc
-        adc #640
-        tcd
-
-        short m
-        lda #$22
-
-        sta 0
-        sta 2
-        sta 5
-        sta 6
-        sta 7
-        long m
-
-        lda >drawAddress
-        clc
-        adc #800
-        tcd
-
-        short m
-        lda #$22
-
-        sta 0
-        sta 2
-        sta 5
-        sta 6
-        sta 7
-        long m
-
-        long m
-
-        _spriteFooter
-        rtl
-
-drawSpriteBlackKey entry
-
-        spriteGetDrawAddress
-        _spriteHeader
-
-
-        lda >drawAddress
-        clc
-        adc #0
-        tcd
-
-        short m
-        lda #$00
-
-        sta 5
-        sta 6
-        sta 7
-        long m
-
-        lda >drawAddress
-        clc
-        adc #160
-        tcd
-
-        short m
-        lda #$00
-
-        sta 5
-        sta 6
-        sta 7
-        long m
-
-        lda >drawAddress
-        clc
-        adc #320
-        tcd
-
-        short m
-        lda #$00
-
-        sta 0
-        sta 1
-        sta 2
-        sta 3
-        sta 4
-        sta 5
-        sta 7
-        long m
-
-        lda >drawAddress
-        clc
-        adc #480
-        tcd
-
-        short m
-        lda #$00
-
-        sta 0
-        sta 1
-        sta 2
-        sta 3
-        sta 4
-        sta 5
-        sta 7
-        long m
-
-        lda >drawAddress
-        clc
-        adc #640
-        tcd
-
-        short m
-        lda #$00
-
-        sta 0
-        sta 2
-        sta 5
-        sta 6
-        sta 7
-        long m
-
-        lda >drawAddress
-        clc
-        adc #800
-        tcd
-
-        short m
-        lda #$00
-
-        sta 0
-        sta 2
-        sta 5
-        sta 6
-        sta 7
-        long m
-
-        long m
-
-        _spriteFooter
-        rtl
 
 eraseSpriteKey entry
 
