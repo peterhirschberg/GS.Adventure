@@ -17,8 +17,6 @@ objects start
 
 initObjectPositions entry
 
-; TODO - check for game 1,2 or 3
-
         ldx #OBJECT_PORT1
         jsr setInitialObjectValues
 
@@ -49,10 +47,26 @@ initObjectPositions entry
         ldx #OBJECT_BRIDGE
         jsr setInitialObjectValues
 
+        ldx #OBJECT_DOT
+        jsr setInitialObjectValues
+
+        ldx #OBJECT_CHALISE
+        jsr setInitialObjectValues
+
+        ldx #OBJECT_MAGNET
+        jsr setInitialObjectValues
+
+        ldx #OBJECT_AUTHOR
+        jsr setInitialObjectValues
+
+        ldx #OBJECT_NUMBERS
+        jsr setInitialObjectValues
+
         rts
 
 
 setInitialObjectValues entry
+; TODO - check for game 1,2 or 3
 
         lda >objectInitialPositionXGame1List,x
         adjustSpriteX
@@ -69,7 +83,6 @@ setInitialObjectValues entry
         sta >objectStateList,x
 
         rts
-
 
 
 runObjects entry
@@ -102,6 +115,18 @@ runObjects entry
         jsr updateObjectValues
 
         ldx #OBJECT_BRIDGE
+        jsr updateObjectValues
+
+        ldx #OBJECT_DOT
+        jsr updateObjectValues
+
+        ldx #OBJECT_CHALISE
+        jsr updateObjectValues
+
+        ldx #OBJECT_MAGNET
+        jsr updateObjectValues
+
+        ldx #OBJECT_SWORD
         jsr updateObjectValues
 
         rts
@@ -137,6 +162,28 @@ getHeightForObjectState entry
         cmp #OBJECT_PORT3
         beq getPortHeight
 
+        cmp #OBJECT_YELLOWDRAGON
+        beq getDragonHeight
+        cmp #OBJECT_GREENDRAGON
+        beq getDragonHeight
+        cmp #OBJECT_REDDRAGON
+        beq getDragonHeight
+
+        cmp #OBJECT_MAGNET
+        beq getMagnetHeight
+
+        cmp #OBJECT_CHALISE
+        beq getChaliseHeight
+
+        cmp #OBJECT_SWORD
+        beq getSwordHeight
+
+        cmp #OBJECT_DOT
+        beq getDotHeight
+
+        cmp #OBJECT_BAT
+        beq getBatHeight
+
         cmp #OBJECT_BRIDGE
         beq getBridgeHeight
 
@@ -147,8 +194,31 @@ getKeyHeight anop
         rts
 
 getPortHeight anop
-; TODO: STATE
         lda #OBJECT_HEIGHT_PORT_CLOSED
+        rts
+
+getDragonHeight anop
+        lda #OBJECT_HEIGHT_DRAGON1
+        rts
+
+getMagnetHeight anop
+        lda #OBJECT_HEIGHT_MAGNET
+        rts
+
+getChaliseHeight anop
+        lda #OBJECT_HEIGHT_CHALISE
+        rts
+
+getSwordHeight anop
+        lda #OBJECT_HEIGHT_SWORD
+        rts
+
+getDotHeight anop
+        lda #OBJECT_HEIGHT_DOT
+        rts
+
+getBatHeight anop
+        lda #OBJECT_HEIGHT_BAT1
         rts
 
 getBridgeHeight anop
@@ -174,6 +244,28 @@ getWidthForObjectState entry
         cmp #OBJECT_PORT3
         beq getPortWidth
 
+        cmp #OBJECT_YELLOWDRAGON
+        beq getDragonWidth
+        cmp #OBJECT_GREENDRAGON
+        beq getDragonWidth
+        cmp #OBJECT_REDDRAGON
+        beq getDragonWidth
+
+        cmp #OBJECT_MAGNET
+        beq getMagnetWidth
+
+        cmp #OBJECT_CHALISE
+        beq getChaliseWidth
+
+        cmp #OBJECT_SWORD
+        beq getSwordWidth
+
+        cmp #OBJECT_DOT
+        beq getDotWidth
+
+        cmp #OBJECT_BAT
+        beq getBatWidth
+
         cmp #OBJECT_BRIDGE
         beq getBridgeWidth
 
@@ -184,8 +276,31 @@ getKeyWidth anop
         rts
 
 getPortWidth anop
-; TODO: STATE
         lda #OBJECT_WIDTH_PORT_CLOSED
+        rts
+
+getDragonWidth anop
+        lda #OBJECT_WIDTH_DRAGON1
+        rts
+
+getMagnetWidth anop
+        lda #OBJECT_WIDTH_MAGNET
+        rts
+
+getChaliseWidth anop
+        lda #OBJECT_WIDTH_CHALISE
+        rts
+
+getSwordWidth anop
+        lda #OBJECT_WIDTH_SWORD
+        rts
+
+getDotWidth anop
+        lda #OBJECT_WIDTH_DOT
+        rts
+
+getBatWidth anop
+        lda #OBJECT_WIDTH_BAT1
         rts
 
 getBridgeWidth anop
@@ -336,25 +451,6 @@ objectStateList anop
         dc i2'$00' ; dot
         dc i2'$00' ; chalise
         dc i2'$00' ; magnet
-
-;objectColorList anop
-;        dc i2'COLOR_BLACK' ; port 1
-;        dc i2'COLOR_BLACK' ; port 2
-;        dc i2'COLOR_BLACK' ; port 3
-;        dc i2'COLOR_FLASH' ; author
-;        dc i2'COLOR_LIMEGREEN' ; numbers
-;        dc i2'COLOR_RED' ; red dragon
-;       dc i2'COLOR_YELLOW' ; yellow dragon
-;        dc i2'COLOR_LIMEGREEN' ; green dragon
-;        dc i2'COLOR_YELLOW' ; sword
-;       dc i2'COLOR_PURPLE' ; bridge
-;       dc i2'COLOR_YELLOW' ; yellow key
-;       dc i2'COLOR_WHITE' ; white key
-;       dc i2'COLOR_BLACK' ; black key
-;       dc i2'COLOR_BLACK' ; bat
-;       dc i2'COLOR_LTGRAY' ; dot
-;       dc i2'COLOR_FLASH' ; chalise
-;       dc i2'COLOR_BLACK' ; magnet
 
 objectLinkedObjectList anop
         dc i2'OBJECT_NONE' ; port 1
