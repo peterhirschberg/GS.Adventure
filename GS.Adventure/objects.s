@@ -54,19 +54,19 @@ initObjectPositions entry
 
 setInitialObjectValues entry
 
-        lda objectInitialPositionXGame1List,x
+        lda >objectInitialPositionXGame1List,x
         adjustSpriteX
-        sta objectPositionXList,x
+        sta >objectPositionXList,x
 
-        lda objectInitialPositionYGame1List,x
+        lda >objectInitialPositionYGame1List,x
         adjustSpriteY
-        sta objectPositionYList,x
+        sta >objectPositionYList,x
 
-        lda objectInitialRoomGame1List,x
-        sta objectRoomList,x
+        lda >objectInitialRoomGame1List,x
+        sta >objectRoomList,x
 
-        lda objectInitialStateGame1List,x
-        sta objectStateList,x
+        lda >objectInitialStateGame1List,x
+        sta >objectStateList,x
 
         rts
 
@@ -109,11 +109,11 @@ runObjects entry
 
 updateObjectValues entry
 
-        lda objectPositionXList,x
-        sta objectPositionOldXList,x
+        lda >objectPositionXList,x
+        sta >objectPositionOldXList,x
 
-        lda objectPositionYList,x
-        sta objectPositionOldYList,x
+        lda >objectPositionYList,x
+        sta >objectPositionOldYList,x
 
         rts
 
@@ -201,7 +201,7 @@ temp dc i2'0'
         end
 
 
-objectData data
+objectData data objectDataSeg
 
 OBJECT_NONE             gequ -1
 OBJECT_PORT1            gequ 2*0
@@ -337,24 +337,24 @@ objectStateList anop
         dc i2'$00' ; chalise
         dc i2'$00' ; magnet
 
-objectColorList anop
-        dc i2'COLOR_BLACK' ; port 1
-        dc i2'COLOR_BLACK' ; port 2
-        dc i2'COLOR_BLACK' ; port 3
-        dc i2'COLOR_FLASH' ; author
-        dc i2'COLOR_LIMEGREEN' ; numbers
-        dc i2'COLOR_RED' ; red dragon
-        dc i2'COLOR_YELLOW' ; yellow dragon
-        dc i2'COLOR_LIMEGREEN' ; green dragon
-        dc i2'COLOR_YELLOW' ; sword
-        dc i2'COLOR_PURPLE' ; bridge
-        dc i2'COLOR_YELLOW' ; yellow key
-        dc i2'COLOR_WHITE' ; white key
-        dc i2'COLOR_BLACK' ; black key
-        dc i2'COLOR_BLACK' ; bat
-        dc i2'COLOR_LTGRAY' ; dot
-        dc i2'COLOR_FLASH' ; chalise
-        dc i2'COLOR_BLACK' ; magnet
+;objectColorList anop
+;        dc i2'COLOR_BLACK' ; port 1
+;        dc i2'COLOR_BLACK' ; port 2
+;        dc i2'COLOR_BLACK' ; port 3
+;        dc i2'COLOR_FLASH' ; author
+;        dc i2'COLOR_LIMEGREEN' ; numbers
+;        dc i2'COLOR_RED' ; red dragon
+;       dc i2'COLOR_YELLOW' ; yellow dragon
+;        dc i2'COLOR_LIMEGREEN' ; green dragon
+;        dc i2'COLOR_YELLOW' ; sword
+;       dc i2'COLOR_PURPLE' ; bridge
+;       dc i2'COLOR_YELLOW' ; yellow key
+;       dc i2'COLOR_WHITE' ; white key
+;       dc i2'COLOR_BLACK' ; black key
+;       dc i2'COLOR_BLACK' ; bat
+;       dc i2'COLOR_LTGRAY' ; dot
+;       dc i2'COLOR_FLASH' ; chalise
+;       dc i2'COLOR_BLACK' ; magnet
 
 objectLinkedObjectList anop
         dc i2'OBJECT_NONE' ; port 1

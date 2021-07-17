@@ -125,40 +125,61 @@ movePlayerLeft entry
 moveCarriedObject entry
 
         ldx #OBJECT_PLAYER
-        lda objectLinkedObjectList,x
+        lda >objectLinkedObjectList,x
         cmp #OBJECT_NONE
         beq carryDone
 
-        tay
+
+        lda playerX
+        sec
+        sbc playerOldX
+        sta playerDiffX
+
+        lda playerY
+        sec
+        sbc playerOldY
+        sta playerDiffY
+
+        lda playerDiffX
+        clc
+        adc playerDiffY
+        cmp #0
+        beq carryDone
+
+        ldx #OBJECT_PLAYER
+        lda >objectLinkedObjectList,x
+
+        tax
+
+        lda >objectPositionXList,x
+        clc
+        adc playerDiffX
+        sta >objectPositionXList,x
+
+        lda >objectPositionYList,x
+        clc
+        adc playerDiffY
+        sta >objectPositionYList,x
 
         lda currentRoom
         lsr a
-        sta objectRoomList,y
+        sta >objectRoomList,x
 
-        lda objectLinkedObjectXOffsetList,x
-        clc
-        adc playerX
-        sta objectPositionXList,y
+        lda #1
+        sta >objectDirtyList,x
 
-        ldx #OBJECT_PLAYER
-
-        lda objectLinkedObjectYOffsetList,x
-        clc
-        adc playerY
-        sta objectPositionYList,y
-
-;        lda #1
-;        sta objectDirtyList,y
+        rts
 
 carryDone anop
         rts
+
 
 
 dropCarriedObject entry
 
         ldx #OBJECT_PLAYER
         lda #OBJECT_NONE
-        sta objectLinkedObjectList,x
+        sta >objectLinkedObjectList,x
 
         rts
 
@@ -250,18 +271,25 @@ hasFog2 anop
 
 playerData data
 
-playerX dc i2'$0'
-playerY dc i2'$0'
+playerX dc i2'0'
+playerY dc i2'0'
 
-playerOldX dc i2'$0'
-playerOldY dc i2'$0'
+playerOldX dc i2'0'
+playerOldY dc i2'0'
 
-playerHitX dc i2'$0'
-playerHitY dc i2'$0'
+playerHitX dc i2'0'
+playerHitY dc i2'0'
+
+playerDiffX dc i2'0'
+playerDiffY dc i2'0'
 
 playerHitWall dc i2'0'
 playerHitObject dc i2'0'
 
-playerMoved dc i2'1'
+playerMoved dc i2'1' ; TODO: REMOVE THIS OR MOVE TO DIRTYLIST
+objectMoved dc i2'0'
+
+playerCarriedPosX dc i2'0'
+playerCarriedPosY dc i2'0'
 
         end

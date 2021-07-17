@@ -179,26 +179,26 @@ hitObject anop
         txa
         sta playerHitObject
 
-        lda objectLinkableList,x
+        lda >objectLinkableList,x
         cmp #1
         bne hitNonLinkableObject
 
         ldx #OBJECT_PLAYER
-        lda objectLinkedObjectList,x
+        lda >objectLinkedObjectList,x
         cmp #OBJECT_NONE
         bne alreadyCarrying
 
 ; Pick up the object!
 
         lda playerHitObject
-        sta objectLinkedObjectList,x
+        sta >objectLinkedObjectList,x
 
         ldx playerHitObject
 
-        lda objectPositionXList,x
+        lda >objectPositionXList,x
         sta hitObjectX
 
-        lda objectPositionYList,x
+        lda >objectPositionYList,x
         sta hitObjectY
 
         ldx #OBJECT_PLAYER
@@ -206,14 +206,12 @@ hitObject anop
         lda hitObjectX
         sec
         sbc playerX
-;        asl a
-        sta objectLinkedObjectXOffsetList,x
+        sta >objectLinkedObjectXOffsetList,x
 
         lda hitObjectY
         sec
         sbc playerY
-;        asl a
-        sta objectLinkedObjectYOffsetList,x
+        sta >objectLinkedObjectYOffsetList,x
 
         rts
 
@@ -238,7 +236,7 @@ hitNonLinkableObject anop
 
 collisionCheckPlayerWithObject entry
 
-        lda objectRoomList,x
+        lda >objectRoomList,x
         asl a
         cmp currentRoom
         beq doChecks
@@ -246,10 +244,10 @@ collisionCheckPlayerWithObject entry
 
 doChecks anop
 
-        lda objectPositionXList,x
+        lda >objectPositionXList,x
         sta testRectLeft
 
-        lda objectPositionYList,x
+        lda >objectPositionYList,x
         sta testRectTop
 
         jsr getWidthForObjectState
