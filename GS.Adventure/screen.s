@@ -19,6 +19,7 @@ screen start
         using playerData
 
 
+
 ; fills the room buffer with the background color
 eraseRoom entry
 
@@ -532,12 +533,12 @@ fillDone1b anop
 
 drawSpriteRect entry
 
-        phd                     ; save the assigned direct page
+;        phd                     ; save the assigned direct page
 
-        setR1W1
+;        setR1W1
 
-        lda #$2000
-        tcd
+;        lda #$2000
+;        tcd
 
         ldy rectColor
 
@@ -571,7 +572,7 @@ fillHLoop2 anop
 
         tya
 
-        sta <00,x
+        sta >SCREEN_ADDR,x
         inx
         inx
 
@@ -591,12 +592,12 @@ nextRow2 anop
 
 fillDone2 anop
 
-        lda #$0000
-        tcd
+;        lda #$0000
+;        tcd
 
-        setR0W0
+;        setR0W0
 
-        pld                     ; restore the direct page
+;        pld                     ; restore the direct page
 
         rts
 
@@ -604,11 +605,11 @@ fillDone2 anop
 
 eraseSpriteRect entry
 
-        phd                     ; save the assigned direct page
+;        phd                     ; save the assigned direct page
 
-        setR0W1
-        lda #$2000
-        tcd
+;        setR0W1
+;        lda #$2000
+;        tcd
 
 
         lda rectX
@@ -639,8 +640,8 @@ eraseVLoop2 anop
 
 eraseHLoop2 anop
 
-        lda <00,x
-        sta <00,x
+        lda >BACKGROUND_ADDR,x
+        sta >SCREEN_ADDR,x
 
         inx
         inx
@@ -661,12 +662,12 @@ nextRow3 anop
 
 eraseDone2 anop
 
-        lda #$0000
-        tcd
+;        lda #$0000
+;        tcd
 
-        setR0W0
+;        setR0W0
 
-        pld                     ; restore the direct page
+;        pld                     ; restore the direct page
 
         rts
 
@@ -692,12 +693,6 @@ drawSurroundVLoop2 anop
         clc
         adc rectY
 
-; TODO - FIX THIS
-; bounds check
-;        bmi nextRow4
-;        cmp #199
-;        bcs nextRow4
-        
         asl a
         tax
         lda screenRowOffsets,x
@@ -818,8 +813,8 @@ rectWidth dc i2'0'
 rectHeight dc i2'0'
 rectColor dc i2'0'
 
-;BACKGROUND_ADDR gequ $0e0000
-BACKGROUND_ADDR gequ $002000
+
+BACKGROUND_ADDR gequ $0c0000
 
 
         end
