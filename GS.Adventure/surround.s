@@ -1464,6 +1464,9 @@ surroundY dc i2'0'
 surroundOldX dc i2'0'
 surroundOldY dc i2'0'
 
+surroundXDiff dc i2'0'
+surroundYDiff dc i2'0'
+
 rowCounter dc i2'0'
 colCounter dc i2'0'
 

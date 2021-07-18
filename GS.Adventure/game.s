@@ -32,7 +32,7 @@ initGame entry
         jsr zeroSurroundGrid
         jsr eraseSurroundPixelBuffer
 
-;        jsr borderInit
+        jsr borderInit
 
 ; -------------------------------
 ; set up game
@@ -87,7 +87,7 @@ dontInitGame anop
 
         jsr waitForVbl
 
-;        jsr borderStart
+        jsr borderStart
 
         jsr checkControls
 
@@ -102,18 +102,34 @@ dontInitGame anop
 pass0 anop
         jsr runPlayer
 
-        lda playerMoved
-        cmp #1
-        bne noMovePass0
+        lda playerX
+        sec
+        sbc playerOldX
+        sta playerXDiff
 
-        dec surroundUpdateCounter
-        lda surroundUpdateCounter
-        bmi updateSurround
-        bra dontUpdateSurround
-        
-updateSurround anop
-        lda #4
-        sta surroundUpdateCounter
+        lda playerY
+        sec
+        sbc playerOldY
+        sta playerYDiff
+
+        lda playerXDiff
+        clc
+        adc playerYDiff
+        cmp #0
+        beq noMovePass0
+
+        lda playerMoved
+        cmp #0
+        beq noMovePass0
+
+;        dec surroundUpdateCounter
+;        lda surroundUpdateCounter
+;        bmi updateSurround
+;        bra dontUpdateSurround
+;
+;updateSurround anop
+;        lda #4
+;        sta surroundUpdateCounter
 
         jsr doSurround
         
@@ -168,64 +184,30 @@ pass2 anop
 
 passDone anop
 
-        stz playerMoved
-        stz playerHitWall
+        lda #0
+        sta playerMoved
+        sta playerHitWall
 
         lda currentRoom
         sta lastRoom
 
 
-;        jsr borderStart
+        jsr borderStart
 
 
         jsl drawRoomSprites
 
 
-;        jsr borderStart
-        
-
-        lda temp
-        sta >spriteX
-        lda #40
-        sta >spriteY
-        
-        jsr roomHasFog
-        cmp #1
-        beq eraseWithFog
-;        jsr eraseSpriteDragon
-        bra eraseDone
-eraseWithFog anop
-;        jsr eraseSpriteDragonFog
-eraseDone anop
-
-        inc temp
-        inc temp
-        lda temp
-        cmp #320
-        beq resetTemp
-        cmp #319
-        beq resetTemp
-        bra continue
-        
-resetTemp anop
-        lda #0
-        sta temp
-        
-continue anop
-
-        lda temp
-        sta >spriteX
-        lda #40
-        sta >spriteY
-;        jsr drawSpriteRedDragon
-
-        
-;        jsr borderDone
+        jsr borderDone
 
         rts
 
 
 doInitGame dc i2'1'
+
+playerXDiff dc i2'0'
+playerYDiff dc i2'0'
+
 temp dc i2'0'
 
 
@@ -236,7 +218,7 @@ gameData data
 
 gamePass dc i2'0'
 
-gameLevel dc i2'0'
+gameLevel dc i2'1'
 
 surroundUpdateCounter dc i2'0'
 
