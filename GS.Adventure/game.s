@@ -218,7 +218,7 @@ gameData data
 
 gamePass dc i2'0'
 
-gameLevel dc i2'1'
+gameLevel dc i2'0'
 
 surroundUpdateCounter dc i2'0'
 
