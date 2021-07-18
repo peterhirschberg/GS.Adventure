@@ -185,7 +185,7 @@ drawPort1 entry
         bmi drawPort1Done
         sta >spriteY
 
-        jsr drawPort1State
+        jsr drawPortState
 
 drawPort1Done anop
         rts
@@ -210,7 +210,9 @@ drawPort2 entry
         lda >objectPositionYList,x
         bmi drawPort2Done
         sta >spriteY
-        jsl drawSpritePort7
+
+        jsr drawPortState
+
 drawPort2Done anop
         rts
 
@@ -234,7 +236,9 @@ drawPort3 entry
         lda >objectPositionYList,x
         bmi drawPort3Done
         sta >spriteY
-        jsl drawSpritePort7
+
+        jsr drawPortState
+
 drawPort3Done anop
         rts
 
@@ -534,7 +538,7 @@ eraseBridgeDone anop
 
 
 
-drawPort1State entry
+drawPortState entry
 
         lda >objectStateList,x
 
