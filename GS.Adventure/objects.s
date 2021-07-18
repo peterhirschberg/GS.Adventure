@@ -156,11 +156,11 @@ getHeightForObjectState entry
         beq getKeyHeight
 
         cmp #OBJECT_PORT1
-        beq getPortHeight
+        beq getPort1Height
         cmp #OBJECT_PORT2
-        beq getPortHeight
+        beq getPort2Height
         cmp #OBJECT_PORT3
-        beq getPortHeight
+        beq getPort3Height
 
         cmp #OBJECT_YELLOWDRAGON
         beq getDragonHeight
@@ -193,7 +193,7 @@ getKeyHeight anop
         lda #OBJECT_HEIGHT_KEY
         rts
 
-getPortHeight anop
+getPort1Height anop
         ldx #OBJECT_PORT1
         lda >objectStateList,x
         cmp #$00
@@ -201,6 +201,28 @@ getPortHeight anop
         lda #OBJECT_HEIGHT_PORT_CLOSED
         rts
 port1Open anop
+        lda #OBJECT_HEIGHT_PORT_OPEN
+        rts
+
+getPort2Height anop
+        ldx #OBJECT_PORT2
+        lda >objectStateList,x
+        cmp #$00
+        bne port2Open
+        lda #OBJECT_HEIGHT_PORT_CLOSED
+        rts
+port2Open anop
+        lda #OBJECT_HEIGHT_PORT_OPEN
+        rts
+
+getPort3Height anop
+        ldx #OBJECT_PORT3
+        lda >objectStateList,x
+        cmp #$00
+        bne port3Open
+        lda #OBJECT_HEIGHT_PORT_CLOSED
+        rts
+port3Open anop
         lda #OBJECT_HEIGHT_PORT_OPEN
         rts
 
