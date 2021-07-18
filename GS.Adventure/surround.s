@@ -21,7 +21,7 @@ surround start
         
 doSurround entry
 
-        jsr roomHasFog
+        jsl roomHasFog
         cmp #1
         bne dontDoSurround
 

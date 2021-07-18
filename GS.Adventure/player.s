@@ -226,7 +226,7 @@ doErase anop
         lda #8
         sta rectHeight
 
-        jsr roomHasFog
+        jsl roomHasFog
         cmp #1
         beq hasFog
         jsr eraseSpriteRect
@@ -253,7 +253,7 @@ erasePlayerHit entry
         lda #8
         sta rectHeight
 
-        jsr roomHasFog
+        jsl roomHasFog
         cmp #1
         beq hasFog2
         jsr eraseSpriteRect

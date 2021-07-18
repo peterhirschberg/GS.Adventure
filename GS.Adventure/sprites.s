@@ -41,9 +41,14 @@ drawRoomSprites entry
 
 eraseRoomSprites entry
 
-        jsr eraseYellowKey
-        jsr eraseWhiteKey
-        jsr eraseBlackKey
+        ldx #OBJECT_YELLOWKEY
+        jsr eraseKey
+
+        ldx #OBJECT_WHITEKEY
+        jsr eraseKey
+
+        ldx #OBJECT_BLACKKEY
+        jsr eraseKey
 
         jsr erasePort1
         jsr erasePort2
@@ -337,71 +342,33 @@ drawBridgeDone anop
 ; erase
 
 
-eraseYellowKey entry
-        lda #OBJECT_YELLOWKEY
-        tax
-
+eraseKey entry
         lda >objectRoomList,x
         asl a
         cmp >currentRoom
-        bne eraseYellowKeyDone
+        bne eraseKeyDone
 
         lda >objectDirtyList,x
         cmp #1
-        bne eraseYellowKeyDone
+        bne eraseKeyDone
 
         lda >objectPositionOldXList,x
         sta >spriteX
         lda >objectPositionOldYList,x
-        bmi eraseYellowKeyDone
+        bmi eraseKeyDone
         sta >spriteY
         jsl eraseSpriteKey
-eraseYellowKeyDone anop
-        rts
 
-eraseWhiteKey entry
-        lda #OBJECT_WHITEKEY
-        tax
-
-        lda >objectRoomList,x
-        asl a
-        cmp >currentRoom
-        bne eraseWhiteKeyDone
-
-        lda >objectDirtyList,x
+        jsl roomHasFog
         cmp #1
-        bne eraseWhiteKeyDone
-
-        lda >objectPositionOldXList,x
-        sta >spriteX
-        lda >objectPositionOldYList,x
-        bmi eraseWhiteKeyDone
-        sta >spriteY
+        beq eraseKeyFog
         jsl eraseSpriteKey
-eraseWhiteKeyDone anop
+        bra eraseKeyDone
+eraseKeyFog anop
+        jsl eraseSpriteKeyFog
+eraseKeyDone anop
         rts
 
-eraseBlackKey entry
-        lda #OBJECT_BLACKKEY
-        tax
-
-        lda >objectRoomList,x
-        asl a
-        cmp >currentRoom
-        bne eraseBlackKeyDone
-
-        lda >objectDirtyList,x
-        cmp #1
-        bne eraseBlackKeyDone
-
-        lda >objectPositionOldXList,x
-        sta >spriteX
-        lda >objectPositionOldYList,x
-        bmi eraseBlackKeyDone
-        sta >spriteY
-        jsl eraseSpriteKey
-eraseBlackKeyDone anop
-        rts
 
 erasePort1 entry
         lda #OBJECT_PORT1
@@ -553,7 +520,14 @@ eraseBridge entry
         lda >objectPositionOldYList,x
         bmi eraseBridgeDone
         sta >spriteY
+
+        jsl roomHasFog
+        cmp #1
+        beq eraseBridgeFog
         jsl eraseSpriteBridge
+        bra eraseBridgeDone
+eraseBridgeFog anop
+        jsl eraseSpriteBridgeFog
 eraseBridgeDone anop
         rts
 

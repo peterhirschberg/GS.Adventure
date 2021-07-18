@@ -683,11 +683,11 @@ roomHasFog entry
         cmp #COLOR_FOG
         beq hasFog
         lda #0
-        rts
+        rtl
 
 hasFog anop
         lda #1
-        rts
+        rtl
 
 
 
