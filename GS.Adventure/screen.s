@@ -704,8 +704,6 @@ drawSurroundVLoop2 anop
         sta columnCounter
 
 ; paint the row
-        tya
-
         drawSurroundWord
         drawSurroundWord
         drawSurroundWord
@@ -731,7 +729,7 @@ drawSurroundDone2 anop
 
 eraseSurroundChunk entry
 
-        ldy rectColor
+        ldy #$00
 
         lda rectX
         lsr a
@@ -766,8 +764,6 @@ eraseSurroundVLoop2 anop
         sta columnCounter
 
 ; erase the row
-
-        tya
 
         eraseSurroundWord
         eraseSurroundWord

@@ -60,16 +60,8 @@ dontDrawSurround_&SYSCNT anop
         eraseSurroundWord
         lda >BACKGROUND_ADDR,x
         sta >SCREEN_ADDR,x
-        lda #$00
+        tya
         sta >SURROUND_PIXEL_ADDR,x
-        inx
-        inx
-        mend
-
-
-        macro
-        writeScreenWord
-        sta >SCREEN_ADDR,x
         inx
         inx
         mend
@@ -98,7 +90,7 @@ surroundDone_&SYSCNT anop
 
         macro
         unsetSurroundGridValue
-        lda #SURROUND_ERASE
+        tya
         sta >SURROUND_GRID_ADDR,x
         mend
 

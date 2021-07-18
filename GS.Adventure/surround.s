@@ -787,6 +787,8 @@ renderSurroundDone anop
         
 setStaleSurroundGrid entry
 
+        ldy #SURROUND_ERASE
+
         lda surroundOldY
         asl a
         asl a
@@ -1297,9 +1299,6 @@ eraseSurroundHLoop anop
 
         lda #16
         sta rectHeight
-
-        lda #COLOR_ORANGE
-        sta rectColor
 
         jsr eraseSurroundChunk
         

@@ -122,14 +122,14 @@ pass0 anop
         cmp #0
         beq noMovePass0
 
-;        dec surroundUpdateCounter
-;        lda surroundUpdateCounter
-;        bmi updateSurround
-;        bra dontUpdateSurround
+        dec surroundUpdateCounter
+        lda surroundUpdateCounter
+        bmi updateSurround
+        bra dontUpdateSurround
 
-;updateSurround anop
-;        lda #4
-;        sta surroundUpdateCounter
+updateSurround anop
+        lda #4
+        sta surroundUpdateCounter
 
         jsr doSurround
         
