@@ -60,7 +60,7 @@ dontDrawSurround_&SYSCNT anop
         eraseSurroundWord
         lda >BACKGROUND_ADDR,x
         sta >SCREEN_ADDR,x
-        lda #00
+        lda #$00
         sta >SURROUND_PIXEL_ADDR,x
         inx
         inx
