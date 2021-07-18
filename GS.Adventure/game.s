@@ -145,6 +145,8 @@ pass1 anop
 
         inc gamePass
 
+        jsr runPortals
+
         jsr collisionCheckPlayerWithWalls
 
         jsr collisionCheckPlayerWithObjects

@@ -72,16 +72,6 @@ void preloadSound(void)
 //    LoadResource(rRawSound, FIRE_SOUND);
 }
 
-// Game loop
-/*
-void waitForNextTick(void)
-{
-    while (!shouldQuit) {
-        runGameTick();
-    }
-}
-*/
-
 int main(void)
 {
     int event;
@@ -91,7 +81,6 @@ int main(void)
     TLStartUp();
     toolStartupRef = StartUpTools(userid, refIsResource, TOOL_STARTUP);
     CompactMem();
-//    NewHandle((LongWord)0x8000, userid, (Word)(attrLocked | attrFixed | attrAddr | attrBank), (Pointer)0x02000);
     NewHandle((LongWord)0x8000, userid, (Word)(attrLocked | attrFixed | attrAddr | attrBank), (Pointer)0xc0000);
     NewHandle((LongWord)0x8000, userid, (Word)(attrLocked | attrFixed | attrAddr | attrBank), (Pointer)0xa0000);
     NewHandle((LongWord)0x8000, userid, (Word)(attrLocked | attrFixed | attrAddr | attrBank), (Pointer)0xb0000);
@@ -102,10 +91,6 @@ int main(void)
     if (randomSeed == 0)
         randomSeed = 1;
     srand(randomSeed);
- 
-//    initGame();
-//    runGameTick();
-//    waitForNextTick();
     
     while (!shouldQuit) {
         runGameTick();

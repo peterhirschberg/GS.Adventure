@@ -17,6 +17,7 @@ collision start
         using roomsData
         using screenData
         using objectData
+        using collisionData
 
 
 collisionCheckPlayerWithWalls entry
@@ -301,6 +302,102 @@ itsAHit anop
 
 
 
+collisionCheckObjects entry
+
+; make sure the two objects are in the same room
+
+        ldx hitTestObjectA
+        lda >objectRoomList,x
+        sta temp
+
+        ldx hitTestObjectB
+        lda >objectRoomList,x
+        cmp temp
+        beq doChecks2
+        lda #0
+        rts
+
+doChecks2 anop
+
+; --------------
+
+        ldx hitTestObjectA
+
+        lda >objectPositionXList,x
+        sta testRect1Left
+
+        lda >objectPositionYList,x
+        sta testRect1Top
+
+        jsr getWidthForObjectState
+        clc
+        adc testRect1Left
+        sta testRect1Right
+
+        jsr getHeightForObjectState
+        clc
+        adc testRect1Top
+        sta testRect1Bottom
+
+; --------------
+
+        ldx hitTestObjectB
+
+        lda >objectPositionXList,x
+        sta testRect2Left
+
+        lda >objectPositionYList,x
+        sta testRect2Top
+
+        jsr getWidthForObjectState
+        clc
+        adc testRect2Left
+        sta testRect2Right
+
+        jsr getHeightForObjectState
+        clc
+        adc testRect2Top
+        sta testRect2Bottom
+
+; --------------
+
+; check rect1 left > rect2 right
+
+        lda testRect1Left
+        cmp testRect2Right
+        bcs noIntersect2
+
+; check rect1 right < rect2 left
+
+        lda testRect2Left
+        cmp testRect1Right
+        bcs noIntersect2
+
+; check rect1 top > rect2 bottom
+
+        lda testRect1Top
+        cmp testRect2Bottom
+        bcs noIntersect2
+
+; check rect1 bottom < rect2 top
+
+        lda testRect2Top
+        cmp testRect1Bottom
+        bcs noIntersect2
+
+        bra itsAHit2
+
+noIntersect2 anop
+        lda #0
+        rts
+
+itsAHit2 anop
+        lda #1
+        rts
+
+
+
+
 rowCounter dc i2'0'
 
 playerRectLeft dc i2'0'
@@ -313,8 +410,27 @@ testRectRight dc i2'0'
 testRectTop dc i2'0'
 testRectBottom dc i2'0'
 
+testRect1Left dc i2'0'
+testRect1Right dc i2'0'
+testRect1Top dc i2'0'
+testRect1Bottom dc i2'0'
+
+testRect2Left dc i2'0'
+testRect2Right dc i2'0'
+testRect2Top dc i2'0'
+testRect2Bottom dc i2'0'
+
 hitObjectX dc i2'0'
 hitObjectY dc i2'0'
+
+temp dc i2'0'
+
+        end
+
+collisionData data
+
+hitTestObjectA dc i2'0'
+hitTestObjectB dc i2'0'
 
         end
 

@@ -184,7 +184,16 @@ drawPort1 entry
         lda >objectPositionYList,x
         bmi drawPort1Done
         sta >spriteY
+
+        lda >objectStateList,x
+        cmp #$00
+        bne drawPortNextState1
         jsl drawSpritePort7
+        bra drawPort1Done
+
+drawPortNextState1 anop
+        jsl drawSpritePort1
+
 drawPort1Done anop
         rts
 
