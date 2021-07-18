@@ -185,14 +185,7 @@ drawPort1 entry
         bmi drawPort1Done
         sta >spriteY
 
-        lda >objectStateList,x
-        cmp #$00
-        bne drawPortNextState1
-        jsl drawSpritePort7
-        bra drawPort1Done
-
-drawPortNextState1 anop
-        jsl drawSpritePort1
+        jsr drawPort1State
 
 drawPort1Done anop
         rts
@@ -537,6 +530,63 @@ eraseBridge entry
 eraseBridgeFog anop
         jsl eraseSpriteBridgeFog
 eraseBridgeDone anop
+        rts
+
+
+
+drawPort1State entry
+
+        lda >objectStateList,x
+
+        cmp #$00
+        beq drawPortState1
+
+        cmp #$01
+        beq drawPortState2
+
+        cmp #$02
+        beq drawPortState3
+
+        cmp #$03
+        beq drawPortState4
+
+        cmp #$04
+        beq drawPortState5
+
+        cmp #$05
+        beq drawPortState6
+
+        cmp #$06
+        beq drawPortState7
+
+        rts
+
+drawPortState1 anop
+        jsl drawSpritePort7
+        rts
+
+drawPortState2 anop
+        jsl drawSpritePort6
+        rts
+
+drawPortState3 anop
+        jsl drawSpritePort5
+        rts
+
+drawPortState4 anop
+        jsl drawSpritePort4
+        rts
+
+drawPortState5 anop
+        jsl drawSpritePort3
+        rts
+
+drawPortState6 anop
+        jsl drawSpritePort2
+        rts
+
+drawPortState7 anop
+        jsl drawSpritePort1
         rts
 
 
