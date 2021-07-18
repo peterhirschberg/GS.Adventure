@@ -126,7 +126,7 @@ pass0 anop
 ;        lda surroundUpdateCounter
 ;        bmi updateSurround
 ;        bra dontUpdateSurround
-;
+
 ;updateSurround anop
 ;        lda #4
 ;        sta surroundUpdateCounter
@@ -154,7 +154,7 @@ pass1 anop
         beq hitPass1
 
         lda playerHitObject
-        cmp #0
+        cmp #OBJECT_NONE
         bne hitPass1
 
         bra noHitPass1
