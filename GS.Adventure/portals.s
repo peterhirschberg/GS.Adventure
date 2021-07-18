@@ -16,8 +16,13 @@ portals start
         using objectData
         using collisionData
 
-
 runPortals entry
+        jsr hitTestPortals
+        jsr animatePortals
+        rts
+
+
+hitTestPortals entry
 
 ; do hit testing with keys
 
@@ -29,7 +34,7 @@ runPortals entry
         cmp #1
         beq hitPort1
 
-        jmp hitTestDone
+        jmp port1Done
 
 hitPort1 anop
         ldx #OBJECT_PORT1
@@ -37,22 +42,36 @@ hitPort1 anop
         cmp #0
         beq port1ToOpen
         cmp #6
-        beq port1ToOpen
+        beq port1ToClose
         bra port1Done
 
 port1ToOpen anop
 
         lda #1
         sta portal1RunState
+        lda #1
+        sta >objectStateList,x
+        lda #1
+        sta >objectDirtyList,x
+
         bra port1Done
 
 port1ToClose anop
 
         lda #-1
         sta portal1RunState
+        lda #5
+        sta >objectStateList,x
+        lda #1
+        sta >objectDirtyList,x
+
         bra port1Done
 
 port1Done anop
+        rts
+
+
+animatePortals entry
 
 ; run the portal states up and down
 
@@ -60,40 +79,40 @@ port1Done anop
         lda portalRunTimer
         bmi runPorts
 
-        jmp hitTestDone
+        jmp animateDone
 
 runPorts anop
 
-        lda #4
+        lda #2
         sta portalRunTimer
 
         lda portal1RunState
         cmp #0
-        jmp hitTestDone
+        beq animateDone
 
         ldx #OBJECT_PORT1
+
+        lda #1
+        sta >objectDirtyList,x
+
         lda >objectStateList,x
         clc
         adc portal1RunState
+        sta >objectStateList,x
+
+        lda >objectStateList,x
         bmi port1ResetToClosed
         cmp #6
         bcs port1ResetToOpen
 
-        sta >objectStateList,x
-
-        lda #1
-        sta >objectDirtyList,x
-        jmp hitTestDone
+        jmp animateDone
 
 port1ResetToClosed anop
         lda #0
         sta >objectStateList,x
         lda #0
         sta portal1RunState
-
-        lda #1
-        sta >objectDirtyList,x
-        jmp hitTestDone
+        jmp animateDone
 
 port1ResetToOpen anop
         lda #6
@@ -101,10 +120,7 @@ port1ResetToOpen anop
         lda #0
         sta portal1RunState
 
-        lda #1
-        sta >objectDirtyList,x
-
-hitTestDone anop
+animateDone anop
 
         rts
 
