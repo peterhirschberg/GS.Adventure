@@ -185,8 +185,8 @@ hitObject anop
 
         ldx #OBJECT_PLAYER
         lda >objectLinkedObjectList,x
-;        cmp #OBJECT_NONE
-;        bne alreadyCarrying
+        cmp playerHitObject
+        beq hitCarriedObject
 
 ; Pick up the object!
 
@@ -215,8 +215,11 @@ hitObject anop
 
         rts
 
-alreadyCarrying anop
+hitCarriedObject anop
+        lda #OBJECT_NONE
+        sta playerHitObject
         rts
+
 
 hitNonLinkableObject anop
 

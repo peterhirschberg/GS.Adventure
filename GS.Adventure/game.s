@@ -181,6 +181,7 @@ pass2 anop
         jsr moveCarriedObject
 
         jsl eraseRoomSprites
+        jsl drawRoomSprites
 
 passDone anop
 
@@ -193,9 +194,6 @@ passDone anop
 
 
         jsr borderStart
-
-
-        jsl drawRoomSprites
 
 
         jsr borderDone

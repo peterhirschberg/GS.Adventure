@@ -357,7 +357,6 @@ eraseKey entry
         lda >objectPositionOldYList,x
         bmi eraseKeyDone
         sta >spriteY
-        jsl eraseSpriteKey
 
         jsl roomHasFog
         cmp #1
