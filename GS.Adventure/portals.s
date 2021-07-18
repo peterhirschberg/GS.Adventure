@@ -22,7 +22,7 @@ runPortals entry
 ; do hit testing with keys
 
         lda #OBJECT_YELLOWKEY
-        sta hitTestObjectA
+        sta hitTestObjectB
         lda #OBJECT_PORT1
         sta hitTestObjectA
         jsr collisionCheckObjects
@@ -32,7 +32,8 @@ runPortals entry
         ldx #OBJECT_PORT1
         lda #6
         sta >objectStateList,x
-
+        lda #1
+        sta >objectDirtyList,x
 
 hitTestDone anop
 

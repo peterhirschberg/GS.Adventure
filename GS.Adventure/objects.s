@@ -194,7 +194,14 @@ getKeyHeight anop
         rts
 
 getPortHeight anop
+        ldx #OBJECT_PORT1
+        lda >objectStateList,x
+        cmp #$00
+        bne port1Open
         lda #OBJECT_HEIGHT_PORT_CLOSED
+        rts
+port1Open anop
+        lda #OBJECT_HEIGHT_PORT_OPEN
         rts
 
 getDragonHeight anop
