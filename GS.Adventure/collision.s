@@ -221,8 +221,10 @@ hitCarriedObject anop
         sta playerHitObject
         rts
 
-
 hitNonLinkableObject anop
+
+; check for player going into castles
+        jsl checkCastles
 
         lda playerX
         sta playerHitX
@@ -394,6 +396,7 @@ noIntersect2 anop
 itsAHit2 anop
         lda #1
         rts
+
 
 
 

@@ -15,6 +15,7 @@ rooms start
         using gameData
         using roomsData
         using playerData
+        using objectData
 
 
 drawRoom entry
@@ -687,6 +688,49 @@ roomHasFog entry
 
 hasFog anop
         lda #1
+        rtl
+
+
+
+checkCastles entry
+
+        lda >playerHitObject
+        cmp #OBJECT_PORT1
+        beq enterYellowCastle
+        cmp #OBJECT_PORT2
+        beq enterWhiteCastle
+        cmp #OBJECT_PORT3
+        beq enterBlackCastle
+
+        rtl
+
+enterYellowCastle anop
+
+        lda #$12
+        asl a
+        sta >currentRoom
+
+        lda #190
+        sta >playerY
+        sta >playerOldY
+
+; ensure the port stays open in case we are walking in with the key
+        ldx OBJECT_PORT1
+        lda #6
+        sta >objectStateList,x
+
+; draw the new room
+        jsr zeroSurroundGrid
+        jsr drawRoom
+
+        rtl
+
+
+enterWhiteCastle anop
+        rtl
+
+
+enterBlackCastle anop
         rtl
 
 
