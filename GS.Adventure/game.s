@@ -32,7 +32,7 @@ initGame entry
         jsr zeroSurroundGrid
         jsr eraseSurroundPixelBuffer
 
-        jsr borderInit
+;        jsr borderInit
 
 ; -------------------------------
 ; set up game
@@ -87,7 +87,7 @@ dontInitGame anop
 
         jsr waitForVbl
 
-        jsr borderStart
+;        jsr borderStart
 
         jsr checkControls
 
@@ -195,10 +195,10 @@ passDone anop
         sta lastRoom
 
 
-        jsr borderStart
+;        jsr borderStart
 
 
-        jsr borderDone
+;        jsr borderDone
 
         rts
 
