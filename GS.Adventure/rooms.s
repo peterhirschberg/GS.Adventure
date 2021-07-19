@@ -706,16 +706,34 @@ checkCastles entry
 
 enterYellowCastle anop
 
+        ldx #OBJECT_PORT1
+        lda >objectStateList,x
+        cmp #0
+        beq yellowCastleDone
+
         lda #$12
         asl a
         sta >currentRoom
 
-        lda #190
+        lda >playerY
+        clc
+        adc #65
         sta >playerY
         sta >playerOldY
 
+        ldx #OBJECT_PLAYER
+        lda >objectLinkedObjectList,x
+        tax
+        lda >objectPositionYList,x
+        clc
+        adc #65
+        sta >objectPositionYList,x
+
+        lda #0
+        sta >playerHitObject
+        sta >playerHitWall
+
 ; ensure the port stays open in case we are walking in with the key
-        ldx OBJECT_PORT1
         lda #6
         sta >objectStateList,x
 
@@ -723,6 +741,7 @@ enterYellowCastle anop
         jsr zeroSurroundGrid
         jsr drawRoom
 
+yellowCastleDone anop
         rtl
 
 
