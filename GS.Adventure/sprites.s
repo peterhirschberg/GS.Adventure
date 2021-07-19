@@ -159,7 +159,7 @@ drawDragon entry
         lda >objectRoomList,x
         asl a
         cmp >currentRoom
-        bne drawRedDragonDone
+        bne drawDragonDone
 
         lda >objectDirtyList,x
         cmp #1
@@ -172,7 +172,7 @@ drawDragon entry
         lda >objectPositionYList,x
         sta >spriteY
         bmi drawDragonDone
-        lda objectColorList,x
+        lda >objectColorList,x
         sta >spriteColor
         jsl drawSpriteDragon1
 drawDragonDone anop
@@ -321,7 +321,7 @@ erasePort entry
         bmi erasePortDone
         sta >spriteY
         jsl eraseSpritePort
-erasePort1Done anop
+erasePortDone anop
         rts
 
 eraseDragon entry

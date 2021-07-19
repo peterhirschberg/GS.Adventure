@@ -56,6 +56,9 @@ initObjectPositions entry
         ldx #OBJECT_MAGNET
         jsr setInitialObjectValues
 
+        ldx #OBJECT_SWORD
+        jsr setInitialObjectValues
+
         ldx #OBJECT_AUTHOR
         jsr setInitialObjectValues
 
@@ -480,6 +483,25 @@ objectStateList anop
         dc i2'$00' ; dot
         dc i2'$00' ; chalise
         dc i2'$00' ; magnet
+
+objectColorList anop
+        dc i2'COLOR_BLACK' ; port 1
+        dc i2'COLOR_BLACK' ; port 2
+        dc i2'COLOR_BLACK' ; port 3
+        dc i2'COLOR_FLASH' ; author
+        dc i2'COLOR_LIMEGREEN' ; numbers
+        dc i2'COLOR_RED' ; red dragon
+        dc i2'COLOR_YELLOW' ; yellow dragon
+        dc i2'COLOR_LIMEGREEN' ; green dragon
+        dc i2'COLOR_YELLOW' ; sword
+        dc i2'COLOR_PURPLE' ; bridge
+        dc i2'COLOR_YELLOW' ; yellow key
+        dc i2'COLOR_WHITE' ; white key
+        dc i2'COLOR_BLACK' ; black key
+        dc i2'COLOR_BLACK' ; bat
+        dc i2'COLOR_LTGRAY' ; dot
+        dc i2'COLOR_FLASH' ; chalise
+        dc i2'COLOR_BLACK' ; magnet
 
 objectLinkedObjectList anop
         dc i2'OBJECT_NONE' ; port 1

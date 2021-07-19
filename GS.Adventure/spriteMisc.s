@@ -9008,6 +9008,3611 @@ eraseSpriteMagnetFogSkipRowErase137 anop
         adc #1
         sta >rowCounter
 
+        rtl
+
+
+drawSpriteChalise entry
+
+        spriteGetDrawAddress
+        _spriteHeader
+
+        lda >spriteY
+        sta >rowCounter
+
+        cmp #199
+        bcs drawSpriteChaliseSkipRowDraw0
+
+        lda >drawAddress
+        clc
+        adc #0
+        tcd
+
+        short m
+        lda #$ff
+
+        sta 0
+        sta 7
+        long m
+
+drawSpriteChaliseSkipRowDraw0 anop
+
+        lda >rowCounter
+        clc
+        adc #1
+        sta >rowCounter
+
+        cmp #199
+        bcs drawSpriteChaliseSkipRowDraw1
+
+        lda >drawAddress
+        clc
+        adc #160
+        tcd
+
+        short m
+        lda #$ff
+
+        sta 0
+        sta 7
+        long m
+
+drawSpriteChaliseSkipRowDraw1 anop
+
+        lda >rowCounter
+        clc
+        adc #1
+        sta >rowCounter
+
+        cmp #199
+        bcs drawSpriteChaliseSkipRowDraw2
+
+        lda >drawAddress
+        clc
+        adc #320
+        tcd
+
+        short m
+        lda #$ff
+
+        sta 0
+        sta 7
+        long m
+
+drawSpriteChaliseSkipRowDraw2 anop
+
+        lda >rowCounter
+        clc
+        adc #1
+        sta >rowCounter
+
+        cmp #199
+        bcs drawSpriteChaliseSkipRowDraw3
+
+        lda >drawAddress
+        clc
+        adc #480
+        tcd
+
+        short m
+        lda #$ff
+
+        sta 0
+        sta 7
+        long m
+
+drawSpriteChaliseSkipRowDraw3 anop
+
+        lda >rowCounter
+        clc
+        adc #1
+        sta >rowCounter
+
+        cmp #199
+        bcs drawSpriteChaliseSkipRowDraw4
+
+        lda >drawAddress
+        clc
+        adc #640
+        tcd
+
+        short m
+        lda #$ff
+
+        sta 0
+        sta 1
+        sta 6
+        sta 7
+        long m
+
+drawSpriteChaliseSkipRowDraw4 anop
+
+        lda >rowCounter
+        clc
+        adc #1
+        sta >rowCounter
+
+        cmp #199
+        bcs drawSpriteChaliseSkipRowDraw5
+
+        lda >drawAddress
+        clc
+        adc #800
+        tcd
+
+        short m
+        lda #$ff
+
+        sta 0
+        sta 1
+        sta 6
+        sta 7
+        long m
+
+drawSpriteChaliseSkipRowDraw5 anop
+
+        lda >rowCounter
+        clc
+        adc #1
+        sta >rowCounter
+
+        cmp #199
+        bcs drawSpriteChaliseSkipRowDraw6
+
+        lda >drawAddress
+        clc
+        adc #960
+        tcd
+
+        short m
+        lda #$ff
+
+        sta 1
+        sta 2
+        sta 3
+        sta 4
+        sta 5
+        sta 6
+        long m
+
+drawSpriteChaliseSkipRowDraw6 anop
+
+        lda >rowCounter
+        clc
+        adc #1
+        sta >rowCounter
+
+        cmp #199
+        bcs drawSpriteChaliseSkipRowDraw7
+
+        lda >drawAddress
+        clc
+        adc #1120
+        tcd
+
+        short m
+        lda #$ff
+
+        sta 1
+        sta 2
+        sta 3
+        sta 4
+        sta 5
+        sta 6
+        long m
+
+drawSpriteChaliseSkipRowDraw7 anop
+
+        lda >rowCounter
+        clc
+        adc #1
+        sta >rowCounter
+
+        cmp #199
+        bcs drawSpriteChaliseSkipRowDraw8
+
+        lda >drawAddress
+        clc
+        adc #1280
+        tcd
+
+        short m
+        lda #$ff
+
+        sta 1
+        sta 2
+        sta 3
+        sta 4
+        sta 5
+        sta 6
+        long m
+
+drawSpriteChaliseSkipRowDraw8 anop
+
+        lda >rowCounter
+        clc
+        adc #1
+        sta >rowCounter
+
+        cmp #199
+        bcs drawSpriteChaliseSkipRowDraw9
+
+        lda >drawAddress
+        clc
+        adc #1440
+        tcd
+
+        short m
+        lda #$ff
+
+        sta 1
+        sta 2
+        sta 3
+        sta 4
+        sta 5
+        sta 6
+        long m
+
+drawSpriteChaliseSkipRowDraw9 anop
+
+        lda >rowCounter
+        clc
+        adc #1
+        sta >rowCounter
+
+        cmp #199
+        bcs drawSpriteChaliseSkipRowDraw10
+
+        lda >drawAddress
+        clc
+        adc #1600
+        tcd
+
+        short m
+        lda #$ff
+
+        sta 2
+        sta 3
+        sta 4
+        sta 5
+        long m
+
+drawSpriteChaliseSkipRowDraw10 anop
+
+        lda >rowCounter
+        clc
+        adc #1
+        sta >rowCounter
+
+        cmp #199
+        bcs drawSpriteChaliseSkipRowDraw11
+
+        lda >drawAddress
+        clc
+        adc #1760
+        tcd
+
+        short m
+        lda #$ff
+
+        sta 2
+        sta 3
+        sta 4
+        sta 5
+        long m
+
+drawSpriteChaliseSkipRowDraw11 anop
+
+        lda >rowCounter
+        clc
+        adc #1
+        sta >rowCounter
+
+        cmp #199
+        bcs drawSpriteChaliseSkipRowDraw12
+
+        lda >drawAddress
+        clc
+        adc #1920
+        tcd
+
+        short m
+        lda #$ff
+
+        sta 3
+        sta 4
+        long m
+
+drawSpriteChaliseSkipRowDraw12 anop
+
+        lda >rowCounter
+        clc
+        adc #1
+        sta >rowCounter
+
+        cmp #199
+        bcs drawSpriteChaliseSkipRowDraw13
+
+        lda >drawAddress
+        clc
+        adc #2080
+        tcd
+
+        short m
+        lda #$ff
+
+        sta 3
+        sta 4
+        long m
+
+drawSpriteChaliseSkipRowDraw13 anop
+
+        lda >rowCounter
+        clc
+        adc #1
+        sta >rowCounter
+
+        cmp #199
+        bcs drawSpriteChaliseSkipRowDraw14
+
+        lda >drawAddress
+        clc
+        adc #2240
+        tcd
+
+        short m
+        lda #$ff
+
+        sta 3
+        sta 4
+        long m
+
+drawSpriteChaliseSkipRowDraw14 anop
+
+        lda >rowCounter
+        clc
+        adc #1
+        sta >rowCounter
+
+        cmp #199
+        bcs drawSpriteChaliseSkipRowDraw15
+
+        lda >drawAddress
+        clc
+        adc #2400
+        tcd
+
+        short m
+        lda #$ff
+
+        sta 3
+        sta 4
+        long m
+
+drawSpriteChaliseSkipRowDraw15 anop
+
+        lda >rowCounter
+        clc
+        adc #1
+        sta >rowCounter
+
+        cmp #199
+        bcs drawSpriteChaliseSkipRowDraw16
+
+        lda >drawAddress
+        clc
+        adc #2560
+        tcd
+
+        short m
+        lda #$ff
+
+        sta 1
+        sta 2
+        sta 3
+        sta 4
+        sta 5
+        sta 6
+        long m
+
+drawSpriteChaliseSkipRowDraw16 anop
+
+        lda >rowCounter
+        clc
+        adc #1
+        sta >rowCounter
+
+        cmp #199
+        bcs drawSpriteChaliseSkipRowDraw17
+
+        lda >drawAddress
+        clc
+        adc #2720
+        tcd
+
+        short m
+        lda #$ff
+
+        sta 1
+        sta 2
+        sta 3
+        sta 4
+        sta 5
+        sta 6
+        long m
+
+drawSpriteChaliseSkipRowDraw17 anop
+
+        lda >rowCounter
+        clc
+        adc #1
+        sta >rowCounter
+
+        long m
+
+        _spriteFooter
+        rtl
+
+eraseSpriteChalise entry
+
+        lda >spriteX
+        lsr a
+        sta >spriteX
+        lda >spriteY
+        sta >rowCounter
+
+        cmp #199
+        bcs eraseSpriteChaliseSkipRowEraseShortJump18
+        bra eraseSpriteChaliseSkipRowEraseDontSkipRow18
+
+eraseSpriteChaliseSkipRowEraseShortJump18 anop
+        brl eraseSpriteChaliseSkipRowErase18
+eraseSpriteChaliseSkipRowEraseDontSkipRow18 anop
+        lda >spriteY
+        clc
+        adc #0
+        asl a
+        tax
+        lda >screenRowOffsets,x
+        sta >rowAddress
+
+        lda >rowAddress
+        clc
+        adc >spriteX
+
+        clc
+        adc #0
+        tax
+
+
+        short m
+        lda >BACKGROUND_ADDR,x
+        sta >SCREEN_ADDR,x
+        long m
+        lda >rowAddress
+        clc
+        adc >spriteX
+
+        clc
+        adc #7
+        tax
+
+
+        short m
+        lda >BACKGROUND_ADDR,x
+        sta >SCREEN_ADDR,x
+        long m
+
+
+eraseSpriteChaliseSkipRowErase18 anop
+
+        lda >rowCounter
+        clc
+        adc #1
+        sta >rowCounter
+
+
+        cmp #199
+        bcs eraseSpriteChaliseSkipRowEraseShortJump19
+        bra eraseSpriteChaliseSkipRowEraseDontSkipRow19
+
+eraseSpriteChaliseSkipRowEraseShortJump19 anop
+        brl eraseSpriteChaliseSkipRowErase19
+eraseSpriteChaliseSkipRowEraseDontSkipRow19 anop
+        lda >spriteY
+        clc
+        adc #1
+        asl a
+        tax
+        lda >screenRowOffsets,x
+        sta >rowAddress
+
+        lda >rowAddress
+        clc
+        adc >spriteX
+
+        clc
+        adc #0
+        tax
+
+
+        short m
+        lda >BACKGROUND_ADDR,x
+        sta >SCREEN_ADDR,x
+        long m
+        lda >rowAddress
+        clc
+        adc >spriteX
+
+        clc
+        adc #7
+        tax
+
+
+        short m
+        lda >BACKGROUND_ADDR,x
+        sta >SCREEN_ADDR,x
+        long m
+
+
+eraseSpriteChaliseSkipRowErase19 anop
+
+        lda >rowCounter
+        clc
+        adc #1
+        sta >rowCounter
+
+
+        cmp #199
+        bcs eraseSpriteChaliseSkipRowEraseShortJump20
+        bra eraseSpriteChaliseSkipRowEraseDontSkipRow20
+
+eraseSpriteChaliseSkipRowEraseShortJump20 anop
+        brl eraseSpriteChaliseSkipRowErase20
+eraseSpriteChaliseSkipRowEraseDontSkipRow20 anop
+        lda >spriteY
+        clc
+        adc #2
+        asl a
+        tax
+        lda >screenRowOffsets,x
+        sta >rowAddress
+
+        lda >rowAddress
+        clc
+        adc >spriteX
+
+        clc
+        adc #0
+        tax
+
+
+        short m
+        lda >BACKGROUND_ADDR,x
+        sta >SCREEN_ADDR,x
+        long m
+        lda >rowAddress
+        clc
+        adc >spriteX
+
+        clc
+        adc #7
+        tax
+
+
+        short m
+        lda >BACKGROUND_ADDR,x
+        sta >SCREEN_ADDR,x
+        long m
+
+
+eraseSpriteChaliseSkipRowErase20 anop
+
+        lda >rowCounter
+        clc
+        adc #1
+        sta >rowCounter
+
+
+        cmp #199
+        bcs eraseSpriteChaliseSkipRowEraseShortJump21
+        bra eraseSpriteChaliseSkipRowEraseDontSkipRow21
+
+eraseSpriteChaliseSkipRowEraseShortJump21 anop
+        brl eraseSpriteChaliseSkipRowErase21
+eraseSpriteChaliseSkipRowEraseDontSkipRow21 anop
+        lda >spriteY
+        clc
+        adc #3
+        asl a
+        tax
+        lda >screenRowOffsets,x
+        sta >rowAddress
+
+        lda >rowAddress
+        clc
+        adc >spriteX
+
+        clc
+        adc #0
+        tax
+
+
+        short m
+        lda >BACKGROUND_ADDR,x
+        sta >SCREEN_ADDR,x
+        long m
+        lda >rowAddress
+        clc
+        adc >spriteX
+
+        clc
+        adc #7
+        tax
+
+
+        short m
+        lda >BACKGROUND_ADDR,x
+        sta >SCREEN_ADDR,x
+        long m
+
+
+eraseSpriteChaliseSkipRowErase21 anop
+
+        lda >rowCounter
+        clc
+        adc #1
+        sta >rowCounter
+
+
+        cmp #199
+        bcs eraseSpriteChaliseSkipRowEraseShortJump22
+        bra eraseSpriteChaliseSkipRowEraseDontSkipRow22
+
+eraseSpriteChaliseSkipRowEraseShortJump22 anop
+        brl eraseSpriteChaliseSkipRowErase22
+eraseSpriteChaliseSkipRowEraseDontSkipRow22 anop
+        lda >spriteY
+        clc
+        adc #4
+        asl a
+        tax
+        lda >screenRowOffsets,x
+        sta >rowAddress
+
+        lda >rowAddress
+        clc
+        adc >spriteX
+
+        clc
+        adc #0
+        tax
+
+
+        short m
+        lda >BACKGROUND_ADDR,x
+        sta >SCREEN_ADDR,x
+        long m
+        lda >rowAddress
+        clc
+        adc >spriteX
+
+        clc
+        adc #1
+        tax
+
+
+        short m
+        lda >BACKGROUND_ADDR,x
+        sta >SCREEN_ADDR,x
+        long m
+        lda >rowAddress
+        clc
+        adc >spriteX
+
+        clc
+        adc #6
+        tax
+
+
+        short m
+        lda >BACKGROUND_ADDR,x
+        sta >SCREEN_ADDR,x
+        long m
+        lda >rowAddress
+        clc
+        adc >spriteX
+
+        clc
+        adc #7
+        tax
+
+
+        short m
+        lda >BACKGROUND_ADDR,x
+        sta >SCREEN_ADDR,x
+        long m
+
+
+eraseSpriteChaliseSkipRowErase22 anop
+
+        lda >rowCounter
+        clc
+        adc #1
+        sta >rowCounter
+
+
+        cmp #199
+        bcs eraseSpriteChaliseSkipRowEraseShortJump23
+        bra eraseSpriteChaliseSkipRowEraseDontSkipRow23
+
+eraseSpriteChaliseSkipRowEraseShortJump23 anop
+        brl eraseSpriteChaliseSkipRowErase23
+eraseSpriteChaliseSkipRowEraseDontSkipRow23 anop
+        lda >spriteY
+        clc
+        adc #5
+        asl a
+        tax
+        lda >screenRowOffsets,x
+        sta >rowAddress
+
+        lda >rowAddress
+        clc
+        adc >spriteX
+
+        clc
+        adc #0
+        tax
+
+
+        short m
+        lda >BACKGROUND_ADDR,x
+        sta >SCREEN_ADDR,x
+        long m
+        lda >rowAddress
+        clc
+        adc >spriteX
+
+        clc
+        adc #1
+        tax
+
+
+        short m
+        lda >BACKGROUND_ADDR,x
+        sta >SCREEN_ADDR,x
+        long m
+        lda >rowAddress
+        clc
+        adc >spriteX
+
+        clc
+        adc #6
+        tax
+
+
+        short m
+        lda >BACKGROUND_ADDR,x
+        sta >SCREEN_ADDR,x
+        long m
+        lda >rowAddress
+        clc
+        adc >spriteX
+
+        clc
+        adc #7
+        tax
+
+
+        short m
+        lda >BACKGROUND_ADDR,x
+        sta >SCREEN_ADDR,x
+        long m
+
+
+eraseSpriteChaliseSkipRowErase23 anop
+
+        lda >rowCounter
+        clc
+        adc #1
+        sta >rowCounter
+
+
+        cmp #199
+        bcs eraseSpriteChaliseSkipRowEraseShortJump24
+        bra eraseSpriteChaliseSkipRowEraseDontSkipRow24
+
+eraseSpriteChaliseSkipRowEraseShortJump24 anop
+        brl eraseSpriteChaliseSkipRowErase24
+eraseSpriteChaliseSkipRowEraseDontSkipRow24 anop
+        lda >spriteY
+        clc
+        adc #6
+        asl a
+        tax
+        lda >screenRowOffsets,x
+        sta >rowAddress
+
+        lda >rowAddress
+        clc
+        adc >spriteX
+
+        clc
+        adc #1
+        tax
+
+
+        short m
+        lda >BACKGROUND_ADDR,x
+        sta >SCREEN_ADDR,x
+        long m
+        lda >rowAddress
+        clc
+        adc >spriteX
+
+        clc
+        adc #2
+        tax
+
+
+        short m
+        lda >BACKGROUND_ADDR,x
+        sta >SCREEN_ADDR,x
+        long m
+        lda >rowAddress
+        clc
+        adc >spriteX
+
+        clc
+        adc #3
+        tax
+
+
+        short m
+        lda >BACKGROUND_ADDR,x
+        sta >SCREEN_ADDR,x
+        long m
+        lda >rowAddress
+        clc
+        adc >spriteX
+
+        clc
+        adc #4
+        tax
+
+
+        short m
+        lda >BACKGROUND_ADDR,x
+        sta >SCREEN_ADDR,x
+        long m
+        lda >rowAddress
+        clc
+        adc >spriteX
+
+        clc
+        adc #5
+        tax
+
+
+        short m
+        lda >BACKGROUND_ADDR,x
+        sta >SCREEN_ADDR,x
+        long m
+        lda >rowAddress
+        clc
+        adc >spriteX
+
+        clc
+        adc #6
+        tax
+
+
+        short m
+        lda >BACKGROUND_ADDR,x
+        sta >SCREEN_ADDR,x
+        long m
+
+
+eraseSpriteChaliseSkipRowErase24 anop
+
+        lda >rowCounter
+        clc
+        adc #1
+        sta >rowCounter
+
+
+        cmp #199
+        bcs eraseSpriteChaliseSkipRowEraseShortJump25
+        bra eraseSpriteChaliseSkipRowEraseDontSkipRow25
+
+eraseSpriteChaliseSkipRowEraseShortJump25 anop
+        brl eraseSpriteChaliseSkipRowErase25
+eraseSpriteChaliseSkipRowEraseDontSkipRow25 anop
+        lda >spriteY
+        clc
+        adc #7
+        asl a
+        tax
+        lda >screenRowOffsets,x
+        sta >rowAddress
+
+        lda >rowAddress
+        clc
+        adc >spriteX
+
+        clc
+        adc #1
+        tax
+
+
+        short m
+        lda >BACKGROUND_ADDR,x
+        sta >SCREEN_ADDR,x
+        long m
+        lda >rowAddress
+        clc
+        adc >spriteX
+
+        clc
+        adc #2
+        tax
+
+
+        short m
+        lda >BACKGROUND_ADDR,x
+        sta >SCREEN_ADDR,x
+        long m
+        lda >rowAddress
+        clc
+        adc >spriteX
+
+        clc
+        adc #3
+        tax
+
+
+        short m
+        lda >BACKGROUND_ADDR,x
+        sta >SCREEN_ADDR,x
+        long m
+        lda >rowAddress
+        clc
+        adc >spriteX
+
+        clc
+        adc #4
+        tax
+
+
+        short m
+        lda >BACKGROUND_ADDR,x
+        sta >SCREEN_ADDR,x
+        long m
+        lda >rowAddress
+        clc
+        adc >spriteX
+
+        clc
+        adc #5
+        tax
+
+
+        short m
+        lda >BACKGROUND_ADDR,x
+        sta >SCREEN_ADDR,x
+        long m
+        lda >rowAddress
+        clc
+        adc >spriteX
+
+        clc
+        adc #6
+        tax
+
+
+        short m
+        lda >BACKGROUND_ADDR,x
+        sta >SCREEN_ADDR,x
+        long m
+
+
+eraseSpriteChaliseSkipRowErase25 anop
+
+        lda >rowCounter
+        clc
+        adc #1
+        sta >rowCounter
+
+
+        cmp #199
+        bcs eraseSpriteChaliseSkipRowEraseShortJump26
+        bra eraseSpriteChaliseSkipRowEraseDontSkipRow26
+
+eraseSpriteChaliseSkipRowEraseShortJump26 anop
+        brl eraseSpriteChaliseSkipRowErase26
+eraseSpriteChaliseSkipRowEraseDontSkipRow26 anop
+        lda >spriteY
+        clc
+        adc #8
+        asl a
+        tax
+        lda >screenRowOffsets,x
+        sta >rowAddress
+
+        lda >rowAddress
+        clc
+        adc >spriteX
+
+        clc
+        adc #1
+        tax
+
+
+        short m
+        lda >BACKGROUND_ADDR,x
+        sta >SCREEN_ADDR,x
+        long m
+        lda >rowAddress
+        clc
+        adc >spriteX
+
+        clc
+        adc #2
+        tax
+
+
+        short m
+        lda >BACKGROUND_ADDR,x
+        sta >SCREEN_ADDR,x
+        long m
+        lda >rowAddress
+        clc
+        adc >spriteX
+
+        clc
+        adc #3
+        tax
+
+
+        short m
+        lda >BACKGROUND_ADDR,x
+        sta >SCREEN_ADDR,x
+        long m
+        lda >rowAddress
+        clc
+        adc >spriteX
+
+        clc
+        adc #4
+        tax
+
+
+        short m
+        lda >BACKGROUND_ADDR,x
+        sta >SCREEN_ADDR,x
+        long m
+        lda >rowAddress
+        clc
+        adc >spriteX
+
+        clc
+        adc #5
+        tax
+
+
+        short m
+        lda >BACKGROUND_ADDR,x
+        sta >SCREEN_ADDR,x
+        long m
+        lda >rowAddress
+        clc
+        adc >spriteX
+
+        clc
+        adc #6
+        tax
+
+
+        short m
+        lda >BACKGROUND_ADDR,x
+        sta >SCREEN_ADDR,x
+        long m
+
+
+eraseSpriteChaliseSkipRowErase26 anop
+
+        lda >rowCounter
+        clc
+        adc #1
+        sta >rowCounter
+
+
+        cmp #199
+        bcs eraseSpriteChaliseSkipRowEraseShortJump27
+        bra eraseSpriteChaliseSkipRowEraseDontSkipRow27
+
+eraseSpriteChaliseSkipRowEraseShortJump27 anop
+        brl eraseSpriteChaliseSkipRowErase27
+eraseSpriteChaliseSkipRowEraseDontSkipRow27 anop
+        lda >spriteY
+        clc
+        adc #9
+        asl a
+        tax
+        lda >screenRowOffsets,x
+        sta >rowAddress
+
+        lda >rowAddress
+        clc
+        adc >spriteX
+
+        clc
+        adc #1
+        tax
+
+
+        short m
+        lda >BACKGROUND_ADDR,x
+        sta >SCREEN_ADDR,x
+        long m
+        lda >rowAddress
+        clc
+        adc >spriteX
+
+        clc
+        adc #2
+        tax
+
+
+        short m
+        lda >BACKGROUND_ADDR,x
+        sta >SCREEN_ADDR,x
+        long m
+        lda >rowAddress
+        clc
+        adc >spriteX
+
+        clc
+        adc #3
+        tax
+
+
+        short m
+        lda >BACKGROUND_ADDR,x
+        sta >SCREEN_ADDR,x
+        long m
+        lda >rowAddress
+        clc
+        adc >spriteX
+
+        clc
+        adc #4
+        tax
+
+
+        short m
+        lda >BACKGROUND_ADDR,x
+        sta >SCREEN_ADDR,x
+        long m
+        lda >rowAddress
+        clc
+        adc >spriteX
+
+        clc
+        adc #5
+        tax
+
+
+        short m
+        lda >BACKGROUND_ADDR,x
+        sta >SCREEN_ADDR,x
+        long m
+        lda >rowAddress
+        clc
+        adc >spriteX
+
+        clc
+        adc #6
+        tax
+
+
+        short m
+        lda >BACKGROUND_ADDR,x
+        sta >SCREEN_ADDR,x
+        long m
+
+
+eraseSpriteChaliseSkipRowErase27 anop
+
+        lda >rowCounter
+        clc
+        adc #1
+        sta >rowCounter
+
+
+        cmp #199
+        bcs eraseSpriteChaliseSkipRowEraseShortJump28
+        bra eraseSpriteChaliseSkipRowEraseDontSkipRow28
+
+eraseSpriteChaliseSkipRowEraseShortJump28 anop
+        brl eraseSpriteChaliseSkipRowErase28
+eraseSpriteChaliseSkipRowEraseDontSkipRow28 anop
+        lda >spriteY
+        clc
+        adc #10
+        asl a
+        tax
+        lda >screenRowOffsets,x
+        sta >rowAddress
+
+        lda >rowAddress
+        clc
+        adc >spriteX
+
+        clc
+        adc #2
+        tax
+
+
+        short m
+        lda >BACKGROUND_ADDR,x
+        sta >SCREEN_ADDR,x
+        long m
+        lda >rowAddress
+        clc
+        adc >spriteX
+
+        clc
+        adc #3
+        tax
+
+
+        short m
+        lda >BACKGROUND_ADDR,x
+        sta >SCREEN_ADDR,x
+        long m
+        lda >rowAddress
+        clc
+        adc >spriteX
+
+        clc
+        adc #4
+        tax
+
+
+        short m
+        lda >BACKGROUND_ADDR,x
+        sta >SCREEN_ADDR,x
+        long m
+        lda >rowAddress
+        clc
+        adc >spriteX
+
+        clc
+        adc #5
+        tax
+
+
+        short m
+        lda >BACKGROUND_ADDR,x
+        sta >SCREEN_ADDR,x
+        long m
+
+
+eraseSpriteChaliseSkipRowErase28 anop
+
+        lda >rowCounter
+        clc
+        adc #1
+        sta >rowCounter
+
+
+        cmp #199
+        bcs eraseSpriteChaliseSkipRowEraseShortJump29
+        bra eraseSpriteChaliseSkipRowEraseDontSkipRow29
+
+eraseSpriteChaliseSkipRowEraseShortJump29 anop
+        brl eraseSpriteChaliseSkipRowErase29
+eraseSpriteChaliseSkipRowEraseDontSkipRow29 anop
+        lda >spriteY
+        clc
+        adc #11
+        asl a
+        tax
+        lda >screenRowOffsets,x
+        sta >rowAddress
+
+        lda >rowAddress
+        clc
+        adc >spriteX
+
+        clc
+        adc #2
+        tax
+
+
+        short m
+        lda >BACKGROUND_ADDR,x
+        sta >SCREEN_ADDR,x
+        long m
+        lda >rowAddress
+        clc
+        adc >spriteX
+
+        clc
+        adc #3
+        tax
+
+
+        short m
+        lda >BACKGROUND_ADDR,x
+        sta >SCREEN_ADDR,x
+        long m
+        lda >rowAddress
+        clc
+        adc >spriteX
+
+        clc
+        adc #4
+        tax
+
+
+        short m
+        lda >BACKGROUND_ADDR,x
+        sta >SCREEN_ADDR,x
+        long m
+        lda >rowAddress
+        clc
+        adc >spriteX
+
+        clc
+        adc #5
+        tax
+
+
+        short m
+        lda >BACKGROUND_ADDR,x
+        sta >SCREEN_ADDR,x
+        long m
+
+
+eraseSpriteChaliseSkipRowErase29 anop
+
+        lda >rowCounter
+        clc
+        adc #1
+        sta >rowCounter
+
+
+        cmp #199
+        bcs eraseSpriteChaliseSkipRowEraseShortJump30
+        bra eraseSpriteChaliseSkipRowEraseDontSkipRow30
+
+eraseSpriteChaliseSkipRowEraseShortJump30 anop
+        brl eraseSpriteChaliseSkipRowErase30
+eraseSpriteChaliseSkipRowEraseDontSkipRow30 anop
+        lda >spriteY
+        clc
+        adc #12
+        asl a
+        tax
+        lda >screenRowOffsets,x
+        sta >rowAddress
+
+        lda >rowAddress
+        clc
+        adc >spriteX
+
+        clc
+        adc #3
+        tax
+
+
+        short m
+        lda >BACKGROUND_ADDR,x
+        sta >SCREEN_ADDR,x
+        long m
+        lda >rowAddress
+        clc
+        adc >spriteX
+
+        clc
+        adc #4
+        tax
+
+
+        short m
+        lda >BACKGROUND_ADDR,x
+        sta >SCREEN_ADDR,x
+        long m
+
+
+eraseSpriteChaliseSkipRowErase30 anop
+
+        lda >rowCounter
+        clc
+        adc #1
+        sta >rowCounter
+
+
+        cmp #199
+        bcs eraseSpriteChaliseSkipRowEraseShortJump31
+        bra eraseSpriteChaliseSkipRowEraseDontSkipRow31
+
+eraseSpriteChaliseSkipRowEraseShortJump31 anop
+        brl eraseSpriteChaliseSkipRowErase31
+eraseSpriteChaliseSkipRowEraseDontSkipRow31 anop
+        lda >spriteY
+        clc
+        adc #13
+        asl a
+        tax
+        lda >screenRowOffsets,x
+        sta >rowAddress
+
+        lda >rowAddress
+        clc
+        adc >spriteX
+
+        clc
+        adc #3
+        tax
+
+
+        short m
+        lda >BACKGROUND_ADDR,x
+        sta >SCREEN_ADDR,x
+        long m
+        lda >rowAddress
+        clc
+        adc >spriteX
+
+        clc
+        adc #4
+        tax
+
+
+        short m
+        lda >BACKGROUND_ADDR,x
+        sta >SCREEN_ADDR,x
+        long m
+
+
+eraseSpriteChaliseSkipRowErase31 anop
+
+        lda >rowCounter
+        clc
+        adc #1
+        sta >rowCounter
+
+
+        cmp #199
+        bcs eraseSpriteChaliseSkipRowEraseShortJump32
+        bra eraseSpriteChaliseSkipRowEraseDontSkipRow32
+
+eraseSpriteChaliseSkipRowEraseShortJump32 anop
+        brl eraseSpriteChaliseSkipRowErase32
+eraseSpriteChaliseSkipRowEraseDontSkipRow32 anop
+        lda >spriteY
+        clc
+        adc #14
+        asl a
+        tax
+        lda >screenRowOffsets,x
+        sta >rowAddress
+
+        lda >rowAddress
+        clc
+        adc >spriteX
+
+        clc
+        adc #3
+        tax
+
+
+        short m
+        lda >BACKGROUND_ADDR,x
+        sta >SCREEN_ADDR,x
+        long m
+        lda >rowAddress
+        clc
+        adc >spriteX
+
+        clc
+        adc #4
+        tax
+
+
+        short m
+        lda >BACKGROUND_ADDR,x
+        sta >SCREEN_ADDR,x
+        long m
+
+
+eraseSpriteChaliseSkipRowErase32 anop
+
+        lda >rowCounter
+        clc
+        adc #1
+        sta >rowCounter
+
+
+        cmp #199
+        bcs eraseSpriteChaliseSkipRowEraseShortJump33
+        bra eraseSpriteChaliseSkipRowEraseDontSkipRow33
+
+eraseSpriteChaliseSkipRowEraseShortJump33 anop
+        brl eraseSpriteChaliseSkipRowErase33
+eraseSpriteChaliseSkipRowEraseDontSkipRow33 anop
+        lda >spriteY
+        clc
+        adc #15
+        asl a
+        tax
+        lda >screenRowOffsets,x
+        sta >rowAddress
+
+        lda >rowAddress
+        clc
+        adc >spriteX
+
+        clc
+        adc #3
+        tax
+
+
+        short m
+        lda >BACKGROUND_ADDR,x
+        sta >SCREEN_ADDR,x
+        long m
+        lda >rowAddress
+        clc
+        adc >spriteX
+
+        clc
+        adc #4
+        tax
+
+
+        short m
+        lda >BACKGROUND_ADDR,x
+        sta >SCREEN_ADDR,x
+        long m
+
+
+eraseSpriteChaliseSkipRowErase33 anop
+
+        lda >rowCounter
+        clc
+        adc #1
+        sta >rowCounter
+
+
+        cmp #199
+        bcs eraseSpriteChaliseSkipRowEraseShortJump34
+        bra eraseSpriteChaliseSkipRowEraseDontSkipRow34
+
+eraseSpriteChaliseSkipRowEraseShortJump34 anop
+        brl eraseSpriteChaliseSkipRowErase34
+eraseSpriteChaliseSkipRowEraseDontSkipRow34 anop
+        lda >spriteY
+        clc
+        adc #16
+        asl a
+        tax
+        lda >screenRowOffsets,x
+        sta >rowAddress
+
+        lda >rowAddress
+        clc
+        adc >spriteX
+
+        clc
+        adc #1
+        tax
+
+
+        short m
+        lda >BACKGROUND_ADDR,x
+        sta >SCREEN_ADDR,x
+        long m
+        lda >rowAddress
+        clc
+        adc >spriteX
+
+        clc
+        adc #2
+        tax
+
+
+        short m
+        lda >BACKGROUND_ADDR,x
+        sta >SCREEN_ADDR,x
+        long m
+        lda >rowAddress
+        clc
+        adc >spriteX
+
+        clc
+        adc #3
+        tax
+
+
+        short m
+        lda >BACKGROUND_ADDR,x
+        sta >SCREEN_ADDR,x
+        long m
+        lda >rowAddress
+        clc
+        adc >spriteX
+
+        clc
+        adc #4
+        tax
+
+
+        short m
+        lda >BACKGROUND_ADDR,x
+        sta >SCREEN_ADDR,x
+        long m
+        lda >rowAddress
+        clc
+        adc >spriteX
+
+        clc
+        adc #5
+        tax
+
+
+        short m
+        lda >BACKGROUND_ADDR,x
+        sta >SCREEN_ADDR,x
+        long m
+        lda >rowAddress
+        clc
+        adc >spriteX
+
+        clc
+        adc #6
+        tax
+
+
+        short m
+        lda >BACKGROUND_ADDR,x
+        sta >SCREEN_ADDR,x
+        long m
+
+
+eraseSpriteChaliseSkipRowErase34 anop
+
+        lda >rowCounter
+        clc
+        adc #1
+        sta >rowCounter
+
+
+        cmp #199
+        bcs eraseSpriteChaliseSkipRowEraseShortJump35
+        bra eraseSpriteChaliseSkipRowEraseDontSkipRow35
+
+eraseSpriteChaliseSkipRowEraseShortJump35 anop
+        brl eraseSpriteChaliseSkipRowErase35
+eraseSpriteChaliseSkipRowEraseDontSkipRow35 anop
+        lda >spriteY
+        clc
+        adc #17
+        asl a
+        tax
+        lda >screenRowOffsets,x
+        sta >rowAddress
+
+        lda >rowAddress
+        clc
+        adc >spriteX
+
+        clc
+        adc #1
+        tax
+
+
+        short m
+        lda >BACKGROUND_ADDR,x
+        sta >SCREEN_ADDR,x
+        long m
+        lda >rowAddress
+        clc
+        adc >spriteX
+
+        clc
+        adc #2
+        tax
+
+
+        short m
+        lda >BACKGROUND_ADDR,x
+        sta >SCREEN_ADDR,x
+        long m
+        lda >rowAddress
+        clc
+        adc >spriteX
+
+        clc
+        adc #3
+        tax
+
+
+        short m
+        lda >BACKGROUND_ADDR,x
+        sta >SCREEN_ADDR,x
+        long m
+        lda >rowAddress
+        clc
+        adc >spriteX
+
+        clc
+        adc #4
+        tax
+
+
+        short m
+        lda >BACKGROUND_ADDR,x
+        sta >SCREEN_ADDR,x
+        long m
+        lda >rowAddress
+        clc
+        adc >spriteX
+
+        clc
+        adc #5
+        tax
+
+
+        short m
+        lda >BACKGROUND_ADDR,x
+        sta >SCREEN_ADDR,x
+        long m
+        lda >rowAddress
+        clc
+        adc >spriteX
+
+        clc
+        adc #6
+        tax
+
+
+        short m
+        lda >BACKGROUND_ADDR,x
+        sta >SCREEN_ADDR,x
+        long m
+
+
+eraseSpriteChaliseSkipRowErase35 anop
+
+        lda >rowCounter
+        clc
+        adc #1
+        sta >rowCounter
+
+
+        rtl
+
+eraseSpriteChaliseFog entry
+
+        lda >spriteX
+        lsr a
+        sta >spriteX
+        lda >spriteY
+        sta >rowCounter
+
+        cmp #199
+        bcs eraseSpriteChaliseFogSkipRowEraseShortJump36
+        bra eraseSpriteChaliseFogSkipRowEraseDontSkipRow36
+
+eraseSpriteChaliseFogSkipRowEraseShortJump36 anop
+        brl eraseSpriteChaliseFogSkipRowErase36
+eraseSpriteChaliseFogSkipRowEraseDontSkipRow36 anop
+        lda >spriteY
+        clc
+        adc #0
+        asl a
+        tax
+        lda >screenRowOffsets,x
+        sta >rowAddress
+
+        lda >rowAddress
+        clc
+        adc >spriteX
+
+        clc
+        adc #0
+        tax
+
+
+        short m
+        lda >SURROUND_PIXEL_ADDR,x
+        cmp #$00
+        beq eraseSpriteChaliseFog0a
+        sta >SCREEN_ADDR,x
+        bra eraseSpriteChaliseFog0b
+eraseSpriteChaliseFog0a anop
+        lda >BACKGROUND_ADDR,x
+        sta >SCREEN_ADDR,x
+eraseSpriteChaliseFog0b anop
+        long m
+        lda >rowAddress
+        clc
+        adc >spriteX
+
+        clc
+        adc #7
+        tax
+
+
+        short m
+        lda >SURROUND_PIXEL_ADDR,x
+        cmp #$00
+        beq eraseSpriteChaliseFog1a
+        sta >SCREEN_ADDR,x
+        bra eraseSpriteChaliseFog1b
+eraseSpriteChaliseFog1a anop
+        lda >BACKGROUND_ADDR,x
+        sta >SCREEN_ADDR,x
+eraseSpriteChaliseFog1b anop
+        long m
+
+
+eraseSpriteChaliseFogSkipRowErase36 anop
+
+        lda >rowCounter
+        clc
+        adc #1
+        sta >rowCounter
+
+
+        cmp #199
+        bcs eraseSpriteChaliseFogSkipRowEraseShortJump37
+        bra eraseSpriteChaliseFogSkipRowEraseDontSkipRow37
+
+eraseSpriteChaliseFogSkipRowEraseShortJump37 anop
+        brl eraseSpriteChaliseFogSkipRowErase37
+eraseSpriteChaliseFogSkipRowEraseDontSkipRow37 anop
+        lda >spriteY
+        clc
+        adc #1
+        asl a
+        tax
+        lda >screenRowOffsets,x
+        sta >rowAddress
+
+        lda >rowAddress
+        clc
+        adc >spriteX
+
+        clc
+        adc #0
+        tax
+
+
+        short m
+        lda >SURROUND_PIXEL_ADDR,x
+        cmp #$00
+        beq eraseSpriteChaliseFog2a
+        sta >SCREEN_ADDR,x
+        bra eraseSpriteChaliseFog2b
+eraseSpriteChaliseFog2a anop
+        lda >BACKGROUND_ADDR,x
+        sta >SCREEN_ADDR,x
+eraseSpriteChaliseFog2b anop
+        long m
+        lda >rowAddress
+        clc
+        adc >spriteX
+
+        clc
+        adc #7
+        tax
+
+
+        short m
+        lda >SURROUND_PIXEL_ADDR,x
+        cmp #$00
+        beq eraseSpriteChaliseFog3a
+        sta >SCREEN_ADDR,x
+        bra eraseSpriteChaliseFog3b
+eraseSpriteChaliseFog3a anop
+        lda >BACKGROUND_ADDR,x
+        sta >SCREEN_ADDR,x
+eraseSpriteChaliseFog3b anop
+        long m
+
+
+eraseSpriteChaliseFogSkipRowErase37 anop
+
+        lda >rowCounter
+        clc
+        adc #1
+        sta >rowCounter
+
+
+        cmp #199
+        bcs eraseSpriteChaliseFogSkipRowEraseShortJump38
+        bra eraseSpriteChaliseFogSkipRowEraseDontSkipRow38
+
+eraseSpriteChaliseFogSkipRowEraseShortJump38 anop
+        brl eraseSpriteChaliseFogSkipRowErase38
+eraseSpriteChaliseFogSkipRowEraseDontSkipRow38 anop
+        lda >spriteY
+        clc
+        adc #2
+        asl a
+        tax
+        lda >screenRowOffsets,x
+        sta >rowAddress
+
+        lda >rowAddress
+        clc
+        adc >spriteX
+
+        clc
+        adc #0
+        tax
+
+
+        short m
+        lda >SURROUND_PIXEL_ADDR,x
+        cmp #$00
+        beq eraseSpriteChaliseFog4a
+        sta >SCREEN_ADDR,x
+        bra eraseSpriteChaliseFog4b
+eraseSpriteChaliseFog4a anop
+        lda >BACKGROUND_ADDR,x
+        sta >SCREEN_ADDR,x
+eraseSpriteChaliseFog4b anop
+        long m
+        lda >rowAddress
+        clc
+        adc >spriteX
+
+        clc
+        adc #7
+        tax
+
+
+        short m
+        lda >SURROUND_PIXEL_ADDR,x
+        cmp #$00
+        beq eraseSpriteChaliseFog5a
+        sta >SCREEN_ADDR,x
+        bra eraseSpriteChaliseFog5b
+eraseSpriteChaliseFog5a anop
+        lda >BACKGROUND_ADDR,x
+        sta >SCREEN_ADDR,x
+eraseSpriteChaliseFog5b anop
+        long m
+
+
+eraseSpriteChaliseFogSkipRowErase38 anop
+
+        lda >rowCounter
+        clc
+        adc #1
+        sta >rowCounter
+
+
+        cmp #199
+        bcs eraseSpriteChaliseFogSkipRowEraseShortJump39
+        bra eraseSpriteChaliseFogSkipRowEraseDontSkipRow39
+
+eraseSpriteChaliseFogSkipRowEraseShortJump39 anop
+        brl eraseSpriteChaliseFogSkipRowErase39
+eraseSpriteChaliseFogSkipRowEraseDontSkipRow39 anop
+        lda >spriteY
+        clc
+        adc #3
+        asl a
+        tax
+        lda >screenRowOffsets,x
+        sta >rowAddress
+
+        lda >rowAddress
+        clc
+        adc >spriteX
+
+        clc
+        adc #0
+        tax
+
+
+        short m
+        lda >SURROUND_PIXEL_ADDR,x
+        cmp #$00
+        beq eraseSpriteChaliseFog6a
+        sta >SCREEN_ADDR,x
+        bra eraseSpriteChaliseFog6b
+eraseSpriteChaliseFog6a anop
+        lda >BACKGROUND_ADDR,x
+        sta >SCREEN_ADDR,x
+eraseSpriteChaliseFog6b anop
+        long m
+        lda >rowAddress
+        clc
+        adc >spriteX
+
+        clc
+        adc #7
+        tax
+
+
+        short m
+        lda >SURROUND_PIXEL_ADDR,x
+        cmp #$00
+        beq eraseSpriteChaliseFog7a
+        sta >SCREEN_ADDR,x
+        bra eraseSpriteChaliseFog7b
+eraseSpriteChaliseFog7a anop
+        lda >BACKGROUND_ADDR,x
+        sta >SCREEN_ADDR,x
+eraseSpriteChaliseFog7b anop
+        long m
+
+
+eraseSpriteChaliseFogSkipRowErase39 anop
+
+        lda >rowCounter
+        clc
+        adc #1
+        sta >rowCounter
+
+
+        cmp #199
+        bcs eraseSpriteChaliseFogSkipRowEraseShortJump40
+        bra eraseSpriteChaliseFogSkipRowEraseDontSkipRow40
+
+eraseSpriteChaliseFogSkipRowEraseShortJump40 anop
+        brl eraseSpriteChaliseFogSkipRowErase40
+eraseSpriteChaliseFogSkipRowEraseDontSkipRow40 anop
+        lda >spriteY
+        clc
+        adc #4
+        asl a
+        tax
+        lda >screenRowOffsets,x
+        sta >rowAddress
+
+        lda >rowAddress
+        clc
+        adc >spriteX
+
+        clc
+        adc #0
+        tax
+
+
+        short m
+        lda >SURROUND_PIXEL_ADDR,x
+        cmp #$00
+        beq eraseSpriteChaliseFog8a
+        sta >SCREEN_ADDR,x
+        bra eraseSpriteChaliseFog8b
+eraseSpriteChaliseFog8a anop
+        lda >BACKGROUND_ADDR,x
+        sta >SCREEN_ADDR,x
+eraseSpriteChaliseFog8b anop
+        long m
+        lda >rowAddress
+        clc
+        adc >spriteX
+
+        clc
+        adc #1
+        tax
+
+
+        short m
+        lda >SURROUND_PIXEL_ADDR,x
+        cmp #$00
+        beq eraseSpriteChaliseFog9a
+        sta >SCREEN_ADDR,x
+        bra eraseSpriteChaliseFog9b
+eraseSpriteChaliseFog9a anop
+        lda >BACKGROUND_ADDR,x
+        sta >SCREEN_ADDR,x
+eraseSpriteChaliseFog9b anop
+        long m
+        lda >rowAddress
+        clc
+        adc >spriteX
+
+        clc
+        adc #6
+        tax
+
+
+        short m
+        lda >SURROUND_PIXEL_ADDR,x
+        cmp #$00
+        beq eraseSpriteChaliseFog10a
+        sta >SCREEN_ADDR,x
+        bra eraseSpriteChaliseFog10b
+eraseSpriteChaliseFog10a anop
+        lda >BACKGROUND_ADDR,x
+        sta >SCREEN_ADDR,x
+eraseSpriteChaliseFog10b anop
+        long m
+        lda >rowAddress
+        clc
+        adc >spriteX
+
+        clc
+        adc #7
+        tax
+
+
+        short m
+        lda >SURROUND_PIXEL_ADDR,x
+        cmp #$00
+        beq eraseSpriteChaliseFog11a
+        sta >SCREEN_ADDR,x
+        bra eraseSpriteChaliseFog11b
+eraseSpriteChaliseFog11a anop
+        lda >BACKGROUND_ADDR,x
+        sta >SCREEN_ADDR,x
+eraseSpriteChaliseFog11b anop
+        long m
+
+
+eraseSpriteChaliseFogSkipRowErase40 anop
+
+        lda >rowCounter
+        clc
+        adc #1
+        sta >rowCounter
+
+
+        cmp #199
+        bcs eraseSpriteChaliseFogSkipRowEraseShortJump41
+        bra eraseSpriteChaliseFogSkipRowEraseDontSkipRow41
+
+eraseSpriteChaliseFogSkipRowEraseShortJump41 anop
+        brl eraseSpriteChaliseFogSkipRowErase41
+eraseSpriteChaliseFogSkipRowEraseDontSkipRow41 anop
+        lda >spriteY
+        clc
+        adc #5
+        asl a
+        tax
+        lda >screenRowOffsets,x
+        sta >rowAddress
+
+        lda >rowAddress
+        clc
+        adc >spriteX
+
+        clc
+        adc #0
+        tax
+
+
+        short m
+        lda >SURROUND_PIXEL_ADDR,x
+        cmp #$00
+        beq eraseSpriteChaliseFog12a
+        sta >SCREEN_ADDR,x
+        bra eraseSpriteChaliseFog12b
+eraseSpriteChaliseFog12a anop
+        lda >BACKGROUND_ADDR,x
+        sta >SCREEN_ADDR,x
+eraseSpriteChaliseFog12b anop
+        long m
+        lda >rowAddress
+        clc
+        adc >spriteX
+
+        clc
+        adc #1
+        tax
+
+
+        short m
+        lda >SURROUND_PIXEL_ADDR,x
+        cmp #$00
+        beq eraseSpriteChaliseFog13a
+        sta >SCREEN_ADDR,x
+        bra eraseSpriteChaliseFog13b
+eraseSpriteChaliseFog13a anop
+        lda >BACKGROUND_ADDR,x
+        sta >SCREEN_ADDR,x
+eraseSpriteChaliseFog13b anop
+        long m
+        lda >rowAddress
+        clc
+        adc >spriteX
+
+        clc
+        adc #6
+        tax
+
+
+        short m
+        lda >SURROUND_PIXEL_ADDR,x
+        cmp #$00
+        beq eraseSpriteChaliseFog14a
+        sta >SCREEN_ADDR,x
+        bra eraseSpriteChaliseFog14b
+eraseSpriteChaliseFog14a anop
+        lda >BACKGROUND_ADDR,x
+        sta >SCREEN_ADDR,x
+eraseSpriteChaliseFog14b anop
+        long m
+        lda >rowAddress
+        clc
+        adc >spriteX
+
+        clc
+        adc #7
+        tax
+
+
+        short m
+        lda >SURROUND_PIXEL_ADDR,x
+        cmp #$00
+        beq eraseSpriteChaliseFog15a
+        sta >SCREEN_ADDR,x
+        bra eraseSpriteChaliseFog15b
+eraseSpriteChaliseFog15a anop
+        lda >BACKGROUND_ADDR,x
+        sta >SCREEN_ADDR,x
+eraseSpriteChaliseFog15b anop
+        long m
+
+
+eraseSpriteChaliseFogSkipRowErase41 anop
+
+        lda >rowCounter
+        clc
+        adc #1
+        sta >rowCounter
+
+
+        cmp #199
+        bcs eraseSpriteChaliseFogSkipRowEraseShortJump42
+        bra eraseSpriteChaliseFogSkipRowEraseDontSkipRow42
+
+eraseSpriteChaliseFogSkipRowEraseShortJump42 anop
+        brl eraseSpriteChaliseFogSkipRowErase42
+eraseSpriteChaliseFogSkipRowEraseDontSkipRow42 anop
+        lda >spriteY
+        clc
+        adc #6
+        asl a
+        tax
+        lda >screenRowOffsets,x
+        sta >rowAddress
+
+        lda >rowAddress
+        clc
+        adc >spriteX
+
+        clc
+        adc #1
+        tax
+
+
+        short m
+        lda >SURROUND_PIXEL_ADDR,x
+        cmp #$00
+        beq eraseSpriteChaliseFog16a
+        sta >SCREEN_ADDR,x
+        bra eraseSpriteChaliseFog16b
+eraseSpriteChaliseFog16a anop
+        lda >BACKGROUND_ADDR,x
+        sta >SCREEN_ADDR,x
+eraseSpriteChaliseFog16b anop
+        long m
+        lda >rowAddress
+        clc
+        adc >spriteX
+
+        clc
+        adc #2
+        tax
+
+
+        short m
+        lda >SURROUND_PIXEL_ADDR,x
+        cmp #$00
+        beq eraseSpriteChaliseFog17a
+        sta >SCREEN_ADDR,x
+        bra eraseSpriteChaliseFog17b
+eraseSpriteChaliseFog17a anop
+        lda >BACKGROUND_ADDR,x
+        sta >SCREEN_ADDR,x
+eraseSpriteChaliseFog17b anop
+        long m
+        lda >rowAddress
+        clc
+        adc >spriteX
+
+        clc
+        adc #3
+        tax
+
+
+        short m
+        lda >SURROUND_PIXEL_ADDR,x
+        cmp #$00
+        beq eraseSpriteChaliseFog18a
+        sta >SCREEN_ADDR,x
+        bra eraseSpriteChaliseFog18b
+eraseSpriteChaliseFog18a anop
+        lda >BACKGROUND_ADDR,x
+        sta >SCREEN_ADDR,x
+eraseSpriteChaliseFog18b anop
+        long m
+        lda >rowAddress
+        clc
+        adc >spriteX
+
+        clc
+        adc #4
+        tax
+
+
+        short m
+        lda >SURROUND_PIXEL_ADDR,x
+        cmp #$00
+        beq eraseSpriteChaliseFog19a
+        sta >SCREEN_ADDR,x
+        bra eraseSpriteChaliseFog19b
+eraseSpriteChaliseFog19a anop
+        lda >BACKGROUND_ADDR,x
+        sta >SCREEN_ADDR,x
+eraseSpriteChaliseFog19b anop
+        long m
+        lda >rowAddress
+        clc
+        adc >spriteX
+
+        clc
+        adc #5
+        tax
+
+
+        short m
+        lda >SURROUND_PIXEL_ADDR,x
+        cmp #$00
+        beq eraseSpriteChaliseFog20a
+        sta >SCREEN_ADDR,x
+        bra eraseSpriteChaliseFog20b
+eraseSpriteChaliseFog20a anop
+        lda >BACKGROUND_ADDR,x
+        sta >SCREEN_ADDR,x
+eraseSpriteChaliseFog20b anop
+        long m
+        lda >rowAddress
+        clc
+        adc >spriteX
+
+        clc
+        adc #6
+        tax
+
+
+        short m
+        lda >SURROUND_PIXEL_ADDR,x
+        cmp #$00
+        beq eraseSpriteChaliseFog21a
+        sta >SCREEN_ADDR,x
+        bra eraseSpriteChaliseFog21b
+eraseSpriteChaliseFog21a anop
+        lda >BACKGROUND_ADDR,x
+        sta >SCREEN_ADDR,x
+eraseSpriteChaliseFog21b anop
+        long m
+
+
+eraseSpriteChaliseFogSkipRowErase42 anop
+
+        lda >rowCounter
+        clc
+        adc #1
+        sta >rowCounter
+
+
+        cmp #199
+        bcs eraseSpriteChaliseFogSkipRowEraseShortJump43
+        bra eraseSpriteChaliseFogSkipRowEraseDontSkipRow43
+
+eraseSpriteChaliseFogSkipRowEraseShortJump43 anop
+        brl eraseSpriteChaliseFogSkipRowErase43
+eraseSpriteChaliseFogSkipRowEraseDontSkipRow43 anop
+        lda >spriteY
+        clc
+        adc #7
+        asl a
+        tax
+        lda >screenRowOffsets,x
+        sta >rowAddress
+
+        lda >rowAddress
+        clc
+        adc >spriteX
+
+        clc
+        adc #1
+        tax
+
+
+        short m
+        lda >SURROUND_PIXEL_ADDR,x
+        cmp #$00
+        beq eraseSpriteChaliseFog22a
+        sta >SCREEN_ADDR,x
+        bra eraseSpriteChaliseFog22b
+eraseSpriteChaliseFog22a anop
+        lda >BACKGROUND_ADDR,x
+        sta >SCREEN_ADDR,x
+eraseSpriteChaliseFog22b anop
+        long m
+        lda >rowAddress
+        clc
+        adc >spriteX
+
+        clc
+        adc #2
+        tax
+
+
+        short m
+        lda >SURROUND_PIXEL_ADDR,x
+        cmp #$00
+        beq eraseSpriteChaliseFog23a
+        sta >SCREEN_ADDR,x
+        bra eraseSpriteChaliseFog23b
+eraseSpriteChaliseFog23a anop
+        lda >BACKGROUND_ADDR,x
+        sta >SCREEN_ADDR,x
+eraseSpriteChaliseFog23b anop
+        long m
+        lda >rowAddress
+        clc
+        adc >spriteX
+
+        clc
+        adc #3
+        tax
+
+
+        short m
+        lda >SURROUND_PIXEL_ADDR,x
+        cmp #$00
+        beq eraseSpriteChaliseFog24a
+        sta >SCREEN_ADDR,x
+        bra eraseSpriteChaliseFog24b
+eraseSpriteChaliseFog24a anop
+        lda >BACKGROUND_ADDR,x
+        sta >SCREEN_ADDR,x
+eraseSpriteChaliseFog24b anop
+        long m
+        lda >rowAddress
+        clc
+        adc >spriteX
+
+        clc
+        adc #4
+        tax
+
+
+        short m
+        lda >SURROUND_PIXEL_ADDR,x
+        cmp #$00
+        beq eraseSpriteChaliseFog25a
+        sta >SCREEN_ADDR,x
+        bra eraseSpriteChaliseFog25b
+eraseSpriteChaliseFog25a anop
+        lda >BACKGROUND_ADDR,x
+        sta >SCREEN_ADDR,x
+eraseSpriteChaliseFog25b anop
+        long m
+        lda >rowAddress
+        clc
+        adc >spriteX
+
+        clc
+        adc #5
+        tax
+
+
+        short m
+        lda >SURROUND_PIXEL_ADDR,x
+        cmp #$00
+        beq eraseSpriteChaliseFog26a
+        sta >SCREEN_ADDR,x
+        bra eraseSpriteChaliseFog26b
+eraseSpriteChaliseFog26a anop
+        lda >BACKGROUND_ADDR,x
+        sta >SCREEN_ADDR,x
+eraseSpriteChaliseFog26b anop
+        long m
+        lda >rowAddress
+        clc
+        adc >spriteX
+
+        clc
+        adc #6
+        tax
+
+
+        short m
+        lda >SURROUND_PIXEL_ADDR,x
+        cmp #$00
+        beq eraseSpriteChaliseFog27a
+        sta >SCREEN_ADDR,x
+        bra eraseSpriteChaliseFog27b
+eraseSpriteChaliseFog27a anop
+        lda >BACKGROUND_ADDR,x
+        sta >SCREEN_ADDR,x
+eraseSpriteChaliseFog27b anop
+        long m
+
+
+eraseSpriteChaliseFogSkipRowErase43 anop
+
+        lda >rowCounter
+        clc
+        adc #1
+        sta >rowCounter
+
+
+        cmp #199
+        bcs eraseSpriteChaliseFogSkipRowEraseShortJump44
+        bra eraseSpriteChaliseFogSkipRowEraseDontSkipRow44
+
+eraseSpriteChaliseFogSkipRowEraseShortJump44 anop
+        brl eraseSpriteChaliseFogSkipRowErase44
+eraseSpriteChaliseFogSkipRowEraseDontSkipRow44 anop
+        lda >spriteY
+        clc
+        adc #8
+        asl a
+        tax
+        lda >screenRowOffsets,x
+        sta >rowAddress
+
+        lda >rowAddress
+        clc
+        adc >spriteX
+
+        clc
+        adc #1
+        tax
+
+
+        short m
+        lda >SURROUND_PIXEL_ADDR,x
+        cmp #$00
+        beq eraseSpriteChaliseFog28a
+        sta >SCREEN_ADDR,x
+        bra eraseSpriteChaliseFog28b
+eraseSpriteChaliseFog28a anop
+        lda >BACKGROUND_ADDR,x
+        sta >SCREEN_ADDR,x
+eraseSpriteChaliseFog28b anop
+        long m
+        lda >rowAddress
+        clc
+        adc >spriteX
+
+        clc
+        adc #2
+        tax
+
+
+        short m
+        lda >SURROUND_PIXEL_ADDR,x
+        cmp #$00
+        beq eraseSpriteChaliseFog29a
+        sta >SCREEN_ADDR,x
+        bra eraseSpriteChaliseFog29b
+eraseSpriteChaliseFog29a anop
+        lda >BACKGROUND_ADDR,x
+        sta >SCREEN_ADDR,x
+eraseSpriteChaliseFog29b anop
+        long m
+        lda >rowAddress
+        clc
+        adc >spriteX
+
+        clc
+        adc #3
+        tax
+
+
+        short m
+        lda >SURROUND_PIXEL_ADDR,x
+        cmp #$00
+        beq eraseSpriteChaliseFog30a
+        sta >SCREEN_ADDR,x
+        bra eraseSpriteChaliseFog30b
+eraseSpriteChaliseFog30a anop
+        lda >BACKGROUND_ADDR,x
+        sta >SCREEN_ADDR,x
+eraseSpriteChaliseFog30b anop
+        long m
+        lda >rowAddress
+        clc
+        adc >spriteX
+
+        clc
+        adc #4
+        tax
+
+
+        short m
+        lda >SURROUND_PIXEL_ADDR,x
+        cmp #$00
+        beq eraseSpriteChaliseFog31a
+        sta >SCREEN_ADDR,x
+        bra eraseSpriteChaliseFog31b
+eraseSpriteChaliseFog31a anop
+        lda >BACKGROUND_ADDR,x
+        sta >SCREEN_ADDR,x
+eraseSpriteChaliseFog31b anop
+        long m
+        lda >rowAddress
+        clc
+        adc >spriteX
+
+        clc
+        adc #5
+        tax
+
+
+        short m
+        lda >SURROUND_PIXEL_ADDR,x
+        cmp #$00
+        beq eraseSpriteChaliseFog32a
+        sta >SCREEN_ADDR,x
+        bra eraseSpriteChaliseFog32b
+eraseSpriteChaliseFog32a anop
+        lda >BACKGROUND_ADDR,x
+        sta >SCREEN_ADDR,x
+eraseSpriteChaliseFog32b anop
+        long m
+        lda >rowAddress
+        clc
+        adc >spriteX
+
+        clc
+        adc #6
+        tax
+
+
+        short m
+        lda >SURROUND_PIXEL_ADDR,x
+        cmp #$00
+        beq eraseSpriteChaliseFog33a
+        sta >SCREEN_ADDR,x
+        bra eraseSpriteChaliseFog33b
+eraseSpriteChaliseFog33a anop
+        lda >BACKGROUND_ADDR,x
+        sta >SCREEN_ADDR,x
+eraseSpriteChaliseFog33b anop
+        long m
+
+
+eraseSpriteChaliseFogSkipRowErase44 anop
+
+        lda >rowCounter
+        clc
+        adc #1
+        sta >rowCounter
+
+
+        cmp #199
+        bcs eraseSpriteChaliseFogSkipRowEraseShortJump45
+        bra eraseSpriteChaliseFogSkipRowEraseDontSkipRow45
+
+eraseSpriteChaliseFogSkipRowEraseShortJump45 anop
+        brl eraseSpriteChaliseFogSkipRowErase45
+eraseSpriteChaliseFogSkipRowEraseDontSkipRow45 anop
+        lda >spriteY
+        clc
+        adc #9
+        asl a
+        tax
+        lda >screenRowOffsets,x
+        sta >rowAddress
+
+        lda >rowAddress
+        clc
+        adc >spriteX
+
+        clc
+        adc #1
+        tax
+
+
+        short m
+        lda >SURROUND_PIXEL_ADDR,x
+        cmp #$00
+        beq eraseSpriteChaliseFog34a
+        sta >SCREEN_ADDR,x
+        bra eraseSpriteChaliseFog34b
+eraseSpriteChaliseFog34a anop
+        lda >BACKGROUND_ADDR,x
+        sta >SCREEN_ADDR,x
+eraseSpriteChaliseFog34b anop
+        long m
+        lda >rowAddress
+        clc
+        adc >spriteX
+
+        clc
+        adc #2
+        tax
+
+
+        short m
+        lda >SURROUND_PIXEL_ADDR,x
+        cmp #$00
+        beq eraseSpriteChaliseFog35a
+        sta >SCREEN_ADDR,x
+        bra eraseSpriteChaliseFog35b
+eraseSpriteChaliseFog35a anop
+        lda >BACKGROUND_ADDR,x
+        sta >SCREEN_ADDR,x
+eraseSpriteChaliseFog35b anop
+        long m
+        lda >rowAddress
+        clc
+        adc >spriteX
+
+        clc
+        adc #3
+        tax
+
+
+        short m
+        lda >SURROUND_PIXEL_ADDR,x
+        cmp #$00
+        beq eraseSpriteChaliseFog36a
+        sta >SCREEN_ADDR,x
+        bra eraseSpriteChaliseFog36b
+eraseSpriteChaliseFog36a anop
+        lda >BACKGROUND_ADDR,x
+        sta >SCREEN_ADDR,x
+eraseSpriteChaliseFog36b anop
+        long m
+        lda >rowAddress
+        clc
+        adc >spriteX
+
+        clc
+        adc #4
+        tax
+
+
+        short m
+        lda >SURROUND_PIXEL_ADDR,x
+        cmp #$00
+        beq eraseSpriteChaliseFog37a
+        sta >SCREEN_ADDR,x
+        bra eraseSpriteChaliseFog37b
+eraseSpriteChaliseFog37a anop
+        lda >BACKGROUND_ADDR,x
+        sta >SCREEN_ADDR,x
+eraseSpriteChaliseFog37b anop
+        long m
+        lda >rowAddress
+        clc
+        adc >spriteX
+
+        clc
+        adc #5
+        tax
+
+
+        short m
+        lda >SURROUND_PIXEL_ADDR,x
+        cmp #$00
+        beq eraseSpriteChaliseFog38a
+        sta >SCREEN_ADDR,x
+        bra eraseSpriteChaliseFog38b
+eraseSpriteChaliseFog38a anop
+        lda >BACKGROUND_ADDR,x
+        sta >SCREEN_ADDR,x
+eraseSpriteChaliseFog38b anop
+        long m
+        lda >rowAddress
+        clc
+        adc >spriteX
+
+        clc
+        adc #6
+        tax
+
+
+        short m
+        lda >SURROUND_PIXEL_ADDR,x
+        cmp #$00
+        beq eraseSpriteChaliseFog39a
+        sta >SCREEN_ADDR,x
+        bra eraseSpriteChaliseFog39b
+eraseSpriteChaliseFog39a anop
+        lda >BACKGROUND_ADDR,x
+        sta >SCREEN_ADDR,x
+eraseSpriteChaliseFog39b anop
+        long m
+
+
+eraseSpriteChaliseFogSkipRowErase45 anop
+
+        lda >rowCounter
+        clc
+        adc #1
+        sta >rowCounter
+
+
+        cmp #199
+        bcs eraseSpriteChaliseFogSkipRowEraseShortJump46
+        bra eraseSpriteChaliseFogSkipRowEraseDontSkipRow46
+
+eraseSpriteChaliseFogSkipRowEraseShortJump46 anop
+        brl eraseSpriteChaliseFogSkipRowErase46
+eraseSpriteChaliseFogSkipRowEraseDontSkipRow46 anop
+        lda >spriteY
+        clc
+        adc #10
+        asl a
+        tax
+        lda >screenRowOffsets,x
+        sta >rowAddress
+
+        lda >rowAddress
+        clc
+        adc >spriteX
+
+        clc
+        adc #2
+        tax
+
+
+        short m
+        lda >SURROUND_PIXEL_ADDR,x
+        cmp #$00
+        beq eraseSpriteChaliseFog40a
+        sta >SCREEN_ADDR,x
+        bra eraseSpriteChaliseFog40b
+eraseSpriteChaliseFog40a anop
+        lda >BACKGROUND_ADDR,x
+        sta >SCREEN_ADDR,x
+eraseSpriteChaliseFog40b anop
+        long m
+        lda >rowAddress
+        clc
+        adc >spriteX
+
+        clc
+        adc #3
+        tax
+
+
+        short m
+        lda >SURROUND_PIXEL_ADDR,x
+        cmp #$00
+        beq eraseSpriteChaliseFog41a
+        sta >SCREEN_ADDR,x
+        bra eraseSpriteChaliseFog41b
+eraseSpriteChaliseFog41a anop
+        lda >BACKGROUND_ADDR,x
+        sta >SCREEN_ADDR,x
+eraseSpriteChaliseFog41b anop
+        long m
+        lda >rowAddress
+        clc
+        adc >spriteX
+
+        clc
+        adc #4
+        tax
+
+
+        short m
+        lda >SURROUND_PIXEL_ADDR,x
+        cmp #$00
+        beq eraseSpriteChaliseFog42a
+        sta >SCREEN_ADDR,x
+        bra eraseSpriteChaliseFog42b
+eraseSpriteChaliseFog42a anop
+        lda >BACKGROUND_ADDR,x
+        sta >SCREEN_ADDR,x
+eraseSpriteChaliseFog42b anop
+        long m
+        lda >rowAddress
+        clc
+        adc >spriteX
+
+        clc
+        adc #5
+        tax
+
+
+        short m
+        lda >SURROUND_PIXEL_ADDR,x
+        cmp #$00
+        beq eraseSpriteChaliseFog43a
+        sta >SCREEN_ADDR,x
+        bra eraseSpriteChaliseFog43b
+eraseSpriteChaliseFog43a anop
+        lda >BACKGROUND_ADDR,x
+        sta >SCREEN_ADDR,x
+eraseSpriteChaliseFog43b anop
+        long m
+
+
+eraseSpriteChaliseFogSkipRowErase46 anop
+
+        lda >rowCounter
+        clc
+        adc #1
+        sta >rowCounter
+
+
+        cmp #199
+        bcs eraseSpriteChaliseFogSkipRowEraseShortJump47
+        bra eraseSpriteChaliseFogSkipRowEraseDontSkipRow47
+
+eraseSpriteChaliseFogSkipRowEraseShortJump47 anop
+        brl eraseSpriteChaliseFogSkipRowErase47
+eraseSpriteChaliseFogSkipRowEraseDontSkipRow47 anop
+        lda >spriteY
+        clc
+        adc #11
+        asl a
+        tax
+        lda >screenRowOffsets,x
+        sta >rowAddress
+
+        lda >rowAddress
+        clc
+        adc >spriteX
+
+        clc
+        adc #2
+        tax
+
+
+        short m
+        lda >SURROUND_PIXEL_ADDR,x
+        cmp #$00
+        beq eraseSpriteChaliseFog44a
+        sta >SCREEN_ADDR,x
+        bra eraseSpriteChaliseFog44b
+eraseSpriteChaliseFog44a anop
+        lda >BACKGROUND_ADDR,x
+        sta >SCREEN_ADDR,x
+eraseSpriteChaliseFog44b anop
+        long m
+        lda >rowAddress
+        clc
+        adc >spriteX
+
+        clc
+        adc #3
+        tax
+
+
+        short m
+        lda >SURROUND_PIXEL_ADDR,x
+        cmp #$00
+        beq eraseSpriteChaliseFog45a
+        sta >SCREEN_ADDR,x
+        bra eraseSpriteChaliseFog45b
+eraseSpriteChaliseFog45a anop
+        lda >BACKGROUND_ADDR,x
+        sta >SCREEN_ADDR,x
+eraseSpriteChaliseFog45b anop
+        long m
+        lda >rowAddress
+        clc
+        adc >spriteX
+
+        clc
+        adc #4
+        tax
+
+
+        short m
+        lda >SURROUND_PIXEL_ADDR,x
+        cmp #$00
+        beq eraseSpriteChaliseFog46a
+        sta >SCREEN_ADDR,x
+        bra eraseSpriteChaliseFog46b
+eraseSpriteChaliseFog46a anop
+        lda >BACKGROUND_ADDR,x
+        sta >SCREEN_ADDR,x
+eraseSpriteChaliseFog46b anop
+        long m
+        lda >rowAddress
+        clc
+        adc >spriteX
+
+        clc
+        adc #5
+        tax
+
+
+        short m
+        lda >SURROUND_PIXEL_ADDR,x
+        cmp #$00
+        beq eraseSpriteChaliseFog47a
+        sta >SCREEN_ADDR,x
+        bra eraseSpriteChaliseFog47b
+eraseSpriteChaliseFog47a anop
+        lda >BACKGROUND_ADDR,x
+        sta >SCREEN_ADDR,x
+eraseSpriteChaliseFog47b anop
+        long m
+
+
+eraseSpriteChaliseFogSkipRowErase47 anop
+
+        lda >rowCounter
+        clc
+        adc #1
+        sta >rowCounter
+
+
+        cmp #199
+        bcs eraseSpriteChaliseFogSkipRowEraseShortJump48
+        bra eraseSpriteChaliseFogSkipRowEraseDontSkipRow48
+
+eraseSpriteChaliseFogSkipRowEraseShortJump48 anop
+        brl eraseSpriteChaliseFogSkipRowErase48
+eraseSpriteChaliseFogSkipRowEraseDontSkipRow48 anop
+        lda >spriteY
+        clc
+        adc #12
+        asl a
+        tax
+        lda >screenRowOffsets,x
+        sta >rowAddress
+
+        lda >rowAddress
+        clc
+        adc >spriteX
+
+        clc
+        adc #3
+        tax
+
+
+        short m
+        lda >SURROUND_PIXEL_ADDR,x
+        cmp #$00
+        beq eraseSpriteChaliseFog48a
+        sta >SCREEN_ADDR,x
+        bra eraseSpriteChaliseFog48b
+eraseSpriteChaliseFog48a anop
+        lda >BACKGROUND_ADDR,x
+        sta >SCREEN_ADDR,x
+eraseSpriteChaliseFog48b anop
+        long m
+        lda >rowAddress
+        clc
+        adc >spriteX
+
+        clc
+        adc #4
+        tax
+
+
+        short m
+        lda >SURROUND_PIXEL_ADDR,x
+        cmp #$00
+        beq eraseSpriteChaliseFog49a
+        sta >SCREEN_ADDR,x
+        bra eraseSpriteChaliseFog49b
+eraseSpriteChaliseFog49a anop
+        lda >BACKGROUND_ADDR,x
+        sta >SCREEN_ADDR,x
+eraseSpriteChaliseFog49b anop
+        long m
+
+
+eraseSpriteChaliseFogSkipRowErase48 anop
+
+        lda >rowCounter
+        clc
+        adc #1
+        sta >rowCounter
+
+
+        cmp #199
+        bcs eraseSpriteChaliseFogSkipRowEraseShortJump49
+        bra eraseSpriteChaliseFogSkipRowEraseDontSkipRow49
+
+eraseSpriteChaliseFogSkipRowEraseShortJump49 anop
+        brl eraseSpriteChaliseFogSkipRowErase49
+eraseSpriteChaliseFogSkipRowEraseDontSkipRow49 anop
+        lda >spriteY
+        clc
+        adc #13
+        asl a
+        tax
+        lda >screenRowOffsets,x
+        sta >rowAddress
+
+        lda >rowAddress
+        clc
+        adc >spriteX
+
+        clc
+        adc #3
+        tax
+
+
+        short m
+        lda >SURROUND_PIXEL_ADDR,x
+        cmp #$00
+        beq eraseSpriteChaliseFog50a
+        sta >SCREEN_ADDR,x
+        bra eraseSpriteChaliseFog50b
+eraseSpriteChaliseFog50a anop
+        lda >BACKGROUND_ADDR,x
+        sta >SCREEN_ADDR,x
+eraseSpriteChaliseFog50b anop
+        long m
+        lda >rowAddress
+        clc
+        adc >spriteX
+
+        clc
+        adc #4
+        tax
+
+
+        short m
+        lda >SURROUND_PIXEL_ADDR,x
+        cmp #$00
+        beq eraseSpriteChaliseFog51a
+        sta >SCREEN_ADDR,x
+        bra eraseSpriteChaliseFog51b
+eraseSpriteChaliseFog51a anop
+        lda >BACKGROUND_ADDR,x
+        sta >SCREEN_ADDR,x
+eraseSpriteChaliseFog51b anop
+        long m
+
+
+eraseSpriteChaliseFogSkipRowErase49 anop
+
+        lda >rowCounter
+        clc
+        adc #1
+        sta >rowCounter
+
+
+        cmp #199
+        bcs eraseSpriteChaliseFogSkipRowEraseShortJump50
+        bra eraseSpriteChaliseFogSkipRowEraseDontSkipRow50
+
+eraseSpriteChaliseFogSkipRowEraseShortJump50 anop
+        brl eraseSpriteChaliseFogSkipRowErase50
+eraseSpriteChaliseFogSkipRowEraseDontSkipRow50 anop
+        lda >spriteY
+        clc
+        adc #14
+        asl a
+        tax
+        lda >screenRowOffsets,x
+        sta >rowAddress
+
+        lda >rowAddress
+        clc
+        adc >spriteX
+
+        clc
+        adc #3
+        tax
+
+
+        short m
+        lda >SURROUND_PIXEL_ADDR,x
+        cmp #$00
+        beq eraseSpriteChaliseFog52a
+        sta >SCREEN_ADDR,x
+        bra eraseSpriteChaliseFog52b
+eraseSpriteChaliseFog52a anop
+        lda >BACKGROUND_ADDR,x
+        sta >SCREEN_ADDR,x
+eraseSpriteChaliseFog52b anop
+        long m
+        lda >rowAddress
+        clc
+        adc >spriteX
+
+        clc
+        adc #4
+        tax
+
+
+        short m
+        lda >SURROUND_PIXEL_ADDR,x
+        cmp #$00
+        beq eraseSpriteChaliseFog53a
+        sta >SCREEN_ADDR,x
+        bra eraseSpriteChaliseFog53b
+eraseSpriteChaliseFog53a anop
+        lda >BACKGROUND_ADDR,x
+        sta >SCREEN_ADDR,x
+eraseSpriteChaliseFog53b anop
+        long m
+
+
+eraseSpriteChaliseFogSkipRowErase50 anop
+
+        lda >rowCounter
+        clc
+        adc #1
+        sta >rowCounter
+
+
+        cmp #199
+        bcs eraseSpriteChaliseFogSkipRowEraseShortJump51
+        bra eraseSpriteChaliseFogSkipRowEraseDontSkipRow51
+
+eraseSpriteChaliseFogSkipRowEraseShortJump51 anop
+        brl eraseSpriteChaliseFogSkipRowErase51
+eraseSpriteChaliseFogSkipRowEraseDontSkipRow51 anop
+        lda >spriteY
+        clc
+        adc #15
+        asl a
+        tax
+        lda >screenRowOffsets,x
+        sta >rowAddress
+
+        lda >rowAddress
+        clc
+        adc >spriteX
+
+        clc
+        adc #3
+        tax
+
+
+        short m
+        lda >SURROUND_PIXEL_ADDR,x
+        cmp #$00
+        beq eraseSpriteChaliseFog54a
+        sta >SCREEN_ADDR,x
+        bra eraseSpriteChaliseFog54b
+eraseSpriteChaliseFog54a anop
+        lda >BACKGROUND_ADDR,x
+        sta >SCREEN_ADDR,x
+eraseSpriteChaliseFog54b anop
+        long m
+        lda >rowAddress
+        clc
+        adc >spriteX
+
+        clc
+        adc #4
+        tax
+
+
+        short m
+        lda >SURROUND_PIXEL_ADDR,x
+        cmp #$00
+        beq eraseSpriteChaliseFog55a
+        sta >SCREEN_ADDR,x
+        bra eraseSpriteChaliseFog55b
+eraseSpriteChaliseFog55a anop
+        lda >BACKGROUND_ADDR,x
+        sta >SCREEN_ADDR,x
+eraseSpriteChaliseFog55b anop
+        long m
+
+
+eraseSpriteChaliseFogSkipRowErase51 anop
+
+        lda >rowCounter
+        clc
+        adc #1
+        sta >rowCounter
+
+
+        cmp #199
+        bcs eraseSpriteChaliseFogSkipRowEraseShortJump52
+        bra eraseSpriteChaliseFogSkipRowEraseDontSkipRow52
+
+eraseSpriteChaliseFogSkipRowEraseShortJump52 anop
+        brl eraseSpriteChaliseFogSkipRowErase52
+eraseSpriteChaliseFogSkipRowEraseDontSkipRow52 anop
+        lda >spriteY
+        clc
+        adc #16
+        asl a
+        tax
+        lda >screenRowOffsets,x
+        sta >rowAddress
+
+        lda >rowAddress
+        clc
+        adc >spriteX
+
+        clc
+        adc #1
+        tax
+
+
+        short m
+        lda >SURROUND_PIXEL_ADDR,x
+        cmp #$00
+        beq eraseSpriteChaliseFog56a
+        sta >SCREEN_ADDR,x
+        bra eraseSpriteChaliseFog56b
+eraseSpriteChaliseFog56a anop
+        lda >BACKGROUND_ADDR,x
+        sta >SCREEN_ADDR,x
+eraseSpriteChaliseFog56b anop
+        long m
+        lda >rowAddress
+        clc
+        adc >spriteX
+
+        clc
+        adc #2
+        tax
+
+
+        short m
+        lda >SURROUND_PIXEL_ADDR,x
+        cmp #$00
+        beq eraseSpriteChaliseFog57a
+        sta >SCREEN_ADDR,x
+        bra eraseSpriteChaliseFog57b
+eraseSpriteChaliseFog57a anop
+        lda >BACKGROUND_ADDR,x
+        sta >SCREEN_ADDR,x
+eraseSpriteChaliseFog57b anop
+        long m
+        lda >rowAddress
+        clc
+        adc >spriteX
+
+        clc
+        adc #3
+        tax
+
+
+        short m
+        lda >SURROUND_PIXEL_ADDR,x
+        cmp #$00
+        beq eraseSpriteChaliseFog58a
+        sta >SCREEN_ADDR,x
+        bra eraseSpriteChaliseFog58b
+eraseSpriteChaliseFog58a anop
+        lda >BACKGROUND_ADDR,x
+        sta >SCREEN_ADDR,x
+eraseSpriteChaliseFog58b anop
+        long m
+        lda >rowAddress
+        clc
+        adc >spriteX
+
+        clc
+        adc #4
+        tax
+
+
+        short m
+        lda >SURROUND_PIXEL_ADDR,x
+        cmp #$00
+        beq eraseSpriteChaliseFog59a
+        sta >SCREEN_ADDR,x
+        bra eraseSpriteChaliseFog59b
+eraseSpriteChaliseFog59a anop
+        lda >BACKGROUND_ADDR,x
+        sta >SCREEN_ADDR,x
+eraseSpriteChaliseFog59b anop
+        long m
+        lda >rowAddress
+        clc
+        adc >spriteX
+
+        clc
+        adc #5
+        tax
+
+
+        short m
+        lda >SURROUND_PIXEL_ADDR,x
+        cmp #$00
+        beq eraseSpriteChaliseFog60a
+        sta >SCREEN_ADDR,x
+        bra eraseSpriteChaliseFog60b
+eraseSpriteChaliseFog60a anop
+        lda >BACKGROUND_ADDR,x
+        sta >SCREEN_ADDR,x
+eraseSpriteChaliseFog60b anop
+        long m
+        lda >rowAddress
+        clc
+        adc >spriteX
+
+        clc
+        adc #6
+        tax
+
+
+        short m
+        lda >SURROUND_PIXEL_ADDR,x
+        cmp #$00
+        beq eraseSpriteChaliseFog61a
+        sta >SCREEN_ADDR,x
+        bra eraseSpriteChaliseFog61b
+eraseSpriteChaliseFog61a anop
+        lda >BACKGROUND_ADDR,x
+        sta >SCREEN_ADDR,x
+eraseSpriteChaliseFog61b anop
+        long m
+
+
+eraseSpriteChaliseFogSkipRowErase52 anop
+
+        lda >rowCounter
+        clc
+        adc #1
+        sta >rowCounter
+
+
+        cmp #199
+        bcs eraseSpriteChaliseFogSkipRowEraseShortJump53
+        bra eraseSpriteChaliseFogSkipRowEraseDontSkipRow53
+
+eraseSpriteChaliseFogSkipRowEraseShortJump53 anop
+        brl eraseSpriteChaliseFogSkipRowErase53
+eraseSpriteChaliseFogSkipRowEraseDontSkipRow53 anop
+        lda >spriteY
+        clc
+        adc #17
+        asl a
+        tax
+        lda >screenRowOffsets,x
+        sta >rowAddress
+
+        lda >rowAddress
+        clc
+        adc >spriteX
+
+        clc
+        adc #1
+        tax
+
+
+        short m
+        lda >SURROUND_PIXEL_ADDR,x
+        cmp #$00
+        beq eraseSpriteChaliseFog62a
+        sta >SCREEN_ADDR,x
+        bra eraseSpriteChaliseFog62b
+eraseSpriteChaliseFog62a anop
+        lda >BACKGROUND_ADDR,x
+        sta >SCREEN_ADDR,x
+eraseSpriteChaliseFog62b anop
+        long m
+        lda >rowAddress
+        clc
+        adc >spriteX
+
+        clc
+        adc #2
+        tax
+
+
+        short m
+        lda >SURROUND_PIXEL_ADDR,x
+        cmp #$00
+        beq eraseSpriteChaliseFog63a
+        sta >SCREEN_ADDR,x
+        bra eraseSpriteChaliseFog63b
+eraseSpriteChaliseFog63a anop
+        lda >BACKGROUND_ADDR,x
+        sta >SCREEN_ADDR,x
+eraseSpriteChaliseFog63b anop
+        long m
+        lda >rowAddress
+        clc
+        adc >spriteX
+
+        clc
+        adc #3
+        tax
+
+
+        short m
+        lda >SURROUND_PIXEL_ADDR,x
+        cmp #$00
+        beq eraseSpriteChaliseFog64a
+        sta >SCREEN_ADDR,x
+        bra eraseSpriteChaliseFog64b
+eraseSpriteChaliseFog64a anop
+        lda >BACKGROUND_ADDR,x
+        sta >SCREEN_ADDR,x
+eraseSpriteChaliseFog64b anop
+        long m
+        lda >rowAddress
+        clc
+        adc >spriteX
+
+        clc
+        adc #4
+        tax
+
+
+        short m
+        lda >SURROUND_PIXEL_ADDR,x
+        cmp #$00
+        beq eraseSpriteChaliseFog65a
+        sta >SCREEN_ADDR,x
+        bra eraseSpriteChaliseFog65b
+eraseSpriteChaliseFog65a anop
+        lda >BACKGROUND_ADDR,x
+        sta >SCREEN_ADDR,x
+eraseSpriteChaliseFog65b anop
+        long m
+        lda >rowAddress
+        clc
+        adc >spriteX
+
+        clc
+        adc #5
+        tax
+
+
+        short m
+        lda >SURROUND_PIXEL_ADDR,x
+        cmp #$00
+        beq eraseSpriteChaliseFog66a
+        sta >SCREEN_ADDR,x
+        bra eraseSpriteChaliseFog66b
+eraseSpriteChaliseFog66a anop
+        lda >BACKGROUND_ADDR,x
+        sta >SCREEN_ADDR,x
+eraseSpriteChaliseFog66b anop
+        long m
+        lda >rowAddress
+        clc
+        adc >spriteX
+
+        clc
+        adc #6
+        tax
+
+
+        short m
+        lda >SURROUND_PIXEL_ADDR,x
+        cmp #$00
+        beq eraseSpriteChaliseFog67a
+        sta >SCREEN_ADDR,x
+        bra eraseSpriteChaliseFog67b
+eraseSpriteChaliseFog67a anop
+        lda >BACKGROUND_ADDR,x
+        sta >SCREEN_ADDR,x
+eraseSpriteChaliseFog67b anop
+        long m
+
+
+eraseSpriteChaliseFogSkipRowErase53 anop
+
+        lda >rowCounter
+        clc
+        adc #1
+        sta >rowCounter
+
 
         rtl
 
