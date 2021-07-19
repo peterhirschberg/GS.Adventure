@@ -22,24 +22,39 @@ sprites start spritesSeg
 
 drawRoomSprites entry
 
-        jsr drawYellowKey
-        jsr drawWhiteKey
-        jsr drawBlackKey
-
-        jsr drawPort1
-        jsr drawPort2
-        jsr drawPort3
-
-        jsr drawRedDragon
-        jsr drawGreenDragon
-        jsr drawYellowDragon
-
         jsr drawBridge
+
+        ldx #OBJECT_YELLOWKEY
+        jsr drawKey
+        ldx #OBJECT_WHITEKEY
+        jsr drawKey
+        ldx #OBJECT_BLACKKEY
+        jsr drawKey
+
+        ldx #OBJECT_PORT1
+        jsr drawPort
+        ldx #OBJECT_PORT2
+        jsr drawPort
+        ldx #OBJECT_PORT3
+        jsr drawPort
+
+        ldx #OBJECT_REDDRAGON
+        jsr drawDragon
+        ldx #OBJECT_GREENDRAGON
+        jsr drawDragon
+        ldx #OBJECT_YELLOWDRAGON
+        jsr drawDragon
+
+        jsr drawSword
+        jsr drawMagnet
+        jsr drawChalise
 
         rtl
 
 
 eraseRoomSprites entry
+
+        jsr eraseBridge
 
         ldx #OBJECT_YELLOWKEY
         jsr eraseKey
@@ -50,15 +65,23 @@ eraseRoomSprites entry
         ldx #OBJECT_BLACKKEY
         jsr eraseKey
 
-        jsr erasePort1
-        jsr erasePort2
-        jsr erasePort3
+        ldx #OBJECT_PORT1
+        jsr erasePort
+        ldx #OBJECT_PORT2
+        jsr erasePort
+        ldx #OBJECT_PORT3
+        jsr erasePort
 
-        jsr eraseRedDragon
-        jsr eraseGreenDragon
-        jsr eraseYellowDragon
+        lda #OBJECT_REDDRAGON
+        jsr eraseDragon
+        lda #OBJECT_GREENDRAGON
+        jsr eraseDragon
+        lda #OBJECT_YELLOWDRAGON
+        jsr eraseDragon
 
-        jsr eraseBridge
+        jsr eraseSword
+        jsr eraseMagnet
+        jsr eraseChalise
 
         rtl
 
@@ -86,166 +109,53 @@ dirtyDone anop
 
 ; draw
 
-drawYellowKey entry
-        lda #OBJECT_YELLOWKEY
-        tax
-
+drawKey entry
         lda >objectRoomList,x
         asl a
         cmp >currentRoom
-        bne drawYellowKeyDone
+        bne drawKeyDone
 
         lda >objectDirtyList,x
         cmp #1
-        bne drawYellowKeyDone
+        bne drawKeyDone
         lda #0
         sta >objectDirtyList,x
 
         lda >objectPositionXList,x
         sta >spriteX
         lda >objectPositionYList,x
-        bmi drawYellowKeyDone
+        bmi drawKeyDone
         sta >spriteY
-        lda #COLOR_YELLOW
+        lda >objectColorList,x
         sta >spriteColor
         jsl drawSpriteKey
-drawYellowKeyDone anop
+drawKeyDone anop
         rts
 
-drawWhiteKey entry
-        lda #OBJECT_WHITEKEY
-        tax
-
+drawPort entry
         lda >objectRoomList,x
         asl a
         cmp >currentRoom
-        bne drawWhiteKeyDone
+        bne drawPortDone
 
         lda >objectDirtyList,x
         cmp #1
-        bne drawWhiteKeyDone
+        bne drawPortDone
         lda #0
         sta >objectDirtyList,x
 
         lda >objectPositionXList,x
         sta >spriteX
         lda >objectPositionYList,x
-        bmi drawWhiteKeyDone
-        sta >spriteY
-        lda #COLOR_WHITE
-        sta >spriteColor
-        jsl drawSpriteKey
-drawWhiteKeyDone anop
-        rts
-
-drawBlackKey entry
-        lda #OBJECT_BLACKKEY
-        tax
-
-        lda >objectRoomList,x
-        asl a
-        cmp >currentRoom
-        bne drawBlackKeyDone
-
-        lda >objectDirtyList,x
-        cmp #1
-        bne drawBlackKeyDone
-        lda #0
-        sta >objectDirtyList,x
-
-        lda >objectPositionXList,x
-        sta >spriteX
-        lda >objectPositionYList,x
-        bmi drawBlackKeyDone
-        sta >spriteY
-        lda #COLOR_BLACK
-        sta >spriteColor
-        jsl drawSpriteKey
-drawBlackKeyDone anop
-        rts
-
-drawPort1 entry
-        lda #OBJECT_PORT1
-        tax
-
-        lda >objectRoomList,x
-        asl a
-        cmp >currentRoom
-        bne drawPort1Done
-
-        lda >objectDirtyList,x
-        cmp #1
-        bne drawPort1Done
-        lda #0
-        sta >objectDirtyList,x
-
-        lda >objectPositionXList,x
-        sta >spriteX
-        lda >objectPositionYList,x
-        bmi drawPort1Done
+        bmi drawPortDone
         sta >spriteY
 
         jsr drawPortState
 
-drawPort1Done anop
+drawPortDone anop
         rts
 
-drawPort2 entry
-        lda #OBJECT_PORT2
-        tax
-
-        lda >objectRoomList,x
-        asl a
-        cmp >currentRoom
-        bne drawPort2Done
-
-        lda >objectDirtyList,x
-        cmp #1
-        bne drawPort2Done
-        lda #0
-        sta >objectDirtyList,x
-
-        lda >objectPositionXList,x
-        sta >spriteX
-        lda >objectPositionYList,x
-        bmi drawPort2Done
-        sta >spriteY
-
-        jsr drawPortState
-
-drawPort2Done anop
-        rts
-
-drawPort3 entry
-        lda #OBJECT_PORT3
-        tax
-
-        lda >objectRoomList,x
-        asl a
-        cmp >currentRoom
-        bne drawPort3Done
-
-        lda >objectDirtyList,x
-        cmp #1
-        bne drawPort3Done
-        lda #0
-        sta >objectDirtyList,x
-
-        lda >objectPositionXList,x
-        sta >spriteX
-        lda >objectPositionYList,x
-        bmi drawPort3Done
-        sta >spriteY
-
-        jsr drawPortState
-
-drawPort3Done anop
-        rts
-
-drawRedDragon entry
-        lda #OBJECT_REDDRAGON
-        tax
-
+drawDragon entry
         lda >objectRoomList,x
         asl a
         cmp >currentRoom
@@ -253,7 +163,7 @@ drawRedDragon entry
 
         lda >objectDirtyList,x
         cmp #1
-        bne drawRedDragonDone
+        bne drawDragonDone
         lda #0
         sta >objectDirtyList,x
 
@@ -261,63 +171,11 @@ drawRedDragon entry
         sta >spriteX
         lda >objectPositionYList,x
         sta >spriteY
-        bmi drawRedDragonDone
-        lda #COLOR_RED
+        bmi drawDragonDone
+        lda objectColorList,x
         sta >spriteColor
         jsl drawSpriteDragon1
-drawRedDragonDone anop
-        rts
-
-drawGreenDragon entry
-        lda #OBJECT_GREENDRAGON
-        tax
-
-        lda >objectRoomList,x
-        asl a
-        cmp >currentRoom
-        bne drawGreenDragonDone
-
-        lda >objectDirtyList,x
-        cmp #1
-        bne drawGreenDragonDone
-        lda #0
-        sta >objectDirtyList,x
-
-        lda >objectPositionXList,x
-        sta >spriteX
-        lda >objectPositionYList,x
-        bmi drawGreenDragonDone
-        sta >spriteY
-        lda #COLOR_LIMEGREEN
-        sta >spriteColor
-        jsl drawSpriteDragon1
-drawGreenDragonDone anop
-        rts
-
-drawYellowDragon entry
-        lda #OBJECT_YELLOWDRAGON
-        tax
-
-        lda >objectRoomList,x
-        asl a
-        cmp >currentRoom
-        bne drawYellowDragonDone
-
-        lda >objectDirtyList,x
-        cmp #1
-        bne drawYellowDragonDone
-        lda #0
-        sta >objectDirtyList,x
-
-        lda >objectPositionXList,x
-        sta >spriteX
-        lda >objectPositionYList,x
-        bmi drawYellowDragonDone
-        sta >spriteY
-        lda #COLOR_YELLOW
-        sta >spriteColor
-        jsl drawSpriteDragon1
-drawYellowDragonDone anop
+drawDragonDone anop
         rts
 
 drawBridge entry
@@ -342,6 +200,78 @@ drawBridge entry
         sta >spriteY
         jsl drawSpriteBridge
 drawBridgeDone anop
+        rts
+
+drawMagnet entry
+        lda #OBJECT_MAGNET
+        tax
+
+        lda >objectRoomList,x
+        asl a
+        cmp >currentRoom
+        bne drawMagnetDone
+
+        lda >objectDirtyList,x
+        cmp #1
+        bne drawMagnetDone
+        lda #0
+        sta >objectDirtyList,x
+
+        lda >objectPositionXList,x
+        sta >spriteX
+        lda >objectPositionYList,x
+        bmi drawMagnetDone
+        sta >spriteY
+        jsl drawSpriteMagnet
+drawMagnetDone anop
+        rts
+
+drawSword entry
+        lda #OBJECT_SWORD
+        tax
+
+        lda >objectRoomList,x
+        asl a
+        cmp >currentRoom
+        bne drawSwordDone
+
+        lda >objectDirtyList,x
+        cmp #1
+        bne drawSwordDone
+        lda #0
+        sta >objectDirtyList,x
+
+        lda >objectPositionXList,x
+        sta >spriteX
+        lda >objectPositionYList,x
+        bmi drawSwordDone
+        sta >spriteY
+        jsl drawSpriteSword
+drawSwordDone anop
+        rts
+
+drawChalise entry
+        lda #OBJECT_CHALISE
+        tax
+
+        lda >objectRoomList,x
+        asl a
+        cmp >currentRoom
+        bne drawChaliseDone
+
+        lda >objectDirtyList,x
+        cmp #1
+        bne drawChaliseDone
+        lda #0
+        sta >objectDirtyList,x
+
+        lda >objectPositionXList,x
+        sta >spriteX
+        lda >objectPositionYList,x
+        bmi drawChaliseDone
+        sta >spriteY
+        jsl drawSpriteChalise
+drawChaliseDone anop
         rts
 
 
@@ -375,136 +305,42 @@ eraseKeyDone anop
         rts
 
 
-erasePort1 entry
-        lda #OBJECT_PORT1
-        tax
-
+erasePort entry
         lda >objectRoomList,x
         asl a
         cmp >currentRoom
-        bne erasePort1Done
+        bne erasePortDone
 
         lda >objectDirtyList,x
         cmp #1
-        bne erasePort1Done
+        bne erasePortDone
 
         lda >objectPositionOldXList,x
         sta >spriteX
         lda >objectPositionOldYList,x
-        bmi erasePort1Done
+        bmi erasePortDone
         sta >spriteY
         jsl eraseSpritePort
 erasePort1Done anop
         rts
 
-erasePort2 entry
-        lda #OBJECT_PORT2
-        tax
-
+eraseDragon entry
         lda >objectRoomList,x
         asl a
         cmp >currentRoom
-        bne erasePort2Done
+        bne eraseDragonDone
 
         lda >objectDirtyList,x
         cmp #1
-        bne erasePort2Done
+        bne eraseDragonDone
 
         lda >objectPositionOldXList,x
         sta >spriteX
         lda >objectPositionOldYList,x
-        bmi erasePort2Done
-        sta >spriteY
-        jsl eraseSpritePort
-erasePort2Done anop
-        rts
-
-erasePort3 entry
-        lda #OBJECT_PORT3
-        tax
-
-        lda >objectRoomList,x
-        asl a
-        cmp >currentRoom
-        bne erasePort3Done
-
-        lda >objectDirtyList,x
-        cmp #1
-        bne erasePort3Done
-
-        lda >objectPositionOldXList,x
-        sta >spriteX
-        lda >objectPositionOldYList,x
-        bmi erasePort3Done
-        sta >spriteY
-        jsl eraseSpritePort
-erasePort3Done anop
-        rts
-
-eraseRedDragon entry
-        lda #OBJECT_REDDRAGON
-        tax
-
-        lda >objectRoomList,x
-        asl a
-        cmp >currentRoom
-        bne eraseRedDragonDone
-
-        lda >objectDirtyList,x
-        cmp #1
-        bne eraseRedDragonDone
-
-        lda >objectPositionOldXList,x
-        sta >spriteX
-        lda >objectPositionOldYList,x
-        bmi eraseRedDragonDone
+        bmi eraseDragonDone
         sta >spriteY
         jsl eraseSpriteDragon1
-eraseRedDragonDone anop
-        rts
-
-eraseGreenDragon entry
-        lda #OBJECT_GREENDRAGON
-        tax
-
-        lda >objectRoomList,x
-        asl a
-        cmp >currentRoom
-        bne eraseGreenDragonDone
-
-        lda >objectDirtyList,x
-        cmp #1
-        bne eraseGreenDragonDone
-
-        lda >objectPositionOldXList,x
-        sta >spriteX
-        lda >objectPositionOldYList,x
-        bmi eraseGreenDragonDone
-        sta >spriteY
-        jsl eraseSpriteDragon1
-eraseGreenDragonDone anop
-        rts
-
-eraseYellowDragon entry
-        lda #OBJECT_YELLOWDRAGON
-        tax
-
-        lda >objectRoomList,x
-        asl a
-        cmp >currentRoom
-        bne eraseYellowDragonDone
-
-        lda >objectDirtyList,x
-        cmp #1
-        bne eraseYellowDragonDone
-
-        lda >objectPositionOldXList,x
-        sta >spriteX
-        lda >objectPositionOldYList,x
-        bmi eraseYellowDragonDone
-        sta >spriteY
-        jsl eraseSpriteDragon1
-eraseYellowDragonDone anop
+eraseDragonDone anop
         rts
 
 eraseBridge entry
@@ -536,6 +372,92 @@ eraseBridgeFog anop
 eraseBridgeDone anop
         rts
 
+eraseChalise entry
+        lda #OBJECT_CHALISE
+        tax
+
+        lda >objectRoomList,x
+        asl a
+        cmp >currentRoom
+        bne eraseChaliseDone
+
+        lda >objectDirtyList,x
+        cmp #1
+        bne eraseChaliseDone
+
+        lda >objectPositionOldXList,x
+        sta >spriteX
+        lda >objectPositionOldYList,x
+        bmi eraseChaliseDone
+        sta >spriteY
+
+        jsl roomHasFog
+        cmp #1
+        beq eraseChaliseFog
+        jsl eraseSpriteChalise
+        bra eraseChaliseDone
+eraseChaliseFog anop
+        jsl eraseSpriteChaliseFog
+eraseChaliseDone anop
+        rts
+
+eraseMagnet entry
+        lda #OBJECT_MAGNET
+        tax
+
+        lda >objectRoomList,x
+        asl a
+        cmp >currentRoom
+        bne eraseMagnetDone
+
+        lda >objectDirtyList,x
+        cmp #1
+        bne eraseMagnetDone
+
+        lda >objectPositionOldXList,x
+        sta >spriteX
+        lda >objectPositionOldYList,x
+        bmi eraseMagnetDone
+        sta >spriteY
+
+        jsl roomHasFog
+        cmp #1
+        beq eraseMagnetFog
+        jsl eraseSpriteMagnet
+        bra eraseMagnetDone
+eraseMagnetFog anop
+        jsl eraseSpriteMagnetFog
+eraseMagnetDone anop
+        rts
+
+eraseSword entry
+        lda #OBJECT_SWORD
+        tax
+
+        lda >objectRoomList,x
+        asl a
+        cmp >currentRoom
+        bne eraseSwordDone
+
+        lda >objectDirtyList,x
+        cmp #1
+        bne eraseSwordDone
+
+        lda >objectPositionOldXList,x
+        sta >spriteX
+        lda >objectPositionOldYList,x
+        bmi eraseSwordDone
+        sta >spriteY
+
+        jsl roomHasFog
+        cmp #1
+        beq eraseSwordFog
+        jsl eraseSpriteSword
+        bra eraseMagnetDone
+eraseSwordFog anop
+        jsl eraseSpriteSwordFog
+eraseSwordDone anop
+        rts
 
 
 drawPortState entry
