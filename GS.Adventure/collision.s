@@ -127,34 +127,56 @@ collisionCheckPlayerWithObjects entry
         ldx #OBJECT_YELLOWKEY
         jsr collisionCheckPlayerWithObject
         cmp #1
-        beq hitObject
+        beq hitObjectShortJump
 
         ldx #OBJECT_WHITEKEY
         jsr collisionCheckPlayerWithObject
         cmp #1
-        beq hitObject
+        beq hitObjectShortJump
 
         ldx #OBJECT_BLACKKEY
         jsr collisionCheckPlayerWithObject
         cmp #1
-        beq hitObject
+        beq hitObjectShortJump
 
         ldx #OBJECT_YELLOWDRAGON
         jsr collisionCheckPlayerWithObject
         cmp #1
-        beq hitObject
+        beq hitObjectShortJump
 
         ldx #OBJECT_GREENDRAGON
         jsr collisionCheckPlayerWithObject
         cmp #1
-        beq hitObject
+        beq hitObjectShortJump
 
         ldx #OBJECT_REDDRAGON
         jsr collisionCheckPlayerWithObject
         cmp #1
-        beq hitObject
+        beq hitObjectShortJump
+
+        bra continue
+
+hitObjectShortJump anop
+        brl hitObject
+
+continue anop
 
         ldx #OBJECT_BRIDGE
+        jsr collisionCheckPlayerWithObject
+        cmp #1
+        beq hitObject
+
+        ldx #OBJECT_SWORD
+        jsr collisionCheckPlayerWithObject
+        cmp #1
+        beq hitObject
+
+        ldx #OBJECT_MAGNET
+        jsr collisionCheckPlayerWithObject
+        cmp #1
+        beq hitObject
+
+        ldx #OBJECT_CHALISE
         jsr collisionCheckPlayerWithObject
         cmp #1
         beq hitObject
@@ -225,6 +247,11 @@ hitNonLinkableObject anop
 
 ; check for player going into castles
         jsl checkCastles
+
+; mark it dirty
+        lda #1
+        ldx playerHitObject
+        sta >objectDirtyList,x
 
         lda playerX
         sta playerHitX
