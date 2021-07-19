@@ -696,15 +696,27 @@ checkCastles entry
 
         lda >playerHitObject
         cmp #OBJECT_PORT1
-        beq enterYellowCastle
+        beq onEnterYellowCastle
         cmp #OBJECT_PORT2
-        beq enterWhiteCastle
+        beq onEnterWhiteCastle
         cmp #OBJECT_PORT3
-        beq enterBlackCastle
+        beq onEnterBlackCastle
 
         rtl
 
-enterYellowCastle anop
+onEnterYellowCastle anop
+        jsl enterYellowCastle
+        rtl
+
+onEnterWhiteCastle anop
+        jsl enterWhiteCastle
+        rtl
+
+onEnterBlackCastle anop
+        jsl enterBlackCastle
+        rtl
+
+enterYellowCastle entry
 
         ldx #OBJECT_PORT1
         lda >objectStateList,x
@@ -745,11 +757,85 @@ yellowCastleDone anop
         rtl
 
 
-enterWhiteCastle anop
+enterWhiteCastle entry
+
+        ldx #OBJECT_PORT2
+        lda >objectStateList,x
+        cmp #0
+        beq whiteCastleDone
+
+        lda #$1a
+        asl a
+        sta >currentRoom
+
+        lda >playerY
+        clc
+        adc #65
+        sta >playerY
+        sta >playerOldY
+
+        ldx #OBJECT_PLAYER
+        lda >objectLinkedObjectList,x
+        tax
+        lda >objectPositionYList,x
+        clc
+        adc #65
+        sta >objectPositionYList,x
+
+        lda #0
+        sta >playerHitObject
+        sta >playerHitWall
+
+; ensure the port stays open in case we are walking in with the key
+        lda #6
+        sta >objectStateList,x
+
+; draw the new room
+        jsr zeroSurroundGrid
+        jsr drawRoom
+
+whiteCastleDone anop
         rtl
 
 
-enterBlackCastle anop
+enterBlackCastle entry
+
+        ldx #OBJECT_PORT3
+        lda >objectStateList,x
+        cmp #0
+        beq blackCastleDone
+
+        lda #$1b
+        asl a
+        sta >currentRoom
+
+        lda >playerY
+        clc
+        adc #65
+        sta >playerY
+        sta >playerOldY
+
+        ldx #OBJECT_PLAYER
+        lda >objectLinkedObjectList,x
+        tax
+        lda >objectPositionYList,x
+        clc
+        adc #65
+        sta >objectPositionYList,x
+
+        lda #0
+        sta >playerHitObject
+        sta >playerHitWall
+
+; ensure the port stays open in case we are walking in with the key
+        lda #6
+        sta >objectStateList,x
+
+; draw the new room
+        jsr zeroSurroundGrid
+        jsr drawRoom
+
+blackCastleDone anop
         rtl
 
 
