@@ -535,7 +535,7 @@ wrapPlayerRoom entry
         cmp #314
         bcs wrapToRoomRight
 
-        bra wrapDone
+        brl wrapDone
 
 wrapToRoomUp anop
 
@@ -555,9 +555,28 @@ wrapToRoomUp anop
         lda #190
         sta playerY
 
-        bra wrapDone
+        brl wrapDone
 
 wrapToRoomDown anop
+
+; check for leaving castles
+
+        lda currentRoom
+        lsr a
+        cmp #ROOM_INDEX_IN_YELLOW_CASTLE
+        beq inCastle
+        cmp #ROOM_INDEX_IN_WHITE_CASTLE
+        beq inCastle
+        cmp #ROOM_INDEX_IN_BLACK_CASTLE
+        beq inCastle
+        bra notInCastle
+
+inCastle anop
+
+        jsr leaveCastle
+        rts
+
+notInCastle anop
 
         jsr getCurrentLinkedRooms
 
@@ -575,7 +594,7 @@ wrapToRoomDown anop
         lda #8
         sta playerY
 
-        bra wrapDone
+        brl wrapDone
 
 wrapToRoomLeft anop
 
@@ -595,7 +614,7 @@ wrapToRoomLeft anop
         lda #310
         sta playerX
 
-        bra wrapDone
+        brl wrapDone
 
 wrapToRoomRight anop
 
@@ -614,8 +633,6 @@ wrapToRoomRight anop
 ; wrap the player
         lda #8
         sta playerX
-
-        bra wrapDone
 
 wrapDone anop
 
@@ -837,6 +854,72 @@ enterBlackCastle entry
 
 blackCastleDone anop
         rtl
+
+
+leaveCastle entry
+
+        lda currentRoom
+        lsr a
+        cmp #ROOM_INDEX_IN_YELLOW_CASTLE
+        beq leaveYellowCastle
+        cmp #ROOM_INDEX_IN_WHITE_CASTLE
+        beq leaveWhiteCastle
+        cmp #ROOM_INDEX_IN_BLACK_CASTLE
+        beq leaveBlackCastle
+
+        rts
+
+leaveYellowCastle anop
+
+        lda #$11
+        asl a
+        sta currentRoom
+
+        jsr finishLeavingCastle
+
+        rts
+
+leaveWhiteCastle anop
+
+        lda #$0f
+        asl a
+        sta currentRoom
+
+        jsr finishLeavingCastle
+
+        rts
+
+leaveBlackCastle anop
+
+        lda #$10
+        asl a
+        sta currentRoom
+
+        jsr finishLeavingCastle
+
+        rts
+
+finishLeavingCastle entry
+
+        lda >playerY
+        sec
+        sbc #45
+        sta >playerY
+        sta >playerOldY
+
+        ldx #OBJECT_PLAYER
+        lda >objectLinkedObjectList,x
+        tax
+        lda >objectPositionYList,x
+        sec
+        sbc #45
+        sta >objectPositionYList,x
+
+; draw the new room
+        jsr zeroSurroundGrid
+        jsr drawRoom
+
+        rts
 
 
 
@@ -1235,38 +1318,39 @@ roomMirroredList anop
         dc i2'1'
 
 
+; up/right/down/left
 roomLinkList anop
-        dc i2'$00,$00,$00,$00'
-        dc i2'$08,$02,$80,$03'
-        dc i2'$11,$03,$83,$01'
-        dc i2'$06,$01,$86,$02'
-        dc i2'$10,$05,$07,$06'
-        dc i2'$1D,$06,$08,$04'
-        dc i2'$07,$04,$03,$05'
-        dc i2'$04,$08,$06,$08'
-        dc i2'$05,$07,$01,$07'
-        dc i2'$0A,$0A,$0B,$0A'
-        dc i2'$03,$09,$09,$09'
-        dc i2'$09,$0C,$1C,$0D'
-        dc i2'$1C,$0D,$1D,$0B'
-        dc i2'$0F,$0B,$0E,$0C'
-        dc i2'$0D,$10,$0F,$10'
-        dc i2'$0E,$0F,$0D,$0F'
-        dc i2'$01,$1C,$04,$1C'
-        dc i2'$06,$03,$02,$01'
-        dc i2'$12,$12,$12,$12'
-        dc i2'$15,$14,$15,$16'
-        dc i2'$16,$15,$16,$13'
-        dc i2'$13,$16,$13,$14'
-        dc i2'$14,$13,$1B,$15'
-        dc i2'$19,$18,$19,$18'
-        dc i2'$1A,$17,$1A,$17'
-        dc i2'$17,$1A,$17,$1A'
-        dc i2'$18,$19,$18,$19'
-        dc i2'$89,$89,$89,$89'
-        dc i2'$1D,$07,$8C,$08'
-        dc i2'$8F,$01,$10,$03'
-        dc i2'$06,$01,$06,$03'
+        dc i2'$00,$00,$00,$00' ; 0
+        dc i2'$08,$02,$80,$03' ; 1
+        dc i2'$11,$03,$83,$01' ; 2
+        dc i2'$06,$01,$86,$02' ; 3
+        dc i2'$10,$05,$07,$06' ; 4
+        dc i2'$1D,$06,$08,$04' ; 5
+        dc i2'$07,$04,$03,$05' ; 6
+        dc i2'$04,$08,$06,$08' ; 7
+        dc i2'$05,$07,$01,$07' ; 8
+        dc i2'$0A,$0A,$0B,$0A' ; 9
+        dc i2'$03,$09,$09,$09' ; A
+        dc i2'$09,$0C,$1C,$0D' ; B
+        dc i2'$1C,$0D,$1D,$0B' ; C
+        dc i2'$0F,$0B,$0E,$0C' ; D
+        dc i2'$0D,$10,$0F,$10' ; E
+        dc i2'$0E,$0F,$0D,$0F' ; F
+        dc i2'$01,$1C,$04,$1C' ; 10
+        dc i2'$06,$03,$02,$01' ; 11
+        dc i2'$12,$12,$12,$12' ; 12 yellow castle
+        dc i2'$15,$14,$15,$16' ; 13
+        dc i2'$16,$15,$16,$13' ; 14
+        dc i2'$13,$16,$13,$14' ; 15
+        dc i2'$14,$13,$1B,$15' ; 16
+        dc i2'$19,$18,$19,$18' ; 17
+        dc i2'$1A,$17,$1A,$17' ; 18
+        dc i2'$17,$1A,$17,$1A' ; 19
+        dc i2'$18,$19,$18,$19' ; 1A white castle
+        dc i2'$89,$89,$89,$89' ; 1B black castle
+        dc i2'$1D,$07,$8C,$08' ; 1C
+        dc i2'$8F,$01,$10,$03' ; 1D
+        dc i2'$06,$01,$06,$03' ; 1E
 
 
 roomLevelDiffsList anop
@@ -1310,5 +1394,8 @@ ROOM_INDEX_NUMBER_ROOM_PURPLE2          gequ 2*28   ; 1C
 ROOM_INDEX_TOP_ENTRY_ROOM_RED           gequ 2*29   ; 1D
 ROOM_INDEX_BELOW_YELLOW_CASTLE_PURPLE   gequ 2*30   ; 1E
 
+ROOM_INDEX_IN_YELLOW_CASTLE             gequ $12
+ROOM_INDEX_IN_WHITE_CASTLE              gequ $1a
+ROOM_INDEX_IN_BLACK_CASTLE              gequ $1b
 
         end
