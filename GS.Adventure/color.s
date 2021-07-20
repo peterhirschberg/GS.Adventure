@@ -267,7 +267,90 @@ fogColorTable entry
 
 
 
+advanceFlashColor entry
+
+        inc flashR
+        inc flashG
+        inc flashB
+
+        lda flashR
+        cmp #$0f
+        bcs resetR
+        bra dontResetR
+
+resetR anop
+
+        lda #0
+        sta flashR
+
+dontResetR anop
+
+        lda flashG
+        cmp #$0f
+        bcs resetG
+        bra dontResetG
+
+resetG anop
+
+        lda #0
+        sta flashG
+
+dontResetG anop
+
+        lda flashB
+        cmp #$0f
+        bcs resetB
+        bra dontResetB
+
+resetB anop
+
+        lda #0
+        sta flashB
+
+dontResetB anop
+
+        lda flashR
+        asl a
+        asl a
+        asl a
+        asl a
+        asl a
+        asl a
+        asl a
+        asl a
+        sta tempR
+
+        lda flashG
+        asl a
+        asl a
+        asl a
+        asl a
+        sta tempG
+
+        lda flashB
+        sta tempB
+
+        lda tempR
+        ora tempG
+        ora tempB
+
+; store the flash color in the palette
+        ldx #30
+        sta >COLOR_TABLE,x
+
+        rts
+
+
+flashR dc i2'0'
+flashG dc i2'5'
+flashB dc i2'10'
+
+tempR dc i2'0'
+tempG dc i2'0'
+tempB dc i2'0'
+
         end
+
 
 colorData data
 

@@ -185,6 +185,8 @@ pass2 anop
         jsl eraseRoomSprites
         jsl drawRoomSprites
 
+        jsr advanceFlashColor
+
 passDone anop
 
         lda #0
@@ -195,10 +197,12 @@ passDone anop
         sta lastRoom
 
 
+
 ;        jsr borderStart
 
 
 ;        jsr borderDone
+
 
         rts
 
