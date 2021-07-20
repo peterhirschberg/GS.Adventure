@@ -49,6 +49,8 @@ drawRoomSprites entry
         jsr drawMagnet
         jsr drawChalise
 
+; bat??
+
         rtl
 
 
@@ -67,21 +69,34 @@ eraseRoomSprites entry
 
         ldx #OBJECT_PORT1
         jsr erasePort
+
         ldx #OBJECT_PORT2
         jsr erasePort
+
         ldx #OBJECT_PORT3
         jsr erasePort
 
-        lda #OBJECT_REDDRAGON
+        ldx #OBJECT_REDDRAGON
         jsr eraseDragon
-        lda #OBJECT_GREENDRAGON
+        lda >objectStateList,x
+        sta >objectOldStateList,x
+
+        ldx #OBJECT_GREENDRAGON
         jsr eraseDragon
-        lda #OBJECT_YELLOWDRAGON
+        lda >objectStateList,x
+        sta >objectOldStateList,x
+
+        ldx #OBJECT_YELLOWDRAGON
         jsr eraseDragon
+        lda >objectStateList,x
+        sta >objectOldStateList,x
+
 
         jsr eraseSword
         jsr eraseMagnet
         jsr eraseChalise
+
+; bat??
 
         rtl
 
@@ -174,7 +189,28 @@ drawDragon entry
         bmi drawDragonDone
         lda >objectColorList,x
         sta >spriteColor
+
+        lda >objectStateList,x
+        cmp #0
+        beq drawDragon0
+        cmp #1
+        beq drawDragon1
+        cmp #2
+        beq drawDragon2
+        rts
+
+drawDragon0 anop
         jsl drawSpriteDragon1
+        rts
+
+drawDragon1 anop
+        jsl drawSpriteDragon2
+        rts
+
+drawDragon2 anop
+        jsl drawSpriteDragon3
+        rts
+
 drawDragonDone anop
         rts
 
@@ -324,6 +360,7 @@ erasePort entry
 erasePortDone anop
         rts
 
+
 eraseDragon entry
         lda >objectRoomList,x
         asl a
@@ -339,7 +376,28 @@ eraseDragon entry
         lda >objectPositionOldYList,x
         bmi eraseDragonDone
         sta >spriteY
+
+        lda >objectOldStateList,x
+        cmp #0
+        beq eraseDragon0
+        cmp #1
+        beq eraseDragon1
+        cmp #2
+        beq eraseDragon2
+        rts
+
+eraseDragon0 anop
         jsl eraseSpriteDragon1
+        rts
+
+eraseDragon1 anop
+        jsl eraseSpriteDragon2
+        rts
+
+eraseDragon2 anop
+        jsl eraseSpriteDragon3
+        rts
+
 eraseDragonDone anop
         rts
 

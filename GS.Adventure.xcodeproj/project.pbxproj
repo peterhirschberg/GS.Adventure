@@ -42,6 +42,7 @@
 		D06790A72695532000A8010C /* surround.s in Sources */ = {isa = PBXBuildFile; fileRef = D06790A62695532000A8010C /* surround.s */; };
 		D0A8DA3A269A6B7100B12E74 /* sprites.s in Sources */ = {isa = PBXBuildFile; fileRef = D0A8DA39269A6B7100B12E74 /* sprites.s */; };
 		D0C92F7226A467A6003DE0DE /* portals.s in Sources */ = {isa = PBXBuildFile; fileRef = D0C92F7126A467A6003DE0DE /* portals.s */; };
+		D0C92F7426A652E0003DE0DE /* dragons.s in Sources */ = {isa = PBXBuildFile; fileRef = D0C92F7326A652E0003DE0DE /* dragons.s */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -110,6 +111,7 @@
 		D06790A62695532000A8010C /* surround.s */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.asm; path = surround.s; sourceTree = "<group>"; };
 		D0A8DA39269A6B7100B12E74 /* sprites.s */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.asm; path = sprites.s; sourceTree = "<group>"; };
 		D0C92F7126A467A6003DE0DE /* portals.s */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.asm; path = portals.s; sourceTree = "<group>"; };
+		D0C92F7326A652E0003DE0DE /* dragons.s */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.asm; path = dragons.s; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -175,6 +177,7 @@
 				D0328FE7269E3CAD00883A3F /* spriteMisc.s */,
 				D0328FF326A270F800883A3F /* spriteBridge.s */,
 				D0C92F7126A467A6003DE0DE /* portals.s */,
+				D0C92F7326A652E0003DE0DE /* dragons.s */,
 			);
 			path = GS.Adventure;
 			sourceTree = "<group>";
@@ -334,6 +337,7 @@
 				D06790A12691C41D00A8010C /* player.s in Sources */,
 				D0678FC0267E6E2B00A8010C /* main.c in Sources */,
 				D067902B267E938A00A8010C /* globals.s in Sources */,
+				D0C92F7426A652E0003DE0DE /* dragons.s in Sources */,
 				D06790A52692373400A8010C /* collision.s in Sources */,
 				D067909D2690054300A8010C /* hardware.s in Sources */,
 				D067909326889F8C00A8010C /* color.s in Sources */,

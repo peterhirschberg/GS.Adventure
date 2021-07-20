@@ -484,6 +484,26 @@ objectStateList anop
         dc i2'$00' ; chalise
         dc i2'$00' ; magnet
 
+objectOldStateList anop
+        dc i2'$00' ; port 1
+        dc i2'$00' ; port 2
+        dc i2'$00' ; port 3
+        dc i2'$00' ; author
+        dc i2'$00' ; numbers
+        dc i2'$00' ; red dragon
+        dc i2'$00' ; yellow dragon
+        dc i2'$00' ; green dragon
+        dc i2'$00' ; sword
+        dc i2'$00' ; bridge
+        dc i2'$00' ; yellow key
+        dc i2'$00' ; white key
+        dc i2'$00' ; black key
+        dc i2'$00' ; bat
+        dc i2'$00' ; dot
+        dc i2'$00' ; chalise
+        dc i2'$00' ; magnet
+
+
 objectColorList anop
         dc i2'COLOR_BLACK' ; port 1
         dc i2'COLOR_BLACK' ; port 2
