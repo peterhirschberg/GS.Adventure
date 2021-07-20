@@ -30,6 +30,20 @@ runDragons entry
 
 runDragon entry
 
+        jsr getDragonState
+        cmp #STATE_ALIVE
+        beq stateAlive
+        cmp #STATE_ROAR
+        beq stateRoar
+        cmp #STATE_DEAD
+        beq stateDead
+        cmp #STATE_EATEN
+        beq stateEaten
+        bra runDone
+
+; ------------------------------------------------------------
+stateAlive anop
+
 ; has the player hit the dragon?
 
 ; has the sword hit the dragon?
@@ -50,13 +64,34 @@ runDragon entry
         ldy #STATE_DEAD
         jsr setDragonState
         jsr zeroDragonMove
-        rts
+
+        bra runDone
 
 notTouchingSword anop
 
 ; go through the dragon's object matrix/list
 
 ; difficulty switch determines flee or don't flee from sword
+
+        bra runDone
+
+; ------------------------------------------------------------
+stateRoar anop
+
+        bra runDone
+
+; ------------------------------------------------------------
+stateDead anop
+
+        bra runDone
+
+; ------------------------------------------------------------
+stateEaten anop
+
+        bra runDone
+
+; ------------------------------------------------------------
+runDone anop
 
         rts
 
@@ -84,6 +119,32 @@ setStateYellow anop
 setStateRed anop
         tya
         sta redDragonState
+        rts
+
+
+getDragonState entry
+        txa
+        cmp #OBJECT_GREENDRAGON
+        beq getStateGreen
+        cmp #OBJECT_YELLOWDRAGON
+        beq getStateYellow
+        cmp #OBJECT_REDDRAGON
+        beq getStateRed
+        rts
+
+getStateGreen anop
+        tya
+        lda greenDragonState
+        rts
+
+getStateYellow anop
+        tya
+        lda yellowDragonState
+        rts
+
+getStateRed anop
+        tya
+        lda redDragonState
         rts
 
 
