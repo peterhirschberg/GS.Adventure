@@ -143,6 +143,11 @@ updateObjectValues entry
         lda >objectPositionYList,x
         sta >objectPositionOldYList,x
 
+; wrap rooms
+
+
+
+
         rts
 
 

@@ -639,6 +639,113 @@ wrapDone anop
         rts
 
 
+
+; ------------------------------------
+
+wrapObjectRoom entry
+
+        lda #6
+        cmp >objectPositionYList,x
+        bcs wrapToRoomUp2
+
+        lda >objectPositionYList,x
+        cmp #194
+        bcs wrapToRoomDown2
+
+        lda #6
+        cmp >objectPositionXList,x
+        bcs wrapToRoomLeft2
+
+        lda >objectPositionXList,x
+        cmp #314
+        bcs wrapToRoomRight2
+
+        brl wrapDone2
+
+wrapToRoomUp2 anop
+
+        jsr getCurrentLinkedRooms
+
+        lda roomUp
+        sta >objectRoomList,x
+
+        jsr adjustRoomLevel
+
+; wrap the object
+        lda #190
+        sta >objectPositionYList,x
+
+        brl wrapDone2
+
+wrapToRoomDown2 anop
+
+; check for leaving castles
+
+        lda currentRoom
+        lsr a
+        cmp #ROOM_INDEX_IN_YELLOW_CASTLE
+        beq inCastle2
+        cmp #ROOM_INDEX_IN_WHITE_CASTLE
+        beq inCastle2
+        cmp #ROOM_INDEX_IN_BLACK_CASTLE
+        beq inCastle2
+        bra notInCastle2
+
+inCastle2 anop
+
+        jsr leaveCastle ; <<<<<<<
+        rts
+
+notInCastle2 anop
+
+        jsr getCurrentLinkedRooms
+
+        lda roomDown
+        sta >objectRoomList,x
+
+        jsr adjustRoomLevel ; <<<<<<
+
+; wrap the object
+        lda #8
+        sta >objectPositionYList,x
+
+        brl wrapDone2
+
+wrapToRoomLeft2 anop
+
+        jsr getCurrentLinkedRooms
+
+        lda roomLeft
+        sta >objectRoomList,x
+
+        jsr adjustRoomLevel
+
+; wrap the object
+        lda #310
+        sta >objectPositionXList,x
+
+        brl wrapDone2
+
+wrapToRoomRight2 anop
+
+        jsr getCurrentLinkedRooms
+
+        lda roomRight
+        sta >objectRoomList,x
+
+        jsr adjustRoomLevel
+
+; wrap the object
+        lda #8
+        sta >objectPositionXList,x
+
+wrapDone2 anop
+
+        rts
+
+
+; ------------------------------------
+
 getCurrentLinkedRooms entry
 
         lda currentRoom

@@ -283,28 +283,6 @@ getMatrixRed anop
 
 getGreenDragonSeekFlee entry
 
-;    lda #0
-;    sta seekDir
-
-;    lda >objectRoomList,x
-;   asl a
-;   cmp currentRoom
-;   bne foo
-
-;   lda #1
-;   sta seekDir
-
-;   lda playerX
-;   sta seekX
-;   lda playerY
-;   sta seekY
-;
-;   rts
-;
-;foo anop
-;    rts
-
-
         lda #0
         sta seekDir
 
