@@ -283,27 +283,26 @@ getMatrixRed anop
 
 getGreenDragonSeekFlee entry
 
-    lda #0
-    sta seekDir
+;    lda #0
+;    sta seekDir
 
-    lda >objectRoomList,x
-    asl a
-    cmp currentRoom
-    bne foo
+;    lda >objectRoomList,x
+;   asl a
+;   cmp currentRoom
+;   bne foo
 
-    lda #1
-    sta seekDir
+;   lda #1
+;   sta seekDir
 
-    lda playerX
-    sta seekX
-    lda playerY
-    sta seekY
-
-    rts
-
-foo anop
-    rts
-
+;   lda playerX
+;   sta seekX
+;   lda playerY
+;   sta seekY
+;
+;   rts
+;
+;foo anop
+;    rts
 
 
         lda #0
@@ -327,11 +326,33 @@ greenContinue anop
         lda greenDragonSeekList,y
         sta seekObject
 
-; fleeing?
-
         lda fleeObject
         cmp #OBJECT_GREENDRAGON
         beq greenSeek
+
+;  bra greenSeek
+
+; fleeing
+
+        stx savex
+        ldx fleeObject
+        lda >objectRoomList,x
+        sta targetRoom
+        lda >objectPositionXList,x
+        sta targetX
+        lda >objectPositionYList,x
+        sta targetY
+        ldx savex
+
+        lda >objectRoomList,x
+        cmp targetRoom
+        bne greenNextShort
+        bra greenFlee
+
+greenNextShort anop
+        brl greenNext
+
+greenFlee anop
 
         lda #-1
         sta seekDir
@@ -347,11 +368,13 @@ greenContinue anop
         ldx savex
         rts
 
-; seeking?
+; seeking
 
 greenSeek anop
 
         lda seekObject
+        cmp #OBJECT_GREENDRAGON
+        beq greenNext
         cmp #OBJECT_PLAYER
         bne greenSeekObject
 
