@@ -529,23 +529,36 @@ wrapPlayerRoom entry
 
         lda #6
         cmp playerX
-        bcs wrapToRoomLeft
+        bcs wrapToRoomLeftShort
+        bra wrapRight
 
+wrapToRoomLeftShort anop
+        brl wrapToRoomLeft
+
+wrapRight anop
         lda playerX
         cmp #314
-        bcs wrapToRoomRight
-
+        bcs wrapToRoomRightShort
         brl wrapDone
+
+wrapToRoomRightShort anop
+        brl wrapToRoomRight
 
 wrapToRoomUp anop
 
+        lda currentRoom
+        sta testRoom
         jsr getCurrentLinkedRooms
 
 ; update the room graphics
         lda roomUp
         sta currentRoom
 
+        lda currentRoom
+        sta testRoom
         jsr adjustRoomLevel
+        lda testRoom
+        sta currentRoom
 
 ; draw the new room
         jsr zeroSurroundGrid
@@ -578,13 +591,19 @@ inCastle anop
 
 notInCastle anop
 
+        lda currentRoom
+        sta testRoom
         jsr getCurrentLinkedRooms
 
 ; update the room graphics
         lda roomDown
         sta currentRoom
 
+        lda currentRoom
+        sta testRoom
         jsr adjustRoomLevel
+        lda testRoom
+        sta currentRoom
 
 ; draw the new room
         jsr zeroSurroundGrid
@@ -598,13 +617,19 @@ notInCastle anop
 
 wrapToRoomLeft anop
 
+        lda currentRoom
+        sta testRoom
         jsr getCurrentLinkedRooms
 
 ; update the room graphics
         lda roomLeft
         sta currentRoom
 
+        lda currentRoom
+        sta testRoom
         jsr adjustRoomLevel
+        lda testRoom
+        sta currentRoom
 
 ; draw the new room
         jsr zeroSurroundGrid
@@ -618,13 +643,19 @@ wrapToRoomLeft anop
 
 wrapToRoomRight anop
 
+        lda currentRoom
+        sta testRoom
         jsr getCurrentLinkedRooms
 
 ; update the room graphics
         lda roomRight
         sta currentRoom
 
+        lda currentRoom
+        sta testRoom
         jsr adjustRoomLevel
+        lda testRoom
+        sta currentRoom
 
 ; draw the new room
         jsr zeroSurroundGrid
@@ -658,18 +689,26 @@ wrapObjectRoom entry
 
         lda >objectPositionXList,x
         cmp #314
-        bcs wrapToRoomRight2
-
+        bcs wrapToRoomRight2Short
         brl wrapDone2
+
+wrapToRoomRight2Short anop
+        brl wrapToRoomRight2
 
 wrapToRoomUp2 anop
 
-        jsr getCurrentLinkedRooms
+        lda >objectRoomList,x
+        sta testRoom
+        jsr getCurrentLinkedRooms ; <<<<
 
         lda roomUp
         sta >objectRoomList,x
 
+        lda >objectRoomList,x
+        sta testRoom
         jsr adjustRoomLevel
+        lda testRoom
+        sta >objectRoomList,x
 
 ; wrap the object
         lda #190
@@ -681,7 +720,7 @@ wrapToRoomDown2 anop
 
 ; check for leaving castles
 
-        lda currentRoom
+        lda >objectRoomList,x
         lsr a
         cmp #ROOM_INDEX_IN_YELLOW_CASTLE
         beq inCastle2
@@ -693,17 +732,23 @@ wrapToRoomDown2 anop
 
 inCastle2 anop
 
-        jsr leaveCastle ; <<<<<<<
-        rts
+;        jsr leaveCastle ; <<<<<<<
+;        rts
 
 notInCastle2 anop
 
+        lda >objectRoomList,x
+        sta testRoom
         jsr getCurrentLinkedRooms
 
         lda roomDown
         sta >objectRoomList,x
 
-        jsr adjustRoomLevel ; <<<<<<
+        lda >objectRoomList,x
+        sta testRoom
+        jsr adjustRoomLevel
+        lda testRoom
+        sta >objectRoomList,x
 
 ; wrap the object
         lda #8
@@ -713,12 +758,17 @@ notInCastle2 anop
 
 wrapToRoomLeft2 anop
 
+        lda >objectRoomList,x
         jsr getCurrentLinkedRooms
 
         lda roomLeft
         sta >objectRoomList,x
 
+        lda >objectRoomList,x
+        sta testRoom
         jsr adjustRoomLevel
+        lda testRoom
+        sta >objectRoomList,x
 
 ; wrap the object
         lda #310
@@ -728,12 +778,17 @@ wrapToRoomLeft2 anop
 
 wrapToRoomRight2 anop
 
+        lda >objectRoomList,x
         jsr getCurrentLinkedRooms
 
         lda roomRight
         sta >objectRoomList,x
 
+        lda >objectRoomList,x
+        sta testRoom
         jsr adjustRoomLevel
+        lda testRoom
+        sta >objectRoomList,x
 
 ; wrap the object
         lda #8
@@ -748,7 +803,7 @@ wrapDone2 anop
 
 getCurrentLinkedRooms entry
 
-        lda currentRoom
+        lda testRoom
         asl a
         asl a
         tax
@@ -777,7 +832,7 @@ getCurrentLinkedRooms entry
 adjustRoomLevel entry
 ; if the the room number is above $80 (shifted here to $100) it changes based on the game level
 
-        lda currentRoom
+        lda testRoom
         and #$100
         cmp #0
         beq adjustDone
@@ -788,14 +843,14 @@ adjustRoomLevel entry
         asl a
         sta temp
 
-        lda currentRoom
+        lda testRoom
         and #$feff
         clc
         adc temp
         tax
         lda roomLevelDiffsList,x
         asl a
-        sta currentRoom
+        sta testRoom
 
 adjustDone anop
         rts
@@ -1050,6 +1105,7 @@ roomRight dc i2'0'
 roomDown dc i2'0'
 roomLeft dc i2'0'
 
+testRoom dc i2'0'
 
 CELL_WIDTH gequ 8
 CELL_HEIGHT gequ 32

@@ -144,9 +144,7 @@ updateObjectValues entry
         sta >objectPositionOldYList,x
 
 ; wrap rooms
-
-
-
+        jsr wrapObjectRoom
 
         rts
 
