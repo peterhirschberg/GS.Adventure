@@ -126,11 +126,20 @@ moveGreen anop
         jsr dragonGetMovementY
         sta greenDragonMoveY
 
+        ldx #OBJECT_GREENDRAGON ; ???
+
         lda >objectPositionXList,x
         clc
         adc greenDragonMoveX
-        cmp >objectPositionXList,x
-        beq noXMovement
+
+        bmi negX
+        bra posX
+negX anop
+        lda #159
+posX anop
+
+;        cmp >objectPositionXList,x
+;        beq noXMovement
         sta >objectPositionXList,x
         lda #1
         sta >objectDirtyList,x
@@ -140,11 +149,19 @@ noXMovement anop
         lda >objectPositionYList,x
         clc
         adc greenDragonMoveY
-        cmp >objectPositionYList,x
-        beq noYMovement
+
+        bmi negY
+        bra posY
+negY anop
+        lda #199
+posY anop
+
+
+;        cmp >objectPositionYList,x
+;        beq noYMovement
         sta >objectPositionYList,x
         lda #1
-        sta >objectPositionYList,x
+        sta >objectDirtyList,x
 
 noYMovement anop
 
@@ -166,6 +183,7 @@ dragonGetMovementX entry
         beq greenGetMovementXSeek
         cmp #-1
         beq greenGetMovementXFlee
+        lda #0
         rts
 
 greenGetMovementXSeek anop
@@ -177,17 +195,19 @@ greenGetMovementXSeek anop
         beq seekXDone
         bcs moveX
 
-        lda #-1
+        lda #-2
         rts
 
 moveX anop
-        lda #1
+        lda #2
         rts
 
 seekXDone anop
+        lda #0
         rts
 
 greenGetMovementXFlee anop
+        lda #0
         rts
 
 
@@ -198,6 +218,7 @@ dragonGetMovementY entry
         beq greenGetMovementYSeek
         cmp #-1
         beq greenGetMovementYFlee
+        lda #0
         rts
 
 greenGetMovementYSeek anop
@@ -209,17 +230,19 @@ greenGetMovementYSeek anop
         beq seekYDone
         bcs moveY
 
-        lda #-1
+        lda #-2
         rts
 
 moveY anop
-        lda #1
+        lda #2
         rts
 
 seekYDone anop
+        lda #0
         rts
 
 greenGetMovementYFlee anop
+        lda #0
         rts
 
 
