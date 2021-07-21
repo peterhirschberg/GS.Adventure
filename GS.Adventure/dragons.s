@@ -104,6 +104,13 @@ runDone anop
 
 dragonMove entry
 
+        lda seekDir
+        cmp #0
+        bne doDragonMove
+        rts
+
+doDragonMove anop
+
         txa
         cmp #OBJECT_GREENDRAGON
         beq moveGreen
@@ -154,88 +161,67 @@ moveRed anop
 
 
 dragonGetMovementX entry
+        lda seekDir
+        cmp #1
+        beq greenGetMovementXSeek
+        cmp #-1
+        beq greenGetMovementXFlee
+        rts
+
+greenGetMovementXSeek anop
+
+        ldx #OBJECT_GREENDRAGON
 
         lda seekX
         cmp >objectPositionXList,x
         beq seekXDone
-        bcs moveX2
-
-        lda seekDir
-        bmi seekDirXNeg1
-
-        lda #1
-        rts
-
-seekDirXNeg1 anop
+        bcs moveX
 
         lda #-1
         rts
 
-moveX2 anop
-
-        lda >objectPositionXList,x
-        cmp seekX
-        bcs doMoveX2
-        rts
-
-doMoveX2 anop
-
-        lda seekDir
-        bmi seekDirXNeg2
-
-        lda #-1
-        rts
-
-seekDirXNeg2 anop
-
+moveX anop
         lda #1
         rts
 
 seekXDone anop
         rts
 
+greenGetMovementXFlee anop
+        rts
+
 
 
 dragonGetMovementY entry
+        lda seekDir
+        cmp #1
+        beq greenGetMovementYSeek
+        cmp #-1
+        beq greenGetMovementYFlee
+        rts
+
+greenGetMovementYSeek anop
+
+        ldx #OBJECT_GREENDRAGON
 
         lda seekY
         cmp >objectPositionYList,x
         beq seekYDone
-        bcs moveY2
-
-        lda seekDir
-        bmi seekDirYNeg1
-
-        lda #1
-        rts
-
-seekDirYNeg1 anop
+        bcs moveY
 
         lda #-1
         rts
 
-moveY2 anop
-
-        lda >objectPositionYList,x
-        cmp seekY
-        bcs doMoveY2
-        rts
-
-doMoveY2 anop
-
-        lda seekDir
-        bmi seekDirYNeg2
-
-        lda #-1
-        rts
-
-seekDirYNeg2 anop
-
+moveY anop
         lda #1
         rts
 
 seekYDone anop
         rts
+
+greenGetMovementYFlee anop
+        rts
+
 
 
 
@@ -276,8 +262,6 @@ getGreenDragonSeekFlee entry
 
     lda #0
     sta seekDir
-
-  rts
 
     lda >objectRoomList,x
     asl a
