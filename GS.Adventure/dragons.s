@@ -12,6 +12,9 @@ dragons start
         using globalData
         using objectData
         using collisionData
+        using gameData
+        using roomsData
+        using playerData
 
 
 runDragons entry
@@ -69,9 +72,11 @@ stateAlive anop
 
 notTouchingSword anop
 
-; go through the dragon's object matrix/list
+; seek / flee objects
+        jsr dragonSeekFlee
 
-; difficulty switch determines flee or don't flee from sword
+; move dragon
+        jsr dragonMove
 
         bra runDone
 
@@ -94,6 +99,308 @@ stateEaten anop
 runDone anop
 
         rts
+
+
+
+dragonMove entry
+
+        txa
+        cmp #OBJECT_GREENDRAGON
+        beq moveGreen
+        cmp #OBJECT_YELLOWDRAGON
+        beq moveYellow
+        cmp #OBJECT_REDDRAGON
+        beq moveRed
+        rts
+
+moveGreen anop
+        jsr dragonGetMovementX
+        sta greenDragonMoveX
+        jsr dragonGetMovementY
+        sta greenDragonMoveX
+
+        lda >objectPositionXList,x
+        clc
+        adc greenDragonMoveX
+        cmp >objectPositionXList,x
+        beq noXMovement
+        sta >objectPositionXList,x
+        lda #1
+        sta >objectDirtyList,x
+
+noXMovement anop
+
+        lda >objectPositionYList,x
+        clc
+        adc greenDragonMoveY
+        cmp >objectPositionYList,x
+        beq noYMovement
+        sta >objectPositionYList,x
+        lda #1
+        sta >objectPositionYList,x
+
+noYMovement anop
+
+; WRAP ROOMS
+
+        rts
+
+moveYellow anop
+        rts
+
+moveRed anop
+        rts
+
+
+
+dragonGetMovementX entry
+
+        lda seekX
+        cmp >objectPositionXList,x
+        beq seekXDone
+        bcs moveX2
+
+        lda seekDir
+        bmi seekDirXNeg1
+
+        lda #1
+        rts
+
+seekDirXNeg1 anop
+
+        lda #-1
+        rts
+
+moveX2 anop
+
+        lda >objectPositionXList,x
+        cmp seekX
+        bcs doMoveX2
+        rts
+
+doMoveX2 anop
+
+        lda seekDir
+        bmi seekDirXNeg2
+
+        lda #-1
+        rts
+
+seekDirXNeg2 anop
+
+        lda #1
+        rts
+
+seekXDone anop
+        rts
+
+
+
+dragonGetMovementY entry
+
+        lda seekY
+        cmp >objectPositionYList,x
+        beq seekYDone
+        bcs moveY2
+
+        lda seekDir
+        bmi seekDirYNeg1
+
+        lda #1
+        rts
+
+seekDirYNeg1 anop
+
+        lda #-1
+        rts
+
+moveY2 anop
+
+        lda >objectPositionYList,x
+        cmp seekY
+        bcs doMoveY2
+        rts
+
+doMoveY2 anop
+
+        lda seekDir
+        bmi seekDirYNeg2
+
+        lda #-1
+        rts
+
+seekDirYNeg2 anop
+
+        lda #1
+        rts
+
+seekYDone anop
+        rts
+
+
+
+dragonSeekFlee entry
+
+; go through the dragon's object matrix/list
+; right difficulty switch determines flee or don't flee from sword
+
+        lda #0
+        sta seekX
+        sta seekY
+
+        txa
+        cmp #OBJECT_GREENDRAGON
+        beq getMatrixGreen
+        cmp #OBJECT_YELLOWDRAGON
+        beq getMatrixYellow
+        cmp #OBJECT_REDDRAGON
+        beq getMatrixRed
+        rts
+
+getMatrixGreen anop
+        jsr getGreenDragonSeekFlee
+        rts
+
+getMatrixYellow anop
+;        jsr getYellowDragonSeekFlee
+        rts
+
+getMatrixRed anop
+;        jsr getRedDragonSeekFlee
+        rts
+
+
+
+
+getGreenDragonSeekFlee entry
+
+    lda #0
+    sta seekDir
+
+  rts
+
+    lda >objectRoomList,x
+    asl a
+    cmp currentRoom
+    bne foo
+
+    lda #1
+    sta seekDir
+
+    lda playerX
+    sta seekX
+    lda playerY
+    sta seekY
+
+    rts
+
+foo anop
+    rts
+
+
+
+        lda #0
+        sta seekDir
+
+        lda gameDifficultyRight
+        asl a
+        tay
+
+greenLoop anop
+
+        lda greenDragonFleeList,y
+        cmp #OBJECT_NONE
+        bne greenContinue
+        rts
+
+greenContinue anop
+
+        sta fleeObject
+
+        lda greenDragonSeekList,y
+        sta seekObject
+
+; fleeing?
+
+        lda fleeObject
+        cmp #OBJECT_GREENDRAGON
+        beq greenSeek
+
+        lda #-1
+        sta seekDir
+
+        stx savex
+        tyx
+
+        lda >objectPositionXList,x
+        sta seekX
+        lda >objectPositionYList,x
+        sta seekY
+
+        ldx savex
+        rts
+
+; seeking?
+
+greenSeek anop
+
+        lda seekObject
+        cmp #OBJECT_PLAYER
+        bne greenSeekObject
+
+; seeking the player
+
+        lda >objectRoomList,x
+        asl a
+        cmp currentRoom
+        bne greenSeekObject
+
+        lda #1
+        sta seekDir
+
+        lda playerX
+        sta seekX
+        lda playerY
+        sta seekY
+
+        rts
+
+; seeking an object
+
+greenSeekObject anop
+
+        stx savex
+        ldx seekObject
+        lda >objectRoomList,x
+        sta targetRoom
+        lda >objectPositionXList,x
+        sta targetX
+        lda >objectPositionYList,x
+        sta targetY
+        ldx savex
+
+        lda >objectRoomList,x
+        cmp targetRoom
+        bne greenNext
+
+        lda #1
+        sta seekDir
+        lda targetX
+        sta seekX
+        lda targetY
+        sta seekY
+
+        rts
+
+greenNext anop
+
+        iny
+        iny
+        jmp greenLoop
+
+
+
+
 
 
 setDragonState entry
@@ -179,7 +486,7 @@ zeroMoveRed anop
 
 ; Green Dragon's Object Matrix
 
-greenDragonAvoidList anop
+greenDragonFleeList anop
         dc i2'OBJECT_SWORD'
         dc i2'OBJECT_GREENDRAGON'
         dc i2'OBJECT_GREENDRAGON'
@@ -188,7 +495,7 @@ greenDragonAvoidList anop
         dc i2'OBJECT_GREENDRAGON'
         dc i2'OBJECT_NONE'
 
-greenDragonFollowList anop
+greenDragonSeekList anop
         dc i2'OBJECT_GREENDRAGON'
         dc i2'OBJECT_PLAYER'
         dc i2'OBJECT_CHALISE'
@@ -199,14 +506,14 @@ greenDragonFollowList anop
 
 ; Yellow Dragon's Object Matrix
 
-yellowDragonAvoidList anop
+yellowDragonFleeList anop
         dc i2'OBJECT_SWORD'
         dc i2'OBJECT_YELLOWKEY'
         dc i2'OBJECT_YELLOWDRAGON'
         dc i2'OBJECT_YELLOWDRAGON'
         dc i2'OBJECT_NONE'
 
-yellowDragonFollowList anop
+yellowDragonSeekList anop
         dc i2'OBJECT_YELLOWDRAGON'
         dc i2'OBJECT_YELLOWDRAGON'
         dc i2'OBJECT_PLAYER'
@@ -215,19 +522,20 @@ yellowDragonFollowList anop
 
 ; Red Dragon's Object Matrix
 
-redDragonAvoidList anop
+redDragonFleeList anop
         dc i2'OBJECT_SWORD'
         dc i2'OBJECT_REDDRAGON'
         dc i2'OBJECT_REDDRAGON'
         dc i2'OBJECT_REDDRAGON'
         dc i2'OBJECT_NONE'
 
-redDragonFollowList anop
+redDragonSeekList anop
         dc i2'OBJECT_REDDRAGON'
         dc i2'OBJECT_PLAYER'
         dc i2'OBJECT_CHALISE'
         dc i2'OBJECT_WHITEKEY'
         dc i2'OBJECT_NONE'
+
 
 greenDragonTimer dc i2'0'
 yellowDragonTimer dc i2'0'
@@ -242,6 +550,19 @@ yellowDragonMoveY dc i2'0'
 redDragonMoveX dc i2'0'
 redDragonMoveY dc i2'0'
 
+
+fleeObject dc i2'0'
+seekObject dc i2'0'
+
+
+seekDir dc i2'0'
+seekX dc i2'0'
+seekY dc i2'0'
+
+targetRoom dc i2'0'
+targetX dc i2'0'
+targetY dc i2'0'
+
 greenDragonState dc i2'STATE_ALIVE'
 yellowDragonState dc i2'STATE_ALIVE'
 redDragonState dc i2'STATE_ALIVE'
@@ -250,5 +571,7 @@ STATE_ALIVE gequ 0
 STATE_DEAD gequ 1
 STATE_ROAR gequ 2
 STATE_EATEN gequ 3
+
+savex dc i2'0'
 
         end

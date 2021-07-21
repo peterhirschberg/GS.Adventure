@@ -216,6 +216,7 @@ playerYDiff dc i2'0'
 
 temp dc i2'0'
 
+surroundUpdateCounter dc i2'0'
 
         end
 
@@ -226,6 +227,7 @@ gamePass dc i2'0'
 
 gameLevel dc i2'0'
 
-surroundUpdateCounter dc i2'0'
+gameDifficultyLeft dc i2'0'
+gameDifficultyRight dc i2'0'
 
         end
