@@ -124,7 +124,7 @@ moveGreen anop
         jsr dragonGetMovementX
         sta greenDragonMoveX
         jsr dragonGetMovementY
-        sta greenDragonMoveX
+        sta greenDragonMoveY
 
         lda >objectPositionXList,x
         clc
