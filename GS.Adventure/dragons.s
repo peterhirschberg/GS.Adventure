@@ -104,13 +104,6 @@ runDone anop
 
 dragonMove entry
 
-        lda seekDir
-        cmp #0
-        bne doDragonMove
-        rts
-
-doDragonMove anop
-
         txa
         cmp #OBJECT_GREENDRAGON
         beq moveGreen
@@ -126,46 +119,18 @@ moveGreen anop
         jsr dragonGetMovementY
         sta greenDragonMoveY
 
-        ldx #OBJECT_GREENDRAGON ; ???
-
         lda >objectPositionXList,x
         clc
         adc greenDragonMoveX
-
-        bmi negX
-        bra posX
-negX anop
-        lda #159
-posX anop
-
-;        cmp >objectPositionXList,x
-;        beq noXMovement
         sta >objectPositionXList,x
-        lda #1
-        sta >objectDirtyList,x
-
-noXMovement anop
 
         lda >objectPositionYList,x
         clc
         adc greenDragonMoveY
-
-        bmi negY
-        bra posY
-negY anop
-        lda #199
-posY anop
-
-
-;        cmp >objectPositionYList,x
-;        beq noYMovement
         sta >objectPositionYList,x
+
         lda #1
         sta >objectDirtyList,x
-
-noYMovement anop
-
-; WRAP ROOMS
 
         rts
 
@@ -183,7 +148,7 @@ dragonGetMovementX entry
         beq greenGetMovementXSeek
         cmp #-1
         beq greenGetMovementXFlee
-        lda #0
+        lda greenDragonMoveX
         rts
 
 greenGetMovementXSeek anop
@@ -218,7 +183,7 @@ dragonGetMovementY entry
         beq greenGetMovementYSeek
         cmp #-1
         beq greenGetMovementYFlee
-        lda #0
+        lda greenDragonMoveY
         rts
 
 greenGetMovementYSeek anop
@@ -256,6 +221,7 @@ dragonSeekFlee entry
         lda #0
         sta seekX
         sta seekY
+        sta seekDir
 
         txa
         cmp #OBJECT_GREENDRAGON
@@ -282,9 +248,6 @@ getMatrixRed anop
 
 
 getGreenDragonSeekFlee entry
-
-        lda #0
-        sta seekDir
 
         lda gameDifficultyRight
         asl a

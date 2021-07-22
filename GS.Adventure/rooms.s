@@ -697,9 +697,9 @@ wrapDone anop
 
 wrapObjectRoom entry
 
-;        lda #6
-;        cmp >objectPositionYList,x
-;        bcs wrapToRoomUp2
+        lda #6
+        cmp >objectPositionYList,x
+        bcs wrapToRoomUp2
 
         lda >objectPositionYList,x
         cmp #194
@@ -715,9 +715,9 @@ wrapToRoomLeft2Short anop
 
 checkWrapRight anop
 
-;        lda >objectPositionXList,x
-;        cmp #314
-;        bcs wrapToRoomRight2Short
+        lda >objectPositionXList,x
+        cmp #314
+        bcs wrapToRoomRight2Short
         brl wrapDone2
 
 wrapToRoomRight2Short anop
