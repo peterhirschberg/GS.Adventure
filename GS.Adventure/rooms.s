@@ -707,7 +707,13 @@ wrapObjectRoom entry
 
         lda #6
         cmp >objectPositionXList,x
-        bcs wrapToRoomLeft2
+        bcs wrapToRoomLeft2Short
+        bra checkWrapRight
+
+wrapToRoomLeft2Short anop
+        brl wrapToRoomLeft2
+
+checkWrapRight anop
 
 ;        lda >objectPositionXList,x
 ;        cmp #314
@@ -872,13 +878,14 @@ adjustRoomLevel entry
 ; remove the $80 flag and add the level number to get the offset into the room delta table
 
         lda gameLevel
-        sta temp
+;    asl a
+;        sta temp
 
         lda testRoom
-        and #$ff7fa
-        clc
-        adc temp
-        asl a
+;        and #$ff7fa
+;        clc
+;        adc temp
+    asl a
         tay
         lda roomLevelDiffsList,y
         sta testRoom
