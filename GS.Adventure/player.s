@@ -158,6 +158,22 @@ moveCarriedObject entry
         adc playerDiffY
         sta >objectPositionYList,x
 
+        lda currentRoom
+        cmp >objectRoomList,x
+        bne notSameRoom
+
+        lda >objectPositionXList,x
+        sec
+        sbc playerX
+        sta >objectLinkedObjectXOffsetList,x
+
+        lda >objectPositionYList,x
+        sec
+        sbc playerY
+        sta >objectLinkedObjectYOffsetList,x
+
+notSameRoom anop
+
 ;        lda currentRoom
 ;        sta >objectRoomList,x
 
@@ -173,6 +189,8 @@ carryDone anop
 
 moveCarriedObjectToPlayerRoom entry
 
+   rts
+
         ldx #OBJECT_PLAYER
         lda >objectLinkedObjectList,x
         cmp #OBJECT_NONE
@@ -185,6 +203,16 @@ moveCarriedObjectToPlayerRoom entry
 
         lda currentRoom
         sta >objectRoomList,x
+
+;        lda playerX
+;        clc
+;        adc >objectLinkedObjectXOffsetList,x
+;        sta >objectPositionXList,x
+
+;        lda playerY
+;        clc
+;        adc >objectLinkedObjectYOffsetList,x
+;        sta >objectPositionYList,x
 
         lda #1
         sta >objectDirtyList,x

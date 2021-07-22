@@ -308,6 +308,11 @@ drawChaliseDone anop
 
 
 eraseKey entry
+
+    lda >objectRoomList,x
+    cmp >objectOldRoomList,x
+    bne doEraseKey
+
         lda >objectRoomList,x
         cmp >currentRoom
         bne eraseKeyDone
@@ -315,6 +320,8 @@ eraseKey entry
         lda >objectDirtyList,x
         cmp #1
         bne eraseKeyDone
+
+doEraseKey anop
 
         lda >objectPositionOldXList,x
         sta >spriteX

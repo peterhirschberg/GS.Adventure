@@ -701,7 +701,12 @@ wrapObjectRoom entry
         cmp >objectPositionYList,x
         bcs wrapToRoomUp2
 
-        lda >objectPositionYList,x
+        jsr getHeightForObjectState ; modifies X <<<<
+        clc
+        adc >objectPositionYList,x
+        sta objectBottom
+
+        lda objectBottom
         cmp #194
         bcs wrapToRoomDown2
 
@@ -715,7 +720,12 @@ wrapToRoomLeft2Short anop
 
 checkWrapRight anop
 
-        lda >objectPositionXList,x
+        jsr getWidthForObjectState ; modifies X <<<<
+        clc
+        adc >objectPositionXList,x
+        sta objectRight
+
+        lda objectRight
         cmp #314
         bcs wrapToRoomRight2Short
         brl wrapDone2
@@ -1132,6 +1142,9 @@ cx dc i2'0'
 cy dc i2'0'
 ypos dc i2'0'
 dataIndex dc i2'0'
+
+objectRight dc i2'0'
+objectBottom dc i2'0'
 
 roomUp dc i2'0'
 roomRight dc i2'0'

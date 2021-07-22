@@ -81,6 +81,7 @@ setInitialObjectValues entry
 
         lda >objectInitialRoomGame1List,x
         sta >objectRoomList,x
+        sta >objectOldRoomList,x
 
         lda >objectInitialStateGame1List,x
         sta >objectStateList,x
@@ -133,6 +134,9 @@ updateObjectValues entry
 
         lda >objectPositionYList,x
         sta >objectPositionOldYList,x
+
+        lda >objectRoomList,x
+        sta >objectOldRoomList,x
 
 ; wrap rooms
         jsr wrapObjectRoom
@@ -365,6 +369,25 @@ OBJECT_MAGNET           gequ 2*16
 OBJECT_PLAYER           gequ 2*17
 
 objectRoomList anop
+        dc i2'$00' ; port 1
+        dc i2'$00' ; port 2
+        dc i2'$00' ; port 3
+        dc i2'$00' ; author
+        dc i2'$00' ; numbers
+        dc i2'$00' ; red dragon
+        dc i2'$00' ; yellow dragon
+        dc i2'$00' ; green dragon
+        dc i2'$00' ; sword
+        dc i2'$00' ; bridge
+        dc i2'$00' ; yellow key
+        dc i2'$00' ; white key
+        dc i2'$00' ; black key
+        dc i2'$00' ; bat
+        dc i2'$00' ; dot
+        dc i2'$00' ; chalise
+        dc i2'$00' ; magnet
+
+objectOldRoomList anop
         dc i2'$00' ; port 1
         dc i2'$00' ; port 2
         dc i2'$00' ; port 3
