@@ -553,6 +553,7 @@ wrapRight anop
         lda playerX
         cmp #314
         bcs wrapToRoomRightShort
+
         brl wrapDone
 
 wrapToRoomRightShort anop
@@ -818,6 +819,8 @@ getCurrentLinkedRooms entry
 
         lda testRoom
         asl a
+        asl a
+        asl a
         tax
         lda roomLinkList,x
         sta roomUp
@@ -838,23 +841,23 @@ getCurrentLinkedRooms entry
 
 
 adjustRoomLevel entry
-; if the the room number is above $80 (shifted here to $100) it changes based on the game level
+; if the the room number is above $80 it changes based on the game level
 
         lda testRoom
-        and #$100
+        and #$80
         cmp #0
         beq adjustDone
 
 ; remove the $80 flag and add the level number to get the offset into the room delta table
 
         lda gameLevel
-        asl a
         sta temp
 
         lda testRoom
-        and #$feff
+        and #$ff7f
         clc
         adc temp
+        asl a
         tax
         lda roomLevelDiffsList,x
         sta testRoom
