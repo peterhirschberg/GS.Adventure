@@ -583,6 +583,8 @@ wrapToRoomUp anop
         lda #190
         sta playerY
 
+        jsr moveCarriedObjectToPlayerRoom
+
         brl wrapDone
 
 wrapToRoomDown anop
@@ -627,6 +629,8 @@ notInCastle anop
         lda #8
         sta playerY
 
+        jsr moveCarriedObjectToPlayerRoom
+
         brl wrapDone
 
 wrapToRoomLeft anop
@@ -652,6 +656,8 @@ wrapToRoomLeft anop
 ; wrap the player
         lda #310
         sta playerX
+
+        jsr moveCarriedObjectToPlayerRoom
 
         brl wrapDone
 
@@ -679,6 +685,8 @@ wrapToRoomRight anop
         lda #8
         sta playerX
 
+        jsr moveCarriedObjectToPlayerRoom
+
 wrapDone anop
 
         rts
@@ -693,9 +701,9 @@ wrapObjectRoom entry
 ;        cmp >objectPositionYList,x
 ;        bcs wrapToRoomUp2
 
-;        lda >objectPositionYList,x
-;        cmp #194
-;        bcs wrapToRoomDown2
+        lda >objectPositionYList,x
+        cmp #194
+        bcs wrapToRoomDown2
 
         lda #6
         cmp >objectPositionXList,x
@@ -809,7 +817,6 @@ wrapToRoomRight2 anop
         sta >objectPositionXList,x
 
 wrapDone2 anop
-
         rts
 
 
@@ -854,7 +861,7 @@ adjustRoomLevel entry
         sta temp
 
         lda testRoom
-        and #$ff7f
+        and #$ff7fa
         clc
         adc temp
         asl a
@@ -864,6 +871,7 @@ adjustRoomLevel entry
 
 adjustDone anop
         rts
+
 
 
 roomHasFog entry

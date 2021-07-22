@@ -158,6 +158,31 @@ moveCarriedObject entry
         adc playerDiffY
         sta >objectPositionYList,x
 
+;        lda currentRoom
+;        sta >objectRoomList,x
+
+        lda #1
+        sta >objectDirtyList,x
+
+        rts
+
+carryDone anop
+        rts
+
+
+
+moveCarriedObjectToPlayerRoom entry
+
+        ldx #OBJECT_PLAYER
+        lda >objectLinkedObjectList,x
+        cmp #OBJECT_NONE
+        beq moveDone
+
+        ldx #OBJECT_PLAYER
+        lda >objectLinkedObjectList,x
+
+        tax
+
         lda currentRoom
         sta >objectRoomList,x
 
@@ -166,7 +191,7 @@ moveCarriedObject entry
 
         rts
 
-carryDone anop
+moveDone anop
         rts
 
 
