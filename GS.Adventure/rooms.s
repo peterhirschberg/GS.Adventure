@@ -721,7 +721,7 @@ wrapToRoomUp2 anop
 
         lda >objectRoomList,x
         sta testRoom
-        jsr getCurrentLinkedRooms ; <<<<
+        jsr getCurrentLinkedRooms
 
         lda roomUp
         sta >objectRoomList,x
@@ -735,6 +735,9 @@ wrapToRoomUp2 anop
 ; wrap the object
         lda #190
         sta >objectPositionYList,x
+
+        lda #1
+        sta >objectDirtyList,x
 
         brl wrapDone2
 
@@ -776,11 +779,15 @@ notInCastle2 anop
         lda #8
         sta >objectPositionYList,x
 
+        lda #1
+        sta >objectDirtyList,x
+
         brl wrapDone2
 
 wrapToRoomLeft2 anop
 
         lda >objectRoomList,x
+        sta testRoom
         jsr getCurrentLinkedRooms
 
         lda roomLeft
@@ -796,11 +803,15 @@ wrapToRoomLeft2 anop
         lda #310
         sta >objectPositionXList,x
 
+        lda #1
+        sta >objectDirtyList,x
+
         brl wrapDone2
 
 wrapToRoomRight2 anop
 
         lda >objectRoomList,x
+        sta testRoom
         jsr getCurrentLinkedRooms
 
         lda roomRight
@@ -816,6 +827,9 @@ wrapToRoomRight2 anop
         lda #8
         sta >objectPositionXList,x
 
+        lda #1
+        sta >objectDirtyList,x
+
 wrapDone2 anop
         rts
 
@@ -828,20 +842,20 @@ getCurrentLinkedRooms entry
         asl a
         asl a
         asl a
-        tax
-        lda roomLinkList,x
+        tay
+        lda roomLinkList,y
         sta roomUp
-        inx
-        inx
-        lda roomLinkList,x
+        iny
+        iny
+        lda roomLinkList,y
         sta roomRight
-        inx
-        inx
-        lda roomLinkList,x
+        iny
+        iny
+        lda roomLinkList,y
         sta roomDown
-        inx
-        inx
-        lda roomLinkList,x
+        iny
+        iny
+        lda roomLinkList,y
         sta roomLeft
         rts
 
@@ -865,8 +879,8 @@ adjustRoomLevel entry
         clc
         adc temp
         asl a
-        tax
-        lda roomLevelDiffsList,x
+        tay
+        lda roomLevelDiffsList,y
         sta testRoom
 
 adjustDone anop

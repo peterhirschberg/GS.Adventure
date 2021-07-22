@@ -196,6 +196,8 @@ continue anop
         cmp #1
         beq hitObject
 
+; bat?
+
         rts
 
 hitObject anop
