@@ -79,9 +79,7 @@ onJoystickButton anop
         rts
 
 joystickDone anop
-
         jsr wrapPlayerRoom
-
         rts
 
 
@@ -129,7 +127,6 @@ moveCarriedObject entry
         cmp #OBJECT_NONE
         beq carryDone
 
-
         lda playerX
         sec
         sbc playerOldX
@@ -162,7 +159,6 @@ moveCarriedObject entry
         sta >objectPositionYList,x
 
         lda currentRoom
-        lsr a
         sta >objectRoomList,x
 
         lda #1
@@ -197,7 +193,9 @@ drawPlayer entry
         lda #8
         sta rectHeight
 
-        ldx currentRoom
+        lda currentRoom
+        asl a
+        tax
         lda roomColorList,x
         sta rectColor
 

@@ -270,9 +270,9 @@ hitNonLinkableObject anop
 collisionCheckPlayerWithObject entry
 
         lda >objectRoomList,x
-        asl a
         cmp currentRoom
         beq doChecks
+        lda #0
         rts
 
 doChecks anop

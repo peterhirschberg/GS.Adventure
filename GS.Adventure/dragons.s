@@ -359,7 +359,6 @@ greenSeek anop
 ; seeking the player
 
         lda >objectRoomList,x
-        asl a
         cmp currentRoom
         bne greenSeekObject
 

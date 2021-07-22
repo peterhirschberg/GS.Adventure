@@ -126,7 +126,6 @@ dirtyDone anop
 
 drawKey entry
         lda >objectRoomList,x
-        asl a
         cmp >currentRoom
         bne drawKeyDone
 
@@ -149,7 +148,6 @@ drawKeyDone anop
 
 drawPort entry
         lda >objectRoomList,x
-        asl a
         cmp >currentRoom
         bne drawPortDone
 
@@ -172,7 +170,6 @@ drawPortDone anop
 
 drawDragon entry
         lda >objectRoomList,x
-        asl a
         cmp >currentRoom
         bne drawDragonDone
 
@@ -219,7 +216,6 @@ drawBridge entry
         tax
 
         lda >objectRoomList,x
-        asl a
         cmp >currentRoom
         bne drawBridgeDone
 
@@ -243,7 +239,6 @@ drawMagnet entry
         tax
 
         lda >objectRoomList,x
-        asl a
         cmp >currentRoom
         bne drawMagnetDone
 
@@ -267,7 +262,6 @@ drawSword entry
         tax
 
         lda >objectRoomList,x
-        asl a
         cmp >currentRoom
         bne drawSwordDone
 
@@ -291,7 +285,6 @@ drawChalise entry
         tax
 
         lda >objectRoomList,x
-        asl a
         cmp >currentRoom
         bne drawChaliseDone
 
@@ -316,7 +309,6 @@ drawChaliseDone anop
 
 eraseKey entry
         lda >objectRoomList,x
-        asl a
         cmp >currentRoom
         bne eraseKeyDone
 
@@ -343,7 +335,6 @@ eraseKeyDone anop
 
 erasePort entry
         lda >objectRoomList,x
-        asl a
         cmp >currentRoom
         bne erasePortDone
 
@@ -363,7 +354,6 @@ erasePortDone anop
 
 eraseDragon entry
         lda >objectRoomList,x
-        asl a
         cmp >currentRoom
         bne eraseDragonDone
 
@@ -406,7 +396,6 @@ eraseBridge entry
         tax
 
         lda >objectRoomList,x
-        asl a
         cmp >currentRoom
         bne eraseBridgeDone
 
@@ -435,7 +424,6 @@ eraseChalise entry
         tax
 
         lda >objectRoomList,x
-        asl a
         cmp >currentRoom
         bne eraseChaliseDone
 
@@ -464,7 +452,6 @@ eraseMagnet entry
         tax
 
         lda >objectRoomList,x
-        asl a
         cmp >currentRoom
         bne eraseMagnetDone
 
@@ -493,7 +480,6 @@ eraseSword entry
         tax
 
         lda >objectRoomList,x
-        asl a
         cmp >currentRoom
         bne eraseSwordDone
 

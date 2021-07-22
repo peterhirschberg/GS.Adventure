@@ -90,15 +90,6 @@ setInitialObjectValues entry
 
 runObjects entry
 
-        ldx #OBJECT_PORT1
-        jsr updateObjectValues
-
-        ldx #OBJECT_PORT2
-        jsr updateObjectValues
-
-        ldx #OBJECT_PORT3
-        jsr updateObjectValues
-
         ldx #OBJECT_YELLOWKEY
         jsr updateObjectValues
 
