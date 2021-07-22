@@ -128,14 +128,14 @@ runObjects entry
 
 updateObjectValues entry
 
-; wrap rooms
-        jsr wrapObjectRoom
-
         lda >objectPositionXList,x
         sta >objectPositionOldXList,x
 
         lda >objectPositionYList,x
         sta >objectPositionOldYList,x
+
+; wrap rooms
+        jsr wrapObjectRoom
 
         rts
 
