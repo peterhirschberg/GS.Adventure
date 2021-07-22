@@ -15,6 +15,7 @@ controls start
         using globalData
         using controlsData
 
+    using roomsData
 
 checkControls entry
 
@@ -83,7 +84,12 @@ onJoystickButton anop
         rts
 
 onQuit anop
-        jsl signalQuit
+;        jsl signalQuit
+
+        lda currentRoom
+        tax
+        brk
+
         rts
 
         end

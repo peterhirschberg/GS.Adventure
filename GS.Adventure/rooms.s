@@ -878,13 +878,12 @@ adjustRoomLevel entry
 ; remove the $80 flag and add the level number to get the offset into the room delta table
 
         lda gameLevel
-;    asl a
-;        sta temp
+        sta temp
 
         lda testRoom
-;        and #$ff7fa
-;        clc
-;        adc temp
+        and #$ff7f
+        clc
+        adc temp
     asl a
         tay
         lda roomLevelDiffsList,y
