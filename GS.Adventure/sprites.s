@@ -349,10 +349,9 @@ erasePort entry
         cmp #1
         bne erasePortDone
 
-        lda >objectPositionOldXList,x
+        lda >objectPositionXList,x
         sta >spriteX
-        lda >objectPositionOldYList,x
-        bmi erasePortDone
+        lda >objectPositionYList,x
         sta >spriteY
         jsl eraseSpritePort
 erasePortDone anop
