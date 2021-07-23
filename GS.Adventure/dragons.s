@@ -158,13 +158,13 @@ greenGetMovementXSeek anop
         lda seekX
         cmp >objectPositionXList,x
         beq seekXDone
-        bcs moveX
+        bcs moveXSeek
 
-        lda #-2
+        lda #-3
         rts
 
-moveX anop
-        lda #2
+moveXSeek anop
+        lda #3
         rts
 
 seekXDone anop
@@ -172,6 +172,22 @@ seekXDone anop
         rts
 
 greenGetMovementXFlee anop
+
+        ldx #OBJECT_GREENDRAGON
+
+        lda seekX
+        cmp >objectPositionXList,x
+        beq fleeXDone
+        bcs moveXFlee
+
+        lda #3
+        rts
+
+moveXFlee anop
+        lda #-3
+        rts
+
+fleeXDone anop
         lda #0
         rts
 
@@ -193,13 +209,13 @@ greenGetMovementYSeek anop
         lda seekY
         cmp >objectPositionYList,x
         beq seekYDone
-        bcs moveY
+        bcs moveYSeek
 
-        lda #-2
+        lda #-3
         rts
 
-moveY anop
-        lda #2
+moveYSeek anop
+        lda #3
         rts
 
 seekYDone anop
@@ -207,6 +223,21 @@ seekYDone anop
         rts
 
 greenGetMovementYFlee anop
+        ldx #OBJECT_GREENDRAGON
+
+        lda seekY
+        cmp >objectPositionYList,x
+        beq fleeYDone
+        bcs moveYFlee
+
+        lda #-3
+        rts
+
+moveYFlee anop
+        lda #3
+        rts
+
+fleeYDone anop
         lda #0
         rts
 

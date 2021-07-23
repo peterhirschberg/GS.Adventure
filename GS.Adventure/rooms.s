@@ -689,11 +689,17 @@ wrapDone anop
 
 wrapObjectRoom entry
 
+; don't wrap the object carried by the player
+
+        stx savex
         ldx #OBJECT_PLAYER
         lda >objectLinkedObjectList,x
-        cmp #OBJECT_NONE
+        sta playerCarriedObject
+        ldx savex
+
+        txa
+        cmp playerCarriedObject
         bne doWrapObjectRoom
-        rts
 
 doWrapObjectRoom anop
 
@@ -1155,6 +1161,8 @@ roomDown dc i2'0'
 roomLeft dc i2'0'
 
 testRoom dc i2'0'
+
+playerCarriedObject dc i2'0'
 
 savex dc i2'0'
 
