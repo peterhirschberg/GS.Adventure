@@ -903,7 +903,7 @@ adjustRoomLevel entry
         and #$ff7f
         clc
         adc temp
-    asl a
+        asl a
         tay
         lda roomLevelDiffsList,y
         sta testRoom
