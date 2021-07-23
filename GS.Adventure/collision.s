@@ -362,6 +362,15 @@ itsAHit anop
 
 collisionCheckObjects entry
 
+; dont compare an object against itself
+        lda hitTestObjectA
+        cmp hitTestObjectB
+        bne checkRooms
+        lda #0
+        rts
+
+checkRooms anop
+
 ; make sure the two objects are in the same room
 
         ldx hitTestObjectA
@@ -455,6 +464,190 @@ itsAHit2 anop
 
 
 
+checkAllObjectsForOverlap entry
+
+        lda #OBJECT_YELLOWKEY
+        jsr collisionCheckAllObjects
+        cmp #1
+        beq hitObjectShortJump2
+
+        lda #OBJECT_WHITEKEY
+        jsr collisionCheckAllObjects
+        cmp #1
+        beq hitObjectShortJump2
+
+        lda #OBJECT_BLACKKEY
+        jsr collisionCheckAllObjects
+        cmp #1
+        beq hitObjectShortJump2
+
+        lda #OBJECT_YELLOWDRAGON
+        jsr collisionCheckAllObjects
+        cmp #1
+        beq hitObjectShortJump2
+
+        lda #OBJECT_GREENDRAGON
+        jsr collisionCheckAllObjects
+        cmp #1
+        beq hitObjectShortJump2
+
+        lda #OBJECT_REDDRAGON
+        jsr collisionCheckAllObjects
+        cmp #1
+        beq hitObjectShortJump2
+
+        bra continue2
+
+hitObjectShortJump2 anop
+        brl hitObject2
+
+continue2 anop
+
+        lda #OBJECT_BRIDGE
+        jsr collisionCheckAllObjects
+        cmp #1
+        beq hitObject2
+
+        lda #OBJECT_SWORD
+        jsr collisionCheckAllObjects
+        cmp #1
+        beq hitObject2
+
+        lda #OBJECT_MAGNET
+        jsr collisionCheckAllObjects
+        cmp #1
+        beq hitObject2
+
+        lda #OBJECT_CHALISE
+        jsr collisionCheckAllObjects
+        cmp #1
+        beq hitObject2
+
+        lda #OBJECT_PORT1
+        jsr collisionCheckAllObjects
+        cmp #1
+        beq hitObject2
+
+        lda #OBJECT_PORT2
+        jsr collisionCheckAllObjects
+        cmp #1
+        beq hitObject2
+
+        lda #OBJECT_PORT3
+        jsr collisionCheckAllObjects
+        cmp #1
+        beq hitObject2
+
+; bat?
+
+        rts
+
+hitObject2 anop
+        lda #1
+        sta >objectDirtyList,x
+        rts
+
+
+
+collisionCheckAllObjects entry
+
+        sta hitTestObjectA
+
+        lda #OBJECT_YELLOWKEY
+        sta hitTestObjectB
+        jsr collisionCheckObjects
+        cmp #1
+        beq hitObjectShortJump3
+
+        lda #OBJECT_WHITEKEY
+        sta hitTestObjectB
+        jsr collisionCheckObjects
+        cmp #1
+        beq hitObjectShortJump3
+
+        lda #OBJECT_BLACKKEY
+        sta hitTestObjectB
+        jsr collisionCheckObjects
+        cmp #1
+        beq hitObjectShortJump3
+
+        lda #OBJECT_YELLOWDRAGON
+        sta hitTestObjectB
+        jsr collisionCheckObjects
+        cmp #1
+        beq hitObjectShortJump3
+
+        lda #OBJECT_GREENDRAGON
+        sta hitTestObjectB
+        jsr collisionCheckObjects
+        cmp #1
+        beq hitObjectShortJump3
+
+        lda #OBJECT_REDDRAGON
+        sta hitTestObjectB
+        jsr collisionCheckObjects
+        cmp #1
+        beq hitObjectShortJump3
+
+        bra continue3
+
+hitObjectShortJump3 anop
+        brl hitObject3
+
+continue3 anop
+
+        lda #OBJECT_BRIDGE
+        sta hitTestObjectB
+        jsr collisionCheckObjects
+        cmp #1
+        beq hitObject3
+
+        lda #OBJECT_SWORD
+        sta hitTestObjectB
+        jsr collisionCheckObjects
+        cmp #1
+        beq hitObject3
+
+        lda #OBJECT_MAGNET
+        sta hitTestObjectB
+        jsr collisionCheckObjects
+        cmp #1
+        beq hitObject3
+
+        lda #OBJECT_CHALISE
+        sta hitTestObjectB
+        jsr collisionCheckObjects
+        cmp #1
+        beq hitObject3
+
+        lda #OBJECT_PORT1
+        sta hitTestObjectB
+        jsr collisionCheckObjects
+        cmp #1
+        beq hitObject3
+
+        lda #OBJECT_PORT2
+        sta hitTestObjectB
+        jsr collisionCheckObjects
+        cmp #1
+        beq hitObject3
+
+        lda #OBJECT_PORT3
+        sta hitTestObjectB
+        jsr collisionCheckObjects
+        cmp #1
+        beq hitObject3
+
+; bat?
+
+        lda #0
+        rts
+
+hitObject3 anop
+        lda #1
+        rts
+
+
 
 
 rowCounter dc i2'0'
@@ -479,23 +672,12 @@ testRect2Right dc i2'0'
 testRect2Top dc i2'0'
 testRect2Bottom dc i2'0'
 
-carriedObjectTop dc i2'0'
-carriedObjectLeft dc i2'0'
-carriedObjectRight dc i2'0'
-carriedObjectBottom dc i2'0'
-
-carriedObjectCenterX dc i2'0'
-carriedObjectCenterY dc i2'0'
-
 hitObjectX dc i2'0'
 hitObjectY dc i2'0'
 
 temp dc i2'0'
 
 savex dc i2'0'
-
-playerCenterX dc i2'0'
-playerCenterY dc i2'0'
 
 playerAvgX dc i2'0'
 playerAvgY dc i2'0'
