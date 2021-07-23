@@ -240,14 +240,28 @@ pickUpObject anop
 
         ldx #OBJECT_PLAYER
 
+
+        lda playerX
+        clc
+        adc playerOldX
+        lsr a
+        sta playerAvgX
+
+        lda playerY
+        clc
+        adc playerOldY
+        lsr a
+        sta playerAvgY
+
+
         lda hitObjectX
         sec
-        sbc playerX
+        sbc playerAvgX
         sta >objectLinkedObjectXOffsetList,x
 
         lda hitObjectY
         sec
-        sbc playerY
+        sbc playerAvgY
         sta >objectLinkedObjectYOffsetList,x
 
         rts
@@ -482,6 +496,9 @@ savex dc i2'0'
 
 playerCenterX dc i2'0'
 playerCenterY dc i2'0'
+
+playerAvgX dc i2'0'
+playerAvgY dc i2'0'
 
         end
 

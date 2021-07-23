@@ -87,6 +87,9 @@ onJoystickButton anop
 onQuit anop
 ;        jsl signalQuit
 
+        jsr resetCarriedObjectPos
+        rts
+
         ldx #OBJECT_PLAYER
         lda >objectLinkedObjectList,x
         tax
