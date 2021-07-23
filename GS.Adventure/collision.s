@@ -467,31 +467,37 @@ itsAHit2 anop
 checkAllObjectsForOverlap entry
 
         lda #OBJECT_YELLOWKEY
+        ldy #OBJECT_YELLOWKEY
         jsr collisionCheckAllObjects
         cmp #1
         beq hitObjectShortJump2
 
         lda #OBJECT_WHITEKEY
+        ldy #OBJECT_WHITEKEY
         jsr collisionCheckAllObjects
         cmp #1
         beq hitObjectShortJump2
 
         lda #OBJECT_BLACKKEY
+        ldy #OBJECT_BLACKKEY
         jsr collisionCheckAllObjects
         cmp #1
         beq hitObjectShortJump2
 
         lda #OBJECT_YELLOWDRAGON
+        ldy #OBJECT_YELLOWDRAGON
         jsr collisionCheckAllObjects
         cmp #1
         beq hitObjectShortJump2
 
         lda #OBJECT_GREENDRAGON
+        ldy #OBJECT_GREENDRAGON
         jsr collisionCheckAllObjects
         cmp #1
         beq hitObjectShortJump2
 
         lda #OBJECT_REDDRAGON
+        ldy #OBJECT_REDDRAGON
         jsr collisionCheckAllObjects
         cmp #1
         beq hitObjectShortJump2
@@ -504,36 +510,43 @@ hitObjectShortJump2 anop
 continue2 anop
 
         lda #OBJECT_BRIDGE
+        ldy #OBJECT_BRIDGE
         jsr collisionCheckAllObjects
         cmp #1
         beq hitObject2
 
         lda #OBJECT_SWORD
+        ldy #OBJECT_SWORD
         jsr collisionCheckAllObjects
         cmp #1
         beq hitObject2
 
         lda #OBJECT_MAGNET
+        ldy #OBJECT_MAGNET
         jsr collisionCheckAllObjects
         cmp #1
         beq hitObject2
 
         lda #OBJECT_CHALISE
+        ldy #OBJECT_CHALISE
         jsr collisionCheckAllObjects
         cmp #1
         beq hitObject2
 
         lda #OBJECT_PORT1
+        ldy #OBJECT_PORT1
         jsr collisionCheckAllObjects
         cmp #1
         beq hitObject2
 
         lda #OBJECT_PORT2
+        ldy #OBJECT_PORT2
         jsr collisionCheckAllObjects
         cmp #1
         beq hitObject2
 
         lda #OBJECT_PORT3
+        ldy #OBJECT_PORT3
         jsr collisionCheckAllObjects
         cmp #1
         beq hitObject2
@@ -543,6 +556,7 @@ continue2 anop
         rts
 
 hitObject2 anop
+        tyx
         lda #1
         sta >objectDirtyList,x
         rts
