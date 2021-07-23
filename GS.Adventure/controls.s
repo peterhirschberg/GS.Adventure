@@ -87,21 +87,26 @@ onJoystickButton anop
 onQuit anop
 ;        jsl signalQuit
 
-        jsr resetCarriedObjectPos
-        rts
-
-        ldx #OBJECT_PLAYER
-        lda >objectLinkedObjectList,x
-        tax
+        ldx #OBJECT_GREENDRAGON
+        lda >objectPositionXList,x
+        sta xpos
+        lda >objectPositionYList,x
+        sta ypos
         lda >objectRoomList,x
-        tay
+        sta room
 
-        lda currentRoom
-        tax
+        ldx xpos
+        ldy ypos
+        lda room
 
         brk
 
+
         rts
+
+xpos dc i2'0'
+ypos dc i2'0'
+room dc i2'0'
 
         end
 

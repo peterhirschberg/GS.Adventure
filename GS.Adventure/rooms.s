@@ -700,16 +700,25 @@ wrapObjectRoom entry
         txa
         cmp playerCarriedObject
         bne doWrapObjectRoom
+        rts
 
 doWrapObjectRoom anop
+
+        stx savex
+        jsr getHeightForObjectState
+        sta objectHeight
+        ldx savex
+
+        sta savex
+        jsr getWidthForObjectState
+        sta objectWidth
+        ldx savex
 
         lda #6
         cmp >objectPositionYList,x
         bcs wrapToRoomUp2
 
-        stx savex
-        jsr getHeightForObjectState
-        ldx savex
+        lda objectHeight
         clc
         adc >objectPositionYList,x
         sta objectBottom
@@ -728,9 +737,7 @@ wrapToRoomLeft2Short anop
 
 checkWrapRight anop
 
-        sta savex
-        jsr getWidthForObjectState
-        ldx savex
+        lda objectWidth
         clc
         adc >objectPositionXList,x
         sta objectRight
@@ -760,6 +767,8 @@ wrapToRoomUp2 anop
 
 ; wrap the object
         lda #190
+    sec
+    sbc objectHeight
         sta >objectPositionYList,x
 
         lda #1
@@ -826,6 +835,8 @@ wrapToRoomLeft2 anop
 
 ; wrap the object
         lda #310
+    sec
+    sbc objectWidth
         sta >objectPositionXList,x
 
         lda #1
@@ -1152,6 +1163,8 @@ cy dc i2'0'
 ypos dc i2'0'
 dataIndex dc i2'0'
 
+objectWidth dc i2'0'
+objectHeight dc i2'0'
 objectRight dc i2'0'
 objectBottom dc i2'0'
 
