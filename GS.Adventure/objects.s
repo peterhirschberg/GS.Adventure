@@ -91,8 +91,6 @@ setInitialObjectValues entry
 
 runObjects entry
 
-        jsr checkAllObjectsForOverlap
-
         ldx #OBJECT_YELLOWKEY
         jsr updateObjectValues
 
