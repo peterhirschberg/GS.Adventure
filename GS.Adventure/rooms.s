@@ -37,7 +37,9 @@ drawRoom entry
 
 ; draw room as mirrored or repeated
 
-        ldx currentRoom
+        lda currentRoom
+        asl a
+        tax
         lda roomMirroredList,x
         cmp #1
         bne roomRepeats
@@ -114,7 +116,9 @@ drawRoomDone anop
 
 drawRoomLeft entry
 
-        ldx currentRoom
+        lda currentRoom
+        asl a
+        tax
         lda roomGraphicsOffsetList,x
         sta dataIndex
 
@@ -212,7 +216,9 @@ doneShift anop
         lda #CELL_HEIGHT
         sta rectHeight
 
-        ldx currentRoom
+        lda currentRoom
+        asl a
+        tax
         lda roomColorList,x
         sta rectColor
 
@@ -239,7 +245,9 @@ roomDone anop
 
 drawRoomRightMirrored entry
 
-        ldx currentRoom
+        lda currentRoom
+        asl a
+        tax
         lda roomGraphicsOffsetList,x
         sta dataIndex
 
@@ -337,7 +345,9 @@ doneShift2 anop
         lda #CELL_HEIGHT
         sta rectHeight
 
-        ldx currentRoom
+        lda currentRoom
+        asl a
+        tax
         lda roomColorList,x
         sta rectColor
 
@@ -379,7 +389,9 @@ roomDone2 anop
 
 drawRoomRepeating entry
 
-        ldx currentRoom
+        lda currentRoom
+        asl a
+        tax
         lda roomGraphicsOffsetList,x
         sta dataIndex
 
@@ -477,7 +489,9 @@ doneShift3 anop
         lda #CELL_HEIGHT
         sta rectHeight
 
-        ldx currentRoom
+        lda currentRoom
+        asl a
+        tax
         lda roomColorList,x
         sta rectColor
 
@@ -539,6 +553,7 @@ wrapRight anop
         lda playerX
         cmp #314
         bcs wrapToRoomRightShort
+
         brl wrapDone
 
 wrapToRoomRightShort anop
@@ -575,7 +590,6 @@ wrapToRoomDown anop
 ; check for leaving castles
 
         lda currentRoom
-        lsr a
         cmp #ROOM_INDEX_IN_YELLOW_CASTLE
         beq inCastle
         cmp #ROOM_INDEX_IN_WHITE_CASTLE
@@ -675,19 +689,53 @@ wrapDone anop
 
 wrapObjectRoom entry
 
+; don't wrap the object carried by the player
+
+        stx savex
+        ldx #OBJECT_PLAYER
+        lda >objectLinkedObjectList,x
+        sta playerCarriedObject
+        ldx savex
+
+        txa
+        cmp playerCarriedObject
+        bne doWrapObjectRoom
+
+doWrapObjectRoom anop
+
         lda #6
         cmp >objectPositionYList,x
         bcs wrapToRoomUp2
 
-        lda >objectPositionYList,x
+        stx savex
+        jsr getHeightForObjectState
+        ldx savex
+        clc
+        adc >objectPositionYList,x
+        sta objectBottom
+
+        lda objectBottom
         cmp #194
         bcs wrapToRoomDown2
 
         lda #6
         cmp >objectPositionXList,x
-        bcs wrapToRoomLeft2
+        bcs wrapToRoomLeft2Short
+        bra checkWrapRight
 
-        lda >objectPositionXList,x
+wrapToRoomLeft2Short anop
+        brl wrapToRoomLeft2
+
+checkWrapRight anop
+
+        sta savex
+        jsr getWidthForObjectState
+        ldx savex
+        clc
+        adc >objectPositionXList,x
+        sta objectRight
+
+        lda objectRight
         cmp #314
         bcs wrapToRoomRight2Short
         brl wrapDone2
@@ -699,7 +747,7 @@ wrapToRoomUp2 anop
 
         lda >objectRoomList,x
         sta testRoom
-        jsr getCurrentLinkedRooms ; <<<<
+        jsr getCurrentLinkedRooms
 
         lda roomUp
         sta >objectRoomList,x
@@ -714,6 +762,9 @@ wrapToRoomUp2 anop
         lda #190
         sta >objectPositionYList,x
 
+        lda #1
+        sta >objectDirtyList,x
+
         brl wrapDone2
 
 wrapToRoomDown2 anop
@@ -721,7 +772,6 @@ wrapToRoomDown2 anop
 ; check for leaving castles
 
         lda >objectRoomList,x
-        lsr a
         cmp #ROOM_INDEX_IN_YELLOW_CASTLE
         beq inCastle2
         cmp #ROOM_INDEX_IN_WHITE_CASTLE
@@ -754,11 +804,15 @@ notInCastle2 anop
         lda #8
         sta >objectPositionYList,x
 
+        lda #1
+        sta >objectDirtyList,x
+
         brl wrapDone2
 
 wrapToRoomLeft2 anop
 
         lda >objectRoomList,x
+        sta testRoom
         jsr getCurrentLinkedRooms
 
         lda roomLeft
@@ -774,11 +828,15 @@ wrapToRoomLeft2 anop
         lda #310
         sta >objectPositionXList,x
 
+        lda #1
+        sta >objectDirtyList,x
+
         brl wrapDone2
 
 wrapToRoomRight2 anop
 
         lda >objectRoomList,x
+        sta testRoom
         jsr getCurrentLinkedRooms
 
         lda roomRight
@@ -794,8 +852,10 @@ wrapToRoomRight2 anop
         lda #8
         sta >objectPositionXList,x
 
-wrapDone2 anop
+        lda #1
+        sta >objectDirtyList,x
 
+wrapDone2 anop
         rts
 
 
@@ -806,59 +866,58 @@ getCurrentLinkedRooms entry
         lda testRoom
         asl a
         asl a
-        tax
-        lda roomLinkList,x
         asl a
+        tay
+        lda roomLinkList,y
         sta roomUp
-        inx
-        inx
-        lda roomLinkList,x
-        asl a
+        iny
+        iny
+        lda roomLinkList,y
         sta roomRight
-        inx
-        inx
-        lda roomLinkList,x
-        asl a
+        iny
+        iny
+        lda roomLinkList,y
         sta roomDown
-        inx
-        inx
-        lda roomLinkList,x
-        asl a
+        iny
+        iny
+        lda roomLinkList,y
         sta roomLeft
-
         rts
 
 
+
 adjustRoomLevel entry
-; if the the room number is above $80 (shifted here to $100) it changes based on the game level
+; if the the room number is above $80 it changes based on the game level
 
         lda testRoom
-        and #$100
+        and #$80
         cmp #0
         beq adjustDone
 
 ; remove the $80 flag and add the level number to get the offset into the room delta table
 
         lda gameLevel
-        asl a
         sta temp
 
         lda testRoom
-        and #$feff
+        and #$ff7f
         clc
         adc temp
-        tax
-        lda roomLevelDiffsList,x
         asl a
+        tay
+        lda roomLevelDiffsList,y
         sta testRoom
 
 adjustDone anop
         rts
 
 
+
 roomHasFog entry
 
-        ldx currentRoom
+        lda currentRoom
+        asl a
+        tax
         lda roomColorList,x
         cmp #COLOR_FOG
         beq hasFog
@@ -903,7 +962,6 @@ enterYellowCastle entry
         beq yellowCastleDone
 
         lda #$12
-        asl a
         sta >currentRoom
 
         lda >playerY
@@ -944,7 +1002,6 @@ enterWhiteCastle entry
         beq whiteCastleDone
 
         lda #$1a
-        asl a
         sta >currentRoom
 
         lda >playerY
@@ -985,7 +1042,6 @@ enterBlackCastle entry
         beq blackCastleDone
 
         lda #$1b
-        asl a
         sta >currentRoom
 
         lda >playerY
@@ -1021,7 +1077,6 @@ blackCastleDone anop
 leaveCastle entry
 
         lda currentRoom
-        lsr a
         cmp #ROOM_INDEX_IN_YELLOW_CASTLE
         beq leaveYellowCastle
         cmp #ROOM_INDEX_IN_WHITE_CASTLE
@@ -1034,7 +1089,6 @@ leaveCastle entry
 leaveYellowCastle anop
 
         lda #$11
-        asl a
         sta currentRoom
 
         jsr finishLeavingCastle
@@ -1044,7 +1098,6 @@ leaveYellowCastle anop
 leaveWhiteCastle anop
 
         lda #$0f
-        asl a
         sta currentRoom
 
         jsr finishLeavingCastle
@@ -1054,7 +1107,6 @@ leaveWhiteCastle anop
 leaveBlackCastle anop
 
         lda #$10
-        asl a
         sta currentRoom
 
         jsr finishLeavingCastle
@@ -1100,12 +1152,19 @@ cy dc i2'0'
 ypos dc i2'0'
 dataIndex dc i2'0'
 
+objectRight dc i2'0'
+objectBottom dc i2'0'
+
 roomUp dc i2'0'
 roomRight dc i2'0'
 roomDown dc i2'0'
 roomLeft dc i2'0'
 
 testRoom dc i2'0'
+
+playerCarriedObject dc i2'0'
+
+savex dc i2'0'
 
 CELL_WIDTH gequ 8
 CELL_HEIGHT gequ 32
@@ -1525,37 +1584,37 @@ roomLevelDiffsList anop
         dc i2'$03,$0c,$0c'      ; up from room 1d (top entry room)
 
 
-ROOM_INDEX_NUMBER_ROOM_PURPLE1          gequ 2*0    ; 0
-ROOM_INDEX_BELOW_YELLOW_CASTLE_OLIVE    gequ 2*1    ; 1
-ROOM_INDEX_BELOW_YELLOW_CASTLE_LIME     gequ 2*2    ; 2
-ROOM_INDEX_LEFT_OF_NAME                 gequ 2*3    ; 3
-ROOM_INDEX_BLUE_MAZE_TOP                gequ 2*4    ; 4
-ROOM_INDEX_BLUE_MAZE1                   gequ 2*5    ; 5
-ROOM_INDEX_BLUE_MAZE_BOTTOM             gequ 2*6    ; 6
-ROOM_INDEX_BLUE_MAZE_CENTER             gequ 2*7    ; 7
-ROOM_INDEX_BLUE_MAZE_ENTRY              gequ 2*8    ; 8
-ROOM_INDEX_MAZE_MIDDLE                  gequ 2*9    ; 9
-ROOM_INDEX_MAZE_ENTRY                   gequ 2*10   ; A
-ROOM_INDEX_MAZE_SIDE                    gequ 2*11   ; B
-ROOM_INDEX_SIDE_CORRIDOR_RIGHT          gequ 2*12   ; C
-ROOM_INDEX_SIDE_CORRIDOR_LEFT           gequ 2*13   ; D
-ROOM_INDEX_TOP_ENTRY_ROOM_CYAN          gequ 2*14   ; E
-ROOM_INDEX_CASTLE_WHITE                 gequ 2*15   ; F
-ROOM_INDEX_CASTLE_BLACK                 gequ 2*16   ; 10
-ROOM_INDEX_CASTLE_YELLOW                gequ 2*17   ; 11
-ROOM_INDEX_NUMBER_ROOM_YELLOW           gequ 2*18   ; 12
-ROOM_INDEX_BLACK_MAZE1                  gequ 2*19   ; 13
-ROOM_INDEX_BLACK_MAZE2                  gequ 2*20   ; 14
-ROOM_INDEX_BLACK_MAZE3                  gequ 2*21   ; 15
-ROOM_INDEX_BLACK_MAZE_ENTRY             gequ 2*22   ; 16
-ROOM_INDEX_RED_MAZE1                    gequ 2*23   ; 17
-ROOM_INDEX_RED_MAZE_TOP                 gequ 2*24   ; 18
-ROOM_INDEX_RED_MAZE_BOTTOM              gequ 2*25   ; 19
-ROOM_INDEX_WHITE_CASTLE_ENTRY           gequ 2*26   ; 1A
-ROOM_INDEX_TWO_EXIT_ROOM                gequ 2*27   ; 1B
-ROOM_INDEX_NUMBER_ROOM_PURPLE2          gequ 2*28   ; 1C
-ROOM_INDEX_TOP_ENTRY_ROOM_RED           gequ 2*29   ; 1D
-ROOM_INDEX_BELOW_YELLOW_CASTLE_PURPLE   gequ 2*30   ; 1E
+ROOM_INDEX_NUMBER_ROOM_PURPLE1          gequ $0
+ROOM_INDEX_BELOW_YELLOW_CASTLE_OLIVE    gequ $1
+ROOM_INDEX_BELOW_YELLOW_CASTLE_LIME     gequ $2
+ROOM_INDEX_LEFT_OF_NAME                 gequ $3
+ROOM_INDEX_BLUE_MAZE_TOP                gequ $4
+ROOM_INDEX_BLUE_MAZE1                   gequ $5
+ROOM_INDEX_BLUE_MAZE_BOTTOM             gequ $6
+ROOM_INDEX_BLUE_MAZE_CENTER             gequ $7
+ROOM_INDEX_BLUE_MAZE_ENTRY              gequ $8
+ROOM_INDEX_MAZE_MIDDLE                  gequ $9
+ROOM_INDEX_MAZE_ENTRY                   gequ $A
+ROOM_INDEX_MAZE_SIDE                    gequ $B
+ROOM_INDEX_SIDE_CORRIDOR_RIGHT          gequ $C
+ROOM_INDEX_SIDE_CORRIDOR_LEFT           gequ $D
+ROOM_INDEX_TOP_ENTRY_ROOM_CYAN          gequ $E
+ROOM_INDEX_CASTLE_WHITE                 gequ $F
+ROOM_INDEX_CASTLE_BLACK                 gequ $10
+ROOM_INDEX_CASTLE_YELLOW                gequ $11
+ROOM_INDEX_NUMBER_ROOM_YELLOW           gequ $12
+ROOM_INDEX_BLACK_MAZE1                  gequ $13
+ROOM_INDEX_BLACK_MAZE2                  gequ $14
+ROOM_INDEX_BLACK_MAZE3                  gequ $15
+ROOM_INDEX_BLACK_MAZE_ENTRY             gequ $16
+ROOM_INDEX_RED_MAZE1                    gequ $17
+ROOM_INDEX_RED_MAZE_TOP                 gequ $18
+ROOM_INDEX_RED_MAZE_BOTTOM              gequ $19
+ROOM_INDEX_WHITE_CASTLE_ENTRY           gequ $1A
+ROOM_INDEX_TWO_EXIT_ROOM                gequ $1B
+ROOM_INDEX_NUMBER_ROOM_PURPLE2          gequ $1C
+ROOM_INDEX_TOP_ENTRY_ROOM_RED           gequ $1D
+ROOM_INDEX_BELOW_YELLOW_CASTLE_PURPLE   gequ $1E
 
 ROOM_INDEX_IN_YELLOW_CASTLE             gequ $12
 ROOM_INDEX_IN_WHITE_CASTLE              gequ $1a

@@ -176,6 +176,8 @@ pass2 anop
         lda #0
         sta gamePass
 
+        jsr checkAllObjectsForOverlap
+
         jsr runObjects
 
         jsr runDragons

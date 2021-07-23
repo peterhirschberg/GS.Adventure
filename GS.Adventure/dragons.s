@@ -104,13 +104,6 @@ runDone anop
 
 dragonMove entry
 
-        lda seekDir
-        cmp #0
-        bne doDragonMove
-        rts
-
-doDragonMove anop
-
         txa
         cmp #OBJECT_GREENDRAGON
         beq moveGreen
@@ -121,69 +114,167 @@ doDragonMove anop
         rts
 
 moveGreen anop
-        jsr dragonGetMovementX
+        jsr greenDragonGetMovementX
         sta greenDragonMoveX
-        jsr dragonGetMovementY
+        jsr greenDragonGetMovementY
         sta greenDragonMoveY
-
-        ldx #OBJECT_GREENDRAGON ; ???
 
         lda >objectPositionXList,x
         clc
         adc greenDragonMoveX
-
-        bmi negX
-        bra posX
-negX anop
-        lda #159
-posX anop
-
-;        cmp >objectPositionXList,x
-;        beq noXMovement
         sta >objectPositionXList,x
-        lda #1
-        sta >objectDirtyList,x
-
-noXMovement anop
 
         lda >objectPositionYList,x
         clc
         adc greenDragonMoveY
-
-        bmi negY
-        bra posY
-negY anop
-        lda #199
-posY anop
-
-
-;        cmp >objectPositionYList,x
-;        beq noYMovement
         sta >objectPositionYList,x
+
         lda #1
         sta >objectDirtyList,x
-
-noYMovement anop
-
-; WRAP ROOMS
 
         rts
 
 moveYellow anop
+
+        jsr yellowDragonGetMovementX
+        sta yellowDragonMoveX
+        jsr yellowDragonGetMovementY
+        sta yellowDragonMoveY
+
+        lda >objectPositionXList,x
+        clc
+        adc yellowDragonMoveX
+        sta >objectPositionXList,x
+
+        lda >objectPositionYList,x
+        clc
+        adc yellowDragonMoveY
+        sta >objectPositionYList,x
+
+        lda #1
+        sta >objectDirtyList,x
+
         rts
 
 moveRed anop
         rts
 
 
+; -----------------------------------
 
-dragonGetMovementX entry
+yellowDragonGetMovementX entry
+
+        lda seekDir
+        cmp #1
+        beq yellowGetMovementXSeek
+        cmp #-1
+        beq yellowGetMovementXFlee
+        lda yellowDragonMoveX
+        rts
+
+yellowGetMovementXSeek anop
+
+        ldx #OBJECT_YELLOWDRAGON
+
+        lda seekX
+        cmp >objectPositionXList,x
+        beq yellowSeekXDone
+        bcs yellowMoveXSeek
+
+        lda #-3
+        rts
+
+yellowMoveXSeek anop
+        lda #3
+        rts
+
+yellowSeekXDone anop
+        lda #0
+        rts
+
+yellowGetMovementXFlee anop
+
+        ldx #OBJECT_YELLOWDRAGON
+
+        lda seekX
+        cmp >objectPositionXList,x
+        beq yellowFleeXDone
+        bcs yellowMoveXFlee
+
+        lda #3
+        rts
+
+yellowMoveXFlee anop
+        lda #-3
+        rts
+
+yellowFleeXDone anop
+        lda #0
+        rts
+
+
+
+yellowDragonGetMovementY entry
+
+        lda seekDir
+        cmp #1
+        beq yellowGetMovementYSeek
+        cmp #-1
+        beq yellowGetMovementYFlee
+        lda yellowDragonMoveY
+        rts
+
+yellowGetMovementYSeek anop
+
+        ldx #OBJECT_YELLOWDRAGON
+
+        lda seekY
+        cmp >objectPositionYList,x
+        beq yellowSeekYDone
+        bcs yellowMoveYSeek
+
+        lda #-3
+        rts
+
+yellowMoveYSeek anop
+        lda #3
+        rts
+
+yellowSeekYDone anop
+        lda #0
+        rts
+
+yellowGetMovementYFlee anop
+
+        ldx #OBJECT_YELLOWDRAGON
+
+        lda seekY
+        cmp >objectPositionYList,x
+        beq yellowFleeYDone
+        bcs yellowMoveYFlee
+
+        lda #3
+        rts
+
+yellowMoveYFlee anop
+        lda #-3
+        rts
+
+yellowFleeYDone anop
+        lda #0
+        rts
+
+
+; -----------------------------------
+
+greenDragonGetMovementX entry
+
         lda seekDir
         cmp #1
         beq greenGetMovementXSeek
         cmp #-1
         beq greenGetMovementXFlee
-        lda #0
+        lda greenDragonMoveX
         rts
 
 greenGetMovementXSeek anop
@@ -192,33 +283,50 @@ greenGetMovementXSeek anop
 
         lda seekX
         cmp >objectPositionXList,x
-        beq seekXDone
-        bcs moveX
+        beq greenSeekXDone
+        bcs greenMoveXSeek
 
-        lda #-2
+        lda #-3
         rts
 
-moveX anop
-        lda #2
+greenMoveXSeek anop
+        lda #3
         rts
 
-seekXDone anop
+greenSeekXDone anop
         lda #0
         rts
 
 greenGetMovementXFlee anop
+
+        ldx #OBJECT_GREENDRAGON
+
+        lda seekX
+        cmp >objectPositionXList,x
+        beq greenFleeXDone
+        bcs greenMoveXFlee
+
+        lda #3
+        rts
+
+greenMoveXFlee anop
+        lda #-3
+        rts
+
+greenFleeXDone anop
         lda #0
         rts
 
 
 
-dragonGetMovementY entry
+greenDragonGetMovementY entry
+
         lda seekDir
         cmp #1
         beq greenGetMovementYSeek
         cmp #-1
         beq greenGetMovementYFlee
-        lda #0
+        lda greenDragonMoveY
         rts
 
 greenGetMovementYSeek anop
@@ -227,24 +335,39 @@ greenGetMovementYSeek anop
 
         lda seekY
         cmp >objectPositionYList,x
-        beq seekYDone
-        bcs moveY
+        beq greenSeekYDone
+        bcs greenMoveYSeek
 
-        lda #-2
+        lda #-3
         rts
 
-moveY anop
-        lda #2
+greenMoveYSeek anop
+        lda #3
         rts
 
-seekYDone anop
+greenSeekYDone anop
         lda #0
         rts
 
 greenGetMovementYFlee anop
-        lda #0
+
+        ldx #OBJECT_GREENDRAGON
+
+        lda seekY
+        cmp >objectPositionYList,x
+        beq greenFleeYDone
+        bcs greenMoveYFlee
+
+        lda #3
         rts
 
+greenMoveYFlee anop
+        lda #-3
+        rts
+
+greenFleeYDone anop
+        lda #0
+        rts
 
 
 
@@ -256,6 +379,7 @@ dragonSeekFlee entry
         lda #0
         sta seekX
         sta seekY
+        sta seekDir
 
         txa
         cmp #OBJECT_GREENDRAGON
@@ -271,7 +395,7 @@ getMatrixGreen anop
         rts
 
 getMatrixYellow anop
-;        jsr getYellowDragonSeekFlee
+        jsr getYellowDragonSeekFlee
         rts
 
 getMatrixRed anop
@@ -282,9 +406,6 @@ getMatrixRed anop
 
 
 getGreenDragonSeekFlee entry
-
-        lda #0
-        sta seekDir
 
         lda gameDifficultyRight
         asl a
@@ -308,8 +429,6 @@ greenContinue anop
         cmp #OBJECT_GREENDRAGON
         beq greenSeek
 
-;  bra greenSeek
-
 ; fleeing
 
         stx savex
@@ -332,18 +451,28 @@ greenNextShort anop
 
 greenFlee anop
 
-        lda #-1
-        sta seekDir
 
         stx savex
-        tyx
-
+        ldx fleeObject
+        lda >objectRoomList,x
+        sta targetRoom
         lda >objectPositionXList,x
-        sta seekX
+        sta targetX
         lda >objectPositionYList,x
+        sta targetY
+        ldx savex
+
+        lda >objectRoomList,x
+        cmp targetRoom
+        bne greenNext
+
+        lda #-1
+        sta seekDir
+        lda targetX
+        sta seekX
+        lda targetY
         sta seekY
 
-        ldx savex
         rts
 
 ; seeking
@@ -359,7 +488,6 @@ greenSeek anop
 ; seeking the player
 
         lda >objectRoomList,x
-        asl a
         cmp currentRoom
         bne greenSeekObject
 
@@ -407,7 +535,138 @@ greenNext anop
         jmp greenLoop
 
 
+; ----------------------------------
 
+
+
+getYellowDragonSeekFlee entry
+
+        lda gameDifficultyRight
+        asl a
+        tay
+
+yellowLoop anop
+
+        lda yellowDragonFleeList,y
+        cmp #OBJECT_NONE
+        bne yellowContinue
+        rts
+
+yellowContinue anop
+
+        sta fleeObject
+
+        lda yellowDragonSeekList,y
+        sta seekObject
+
+        lda fleeObject
+        cmp #OBJECT_YELLOWDRAGON
+        beq yellowSeek
+
+; fleeing
+
+        stx savex
+        ldx fleeObject
+        lda >objectRoomList,x
+        sta targetRoom
+        lda >objectPositionXList,x
+        sta targetX
+        lda >objectPositionYList,x
+        sta targetY
+        ldx savex
+
+        lda >objectRoomList,x
+        cmp targetRoom
+        bne yellowNextShort
+        bra yellowFlee
+
+yellowNextShort anop
+        brl yellowNext
+
+yellowFlee anop
+
+
+        stx savex
+        ldx fleeObject
+        lda >objectRoomList,x
+        sta targetRoom
+        lda >objectPositionXList,x
+        sta targetX
+        lda >objectPositionYList,x
+        sta targetY
+        ldx savex
+
+        lda >objectRoomList,x
+        cmp targetRoom
+        bne yellowNext
+
+        lda #-1
+        sta seekDir
+        lda targetX
+        sta seekX
+        lda targetY
+        sta seekY
+
+        rts
+
+; seeking
+
+yellowSeek anop
+
+        lda seekObject
+        cmp #OBJECT_YELLOWDRAGON
+        beq yellowNext
+        cmp #OBJECT_PLAYER
+        bne yellowSeekObject
+
+; seeking the player
+
+        lda >objectRoomList,x
+        cmp currentRoom
+        bne yellowSeekObject
+
+        lda #1
+        sta seekDir
+
+        lda playerX
+        sta seekX
+        lda playerY
+        sta seekY
+
+        rts
+
+; seeking an object
+
+yellowSeekObject anop
+
+        stx savex
+        ldx seekObject
+        lda >objectRoomList,x
+        sta targetRoom
+        lda >objectPositionXList,x
+        sta targetX
+        lda >objectPositionYList,x
+        sta targetY
+        ldx savex
+
+        lda >objectRoomList,x
+        cmp targetRoom
+        bne yellowNext
+
+        lda #1
+        sta seekDir
+        lda targetX
+        sta seekX
+        lda targetY
+        sta seekY
+
+        rts
+
+yellowNext anop
+
+        iny
+        iny
+        jmp yellowLoop
 
 
 

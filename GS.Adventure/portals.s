@@ -15,6 +15,7 @@ portals start
         using playerData
         using objectData
         using collisionData
+        using roomsData
 
 
 runPortals entry
@@ -39,8 +40,41 @@ runPorts anop
         jsr animatePortal3
 
 portalsDone anop
+
+; make sure castles stay unlocked when the player is in them
+        lda currentRoom
+        cmp #ROOM_INDEX_IN_YELLOW_CASTLE
+        beq unlockYellowCastle
+        cmp #ROOM_INDEX_IN_WHITE_CASTLE
+        beq unlockWhiteCastle
+        cmp #ROOM_INDEX_IN_BLACK_CASTLE
+        beq unlockBlackCastle
+
         rts
 
+unlockYellowCastle anop
+        lda #6
+        ldx #OBJECT_PORT1
+        sta >objectStateList,x
+        lda #0
+        sta portal1RunState
+        rts
+
+unlockWhiteCastle anop
+        lda #6
+        ldx #OBJECT_PORT2
+        sta >objectStateList,x
+        lda #0
+        sta portal2RunState
+        rts
+
+unlockBlackCastle anop
+        lda #6
+        ldx #OBJECT_PORT3
+        sta >objectStateList,x
+        lda #0
+        sta portal3RunState
+        rts
 
 hitTestPortal1 entry
 

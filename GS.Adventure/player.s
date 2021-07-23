@@ -79,9 +79,7 @@ onJoystickButton anop
         rts
 
 joystickDone anop
-
         jsr wrapPlayerRoom
-
         rts
 
 
@@ -122,6 +120,7 @@ movePlayerLeft entry
         rts
 
 
+
 moveCarriedObject entry
 
         ldx #OBJECT_PLAYER
@@ -146,6 +145,12 @@ moveCarriedObject entry
         cmp #0
         beq carryDone
 
+
+
+        jsr resetCarriedObjectPos
+
+
+
         ldx #OBJECT_PLAYER
         lda >objectLinkedObjectList,x
 
@@ -162,17 +167,60 @@ moveCarriedObject entry
         sta >objectPositionYList,x
 
         lda currentRoom
-        lsr a
         sta >objectRoomList,x
 
         lda #1
         sta >objectDirtyList,x
+
+    bra carryDone
+
+        lda >objectPositionXList,x
+        sec
+        sbc playerX
+        sta playerDiffX
+
+        lda >objectPositionYList,x
+        sec
+        sbc playerY
+        sta playerDiffY
+
+        ldx #OBJECT_PLAYER
+        lda playerDiffX
+        sta >objectLinkedObjectXOffsetList,x
+        lda playerDiffY
+        sta >objectLinkedObjectYOffsetList,x
 
         rts
 
 carryDone anop
         rts
 
+
+resetCarriedObjectPos entry
+
+        ldx #OBJECT_PLAYER
+        lda >objectLinkedObjectXOffsetList,x
+        sta playerDiffX
+        lda >objectLinkedObjectYOffsetList,x
+        sta playerDiffY
+
+        lda >objectLinkedObjectList,x
+        tax
+
+        lda playerX
+        clc
+        adc playerDiffX
+        sta >objectPositionXList,x
+
+        lda playerY
+        clc
+        adc playerDiffY
+        sta >objectPositionYList,x
+
+        lda #1
+        sta >objectDirtyList,x
+
+        rts
 
 
 dropCarriedObject entry
@@ -197,7 +245,9 @@ drawPlayer entry
         lda #8
         sta rectHeight
 
-        ldx currentRoom
+        lda currentRoom
+        asl a
+        tax
         lda roomColorList,x
         sta rectColor
 

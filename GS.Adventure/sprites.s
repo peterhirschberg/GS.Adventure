@@ -126,7 +126,6 @@ dirtyDone anop
 
 drawKey entry
         lda >objectRoomList,x
-        asl a
         cmp >currentRoom
         bne drawKeyDone
 
@@ -149,7 +148,6 @@ drawKeyDone anop
 
 drawPort entry
         lda >objectRoomList,x
-        asl a
         cmp >currentRoom
         bne drawPortDone
 
@@ -172,7 +170,6 @@ drawPortDone anop
 
 drawDragon entry
         lda >objectRoomList,x
-        asl a
         cmp >currentRoom
         bne drawDragonDone
 
@@ -219,7 +216,6 @@ drawBridge entry
         tax
 
         lda >objectRoomList,x
-        asl a
         cmp >currentRoom
         bne drawBridgeDone
 
@@ -243,7 +239,6 @@ drawMagnet entry
         tax
 
         lda >objectRoomList,x
-        asl a
         cmp >currentRoom
         bne drawMagnetDone
 
@@ -267,7 +262,6 @@ drawSword entry
         tax
 
         lda >objectRoomList,x
-        asl a
         cmp >currentRoom
         bne drawSwordDone
 
@@ -291,7 +285,6 @@ drawChalise entry
         tax
 
         lda >objectRoomList,x
-        asl a
         cmp >currentRoom
         bne drawChaliseDone
 
@@ -315,14 +308,20 @@ drawChaliseDone anop
 
 
 eraseKey entry
+
         lda >objectRoomList,x
-        asl a
+        cmp >objectOldRoomList,x
+        bne doEraseKey
+
+        lda >objectRoomList,x
         cmp >currentRoom
         bne eraseKeyDone
 
         lda >objectDirtyList,x
         cmp #1
         bne eraseKeyDone
+
+doEraseKey anop
 
         lda >objectPositionOldXList,x
         sta >spriteX
@@ -343,7 +342,6 @@ eraseKeyDone anop
 
 erasePort entry
         lda >objectRoomList,x
-        asl a
         cmp >currentRoom
         bne erasePortDone
 
@@ -351,10 +349,9 @@ erasePort entry
         cmp #1
         bne erasePortDone
 
-        lda >objectPositionOldXList,x
+        lda >objectPositionXList,x
         sta >spriteX
-        lda >objectPositionOldYList,x
-        bmi erasePortDone
+        lda >objectPositionYList,x
         sta >spriteY
         jsl eraseSpritePort
 erasePortDone anop
@@ -362,14 +359,20 @@ erasePortDone anop
 
 
 eraseDragon entry
+
         lda >objectRoomList,x
-        asl a
+        cmp >objectOldRoomList,x
+        bne doEraseDragon
+
+        lda >objectRoomList,x
         cmp >currentRoom
         bne eraseDragonDone
 
         lda >objectDirtyList,x
         cmp #1
         bne eraseDragonDone
+
+doEraseDragon anop
 
         lda >objectPositionOldXList,x
         sta >spriteX
@@ -406,13 +409,18 @@ eraseBridge entry
         tax
 
         lda >objectRoomList,x
-        asl a
+        cmp >objectOldRoomList,x
+        bne doEraseBridge
+
+        lda >objectRoomList,x
         cmp >currentRoom
         bne eraseBridgeDone
 
         lda >objectDirtyList,x
         cmp #1
         bne eraseBridgeDone
+
+doEraseBridge anop
 
         lda >objectPositionOldXList,x
         sta >spriteX
@@ -435,7 +443,6 @@ eraseChalise entry
         tax
 
         lda >objectRoomList,x
-        asl a
         cmp >currentRoom
         bne eraseChaliseDone
 
@@ -464,13 +471,18 @@ eraseMagnet entry
         tax
 
         lda >objectRoomList,x
-        asl a
+        cmp >objectOldRoomList,x
+        bne doEraseMagnet
+
+        lda >objectRoomList,x
         cmp >currentRoom
         bne eraseMagnetDone
 
         lda >objectDirtyList,x
         cmp #1
         bne eraseMagnetDone
+
+doEraseMagnet anop
 
         lda >objectPositionOldXList,x
         sta >spriteX
@@ -493,7 +505,6 @@ eraseSword entry
         tax
 
         lda >objectRoomList,x
-        asl a
         cmp >currentRoom
         bne eraseSwordDone
 
