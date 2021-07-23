@@ -230,11 +230,11 @@ greenGetMovementYFlee anop
         beq fleeYDone
         bcs moveYFlee
 
-        lda #-3
+        lda #3
         rts
 
 moveYFlee anop
-        lda #3
+        lda #-3
         rts
 
 fleeYDone anop
@@ -326,18 +326,28 @@ greenNextShort anop
 
 greenFlee anop
 
-        lda #-1
-        sta seekDir
 
         stx savex
-        tyx
-
+        ldx fleeObject
+        lda >objectRoomList,x
+        sta targetRoom
         lda >objectPositionXList,x
-        sta seekX
+        sta targetX
         lda >objectPositionYList,x
+        sta targetY
+        ldx savex
+
+        lda >objectRoomList,x
+        cmp targetRoom
+        bne greenNext
+
+        lda #-1
+        sta seekDir
+        lda targetX
+        sta seekX
+        lda targetY
         sta seekY
 
-        ldx savex
         rts
 
 ; seeking
