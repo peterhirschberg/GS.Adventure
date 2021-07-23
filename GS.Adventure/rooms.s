@@ -583,8 +583,6 @@ wrapToRoomUp anop
         lda #190
         sta playerY
 
-        jsr moveCarriedObjectToPlayerRoom
-
         brl wrapDone
 
 wrapToRoomDown anop
@@ -629,8 +627,6 @@ notInCastle anop
         lda #8
         sta playerY
 
-        jsr moveCarriedObjectToPlayerRoom
-
         brl wrapDone
 
 wrapToRoomLeft anop
@@ -656,8 +652,6 @@ wrapToRoomLeft anop
 ; wrap the player
         lda #310
         sta playerX
-
-        jsr moveCarriedObjectToPlayerRoom
 
         brl wrapDone
 
@@ -685,8 +679,6 @@ wrapToRoomRight anop
         lda #8
         sta playerX
 
-        jsr moveCarriedObjectToPlayerRoom
-
 wrapDone anop
 
         rts
@@ -697,11 +689,21 @@ wrapDone anop
 
 wrapObjectRoom entry
 
+        ldx #OBJECT_PLAYER
+        lda >objectLinkedObjectList,x
+        cmp #OBJECT_NONE
+        bne doWrapObjectRoom
+        rts
+
+doWrapObjectRoom anop
+
         lda #6
         cmp >objectPositionYList,x
         bcs wrapToRoomUp2
 
-        jsr getHeightForObjectState ; modifies X <<<<
+        stx savex
+        jsr getHeightForObjectState
+        ldx savex
         clc
         adc >objectPositionYList,x
         sta objectBottom
@@ -720,7 +722,9 @@ wrapToRoomLeft2Short anop
 
 checkWrapRight anop
 
-        jsr getWidthForObjectState ; modifies X <<<<
+        sta savex
+        jsr getWidthForObjectState
+        ldx savex
         clc
         adc >objectPositionXList,x
         sta objectRight
@@ -762,7 +766,6 @@ wrapToRoomDown2 anop
 ; check for leaving castles
 
         lda >objectRoomList,x
-        lsr a
         cmp #ROOM_INDEX_IN_YELLOW_CASTLE
         beq inCastle2
         cmp #ROOM_INDEX_IN_WHITE_CASTLE
@@ -1152,6 +1155,8 @@ roomDown dc i2'0'
 roomLeft dc i2'0'
 
 testRoom dc i2'0'
+
+savex dc i2'0'
 
 CELL_WIDTH gequ 8
 CELL_HEIGHT gequ 32

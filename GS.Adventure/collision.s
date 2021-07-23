@@ -206,12 +206,24 @@ hitObject anop
 
         lda >objectLinkableList,x
         cmp #1
-        bne hitNonLinkableObject
+        bne hitNonLinkableObjectShort
+        bra hitLinkableObject
+
+hitNonLinkableObjectShort anop
+        brl hitNonLinkableObject
+
+hitLinkableObject anop
 
         ldx #OBJECT_PLAYER
         lda >objectLinkedObjectList,x
         cmp playerHitObject
-        beq hitCarriedObject
+        beq hitCarriedObjectShort
+        bra pickUpObject
+
+hitCarriedObjectShort anop
+        brl hitCarriedObject
+
+pickUpObject anop
 
 ; Pick up the object!
 
@@ -241,6 +253,7 @@ hitObject anop
         rts
 
 hitCarriedObject anop
+
         lda #OBJECT_NONE
         sta playerHitObject
         rts
@@ -452,10 +465,23 @@ testRect2Right dc i2'0'
 testRect2Top dc i2'0'
 testRect2Bottom dc i2'0'
 
+carriedObjectTop dc i2'0'
+carriedObjectLeft dc i2'0'
+carriedObjectRight dc i2'0'
+carriedObjectBottom dc i2'0'
+
+carriedObjectCenterX dc i2'0'
+carriedObjectCenterY dc i2'0'
+
 hitObjectX dc i2'0'
 hitObjectY dc i2'0'
 
 temp dc i2'0'
+
+savex dc i2'0'
+
+playerCenterX dc i2'0'
+playerCenterY dc i2'0'
 
         end
 

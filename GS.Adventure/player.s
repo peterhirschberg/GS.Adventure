@@ -120,12 +120,14 @@ movePlayerLeft entry
         rts
 
 
+
 moveCarriedObject entry
 
         ldx #OBJECT_PLAYER
         lda >objectLinkedObjectList,x
         cmp #OBJECT_NONE
         beq carryDone
+
 
         lda playerX
         sec
@@ -159,23 +161,7 @@ moveCarriedObject entry
         sta >objectPositionYList,x
 
         lda currentRoom
-        cmp >objectRoomList,x
-        bne notSameRoom
-
-        lda >objectPositionXList,x
-        sec
-        sbc playerX
-        sta >objectLinkedObjectXOffsetList,x
-
-        lda >objectPositionYList,x
-        sec
-        sbc playerY
-        sta >objectLinkedObjectYOffsetList,x
-
-notSameRoom anop
-
-;        lda currentRoom
-;        sta >objectRoomList,x
+        sta >objectRoomList,x
 
         lda #1
         sta >objectDirtyList,x
@@ -183,43 +169,6 @@ notSameRoom anop
         rts
 
 carryDone anop
-        rts
-
-
-
-moveCarriedObjectToPlayerRoom entry
-
-   rts
-
-        ldx #OBJECT_PLAYER
-        lda >objectLinkedObjectList,x
-        cmp #OBJECT_NONE
-        beq moveDone
-
-        ldx #OBJECT_PLAYER
-        lda >objectLinkedObjectList,x
-
-        tax
-
-        lda currentRoom
-        sta >objectRoomList,x
-
-;        lda playerX
-;        clc
-;        adc >objectLinkedObjectXOffsetList,x
-;        sta >objectPositionXList,x
-
-;        lda playerY
-;        clc
-;        adc >objectLinkedObjectYOffsetList,x
-;        sta >objectPositionYList,x
-
-        lda #1
-        sta >objectDirtyList,x
-
-        rts
-
-moveDone anop
         rts
 
 

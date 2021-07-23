@@ -16,6 +16,7 @@ controls start
         using controlsData
 
     using roomsData
+    using objectData
 
 checkControls entry
 
@@ -86,8 +87,15 @@ onJoystickButton anop
 onQuit anop
 ;        jsl signalQuit
 
+        ldx #OBJECT_PLAYER
+        lda >objectLinkedObjectList,x
+        tax
+        lda >objectRoomList,x
+        tay
+
         lda currentRoom
         tax
+
         brk
 
         rts
