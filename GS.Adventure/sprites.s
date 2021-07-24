@@ -45,8 +45,8 @@ drawRoomSprites entry
         ldx #OBJECT_YELLOWDRAGON
         jsr drawDragon
 
-        jsr drawSword
         jsr drawMagnet
+        jsr drawSword
         jsr drawChalise
 
 ; bat??
@@ -92,8 +92,8 @@ eraseRoomSprites entry
         sta >objectOldStateList,x
 
 
-        jsr eraseSword
         jsr eraseMagnet
+        jsr eraseSword
         jsr eraseChalise
 
 ; bat??

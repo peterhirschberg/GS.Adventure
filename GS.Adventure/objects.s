@@ -349,24 +349,24 @@ temp dc i2'0'
 objectData data objectDataSeg
 
 OBJECT_NONE             gequ -1
-OBJECT_PORT1            gequ 2*0
-OBJECT_PORT2            gequ 2*1
-OBJECT_PORT3            gequ 2*2
-OBJECT_AUTHOR           gequ 2*3
-OBJECT_NUMBERS          gequ 2*4
-OBJECT_REDDRAGON        gequ 2*5
-OBJECT_YELLOWDRAGON     gequ 2*6
-OBJECT_GREENDRAGON      gequ 2*7
-OBJECT_SWORD            gequ 2*8
-OBJECT_BRIDGE           gequ 2*9
-OBJECT_YELLOWKEY        gequ 2*10
-OBJECT_WHITEKEY         gequ 2*11
-OBJECT_BLACKKEY         gequ 2*12
-OBJECT_BAT              gequ 2*13
-OBJECT_DOT              gequ 2*14
-OBJECT_CHALISE          gequ 2*15
-OBJECT_MAGNET           gequ 2*16
-OBJECT_PLAYER           gequ 2*17
+OBJECT_PORT1            gequ 2*$0
+OBJECT_PORT2            gequ 2*$1
+OBJECT_PORT3            gequ 2*$2
+OBJECT_AUTHOR           gequ 2*$3
+OBJECT_NUMBERS          gequ 2*$4
+OBJECT_REDDRAGON        gequ 2*$5
+OBJECT_YELLOWDRAGON     gequ 2*$6
+OBJECT_GREENDRAGON      gequ 2*$7
+OBJECT_SWORD            gequ 2*$8
+OBJECT_BRIDGE           gequ 2*$9
+OBJECT_YELLOWKEY        gequ 2*$a
+OBJECT_WHITEKEY         gequ 2*$b
+OBJECT_BLACKKEY         gequ 2*$c
+OBJECT_BAT              gequ 2*$d
+OBJECT_DOT              gequ 2*$e
+OBJECT_CHALISE          gequ 2*$f
+OBJECT_MAGNET           gequ 2*$10
+OBJECT_PLAYER           gequ 2*$11
 
 objectRoomList anop
         dc i2'$00' ; port 1
@@ -386,6 +386,7 @@ objectRoomList anop
         dc i2'$00' ; dot
         dc i2'$00' ; chalise
         dc i2'$00' ; magnet
+        dc i2'0'   ; player
 
 objectOldRoomList anop
         dc i2'$00' ; port 1
@@ -405,6 +406,7 @@ objectOldRoomList anop
         dc i2'$00' ; dot
         dc i2'$00' ; chalise
         dc i2'$00' ; magnet
+        dc i2'0'   ; player
 
 objectPositionXList anop
         dc i2'$00' ; port 1
@@ -424,6 +426,7 @@ objectPositionXList anop
         dc i2'$00' ; dot
         dc i2'$00' ; chalise
         dc i2'$00' ; magnet
+        dc i2'0'   ; player
 
 objectPositionYList anop
         dc i2'$00' ; port 1
@@ -443,6 +446,7 @@ objectPositionYList anop
         dc i2'$00' ; dot
         dc i2'$00' ; chalise
         dc i2'$00' ; magnet
+        dc i2'0'   ; player
 
 objectPositionOldXList anop
         dc i2'$00' ; port 1
@@ -462,6 +466,7 @@ objectPositionOldXList anop
         dc i2'$00' ; dot
         dc i2'$00' ; chalise
         dc i2'$00' ; magnet
+        dc i2'0'   ; player
 
 objectPositionOldYList anop
         dc i2'$00' ; port 1
@@ -481,6 +486,7 @@ objectPositionOldYList anop
         dc i2'$00' ; dot
         dc i2'$00' ; chalise
         dc i2'$00' ; magnet
+        dc i2'0'   ; player
 
 objectStateList anop
         dc i2'$00' ; port 1
@@ -500,6 +506,7 @@ objectStateList anop
         dc i2'$00' ; dot
         dc i2'$00' ; chalise
         dc i2'$00' ; magnet
+        dc i2'0'   ; player
 
 objectOldStateList anop
         dc i2'$00' ; port 1
@@ -519,7 +526,7 @@ objectOldStateList anop
         dc i2'$00' ; dot
         dc i2'$00' ; chalise
         dc i2'$00' ; magnet
-
+        dc i2'0'   ; player
 
 objectColorList anop
         dc i2'COLOR_BLACK' ; port 1
@@ -539,6 +546,7 @@ objectColorList anop
         dc i2'COLOR_LTGRAY' ; dot
         dc i2'COLOR_FLASH' ; chalise
         dc i2'COLOR_BLACK' ; magnet
+        dc i2'0'   ; player
 
 objectLinkedObjectList anop
         dc i2'OBJECT_NONE' ; port 1
@@ -579,6 +587,7 @@ objectLinkedObjectXOffsetList anop
         dc i2'$00' ; chalise
         dc i2'$00' ; magnet
         dc i2'$00' ; player
+        dc i2'0'   ; player
 
 objectLinkedObjectYOffsetList anop
         dc i2'$00' ; port 1
@@ -660,7 +669,8 @@ objectInitialRoomGame1List anop
         dc i2'$1a' ; bat
         dc i2'$15' ; dot
         dc i2'$1c' ; chalise
-        dc i2'$1b' ; magnet
+        dc i2'$11' ; magnet
+        dc i2'0'   ; player
 
 objectInitialStateGame1List anop
         dc i2'$06' ; port 1
@@ -681,6 +691,7 @@ objectInitialStateGame1List anop
         dc i2'$00' ; dot
         dc i2'$00' ; chalise
         dc i2'$00' ; magnet
+        dc i2'0'   ; player
 
 objectInitialPositionXGame1List anop
         dc i2'$4d' ; port 1
@@ -700,6 +711,7 @@ objectInitialPositionXGame1List anop
         dc i2'$51' ; dot
         dc i2'$30' ; chalise
         dc i2'$80' ; magnet
+        dc i2'0'   ; player
 
 objectInitialPositionYGame1List anop
         dc i2'$31' ; port 1
@@ -719,6 +731,7 @@ objectInitialPositionYGame1List anop
         dc i2'$12' ; dot
         dc i2'$20' ; chalise
         dc i2'$20' ; magnet
+        dc i2'0'   ; player
 
 
 OBJECT_WIDTH_KEY gequ 14

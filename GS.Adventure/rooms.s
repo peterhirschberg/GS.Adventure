@@ -694,6 +694,13 @@ wrapObjectRoom entry
         txa
         sta wrapObject
 
+        lda wrapObject
+        cmp #OBJECT_MAGNET
+        bne foo
+        rts
+
+foo anop
+
         stx savex
         ldx #OBJECT_PLAYER
         lda >objectLinkedObjectList,x
@@ -701,14 +708,8 @@ wrapObjectRoom entry
         ldx savex
 
         lda wrapObject
-;        lsr a ; WHYYYYYY????
         cmp playerCarriedObject
         bne doWrapObjectRoom
-;    lda playerCarriedObject
-;    tax ; 10
-;    lda wrapObject
-;    tay ; 20
-;    brk
         rts
 
 doWrapObjectRoom anop
@@ -800,8 +801,8 @@ wrapToRoomDown2 anop
 
 inCastle2 anop
 
-;        jsr leaveCastle ; <<<<<<<
-;        rts
+        jsr objectLeaveCastle
+        rts
 
 notInCastle2 anop
 
@@ -982,7 +983,7 @@ enterYellowCastle entry
         beq yellowCastleDone
 
         lda #$12
-        sta >currentRoom
+        sta currentRoom
 
         lda >playerY
         clc
@@ -1022,7 +1023,7 @@ enterWhiteCastle entry
         beq whiteCastleDone
 
         lda #$1a
-        sta >currentRoom
+        sta currentRoom
 
         lda >playerY
         clc
@@ -1062,7 +1063,7 @@ enterBlackCastle entry
         beq blackCastleDone
 
         lda #$1b
-        sta >currentRoom
+        sta currentRoom
 
         lda >playerY
         clc
@@ -1155,6 +1156,55 @@ finishLeavingCastle entry
 
         rts
 
+
+objectLeaveCastle entry
+
+        lda currentRoom
+        cmp #ROOM_INDEX_IN_YELLOW_CASTLE
+        beq objectLeaveYellowCastle
+        cmp #ROOM_INDEX_IN_WHITE_CASTLE
+        beq objectLeaveWhiteCastle
+        cmp #ROOM_INDEX_IN_BLACK_CASTLE
+        beq objectLeaveBlackCastle
+
+        rts
+
+objectLeaveYellowCastle anop
+
+        lda #$11
+        sta >objectRoomList,x
+
+        jsr objectFinishLeavingCastle
+
+        rts
+
+objectLeaveWhiteCastle anop
+
+        lda #$0f
+        sta >objectRoomList,x
+
+        jsr objectFinishLeavingCastle
+
+        rts
+
+objectLeaveBlackCastle anop
+
+        lda #$10
+        sta >objectRoomList,x
+
+        jsr objectFinishLeavingCastle
+
+        rts
+
+objectFinishLeavingCastle entry
+
+        lda >objectPositionYList,x
+        sec
+        sbc #45
+        sta >objectPositionYList,x
+        sta >objectPositionOldYList,x
+
+        rts
 
 
 
