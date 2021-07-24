@@ -102,12 +102,15 @@ runObjects entry
 
         ldx #OBJECT_REDDRAGON
         jsr updateObjectValues
+;        jsr wrapObjectRoom
 
         ldx #OBJECT_YELLOWDRAGON
         jsr updateObjectValues
+;        jsr wrapObjectRoom
 
         ldx #OBJECT_GREENDRAGON
         jsr updateObjectValues
+;        jsr wrapObjectRoom
 
         ldx #OBJECT_BRIDGE
         jsr updateObjectValues

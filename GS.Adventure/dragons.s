@@ -109,8 +109,8 @@ dragonMove entry
         beq moveGreen
         cmp #OBJECT_YELLOWDRAGON
         beq moveYellow
-        cmp #OBJECT_REDDRAGON
-        beq moveRed
+;        cmp #OBJECT_REDDRAGON
+;        beq moveRed
         rts
 
 moveGreen anop
@@ -442,10 +442,18 @@ greenContinue anop
 
         lda greenDragonSeekList,y
         sta seekObject
+        cmp #OBJECT_GREENDRAGON
+        beq checkFlee
+        brl greenSeek
+
+checkFlee anop
 
         lda fleeObject
         cmp #OBJECT_GREENDRAGON
-        beq greenSeek
+        bne greenFleeing
+        bra greenLoop
+
+greenFleeing anop
 
 ; fleeing
 

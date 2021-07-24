@@ -181,6 +181,7 @@ drawDragon entry
 
         lda >objectPositionXList,x
         sta >spriteX
+;    bmi drawDragonDone
         lda >objectPositionYList,x
         sta >spriteY
         bmi drawDragonDone

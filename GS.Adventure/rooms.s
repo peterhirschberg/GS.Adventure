@@ -691,15 +691,8 @@ wrapObjectRoom entry
 
 ; don't wrap the object carried by the player
 
-        txa
-        sta wrapObject
+        stx wrapObject
 
-        lda wrapObject
-        cmp #OBJECT_MAGNET
-        bne foo
-        rts
-
-foo anop
 
         stx savex
         ldx #OBJECT_PLAYER
@@ -719,7 +712,7 @@ doWrapObjectRoom anop
         sta objectHeight
         ldx savex
 
-        sta savex
+        stx savex
         jsr getWidthForObjectState
         sta objectWidth
         ldx savex
@@ -737,9 +730,12 @@ doWrapObjectRoom anop
         cmp #194
         bcs wrapToRoomDown2
 
+        lda >objectPositionXList,x
+        sta temp
         lda #6
-        cmp >objectPositionXList,x
+        cmp temp
         bcs wrapToRoomLeft2Short
+    rts
         bra checkWrapRight
 
 wrapToRoomLeft2Short anop

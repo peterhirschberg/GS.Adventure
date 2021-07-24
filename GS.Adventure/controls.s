@@ -87,10 +87,10 @@ onJoystickButton anop
 onQuit anop
 ;        jsl signalQuit
 
-        ldx #OBJECT_PLAYER
-        lda >objectLinkedObjectList,x
-        tax
-        brk
+;        ldx #OBJECT_PLAYER
+;        lda >objectLinkedObjectList,x
+;        tax
+;        brk
 
         ldx #OBJECT_GREENDRAGON
         lda >objectPositionXList,x
