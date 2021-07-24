@@ -125,6 +125,9 @@ moveGreen anop
         lda >objectPositionYList,x
         sta >objectPositionOldYList,x
 
+        lda >objectRoomList,x
+        sta >objectOldRoomList,x
+
         lda >objectPositionXList,x
         clc
         adc greenDragonMoveX
@@ -152,6 +155,9 @@ moveYellow anop
 
         lda >objectPositionYList,x
         sta >objectPositionOldYList,x
+
+        lda >objectRoomList,x
+        sta >objectOldRoomList,x
 
         lda >objectPositionXList,x
         clc
