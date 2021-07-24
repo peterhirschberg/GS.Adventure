@@ -322,7 +322,6 @@ doChecks anop
         adc testRectTop
         sta testRectBottom
 
-
 ; check playerRectLeft > testRectRight
 
         lda playerRectLeft
@@ -568,36 +567,42 @@ collisionCheckAllObjects entry
         sta hitTestObjectA
 
         lda #OBJECT_YELLOWKEY
+        ldy #OBJECT_YELLOWKEY
         sta hitTestObjectB
         jsr collisionCheckObjects
         cmp #1
         beq hitObjectShortJump3
 
         lda #OBJECT_WHITEKEY
+        ldy #OBJECT_WHITEKEY
         sta hitTestObjectB
         jsr collisionCheckObjects
         cmp #1
         beq hitObjectShortJump3
 
         lda #OBJECT_BLACKKEY
+        ldy #OBJECT_BLACKKEY
         sta hitTestObjectB
         jsr collisionCheckObjects
         cmp #1
         beq hitObjectShortJump3
 
         lda #OBJECT_YELLOWDRAGON
+        ldy #OBJECT_YELLOWDRAGON
         sta hitTestObjectB
         jsr collisionCheckObjects
         cmp #1
         beq hitObjectShortJump3
 
         lda #OBJECT_GREENDRAGON
+        ldy #OBJECT_GREENDRAGON
         sta hitTestObjectB
         jsr collisionCheckObjects
         cmp #1
         beq hitObjectShortJump3
 
         lda #OBJECT_REDDRAGON
+        ldy #OBJECT_REDDRAGON
         sta hitTestObjectB
         jsr collisionCheckObjects
         cmp #1
@@ -611,42 +616,49 @@ hitObjectShortJump3 anop
 continue3 anop
 
         lda #OBJECT_BRIDGE
+        ldy #OBJECT_BRIDGE
         sta hitTestObjectB
         jsr collisionCheckObjects
         cmp #1
         beq hitObject3
 
         lda #OBJECT_SWORD
+        ldy #OBJECT_SWORD
         sta hitTestObjectB
         jsr collisionCheckObjects
         cmp #1
         beq hitObject3
 
         lda #OBJECT_MAGNET
+        ldy #OBJECT_MAGNET
         sta hitTestObjectB
         jsr collisionCheckObjects
         cmp #1
         beq hitObject3
 
         lda #OBJECT_CHALISE
+        ldy #OBJECT_CHALISE
         sta hitTestObjectB
         jsr collisionCheckObjects
         cmp #1
         beq hitObject3
 
         lda #OBJECT_PORT1
+        ldy #OBJECT_PORT1
         sta hitTestObjectB
         jsr collisionCheckObjects
         cmp #1
         beq hitObject3
 
         lda #OBJECT_PORT2
+        ldy #OBJECT_PORT2
         sta hitTestObjectB
         jsr collisionCheckObjects
         cmp #1
         beq hitObject3
 
         lda #OBJECT_PORT3
+        ldy #OBJECT_PORT3
         sta hitTestObjectB
         jsr collisionCheckObjects
         cmp #1
@@ -658,6 +670,9 @@ continue3 anop
         rts
 
 hitObject3 anop
+        tyx
+        lda #1
+        sta >objectDirtyList,x
         lda #1
         rts
 

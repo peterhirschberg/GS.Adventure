@@ -693,7 +693,6 @@ wrapObjectRoom entry
 
         stx wrapObject
 
-
         stx savex
         ldx #OBJECT_PLAYER
         lda >objectLinkedObjectList,x
@@ -772,8 +771,8 @@ wrapToRoomUp2 anop
 
 ; wrap the object
         lda #190
-    sec
-    sbc objectHeight
+        sec
+        sbc objectHeight
         sta >objectPositionYList,x
 
         lda #1
@@ -844,8 +843,8 @@ wrapToRoomLeft2 anop
 
 ; wrap the object
         lda #310
-    sec
-    sbc objectWidth
+        sec
+        sbc objectWidth
         sta >objectPositionXList,x
 
         lda #1
