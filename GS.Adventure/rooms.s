@@ -691,7 +691,8 @@ wrapObjectRoom entry
 
 ; don't wrap the object carried by the player
 
-        stx wrapObject
+        txa
+        sta wrapObject
 
         stx savex
         ldx #OBJECT_PLAYER
@@ -700,9 +701,14 @@ wrapObjectRoom entry
         ldx savex
 
         lda wrapObject
-        lsr a
+;        lsr a ; WHYYYYYY????
         cmp playerCarriedObject
         bne doWrapObjectRoom
+;    lda playerCarriedObject
+;    tax ; 10
+;    lda wrapObject
+;    tay ; 20
+;    brk
         rts
 
 doWrapObjectRoom anop

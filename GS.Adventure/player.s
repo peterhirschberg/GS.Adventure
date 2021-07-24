@@ -147,7 +147,7 @@ moveCarriedObject entry
 
 
 
-        jsr resetCarriedObjectPos ; FIGURE THIS OUT
+        jsr resetCarriedObjectPos ; FIGURE OUT THIS MESS
 
 
 

@@ -118,10 +118,10 @@ runObjects entry
         ldx #OBJECT_CHALISE
         jsr updateObjectValues
 
-        ldx #OBJECT_MAGNET
+        ldx #OBJECT_SWORD
         jsr updateObjectValues
 
-        ldx #OBJECT_SWORD
+        ldx #OBJECT_MAGNET
         jsr updateObjectValues
 
         rts
@@ -663,7 +663,8 @@ objectInitialRoomGame1List anop
         dc i2'$1b' ; magnet
 
 objectInitialStateGame1List anop
-        dc i2'$00' ; port 1
+        dc i2'$06' ; port 1
+;dc i2'$00' ; port 1
         dc i2'$00' ; port 2
         dc i2'$00' ; port 3
         dc i2'$00' ; author
@@ -696,9 +697,9 @@ objectInitialPositionXGame1List anop
         dc i2'$20' ; white key
         dc i2'$20' ; black key
         dc i2'$20' ; bat
-        dc i2'$12' ; dot
-        dc i2'$20' ; chalise
-        dc i2'$20' ; magnet
+        dc i2'$51' ; dot
+        dc i2'$30' ; chalise
+        dc i2'$80' ; magnet
 
 objectInitialPositionYGame1List anop
         dc i2'$31' ; port 1
