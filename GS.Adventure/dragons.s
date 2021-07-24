@@ -120,6 +120,12 @@ moveGreen anop
         sta greenDragonMoveY
 
         lda >objectPositionXList,x
+        sta >objectPositionOldXList,x
+
+        lda >objectPositionYList,x
+        sta >objectPositionOldYList,x
+
+        lda >objectPositionXList,x
         clc
         adc greenDragonMoveX
         sta >objectPositionXList,x
@@ -140,6 +146,12 @@ moveYellow anop
         sta yellowDragonMoveX
         jsr yellowDragonGetMovementY
         sta yellowDragonMoveY
+
+        lda >objectPositionXList,x
+        sta >objectPositionOldXList,x
+
+        lda >objectPositionYList,x
+        sta >objectPositionOldYList,x
 
         lda >objectPositionXList,x
         clc
