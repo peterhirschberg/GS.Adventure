@@ -735,7 +735,6 @@ doWrapObjectRoom anop
         lda #6
         cmp temp
         bcs wrapToRoomLeft2Short
-    rts
         bra checkWrapRight
 
 wrapToRoomLeft2Short anop
@@ -780,6 +779,8 @@ wrapToRoomUp2 anop
         lda #1
         sta >objectDirtyList,x
 
+        jsl eraseRoomSprites
+
         brl wrapDone2
 
 wrapToRoomDown2 anop
@@ -822,6 +823,8 @@ notInCastle2 anop
         lda #1
         sta >objectDirtyList,x
 
+        jsl eraseRoomSprites
+
         brl wrapDone2
 
 wrapToRoomLeft2 anop
@@ -848,6 +851,8 @@ wrapToRoomLeft2 anop
         lda #1
         sta >objectDirtyList,x
 
+        jsl eraseRoomSprites
+
         brl wrapDone2
 
 wrapToRoomRight2 anop
@@ -871,6 +876,8 @@ wrapToRoomRight2 anop
 
         lda #1
         sta >objectDirtyList,x
+
+        jsl eraseRoomSprites
 
 wrapDone2 anop
         rts
