@@ -466,38 +466,38 @@ itsAHit2 anop
 checkAllObjectsForOverlap entry
 
         lda #OBJECT_YELLOWKEY
-        ldy #OBJECT_YELLOWKEY
         jsr collisionCheckAllObjects
+        ldy #OBJECT_YELLOWKEY
         cmp #1
         beq hitObjectShortJump2
 
         lda #OBJECT_WHITEKEY
-        ldy #OBJECT_WHITEKEY
         jsr collisionCheckAllObjects
+        ldy #OBJECT_WHITEKEY
         cmp #1
         beq hitObjectShortJump2
 
         lda #OBJECT_BLACKKEY
-        ldy #OBJECT_BLACKKEY
         jsr collisionCheckAllObjects
+        ldy #OBJECT_BLACKKEY
         cmp #1
         beq hitObjectShortJump2
 
         lda #OBJECT_YELLOWDRAGON
-        ldy #OBJECT_YELLOWDRAGON
         jsr collisionCheckAllObjects
+        ldy #OBJECT_YELLOWDRAGON
         cmp #1
         beq hitObjectShortJump2
 
         lda #OBJECT_GREENDRAGON
-        ldy #OBJECT_GREENDRAGON
         jsr collisionCheckAllObjects
+        ldy #OBJECT_GREENDRAGON
         cmp #1
         beq hitObjectShortJump2
 
         lda #OBJECT_REDDRAGON
-        ldy #OBJECT_REDDRAGON
         jsr collisionCheckAllObjects
+        ldy #OBJECT_REDDRAGON
         cmp #1
         beq hitObjectShortJump2
 
@@ -509,44 +509,44 @@ hitObjectShortJump2 anop
 continue2 anop
 
         lda #OBJECT_BRIDGE
-        ldy #OBJECT_BRIDGE
         jsr collisionCheckAllObjects
+        ldy #OBJECT_BRIDGE
         cmp #1
         beq hitObject2
 
         lda #OBJECT_SWORD
-        ldy #OBJECT_SWORD
         jsr collisionCheckAllObjects
+        ldy #OBJECT_SWORD
         cmp #1
         beq hitObject2
 
         lda #OBJECT_MAGNET
-        ldy #OBJECT_MAGNET
         jsr collisionCheckAllObjects
+        ldy #OBJECT_MAGNET
         cmp #1
         beq hitObject2
 
         lda #OBJECT_CHALISE
-        ldy #OBJECT_CHALISE
         jsr collisionCheckAllObjects
+        ldy #OBJECT_CHALISE
         cmp #1
         beq hitObject2
 
         lda #OBJECT_PORT1
-        ldy #OBJECT_PORT1
         jsr collisionCheckAllObjects
+        ldy #OBJECT_PORT1
         cmp #1
         beq hitObject2
 
         lda #OBJECT_PORT2
-        ldy #OBJECT_PORT2
         jsr collisionCheckAllObjects
+        ldy #OBJECT_PORT2
         cmp #1
         beq hitObject2
 
         lda #OBJECT_PORT3
-        ldy #OBJECT_PORT3
         jsr collisionCheckAllObjects
+        ldy #OBJECT_PORT3
         cmp #1
         beq hitObject2
 

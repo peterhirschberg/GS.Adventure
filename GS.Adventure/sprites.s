@@ -22,15 +22,6 @@ sprites start spritesSeg
 
 drawRoomSprites entry
 
-        jsr drawBridge
-
-        ldx #OBJECT_YELLOWKEY
-        jsr drawKey
-        ldx #OBJECT_WHITEKEY
-        jsr drawKey
-        ldx #OBJECT_BLACKKEY
-        jsr drawKey
-
         ldx #OBJECT_PORT1
         jsr drawPort
         ldx #OBJECT_PORT2
@@ -40,14 +31,23 @@ drawRoomSprites entry
 
         ldx #OBJECT_REDDRAGON
         jsr drawDragon
-        ldx #OBJECT_GREENDRAGON
-        jsr drawDragon
         ldx #OBJECT_YELLOWDRAGON
         jsr drawDragon
+        ldx #OBJECT_GREENDRAGON
+        jsr drawDragon
 
-        jsr drawMagnet
         jsr drawSword
+        jsr drawBridge
+
+        ldx #OBJECT_YELLOWKEY
+        jsr drawKey
+        ldx #OBJECT_WHITEKEY
+        jsr drawKey
+        ldx #OBJECT_BLACKKEY
+        jsr drawKey
+
         jsr drawChalise
+        jsr drawMagnet
 
 ; bat??
 

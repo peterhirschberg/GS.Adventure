@@ -669,12 +669,11 @@ objectInitialRoomGame1List anop
         dc i2'$1a' ; bat
         dc i2'$15' ; dot
         dc i2'$1c' ; chalise
-        dc i2'$11' ; magnet
+        dc i2'$1b' ; magnet
         dc i2'0'   ; player
 
 objectInitialStateGame1List anop
-        dc i2'$06' ; port 1
-;dc i2'$00' ; port 1
+        dc i2'$00' ; port 1
         dc i2'$00' ; port 2
         dc i2'$00' ; port 3
         dc i2'$00' ; author

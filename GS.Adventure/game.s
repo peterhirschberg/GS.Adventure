@@ -230,6 +230,6 @@ gamePass dc i2'0'
 gameLevel dc i2'0'
 
 gameDifficultyLeft dc i2'0'
-gameDifficultyRight dc i2'0'
+gameDifficultyRight dc i2'1'
 
         end
