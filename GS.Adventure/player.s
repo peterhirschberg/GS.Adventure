@@ -147,7 +147,7 @@ moveCarriedObject entry
 
 
 
-        jsr resetCarriedObjectPos
+        jsr resetCarriedObjectPos ; FIGURE THIS OUT
 
 
 
@@ -216,6 +216,9 @@ resetCarriedObjectPos entry
         clc
         adc playerDiffY
         sta >objectPositionYList,x
+
+;        lda currentRoom
+;        sta >objectRoomList,x
 
         lda #1
         sta >objectDirtyList,x
