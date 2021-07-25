@@ -73,8 +73,12 @@ stateAlive anop
         ldx savex
 
         lda playerX
+        clc
+        adc #8
         sta >objectPositionXList,x
         lda playerY
+        sec
+        sbc #8
         sta >objectPositionYList,x
 
         jsr stopDragonMovement
@@ -123,18 +127,16 @@ stateRoar anop
 
 roarDone anop
 
-        lda #0
-        sta >objectStateList,x
-        lda #1
-        sta >objectDirtyList,x
-
-        jsl eraseRoomSprites
-
 ; roar done - is dragon touching the player?
 
+        stx savex
+        txa
         jsr collisionCheckPlayerWithObject
-        cmp #1
-        bne resumeStalking
+        ldx savex
+        cmp #0
+        beq resumeStalking
+
+; eat the player
 
         ldy #STATE_EATEN
         jsr setDragonState
@@ -142,12 +144,30 @@ roarDone anop
         lda #OBJECT_PLAYER
         sta >objectLinkedObjectList,x
 
+        lda #0
+        sta >objectStateList,x
+        lda #1
+        sta >objectDirtyList,x
+
+        stx savex
+        jsl eraseRoomSprites
+        ldx savex
+
         bra runDone
 
 resumeStalking anop
 
         ldy #STATE_ALIVE
         jsr setDragonState
+
+        lda #0
+        sta >objectStateList,x
+        lda #1
+        sta >objectDirtyList,x
+
+        stx savex
+        jsl eraseRoomSprites
+        ldx savex
 
         bra runDone
 
@@ -208,6 +228,7 @@ startDragonRoarTimer entry
         lda #$fc
         sec
         sbc temp
+        lsr a
         lsr a
         lsr a
         sta temp
