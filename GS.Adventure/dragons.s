@@ -37,17 +37,50 @@ runDragon entry
         cmp #STATE_ALIVE
         beq stateAlive
         cmp #STATE_ROAR
-        beq stateRoar
+        beq stateRoarShort
         cmp #STATE_DEAD
-        beq stateDead
+        beq stateDeadShort
         cmp #STATE_EATEN
-        beq stateEaten
-        bra runDone
+        beq stateEatenShort
+        rts
+
+stateRoarShort anop
+        brl stateRoar
+stateDeadShort anop
+        brl stateDead
+stateEatenShort anop
+        brl stateEaten
 
 ; ------------------------------------------------------------
 stateAlive anop
 
 ; has the player hit the dragon?
+
+        jsr collisionCheckPlayerWithObject
+        cmp #1
+        bne checkSword
+
+        ldy #STATE_ROAR
+        jsr setDragonState
+
+        lda #1
+        sta >objectStateList,x
+        lda #1
+        sta >objectDirtyList,x
+
+        stx savex
+        jsl eraseRoomSprites
+        ldx savex
+
+        lda playerX
+        sta >objectPositionXList,x
+        lda playerY
+        sta >objectPositionYList,x
+
+        jsr stopDragonMovement
+        jsr startDragonRoarTimer
+
+checkSword anop
 
 ; has the sword hit the dragon?
 
@@ -83,21 +116,166 @@ notTouchingSword anop
 ; ------------------------------------------------------------
 stateRoar anop
 
+        jsr runRoarState
+        cmp #0
+        beq roarDone
+        bra runDone
+
+roarDone anop
+
+        lda #0
+        sta >objectStateList,x
+        lda #1
+        sta >objectDirtyList,x
+
+        jsl eraseRoomSprites
+
+; roar done - is dragon touching the player?
+
+        jsr collisionCheckPlayerWithObject
+        cmp #1
+        bne resumeStalking
+
+        ldy #STATE_EATEN
+        jsr setDragonState
+
+        lda #OBJECT_PLAYER
+        sta >objectLinkedObjectList,x
+
+        bra runDone
+
+resumeStalking anop
+
+        ldy #STATE_ALIVE
+        jsr setDragonState
+
         bra runDone
 
 ; ------------------------------------------------------------
 stateDead anop
-
         bra runDone
 
 ; ------------------------------------------------------------
 stateEaten anop
-
         bra runDone
 
 ; ------------------------------------------------------------
 runDone anop
+        rts
 
+
+stopDragonMovement entry
+
+        txa
+        cmp #OBJECT_GREENDRAGON
+        beq stopGreen
+        cmp #OBJECT_YELLOWDRAGON
+        beq stopYellow
+;        cmp #OBJECT_REDDRAGON
+;        beq stopRed
+        rts
+
+stopGreen anop
+        lda #0
+        sta greenDragonMoveX
+        sta greenDragonMoveY
+        rts
+stopYellow anop
+        lda #0
+        sta yellowDragonMoveX
+        sta yellowDragonMoveY
+        rts
+stopRed anop
+        lda #0
+        sta redDragonMoveX
+        sta redDragonMoveY
+        rts
+
+
+startDragonRoarTimer entry
+
+        lda gameDifficultyLeft
+        asl a
+        sta temp
+
+        lda gameLevel
+        asl a
+        asl a
+        clc
+        adc temp
+        sta temp
+
+        lda #$fc
+        sec
+        sbc temp
+        lsr a
+        lsr a
+        sta temp
+
+        txa
+        cmp #OBJECT_GREENDRAGON
+        beq startRoarTimerGreen
+        cmp #OBJECT_YELLOWDRAGON
+        beq startRoarTimerYellow
+;        cmp #OBJECT_REDDRAGON
+;        beq startRoarTimerRed
+        rts
+
+; set the timer based on the game level and difficulty setting
+; *timer = 0xFC - dragonDiff[(gameLevel*2) + ((gameDifficultyLeft==DIFFICULTY_A) ? 1 : 0)];
+startRoarTimerGreen anop
+        lda temp
+        sta greenDragonTimer
+        rts
+startRoarTimerYellow anop
+        lda temp
+        sta yellowDragonTimer
+        rts
+startRoarTimerRed anop
+        lda temp
+        sta redDragonTimer
+        rts
+
+
+runRoarState entry
+
+        txa
+        cmp #OBJECT_GREENDRAGON
+        beq runRoarTimerGreen
+        cmp #OBJECT_YELLOWDRAGON
+        beq runRoarTimerYellow
+;        cmp #OBJECT_REDDRAGON
+;        beq runRoarTimerRed
+        rts
+
+runRoarTimerGreen anop
+        dec greenDragonTimer
+        lda greenDragonTimer
+        bmi greenTimerExpired
+        rts
+greenTimerExpired anop
+        lda #0
+        sta greenDragonTimer
+        rts
+
+runRoarTimerYellow anop
+        dec yellowDragonTimer
+        lda yellowDragonTimer
+        lda yellowDragonTimer
+        rts
+yellowTimerExpired anop
+        lda #0
+        sta yellowDragonTimer
+        rts
+
+runRoarTimerRed anop
+        dec redDragonTimer
+        lda redDragonTimer
+        bmi redTimerExpired
+        rts
+redTimerExpired anop
+        lda #0
+        sta redDragonTimer
         rts
 
 
@@ -830,6 +1008,13 @@ redDragonSeekList anop
         dc i2'OBJECT_NONE'
 
 
+dragonDifficulty anop
+        dc i2'$d0,$e8' ; Level 1 : Am, Pro
+        dc i2'$f0,$f6' ; Level 2 : Am, Pro
+        dc i2'$f0,$f6' ; Level 3 : Am, Pro
+
+
+
 greenDragonTimer dc i2'0'
 yellowDragonTimer dc i2'0'
 redDragonTimer dc i2'0'
@@ -866,5 +1051,7 @@ STATE_ROAR gequ 2
 STATE_EATEN gequ 3
 
 savex dc i2'0'
+
+temp dc i2'0'
 
         end
