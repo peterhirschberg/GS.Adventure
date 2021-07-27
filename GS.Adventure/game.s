@@ -110,6 +110,18 @@ dontInitGame anop
         beq pass2
 
 pass0 anop
+        lda gameWon
+        cmp #1
+        bne gameNotWon
+        inc gamePass
+        jsr advanceFlashColor
+        jsr moveCarriedObject
+        jsl eraseRoomSprites
+        jsl drawRoomSprites
+        rts
+        
+gameNotWon anop
+
         jsr runPlayer
 
         lda playerX
@@ -241,5 +253,7 @@ gameLevel dc i2'0'
 
 gameDifficultyLeft dc i2'0'
 gameDifficultyRight dc i2'1'
+
+gameWon dc i2'0'
 
         end

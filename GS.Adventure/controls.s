@@ -99,27 +99,17 @@ onQuit anop
 ;        tax
 ;        brk
 
-        ldx #OBJECT_GREENDRAGON
-        lda >objectPositionXList,x
-        sta xpos
-        lda >objectPositionYList,x
-        sta ypos
+        ldx #OBJECT_CHALISE
         lda >objectRoomList,x
-        sta room
-
-        ldx xpos
-        ldy ypos
-        lda room
+        tax
 
         brk
 
 
         rts
 
-xpos dc i2'0'
-ypos dc i2'0'
-room dc i2'0'
-
+        
+        
         end
 
 

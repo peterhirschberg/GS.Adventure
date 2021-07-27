@@ -219,7 +219,7 @@ doneShift anop
         lda currentRoom
         asl a
         tax
-        lda roomColorList,x
+        jsr getRoomColor
         sta rectColor
 
         jsr drawBackgroundRectChunk
@@ -348,7 +348,7 @@ doneShift2 anop
         lda currentRoom
         asl a
         tax
-        lda roomColorList,x
+        jsr getRoomColor
         sta rectColor
 
 ; draw mirrored right half
@@ -492,7 +492,7 @@ doneShift3 anop
         lda currentRoom
         asl a
         tax
-        lda roomColorList,x
+        jsr getRoomColor
         sta rectColor
 
         jsr drawBackgroundRectChunk
@@ -530,6 +530,22 @@ roomDone3 anop
 
 
 ; ------------------------------------
+
+getRoomColor entry
+        lda gameWon
+        cmp #1
+        beq drawFlashColor
+        lda currentRoom
+        asl a
+        tax
+        lda roomColorList,x
+        rts
+drawFlashColor anop
+        lda #COLOR_FLASH
+        rts
+        
+; ------------------------------------
+
 
 wrapPlayerRoom entry
 
@@ -574,7 +590,7 @@ wrapToRoomUp anop
         jsr adjustRoomLevel
         lda testRoom
         sta currentRoom
-
+        
 ; draw the new room
         jsr zeroSurroundGrid
         jsr drawRoom
@@ -995,6 +1011,8 @@ enterYellowCastle entry
 
         ldx #OBJECT_PLAYER
         lda >objectLinkedObjectList,x
+        cmp #OBJECT_CHALISE
+        beq chaliseInYellowCastle
         tax
         lda >objectPositionYList,x
         clc
@@ -1014,6 +1032,16 @@ enterYellowCastle entry
         jsr drawRoom
 
 yellowCastleDone anop
+        rtl
+
+chaliseInYellowCastle anop
+        lda #1
+        sta gameWon
+        
+; draw the new room
+        jsr zeroSurroundGrid
+        jsr drawRoom
+        
         rtl
 
 
