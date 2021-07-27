@@ -178,12 +178,22 @@ resumeStalking anop
         lda #0
         sta >objectStateList,x
         lda #1
+        sta >objectOldStateList,x
+        lda #1
         sta >objectDirtyList,x
+        
+        lda >objectPositionXList,x
+        sta >objectPositionOldXList,x
+        lda >objectPositionYList,x
+        sta >objectPositionOldYList,x
 
         stx savex
         jsl eraseRoomSprites
         ldx savex
 
+        lda #0
+        sta >objectOldStateList,x
+        
         bra runDone
 
 ; ------------------------------------------------------------
