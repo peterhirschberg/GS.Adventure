@@ -47,6 +47,9 @@ checkControls entry
         cmp #'A'
         beq onJoystickLeft
 
+        cmp #'1'
+        beq onReset
+
         cmp #$20
         beq onJoystickButton
 
@@ -84,6 +87,10 @@ onJoystickButton anop
         sta joystickButton
         rts
 
+onReset anop
+        jsr resetGame
+        rts
+        
 onQuit anop
 ;        jsl signalQuit
 

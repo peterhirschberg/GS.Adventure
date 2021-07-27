@@ -16,6 +16,34 @@ dragons start
         using roomsData
         using playerData
 
+        
+resetDragons entry
+
+        lda #0
+        ldx #OBJECT_YELLOWDRAGON
+        sta >objectStateList,x
+        ldx #OBJECT_GREENDRAGON
+        sta >objectStateList,x
+        ldx #OBJECT_REDDRAGON
+        sta >objectStateList,x
+        
+        lda #STATE_ALIVE
+        sta greenDragonState
+        sta yellowDragonState
+        sta redDragonState
+
+        lda #0
+        sta seekDir
+        sta seekX
+        sta seekY
+        sta targetX
+        sta targetY
+        sta targetRoom
+        sta seekObject
+        sta fleeObject
+        
+        rts
+        
 
 runDragons entry
 

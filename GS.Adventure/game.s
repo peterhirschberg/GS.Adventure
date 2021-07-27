@@ -37,6 +37,25 @@ initGame entry
 ; -------------------------------
 ; set up game
 
+        jsr resetGame
+
+; initialize object positions (only on full reset)
+
+        jsr initObjectPositions
+
+; -------------------------------
+
+        jsr normalColorTable
+
+        rts
+
+        
+resetGame entry
+
+; bring the dragons to life
+
+        jsr resetDragons
+
 ; set the current room
 
         lda #ROOM_INDEX_CASTLE_YELLOW
@@ -57,18 +76,9 @@ initGame entry
         lda #OBJECT_NONE
         sta >objectLinkedObjectList,x
 
-; initialize object positions (only on full reset)
-
-        jsr initObjectPositions
-
-; -------------------------------
-
         jsr drawRoom
-
-        jsr normalColorTable
-
+        
         rts
-
 
 
 runGameTick entry
