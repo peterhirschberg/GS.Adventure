@@ -662,7 +662,8 @@ objectInitialRoomGame1List anop
         dc i2'$01' ; yellow dragon
         dc i2'$1d' ; green dragon
         dc i2'$12' ; sword
-        dc i2'$04' ; bridge
+;        dc i2'$04' ; bridge
+        dc i2'$11' ; bridge
         dc i2'$11' ; yellow key
         dc i2'$0e' ; white key
         dc i2'$1d' ; black key

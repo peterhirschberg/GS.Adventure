@@ -164,7 +164,7 @@ continue anop
         ldx #OBJECT_BRIDGE
         jsr collisionCheckPlayerWithObject
         cmp #1
-        beq hitObject
+        beq hitBridge
 
         ldx #OBJECT_SWORD
         jsr collisionCheckPlayerWithObject
@@ -198,6 +198,12 @@ continue anop
 
 ; bat?
 
+        rts
+        
+hitBridge anop
+        jsr checkBridgeCollision
+        cmp #1
+        beq hitObject
         rts
 
 hitObject anop
@@ -678,6 +684,39 @@ hitObject3 anop
 
 
 
+checkBridgeCollision entry
+
+        ldx #OBJECT_BRIDGE
+        lda >objectPositionXList,x
+        clc
+        adc #15
+        sta bridgeInnerLeft
+        
+        lda >objectPositionXList,x
+        clc
+        adc #OBJECT_WIDTH_BRIDGE
+        sec
+        sbc #15
+        sta bridgeInnerRight
+        
+        lda playerX
+        cmp bridgeInnerLeft
+        bcs bridgePassLeft
+        lda #1
+        rts
+        
+bridgePassLeft anop
+        lda bridgeInnerRight
+        cmp playerX
+        bcs bridgePassRight
+        lda #1
+        rts
+        
+bridgePassRight anop
+        lda #0
+        rts
+
+        
 
 rowCounter dc i2'0'
 
@@ -703,6 +742,9 @@ testRect2Bottom dc i2'0'
 
 hitObjectX dc i2'0'
 hitObjectY dc i2'0'
+
+bridgeInnerLeft dc i2'0'
+bridgeInnerRight dc i2'0'
 
 temp dc i2'0'
 
