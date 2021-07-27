@@ -105,7 +105,7 @@ checkSword anop
         jsr setDragonState
         jsr zeroDragonMove
 
-        bra runDone
+        brl runDone
 
 notTouchingSword anop
 
@@ -115,7 +115,7 @@ notTouchingSword anop
 ; move dragon
         jsr dragonMove
 
-        bra runDone
+        brl runDone
 
 ; ------------------------------------------------------------
 stateRoar anop
@@ -123,7 +123,7 @@ stateRoar anop
         jsr runRoarState
         cmp #0
         beq roarDone
-        bra runDone
+        brl runDone
 
 roarDone anop
 
@@ -147,11 +147,26 @@ roarDone anop
         lda #0
         sta >objectStateList,x
         lda #1
+        sta >objectOldStateList,x
+        lda #1
         sta >objectDirtyList,x
 
         stx savex
         jsl eraseRoomSprites
         ldx savex
+        
+        lda >objectPositionXList,x
+        clc
+        adc #3
+        sta playerX
+        lda >objectPositionYList,x
+        clc
+        adc #20
+        sta playerY
+        lda #1
+        sta playerMoved
+        jsr erasePlayerHit
+        jsr erasePlayer
 
         bra runDone
 
