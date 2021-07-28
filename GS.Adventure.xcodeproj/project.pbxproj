@@ -35,7 +35,6 @@
 		D06790992688EBD400A8010C /* rooms.s in Sources */ = {isa = PBXBuildFile; fileRef = D06790982688EBD400A8010C /* rooms.s */; };
 		D067909B268F24B600A8010C /* global.macros in Sources */ = {isa = PBXBuildFile; fileRef = D067909A268F24B600A8010C /* global.macros */; };
 		D067909D2690054300A8010C /* hardware.s in Sources */ = {isa = PBXBuildFile; fileRef = D067909C2690054300A8010C /* hardware.s */; };
-		D067909F2690162600A8010C /* beam.s in Sources */ = {isa = PBXBuildFile; fileRef = D067909E2690162600A8010C /* beam.s */; };
 		D06790A12691C41D00A8010C /* player.s in Sources */ = {isa = PBXBuildFile; fileRef = D06790A02691C41C00A8010C /* player.s */; };
 		D06790A32691D2E100A8010C /* controls.s in Sources */ = {isa = PBXBuildFile; fileRef = D06790A22691D2E100A8010C /* controls.s */; };
 		D06790A52692373400A8010C /* collision.s in Sources */ = {isa = PBXBuildFile; fileRef = D06790A42692373400A8010C /* collision.s */; };
@@ -105,7 +104,6 @@
 		D06790982688EBD400A8010C /* rooms.s */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.asm; path = rooms.s; sourceTree = "<group>"; };
 		D067909A268F24B600A8010C /* global.macros */ = {isa = PBXFileReference; lastKnownFileType = text; path = global.macros; sourceTree = "<group>"; };
 		D067909C2690054300A8010C /* hardware.s */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.asm; path = hardware.s; sourceTree = "<group>"; };
-		D067909E2690162600A8010C /* beam.s */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.asm; path = beam.s; sourceTree = "<group>"; };
 		D06790A02691C41C00A8010C /* player.s */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.asm; path = player.s; sourceTree = "<group>"; };
 		D06790A22691D2E100A8010C /* controls.s */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.asm; path = controls.s; sourceTree = "<group>"; };
 		D06790A42692373400A8010C /* collision.s */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.asm; path = collision.s; sourceTree = "<group>"; };
@@ -163,7 +161,6 @@
 				D06790982688EBD400A8010C /* rooms.s */,
 				D067909A268F24B600A8010C /* global.macros */,
 				D067909C2690054300A8010C /* hardware.s */,
-				D067909E2690162600A8010C /* beam.s */,
 				D06790A02691C41C00A8010C /* player.s */,
 				D06790A22691D2E100A8010C /* controls.s */,
 				D06790A42692373400A8010C /* collision.s */,
@@ -325,7 +322,6 @@
 				D091670426B1CC93009386C4 /* magnet.s in Sources */,
 				D06790992688EBD400A8010C /* rooms.s in Sources */,
 				D0678FC5267E6E2B00A8010C /* Makefile in Sources */,
-				D067909F2690162600A8010C /* beam.s in Sources */,
 				D0328FEA269E3CAD00883A3F /* spriteAuthor.s in Sources */,
 				D06790952688BC5A00A8010C /* screen.s in Sources */,
 				D0328FE5269DB09600883A3F /* spriteKey.s in Sources */,

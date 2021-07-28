@@ -41,16 +41,6 @@ word getRandom(word range)
     return rand() % range;
 }
 
-word numLoosePixelsFromLeftToRight(word start)
-{
-    return 8 - (start % 8);
-}
-
-word numLoosePixelsFromRightToLeft(word start)
-{
-    return start % 8;
-}
-
 
 // Sounds
 

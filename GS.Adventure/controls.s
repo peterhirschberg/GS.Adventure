@@ -92,21 +92,7 @@ onReset anop
         rts
         
 onQuit anop
-;        jsl signalQuit
-
-;        ldx #OBJECT_PLAYER
-;        lda >objectLinkedObjectList,x
-;        tax
-;        brk
-
-;        ldx #OBJECT_YELLOWKEY
-;        lda >objectRoomList,x
-        lda currentRoom
-        tax
-
-        brk
-
-
+        jsl signalQuit
         rts
 
         

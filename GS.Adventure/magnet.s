@@ -161,12 +161,12 @@ magnetData data
 
     
 magnetMatrix anop
-        dc i2'OBJECT_YELLOWKEY'    // Yellow Key
-        dc i2'OBJECT_WHITEKEY'     // White Key
-        dc i2'OBJECT_BLACKKEY'     // Black Key
-        dc i2'OBJECT_SWORD'        // Sword
-        dc i2'OBJECT_BRIDGE'       // Bridge
-        dc i2'OBJECT_CHALISE'      // Challise
+        dc i2'OBJECT_YELLOWKEY'    ; Yellow Key
+        dc i2'OBJECT_WHITEKEY'     ; White Key
+        dc i2'OBJECT_BLACKKEY'     ; Black Key
+        dc i2'OBJECT_SWORD'        ; Sword
+        dc i2'OBJECT_BRIDGE'       ; Bridge
+        dc i2'OBJECT_CHALISE'      ; Challise
         dc i2'OBJECT_NONE'
     
     
