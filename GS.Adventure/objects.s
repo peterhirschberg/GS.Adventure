@@ -13,6 +13,7 @@
 
 objects start
         using objectData
+        using gameData
 
 
 initObjectPositions entry
@@ -71,6 +72,10 @@ initObjectPositions entry
 setInitialObjectValues entry
 ; TODO - check for game 1,2 or 3
 
+        lda gameLevel
+        cmp #0
+        bne level2
+
         lda >objectInitialPositionXGame1List,x
         adjustSpriteX
         sta >objectPositionXList,x
@@ -83,7 +88,27 @@ setInitialObjectValues entry
         sta >objectRoomList,x
         sta >objectOldRoomList,x
 
-        lda >objectInitialStateGame1List,x
+        bra initDone
+        
+level2 anop
+
+        lda >objectInitialPositionXGame2List,x
+        adjustSpriteX
+        sta >objectPositionXList,x
+
+        lda >objectInitialPositionYGame2List,x
+        adjustSpriteY
+        sta >objectPositionYList,x
+
+        lda >objectInitialRoomGame2List,x
+        sta >objectRoomList,x
+        sta >objectOldRoomList,x
+
+        bra initDone
+       
+initDone anop
+
+        lda #$00
         sta >objectStateList,x
 
         rts
@@ -671,6 +696,8 @@ objectRedrawList anop
 
 ; Initial values
 
+; LEVEL 1
+
 objectInitialRoomGame1List anop
         dc i2'$11' ; port 1
         dc i2'$0f' ; port 2
@@ -689,26 +716,6 @@ objectInitialRoomGame1List anop
         dc i2'$15' ; dot
         dc i2'$1c' ; chalise
         dc i2'$1b' ; magnet
-        dc i2'0'   ; player
-
-objectInitialStateGame1List anop
-        dc i2'$00' ; port 1
-        dc i2'$00' ; port 2
-        dc i2'$00' ; port 3
-        dc i2'$00' ; author
-        dc i2'$00' ; numbers
-        dc i2'$00' ; red dragon
-        dc i2'$00' ; yellow dragon
-        dc i2'$00' ; green dragon
-        dc i2'$00' ; sword
-        dc i2'$00' ; bridge
-        dc i2'$00' ; yellow key
-        dc i2'$00' ; white key
-        dc i2'$00' ; black key
-        dc i2'$00' ; bat
-        dc i2'$00' ; dot
-        dc i2'$00' ; chalise
-        dc i2'$00' ; magnet
         dc i2'0'   ; player
 
 objectInitialPositionXGame1List anop
@@ -751,6 +758,69 @@ objectInitialPositionYGame1List anop
         dc i2'$20' ; magnet
         dc i2'0'   ; player
 
+        
+; LEVEL 2
+
+objectInitialRoomGame2List anop
+        dc i2'$11' ; port 1
+        dc i2'$0f' ; port 2
+        dc i2'$10' ; port 3
+        dc i2'$1e' ; author
+        dc i2'$00' ; numbers
+        dc i2'$14' ; red dragon
+        dc i2'$19' ; yellow dragon
+        dc i2'$04' ; green dragon
+        dc i2'$11' ; sword
+        dc i2'$08' ; bridge
+        dc i2'$09' ; yellow key
+        dc i2'$06' ; white key
+        dc i2'$19' ; black key
+        dc i2'$02' ; bat
+        dc i2'$15' ; dot
+        dc i2'$14' ; chalise
+        dc i2'$0e' ; magnet
+        dc i2'0'   ; player
+
+objectInitialPositionXGame2List anop
+        dc i2'$4d' ; port 1
+        dc i2'$4d' ; port 2
+        dc i2'$4d' ; port 3
+        dc i2'$50' ; author
+        dc i2'$50' ; numbers
+        dc i2'$50' ; red dragon
+        dc i2'$50' ; yellow dragon
+        dc i2'$50' ; green dragon
+        dc i2'$20' ; sword
+        dc i2'$40' ; bridge
+        dc i2'$20' ; yellow key
+        dc i2'$20' ; white key
+        dc i2'$20' ; black key
+        dc i2'$20' ; bat
+        dc i2'$45' ; dot
+        dc i2'$30' ; chalise
+        dc i2'$80' ; magnet
+        dc i2'0'   ; player
+
+objectInitialPositionYGame2List anop
+        dc i2'$31' ; port 1
+        dc i2'$31' ; port 2
+        dc i2'$31' ; port 3
+        dc i2'$69' ; author
+        dc i2'$40' ; numbers
+        dc i2'$20' ; red dragon
+        dc i2'$20' ; yellow dragon
+        dc i2'$20' ; green dragon
+        dc i2'$20' ; sword
+        dc i2'$40' ; bridge
+        dc i2'$40' ; yellow key
+        dc i2'$40' ; white key
+        dc i2'$40' ; black key
+        dc i2'$20' ; bat
+        dc i2'$12' ; dot
+        dc i2'$20' ; chalise
+        dc i2'$20' ; magnet
+        dc i2'0'   ; player
+        
 
 OBJECT_WIDTH_KEY gequ 14
 OBJECT_HEIGHT_KEY gequ 6
