@@ -16,6 +16,7 @@ rooms start
         using roomsData
         using playerData
         using objectData
+        using collisionData
 
 
 drawRoom entry
@@ -602,6 +603,30 @@ wrapToRoomUp anop
         brl wrapDone
 
 wrapToRoomDown anop
+
+        lda goingThroughWall
+        cmp #1
+        bne notGoingThroughWallDown
+        
+        lda #1
+        sta playerHitWall
+        
+        lda playerX
+        sta playerHitX
+        lda playerY
+        sta playerHitY
+        
+        lda playerOldX
+        sta playerX
+        lda playerOldY
+        sta playerY
+        
+        lda #1
+        sta playerMoved
+
+        brl wrapDone
+        
+notGoingThroughWallDown anop
 
 ; check for leaving castles
 
