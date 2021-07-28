@@ -662,8 +662,8 @@ objectInitialRoomGame1List anop
         dc i2'$01' ; yellow dragon
         dc i2'$1d' ; green dragon
         dc i2'$12' ; sword
-        dc i2'$04' ; bridge
-;        dc i2'$11' ; bridge
+;        dc i2'$04' ; bridge
+        dc i2'$11' ; bridge
         dc i2'$11' ; yellow key
         dc i2'$0e' ; white key
         dc i2'$1d' ; black key
@@ -737,7 +737,7 @@ objectInitialPositionYGame1List anop
 OBJECT_WIDTH_KEY gequ 14
 OBJECT_HEIGHT_KEY gequ 6
 
-OBJECT_WIDTH_BRIDGE gequ 62
+OBJECT_WIDTH_BRIDGE gequ 62+4
 OBJECT_HEIGHT_BRIDGE gequ 48
 
 OBJECT_WIDTH_BAT1 gequ 14

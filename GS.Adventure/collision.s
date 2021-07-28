@@ -292,8 +292,59 @@ pickUpObject anop
 
 hitCarriedObject anop
 
+        tax
+
+        lda playerX
+        sec
+        sbc playerOldX
+        bmi xIsNeg
+        lsr a
+        sta diffX
+        bra xIsPos
+xIsNeg anop
+        eor #$ffff
+        inc a
+        lsr a
+        eor #$ffff
+        inc a
+        sta diffX
+xIsPos anop
+
+        lda playerY
+        sec
+        sbc playerOldY
+        bmi yIsNeg
+        lsr a
+        sta diffY
+        bra yIsPos
+yIsNeg anop
+        eor #$ffff
+        inc a
+        lsr a
+        eor #$ffff
+        inc a
+        sta diffY
+yIsPos anop
+
+        lda >objectPositionXList,x
+        sta >objectPositionOldXList,x
+        clc
+        adc diffX
+        sta >objectPositionXList,x
+
+        lda >objectPositionYList,x
+        sta >objectPositionOldYList,x
+        clc
+        adc diffY
+        sta >objectPositionYList,x
+        
+        lda #1
+        sta >objectDirtyList,x
+        jsl eraseRoomSprites
+
         lda #OBJECT_NONE
         sta playerHitObject
+        
         rts
 
 hitNonLinkableObject anop
@@ -714,7 +765,7 @@ checkBridgeCollision entry
         clc
         adc #OBJECT_WIDTH_BRIDGE
         sec
-        sbc #15
+        sbc #25
         sta bridgeInnerRight
         
         lda playerX
@@ -772,6 +823,9 @@ savex dc i2'0'
 
 playerAvgX dc i2'0'
 playerAvgY dc i2'0'
+
+diffX dc i2'0'
+diffY dc i2'0'
 
         end
 
