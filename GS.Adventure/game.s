@@ -52,6 +52,10 @@ initGame entry
         
 resetGame entry
 
+        lda #0
+        sta gameWon
+; TODO - if soft resetting after game is won, do a hard reset
+
 ; bring the dragons to life
 
         jsr resetDragons

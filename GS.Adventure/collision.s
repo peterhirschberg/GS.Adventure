@@ -292,6 +292,8 @@ pickUpObject anop
 
 hitCarriedObject anop
 
+; make sure carried objects stay out of our way
+
         tax
 
         lda playerX
@@ -537,102 +539,141 @@ itsAHit2 anop
         rts
 
 
-
 checkAllObjectsForOverlap entry
 
         lda #OBJECT_YELLOWKEY
         jsr collisionCheckAllObjects
-        ldy #OBJECT_YELLOWKEY
         cmp #1
-        beq hitObjectShortJump2
-
+        bne checkall1
+        lda #1
+        ldx #OBJECT_YELLOWKEY
+        sta >objectDirtyList,x
+        
+checkall1 anop
+        
         lda #OBJECT_WHITEKEY
         jsr collisionCheckAllObjects
-        ldy #OBJECT_WHITEKEY
         cmp #1
-        beq hitObjectShortJump2
+        bne checkall2
+        lda #1
+        ldx #OBJECT_WHITEKEY
+        sta >objectDirtyList,x
+        
+checkall2 anop
 
         lda #OBJECT_BLACKKEY
         jsr collisionCheckAllObjects
-        ldy #OBJECT_BLACKKEY
         cmp #1
-        beq hitObjectShortJump2
+        bne checkall3
+        lda #1
+        ldx #OBJECT_BLACKKEY
+        sta >objectDirtyList,x
+        
+checkall3 anop
 
         lda #OBJECT_YELLOWDRAGON
         jsr collisionCheckAllObjects
-        ldy #OBJECT_YELLOWDRAGON
         cmp #1
-        beq hitObjectShortJump2
+        bne checkall4
+        lda #1
+        ldx #OBJECT_YELLOWDRAGON
+        sta >objectDirtyList,x
+
+checkall4 anop
 
         lda #OBJECT_GREENDRAGON
         jsr collisionCheckAllObjects
         ldy #OBJECT_GREENDRAGON
         cmp #1
-        beq hitObjectShortJump2
+        bne checkall5
+        lda #1
+        ldx #OBJECT_GREENDRAGON
+        sta >objectDirtyList,x
+
+checkall5 anop
 
         lda #OBJECT_REDDRAGON
         jsr collisionCheckAllObjects
-        ldy #OBJECT_REDDRAGON
         cmp #1
-        beq hitObjectShortJump2
+        bne checkall6
+        lda #1
+        ldx #OBJECT_REDDRAGON
+        sta >objectDirtyList,x
 
-        bra continue2
-
-hitObjectShortJump2 anop
-        brl hitObject2
-
-continue2 anop
+checkall6 anop
 
         lda #OBJECT_BRIDGE
         jsr collisionCheckAllObjects
-        ldy #OBJECT_BRIDGE
         cmp #1
-        beq hitObject2
+        bne checkall7
+        lda #1
+        ldx #OBJECT_BRIDGE
+        sta >objectDirtyList,x
+
+checkall7 anop
 
         lda #OBJECT_SWORD
         jsr collisionCheckAllObjects
-        ldy #OBJECT_SWORD
         cmp #1
-        beq hitObject2
+        bne checkall8
+        lda #1
+        ldx #OBJECT_SWORD
+        sta >objectDirtyList,x
+
+checkall8 anop
 
         lda #OBJECT_MAGNET
         jsr collisionCheckAllObjects
-        ldy #OBJECT_MAGNET
         cmp #1
-        beq hitObject2
+        bne checkall9
+        lda #1
+        ldx #OBJECT_MAGNET
+        sta >objectDirtyList,x
+
+checkall9 anop
 
         lda #OBJECT_CHALISE
         jsr collisionCheckAllObjects
-        ldy #OBJECT_CHALISE
         cmp #1
-        beq hitObject2
+        bne checkall10
+        lda #1
+        ldx #OBJECT_CHALISE
+        sta >objectDirtyList,x
+
+checkall10 anop
 
         lda #OBJECT_PORT1
         jsr collisionCheckAllObjects
-        ldy #OBJECT_PORT1
         cmp #1
-        beq hitObject2
+        bne checkall11
+        lda #1
+        ldx #OBJECT_PORT1
+        sta >objectDirtyList,x
+
+checkall11 anop
 
         lda #OBJECT_PORT2
         jsr collisionCheckAllObjects
-        ldy #OBJECT_PORT2
         cmp #1
-        beq hitObject2
+        bne checkall12
+        lda #1
+        ldx #OBJECT_PORT2
+        sta >objectDirtyList,x
+
+checkall12 anop
 
         lda #OBJECT_PORT3
         jsr collisionCheckAllObjects
-        ldy #OBJECT_PORT3
         cmp #1
-        beq hitObject2
+        bne checkall13
+        lda #1
+        ldx #OBJECT_PORT3
+        sta >objectDirtyList,x
+
+checkall13 anop
 
 ; bat?
 
-        rts
-
-hitObject2 anop
-        tyx
-        lda #1
-        sta >objectDirtyList,x
         rts
 
 
@@ -640,116 +681,144 @@ hitObject2 anop
 collisionCheckAllObjects entry
 
         sta hitTestObjectA
+        
+        lda #0
+        sta returnVal
 
         lda #OBJECT_YELLOWKEY
-        ldy #OBJECT_YELLOWKEY
         sta hitTestObjectB
         jsr collisionCheckObjects
         cmp #1
-        beq hitObjectShortJump3
-
+        bne ccheck1
+        lda #1
+        sta returnVal
+        
+ccheck1 anop
+        
         lda #OBJECT_WHITEKEY
-        ldy #OBJECT_WHITEKEY
         sta hitTestObjectB
         jsr collisionCheckObjects
         cmp #1
-        beq hitObjectShortJump3
+        bne ccheck2
+        lda #1
+        sta returnVal
+
+ccheck2 anop
 
         lda #OBJECT_BLACKKEY
-        ldy #OBJECT_BLACKKEY
         sta hitTestObjectB
         jsr collisionCheckObjects
         cmp #1
-        beq hitObjectShortJump3
+        bne ccheck3
+        lda #1
+        sta returnVal
+
+ccheck3 anop
 
         lda #OBJECT_YELLOWDRAGON
-        ldy #OBJECT_YELLOWDRAGON
         sta hitTestObjectB
         jsr collisionCheckObjects
         cmp #1
-        beq hitObjectShortJump3
+        bne ccheck4
+        lda #1
+        sta returnVal
+
+ccheck4 anop
 
         lda #OBJECT_GREENDRAGON
-        ldy #OBJECT_GREENDRAGON
         sta hitTestObjectB
         jsr collisionCheckObjects
         cmp #1
-        beq hitObjectShortJump3
+        bne ccheck5
+        lda #1
+        sta returnVal
+
+ccheck5 anop
 
         lda #OBJECT_REDDRAGON
-        ldy #OBJECT_REDDRAGON
         sta hitTestObjectB
         jsr collisionCheckObjects
         cmp #1
-        beq hitObjectShortJump3
+        bne ccheck6
+        lda #1
+        sta returnVal
 
-        bra continue3
-
-hitObjectShortJump3 anop
-        brl hitObject3
-
-continue3 anop
+ccheck6 anop
 
         lda #OBJECT_BRIDGE
-        ldy #OBJECT_BRIDGE
         sta hitTestObjectB
         jsr collisionCheckObjects
         cmp #1
-        beq hitObject3
+        bne ccheck7
+        lda #1
+        sta returnVal
+
+ccheck7 anop
 
         lda #OBJECT_SWORD
-        ldy #OBJECT_SWORD
         sta hitTestObjectB
         jsr collisionCheckObjects
         cmp #1
-        beq hitObject3
+        bne ccheck8
+        lda #1
+        sta returnVal
+
+ccheck8 anop
 
         lda #OBJECT_MAGNET
-        ldy #OBJECT_MAGNET
         sta hitTestObjectB
         jsr collisionCheckObjects
         cmp #1
-        beq hitObject3
+        bne ccheck9
+        lda #1
+        sta returnVal
 
+ccheck9 anop
+        
         lda #OBJECT_CHALISE
-        ldy #OBJECT_CHALISE
         sta hitTestObjectB
         jsr collisionCheckObjects
         cmp #1
-        beq hitObject3
+        bne ccheck10
+        lda #1
+        sta returnVal
 
+ccheck10 anop
+        
         lda #OBJECT_PORT1
-        ldy #OBJECT_PORT1
         sta hitTestObjectB
         jsr collisionCheckObjects
         cmp #1
-        beq hitObject3
+        bne ccheck11
+        lda #1
+        sta returnVal
+
+ccheck11 anop
 
         lda #OBJECT_PORT2
-        ldy #OBJECT_PORT2
         sta hitTestObjectB
         jsr collisionCheckObjects
         cmp #1
-        beq hitObject3
+        bne ccheck12
+        lda #1
+        sta returnVal
+
+ccheck12 anop
 
         lda #OBJECT_PORT3
-        ldy #OBJECT_PORT3
         sta hitTestObjectB
         jsr collisionCheckObjects
         cmp #1
-        beq hitObject3
+        bne ccheck13
+        lda #1
+        sta returnVal
 
+ccheck13 anop
 ; bat?
 
-        lda #0
+        lda returnVal
         rts
 
-hitObject3 anop
-        tyx
-        lda #1
-        sta >objectDirtyList,x
-        lda #1
-        rts
 
 
 
@@ -826,6 +895,8 @@ playerAvgY dc i2'0'
 
 diffX dc i2'0'
 diffY dc i2'0'
+
+returnVal dc i2'0'
 
         end
 
