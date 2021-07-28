@@ -15,8 +15,7 @@ controls start
         using globalData
         using controlsData
 
-    using roomsData
-    using objectData
+    using surroundData
 
 checkControls entry
 
@@ -92,7 +91,12 @@ onReset anop
         rts
         
 onQuit anop
-        jsl signalQuit
+;        jsl signalQuit
+
+    lda surroundOldY
+    tax
+    brk
+
         rts
 
         
