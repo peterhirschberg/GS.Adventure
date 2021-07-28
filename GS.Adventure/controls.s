@@ -99,8 +99,9 @@ onQuit anop
 ;        tax
 ;        brk
 
-        ldx #OBJECT_YELLOWKEY
-        lda >objectRoomList,x
+;        ldx #OBJECT_YELLOWKEY
+;        lda >objectRoomList,x
+        lda currentRoom
         tax
 
         brk

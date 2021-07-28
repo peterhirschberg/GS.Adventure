@@ -216,7 +216,7 @@ pass2 anop
 
         jsr runDragons
 
-; TODO: run magnet
+        jsr runMagnet
 
         jsr moveCarriedObject
 
