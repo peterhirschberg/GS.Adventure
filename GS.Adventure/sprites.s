@@ -143,6 +143,7 @@ doDrawKey anop
         sta >objectRedrawList,x
 
         lda >objectPositionXList,x
+        bmi drawKeyDone
         sta >spriteX
         lda >objectPositionYList,x
         bmi drawKeyDone
@@ -201,10 +202,11 @@ doDrawDragon anop
         sta >objectRedrawList,x
 
         lda >objectPositionXList,x
+        bmi drawDragonDone
         sta >spriteX
         lda >objectPositionYList,x
-        sta >spriteY
         bmi drawDragonDone
+        sta >spriteY
         lda >objectColorList,x
         sta >spriteColor
 
@@ -254,6 +256,7 @@ doDrawBridge anop
         sta >objectRedrawList,x
 
         lda >objectPositionXList,x
+        bmi drawBridgeDone
         sta >spriteX
         lda >objectPositionYList,x
         bmi drawBridgeDone
@@ -284,6 +287,7 @@ doDrawMagnet anop
         sta >objectRedrawList,x
 
         lda >objectPositionXList,x
+        bmi drawMagnetDone
         sta >spriteX
         lda >objectPositionYList,x
         bmi drawMagnetDone
@@ -314,6 +318,7 @@ doDrawSword anop
         sta >objectRedrawList,x
 
         lda >objectPositionXList,x
+        bmi drawSwordDone
         sta >spriteX
         lda >objectPositionYList,x
         bmi drawSwordDone
@@ -344,6 +349,7 @@ doDrawChalise anop
         sta >objectRedrawList,x
 
         lda >objectPositionXList,x
+        bmi drawChaliseDone
         sta >spriteX
         lda >objectPositionYList,x
         bmi drawChaliseDone
@@ -373,6 +379,7 @@ eraseKey entry
 doEraseKey anop
 
         lda >objectPositionOldXList,x
+        bmi eraseKeyDone
         sta >spriteX
         lda >objectPositionOldYList,x
         bmi eraseKeyDone
@@ -424,6 +431,7 @@ eraseDragon entry
 doEraseDragon anop
 
         lda >objectPositionOldXList,x
+        bmi eraseDragonDone
         sta >spriteX
         lda >objectPositionOldYList,x
         bmi eraseDragonDone
@@ -472,6 +480,7 @@ eraseBridge entry
 doEraseBridge anop
 
         lda >objectPositionOldXList,x
+        bmi eraseBridgeDone
         sta >spriteX
         lda >objectPositionOldYList,x
         bmi eraseBridgeDone
@@ -500,6 +509,7 @@ eraseChalise entry
         bne eraseChaliseDone
 
         lda >objectPositionOldXList,x
+        bmi eraseChaliseDone
         sta >spriteX
         lda >objectPositionOldYList,x
         bmi eraseChaliseDone
@@ -534,6 +544,7 @@ eraseMagnet entry
 doEraseMagnet anop
 
         lda >objectPositionOldXList,x
+        bmi eraseMagnetDone
         sta >spriteX
         lda >objectPositionOldYList,x
         bmi eraseMagnetDone
@@ -562,6 +573,7 @@ eraseSword entry
         bne eraseSwordDone
 
         lda >objectPositionOldXList,x
+        bmi eraseSwordDone
         sta >spriteX
         lda >objectPositionOldYList,x
         bmi eraseSwordDone
