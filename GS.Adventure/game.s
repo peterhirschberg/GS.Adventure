@@ -107,11 +107,19 @@ dontInitGame anop
 
         lda gamePass
         cmp #0
-        beq pass0
+        beq pass0Short
         cmp #1
-        beq pass1
+        beq pass1Short
         cmp #2
-        beq pass2
+        beq pass2Short
+        rts
+
+pass0Short anop
+        brl pass0
+pass1Short anop
+        brl pass1
+pass2Short anop
+        brl pass2
 
 pass0 anop
         lda gameWon

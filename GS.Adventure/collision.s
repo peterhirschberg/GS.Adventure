@@ -547,7 +547,7 @@ checkAllObjectsForOverlap entry
         bne checkall1
         lda #1
         ldx #OBJECT_YELLOWKEY
-        sta >objectDirtyList,x
+        sta >objectRedrawList,x
         
 checkall1 anop
         
@@ -557,7 +557,7 @@ checkall1 anop
         bne checkall2
         lda #1
         ldx #OBJECT_WHITEKEY
-        sta >objectDirtyList,x
+        sta >objectRedrawList,x
         
 checkall2 anop
 
@@ -567,7 +567,7 @@ checkall2 anop
         bne checkall3
         lda #1
         ldx #OBJECT_BLACKKEY
-        sta >objectDirtyList,x
+        sta >objectRedrawList,x
         
 checkall3 anop
 
@@ -577,7 +577,7 @@ checkall3 anop
         bne checkall4
         lda #1
         ldx #OBJECT_YELLOWDRAGON
-        sta >objectDirtyList,x
+        sta >objectRedrawList,x
 
 checkall4 anop
 
@@ -588,7 +588,7 @@ checkall4 anop
         bne checkall5
         lda #1
         ldx #OBJECT_GREENDRAGON
-        sta >objectDirtyList,x
+        sta >objectRedrawList,x
 
 checkall5 anop
 
@@ -598,7 +598,7 @@ checkall5 anop
         bne checkall6
         lda #1
         ldx #OBJECT_REDDRAGON
-        sta >objectDirtyList,x
+        sta >objectRedrawList,x
 
 checkall6 anop
 
@@ -608,7 +608,7 @@ checkall6 anop
         bne checkall7
         lda #1
         ldx #OBJECT_BRIDGE
-        sta >objectDirtyList,x
+        sta >objectRedrawList,x
 
 checkall7 anop
 
@@ -618,7 +618,7 @@ checkall7 anop
         bne checkall8
         lda #1
         ldx #OBJECT_SWORD
-        sta >objectDirtyList,x
+        sta >objectRedrawList,x
 
 checkall8 anop
 
@@ -628,7 +628,7 @@ checkall8 anop
         bne checkall9
         lda #1
         ldx #OBJECT_MAGNET
-        sta >objectDirtyList,x
+        sta >objectRedrawList,x
 
 checkall9 anop
 
@@ -638,7 +638,7 @@ checkall9 anop
         bne checkall10
         lda #1
         ldx #OBJECT_CHALISE
-        sta >objectDirtyList,x
+        sta >objectRedrawList,x
 
 checkall10 anop
 
@@ -648,7 +648,7 @@ checkall10 anop
         bne checkall11
         lda #1
         ldx #OBJECT_PORT1
-        sta >objectDirtyList,x
+        sta >objectRedrawList,x
 
 checkall11 anop
 
@@ -658,7 +658,7 @@ checkall11 anop
         bne checkall12
         lda #1
         ldx #OBJECT_PORT2
-        sta >objectDirtyList,x
+        sta >objectRedrawList,x
 
 checkall12 anop
 
@@ -668,7 +668,7 @@ checkall12 anop
         bne checkall13
         lda #1
         ldx #OBJECT_PORT3
-        sta >objectDirtyList,x
+        sta >objectRedrawList,x
 
 checkall13 anop
 

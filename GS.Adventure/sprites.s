@@ -131,9 +131,16 @@ drawKey entry
 
         lda >objectDirtyList,x
         cmp #1
+        beq doDrawKey
+        lda >objectRedrawList,x
+        cmp #1
         bne drawKeyDone
+        
+doDrawKey anop
+
         lda #0
         sta >objectDirtyList,x
+        sta >objectRedrawList,x
 
         lda >objectPositionXList,x
         sta >spriteX
@@ -153,9 +160,16 @@ drawPort entry
 
         lda >objectDirtyList,x
         cmp #1
+        beq doDrawPort
+        lda >objectRedrawList,x
+        cmp #1
         bne drawPortDone
+        
+doDrawPort anop
+        
         lda #0
         sta >objectDirtyList,x
+        sta >objectRedrawList,x
 
         lda >objectPositionXList,x
         sta >spriteX
@@ -175,13 +189,19 @@ drawDragon entry
 
         lda >objectDirtyList,x
         cmp #1
+        beq doDrawDragon
+        lda >objectRedrawList,x
+        cmp #1
         bne drawDragonDone
+        
+doDrawDragon anop
+        
         lda #0
         sta >objectDirtyList,x
+        sta >objectRedrawList,x
 
         lda >objectPositionXList,x
         sta >spriteX
-;    bmi drawDragonDone
         lda >objectPositionYList,x
         sta >spriteY
         bmi drawDragonDone
@@ -222,9 +242,16 @@ drawBridge entry
 
         lda >objectDirtyList,x
         cmp #1
+        beq doDrawBridge
+        lda >objectRedrawList,x
+        cmp #1
         bne drawBridgeDone
+        
+doDrawBridge anop
+
         lda #0
         sta >objectDirtyList,x
+        sta >objectRedrawList,x
 
         lda >objectPositionXList,x
         sta >spriteX
@@ -245,9 +272,16 @@ drawMagnet entry
 
         lda >objectDirtyList,x
         cmp #1
+        beq doDrawMagnet
+        lda >objectRedrawList,x
+        cmp #1
         bne drawMagnetDone
+        
+doDrawMagnet anop
+        
         lda #0
         sta >objectDirtyList,x
+        sta >objectRedrawList,x
 
         lda >objectPositionXList,x
         sta >spriteX
@@ -265,12 +299,19 @@ drawSword entry
         lda >objectRoomList,x
         cmp >currentRoom
         bne drawSwordDone
-
+        
         lda >objectDirtyList,x
         cmp #1
+        beq doDrawSword
+        lda >objectRedrawList,x
+        cmp #1
         bne drawSwordDone
+        
+doDrawSword anop
+
         lda #0
         sta >objectDirtyList,x
+        sta >objectRedrawList,x
 
         lda >objectPositionXList,x
         sta >spriteX
@@ -291,9 +332,16 @@ drawChalise entry
 
         lda >objectDirtyList,x
         cmp #1
+        beq doDrawChalise
+        lda >objectRedrawList,x
+        cmp #1
         bne drawChaliseDone
+        
+doDrawChalise anop
+
         lda #0
         sta >objectDirtyList,x
+        sta >objectRedrawList,x
 
         lda >objectPositionXList,x
         sta >spriteX

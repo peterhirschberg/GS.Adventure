@@ -630,6 +630,26 @@ objectLinkableList anop
         dc i2'$0' ; player
 
 objectDirtyList anop
+        dc i2'$0' ; port 1
+        dc i2'$0' ; port 2
+        dc i2'$0' ; port 3
+        dc i2'$0' ; author
+        dc i2'$0' ; numbers
+        dc i2'$0' ; red dragon
+        dc i2'$0' ; yellow dragon
+        dc i2'$0' ; green dragon
+        dc i2'$0' ; sword
+        dc i2'$0' ; bridge
+        dc i2'$0' ; yellow key
+        dc i2'$0' ; white key
+        dc i2'$0' ; black key
+        dc i2'$0' ; bat
+        dc i2'$0' ; dot
+        dc i2'$0' ; chalise
+        dc i2'$0' ; magnet
+        dc i2'$0' ; player
+
+objectRedrawList anop
         dc i2'$1' ; port 1
         dc i2'$1' ; port 2
         dc i2'$1' ; port 3
@@ -648,7 +668,6 @@ objectDirtyList anop
         dc i2'$1' ; chalise
         dc i2'$1' ; magnet
         dc i2'$1' ; player
-
 
 ; Initial values
 
