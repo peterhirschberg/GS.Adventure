@@ -722,34 +722,21 @@ wrapObjectRoom entry
 
 doWrapObjectRoom anop
 
-        stx savex
-        jsr getHeightForObjectState
-        sta objectHeight
-        ldx savex
-
-        stx savex
-        jsr getWidthForObjectState
-        sta objectWidth
-        ldx savex
-
         lda #6
         cmp >objectPositionYList,x
         bcs wrapToRoomUp2
+        lda >objectPositionYList,x
+        bmi wrapToRoomUp2
 
-        lda objectHeight
-        clc
-        adc >objectPositionYList,x
-        sta objectBottom
-
-        lda objectBottom
+        lda >objectPositionYList,x
         cmp #194
         bcs wrapToRoomDown2
 
-        lda >objectPositionXList,x
-        sta temp
         lda #6
-        cmp temp
+        cmp >objectPositionXList,x
         bcs wrapToRoomLeft2Short
+        lda >objectPositionXList,x
+        bmi wrapToRoomLeft2Short
         bra checkWrapRight
 
 wrapToRoomLeft2Short anop
@@ -757,12 +744,7 @@ wrapToRoomLeft2Short anop
 
 checkWrapRight anop
 
-        lda objectWidth
-        clc
-        adc >objectPositionXList,x
-        sta objectRight
-
-        lda objectRight
+        lda >objectPositionXList,x
         cmp #314
         bcs wrapToRoomRight2Short
         brl wrapDone2
@@ -787,8 +769,6 @@ wrapToRoomUp2 anop
 
 ; wrap the object
         lda #190
-        sec
-        sbc objectHeight
         sta >objectPositionYList,x
 
         lda #1
@@ -859,8 +839,6 @@ wrapToRoomLeft2 anop
 
 ; wrap the object
         lda #310
-        sec
-        sbc objectWidth
         sta >objectPositionXList,x
 
         lda #1

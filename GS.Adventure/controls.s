@@ -99,13 +99,11 @@ onQuit anop
 ;        tax
 ;        brk
 
-;        ldx #OBJECT_CHALISE
-;        lda >objectRoomList,x
-;        tax
+        ldx #OBJECT_YELLOWKEY
+        lda >objectRoomList,x
+        tax
 
-;        brk
-
-        jsr resetCarriedObjectPos
+        brk
 
 
         rts
