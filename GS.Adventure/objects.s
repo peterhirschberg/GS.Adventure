@@ -688,8 +688,7 @@ objectInitialRoomGame1List anop
         dc i2'$1a' ; bat
         dc i2'$15' ; dot
         dc i2'$1c' ; chalise
-;        dc i2'$1b' ; magnet
-        dc i2'$02' ; magnet
+        dc i2'$1b' ; magnet
         dc i2'0'   ; player
 
 objectInitialStateGame1List anop

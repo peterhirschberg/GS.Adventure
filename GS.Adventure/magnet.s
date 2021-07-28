@@ -26,7 +26,7 @@ runMagnet entry
         lda >objectRoomList,x
         sta magnetRoom
         
-        lda magnetX
+        lda magnetY
         clc
         adc #OBJECT_HEIGHT_MAGNET
         sta magnetBottom
@@ -77,13 +77,16 @@ notCarriedObject anop
 ; move right
 
         inc objectX
+        lda objectX
         sta >objectPositionXList,x
         lda #1
         sta >objectDirtyList,x
+        bra dontMoveX
 
 moveLeft anop
 
         dec objectX
+        lda objectX
         sta >objectPositionXList,x
         lda #1
         sta >objectDirtyList,x
@@ -100,13 +103,16 @@ dontMoveX anop
 ; move down
 
         inc objectY
+        lda objectY
         sta >objectPositionYList,x
         lda #1
         sta >objectDirtyList,x
+        bra dontMoveY
 
 moveUp anop
 
         dec objectY
+        lda objectY
         sta >objectPositionYList,x
         lda #1
         sta >objectDirtyList,x
