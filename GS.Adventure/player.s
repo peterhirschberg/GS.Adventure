@@ -329,6 +329,14 @@ erasePlayerHit entry
 
 hasFog2 anop
         jsr surroundRedrawPlayerHitBlock
+        ldx #OBJECT_PLAYER
+        lda >objectLinkedObjectList,x
+        cmp #OBJECT_NONE
+        beq notCarryingObject
+        tax
+        lda #1
+        sta >objectDirtyList,x
+notCarryingObject anop
         rts
         
         
