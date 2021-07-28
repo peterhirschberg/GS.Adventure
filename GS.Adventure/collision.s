@@ -22,6 +22,9 @@ collision start
 
 collisionCheckPlayerWithWalls entry
 
+        lda #0
+        sta goingThroughWall
+
         lda playerX
         lsr a
         sta rectX
@@ -76,6 +79,10 @@ playerHitLoop anop
 
 playerHitDoneHit anop
 
+        lda crossingBridge
+        cmp #1
+        beq setGoingThroughWall
+
         lda #1
         sta playerHitWall
 
@@ -101,6 +108,15 @@ playerHitDoneNoHit anop
 
         rts
 
+setGoingThroughWall anop
+
+        lda #0
+        sta playerHitWall
+        
+        lda #1
+        sta goingThroughWall
+        
+        rts
 
 
 collisionCheckPlayerWithObjects entry
@@ -161,6 +177,8 @@ hitObjectShortJump anop
 
 continue anop
 
+        lda #0
+        sta crossingBridge
         ldx #OBJECT_BRIDGE
         jsr collisionCheckPlayerWithObject
         cmp #1
@@ -713,6 +731,8 @@ bridgePassLeft anop
         rts
         
 bridgePassRight anop
+        lda #1
+        sta crossingBridge
         lda #0
         rts
 
@@ -759,6 +779,9 @@ collisionData data
 
 hitTestObjectA dc i2'0'
 hitTestObjectB dc i2'0'
+
+crossingBridge dc i2'0'
+goingThroughWall dc i2'0'
 
         end
 

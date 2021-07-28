@@ -17,6 +17,7 @@ player start
         using roomsData
         using controlsData
         using objectData
+        using collisionData
 
 
 runPlayer entry
@@ -102,6 +103,13 @@ movePlayerDown entry
         rts
 
 movePlayerRight entry
+        lda goingThroughWall
+        cmp #1
+        bne moveRight
+        rts
+
+moveRight anop
+
         lda #1
         sta playerMoved
         lda playerX
@@ -111,6 +119,13 @@ movePlayerRight entry
         rts
 
 movePlayerLeft entry
+        lda goingThroughWall
+        cmp #1
+        bne moveLeft
+        rts
+        
+moveLeft anop
+
         lda #1
         sta playerMoved
         lda playerX
