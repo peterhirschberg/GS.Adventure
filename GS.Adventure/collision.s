@@ -426,6 +426,49 @@ doChecks anop
         bra itsAHit
 
 noIntersect anop
+
+        lda testRectRight
+        cmp #319
+        bcs wrapCheck
+        lda #0
+        rts
+        
+wrapCheck anop
+
+        lda #0
+        sta testRectLeft
+        
+        lda testRectRight
+        sec
+        sbc #319
+        sta testRectRight
+
+; check playerRectLeft > testRectRight
+
+        lda playerRectLeft
+        cmp testRectRight
+        bcs noIntersectWrap
+
+; check playerRectRight < testRectLeft
+
+        lda testRectLeft
+        cmp playerRectRight
+        bcs noIntersectWrap
+
+; check playerRectTop > testRectBottom
+
+        lda playerRectTop
+        cmp testRectBottom
+        bcs noIntersectWrap
+
+; check playerRectBottom < testRectTop
+
+        lda testRectTop
+        cmp playerRectBottom
+        bcs noIntersectWrap
+
+        bra itsAHit
+
         lda #0
         rts
 
@@ -433,7 +476,9 @@ itsAHit anop
         lda #1
         rts
 
-
+noIntersectWrap anop
+        lda #0
+        rts
 
 
 collisionCheckObjects entry
