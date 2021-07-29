@@ -34,7 +34,7 @@ resetFlapTimer anop
         sta flapTimer
 
         lda >objectStateList,x
-;        sta >objectOldStateList,x
+        sta >objectOldStateList,x
         cmp #1
         beq flapResetToZero
         
@@ -55,7 +55,7 @@ batContinue anop
         lda >objectPositionYList,x
         sta >objectPositionOldYList,x
         clc
-        adc #3
+        adc #1
         
 ;        lda #50
 ;        sta >objectPositionXList,x
@@ -65,6 +65,8 @@ batContinue anop
 
         lda #1
         sta >objectDirtyList,x
+        
+        jsl eraseRoomSprites
 
         rts
 
