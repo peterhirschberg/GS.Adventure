@@ -646,22 +646,25 @@ eraseBat entry
         bmi eraseBatDone
         sta >spriteY
 
-        jsl eraseSpriteBat2
-        jsl eraseSpriteBat1
+;        jsl eraseSpriteBat1
+;        jsl eraseSpriteBat2
 
-        rts
+;        rts
         
-        jsl roomHasFog
-        cmp #1
-        beq eraseBatFog
+;        jsl roomHasFog
+;        cmp #1
+;        beq eraseBatFog
         lda >objectOldStateList,x
         cmp #0
         bne batEraseState1
         jsl eraseSpriteBat1
-        bra eraseBatDone
+        rts
+;        bra eraseBatDone
 batEraseState1 anop
         jsl eraseSpriteBat2
-        bra eraseBatDone
+        rts
+;        bra eraseBatDone
+        
 eraseBatFog anop
         lda >objectOldStateList,x
         cmp #0

@@ -34,7 +34,7 @@ resetFlapTimer anop
         sta flapTimer
 
         lda >objectStateList,x
-        sta >objectOldStateList,x
+;        sta >objectOldStateList,x
         cmp #1
         beq flapResetToZero
         
@@ -49,15 +49,19 @@ flapResetToZero anop
 
 batContinue anop
 
+        lda >objectPositionXList,x
+        sta >objectPositionOldXList,x
+
         lda >objectPositionYList,x
+        sta >objectPositionOldYList,x
         clc
         adc #3
         
-        lda #50
-        sta >objectPositionXList,x
+;        lda #50
+;        sta >objectPositionXList,x
         sta >objectPositionYList,x
-        lda currentRoom
-        sta >objectRoomList,x
+;        lda currentRoom
+;        sta >objectRoomList,x
 
         lda #1
         sta >objectDirtyList,x
