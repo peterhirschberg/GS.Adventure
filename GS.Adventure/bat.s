@@ -12,6 +12,7 @@
 
 bat start
         using globalData
+        using objectData
         using gameData
         using batData
     
@@ -27,6 +28,9 @@ runBat entry
         bra batContinue
         
 resetFlapTimer anop
+
+        lda #0
+        sta resetFlapTimer
 
         lda >objectStateList,x
         cmp #1
@@ -44,10 +48,11 @@ batContinue anop
 
         lda >objectPositionYList,x
         clc
-        adc #1
+        adc #3
         sta >objectPositionYList,x
 
-
+        lda #1
+        sta >objectDirtyList,x
 
         rts
 
@@ -60,7 +65,7 @@ batFedUpTimer dc i2'0'
 batLeft dc i2'0'
 batTop dc i2'0'
 batRight dc i2'0'
-batBottom dc i2'0
+batBottom dc i2'0'
 
 seekLeft dc i2'0'
 seekTop dc i2'0'

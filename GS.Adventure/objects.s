@@ -57,6 +57,9 @@ initObjectPositions entry
         ldx #OBJECT_MAGNET
         jsr setInitialObjectValues
 
+        ldx #OBJECT_BAT
+        jsr setInitialObjectValues
+
         ldx #OBJECT_SWORD
         jsr setInitialObjectValues
 
@@ -147,6 +150,9 @@ runObjects entry
         jsr updateObjectValues
 
         ldx #OBJECT_MAGNET
+        jsr updateObjectValues
+
+        ldx #OBJECT_BAT
         jsr updateObjectValues
 
         rts

@@ -48,10 +48,9 @@ drawRoomSprites entry
 
         jsr drawChalise
         jsr drawMagnet
-        
-        jsr drawNumbers
+        jsr drawBat
 
-; bat??
+        jsr drawNumbers
 
         rtl
 
@@ -97,9 +96,8 @@ eraseRoomSprites entry
         jsr eraseMagnet
         jsr eraseSword
         jsr eraseChalise
+        jsr eraseBat
         jsr eraseNumbers
-
-; bat??
 
         rtl
 
@@ -361,7 +359,44 @@ doDrawChalise anop
 drawChaliseDone anop
         rts
 
+drawBat entry
+        lda #OBJECT_BAT
+        tax
 
+        lda >objectRoomList,x
+        cmp >currentRoom
+        bne drawBatDone
+
+        lda >objectDirtyList,x
+        cmp #1
+        beq doDrawBat
+        lda >objectRedrawList,x
+        cmp #1
+        bne drawBatDone
+        
+doDrawBat anop
+
+        lda #0
+        sta >objectDirtyList,x
+        sta >objectRedrawList,x
+
+        lda >objectPositionXList,x
+        bmi drawBatDone
+        sta >spriteX
+        lda >objectPositionYList,x
+        bmi drawBatDone
+        sta >spriteY
+        lda >objectStateList,x
+        cmp #0
+        bne batState1
+        jsl drawSpriteBat1
+        bra drawBatDone
+batState1 anop
+        jsl drawSpriteBat2
+drawBatDone anop
+        rts
+        
+        
 ; erase
 
 
@@ -592,6 +627,46 @@ eraseSwordFog anop
 eraseSwordDone anop
         rts
 
+eraseBat entry
+        lda #OBJECT_BAT
+        tax
+
+        lda >objectRoomList,x
+        cmp >currentRoom
+        bne eraseBatDone
+
+        lda >objectDirtyList,x
+        cmp #1
+        bne eraseBatDone
+
+        lda >objectPositionOldXList,x
+        bmi eraseBatDone
+        sta >spriteX
+        lda >objectPositionOldYList,x
+        bmi eraseBatDone
+        sta >spriteY
+
+        jsl roomHasFog
+        cmp #1
+        beq eraseBatFog
+        lda >objectOldStateList,x
+        cmp #0
+        bne batEraseState1
+        jsl eraseSpriteBat1
+        bra eraseBatDone
+batEraseState1 anop
+        jsl eraseSpriteBat2
+        bra eraseBatDone
+eraseBatFog anop
+        lda >objectOldStateList,x
+        cmp #0
+        bne batEraseState1Fog
+        jsl eraseSpriteBat1Fog
+        bra eraseBatDone
+batEraseState1Fog anop
+        jsl eraseSpriteBat1Fog
+eraseBatDone anop
+        rts
 
 drawPortState entry
 
