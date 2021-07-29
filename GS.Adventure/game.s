@@ -37,7 +37,8 @@ initGame entry
 ; -------------------------------
 ; set up game
 
-        jsr resetGame
+        lda #ROOM_INDEX_NUMBER_ROOM_PURPLE1
+        sta currentRoom
 
 ; initialize object positions (only on full reset)
 
@@ -104,6 +105,13 @@ dontInitGame anop
 ;        jsr borderStart
 
         jsr checkControls
+        
+        lda gameSelectMode
+        cmp #1
+        bne normalGameMode
+        jsr runGameSelectMode
+
+normalGameMode anop
 
         lda gamePass
         cmp #0
@@ -243,6 +251,21 @@ passDone anop
 
 
         rts
+        
+        
+        
+runGameSelectMode entry
+
+        ldx #OBJECT_NUMBERS
+        lda gameLevel
+        sta >objectStateList,x
+
+        jsl eraseRoomSprites
+        jsl drawRoomSprites
+
+        rts
+        
+        
 
 
 doInitGame dc i2'1'
@@ -261,11 +284,13 @@ gameData data
 
 gamePass dc i2'0'
 
-gameLevel dc i2'1'
+gameLevel dc i2'0'
 
 gameDifficultyLeft dc i2'0'
 gameDifficultyRight dc i2'1'
 
 gameWon dc i2'0'
+
+gameSelectMode dc i2'1'
 
         end

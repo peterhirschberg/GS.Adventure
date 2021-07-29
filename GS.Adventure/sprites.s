@@ -48,6 +48,8 @@ drawRoomSprites entry
 
         jsr drawChalise
         jsr drawMagnet
+        
+        jsr drawNumbers
 
 ; bat??
 
@@ -95,6 +97,7 @@ eraseRoomSprites entry
         jsr eraseMagnet
         jsr eraseSword
         jsr eraseChalise
+        jsr eraseNumbers
 
 ; bat??
 
@@ -645,7 +648,99 @@ drawPortState7 anop
         jsl drawSpritePort1
         rts
 
+        
+drawNumbers entry
 
+        lda >gameSelectMode
+        cmp #1
+        bne drawNumbersDone
+
+        ldx #OBJECT_NUMBERS
+        
+        lda >objectDirtyList,x
+        cmp #1
+        beq doDrawNumbers
+        lda >objectRedrawList,x
+        cmp #1
+        bne drawNumbersDone
+        
+doDrawNumbers anop
+        
+        lda #0
+        sta >objectDirtyList,x
+        sta >objectRedrawList,x
+        
+        lda >objectPositionXList,x
+        sta >spriteX
+        lda >objectPositionYList,x
+        sta >spriteY
+
+        lda >objectStateList,x
+        cmp #0
+        beq drawNumber1
+        cmp #1
+        beq drawNumber2
+        cmp #2
+        beq drawNumber3
+        rts
+        
+drawNumber1 anop
+        jsl drawSpriteNum1
+        rts
+
+drawNumber2 anop
+        jsl drawSpriteNum2
+        rts
+
+drawNumber3 anop
+        jsl drawSpriteNum3
+        rts
+        
+drawNumbersDone anop
+        rts
+
+        
+eraseNumbers entry
+
+        lda >gameSelectMode
+        cmp #1
+        bne eraseNumbersDone
+
+        ldx #OBJECT_NUMBERS
+        
+        lda >objectDirtyList,x
+        cmp #1
+        bne eraseNumbersDone
+        
+        lda >objectPositionOldXList,x
+        sta >spriteX
+        lda >objectPositionOldYList,x
+        sta >spriteY
+
+        lda >objectOldStateList,x
+        cmp #0
+        beq eraseNumber1
+        cmp #1
+        beq eraseNumber2
+        cmp #2
+        beq eraseNumber3
+        rts
+        
+eraseNumber1 anop
+        jsl eraseSpriteNum1
+        rts
+
+eraseNumber2 anop
+        jsl eraseSpriteNum2
+        rts
+
+eraseNumber3 anop
+        jsl eraseSpriteNum3
+        rts
+
+eraseNumbersDone anop
+        rts
+        
 
         end
 

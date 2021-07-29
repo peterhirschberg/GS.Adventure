@@ -40,6 +40,7 @@
 		D06790A52692373400A8010C /* collision.s in Sources */ = {isa = PBXBuildFile; fileRef = D06790A42692373400A8010C /* collision.s */; };
 		D06790A72695532000A8010C /* surround.s in Sources */ = {isa = PBXBuildFile; fileRef = D06790A62695532000A8010C /* surround.s */; };
 		D091670426B1CC93009386C4 /* magnet.s in Sources */ = {isa = PBXBuildFile; fileRef = D091670326B1CC93009386C4 /* magnet.s */; };
+		D091670626B2E041009386C4 /* spriteNumbers.s in Sources */ = {isa = PBXBuildFile; fileRef = D091670526B2E041009386C4 /* spriteNumbers.s */; };
 		D0A8DA3A269A6B7100B12E74 /* sprites.s in Sources */ = {isa = PBXBuildFile; fileRef = D0A8DA39269A6B7100B12E74 /* sprites.s */; };
 		D0C92F7226A467A6003DE0DE /* portals.s in Sources */ = {isa = PBXBuildFile; fileRef = D0C92F7126A467A6003DE0DE /* portals.s */; };
 		D0C92F7426A652E0003DE0DE /* dragons.s in Sources */ = {isa = PBXBuildFile; fileRef = D0C92F7326A652E0003DE0DE /* dragons.s */; };
@@ -109,6 +110,7 @@
 		D06790A42692373400A8010C /* collision.s */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.asm; path = collision.s; sourceTree = "<group>"; };
 		D06790A62695532000A8010C /* surround.s */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.asm; path = surround.s; sourceTree = "<group>"; };
 		D091670326B1CC93009386C4 /* magnet.s */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.asm; path = magnet.s; sourceTree = "<group>"; };
+		D091670526B2E041009386C4 /* spriteNumbers.s */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.asm; path = spriteNumbers.s; sourceTree = "<group>"; };
 		D0A8DA39269A6B7100B12E74 /* sprites.s */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.asm; path = sprites.s; sourceTree = "<group>"; };
 		D0C92F7126A467A6003DE0DE /* portals.s */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.asm; path = portals.s; sourceTree = "<group>"; };
 		D0C92F7326A652E0003DE0DE /* dragons.s */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.asm; path = dragons.s; sourceTree = "<group>"; };
@@ -175,6 +177,7 @@
 				D0328FEF269E3FC900883A3F /* spriteDragonDraw.s */,
 				D0328FE7269E3CAD00883A3F /* spriteMisc.s */,
 				D0328FF326A270F800883A3F /* spriteBridge.s */,
+				D091670526B2E041009386C4 /* spriteNumbers.s */,
 				D0C92F7126A467A6003DE0DE /* portals.s */,
 				D0C92F7326A652E0003DE0DE /* dragons.s */,
 				D091670326B1CC93009386C4 /* magnet.s */,
@@ -319,6 +322,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				D0328FF526A270F800883A3F /* spriteBridge.s in Sources */,
+				D091670626B2E041009386C4 /* spriteNumbers.s in Sources */,
 				D091670426B1CC93009386C4 /* magnet.s in Sources */,
 				D06790992688EBD400A8010C /* rooms.s in Sources */,
 				D0678FC5267E6E2B00A8010C /* Makefile in Sources */,

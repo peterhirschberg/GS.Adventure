@@ -14,6 +14,7 @@
 controls start
         using globalData
         using controlsData
+        using gameData
 
     using objectData
 
@@ -49,6 +50,9 @@ checkControls entry
 
         cmp #'1'
         beq onReset
+        
+        cmp #'2'
+        beq onSelect
 
         cmp #$20
         beq onJoystickButton
@@ -89,6 +93,18 @@ onJoystickButton anop
 
 onReset anop
         jsr resetGame
+        rts
+        
+onSelect anop
+        inc gameLevel
+        lda gameLevel
+        cmp #3
+        beq wrapLevel
+        rts
+        
+wrapLevel anop
+        lda #0
+        sta gameLevel
         rts
         
 onQuit anop
