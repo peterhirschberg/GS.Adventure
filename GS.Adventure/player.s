@@ -165,18 +165,20 @@ moveCarriedObject entry
         tax
 
         lda >objectPositionXList,x
+        sta >objectPositionOldXList,x
         clc
         adc playerDiffX
         sta >objectPositionXList,x
 
         lda >objectPositionYList,x
+        sta >objectPositionOldYList,x
         clc
         adc playerDiffY
         sta >objectPositionYList,x
 
         lda currentRoom
         sta >objectRoomList,x
-
+        
         lda #1
         sta >objectDirtyList,x
 
@@ -203,8 +205,16 @@ dropCarriedObject entry
 overflowRight anop
 
         sec
-        sbc #319
+        sbc #320
         sta >objectPositionXList,x
+
+        lda >objectPositionYList,x
+        clc
+        adc #1
+        sta >objectPositionYList,x
+        
+        lda #1
+        sta >objectDirtyList,x
         
 ; drop it
 dropIt anop

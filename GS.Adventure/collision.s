@@ -254,39 +254,18 @@ pickUpObject anop
         lda playerHitObject
         sta >objectLinkedObjectList,x
 
+        jsl eraseRoomSprites
+        
         ldx playerHitObject
-
         lda >objectPositionXList,x
-        sta hitObjectX
-
+        sta >objectPositionOldXList,x
         lda >objectPositionYList,x
-        sta hitObjectY
-
-        ldx #OBJECT_PLAYER
-
-
-        lda playerX
-        clc
-        adc playerOldX
-        lsr a
-        sta playerAvgX
-
-        lda playerY
-        clc
-        adc playerOldY
-        lsr a
-        sta playerAvgY
-
-
-        lda hitObjectX
-        sec
-        sbc playerAvgX
-        sta >objectLinkedObjectXOffsetList,x
-
-        lda hitObjectY
-        sec
-        sbc playerAvgY
-        sta >objectLinkedObjectYOffsetList,x
+        sta >objectPositionOldYList,x
+        
+        lda #1
+        sta >objectDirtyList,x
+        
+        jsl eraseRoomSprites
 
         rts
 
@@ -934,9 +913,6 @@ bridgeInnerRight dc i2'0'
 temp dc i2'0'
 
 savex dc i2'0'
-
-playerAvgX dc i2'0'
-playerAvgY dc i2'0'
 
 diffX dc i2'0'
 diffY dc i2'0'
