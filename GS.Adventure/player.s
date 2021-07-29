@@ -143,7 +143,6 @@ moveCarriedObject entry
         cmp #OBJECT_NONE
         beq carryDone
 
-
         lda playerX
         sec
         sbc playerOldX
@@ -159,12 +158,6 @@ moveCarriedObject entry
         adc playerDiffY
         cmp #0
         beq carryDone
-
-
-
-;        jsr resetCarriedObjectPos ; FIGURE OUT THIS MESS
-
-
 
         ldx #OBJECT_PLAYER
         lda >objectLinkedObjectList,x
@@ -187,68 +180,42 @@ moveCarriedObject entry
         lda #1
         sta >objectDirtyList,x
 
-    bra carryDone
-
-        lda >objectPositionXList,x
-        sec
-        sbc playerX
-        sta playerDiffX
-
-        lda >objectPositionYList,x
-        sec
-        sbc playerY
-        sta playerDiffY
-
-        ldx #OBJECT_PLAYER
-        lda playerDiffX
-        sta >objectLinkedObjectXOffsetList,x
-        lda playerDiffY
-        sta >objectLinkedObjectYOffsetList,x
-
-        rts
-
 carryDone anop
         rts
 
 
-resetCarriedObjectPos entry
-
-        ldx #OBJECT_PLAYER
-        lda >objectLinkedObjectXOffsetList,x
-        sta playerDiffX
-        lda >objectLinkedObjectYOffsetList,x
-        sta playerDiffY
-
-        lda >objectLinkedObjectList,x
-        tax
-
-        lda playerX
-        clc
-        adc playerDiffX
-        sta >objectPositionXList,x
-
-        lda playerY
-        clc
-        adc playerDiffY
-        sta >objectPositionYList,x
-
-;        lda currentRoom
-;        sta >objectRoomList,x
-
-        lda #1
-        sta >objectDirtyList,x
-
-        rts
-
-
+        
 dropCarriedObject entry
 
+        ldx #OBJECT_PLAYER
+        lda >objectLinkedObjectList,x
+        cmp #OBJECT_NONE
+        beq dropDone
+        
+; undo any horizontal wrapping / overflow / undeflow
+        tax
+        
+        lda >objectPositionXList,x
+        cmp #319
+        bcs overflowRight
+        bra dropIt
+        
+overflowRight anop
+
+        sec
+        sbc #319
+        sta >objectPositionXList,x
+        
+; drop it
+dropIt anop
         ldx #OBJECT_PLAYER
         lda #OBJECT_NONE
         sta >objectLinkedObjectList,x
 
+dropDone anop
         rts
-
+        
+        
 
 drawPlayer entry
 

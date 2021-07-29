@@ -15,7 +15,8 @@ controls start
         using globalData
         using controlsData
 
-    using surroundData
+    using objectData
+
 
 checkControls entry
 
@@ -93,9 +94,12 @@ onReset anop
 onQuit anop
 ;        jsl signalQuit
 
-    lda surroundOldY
-    tax
-    brk
+
+        ldx #OBJECT_BRIDGE
+        lda >objectPositionXList,x
+        tax
+        brk
+        
 
         rts
 
