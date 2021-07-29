@@ -96,10 +96,22 @@ onReset anop
         rts
         
 onSelect anop
+        lda gameSelectMode
+        cmp #1
+        bne startSelectMode
+        
+        ldx #OBJECT_NUMBERS
+        lda #1
+        sta >objectDirtyList,x
+
         inc gameLevel
         lda gameLevel
         cmp #3
         beq wrapLevel
+        rts
+        
+startSelectMode anop
+        jsr startGameSelectMode
         rts
         
 wrapLevel anop

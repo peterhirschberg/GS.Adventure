@@ -34,17 +34,9 @@ initGame entry
 
 ;        jsr borderInit
 
-; -------------------------------
-; set up game
-
-        lda #ROOM_INDEX_NUMBER_ROOM_PURPLE1
-        sta currentRoom
-
-; initialize object positions (only on full reset)
-
         jsr initObjectPositions
 
-; -------------------------------
+        jsr startGameSelectMode
 
         jsr normalColorTable
 
@@ -52,6 +44,17 @@ initGame entry
 
         
 resetGame entry
+
+        lda gameSelectMode
+        cmp #1
+        bne softReset
+        
+        jsr initObjectPositions
+        
+softReset anop
+
+        lda #0
+        sta gameSelectMode
 
         lda #0
         sta gameWon
@@ -110,6 +113,7 @@ dontInitGame anop
         cmp #1
         bne normalGameMode
         jsr runGameSelectMode
+        rts
 
 normalGameMode anop
 
@@ -243,9 +247,7 @@ passDone anop
         sta lastRoom
 
 
-
 ;        jsr borderStart
-
 
 ;        jsr borderDone
 
@@ -254,12 +256,32 @@ passDone anop
         
         
         
+startGameSelectMode entry
+
+        lda #1
+        sta gameSelectMode
+        
+        lda #ROOM_INDEX_NUMBER_ROOM_PURPLE1
+        sta currentRoom
+        
+        jsr drawRoom
+        
+        rts
+        
+        
 runGameSelectMode entry
 
         ldx #OBJECT_NUMBERS
+        
+        lda >objectStateList,x
+        sta >objectOldStateList,x
+       
         lda gameLevel
         sta >objectStateList,x
-
+        
+        lda #1
+        sta >objectDirtyList,x
+        
         jsl eraseRoomSprites
         jsl drawRoomSprites
 

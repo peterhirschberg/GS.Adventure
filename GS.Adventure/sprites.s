@@ -712,11 +712,11 @@ eraseNumbers entry
         cmp #1
         bne eraseNumbersDone
         
-        lda >objectPositionOldXList,x
+        lda >objectPositionXList,x
         sta >spriteX
-        lda >objectPositionOldYList,x
+        lda >objectPositionYList,x
         sta >spriteY
-
+        
         lda >objectOldStateList,x
         cmp #0
         beq eraseNumber1
