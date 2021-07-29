@@ -14,13 +14,14 @@ bat start
         using globalData
         using objectData
         using gameData
+        using roomsData
         using batData
     
 
 runBat entry
 
         ldx #OBJECT_BAT
-
+        
         inc flapTimer
         lda flapTimer
         cmp #4
@@ -30,9 +31,10 @@ runBat entry
 resetFlapTimer anop
 
         lda #0
-        sta resetFlapTimer
+        sta flapTimer
 
         lda >objectStateList,x
+        sta >objectOldStateList,x
         cmp #1
         beq flapResetToZero
         
@@ -41,6 +43,7 @@ resetFlapTimer anop
         bra batContinue
         
 flapResetToZero anop
+
         lda #0
         sta >objectStateList,x
 
@@ -49,7 +52,12 @@ batContinue anop
         lda >objectPositionYList,x
         clc
         adc #3
+        
+        lda #50
+        sta >objectPositionXList,x
         sta >objectPositionYList,x
+        lda currentRoom
+        sta >objectRoomList,x
 
         lda #1
         sta >objectDirtyList,x

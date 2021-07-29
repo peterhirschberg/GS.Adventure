@@ -1914,7 +1914,6 @@ eraseSpriteBat1SkipRowEraseDontSkipRow49 anop
         adc #2
         tax
 
-
         short m
         lda >BACKGROUND_ADDR,x
         sta >SCREEN_ADDR,x
@@ -1966,12 +1965,12 @@ eraseSpriteBat2 entry
         sta >rowCounter
 
         cmp #199
-        bcs eraseSpriteBat2SkipRowEraseShortJump50
-        bra eraseSpriteBat2SkipRowEraseDontSkipRow50
+        bcs eraseSpriteBat2SkipRowEraseShortJump0
+        bra eraseSpriteBat2SkipRowEraseDontSkipRow0
 
-eraseSpriteBat2SkipRowEraseShortJump50 anop
-        brl eraseSpriteBat2SkipRowErase50
-eraseSpriteBat2SkipRowEraseDontSkipRow50 anop
+eraseSpriteBat2SkipRowEraseShortJump0 anop
+        brl eraseSpriteBat2SkipRowErase0
+eraseSpriteBat2SkipRowEraseDontSkipRow0 anop
         lda >spriteY
         clc
         adc #0
@@ -1995,7 +1994,7 @@ eraseSpriteBat2SkipRowEraseDontSkipRow50 anop
         long m
 
 
-eraseSpriteBat2SkipRowErase50 anop
+eraseSpriteBat2SkipRowErase0 anop
 
         lda >rowCounter
         clc
@@ -2004,12 +2003,12 @@ eraseSpriteBat2SkipRowErase50 anop
 
 
         cmp #199
-        bcs eraseSpriteBat2SkipRowEraseShortJump51
-        bra eraseSpriteBat2SkipRowEraseDontSkipRow51
+        bcs eraseSpriteBat2SkipRowEraseShortJump1
+        bra eraseSpriteBat2SkipRowEraseDontSkipRow1
 
-eraseSpriteBat2SkipRowEraseShortJump51 anop
-        brl eraseSpriteBat2SkipRowErase51
-eraseSpriteBat2SkipRowEraseDontSkipRow51 anop
+eraseSpriteBat2SkipRowEraseShortJump1 anop
+        brl eraseSpriteBat2SkipRowErase1
+eraseSpriteBat2SkipRowEraseDontSkipRow1 anop
         lda >spriteY
         clc
         adc #1
@@ -2033,7 +2032,7 @@ eraseSpriteBat2SkipRowEraseDontSkipRow51 anop
         long m
 
 
-eraseSpriteBat2SkipRowErase51 anop
+eraseSpriteBat2SkipRowErase1 anop
 
         lda >rowCounter
         clc
@@ -2042,12 +2041,12 @@ eraseSpriteBat2SkipRowErase51 anop
 
 
         cmp #199
-        bcs eraseSpriteBat2SkipRowEraseShortJump52
-        bra eraseSpriteBat2SkipRowEraseDontSkipRow52
+        bcs eraseSpriteBat2SkipRowEraseShortJump2
+        bra eraseSpriteBat2SkipRowEraseDontSkipRow2
 
-eraseSpriteBat2SkipRowEraseShortJump52 anop
-        brl eraseSpriteBat2SkipRowErase52
-eraseSpriteBat2SkipRowEraseDontSkipRow52 anop
+eraseSpriteBat2SkipRowEraseShortJump2 anop
+        brl eraseSpriteBat2SkipRowErase2
+eraseSpriteBat2SkipRowEraseDontSkipRow2 anop
         lda >spriteY
         clc
         adc #2
@@ -2071,7 +2070,7 @@ eraseSpriteBat2SkipRowEraseDontSkipRow52 anop
         long m
 
 
-eraseSpriteBat2SkipRowErase52 anop
+eraseSpriteBat2SkipRowErase2 anop
 
         lda >rowCounter
         clc
@@ -2080,12 +2079,12 @@ eraseSpriteBat2SkipRowErase52 anop
 
 
         cmp #199
-        bcs eraseSpriteBat2SkipRowEraseShortJump53
-        bra eraseSpriteBat2SkipRowEraseDontSkipRow53
+        bcs eraseSpriteBat2SkipRowEraseShortJump3
+        bra eraseSpriteBat2SkipRowEraseDontSkipRow3
 
-eraseSpriteBat2SkipRowEraseShortJump53 anop
-        brl eraseSpriteBat2SkipRowErase53
-eraseSpriteBat2SkipRowEraseDontSkipRow53 anop
+eraseSpriteBat2SkipRowEraseShortJump3 anop
+        brl eraseSpriteBat2SkipRowErase3
+eraseSpriteBat2SkipRowEraseDontSkipRow3 anop
         lda >spriteY
         clc
         adc #3
@@ -2109,7 +2108,7 @@ eraseSpriteBat2SkipRowEraseDontSkipRow53 anop
         long m
 
 
-eraseSpriteBat2SkipRowErase53 anop
+eraseSpriteBat2SkipRowErase3 anop
 
         lda >rowCounter
         clc
@@ -2118,12 +2117,12 @@ eraseSpriteBat2SkipRowErase53 anop
 
 
         cmp #199
-        bcs eraseSpriteBat2SkipRowEraseShortJump54
-        bra eraseSpriteBat2SkipRowEraseDontSkipRow54
+        bcs eraseSpriteBat2SkipRowEraseShortJump4
+        bra eraseSpriteBat2SkipRowEraseDontSkipRow4
 
-eraseSpriteBat2SkipRowEraseShortJump54 anop
-        brl eraseSpriteBat2SkipRowErase54
-eraseSpriteBat2SkipRowEraseDontSkipRow54 anop
+eraseSpriteBat2SkipRowEraseShortJump4 anop
+        brl eraseSpriteBat2SkipRowErase4
+eraseSpriteBat2SkipRowEraseDontSkipRow4 anop
         lda >spriteY
         clc
         adc #4
@@ -2147,7 +2146,7 @@ eraseSpriteBat2SkipRowEraseDontSkipRow54 anop
         long m
 
 
-eraseSpriteBat2SkipRowErase54 anop
+eraseSpriteBat2SkipRowErase4 anop
 
         lda >rowCounter
         clc
@@ -2156,12 +2155,12 @@ eraseSpriteBat2SkipRowErase54 anop
 
 
         cmp #199
-        bcs eraseSpriteBat2SkipRowEraseShortJump55
-        bra eraseSpriteBat2SkipRowEraseDontSkipRow55
+        bcs eraseSpriteBat2SkipRowEraseShortJump5
+        bra eraseSpriteBat2SkipRowEraseDontSkipRow5
 
-eraseSpriteBat2SkipRowEraseShortJump55 anop
-        brl eraseSpriteBat2SkipRowErase55
-eraseSpriteBat2SkipRowEraseDontSkipRow55 anop
+eraseSpriteBat2SkipRowEraseShortJump5 anop
+        brl eraseSpriteBat2SkipRowErase5
+eraseSpriteBat2SkipRowEraseDontSkipRow5 anop
         lda >spriteY
         clc
         adc #5
@@ -2185,7 +2184,7 @@ eraseSpriteBat2SkipRowEraseDontSkipRow55 anop
         long m
 
 
-eraseSpriteBat2SkipRowErase55 anop
+eraseSpriteBat2SkipRowErase5 anop
 
         lda >rowCounter
         clc
@@ -2194,12 +2193,12 @@ eraseSpriteBat2SkipRowErase55 anop
 
 
         cmp #199
-        bcs eraseSpriteBat2SkipRowEraseShortJump56
-        bra eraseSpriteBat2SkipRowEraseDontSkipRow56
+        bcs eraseSpriteBat2SkipRowEraseShortJump6
+        bra eraseSpriteBat2SkipRowEraseDontSkipRow6
 
-eraseSpriteBat2SkipRowEraseShortJump56 anop
-        brl eraseSpriteBat2SkipRowErase56
-eraseSpriteBat2SkipRowEraseDontSkipRow56 anop
+eraseSpriteBat2SkipRowEraseShortJump6 anop
+        brl eraseSpriteBat2SkipRowErase6
+eraseSpriteBat2SkipRowEraseDontSkipRow6 anop
         lda >spriteY
         clc
         adc #6
@@ -2223,7 +2222,7 @@ eraseSpriteBat2SkipRowEraseDontSkipRow56 anop
         long m
 
 
-eraseSpriteBat2SkipRowErase56 anop
+eraseSpriteBat2SkipRowErase6 anop
 
         lda >rowCounter
         clc
@@ -2232,12 +2231,12 @@ eraseSpriteBat2SkipRowErase56 anop
 
 
         cmp #199
-        bcs eraseSpriteBat2SkipRowEraseShortJump57
-        bra eraseSpriteBat2SkipRowEraseDontSkipRow57
+        bcs eraseSpriteBat2SkipRowEraseShortJump7
+        bra eraseSpriteBat2SkipRowEraseDontSkipRow7
 
-eraseSpriteBat2SkipRowEraseShortJump57 anop
-        brl eraseSpriteBat2SkipRowErase57
-eraseSpriteBat2SkipRowEraseDontSkipRow57 anop
+eraseSpriteBat2SkipRowEraseShortJump7 anop
+        brl eraseSpriteBat2SkipRowErase7
+eraseSpriteBat2SkipRowEraseDontSkipRow7 anop
         lda >spriteY
         clc
         adc #7
@@ -2261,7 +2260,7 @@ eraseSpriteBat2SkipRowEraseDontSkipRow57 anop
         long m
 
 
-eraseSpriteBat2SkipRowErase57 anop
+eraseSpriteBat2SkipRowErase7 anop
 
         lda >rowCounter
         clc
@@ -2270,12 +2269,12 @@ eraseSpriteBat2SkipRowErase57 anop
 
 
         cmp #199
-        bcs eraseSpriteBat2SkipRowEraseShortJump58
-        bra eraseSpriteBat2SkipRowEraseDontSkipRow58
+        bcs eraseSpriteBat2SkipRowEraseShortJump8
+        bra eraseSpriteBat2SkipRowEraseDontSkipRow8
 
-eraseSpriteBat2SkipRowEraseShortJump58 anop
-        brl eraseSpriteBat2SkipRowErase58
-eraseSpriteBat2SkipRowEraseDontSkipRow58 anop
+eraseSpriteBat2SkipRowEraseShortJump8 anop
+        brl eraseSpriteBat2SkipRowErase8
+eraseSpriteBat2SkipRowEraseDontSkipRow8 anop
         lda >spriteY
         clc
         adc #8
@@ -2338,7 +2337,7 @@ eraseSpriteBat2SkipRowEraseDontSkipRow58 anop
         long m
 
 
-eraseSpriteBat2SkipRowErase58 anop
+eraseSpriteBat2SkipRowErase8 anop
 
         lda >rowCounter
         clc
@@ -2347,12 +2346,12 @@ eraseSpriteBat2SkipRowErase58 anop
 
 
         cmp #199
-        bcs eraseSpriteBat2SkipRowEraseShortJump59
-        bra eraseSpriteBat2SkipRowEraseDontSkipRow59
+        bcs eraseSpriteBat2SkipRowEraseShortJump9
+        bra eraseSpriteBat2SkipRowEraseDontSkipRow9
 
-eraseSpriteBat2SkipRowEraseShortJump59 anop
-        brl eraseSpriteBat2SkipRowErase59
-eraseSpriteBat2SkipRowEraseDontSkipRow59 anop
+eraseSpriteBat2SkipRowEraseShortJump9 anop
+        brl eraseSpriteBat2SkipRowErase9
+eraseSpriteBat2SkipRowEraseDontSkipRow9 anop
         lda >spriteY
         clc
         adc #9
@@ -2415,7 +2414,7 @@ eraseSpriteBat2SkipRowEraseDontSkipRow59 anop
         long m
 
 
-eraseSpriteBat2SkipRowErase59 anop
+eraseSpriteBat2SkipRowErase9 anop
 
         lda >rowCounter
         clc
@@ -2424,12 +2423,12 @@ eraseSpriteBat2SkipRowErase59 anop
 
 
         cmp #199
-        bcs eraseSpriteBat2SkipRowEraseShortJump60
-        bra eraseSpriteBat2SkipRowEraseDontSkipRow60
+        bcs eraseSpriteBat2SkipRowEraseShortJump10
+        bra eraseSpriteBat2SkipRowEraseDontSkipRow10
 
-eraseSpriteBat2SkipRowEraseShortJump60 anop
-        brl eraseSpriteBat2SkipRowErase60
-eraseSpriteBat2SkipRowEraseDontSkipRow60 anop
+eraseSpriteBat2SkipRowEraseShortJump10 anop
+        brl eraseSpriteBat2SkipRowErase10
+eraseSpriteBat2SkipRowEraseDontSkipRow10 anop
         lda >spriteY
         clc
         adc #10
@@ -2492,7 +2491,7 @@ eraseSpriteBat2SkipRowEraseDontSkipRow60 anop
         long m
 
 
-eraseSpriteBat2SkipRowErase60 anop
+eraseSpriteBat2SkipRowErase10 anop
 
         lda >rowCounter
         clc
@@ -2501,12 +2500,12 @@ eraseSpriteBat2SkipRowErase60 anop
 
 
         cmp #199
-        bcs eraseSpriteBat2SkipRowEraseShortJump61
-        bra eraseSpriteBat2SkipRowEraseDontSkipRow61
+        bcs eraseSpriteBat2SkipRowEraseShortJump11
+        bra eraseSpriteBat2SkipRowEraseDontSkipRow11
 
-eraseSpriteBat2SkipRowEraseShortJump61 anop
-        brl eraseSpriteBat2SkipRowErase61
-eraseSpriteBat2SkipRowEraseDontSkipRow61 anop
+eraseSpriteBat2SkipRowEraseShortJump11 anop
+        brl eraseSpriteBat2SkipRowErase11
+eraseSpriteBat2SkipRowEraseDontSkipRow11 anop
         lda >spriteY
         clc
         adc #11
@@ -2569,7 +2568,7 @@ eraseSpriteBat2SkipRowEraseDontSkipRow61 anop
         long m
 
 
-eraseSpriteBat2SkipRowErase61 anop
+eraseSpriteBat2SkipRowErase11 anop
 
         lda >rowCounter
         clc
@@ -2578,12 +2577,12 @@ eraseSpriteBat2SkipRowErase61 anop
 
 
         cmp #199
-        bcs eraseSpriteBat2SkipRowEraseShortJump62
-        bra eraseSpriteBat2SkipRowEraseDontSkipRow62
+        bcs eraseSpriteBat2SkipRowEraseShortJump12
+        bra eraseSpriteBat2SkipRowEraseDontSkipRow12
 
-eraseSpriteBat2SkipRowEraseShortJump62 anop
-        brl eraseSpriteBat2SkipRowErase62
-eraseSpriteBat2SkipRowEraseDontSkipRow62 anop
+eraseSpriteBat2SkipRowEraseShortJump12 anop
+        brl eraseSpriteBat2SkipRowErase12
+eraseSpriteBat2SkipRowEraseDontSkipRow12 anop
         lda >spriteY
         clc
         adc #12
@@ -2646,7 +2645,7 @@ eraseSpriteBat2SkipRowEraseDontSkipRow62 anop
         long m
 
 
-eraseSpriteBat2SkipRowErase62 anop
+eraseSpriteBat2SkipRowErase12 anop
 
         lda >rowCounter
         clc
@@ -2655,12 +2654,12 @@ eraseSpriteBat2SkipRowErase62 anop
 
 
         cmp #199
-        bcs eraseSpriteBat2SkipRowEraseShortJump63
-        bra eraseSpriteBat2SkipRowEraseDontSkipRow63
+        bcs eraseSpriteBat2SkipRowEraseShortJump13
+        bra eraseSpriteBat2SkipRowEraseDontSkipRow13
 
-eraseSpriteBat2SkipRowEraseShortJump63 anop
-        brl eraseSpriteBat2SkipRowErase63
-eraseSpriteBat2SkipRowEraseDontSkipRow63 anop
+eraseSpriteBat2SkipRowEraseShortJump13 anop
+        brl eraseSpriteBat2SkipRowErase13
+eraseSpriteBat2SkipRowEraseDontSkipRow13 anop
         lda >spriteY
         clc
         adc #13
@@ -2723,7 +2722,7 @@ eraseSpriteBat2SkipRowEraseDontSkipRow63 anop
         long m
 
 
-eraseSpriteBat2SkipRowErase63 anop
+eraseSpriteBat2SkipRowErase13 anop
 
         lda >rowCounter
         clc
@@ -2732,12 +2731,12 @@ eraseSpriteBat2SkipRowErase63 anop
 
 
         cmp #199
-        bcs eraseSpriteBat2SkipRowEraseShortJump64
-        bra eraseSpriteBat2SkipRowEraseDontSkipRow64
+        bcs eraseSpriteBat2SkipRowEraseShortJump14
+        bra eraseSpriteBat2SkipRowEraseDontSkipRow14
 
-eraseSpriteBat2SkipRowEraseShortJump64 anop
-        brl eraseSpriteBat2SkipRowErase64
-eraseSpriteBat2SkipRowEraseDontSkipRow64 anop
+eraseSpriteBat2SkipRowEraseShortJump14 anop
+        brl eraseSpriteBat2SkipRowErase14
+eraseSpriteBat2SkipRowEraseDontSkipRow14 anop
         lda >spriteY
         clc
         adc #14
@@ -2800,7 +2799,7 @@ eraseSpriteBat2SkipRowEraseDontSkipRow64 anop
         long m
 
 
-eraseSpriteBat2SkipRowErase64 anop
+eraseSpriteBat2SkipRowErase14 anop
 
         lda >rowCounter
         clc
@@ -2809,12 +2808,12 @@ eraseSpriteBat2SkipRowErase64 anop
 
 
         cmp #199
-        bcs eraseSpriteBat2SkipRowEraseShortJump65
-        bra eraseSpriteBat2SkipRowEraseDontSkipRow65
+        bcs eraseSpriteBat2SkipRowEraseShortJump15
+        bra eraseSpriteBat2SkipRowEraseDontSkipRow15
 
-eraseSpriteBat2SkipRowEraseShortJump65 anop
-        brl eraseSpriteBat2SkipRowErase65
-eraseSpriteBat2SkipRowEraseDontSkipRow65 anop
+eraseSpriteBat2SkipRowEraseShortJump15 anop
+        brl eraseSpriteBat2SkipRowErase15
+eraseSpriteBat2SkipRowEraseDontSkipRow15 anop
         lda >spriteY
         clc
         adc #15
@@ -2877,7 +2876,7 @@ eraseSpriteBat2SkipRowEraseDontSkipRow65 anop
         long m
 
 
-eraseSpriteBat2SkipRowErase65 anop
+eraseSpriteBat2SkipRowErase15 anop
 
         lda >rowCounter
         clc
@@ -2886,12 +2885,12 @@ eraseSpriteBat2SkipRowErase65 anop
 
 
         cmp #199
-        bcs eraseSpriteBat2SkipRowEraseShortJump66
-        bra eraseSpriteBat2SkipRowEraseDontSkipRow66
+        bcs eraseSpriteBat2SkipRowEraseShortJump16
+        bra eraseSpriteBat2SkipRowEraseDontSkipRow16
 
-eraseSpriteBat2SkipRowEraseShortJump66 anop
-        brl eraseSpriteBat2SkipRowErase66
-eraseSpriteBat2SkipRowEraseDontSkipRow66 anop
+eraseSpriteBat2SkipRowEraseShortJump16 anop
+        brl eraseSpriteBat2SkipRowErase16
+eraseSpriteBat2SkipRowEraseDontSkipRow16 anop
         lda >spriteY
         clc
         adc #16
@@ -2928,7 +2927,7 @@ eraseSpriteBat2SkipRowEraseDontSkipRow66 anop
         long m
 
 
-eraseSpriteBat2SkipRowErase66 anop
+eraseSpriteBat2SkipRowErase16 anop
 
         lda >rowCounter
         clc
@@ -2937,12 +2936,12 @@ eraseSpriteBat2SkipRowErase66 anop
 
 
         cmp #199
-        bcs eraseSpriteBat2SkipRowEraseShortJump67
-        bra eraseSpriteBat2SkipRowEraseDontSkipRow67
+        bcs eraseSpriteBat2SkipRowEraseShortJump17
+        bra eraseSpriteBat2SkipRowEraseDontSkipRow17
 
-eraseSpriteBat2SkipRowEraseShortJump67 anop
-        brl eraseSpriteBat2SkipRowErase67
-eraseSpriteBat2SkipRowEraseDontSkipRow67 anop
+eraseSpriteBat2SkipRowEraseShortJump17 anop
+        brl eraseSpriteBat2SkipRowErase17
+eraseSpriteBat2SkipRowEraseDontSkipRow17 anop
         lda >spriteY
         clc
         adc #17
@@ -2979,7 +2978,7 @@ eraseSpriteBat2SkipRowEraseDontSkipRow67 anop
         long m
 
 
-eraseSpriteBat2SkipRowErase67 anop
+eraseSpriteBat2SkipRowErase17 anop
 
         lda >rowCounter
         clc
@@ -2988,12 +2987,12 @@ eraseSpriteBat2SkipRowErase67 anop
 
 
         cmp #199
-        bcs eraseSpriteBat2SkipRowEraseShortJump68
-        bra eraseSpriteBat2SkipRowEraseDontSkipRow68
+        bcs eraseSpriteBat2SkipRowEraseShortJump18
+        bra eraseSpriteBat2SkipRowEraseDontSkipRow18
 
-eraseSpriteBat2SkipRowEraseShortJump68 anop
-        brl eraseSpriteBat2SkipRowErase68
-eraseSpriteBat2SkipRowEraseDontSkipRow68 anop
+eraseSpriteBat2SkipRowEraseShortJump18 anop
+        brl eraseSpriteBat2SkipRowErase18
+eraseSpriteBat2SkipRowEraseDontSkipRow18 anop
         lda >spriteY
         clc
         adc #18
@@ -3030,7 +3029,7 @@ eraseSpriteBat2SkipRowEraseDontSkipRow68 anop
         long m
 
 
-eraseSpriteBat2SkipRowErase68 anop
+eraseSpriteBat2SkipRowErase18 anop
 
         lda >rowCounter
         clc
@@ -3039,12 +3038,12 @@ eraseSpriteBat2SkipRowErase68 anop
 
 
         cmp #199
-        bcs eraseSpriteBat2SkipRowEraseShortJump69
-        bra eraseSpriteBat2SkipRowEraseDontSkipRow69
+        bcs eraseSpriteBat2SkipRowEraseShortJump19
+        bra eraseSpriteBat2SkipRowEraseDontSkipRow19
 
-eraseSpriteBat2SkipRowEraseShortJump69 anop
-        brl eraseSpriteBat2SkipRowErase69
-eraseSpriteBat2SkipRowEraseDontSkipRow69 anop
+eraseSpriteBat2SkipRowEraseShortJump19 anop
+        brl eraseSpriteBat2SkipRowErase19
+eraseSpriteBat2SkipRowEraseDontSkipRow19 anop
         lda >spriteY
         clc
         adc #19
@@ -3081,7 +3080,7 @@ eraseSpriteBat2SkipRowEraseDontSkipRow69 anop
         long m
 
 
-eraseSpriteBat2SkipRowErase69 anop
+eraseSpriteBat2SkipRowErase19 anop
 
         lda >rowCounter
         clc
@@ -3090,12 +3089,12 @@ eraseSpriteBat2SkipRowErase69 anop
 
 
         cmp #199
-        bcs eraseSpriteBat2SkipRowEraseShortJump70
-        bra eraseSpriteBat2SkipRowEraseDontSkipRow70
+        bcs eraseSpriteBat2SkipRowEraseShortJump20
+        bra eraseSpriteBat2SkipRowEraseDontSkipRow20
 
-eraseSpriteBat2SkipRowEraseShortJump70 anop
-        brl eraseSpriteBat2SkipRowErase70
-eraseSpriteBat2SkipRowEraseDontSkipRow70 anop
+eraseSpriteBat2SkipRowEraseShortJump20 anop
+        brl eraseSpriteBat2SkipRowErase20
+eraseSpriteBat2SkipRowEraseDontSkipRow20 anop
         lda >spriteY
         clc
         adc #20
@@ -3132,7 +3131,7 @@ eraseSpriteBat2SkipRowEraseDontSkipRow70 anop
         long m
 
 
-eraseSpriteBat2SkipRowErase70 anop
+eraseSpriteBat2SkipRowErase20 anop
 
         lda >rowCounter
         clc
@@ -3141,12 +3140,12 @@ eraseSpriteBat2SkipRowErase70 anop
 
 
         cmp #199
-        bcs eraseSpriteBat2SkipRowEraseShortJump71
-        bra eraseSpriteBat2SkipRowEraseDontSkipRow71
+        bcs eraseSpriteBat2SkipRowEraseShortJump21
+        bra eraseSpriteBat2SkipRowEraseDontSkipRow21
 
-eraseSpriteBat2SkipRowEraseShortJump71 anop
-        brl eraseSpriteBat2SkipRowErase71
-eraseSpriteBat2SkipRowEraseDontSkipRow71 anop
+eraseSpriteBat2SkipRowEraseShortJump21 anop
+        brl eraseSpriteBat2SkipRowErase21
+eraseSpriteBat2SkipRowEraseDontSkipRow21 anop
         lda >spriteY
         clc
         adc #21
@@ -3183,7 +3182,7 @@ eraseSpriteBat2SkipRowEraseDontSkipRow71 anop
         long m
 
 
-eraseSpriteBat2SkipRowErase71 anop
+eraseSpriteBat2SkipRowErase21 anop
 
         lda >rowCounter
         clc
@@ -6272,6 +6271,7 @@ eraseSpriteBat2FogSkipRowErase107 anop
 
 
         rtl
+
 
 
         end

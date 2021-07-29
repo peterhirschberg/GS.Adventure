@@ -646,6 +646,11 @@ eraseBat entry
         bmi eraseBatDone
         sta >spriteY
 
+        jsl eraseSpriteBat2
+        jsl eraseSpriteBat1
+
+        rts
+        
         jsl roomHasFog
         cmp #1
         beq eraseBatFog
@@ -664,7 +669,7 @@ eraseBatFog anop
         jsl eraseSpriteBat1Fog
         bra eraseBatDone
 batEraseState1Fog anop
-        jsl eraseSpriteBat1Fog
+        jsl eraseSpriteBat2Fog
 eraseBatDone anop
         rts
 
