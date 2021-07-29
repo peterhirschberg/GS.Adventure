@@ -593,47 +593,6 @@ objectLinkedObjectList anop
         dc i2'OBJECT_NONE' ; magnet
         dc i2'OBJECT_NONE' ; player
 
-objectLinkedObjectXOffsetList anop
-        dc i2'$00' ; port 1
-        dc i2'$00' ; port 2
-        dc i2'$00' ; port 3
-        dc i2'$00' ; author
-        dc i2'$00' ; numbers
-        dc i2'$00' ; red dragon
-        dc i2'$00' ; yellow dragon
-        dc i2'$00' ; green dragon
-        dc i2'$00' ; sword
-        dc i2'$00' ; bridge
-        dc i2'$00' ; yellow key
-        dc i2'$00' ; white key
-        dc i2'$00' ; black key
-        dc i2'$00' ; bat
-        dc i2'$00' ; dot
-        dc i2'$00' ; chalise
-        dc i2'$00' ; magnet
-        dc i2'$00' ; player
-        dc i2'0'   ; player
-
-objectLinkedObjectYOffsetList anop
-        dc i2'$00' ; port 1
-        dc i2'$00' ; port 2
-        dc i2'$00' ; port 3
-        dc i2'$00' ; author
-        dc i2'$00' ; numbers
-        dc i2'$00' ; red dragon
-        dc i2'$00' ; yellow dragon
-        dc i2'$00' ; green dragon
-        dc i2'$00' ; sword
-        dc i2'$00' ; bridge
-        dc i2'$00' ; yellow key
-        dc i2'$00' ; white key
-        dc i2'$00' ; black key
-        dc i2'$00' ; bat
-        dc i2'$00' ; dot
-        dc i2'$00' ; chalise
-        dc i2'$00' ; magnet
-        dc i2'$00' ; player
-
 objectLinkableList anop
         dc i2'$0' ; port 1
         dc i2'$0' ; port 2
@@ -708,8 +667,7 @@ objectInitialRoomGame1List anop
         dc i2'$01' ; yellow dragon
         dc i2'$1d' ; green dragon
         dc i2'$12' ; sword
-;        dc i2'$04' ; bridge
-        dc i2'$11' ; bridge
+        dc i2'$04' ; bridge
         dc i2'$11' ; yellow key
         dc i2'$0e' ; white key
         dc i2'$1d' ; black key

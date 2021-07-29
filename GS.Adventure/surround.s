@@ -711,6 +711,9 @@ runSurround entry
 renderSurroundGrid entry
 
         lda #0
+        sta surroundUpdated
+
+        lda #0
         sta rowCounter
 
 renderSurroundVLoop anop
@@ -763,6 +766,9 @@ renderSurroundHLoop anop
         sta rectColor
 
         jsr drawSurroundChunk
+        
+        lda #1
+        sta surroundUpdated
 
 renderSurroundSkipBlock anop
         inc colCounter
@@ -781,8 +787,15 @@ renderSurroundGridRowDone anop
 
 renderSurroundDone anop
 
+        lda surroundUpdated
+        cmp #1
+        beq surroundWasUpdated
         rts
 
+surroundWasUpdated anop
+        jsl dirtyAllSprites
+        jsl drawRoomSprites
+        rts
 
         
 setStaleSurroundGrid entry
@@ -1576,6 +1589,7 @@ SURROUND_ERASE gequ 1
 SURROUND_LEAVE gequ 2
 SURROUND_DRAW gequ 3
 
+surroundUpdated dc i2'0'
 
         end
 
