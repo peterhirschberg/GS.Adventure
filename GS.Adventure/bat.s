@@ -25,6 +25,9 @@ runBat entry
         lda >objectStateList,x
         sta >objectOldStateList,x
         
+; -------------------------------
+; Handle flapping
+
         inc flapTimer
         lda flapTimer
         cmp #4
@@ -50,6 +53,72 @@ flapResetToZero anop
         sta >objectStateList,x
 
 batContinue anop
+
+; -------------------------------
+; Get the bat's current extents
+
+        lda >objectPositionXList,x
+        sta batLeft
+
+        lda >objectPositionYList,x
+        sta batTop
+
+        jsr getWidthForObjectState
+        clc
+        adc batWidth
+        sta batRight
+
+        jsr getHeightForObjectState
+        clc
+        adc batHeight
+        sta batBottom
+
+; -------------------------------
+; Enlarge the bat extent by 7 pixels for the proximity checks below
+
+        lda batLeft
+        sec
+        sbc #7
+        sta batLeft
+        
+        lda batTop
+        sec
+        sbc #7
+        sta batTop
+        
+        lda batRight
+        clc
+        adc #7
+        sta batRight
+        
+        lda batBottom
+        clc
+        adc #7
+        sta batBottom
+
+; -------------------------------
+; Go through the bat's object matrix
+
+        ldy #0
+
+seekLoop anop
+
+        lda batMatrix,y
+        cmp #OBJECT_NONE
+        beq seekDone
+        
+        
+        
+        
+        iny
+        iny
+        bra seekLoop
+
+seekDone anop
+
+; -------------------------------
+
+
 
         lda >objectPositionXList,x
         sta >objectPositionOldXList,x
@@ -79,10 +148,16 @@ batTop dc i2'0'
 batRight dc i2'0'
 batBottom dc i2'0'
 
+batRoom dc i2'0'
+
 seekLeft dc i2'0'
 seekTop dc i2'0'
 seekRight dc i2'0'
 seekBottom dc i2'0'
+
+seekRoom dc i2'0'
+
+savex dc i2'0'
 
         end
 

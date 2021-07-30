@@ -957,10 +957,15 @@ adjustDone anop
 
 roomHasFog entry
 
+        stx savex
+
         lda currentRoom
         asl a
         tax
         lda roomColorList,x
+        
+        ldx savex
+        
         cmp #COLOR_FOG
         beq hasFog
         lda #0

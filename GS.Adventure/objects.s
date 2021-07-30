@@ -279,7 +279,14 @@ getDotHeight anop
         rts
 
 getBatHeight anop
+        lda >objectStateList,x
+        cmp #0
+        bne batHeightState1
         lda #OBJECT_HEIGHT_BAT1
+        rts
+        
+batHeightState1 anop
+        lda #OBJECT_HEIGHT_BAT2
         rts
 
 getBridgeHeight anop
