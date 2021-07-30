@@ -132,6 +132,9 @@ seekLoop anop
 
         lda >objectPositionYList,x
         sta seekTop
+        sec
+        sbc #22
+        sta seekTop
         
 ; Set the movement
 
@@ -174,8 +177,6 @@ yIsEqual anop
         sta batMovementY
         
 movementDone anop
-
-
         bra seekDone
         
 nextObject anop
@@ -188,7 +189,7 @@ seekDone anop
 
 ; -------------------------------
 
-
+        ldx #OBJECT_BAT
 
         lda >objectPositionXList,x
         sta >objectPositionOldXList,x
