@@ -634,7 +634,7 @@ eraseBat entry
         lda >objectRoomList,x
         cmp >currentRoom
         bne eraseBatDone
-
+        
         lda >objectDirtyList,x
         cmp #1
         bne eraseBatDone

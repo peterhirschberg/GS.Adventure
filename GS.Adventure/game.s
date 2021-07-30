@@ -193,8 +193,6 @@ pass1 anop
 
         jsr runPortals
         
-        jsr runBat
-
         jsr collisionCheckPlayerWithWalls
 
         jsr collisionCheckPlayerWithObjects
@@ -229,6 +227,8 @@ pass2 anop
         jsr runObjects
 
         jsr runDragons
+        
+        jsr runBat
 
         jsr runMagnet
 

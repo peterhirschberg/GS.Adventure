@@ -21,6 +21,9 @@ bat start
 runBat entry
 
         ldx #OBJECT_BAT
+
+        lda >objectStateList,x
+        sta >objectOldStateList,x
         
         inc flapTimer
         lda flapTimer
@@ -34,7 +37,6 @@ resetFlapTimer anop
         sta flapTimer
 
         lda >objectStateList,x
-        sta >objectOldStateList,x
         cmp #1
         beq flapResetToZero
         
@@ -54,21 +56,17 @@ batContinue anop
 
         lda >objectPositionYList,x
         sta >objectPositionOldYList,x
-        clc
-        adc #1
         
-;        lda #50
-;        sta >objectPositionXList,x
+        lda >objectPositionYList,x
+        clc
+        adc #4
         sta >objectPositionYList,x
-;        lda currentRoom
-;        sta >objectRoomList,x
 
         lda #1
         sta >objectDirtyList,x
         
-        jsl eraseRoomSprites
-
         rts
+        
 
 batMovementX dc i2'0'
 batMovementY dc i2'0'
