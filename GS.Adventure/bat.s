@@ -59,19 +59,24 @@ batContinue anop
 
         lda >objectPositionXList,x
         sta batLeft
+        sta batX
 
         lda >objectPositionYList,x
         sta batTop
+        sta batY
 
         jsr getWidthForObjectState
         clc
-        adc batWidth
+        adc batLeft
         sta batRight
 
         jsr getHeightForObjectState
         clc
-        adc batHeight
+        adc batTop
         sta batBottom
+        
+        lda >objectRoomList,x
+        sta batRoom
 
 ; -------------------------------
 ; Enlarge the bat extent by 7 pixels for the proximity checks below
@@ -107,9 +112,74 @@ seekLoop anop
         cmp #OBJECT_NONE
         beq seekDone
         
+        sta seekObject
         
+        tax
         
+        lda >objectRoomList,x
+        sta seekRoom
         
+        lda batRoom
+        cmp seekRoom
+        bne nextObject
+
+        lda >objectLinkedObjectList,x
+        cmp seekObject
+        beq nextObject
+        
+        lda >objectPositionXList,x
+        sta seekLeft
+
+        lda >objectPositionYList,x
+        sta seekTop
+        
+; Set the movement
+
+        lda seekLeft
+        cmp batX
+        beq xIsEqual
+        bcs goRight
+        
+        lda #-4
+        sta batMovementX
+        bra doYMovement
+        
+goRight anop
+        lda #4
+        sta batMovementX
+        bra doYMovement
+        
+xIsEqual anop
+        lda #0
+        sta batMovementX
+        
+doYMovement anop
+
+        lda seekTop
+        cmp batY
+        beq yIsEqual
+        bcs goDown
+        
+        lda #-4
+        sta batMovementY
+        bra movementDone
+        
+goDown anop
+        lda #4
+        sta batMovementY
+        bra movementDone
+        
+yIsEqual anop
+        lda #0
+        sta batMovementY
+        
+movementDone anop
+
+
+        bra seekDone
+        
+nextObject anop
+
         iny
         iny
         bra seekLoop
@@ -126,9 +196,14 @@ seekDone anop
         lda >objectPositionYList,x
         sta >objectPositionOldYList,x
         
+        lda >objectPositionXList,x
+        clc
+        adc batMovementX
+        sta >objectPositionXList,x
+
         lda >objectPositionYList,x
         clc
-        adc #4
+        adc batMovementY
         sta >objectPositionYList,x
 
         lda #1
@@ -138,10 +213,13 @@ seekDone anop
         
 
 batMovementX dc i2'0'
-batMovementY dc i2'0'
+batMovementY dc i2'4'
 
 flapTimer dc i2'0'
 batFedUpTimer dc i2'0'
+
+batX dc i2'0'
+batY dc i2'0'
 
 batLeft dc i2'0'
 batTop dc i2'0'
@@ -156,6 +234,8 @@ seekRight dc i2'0'
 seekBottom dc i2'0'
 
 seekRoom dc i2'0'
+
+seekObject dc i2'0'
 
 savex dc i2'0'
 
