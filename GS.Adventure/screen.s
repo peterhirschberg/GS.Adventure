@@ -456,7 +456,7 @@ fillLoop1 anop
 
 ; bounds check
         bmi nextRow1
-        cmp #199
+        cmp #200
         bcs nextRow1
 
         asl a
