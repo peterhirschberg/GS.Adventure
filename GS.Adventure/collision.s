@@ -563,6 +563,44 @@ itsAHit2 anop
         rts
 
 
+hitTestRects entry
+
+; check rect1 left > rect2 right
+
+        lda testRect1Left
+        cmp testRect2Right
+        bcs noIntersect3
+
+; check rect1 right < rect2 left
+
+        lda testRect2Left
+        cmp testRect1Right
+        bcs noIntersect3
+
+; check rect1 top > rect2 bottom
+
+        lda testRect1Top
+        cmp testRect2Bottom
+        bcs noIntersect3
+
+; check rect1 bottom < rect2 top
+
+        lda testRect2Top
+        cmp testRect1Bottom
+        bcs noIntersect3
+
+        bra itsAHit3
+
+noIntersect3 anop
+        lda #0
+        rts
+
+itsAHit3 anop
+        lda #1
+        rts
+
+
+
 checkAllObjectsForOverlap entry
 
         lda #OBJECT_YELLOWKEY
@@ -894,16 +932,6 @@ testRectRight dc i2'0'
 testRectTop dc i2'0'
 testRectBottom dc i2'0'
 
-testRect1Left dc i2'0'
-testRect1Right dc i2'0'
-testRect1Top dc i2'0'
-testRect1Bottom dc i2'0'
-
-testRect2Left dc i2'0'
-testRect2Right dc i2'0'
-testRect2Top dc i2'0'
-testRect2Bottom dc i2'0'
-
 hitObjectX dc i2'0'
 hitObjectY dc i2'0'
 
@@ -925,6 +953,16 @@ collisionData data
 
 hitTestObjectA dc i2'0'
 hitTestObjectB dc i2'0'
+
+testRect1Left dc i2'0'
+testRect1Right dc i2'0'
+testRect1Top dc i2'0'
+testRect1Bottom dc i2'0'
+
+testRect2Left dc i2'0'
+testRect2Right dc i2'0'
+testRect2Top dc i2'0'
+testRect2Bottom dc i2'0'
 
 crossingBridge dc i2'0'
 goingThroughWall dc i2'0'

@@ -15,6 +15,7 @@ bat start
         using objectData
         using gameData
         using roomsData
+        using collisionData
         using batData
     
 
@@ -136,7 +137,10 @@ seekLoop anop
 
         lda batMatrix,y
         cmp #OBJECT_NONE
-        beq seekDone
+        bne foundSeekObject
+        brl seekDone
+
+foundSeekObject anop
         
         sta seekObject
         
@@ -153,15 +157,31 @@ seekLoop anop
         cmp seekObject
         beq nextObject
 
+; get the seek object's extents
+
         lda >objectPositionXList,x
         sta seekLeft
 
         lda >objectPositionYList,x
         sta seekTop
-        sec
-        sbc #22
+;        sec
+;        sbc #22
         sta seekTop
-        
+
+        ldx seekObject
+
+        jsr getWidthForObjectState
+        clc
+        adc seekLeft
+        sta seekRight
+
+        jsr getHeightForObjectState
+        clc
+        adc seekTop
+        sta seekBottom
+
+        ldx #OBJECT_BAT
+
 ; Set the movement
 
         lda seekLeft
@@ -209,17 +229,67 @@ nextObject anop
 
         iny
         iny
-        bra seekLoop
+        brl seekLoop
 
 seekDone anop
 
 ; -------------------------------
 ; see if the bat can pick up something
 
-;        lda #0
-;        sta batFedUpTimer
+        lda batLeft
+        sta testRect1Left
+        lda batTop
+        sta testRect1Top
+        lda batBottom
+        sta testRect1Bottom
+        lda batLeft
+        sta testRect1Left
+
+        lda seekLeft
+        sta testRect2Left
+        lda seekTop
+        sta testRect2Top
+        lda seekBottom
+        sta testRect2Bottom
+        lda seekLeft
+        sta testRect2Left
+
+        jsr hitTestRects
+        cmp #1
+        bne notTouchingSeekObject
+
+; the bat is touching something it wants
+
+; if the bat grabs something that the player is carrying, the bat gets it.
+; this allows the bat to take something we are carrying
+
+        ldx #OBJECT_PLAYER
+        lda >objectLinkedObjectList,x
+        cmp seekObject
+        bne notPlayerCarriedObject
+
+; take it from the player
+
+        lda #OBJECT_NONE
+        sta >objectLinkedObjectList,x
+
+notPlayerCarriedObject anop
+
+; have the bat pick up the object
+
+        ldx #OBJECT_BAT
+
+        lda seekObject
+        sta >objectLinkedObjectList,x
+
+; reset the timer
+
+        lda #0
+        sta batFedUpTimer
 
 ; -------------------------------
+
+notTouchingSeekObject anop
 
         ldx #OBJECT_BAT
 
