@@ -52,7 +52,33 @@ flapResetToZero anop
         lda #0
         sta >objectStateList,x
 
+; -------------------------------
 batContinue anop
+
+        lda >objectLinkedObjectList,x
+        cmp #OBJECT_NONE
+        bne carryingSomething
+        bra checkFedUp
+
+carryingSomething anop
+
+        lda #$ff
+        cmp batFedUpTimer
+        bcs batNotFedUp
+        bra checkFedUp
+
+batNotFedUp anop
+
+        inc batFedUpTimer
+
+checkFedUp anop
+
+        lda batFedUpTimer
+        cmp #$ff
+        bcs batFedUp
+        brl seekDone
+
+batFedUp anop
 
 ; -------------------------------
 ; Get the bat's current extents
@@ -126,7 +152,7 @@ seekLoop anop
         lda >objectLinkedObjectList,x
         cmp seekObject
         beq nextObject
-        
+
         lda >objectPositionXList,x
         sta seekLeft
 
@@ -188,6 +214,12 @@ nextObject anop
 seekDone anop
 
 ; -------------------------------
+; see if the bat can pick up something
+
+;        lda #0
+;        sta batFedUpTimer
+
+; -------------------------------
 
         ldx #OBJECT_BAT
 
@@ -217,7 +249,6 @@ batMovementX dc i2'0'
 batMovementY dc i2'4'
 
 flapTimer dc i2'0'
-batFedUpTimer dc i2'0'
 
 batX dc i2'0'
 batY dc i2'0'
@@ -245,6 +276,7 @@ savex dc i2'0'
 
 batData data
 
+batFedUpTimer dc i2'0'
     
 ; bat object matrix
 batMatrix anop

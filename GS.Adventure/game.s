@@ -20,6 +20,7 @@ game start
         using playerData
         using objectData
         using spriteData
+        using batData
 
 
 initGame entry
@@ -58,11 +59,14 @@ softReset anop
 
         lda #0
         sta gameWon
-; TODO - if soft resetting after game is won, do a hard reset
 
 ; bring the dragons to life
 
         jsr resetDragons
+
+; make the bat want something right away
+        lda #$ff
+        sta batFedUpTimer
 
 ; set the current room
 
