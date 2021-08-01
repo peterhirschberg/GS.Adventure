@@ -214,8 +214,6 @@ continue anop
         cmp #1
         beq hitObject
 
-; bat?
-
         rts
         
 hitBridge anop
@@ -734,7 +732,15 @@ checkall12 anop
 
 checkall13 anop
 
-; bat?
+        lda #OBJECT_BAT
+        jsr collisionCheckAllObjects
+        cmp #1
+        bne checkall14
+        lda #1
+        ldx #OBJECT_BAT
+        sta >objectRedrawList,x
+
+checkall14 anop
 
         rts
 
@@ -876,7 +882,16 @@ ccheck12 anop
         sta returnVal
 
 ccheck13 anop
-; bat?
+
+        lda #OBJECT_BAT
+        sta hitTestObjectB
+        jsr collisionCheckObjects
+        cmp #1
+        bne ccheck14
+        lda #1
+        sta returnVal
+
+ccheck14 anop
 
         lda returnVal
         rts
