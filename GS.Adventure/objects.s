@@ -176,6 +176,54 @@ updateObjectValues entry
 
 
 
+moveLinkedObjects entry
+
+        ldx #OBJECT_BAT
+        jsr moveLinkedObject
+
+        ldx #OBJECT_GREENDRAGON
+        jsr moveLinkedObject
+
+        ldx #OBJECT_YELLOWDRAGON
+        jsr moveLinkedObject
+
+        ldx #OBJECT_REDDRAGON
+        jsr moveLinkedObject
+
+        rts
+
+
+moveLinkedObject entry
+
+        lda >objectPositionXList,x
+        sta parentObjectX
+        lda >objectPositionYList,x
+        sta parentObjectY
+
+        lda >objectLinkedObjectList,x
+        sta linkedObject
+        lda >objectLinkedObjectXList,x
+        sta linkedObjectX
+        lda >objectLinkedObjectYList,x
+        sta linkedObjectY
+
+        ldx linkedObject
+
+        lda parentObjectX
+        clc
+        adc linkedObjectX
+        sta >objectPositionXList,x
+
+        lda parentObjectY
+        clc
+        adc linkedObjectY
+        sta >objectPositionYList,x
+
+        lda #1
+        sta >objectDirtyList,x
+
+        rts
+
 getHeightForObjectState entry
 
         txa
@@ -377,6 +425,11 @@ getBridgeWidth anop
 
 
 
+parentObjectX dc i2'0'
+parentObjectY dc i2'0'
+linkedObject dc i2'0'
+linkedObjectX dc i2'0'
+linkedObjectY dc i2'0'
 
 temp dc i2'0'
 
@@ -605,6 +658,46 @@ objectLinkedObjectList anop
         dc i2'OBJECT_NONE' ; chalise
         dc i2'OBJECT_NONE' ; magnet
         dc i2'OBJECT_NONE' ; player
+
+objectLinkedObjectXList anop
+        dc i2'0' ; port 1
+        dc i2'0' ; port 2
+        dc i2'0' ; port 3
+        dc i2'0' ; author
+        dc i2'0' ; numbers
+        dc i2'0' ; red dragon
+        dc i2'0' ; yellow dragon
+        dc i2'0' ; green dragon
+        dc i2'0' ; sword
+        dc i2'0' ; bridge
+        dc i2'0' ; yellow key
+        dc i2'0' ; white key
+        dc i2'0' ; black key
+        dc i2'0' ; bat
+        dc i2'0' ; dot
+        dc i2'0' ; chalise
+        dc i2'0' ; magnet
+        dc i2'0' ; player
+
+objectLinkedObjectYList anop
+        dc i2'0' ; port 1
+        dc i2'0' ; port 2
+        dc i2'0' ; port 3
+        dc i2'0' ; author
+        dc i2'0' ; numbers
+        dc i2'0' ; red dragon
+        dc i2'0' ; yellow dragon
+        dc i2'0' ; green dragon
+        dc i2'0' ; sword
+        dc i2'0' ; bridge
+        dc i2'0' ; yellow key
+        dc i2'0' ; white key
+        dc i2'0' ; black key
+        dc i2'0' ; bat
+        dc i2'0' ; dot
+        dc i2'0' ; chalise
+        dc i2'0' ; magnet
+        dc i2'0' ; player
 
 objectLinkableList anop
         dc i2'$0' ; port 1

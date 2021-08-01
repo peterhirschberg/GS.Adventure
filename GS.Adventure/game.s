@@ -143,7 +143,7 @@ pass0 anop
         bne gameNotWon
         inc gamePass
         jsr advanceFlashColor
-        jsr moveCarriedObject
+        jsr movePlayerCarriedObject
         jsl eraseRoomSprites
         jsl drawRoomSprites
         rts
@@ -236,7 +236,8 @@ pass2 anop
 
         jsr runMagnet
 
-        jsr moveCarriedObject
+        jsr movePlayerCarriedObject
+        jsr moveLinkedObjects
 
         jsl eraseRoomSprites
         jsl drawRoomSprites

@@ -136,7 +136,7 @@ moveLeft anop
 
 
 
-moveCarriedObject entry
+movePlayerCarriedObject entry
 
         ldx #OBJECT_PLAYER
         lda >objectLinkedObjectList,x

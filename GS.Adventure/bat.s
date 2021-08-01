@@ -166,7 +166,7 @@ foundSeekObject anop
         sta seekTop
 ;        sec
 ;        sbc #22
-        sta seekTop
+;        sta seekTop
 
         ldx seekObject
 
@@ -281,6 +281,12 @@ notPlayerCarriedObject anop
 
         lda seekObject
         sta >objectLinkedObjectList,x
+
+        lda #0
+        sta >objectLinkedObjectXList,x
+
+        lda #22
+        sta >objectLinkedObjectYList,x
 
 ; reset the timer
 
