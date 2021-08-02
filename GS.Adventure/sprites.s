@@ -649,27 +649,13 @@ eraseBat entry
         jsl roomHasFog
         cmp #1
         beq eraseBatFog
-        lda >objectOldStateList,x
-        cmp #0
-        bne batEraseState1
-        jsl eraseSpriteBat1
-        rts
-        
-batEraseState1 anop
-        jsl eraseSpriteBat2
+        jsl eraseSpriteBat
         rts
         
 eraseBatFog anop
-        lda >objectOldStateList,x
-        cmp #0
-        bne batEraseState1Fog
-        jsl eraseSpriteBat1Fog
+        jsl eraseSpriteBatFog
         rts
-        
-batEraseState1Fog anop
-        jsl eraseSpriteBat2Fog
-        rts
-        
+
 eraseBatDone anop
         rts
 

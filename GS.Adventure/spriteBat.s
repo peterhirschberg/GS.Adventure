@@ -869,7 +869,7 @@ drawSpriteBat2SkipRowDraw35 anop
         _spriteFooter
         rtl
 
-eraseSpriteBat1 entry
+eraseSpriteBat entry
 
         lda >spriteX
         lsr a
@@ -1948,19 +1948,6 @@ eraseSpriteBat1SkipRowEraseDontSkipRow49 anop
 
 eraseSpriteBat1SkipRowErase49 anop
 
-        lda >rowCounter
-        clc
-        adc #1
-        sta >rowCounter
-
-
-        rtl
-
-eraseSpriteBat2 entry
-
-        lda >spriteX
-        lsr a
-        sta >spriteX
         lda >spriteY
         sta >rowCounter
 
@@ -3192,7 +3179,7 @@ eraseSpriteBat2SkipRowErase21 anop
 
         rtl
 
-eraseSpriteBat1Fog entry
+eraseSpriteBatFog entry
 
         lda >spriteX
         lsr a
@@ -4664,19 +4651,6 @@ eraseSpriteBat1Fog55b anop
 
 eraseSpriteBat1FogSkipRowErase85 anop
 
-        lda >rowCounter
-        clc
-        adc #1
-        sta >rowCounter
-
-
-        rtl
-
-eraseSpriteBat2Fog entry
-
-        lda >spriteX
-        lsr a
-        sta >spriteX
         lda >spriteY
         sta >rowCounter
 
