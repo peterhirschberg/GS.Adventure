@@ -322,10 +322,6 @@ yIsNeg anop
         sta diffY
 yIsPos anop
 
-        lda #1
-        sta >objectDirtyList,x
-        jsl eraseRoomSprites
-
         lda >objectPositionXList,x
         sta >objectPositionOldXList,x
         clc

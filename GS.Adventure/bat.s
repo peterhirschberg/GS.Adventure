@@ -306,16 +306,8 @@ notTouchingSeekObject anop
 
         ldx #OBJECT_BAT
 
-;        lda >objectPositionXList,x
-;        sta >objectPositionOldXList,x
-
-;        lda >objectPositionYList,x
-;        sta >objectPositionOldYList,x
-
         lda #1
         sta >objectDirtyList,x
-
-        jsl eraseRoomSprites
 
         rts
 
