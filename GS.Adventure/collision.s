@@ -252,7 +252,19 @@ hitCarriedObjectShort anop
 
 pickUpObject anop
 
+; if the object is already being carried by the bat we can't pick it up
+
+        ldx #OBJECT_BAT
+        lda >objectLinkedObjectList,x
+        cmp playerHitObject
+        bne notCarriedByBat
+        rts
+
+notCarriedByBat anop
+
 ; Pick up the object!
+
+        ldx #OBJECT_PLAYER
 
         lda playerHitObject
         sta >objectLinkedObjectList,x
@@ -309,6 +321,10 @@ yIsNeg anop
         inc a
         sta diffY
 yIsPos anop
+
+        lda #1
+        sta >objectDirtyList,x
+        jsl eraseRoomSprites
 
         lda >objectPositionXList,x
         sta >objectPositionOldXList,x

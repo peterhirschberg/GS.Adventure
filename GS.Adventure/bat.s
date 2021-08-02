@@ -297,6 +297,30 @@ notPlayerCarriedObject anop
 
 notTouchingSeekObject anop
 
+; see if the player is carrying the bat
+
+        ldx #OBJECT_PLAYER
+        lda >objectLinkedObjectList,x
+        cmp #OBJECT_BAT
+        bne batIsFree
+
+        ldx #OBJECT_BAT
+
+;        lda >objectPositionXList,x
+;        sta >objectPositionOldXList,x
+
+;        lda >objectPositionYList,x
+;        sta >objectPositionOldYList,x
+
+        lda #1
+        sta >objectDirtyList,x
+
+        jsl eraseRoomSprites
+
+        rts
+
+batIsFree anop
+
         ldx #OBJECT_BAT
 
         lda >objectPositionXList,x
@@ -304,14 +328,6 @@ notTouchingSeekObject anop
 
         lda >objectPositionYList,x
         sta >objectPositionOldYList,x
-
-; see if the player is carrying the bat
-        ldx #OBJECT_PLAYER
-        lda >objectLinkedObjectList,x
-        cmp #OBJECT_BAT
-        beq batDone
-
-        ldx #OBJECT_BAT
 
         lda >objectPositionXList,x
         clc
@@ -322,10 +338,6 @@ notTouchingSeekObject anop
         clc
         adc batMovementY
         sta >objectPositionYList,x
-
-batDone anop
-
-        ldx #OBJECT_BAT
 
         lda #1
         sta >objectDirtyList,x
@@ -365,6 +377,8 @@ savex dc i2'0'
 batData data
 
 batFedUpTimer dc i2'0'
+
+batWasFreed dc i2'0'
     
 ; bat object matrix
 batMatrix anop
