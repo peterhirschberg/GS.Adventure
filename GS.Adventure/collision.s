@@ -170,6 +170,11 @@ collisionCheckPlayerWithObjects entry
         cmp #1
         beq hitObjectShortJump
 
+        ldx #OBJECT_BAT
+        jsr collisionCheckPlayerWithObject
+        cmp #1
+        beq hitObjectShortJump
+
         bra continue
 
 hitObjectShortJump anop

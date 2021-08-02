@@ -304,7 +304,15 @@ notTouchingSeekObject anop
 
         lda >objectPositionYList,x
         sta >objectPositionOldYList,x
-        
+
+; see if the player is carrying the bat
+        ldx #OBJECT_PLAYER
+        lda >objectLinkedObjectList,x
+        cmp #OBJECT_BAT
+        beq batDone
+
+        ldx #OBJECT_BAT
+
         lda >objectPositionXList,x
         clc
         adc batMovementX
@@ -315,9 +323,13 @@ notTouchingSeekObject anop
         adc batMovementY
         sta >objectPositionYList,x
 
+batDone anop
+
+        ldx #OBJECT_BAT
+
         lda #1
         sta >objectDirtyList,x
-        
+
         rts
         
 
