@@ -29,8 +29,8 @@ runBat entry
 ; -------------------------------
 ; Handle flapping
 
-        inc flapTimer
-        lda flapTimer
+        inc batFlapTimer
+        lda batFlapTimer
         cmp #4
         beq resetFlapTimer
         bra batContinue
@@ -38,7 +38,7 @@ runBat entry
 resetFlapTimer anop
 
         lda #0
-        sta flapTimer
+        sta batFlapTimer
 
         lda >objectStateList,x
         cmp #1
@@ -335,12 +335,12 @@ batIsFree anop
         sta >objectDirtyList,x
 
         rts
-        
+
+
+batFlapTimer dc i2'0'
 
 batMovementX dc i2'0'
 batMovementY dc i2'4'
-
-flapTimer dc i2'0'
 
 batX dc i2'0'
 batY dc i2'0'
@@ -370,8 +370,6 @@ batData data
 
 batFedUpTimer dc i2'0'
 
-batWasFreed dc i2'0'
-    
 ; bat object matrix
 batMatrix anop
         dc i2'OBJECT_CHALISE'          ; Chalise

@@ -839,5 +839,4 @@ spriteY dc i2'0'
 
 spriteColor dc i2'0'
 
-    
         end

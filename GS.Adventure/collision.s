@@ -17,6 +17,7 @@ collision start
         using roomsData
         using screenData
         using objectData
+        using batData
         using collisionData
 
 
