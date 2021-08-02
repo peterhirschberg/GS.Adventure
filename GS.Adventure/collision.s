@@ -280,6 +280,7 @@ notCarriedByBat anop
         
         lda #1
         sta >objectDirtyList,x
+        sta >objectLinkedList,x
         
         jsl eraseRoomSprites
 

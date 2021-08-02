@@ -275,9 +275,27 @@ seekDone anop
 
 notPlayerCarriedObject anop
 
-; have the bat pick up the object
+; first drop any existing objects
 
         ldx #OBJECT_BAT
+        lda >objectLinkedObjectList,x
+        cmp #OBJECT_NONE
+        beq pickUp
+
+        lda >objectLinkedObjectList,x
+        tax
+        lda #0
+        sta >objectLinkedList,x
+
+        ldx #OBJECT_BAT
+        lda #OBJECT_NONE
+        sta >objectLinkedObjectList,x
+
+pickUp anop
+
+        ldx #OBJECT_BAT
+
+; have the bat pick up the object
 
         lda seekObject
         sta >objectLinkedObjectList,x
@@ -287,6 +305,10 @@ notPlayerCarriedObject anop
 
         lda #22
         sta >objectLinkedObjectYList,x
+
+        lda #1
+        ldx seekObject
+        sta >objectLinkedList,x
 
 ; reset the timer
 

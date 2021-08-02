@@ -195,6 +195,7 @@ dropCarriedObject entry
         beq dropDone
         
 ; undo any horizontal wrapping / overflow / undeflow
+
         tax
         
         lda >objectPositionXList,x
@@ -218,6 +219,12 @@ overflowRight anop
         
 ; drop it
 dropIt anop
+        ldx #OBJECT_PLAYER
+        lda >objectLinkedObjectList,x
+        tax
+        lda #0
+        sta >objectLinkedList,x
+
         ldx #OBJECT_PLAYER
         lda #OBJECT_NONE
         sta >objectLinkedObjectList,x

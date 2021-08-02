@@ -113,6 +113,7 @@ initDone anop
 
         lda #$00
         sta >objectStateList,x
+        sta >objectLinkedList,x
 
         rts
 
@@ -199,6 +200,8 @@ moveLinkedObject entry
         sta parentObjectX
         lda >objectPositionYList,x
         sta parentObjectY
+        lda >objectRoomList,x
+        sta parentObjectRoom
 
         lda >objectLinkedObjectList,x
         sta linkedObject
@@ -219,10 +222,14 @@ moveLinkedObject entry
         adc linkedObjectY
         sta >objectPositionYList,x
 
+        lda parentObjectRoom
+        sta >objectRoomList,x
+
         lda #1
         sta >objectDirtyList,x
 
         rts
+
 
 getHeightForObjectState entry
 
@@ -427,6 +434,7 @@ getBridgeWidth anop
 
 parentObjectX dc i2'0'
 parentObjectY dc i2'0'
+parentObjectRoom dc i2'0'
 linkedObject dc i2'0'
 linkedObjectX dc i2'0'
 linkedObjectY dc i2'0'
@@ -717,6 +725,26 @@ objectLinkableList anop
         dc i2'$1' ; dot
         dc i2'$1' ; chalise
         dc i2'$1' ; magnet
+        dc i2'$0' ; player
+
+objectLinkedList anop
+        dc i2'$0' ; port 1
+        dc i2'$0' ; port 2
+        dc i2'$0' ; port 3
+        dc i2'$0' ; author
+        dc i2'$0' ; numbers
+        dc i2'$0' ; red dragon
+        dc i2'$0' ; yellow dragon
+        dc i2'$0' ; green dragon
+        dc i2'$0' ; sword
+        dc i2'$0' ; bridge
+        dc i2'$0' ; yellow key
+        dc i2'$0' ; white key
+        dc i2'$0' ; black key
+        dc i2'$0' ; bat
+        dc i2'$0' ; dot
+        dc i2'$0' ; chalise
+        dc i2'$0' ; magnet
         dc i2'$0' ; player
 
 objectDirtyList anop

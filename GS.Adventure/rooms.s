@@ -730,18 +730,11 @@ wrapDone anop
 
 wrapObjectRoom entry
 
-; don't wrap the object carried by the player
-
         stx wrapObject
 
-        stx savex
-        ldx #OBJECT_PLAYER
-        lda >objectLinkedObjectList,x
-        sta playerCarriedObject
-        ldx savex
-
-        lda wrapObject
-        cmp playerCarriedObject
+; don't wrap linked objects
+        lda >objectLinkedList,x
+        cmp #1
         bne doWrapObjectRoom
         rts
 
