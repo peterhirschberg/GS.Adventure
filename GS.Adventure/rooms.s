@@ -744,6 +744,11 @@ wrapObjectRoom entry
 
 doWrapObjectRoom anop
 
+        lda >objectPositionXList,x
+        sta objectOldXPos
+        lda >objectPositionYList,x
+        sta objectOldYPos
+
         lda #6
         cmp >objectPositionYList,x
         bcs wrapToRoomUp2
@@ -796,6 +801,11 @@ wrapToRoomUp2 anop
         lda #1
         sta >objectDirtyList,x
 
+        lda objectOldXPos
+        sta >objectPositionOldXList,x
+        lda objectOldYPos
+        sta >objectPositionOldYList,x
+
         jsl eraseRoomSprites
 
         brl wrapDone2
@@ -840,6 +850,11 @@ notInCastle2 anop
         lda #1
         sta >objectDirtyList,x
 
+        lda objectOldXPos
+        sta >objectPositionOldXList,x
+        lda objectOldYPos
+        sta >objectPositionOldYList,x
+
         jsl eraseRoomSprites
 
         brl wrapDone2
@@ -866,6 +881,11 @@ wrapToRoomLeft2 anop
         lda #1
         sta >objectDirtyList,x
 
+        lda objectOldXPos
+        sta >objectPositionOldXList,x
+        lda objectOldYPos
+        sta >objectPositionOldYList,x
+
         jsl eraseRoomSprites
 
         brl wrapDone2
@@ -891,6 +911,11 @@ wrapToRoomRight2 anop
 
         lda #1
         sta >objectDirtyList,x
+
+        lda objectOldXPos
+        sta >objectPositionOldXList,x
+        lda objectOldYPos
+        sta >objectPositionOldYList,x
 
         jsl eraseRoomSprites
 
@@ -1276,6 +1301,9 @@ testRoom dc i2'0'
 
 playerCarriedObject dc i2'0'
 wrapObject dc i2'0'
+
+objectOldXPos dc i2'0'
+objectOldYPos dc i2'0'
 
 savex dc i2'0'
 

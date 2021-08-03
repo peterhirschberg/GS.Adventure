@@ -603,12 +603,18 @@ eraseSword entry
         tax
 
         lda >objectRoomList,x
+        cmp >objectOldRoomList,x
+        bne doEraseSword
+
+        lda >objectRoomList,x
         cmp >currentRoom
         bne eraseSwordDone
 
         lda >objectDirtyList,x
         cmp #1
         bne eraseSwordDone
+
+doEraseSword anop
 
         lda >objectPositionOldXList,x
         bmi eraseSwordDone
@@ -632,12 +638,18 @@ eraseBat entry
         tax
 
         lda >objectRoomList,x
+        cmp >objectOldRoomList,x
+        bne doEraseBat
+
+        lda >objectRoomList,x
         cmp >currentRoom
         bne eraseBatDone
         
         lda >objectDirtyList,x
         cmp #1
         bne eraseBatDone
+
+doEraseBat anop
 
         lda >objectPositionOldXList,x
         bmi eraseBatDone
