@@ -594,6 +594,7 @@ wrapToRoomUp anop
         
 ; draw the new room
         jsr zeroSurroundGrid
+        jsr eraseSurroundPixelBuffer
         jsr drawRoom
 
 ; wrap the player
@@ -662,6 +663,7 @@ notInCastle anop
 
 ; draw the new room
         jsr zeroSurroundGrid
+        jsr eraseSurroundPixelBuffer
         jsr drawRoom
 
 ; wrap the player
@@ -688,6 +690,7 @@ wrapToRoomLeft anop
 
 ; draw the new room
         jsr zeroSurroundGrid
+        jsr eraseSurroundPixelBuffer
         jsr drawRoom
 
 ; wrap the player
@@ -714,6 +717,7 @@ wrapToRoomRight anop
 
 ; draw the new room
         jsr zeroSurroundGrid
+        jsr eraseSurroundPixelBuffer
         jsr drawRoom
 
 ; wrap the player
@@ -1030,6 +1034,7 @@ enterYellowCastle entry
 
 ; draw the new room
         jsr zeroSurroundGrid
+        jsr eraseSurroundPixelBuffer
         jsr drawRoom
 
 yellowCastleDone anop
@@ -1041,6 +1046,7 @@ chaliseInYellowCastle anop
         
 ; draw the new room
         jsr zeroSurroundGrid
+        jsr eraseSurroundPixelBuffer
         jsr drawRoom
         
         rtl
@@ -1080,6 +1086,7 @@ enterWhiteCastle entry
 
 ; draw the new room
         jsr zeroSurroundGrid
+        jsr eraseSurroundPixelBuffer
         jsr drawRoom
 
 whiteCastleDone anop
@@ -1120,6 +1127,7 @@ enterBlackCastle entry
 
 ; draw the new room
         jsr zeroSurroundGrid
+        jsr eraseSurroundPixelBuffer
         jsr drawRoom
 
 blackCastleDone anop
@@ -1183,6 +1191,7 @@ finishLeavingCastle entry
 
 ; draw the new room
         jsr zeroSurroundGrid
+        jsr eraseSurroundPixelBuffer
         jsr drawRoom
 
         rts
