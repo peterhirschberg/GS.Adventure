@@ -21,6 +21,8 @@ bat start
 
 runBat entry
 
+        inc batFedUpTimer
+
         ldx #OBJECT_BAT
 
         lda >objectStateList,x
@@ -56,28 +58,10 @@ flapResetToZero anop
 ; -------------------------------
 batContinue anop
 
-        lda >objectLinkedObjectList,x
-        cmp #OBJECT_NONE
-        bne carryingSomething
-        bra checkFedUp
-
-carryingSomething anop
-
-        lda #$ff
-        cmp batFedUpTimer
-        bcs batNotFedUp
-        bra checkFedUp
-
-batNotFedUp anop
-
-        inc batFedUpTimer
-
-checkFedUp anop
-
         lda batFedUpTimer
-        cmp #$ff
+        cmp #$a0
         bcs batFedUp
-        brl seekDone
+        brl notTouchingSeekObject
 
 batFedUp anop
 
@@ -138,14 +122,14 @@ seekLoop anop
         lda batMatrix,y
         cmp #OBJECT_NONE
         bne foundSeekObject
-        brl seekDone
+        brl notTouchingSeekObject
 
 foundSeekObject anop
         
         sta seekObject
-        
+
         tax
-        
+
         lda >objectRoomList,x
         sta seekRoom
         
@@ -153,20 +137,20 @@ foundSeekObject anop
         cmp seekRoom
         bne nextObject
 
+        ldx #OBJECT_BAT
         lda >objectLinkedObjectList,x
         cmp seekObject
         beq nextObject
 
 ; get the seek object's extents
 
+        ldx seekObject
+
         lda >objectPositionXList,x
         sta seekLeft
 
         lda >objectPositionYList,x
         sta seekTop
-;        sec
-;        sbc #22
-;        sta seekTop
 
         ldx seekObject
 
@@ -274,24 +258,6 @@ seekDone anop
         sta >objectLinkedObjectList,x
 
 notPlayerCarriedObject anop
-
-; first drop any existing objects
-
-        ldx #OBJECT_BAT
-        lda >objectLinkedObjectList,x
-        cmp #OBJECT_NONE
-        beq pickUp
-
-        lda >objectLinkedObjectList,x
-        tax
-        lda #0
-        sta >objectLinkedList,x
-
-        ldx #OBJECT_BAT
-        lda #OBJECT_NONE
-        sta >objectLinkedObjectList,x
-
-pickUp anop
 
         ldx #OBJECT_BAT
 

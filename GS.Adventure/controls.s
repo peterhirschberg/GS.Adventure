@@ -15,8 +15,9 @@ controls start
         using globalData
         using controlsData
         using gameData
+        using objectData
 
-    using objectData
+    using batData
 
 
 checkControls entry
@@ -123,8 +124,7 @@ onQuit anop
 ;        jsl signalQuit
 
 
-        ldx #OBJECT_BRIDGE
-        lda >objectPositionXList,x
+        lda batFedUpTimer
         tax
         brk
         
