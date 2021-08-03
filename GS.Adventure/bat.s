@@ -226,8 +226,8 @@ seekDone anop
         sta testRect1Top
         lda batBottom
         sta testRect1Bottom
-        lda batLeft
-        sta testRect1Left
+        lda batRight
+        sta testRect1Right
 
         lda seekLeft
         sta testRect2Left
@@ -235,8 +235,8 @@ seekDone anop
         sta testRect2Top
         lda seekBottom
         sta testRect2Bottom
-        lda seekLeft
-        sta testRect2Left
+        lda seekRight
+        sta testRect2Right
 
         jsr hitTestRects
         cmp #1
