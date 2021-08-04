@@ -45,13 +45,13 @@
         macro
         getSurroundGridRowOffset
         bmi getSurroundGridRowOffset_IsMinus_&SYSCNT
-        cmp #46 ; should be 48 but corrupts memory
+        cmp #48 ; should be 48 but corrupts memory
         bcs getSurroundGridRowOffset_IsOver_&SYSCNT
         tax
         lda surroundGridRowOffsets,x
         bra getSurroundGridRowOffset_Done_&SYSCNT
 getSurroundGridRowOffset_IsOver_&SYSCNT anop
-        cmp #46 ; should be 48 but corrupts memory
+        cmp #48 ; should be 48 but corrupts memory
         tax
         lda surroundGridRowOffsets,x
         bra getSurroundGridRowOffset_Done_&SYSCNT

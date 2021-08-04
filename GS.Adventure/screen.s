@@ -693,6 +693,17 @@ drawSurroundVLoop2 anop
         clc
         adc rectY
 
+; bounds check
+        bmi drawBoundsFailed
+        cmp #199
+        bcs drawBoundsFailed
+        bra drawContinue
+
+drawBoundsFailed anop
+        brl nextRow4
+
+drawContinue anop
+
         asl a
         tax
         lda screenRowOffsets,x
@@ -747,11 +758,16 @@ eraseSurroundVLoop2 anop
         clc
         adc rectY
 
-; TODO FIX ME
 ; bounds check
-;        bmi nextRow5
-;        cmp #199
-;        bcs nextRow5
+        bmi eraseBoundsFailed
+        cmp #199
+        bcs eraseBoundsFailed
+        bra eraseContinue
+
+eraseBoundsFailed anop
+        brl nextRow5
+
+eraseContinue anop
 
         asl a
         tax

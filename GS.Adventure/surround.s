@@ -700,8 +700,7 @@ renderSurroundHLoop anop
 
         lda rowCounter
         asl a
-        tax
-        lda surroundGridRowOffsets,x
+        getSurroundGridRowOffset
         sta rowAddress
 
         lda colCounter
@@ -753,7 +752,7 @@ renderSurroundGridRowDone anop
         lda rowCounter
         cmp #13
         beq renderSurroundDone
-        bra renderSurroundVLoop
+        brl renderSurroundVLoop
 
 renderSurroundDone anop
 
@@ -1224,8 +1223,7 @@ eraseSurroundHLoop anop
 
         lda rowCounter
         asl a
-        tax
-        lda surroundGridRowOffsets,x
+        getSurroundGridRowOffset
         sta rowAddress
 
         lda colCounter
@@ -1262,8 +1260,7 @@ eraseSurroundHLoop anop
 
         lda rowCounter
         asl a
-        tax
-        lda surroundGridRowOffsets,x
+        getSurroundGridRowOffset
         sta rowAddress
 
         lda colCounter
@@ -1280,7 +1277,7 @@ eraseSurroundSkipBlock anop
         lda colCounter
         cmp #20
         beq eraseSurroundGridRowDone
-        bra eraseSurroundHLoop
+        brl eraseSurroundHLoop
 
 eraseSurroundGridRowDone anop
         stz colCounter
@@ -1301,8 +1298,7 @@ surroundRedrawPlayerHitBlock entry
         lda playerHitY
         asl a
         asl a
-        tax
-        lda surroundGridRowOffsets,x
+        getSurroundGridRowOffset
         sta rowAddress
         lda playerHitX
         asl a
@@ -1328,8 +1324,7 @@ zeroSurroundHLoop anop
 
         lda rowCounter
         asl a
-        tax
-        lda surroundGridRowOffsets,x
+        getSurroundGridRowOffset
         sta rowAddress
         lda colCounter
         asl a
@@ -1409,6 +1404,8 @@ surroundGridRowOffsets anop
         dc i2'672'
         dc i2'704'
         dc i2'736'
+        dc i2'768'
+        dc i2'768'
         dc i2'768'
 
 
