@@ -244,8 +244,8 @@ stopDragonMovement entry
         beq stopGreen
         cmp #OBJECT_YELLOWDRAGON
         beq stopYellow
-;        cmp #OBJECT_REDDRAGON
-;        beq stopRed
+        cmp #OBJECT_REDDRAGON
+        beq stopRed
         rts
 
 stopGreen anop
@@ -291,8 +291,8 @@ startDragonRoarTimer entry
         beq startRoarTimerGreen
         cmp #OBJECT_YELLOWDRAGON
         beq startRoarTimerYellow
-;        cmp #OBJECT_REDDRAGON
-;        beq startRoarTimerRed
+        cmp #OBJECT_REDDRAGON
+        beq startRoarTimerRed
         rts
 
 ; set the timer based on the game level and difficulty setting
@@ -318,8 +318,8 @@ runRoarState entry
         beq runRoarTimerGreen
         cmp #OBJECT_YELLOWDRAGON
         beq runRoarTimerYellow
-;        cmp #OBJECT_REDDRAGON
-;        beq runRoarTimerRed
+        cmp #OBJECT_REDDRAGON
+        beq runRoarTimerRed
         rts
 
 runRoarTimerGreen anop
@@ -335,7 +335,7 @@ greenTimerExpired anop
 runRoarTimerYellow anop
         dec yellowDragonTimer
         lda yellowDragonTimer
-        lda yellowDragonTimer
+        bmi yellowTimerExpired
         rts
 yellowTimerExpired anop
         lda #0
@@ -361,8 +361,8 @@ dragonMove entry
         beq moveGreen
         cmp #OBJECT_YELLOWDRAGON
         beq moveYellow
-;        cmp #OBJECT_REDDRAGON
-;        beq moveRed
+        cmp #OBJECT_REDDRAGON
+        beq moveRed
         rts
 
 moveGreen anop
@@ -427,6 +427,33 @@ moveYellow anop
         rts
 
 moveRed anop
+        jsr redDragonGetMovementX
+        sta redDragonMoveX
+        jsr redDragonGetMovementY
+        sta redDragonMoveY
+
+        lda >objectPositionXList,x
+        sta >objectPositionOldXList,x
+
+        lda >objectPositionYList,x
+        sta >objectPositionOldYList,x
+
+        lda >objectRoomList,x
+        sta >objectOldRoomList,x
+
+        lda >objectPositionXList,x
+        clc
+        adc redDragonMoveX
+        sta >objectPositionXList,x
+
+        lda >objectPositionYList,x
+        clc
+        adc redDragonMoveY
+        sta >objectPositionYList,x
+
+        lda #1
+        sta >objectDirtyList,x
+
         rts
 
 
@@ -639,6 +666,110 @@ greenFleeYDone anop
         lda #0
         rts
 
+; -----------------------------------
+
+redDragonGetMovementX entry
+
+        lda seekDir
+        cmp #1
+        beq redGetMovementXSeek
+        cmp #-1
+        beq redGetMovementXFlee
+        lda redDragonMoveX
+        rts
+
+redGetMovementXSeek anop
+
+        ldx #OBJECT_REDDRAGON
+
+        lda seekX
+        cmp >objectPositionXList,x
+        beq redSeekXDone
+        bcs redMoveXSeek
+
+        lda #-3
+        rts
+
+redMoveXSeek anop
+        lda #3
+        rts
+
+redSeekXDone anop
+        lda #0
+        rts
+
+redGetMovementXFlee anop
+
+        ldx #OBJECT_REDDRAGON
+
+        lda seekX
+        cmp >objectPositionXList,x
+        beq redFleeXDone
+        bcs redMoveXFlee
+
+        lda #3
+        rts
+
+redoveXFlee anop
+        lda #-3
+        rts
+
+redFleeXDone anop
+        lda #0
+        rts
+
+
+
+redDragonGetMovementY entry
+
+        lda seekDir
+        cmp #1
+        beq redGetMovementYSeek
+        cmp #-1
+        beq redGetMovementYFlee
+        lda redDragonMoveY
+        rts
+
+redGetMovementYSeek anop
+
+        ldx #OBJECT_REDDRAGON
+
+        lda seekY
+        cmp >objectPositionYList,x
+        beq redSeekYDone
+        bcs redMoveYSeek
+
+        lda #-3
+        rts
+
+redMoveYSeek anop
+        lda #3
+        rts
+
+redSeekYDone anop
+        lda #0
+        rts
+
+redGetMovementYFlee anop
+
+        ldx #OBJECT_REDDRAGON
+
+        lda seekY
+        cmp >objectPositionYList,x
+        beq redFleeYDone
+        bcs redMoveYFlee
+
+        lda #3
+        rts
+
+redMoveYFlee anop
+        lda #-3
+        rts
+
+redFleeYDone anop
+        lda #0
+        rts
+
 
 
 dragonSeekFlee entry
@@ -669,7 +800,7 @@ getMatrixYellow anop
         rts
 
 getMatrixRed anop
-;        jsr getRedDragonSeekFlee
+        jsr getRedDragonSeekFlee
         rts
 
 
@@ -946,6 +1077,138 @@ yellowNext anop
         iny
         jmp yellowLoop
 
+
+; ----------------------------------
+
+
+getRedDragonSeekFlee entry
+
+        lda gameDifficultyRight
+        asl a
+        tay
+
+redLoop anop
+
+        lda redDragonFleeList,y
+        cmp #OBJECT_NONE
+        bne redContinue
+        rts
+
+redContinue anop
+
+        sta fleeObject
+
+        lda redDragonSeekList,y
+        sta seekObject
+
+        lda fleeObject
+        cmp #OBJECT_REDDRAGON
+        beq redSeek
+
+; fleeing
+
+        stx savex
+        ldx fleeObject
+        lda >objectRoomList,x
+        sta targetRoom
+        lda >objectPositionXList,x
+        sta targetX
+        lda >objectPositionYList,x
+        sta targetY
+        ldx savex
+
+        lda >objectRoomList,x
+        cmp targetRoom
+        bne redNextShort
+        bra redFlee
+
+redNextShort anop
+        brl redNext
+
+redFlee anop
+
+
+        stx savex
+        ldx fleeObject
+        lda >objectRoomList,x
+        sta targetRoom
+        lda >objectPositionXList,x
+        sta targetX
+        lda >objectPositionYList,x
+        sta targetY
+        ldx savex
+
+        lda >objectRoomList,x
+        cmp targetRoom
+        bne redNext
+
+        lda #-1
+        sta seekDir
+        lda targetX
+        sta seekX
+        lda targetY
+        sta seekY
+
+        rts
+
+; seeking
+
+redSeek anop
+
+        lda seekObject
+        cmp #OBJECT_REDDRAGON
+        beq redNext
+        cmp #OBJECT_PLAYER
+        bne redSeekObject
+
+; seeking the player
+
+        lda >objectRoomList,x
+        cmp currentRoom
+        bne redSeekObject
+
+        lda #1
+        sta seekDir
+
+        lda playerX
+        sta seekX
+        lda playerY
+        sta seekY
+
+        rts
+
+; seeking an object
+
+redSeekObject anop
+
+        stx savex
+        ldx seekObject
+        lda >objectRoomList,x
+        sta targetRoom
+        lda >objectPositionXList,x
+        sta targetX
+        lda >objectPositionYList,x
+        sta targetY
+        ldx savex
+
+        lda >objectRoomList,x
+        cmp targetRoom
+        bne redNext
+
+        lda #1
+        sta seekDir
+        lda targetX
+        sta seekX
+        lda targetY
+        sta seekY
+
+        rts
+
+redNext anop
+
+        iny
+        iny
+        jmp redLoop
 
 
 setDragonState entry
