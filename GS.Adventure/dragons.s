@@ -362,8 +362,11 @@ dragonMove entry
         cmp #OBJECT_YELLOWDRAGON
         beq moveYellow
         cmp #OBJECT_REDDRAGON
-        beq moveRed
+        beq moveRedShort
         rts
+
+moveRedShort anop
+        brl moveRed
 
 moveGreen anop
         jsr greenDragonGetMovementX
@@ -707,11 +710,11 @@ redGetMovementXFlee anop
         beq redFleeXDone
         bcs redMoveXFlee
 
-        lda #3
+        lda #4
         rts
 
-redoveXFlee anop
-        lda #-3
+redMoveXFlee anop
+        lda #-4
         rts
 
 redFleeXDone anop
@@ -739,11 +742,11 @@ redGetMovementYSeek anop
         beq redSeekYDone
         bcs redMoveYSeek
 
-        lda #-3
+        lda #-4
         rts
 
 redMoveYSeek anop
-        lda #3
+        lda #4
         rts
 
 redSeekYDone anop
@@ -759,11 +762,11 @@ redGetMovementYFlee anop
         beq redFleeYDone
         bcs redMoveYFlee
 
-        lda #3
+        lda #4
         rts
 
 redMoveYFlee anop
-        lda #-3
+        lda #-4
         rts
 
 redFleeYDone anop

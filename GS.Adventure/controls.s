@@ -17,7 +17,7 @@ controls start
         using gameData
         using objectData
 
-    using batData
+    using roomsData
 
 
 checkControls entry
@@ -124,7 +124,7 @@ onQuit anop
 ;        jsl signalQuit
 
 
-        lda batFedUpTimer
+        lda currentRoom
         tax
         brk
         
