@@ -48,8 +48,7 @@ runSurround entry
         lda surroundY
         asl a
         asl a
-        tax
-        lda surroundGridRowOffsets,x
+        getSurroundGridRowOffset
         sta rowAddress
         lda surroundX
         asl a
@@ -73,8 +72,7 @@ runSurround entry
         adc #1
         asl a
         asl a
-        tax
-        lda surroundGridRowOffsets,x
+        getSurroundGridRowOffset
         sta rowAddress
         lda surroundX
         asl a
@@ -98,8 +96,7 @@ runSurround entry
         adc #2
         asl a
         asl a
-        tax
-        lda surroundGridRowOffsets,x
+        getSurroundGridRowOffset
         sta rowAddress
         lda surroundX
         asl a
@@ -123,8 +120,7 @@ runSurround entry
         adc #-1
         asl a
         asl a
-        tax
-        lda surroundGridRowOffsets,x
+        getSurroundGridRowOffset
         sta rowAddress
         lda surroundX
         asl a
@@ -148,8 +144,7 @@ runSurround entry
         adc #-2
         asl a
         asl a
-        tax
-        lda surroundGridRowOffsets,x
+        getSurroundGridRowOffset
         sta rowAddress
         lda surroundX
         asl a
@@ -172,8 +167,7 @@ runSurround entry
         lda surroundY
         asl a
         asl a
-        tax
-        lda surroundGridRowOffsets,x
+        getSurroundGridRowOffset
         sta rowAddress
         lda surroundX
         sec
@@ -200,8 +194,7 @@ runSurround entry
         adc #1
         asl a
         asl a
-        tax
-        lda surroundGridRowOffsets,x
+        getSurroundGridRowOffset
         sta rowAddress
         lda surroundX
         sec
@@ -227,8 +220,7 @@ runSurround entry
         adc #2
         asl a
         asl a
-        tax
-        lda surroundGridRowOffsets,x
+        getSurroundGridRowOffset
         sta rowAddress
         lda surroundX
         sec
@@ -254,8 +246,7 @@ runSurround entry
         adc #-1
         asl a
         asl a
-        tax
-        lda surroundGridRowOffsets,x
+        getSurroundGridRowOffset
         sta rowAddress
         lda surroundX
         sec
@@ -281,8 +272,7 @@ runSurround entry
         adc #-2
         asl a
         asl a
-        tax
-        lda surroundGridRowOffsets,x
+        getSurroundGridRowOffset
         sta rowAddress
         lda surroundX
         sec
@@ -307,8 +297,7 @@ runSurround entry
         lda surroundY
         asl a
         asl a
-        tax
-        lda surroundGridRowOffsets,x
+        getSurroundGridRowOffset
         sta rowAddress
         lda surroundX
         sec
@@ -335,8 +324,7 @@ runSurround entry
         adc #1
         asl a
         asl a
-        tax
-        lda surroundGridRowOffsets,x
+        getSurroundGridRowOffset
         sta rowAddress
         lda surroundX
         sec
@@ -362,8 +350,7 @@ runSurround entry
         adc #2
         asl a
         asl a
-        tax
-        lda surroundGridRowOffsets,x
+        getSurroundGridRowOffset
         sta rowAddress
         lda surroundX
         sec
@@ -389,8 +376,7 @@ runSurround entry
         adc #-1
         asl a
         asl a
-        tax
-        lda surroundGridRowOffsets,x
+        getSurroundGridRowOffset
         sta rowAddress
         lda surroundX
         sec
@@ -416,8 +402,7 @@ runSurround entry
         adc #-2
         asl a
         asl a
-        tax
-        lda surroundGridRowOffsets,x
+        getSurroundGridRowOffset
         sta rowAddress
         lda surroundX
         sec
@@ -444,8 +429,7 @@ runSurround entry
         lda surroundY
         asl a
         asl a
-        tax
-        lda surroundGridRowOffsets,x
+        getSurroundGridRowOffset
         sta rowAddress
         lda surroundX
         clc
@@ -471,8 +455,7 @@ runSurround entry
         adc #1
         asl a
         asl a
-        tax
-        lda surroundGridRowOffsets,x
+        getSurroundGridRowOffset
         sta rowAddress
         lda surroundX
         clc
@@ -498,8 +481,7 @@ runSurround entry
         adc #2
         asl a
         asl a
-        tax
-        lda surroundGridRowOffsets,x
+        getSurroundGridRowOffset
         sta rowAddress
         lda surroundX
         clc
@@ -525,8 +507,7 @@ runSurround entry
         adc #-1
         asl a
         asl a
-        tax
-        lda surroundGridRowOffsets,x
+        getSurroundGridRowOffset
         sta rowAddress
         lda surroundX
         clc
@@ -552,8 +533,7 @@ runSurround entry
         adc #-2
         asl a
         asl a
-        tax
-        lda surroundGridRowOffsets,x
+        getSurroundGridRowOffset
         sta rowAddress
         lda surroundX
         clc
@@ -578,8 +558,7 @@ runSurround entry
         lda surroundY
         asl a
         asl a
-        tax
-        lda surroundGridRowOffsets,x
+        getSurroundGridRowOffset
         sta rowAddress
         lda surroundX
         clc
@@ -606,8 +585,7 @@ runSurround entry
         adc #1
         asl a
         asl a
-        tax
-        lda surroundGridRowOffsets,x
+        getSurroundGridRowOffset
         sta rowAddress
         lda surroundX
         clc
@@ -633,8 +611,7 @@ runSurround entry
         adc #2
         asl a
         asl a
-        tax
-        lda surroundGridRowOffsets,x
+        getSurroundGridRowOffset
         sta rowAddress
         lda surroundX
         clc
@@ -660,8 +637,7 @@ runSurround entry
         adc #-1
         asl a
         asl a
-        tax
-        lda surroundGridRowOffsets,x
+        getSurroundGridRowOffset
         sta rowAddress
         lda surroundX
         clc
@@ -687,8 +663,7 @@ runSurround entry
         adc #-2
         asl a
         asl a
-        tax
-        lda surroundGridRowOffsets,x
+        getSurroundGridRowOffset
         sta rowAddress
         lda surroundX
         clc
@@ -717,6 +692,7 @@ renderSurroundGrid entry
         sta rowCounter
 
 renderSurroundVLoop anop
+
         lda #0
         sta colCounter
 
@@ -743,17 +719,11 @@ renderSurroundHLoop anop
 ; render this block
 
         lda colCounter
-        asl a
-        asl a
-        asl a
-        asl a
+        surroundGridToPixel
         sta rectX
 
         lda rowCounter
-        asl a
-        asl a
-        asl a
-        asl a
+        surroundGridToPixel
         sta rectY
 
         lda #12
@@ -805,11 +775,7 @@ setStaleSurroundGrid entry
         lda surroundOldY
         asl a
         asl a
-        bmi skip1
-        cmp #24
-        bcs skip1
-        tax
-        lda surroundGridRowOffsets,x
+        getSurroundGridRowOffset
         sta rowAddress
         lda surroundOldX
         asl a
@@ -819,18 +785,13 @@ setStaleSurroundGrid entry
         unsetSurroundGridValue
         
 ; ----------------------
-skip1 anop
 
         lda surroundOldY
         clc
         adc #1
         asl a
         asl a
-        bmi skip2
-        cmp #24
-        bcs skip2
-        tax
-        lda surroundGridRowOffsets,x
+        getSurroundGridRowOffset
         sta rowAddress
         lda surroundOldX
         asl a
@@ -840,18 +801,13 @@ skip1 anop
         unsetSurroundGridValue
 
 ; ----------------------
-skip2 anop
 
         lda surroundOldY
         clc
         adc #2
         asl a
         asl a
-        bmi skip3
-        cmp #24
-        bcs skip3
-        tax
-        lda surroundGridRowOffsets,x
+        getSurroundGridRowOffset
         sta rowAddress
         lda surroundOldX
         asl a
@@ -861,18 +817,13 @@ skip2 anop
         unsetSurroundGridValue
 
 ; ----------------------
-skip3 anop
 
         lda surroundOldY
         clc
         adc #-1
         asl a
         asl a
-        bmi skip4
-        cmp #24
-        bcs skip4
-        tax
-        lda surroundGridRowOffsets,x
+        getSurroundGridRowOffset
         sta rowAddress
         lda surroundOldX
         asl a
@@ -882,18 +833,13 @@ skip3 anop
         unsetSurroundGridValue
         
 ; ----------------------
-skip4 anop
 
         lda surroundOldY
         clc
         adc #-2
         asl a
         asl a
-        bmi skip5
-        cmp #24
-        bcs skip5
-        tax
-        lda surroundGridRowOffsets,x
+        getSurroundGridRowOffset
         sta rowAddress
         lda surroundOldX
         asl a
@@ -904,16 +850,11 @@ skip4 anop
 
         
 ; ##################################
-skip5 anop
 
         lda surroundOldY
         asl a
         asl a
-        bmi skip6
-        cmp #24
-        bcs skip6
-        tax
-        lda surroundGridRowOffsets,x
+        getSurroundGridRowOffset
         sta rowAddress
         lda surroundOldX
         sec
@@ -926,18 +867,13 @@ skip5 anop
 
 
 ; ----------------------
-skip6 anop
 
         lda surroundOldY
         clc
         adc #1
         asl a
         asl a
-        bmi skip7
-        cmp #24
-        bcs skip7
-        tax
-        lda surroundGridRowOffsets,x
+        getSurroundGridRowOffset
         sta rowAddress
         lda surroundOldX
         sec
@@ -949,18 +885,13 @@ skip6 anop
         unsetSurroundGridValue
 
 ; ----------------------
-skip7 anop
 
         lda surroundOldY
         clc
         adc #2
         asl a
         asl a
-        bmi skip8
-        cmp #24
-        bcs skip8
-        tax
-        lda surroundGridRowOffsets,x
+        getSurroundGridRowOffset
         sta rowAddress
         lda surroundOldX
         sec
@@ -972,18 +903,13 @@ skip7 anop
         unsetSurroundGridValue
 
 ; ----------------------
-skip8 anop
 
         lda surroundOldY
         clc
         adc #-1
         asl a
         asl a
-        bmi skip9
-        cmp #24
-        bcs skip9
-        tax
-        lda surroundGridRowOffsets,x
+        getSurroundGridRowOffset
         sta rowAddress
         lda surroundOldX
         sec
@@ -995,18 +921,13 @@ skip8 anop
         unsetSurroundGridValue
         
 ; ----------------------
-skip9 anop
 
         lda surroundOldY
         clc
         adc #-2
         asl a
         asl a
-        bmi skip10
-        cmp #24
-        bcs skip10
-        tax
-        lda surroundGridRowOffsets,x
+        getSurroundGridRowOffset
         sta rowAddress
         lda surroundOldX
         sec
@@ -1019,16 +940,11 @@ skip9 anop
         
         
 ; ##################################
-skip10 anop
 
         lda surroundOldY
         asl a
         asl a
-        bmi skip11
-        cmp #24
-        bcs skip11
-        tax
-        lda surroundGridRowOffsets,x
+        getSurroundGridRowOffset
         sta rowAddress
         lda surroundOldX
         sec
@@ -1041,18 +957,13 @@ skip10 anop
 
         
 ; ----------------------
-skip11 anop
 
         lda surroundOldY
         clc
         adc #1
         asl a
         asl a
-        bmi skip12
-        cmp #24
-        bcs skip12
-        tax
-        lda surroundGridRowOffsets,x
+        getSurroundGridRowOffset
         sta rowAddress
         lda surroundOldX
         sec
@@ -1064,18 +975,13 @@ skip11 anop
         unsetSurroundGridValue
 
 ; ----------------------
-skip12 anop
 
         lda surroundOldY
         clc
         adc #2
         asl a
         asl a
-        bmi skip13
-        cmp #24
-        bcs skip13
-        tax
-        lda surroundGridRowOffsets,x
+        getSurroundGridRowOffset
         sta rowAddress
         lda surroundOldX
         sec
@@ -1087,18 +993,13 @@ skip12 anop
         unsetSurroundGridValue
 
 ; ----------------------
-skip13 anop
 
         lda surroundOldY
         clc
         adc #-1
         asl a
         asl a
-        bmi skip14
-        cmp #24
-        bcs skip14
-        tax
-        lda surroundGridRowOffsets,x
+        getSurroundGridRowOffset
         sta rowAddress
         lda surroundOldX
         sec
@@ -1110,18 +1011,13 @@ skip13 anop
         unsetSurroundGridValue
         
 ; ----------------------
-skip14 anop
 
         lda surroundOldY
         clc
         adc #-2
         asl a
         asl a
-        bmi skip15
-        cmp #24
-        bcs skip15
-        tax
-        lda surroundGridRowOffsets,x
+        getSurroundGridRowOffset
         sta rowAddress
         lda surroundOldX
         sec
@@ -1131,20 +1027,13 @@ skip14 anop
         adc rowAddress
         tax
         unsetSurroundGridValue
-        
         
 ; ##############################
-; ##############################
-skip15 anop
 
         lda surroundOldY
         asl a
         asl a
-        bmi skip16
-        cmp #24
-        bcs skip16
-        tax
-        lda surroundGridRowOffsets,x
+        getSurroundGridRowOffset
         sta rowAddress
         lda surroundOldX
         clc
@@ -1156,18 +1045,13 @@ skip15 anop
         unsetSurroundGridValue
 
 ; ----------------------
-skip16 anop
 
         lda surroundOldY
         clc
         adc #1
         asl a
         asl a
-        bmi skip17
-        cmp #24
-        bcs skip17
-        tax
-        lda surroundGridRowOffsets,x
+        getSurroundGridRowOffset
         sta rowAddress
         lda surroundOldX
         clc
@@ -1179,18 +1063,13 @@ skip16 anop
         unsetSurroundGridValue
 
 ; ----------------------
-skip17 anop
 
         lda surroundOldY
         clc
         adc #2
         asl a
         asl a
-        bmi skip18
-        cmp #24
-        bcs skip18
-        tax
-        lda surroundGridRowOffsets,x
+        getSurroundGridRowOffset
         sta rowAddress
         lda surroundOldX
         clc
@@ -1202,18 +1081,13 @@ skip17 anop
         unsetSurroundGridValue
 
 ; ----------------------
-skip18 anop
 
         lda surroundOldY
         clc
         adc #-1
         asl a
         asl a
-        bmi skip19
-        cmp #24
-        bcs skip19
-        tax
-        lda surroundGridRowOffsets,x
+        getSurroundGridRowOffset
         sta rowAddress
         lda surroundOldX
         clc
@@ -1225,18 +1099,13 @@ skip18 anop
         unsetSurroundGridValue
         
 ; ----------------------
-skip19 anop
 
         lda surroundOldY
         clc
         adc #-2
         asl a
         asl a
-        bmi skip20
-        cmp #24
-        bcs skip20
-        tax
-        lda surroundGridRowOffsets,x
+        getSurroundGridRowOffset
         sta rowAddress
         lda surroundOldX
         clc
@@ -1249,16 +1118,11 @@ skip19 anop
         
         
 ; ##################################
-skip20 anop
 
         lda surroundOldY
         asl a
         asl a
-        bmi skip21
-        cmp #24
-        bcs skip21
-        tax
-        lda surroundGridRowOffsets,x
+        getSurroundGridRowOffset
         sta rowAddress
         lda surroundOldX
         clc
@@ -1271,18 +1135,13 @@ skip20 anop
 
 
 ; ----------------------
-skip21 anop
 
         lda surroundOldY
         clc
         adc #1
         asl a
         asl a
-        bmi skip22
-        cmp #24
-        bcs skip22
-        tax
-        lda surroundGridRowOffsets,x
+        getSurroundGridRowOffset
         sta rowAddress
         lda surroundOldX
         clc
@@ -1294,18 +1153,13 @@ skip21 anop
         unsetSurroundGridValue
 
 ; ----------------------
-skip22 anop
 
         lda surroundOldY
         clc
         adc #2
         asl a
         asl a
-        bmi skip23
-        cmp #24
-        bcs skip23
-        tax
-        lda surroundGridRowOffsets,x
+        getSurroundGridRowOffset
         sta rowAddress
         lda surroundOldX
         clc
@@ -1317,18 +1171,13 @@ skip22 anop
         unsetSurroundGridValue
 
 ; ----------------------
-skip23 anop
 
         lda surroundOldY
         clc
         adc #-1
         asl a
         asl a
-        bmi skip24
-        cmp #24
-        bcs skip24
-        tax
-        lda surroundGridRowOffsets,x
+        getSurroundGridRowOffset
         sta rowAddress
         lda surroundOldX
         clc
@@ -1340,18 +1189,13 @@ skip23 anop
         unsetSurroundGridValue
         
 ; ----------------------
-skip24 anop
 
         lda surroundOldY
         clc
         adc #-2
         asl a
         asl a
-        bmi skip25
-        cmp #24
-        bcs skip25
-        tax
-        lda surroundGridRowOffsets,x
+        getSurroundGridRowOffset
         sta rowAddress
         lda surroundOldX
         clc
@@ -1361,8 +1205,6 @@ skip24 anop
         adc rowAddress
         tax
         unsetSurroundGridValue
-
-skip25 anop
 
         rts
         
@@ -1374,6 +1216,7 @@ eraseSurroundGrid entry
         sta rowCounter
 
 eraseSurroundVLoop anop
+
         lda #0
         sta colCounter
 
@@ -1451,17 +1294,17 @@ eraseSurroundDone anop
 
         rts
         
-        
+
 
 surroundRedrawPlayerHitBlock entry
 
-        lda playerHitX
+        lda playerHitY
         asl a
         asl a
         tax
         lda surroundGridRowOffsets,x
         sta rowAddress
-        lda playerHitY
+        lda playerHitX
         asl a
         clc
         adc rowAddress
@@ -1572,8 +1415,6 @@ surroundGridRowOffsets anop
 
 surroundX dc i2'0'
 surroundY dc i2'0'
-
-
 
 surroundXDiff dc i2'0'
 surroundYDiff dc i2'0'

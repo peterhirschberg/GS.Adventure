@@ -308,11 +308,14 @@ erasePlayerHit entry
         jsl roomHasFog
         cmp #1
         beq hasFog2
+
         jsr eraseSpriteRect
         rts
 
 hasFog2 anop
+
         jsr surroundRedrawPlayerHitBlock
+
         ldx #OBJECT_PLAYER
         lda >objectLinkedObjectList,x
         cmp #OBJECT_NONE
