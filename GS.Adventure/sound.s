@@ -1,0 +1,400 @@
+;
+;  sound.s
+;  GS.Adventure
+;
+;  Created by Peter Hirschberg on 8/4/21.
+;Copyright © 2021 Peter Hirschberg. All rights reserved.
+;
+; ********************************************
+; Almost all this code/structure is pulled from Jeremy Rand's "BuGS" game
+; Github: https://github.com/jeremysrand/BuGS
+; ********************************************
+;
+;  Created by Jeremy Rand on 2020-12-16.
+;  Copyright © 2020 Jeremy Rand. All rights reserved.
+;
+
+
+        case on
+        mcopy global.macros
+        keep global
+
+sound start
+        using globalData
+
+SOUND_REG_FREQ_LOW    equ $0000
+SOUND_REG_FREQ_HIGH    equ $0020
+SOUND_REG_VOLUME    equ $0040
+SOUND_REG_POINTER    equ $0080
+SOUND_REG_CONTROL    equ $00a0
+SOUND_REG_SIZE        equ $00c0
+
+SOUND_HALTED        equ 1
+SOUND_STARTED        equ 0
+
+SOUND_ONE_SHOT_MODE    equ 2
+SOUND_SWAP_MODE equ 6
+
+SOUND_RIGHT_SPEAKER    equ $10
+SOUND_LEFT_SPEAKER    equ $00
+
+SOUND_CONTROL_REG        equ $e1c03c
+SOUND_DATA_REG            equ $e1c03d
+SOUND_ADDR_LOW            equ $e1c03e
+SOUND_ADDR_HIGH         equ $e1c03f
+SOUND_SYSTEM_VOLUME        equ $e100ca
+
+
+WON_SOUND_ADDR     equ $0000
+WON_OSC_NUM        equ 0
+WON_FREQ_HIGH        equ 0
+WON_FREQ_LOW        equ 800
+WON_CONTROL        equ SOUND_ONE_SHOT_MODE
+WON_SIZE            equ $2b
+
+DRAGONDIE_SOUND_ADDR     equ $2000
+DRAGONDIE_OSC_NUM        equ 2
+DRAGONDIE_FREQ_HIGH        equ 0
+DRAGONDIE_FREQ_LOW        equ 800
+DRAGONDIE_CONTROL        equ SOUND_ONE_SHOT_MODE
+DRAGONDIE_SIZE            equ $2b
+
+ROAR_SOUND_ADDR     equ $4000
+ROAR_OSC_NUM        equ 4
+ROAR_FREQ_HIGH        equ 0
+ROAR_FREQ_LOW        equ 800
+ROAR_CONTROL        equ SOUND_ONE_SHOT_MODE
+ROAR_SIZE            equ $2b
+
+PICKUP_SOUND_ADDR     equ $6000
+PICKUP_OSC_NUM        equ 6
+PICKUP_FREQ_HIGH        equ 0
+PICKUP_FREQ_LOW        equ 800
+PICKUP_CONTROL        equ SOUND_ONE_SHOT_MODE
+PICKUP_SIZE            equ $2b
+
+PUTDOWN_SOUND_ADDR     equ $8000
+PUTDOWN_OSC_NUM        equ 8
+PUTDOWN_FREQ_HIGH        equ 0
+PUTDOWN_FREQ_LOW        equ 800
+PUTDOWN_CONTROL        equ SOUND_ONE_SHOT_MODE
+PUTDOWN_SIZE            equ $2b
+
+EATEN_SOUND_ADDR     equ $a000
+EATEN_OSC_NUM        equ 10
+EATEN_FREQ_HIGH        equ 0
+EATEN_FREQ_LOW        equ 800
+EATEN_CONTROL        equ SOUND_ONE_SHOT_MODE
+EATEN_SIZE            equ $2b
+
+
+; Y has the register to write to (16 bit mode)
+; A has the value to write (8 bit mode)
+; Assuming not in increment mode
+writeReg entry
+		sta registerValue
+writeReg_loop anop
+		tya
+		sta >SOUND_ADDR_LOW
+		_docWait
+		lda registerValue
+		sta >SOUND_DATA_REG
+		tya
+		sta >SOUND_ADDR_LOW
+		_docWait
+		lda >SOUND_DATA_REG
+		lda >SOUND_DATA_REG
+		cmp registerValue
+		bne writeReg_loop
+		rts
+
+
+; Y has the register to write to (16 bit mode)
+; A has the value to write (8 bit mode)
+; Assuming not in increment mode
+writeRegNoRead entry
+		sta registerValue
+		tya
+		sta >SOUND_ADDR_LOW
+		_docWait
+		lda registerValue
+		sta >SOUND_DATA_REG
+		rts
+
+soundInit entry
+		pea WON_SOUND_ADDR
+		jsl loadWonSound
+
+        pea ROAR_SOUND_ADDR
+        jsl loadRoarSound
+
+        pea DRAGONDIE_SOUND_ADDR
+        jsl loadDragonDieSound
+
+        pea PICKUP_SOUND_ADDR
+        jsl loadPickupSound
+
+        pea PUTDOWN_SOUND_ADDR
+        jsl loadPutdownSound
+
+        pea EATEN_SOUND_ADDR
+        jsl loadEatenSound
+
+; Set registers
+        short m
+		_docWait
+
+		lda >SOUND_SYSTEM_VOLUME
+		and #$0f
+		sta >SOUND_CONTROL_REG
+
+		ldx #soundRegDefaults
+soundInit_loop anop
+		lda |$0,x
+		tay
+		lda |$1,x
+		jsr writeRegNoRead
+		inx
+		inx
+		cpx #soundRegDefaultsEnd
+		blt soundInit_loop
+        long m
+
+		rts
+
+playWonSound entry
+
+        short m
+		_docWait
+
+		lda >SOUND_SYSTEM_VOLUME
+		and #$0f
+		sta >SOUND_CONTROL_REG
+
+		_writeReg #SOUND_REG_CONTROL+WON_OSC_NUM,#WON_CONTROL+SOUND_HALTED+SOUND_RIGHT_SPEAKER
+		_writeReg #SOUND_REG_CONTROL+WON_OSC_NUM+1,#WON_CONTROL+SOUND_HALTED+SOUND_LEFT_SPEAKER
+
+		ldy #SOUND_REG_VOLUME+WON_OSC_NUM
+        lda #$ff
+		jsr writeReg
+		iny
+        lda #$ff
+		eor #$ff
+		jsr writeReg
+
+		_writeReg #SOUND_REG_CONTROL+WON_OSC_NUM,#WON_CONTROL+SOUND_RIGHT_SPEAKER
+		_writeReg #SOUND_REG_CONTROL+WON_OSC_NUM+1,#WON_CONTROL+SOUND_LEFT_SPEAKER
+        long m
+		rts
+
+playRoarSound entry
+
+        short m
+		_docWait
+
+		lda >SOUND_SYSTEM_VOLUME
+		and #$0f
+		sta >SOUND_CONTROL_REG
+
+		_writeReg #SOUND_REG_CONTROL+ROAR_OSC_NUM,#ROAR_CONTROL+SOUND_HALTED+SOUND_RIGHT_SPEAKER
+		_writeReg #SOUND_REG_CONTROL+ROAR_OSC_NUM+1,#ROAR_CONTROL+SOUND_HALTED+SOUND_LEFT_SPEAKER
+
+		ldy #SOUND_REG_VOLUME+ROAR_OSC_NUM
+        lda #$ff
+		jsr writeReg
+		iny
+        lda #$ff
+		eor #$ff
+		jsr writeReg
+
+		_writeReg #SOUND_REG_CONTROL+ROAR_OSC_NUM,#ROAR_CONTROL+SOUND_RIGHT_SPEAKER
+		_writeReg #SOUND_REG_CONTROL+ROAR_OSC_NUM+1,#ROAR_CONTROL+SOUND_LEFT_SPEAKER
+        long m
+		rts
+
+playDragonDieSound entry
+
+        short m
+		_docWait
+
+		lda >SOUND_SYSTEM_VOLUME
+		and #$0f
+		sta >SOUND_CONTROL_REG
+
+		_writeReg #SOUND_REG_CONTROL+DRAGONDIE_OSC_NUM,#DRAGONDIE_CONTROL+SOUND_HALTED+SOUND_RIGHT_SPEAKER
+		_writeReg #SOUND_REG_CONTROL+DRAGONDIE_OSC_NUM+1,#DRAGONDIE_CONTROL+SOUND_HALTED+SOUND_LEFT_SPEAKER
+
+		ldy #SOUND_REG_VOLUME+DRAGONDIE_OSC_NUM
+        lda #$ff
+		jsr writeReg
+		iny
+        lda #$ff
+		eor #$ff
+		jsr writeReg
+
+		_writeReg #SOUND_REG_CONTROL+DRAGONDIE_OSC_NUM,#DRAGONDIE_CONTROL+SOUND_RIGHT_SPEAKER
+		_writeReg #SOUND_REG_CONTROL+DRAGONDIE_OSC_NUM+1,#DRAGONDIE_CONTROL+SOUND_LEFT_SPEAKER
+        long m
+		rts
+
+playEatenSound entry
+
+        short m
+		_docWait
+
+		lda >SOUND_SYSTEM_VOLUME
+		and #$0f
+		sta >SOUND_CONTROL_REG
+
+		_writeReg #SOUND_REG_CONTROL+EATEN_OSC_NUM,#EATEN_CONTROL+SOUND_HALTED+SOUND_RIGHT_SPEAKER
+		_writeReg #SOUND_REG_CONTROL+EATEN_OSC_NUM+1,#EATEN_CONTROL+SOUND_HALTED+SOUND_LEFT_SPEAKER
+
+		ldy #SOUND_REG_VOLUME+EATEN_OSC_NUM
+        lda #$ff
+		jsr writeReg
+		iny
+        lda #$ff
+		eor #$ff
+		jsr writeReg
+
+		_writeReg #SOUND_REG_CONTROL+EATEN_OSC_NUM,#EATEN_CONTROL+SOUND_RIGHT_SPEAKER
+		_writeReg #SOUND_REG_CONTROL+EATEN_OSC_NUM+1,#EATEN_CONTROL+SOUND_LEFT_SPEAKER
+        long m
+		rts
+
+playPickupSound entry
+
+        short m
+		_docWait
+
+		lda >SOUND_SYSTEM_VOLUME
+		and #$0f
+		sta >SOUND_CONTROL_REG
+
+		_writeReg #SOUND_REG_CONTROL+PICKUP_OSC_NUM,#PICKUP_CONTROL+SOUND_HALTED+SOUND_RIGHT_SPEAKER
+		_writeReg #SOUND_REG_CONTROL+PICKUP_OSC_NUM+1,#PICKUP_CONTROL+SOUND_HALTED+SOUND_LEFT_SPEAKER
+
+		ldy #SOUND_REG_VOLUME+PICKUP_OSC_NUM
+        lda #$ff
+		jsr writeReg
+		iny
+        lda #$ff
+		eor #$ff
+		jsr writeReg
+
+		_writeReg #SOUND_REG_CONTROL+PICKUP_OSC_NUM,#PICKUP_CONTROL+SOUND_RIGHT_SPEAKER
+		_writeReg #SOUND_REG_CONTROL+PICKUP_OSC_NUM+1,#PICKUP_CONTROL+SOUND_LEFT_SPEAKER
+        long m
+		rts
+
+playPutdownSound entry
+
+        short m
+		_docWait
+
+		lda >SOUND_SYSTEM_VOLUME
+		and #$0f
+		sta >SOUND_CONTROL_REG
+
+		_writeReg #SOUND_REG_CONTROL+PUTDOWN_OSC_NUM,#PUTDOWN_CONTROL+SOUND_HALTED+SOUND_RIGHT_SPEAKER
+		_writeReg #SOUND_REG_CONTROL+PUTDOWN_OSC_NUM+1,#PUTDOWN_CONTROL+SOUND_HALTED+SOUND_LEFT_SPEAKER
+
+		ldy #SOUND_REG_VOLUME+PUTDOWN_OSC_NUM
+        lda #$ff
+		jsr writeReg
+		iny
+        lda #$ff
+		eor #$ff
+		jsr writeReg
+
+		_writeReg #SOUND_REG_CONTROL+PUTDOWN_OSC_NUM,#PUTDOWN_CONTROL+SOUND_RIGHT_SPEAKER
+		_writeReg #SOUND_REG_CONTROL+PUTDOWN_OSC_NUM+1,#PUTDOWN_CONTROL+SOUND_LEFT_SPEAKER
+        long m
+		rts
+
+
+
+registerValue dc i2'0'
+
+soundRegDefaults anop
+
+; Won
+		dc i1'SOUND_REG_FREQ_LOW+WON_OSC_NUM',i1'WON_FREQ_LOW'
+		dc i1'SOUND_REG_FREQ_LOW+WON_OSC_NUM+1',i1'WON_FREQ_LOW'
+		dc i1'SOUND_REG_FREQ_HIGH+WON_OSC_NUM',i1'WON_FREQ_HIGH'
+		dc i1'SOUND_REG_FREQ_HIGH+WON_OSC_NUM+1',i1'WON_FREQ_HIGH'
+		dc i1'SOUND_REG_SIZE+WON_OSC_NUM',i1'WON_SIZE'
+		dc i1'SOUND_REG_SIZE+WON_OSC_NUM+1',i1'WON_SIZE'
+		dc i1'SOUND_REG_POINTER+WON_OSC_NUM',i1'WON_SOUND_ADDR/256'
+		dc i1'SOUND_REG_POINTER+WON_OSC_NUM+1',i1'WON_SOUND_ADDR/256'
+		dc i1'SOUND_REG_CONTROL+WON_OSC_NUM',i1'WON_CONTROL+SOUND_HALTED+SOUND_RIGHT_SPEAKER'
+		dc i1'SOUND_REG_CONTROL+WON_OSC_NUM+1',i1'WON_CONTROL+SOUND_HALTED+SOUND_LEFT_SPEAKER'
+
+
+; Roar
+        dc i1'SOUND_REG_FREQ_LOW+ROAR_OSC_NUM',i1'ROAR_FREQ_LOW'
+        dc i1'SOUND_REG_FREQ_LOW+ROAR_OSC_NUM+1',i1'ROAR_FREQ_LOW'
+        dc i1'SOUND_REG_FREQ_HIGH+ROAR_OSC_NUM',i1'ROAR_FREQ_HIGH'
+        dc i1'SOUND_REG_FREQ_HIGH+ROAR_OSC_NUM+1',i1'ROAR_FREQ_HIGH'
+        dc i1'SOUND_REG_SIZE+ROAR_OSC_NUM',i1'ROAR_SIZE'
+        dc i1'SOUND_REG_SIZE+ROAR_OSC_NUM+1',i1'ROAR_SIZE'
+        dc i1'SOUND_REG_POINTER+ROAR_OSC_NUM',i1'ROAR_SOUND_ADDR/256'
+        dc i1'SOUND_REG_POINTER+ROAR_OSC_NUM+1',i1'ROAR_SOUND_ADDR/256'
+        dc i1'SOUND_REG_CONTROL+ROAR_OSC_NUM',i1'ROAR_CONTROL+SOUND_HALTED+SOUND_RIGHT_SPEAKER'
+        dc i1'SOUND_REG_CONTROL+ROAR_OSC_NUM+1',i1'ROAR_CONTROL+SOUND_HALTED+SOUND_LEFT_SPEAKER'
+
+
+; Dragon die
+        dc i1'SOUND_REG_FREQ_LOW+DRAGONDIE_OSC_NUM',i1'DRAGONDIE_FREQ_LOW'
+        dc i1'SOUND_REG_FREQ_LOW+DRAGONDIE_OSC_NUM+1',i1'DRAGONDIE_FREQ_LOW'
+        dc i1'SOUND_REG_FREQ_HIGH+DRAGONDIE_OSC_NUM',i1'DRAGONDIE_FREQ_HIGH'
+        dc i1'SOUND_REG_FREQ_HIGH+DRAGONDIE_OSC_NUM+1',i1'DRAGONDIE_FREQ_HIGH'
+        dc i1'SOUND_REG_SIZE+DRAGONDIE_OSC_NUM',i1'DRAGONDIE_SIZE'
+        dc i1'SOUND_REG_SIZE+DRAGONDIE_OSC_NUM+1',i1'DRAGONDIE_SIZE'
+        dc i1'SOUND_REG_POINTER+DRAGONDIE_OSC_NUM',i1'DRAGONDIE_SOUND_ADDR/256'
+        dc i1'SOUND_REG_POINTER+DRAGONDIE_OSC_NUM+1',i1'DRAGONDIE_SOUND_ADDR/256'
+        dc i1'SOUND_REG_CONTROL+DRAGONDIE_OSC_NUM',i1'DRAGONDIE_CONTROL+SOUND_HALTED+SOUND_RIGHT_SPEAKER'
+        dc i1'SOUND_REG_CONTROL+DRAGONDIE_OSC_NUM+1',i1'DRAGONDIE_CONTROL+SOUND_HALTED+SOUND_LEFT_SPEAKER'
+
+
+; Eaten
+        dc i1'SOUND_REG_FREQ_LOW+EATEN_OSC_NUM',i1'EATEN_FREQ_LOW'
+        dc i1'SOUND_REG_FREQ_LOW+EATEN_OSC_NUM+1',i1'EATEN_FREQ_LOW'
+        dc i1'SOUND_REG_FREQ_HIGH+EATEN_OSC_NUM',i1'EATEN_FREQ_HIGH'
+        dc i1'SOUND_REG_FREQ_HIGH+EATEN_OSC_NUM+1',i1'EATEN_FREQ_HIGH'
+        dc i1'SOUND_REG_SIZE+EATEN_OSC_NUM',i1'EATEN_SIZE'
+        dc i1'SOUND_REG_SIZE+EATEN_OSC_NUM+1',i1'EATEN_SIZE'
+        dc i1'SOUND_REG_POINTER+EATEN_OSC_NUM',i1'EATEN_SOUND_ADDR/256'
+        dc i1'SOUND_REG_POINTER+EATEN_OSC_NUM+1',i1'EATEN_SOUND_ADDR/256'
+        dc i1'SOUND_REG_CONTROL+EATEN_OSC_NUM',i1'EATEN_CONTROL+SOUND_HALTED+SOUND_RIGHT_SPEAKER'
+        dc i1'SOUND_REG_CONTROL+EATEN_OSC_NUM+1',i1'EATEN_CONTROL+SOUND_HALTED+SOUND_LEFT_SPEAKER'
+
+
+; Pickup
+        dc i1'SOUND_REG_FREQ_LOW+PICKUP_OSC_NUM',i1'PICKUP_FREQ_LOW'
+        dc i1'SOUND_REG_FREQ_LOW+PICKUP_OSC_NUM+1',i1'PICKUP_FREQ_LOW'
+        dc i1'SOUND_REG_FREQ_HIGH+PICKUP_OSC_NUM',i1'PICKUP_FREQ_HIGH'
+        dc i1'SOUND_REG_FREQ_HIGH+PICKUP_OSC_NUM+1',i1'PICKUP_FREQ_HIGH'
+        dc i1'SOUND_REG_SIZE+PICKUP_OSC_NUM',i1'PICKUP_SIZE'
+        dc i1'SOUND_REG_SIZE+PICKUP_OSC_NUM+1',i1'PICKUP_SIZE'
+        dc i1'SOUND_REG_POINTER+PICKUP_OSC_NUM',i1'PICKUP_SOUND_ADDR/256'
+        dc i1'SOUND_REG_POINTER+PICKUP_OSC_NUM+1',i1'PICKUP_SOUND_ADDR/256'
+        dc i1'SOUND_REG_CONTROL+PICKUP_OSC_NUM',i1'PICKUP_CONTROL+SOUND_HALTED+SOUND_RIGHT_SPEAKER'
+        dc i1'SOUND_REG_CONTROL+PICKUP_OSC_NUM+1',i1'PICKUP_CONTROL+SOUND_HALTED+SOUND_LEFT_SPEAKER'
+
+
+; Putdown
+        dc i1'SOUND_REG_FREQ_LOW+PUTDOWN_OSC_NUM',i1'PUTDOWN_FREQ_LOW'
+        dc i1'SOUND_REG_FREQ_LOW+PUTDOWN_OSC_NUM+1',i1'PUTDOWN_FREQ_LOW'
+        dc i1'SOUND_REG_FREQ_HIGH+PUTDOWN_OSC_NUM',i1'PUTDOWN_FREQ_HIGH'
+        dc i1'SOUND_REG_FREQ_HIGH+PUTDOWN_OSC_NUM+1',i1'PUTDOWN_FREQ_HIGH'
+        dc i1'SOUND_REG_SIZE+PUTDOWN_OSC_NUM',i1'PUTDOWN_SIZE'
+        dc i1'SOUND_REG_SIZE+PUTDOWN_OSC_NUM+1',i1'PUTDOWN_SIZE'
+        dc i1'SOUND_REG_POINTER+PUTDOWN_OSC_NUM',i1'PUTDOWN_SOUND_ADDR/256'
+        dc i1'SOUND_REG_POINTER+PUTDOWN_OSC_NUM+1',i1'PUTDOWN_SOUND_ADDR/256'
+        dc i1'SOUND_REG_CONTROL+PUTDOWN_OSC_NUM',i1'PUTDOWN_CONTROL+SOUND_HALTED+SOUND_RIGHT_SPEAKER'
+        dc i1'SOUND_REG_CONTROL+PUTDOWN_OSC_NUM+1',i1'PUTDOWN_CONTROL+SOUND_HALTED+SOUND_LEFT_SPEAKER'
+
+soundRegDefaultsEnd anop
+
+        end

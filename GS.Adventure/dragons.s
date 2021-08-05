@@ -88,6 +88,8 @@ stateAlive anop
         cmp #1
         bne checkSword
 
+        jsr playRoarSound
+
         ldy #STATE_ROAR
         jsr setDragonState
 
@@ -125,6 +127,7 @@ checkSword anop
         beq notTouchingSword
 
 ; make it dead X_X
+        jsr playDragonDieSound
         lda #2
         sta >objectStateList,x
         lda #1
@@ -165,6 +168,8 @@ roarDone anop
         beq resumeStalking
 
 ; eat the player
+
+        jsr playEatenSound
 
         ldy #STATE_EATEN
         jsr setDragonState

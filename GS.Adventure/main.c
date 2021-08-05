@@ -46,20 +46,50 @@ word getRandom(word range)
 
 static void loadSound(Word addr, Word soundNum)
 {
-//    Handle handle = LoadResource(rRawSound, soundNum);
-//    HLock(handle);
-//    WriteRamBlock(*handle, addr, GetHandleSize(handle));
-//    HUnlock(handle);
+    Handle handle = LoadResource(rRawSound, soundNum);
+    HLock(handle);
+    WriteRamBlock(*handle, addr, GetHandleSize(handle));
+    HUnlock(handle);
 }
 
-void loadFireSound(word addr)
+void loadWonSound(word addr)
 {
-//    loadSound(addr, FIRE_SOUND);
+    loadSound(addr, WON_SOUND);
+}
+
+void loadRoarSound(word addr)
+{
+    loadSound(addr, ROAR_SOUND);
+}
+
+void loadDragonDieSound(word addr)
+{
+    loadSound(addr, DRAGONDIE_SOUND);
+}
+
+void loadEatenSound(word addr)
+{
+    loadSound(addr, EATEN_SOUND);
+}
+
+void loadPickupSound(word addr)
+{
+    loadSound(addr, PICKUP_SOUND);
+}
+
+void loadPutdownSound(word addr)
+{
+    loadSound(addr, PUTDOWN_SOUND);
 }
 
 void preloadSound(void)
 {
-//    LoadResource(rRawSound, FIRE_SOUND);
+    LoadResource(rRawSound, WON_SOUND);
+    LoadResource(rRawSound, ROAR_SOUND);
+    LoadResource(rRawSound, DRAGONDIE_SOUND);
+    LoadResource(rRawSound, EATEN_SOUND);
+    LoadResource(rRawSound, PICKUP_SOUND);
+    LoadResource(rRawSound, PUTDOWN_SOUND);
 }
 
 int main(void)

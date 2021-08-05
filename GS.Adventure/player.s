@@ -219,6 +219,9 @@ overflowRight anop
         
 ; drop it
 dropIt anop
+
+        jsr playPutdownSound
+
         ldx #OBJECT_PLAYER
         lda >objectLinkedObjectList,x
         tax

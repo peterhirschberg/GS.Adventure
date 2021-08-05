@@ -91,6 +91,9 @@ setInitialObjectValues entry
         sta >objectRoomList,x
         sta >objectOldRoomList,x
 
+        lda #0
+        sta >objectStateList,x
+
         bra initDone
         
 level2 anop
@@ -106,6 +109,9 @@ level2 anop
         lda >objectInitialRoomGame2List,x
         sta >objectRoomList,x
         sta >objectOldRoomList,x
+
+        lda #0
+        sta >objectStateList,x
 
         bra initDone
        

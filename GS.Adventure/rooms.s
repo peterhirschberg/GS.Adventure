@@ -1066,6 +1066,9 @@ yellowCastleDone anop
         rtl
 
 chaliseInYellowCastle anop
+
+        jsr playWonSound
+
         lda #1
         sta gameWon
         

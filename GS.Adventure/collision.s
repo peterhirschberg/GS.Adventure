@@ -265,6 +265,8 @@ notCarriedByBat anop
 
 ; Pick up the object!
 
+        jsr playPickupSound
+
         ldx #OBJECT_PLAYER
 
         lda playerHitObject

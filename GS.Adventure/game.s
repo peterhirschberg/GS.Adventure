@@ -39,6 +39,8 @@ initGame entry
 
         jsr startGameSelectMode
 
+        jsr soundInit
+
         jsr normalColorTable
 
         rts
@@ -49,7 +51,22 @@ resetGame entry
         lda gameSelectMode
         cmp #1
         bne softReset
-        
+
+; unlink all objects
+        ldx #0
+unlinkLoop anop
+        lda #OBJECT_NONE
+        sta >objectLinkedObjectList,x
+        lda #0
+        sta >objectLinkedList,x
+        inx
+        inx
+        txa
+        cmp #24
+        bcs unlinkDone
+        bra unlinkLoop
+unlinkDone anop
+
         jsr initObjectPositions
         
 softReset anop
@@ -82,11 +99,6 @@ softReset anop
         lda #$20
         adjustSpriteY
         sta playerY
-
-; unlink all objects
-        ldx #OBJECT_PLAYER
-        lda #OBJECT_NONE
-        sta >objectLinkedObjectList,x
 
         jsr drawRoom
         
