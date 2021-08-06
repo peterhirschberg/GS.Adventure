@@ -36,9 +36,10 @@ void signalQuit(void)
 }
 
 
-word getRandom(word range)
+word getRandomRange(word lower, word upper)
 {
-    return rand() % range;
+    int range = upper - lower;
+    return (rand() % range) + lower;
 }
 
 

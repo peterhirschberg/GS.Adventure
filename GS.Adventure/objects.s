@@ -69,11 +69,62 @@ initObjectPositions entry
         ldx #OBJECT_NUMBERS
         jsr setInitialObjectValues
 
+        lda gameLevel
+        cmp #2
+        beq randomizeObjectPositions
+
+        rts
+
+
+randomizeObjectPositions anop
+
+        ldx #0
+
+randomizeLoop anop
+
+        lda >roomBoundsList,x
+        sta randomizeObject
+        inx
+        inx
+
+        lda >roomBoundsList,x
+        sta randomizeLower
+        inx
+        inx
+
+        lda >roomBoundsList,x
+        sta randomizeUpper
+        inx
+        inx
+
+        lda randomizeObject
+        cmp #OBJECT_NONE
+        bne doRandomize
+        brl randomizeDone
+
+doRandomize anop
+
+        stx savex
+
+        lda randomizeUpper
+        pha
+        lda randomizeLower
+        pha
+        jsl getRandomRange
+
+        ldx randomizeObject
+        sta >objectRoomList,x
+
+        ldx savex
+
+        brl randomizeLoop
+
+randomizeDone anop
+
         rts
 
 
 setInitialObjectValues entry
-; TODO - check for game 1,2 or 3
 
         lda gameLevel
         cmp #0
@@ -96,7 +147,7 @@ setInitialObjectValues entry
 
         bra initDone
         
-level2 anop
+level2 anop ; level 2 & 3
 
         lda >objectInitialPositionXGame2List,x
         adjustSpriteX
@@ -111,7 +162,7 @@ level2 anop
         sta >objectOldRoomList,x
 
         bra initDone
-       
+
 initDone anop
 
         lda #$00
@@ -445,8 +496,12 @@ linkedObject dc i2'0'
 linkedObjectX dc i2'0'
 linkedObjectY dc i2'0'
 
-temp dc i2'0'
+randomizeObject dc i2'0'
+randomizeLower dc i2'0'
+randomizeUpper dc i2'0'
 
+temp dc i2'0'
+savex dc i2'0'
 
         end
 
@@ -961,6 +1016,21 @@ OBJECT_WIDTH_PORT_CLOSED gequ 12
 OBJECT_HEIGHT_PORT_CLOSED gequ 32
 
 
+; Room bounds data for game level 3
+; Ex. the chalise can only exist in rooms 13-1A
+roomBoundsList anop
+        dc i2'OBJECT_CHALISE,$13,$1A'
+        dc i2'OBJECT_REDDRAGON,$01,$1D'
+        dc i2'OBJECT_YELLOWDRAGON,$01,$1D'
+        dc i2'OBJECT_GREENDRAGON,$01,$1D'
+        dc i2'OBJECT_SWORD,$01,$1D'
+        dc i2'OBJECT_BRIDGE,$01,$1D'
+        dc i2'OBJECT_YELLOWKEY,$01,$1D'
+        dc i2'OBJECT_WHITEKEY,$01,$16'
+        dc i2'OBJECT_BLACKKEY,$01,$12'
+        dc i2'OBJECT_BAT,$01,$1D'
+        dc i2'OBJECT_MAGNET,$01,$1D'
+        dc i2'OBJECT_NONE,0,0'
 
 
         end

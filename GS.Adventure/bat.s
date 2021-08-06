@@ -21,6 +21,13 @@ bat start
 
 runBat entry
 
+        lda gameLevel
+        cmp #0
+        bne batLevelOkay
+        rts
+
+batLevelOkay anop
+
         inc batFedUpTimer
 
         ldx #OBJECT_BAT
