@@ -17,8 +17,6 @@ controls start
         using gameData
         using objectData
 
-    using roomsData
-
 
 checkControls entry
 
@@ -121,14 +119,7 @@ wrapLevel anop
         rts
         
 onQuit anop
-;        jsl signalQuit
-
-
-        lda currentRoom
-        tax
-        brk
-        
-
+        jsl signalQuit
         rts
 
         

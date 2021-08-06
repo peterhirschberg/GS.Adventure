@@ -110,9 +110,6 @@ level2 anop
         sta >objectRoomList,x
         sta >objectOldRoomList,x
 
-        lda #0
-        sta >objectStateList,x
-
         bra initDone
        
 initDone anop
@@ -120,6 +117,9 @@ initDone anop
         lda #$00
         sta >objectStateList,x
         sta >objectLinkedList,x
+
+        lda #OBJECT_NONE
+        sta >objectLinkedObjectList,x
 
         rts
 
