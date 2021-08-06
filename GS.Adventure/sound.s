@@ -48,7 +48,7 @@ SOUND_SYSTEM_VOLUME        equ $e100ca
 WON_SOUND_ADDR     equ $0000
 WON_OSC_NUM        equ 0
 WON_FREQ_HIGH        equ 0
-WON_FREQ_LOW        equ 810
+WON_FREQ_LOW        equ 780
 WON_CONTROL        equ SOUND_ONE_SHOT_MODE
 WON_SIZE            equ $2b
 
