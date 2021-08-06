@@ -264,9 +264,6 @@ playEatenSound entry
 
 playPickupSound entry
 
-    jsr playWonSound
-    rts
-
         short m
 		_docWait
 

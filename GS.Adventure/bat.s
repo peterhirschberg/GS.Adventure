@@ -254,6 +254,8 @@ seekDone anop
 
 ; take it from the player
 
+        jsr playPutdownSound
+
         lda #OBJECT_NONE
         sta >objectLinkedObjectList,x
 
