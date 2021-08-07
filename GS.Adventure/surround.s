@@ -1437,8 +1437,8 @@ surroundData data
 surroundOldX dc i2'0'
 surroundOldY dc i2'0'
     
-SURROUND_GRID_ADDR gequ $0a0000
-SURROUND_PIXEL_ADDR gequ $0b0000
+SURROUND_GRID_ADDR gequ $1a0000
+SURROUND_PIXEL_ADDR gequ $1b0000
 
         end
 

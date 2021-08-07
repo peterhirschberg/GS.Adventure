@@ -102,9 +102,10 @@ int main(void)
     TLStartUp();
     toolStartupRef = StartUpTools(userid, refIsResource, TOOL_STARTUP);
     CompactMem();
-    NewHandle((LongWord)0x8000, userid, (Word)(attrLocked | attrFixed | attrAddr | attrBank), (Pointer)0xc0000);
-    NewHandle((LongWord)0x8000, userid, (Word)(attrLocked | attrFixed | attrAddr | attrBank), (Pointer)0xa0000);
-    NewHandle((LongWord)0x8000, userid, (Word)(attrLocked | attrFixed | attrAddr | attrBank), (Pointer)0xb0000);
+    
+    NewHandle((LongWord)0x8000, userid, (Word)(attrLocked | attrFixed | attrAddr | attrBank), (Pointer)0x1c0000);
+    NewHandle((LongWord)0x8000, userid, (Word)(attrLocked | attrFixed | attrAddr | attrBank), (Pointer)0x1a0000);
+    NewHandle((LongWord)0x8000, userid, (Word)(attrLocked | attrFixed | attrAddr | attrBank), (Pointer)0x1b0000);
     InitMouse(0);
     SetMouse(transparent);
     

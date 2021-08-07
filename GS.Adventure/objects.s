@@ -272,6 +272,11 @@ moveLinkedObject entry
         lda linkedObject
         cmp #OBJECT_PLAYER
         beq moveLinkedPlayer
+        cmp #OBJECT_NONE
+        bne moveLinkedContinue
+        rts
+
+moveLinkedContinue anop
 
         ldx linkedObject
 
