@@ -14,6 +14,8 @@
 objects start
         using objectData
         using gameData
+        using playerData
+        using roomsData
 
 
 initObjectPositions entry
@@ -267,6 +269,10 @@ moveLinkedObject entry
         lda >objectLinkedObjectYList,x
         sta linkedObjectY
 
+        lda linkedObject
+        cmp #OBJECT_PLAYER
+        beq moveLinkedPlayer
+
         ldx linkedObject
 
         lda parentObjectX
@@ -281,6 +287,28 @@ moveLinkedObject entry
 
         lda parentObjectRoom
         sta >objectRoomList,x
+
+        lda #1
+        sta >objectDirtyList,x
+
+        rts
+
+moveLinkedPlayer anop
+
+        ldx #OBJECT_PLAYER
+
+        lda parentObjectX
+        clc
+        adc linkedObjectX
+        sta playerX
+
+        lda parentObjectY
+        clc
+        adc linkedObjectY
+        sta playerY
+
+        lda parentObjectRoom
+        sta currentRoom
 
         lda #1
         sta >objectDirtyList,x
@@ -718,7 +746,7 @@ objectColorList anop
         dc i2'COLOR_BLACK' ; black key
         dc i2'COLOR_BLACK' ; bat
         dc i2'COLOR_LTGRAY' ; dot
-d        dc i2'COLOR_FLASH' ; chalise
+        dc i2'COLOR_FLASH' ; chalise
         dc i2'COLOR_BLACK' ; magnet
         dc i2'0'   ; player
 
@@ -944,8 +972,7 @@ objectInitialRoomGame2List anop
         dc i2'$06' ; white key
         dc i2'$19' ; black key
         dc i2'$02' ; bat
-;        dc i2'$15' ; dot
-    dc i2'$11' ; dot
+        dc i2'$15' ; dot
         dc i2'$14' ; chalise
         dc i2'$0e' ; magnet
         dc i2'0'   ; player
