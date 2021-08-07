@@ -84,6 +84,30 @@ playerHitDoneHit anop
         cmp #1
         beq setGoingThroughWall
 
+        lda currentRoom
+        cmp #ROOM_INDEX_LEFT_OF_NAME
+        bne playerHit1
+
+        ldx #OBJECT_DOT
+        lda >objectRoomList,x
+        cmp #ROOM_INDEX_LEFT_OF_NAME
+        bne playerHit1
+
+        lda playerX
+        cmp #$128
+        bcs doDotThing
+        bra playerHit1
+
+doDotThing anop
+
+; If the dot is in this room, allow passage through the wall into the Easter Egg room
+
+        lda #0
+        sta playerHitWall
+        rts
+
+playerHit1 anop
+
         lda #1
         sta playerHitWall
 
@@ -216,6 +240,16 @@ continue anop
         beq hitObject
 
         ldx #OBJECT_PORT3
+        jsr collisionCheckPlayerWithObject
+        cmp #1
+        beq hitObject
+
+        ldx #OBJECT_DOT
+        jsr collisionCheckPlayerWithObject
+        cmp #1
+        beq hitObject
+
+        ldx #OBJECT_AUTHOR
         jsr collisionCheckPlayerWithObject
         cmp #1
         beq hitObject
@@ -353,9 +387,21 @@ hitNonLinkableObject anop
         jsl checkCastles
 
 ; mark it dirty
+
         lda #1
         ldx playerHitObject
         sta >objectDirtyList,x
+
+        lda playerHitObject
+        cmp #OBJECT_AUTHOR
+        bne notName
+
+        lda #OBJECT_NONE
+        sta playerHitObject
+
+        rts
+
+notName anop
 
         lda playerX
         sta playerHitX
@@ -763,6 +809,26 @@ checkall13 anop
 
 checkall14 anop
 
+        lda #OBJECT_DOT
+        jsr collisionCheckAllObjects
+        cmp #1
+        bne checkall15
+        lda #1
+        ldx #OBJECT_DOT
+        sta >objectRedrawList,x
+
+checkall15 anop
+
+        lda #OBJECT_AUTHOR
+        jsr collisionCheckAllObjects
+        cmp #1
+        bne checkall16
+        lda #1
+        ldx #OBJECT_AUTHOR
+        sta >objectRedrawList,x
+
+checkall16 anop
+
         rts
 
 
@@ -913,6 +979,26 @@ ccheck13 anop
         sta returnVal
 
 ccheck14 anop
+
+        lda #OBJECT_DOT
+        sta hitTestObjectB
+        jsr collisionCheckObjects
+        cmp #1
+        bne ccheck15
+        lda #1
+        sta returnVal
+
+ccheck15 anop
+
+        lda #OBJECT_AUTHOR
+        sta hitTestObjectB
+        jsr collisionCheckObjects
+        cmp #1
+        bne ccheck16
+        lda #1
+        sta returnVal
+
+ccheck16 anop
 
         lda returnVal
         rts

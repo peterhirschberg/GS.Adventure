@@ -701,9 +701,24 @@ wrapToRoomLeft anop
 
 wrapToRoomRight anop
 
+
         lda currentRoom
         sta testRoom
+
+; Is it room #3 (Right to secret room)
+        cmp #3
+        bne notNameRoom
+
+; Set room to secret room
+        lda #$1e
+        sta roomRight
+        bra updateRoomGraphics
+
+notNameRoom anop
+
         jsr getCurrentLinkedRooms
+
+updateRoomGraphics anop
 
 ; update the room graphics
         lda roomRight

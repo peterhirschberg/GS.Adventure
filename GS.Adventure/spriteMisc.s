@@ -269,7 +269,7 @@ drawSpriteDot entry
         tcd
 
         short m
-        lda #$11
+        lda #$0
 
         sta 0
         long m
@@ -290,7 +290,7 @@ drawSpriteDotSkipRowDraw10 anop
         tcd
 
         short m
-        lda #$11
+        lda #$0
 
         sta 0
         long m

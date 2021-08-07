@@ -49,6 +49,8 @@ drawRoomSprites entry
         jsr drawChalise
         jsr drawMagnet
         jsr drawBat
+        jsr drawDot
+        jsr drawAuthor
 
         jsr drawNumbers
 
@@ -97,6 +99,8 @@ eraseRoomSprites entry
         jsr eraseSword
         jsr eraseChalise
         jsr eraseBat
+        jsr eraseDot
+
         jsr eraseNumbers
 
         rtl
@@ -357,6 +361,69 @@ doDrawChalise anop
         sta >spriteY
         jsl drawSpriteChalise
 drawChaliseDone anop
+        rts
+
+
+drawDot entry
+        lda #OBJECT_DOT
+        tax
+
+        lda >objectRoomList,x
+        cmp >currentRoom
+        bne drawDotDone
+
+        lda >objectDirtyList,x
+        cmp #1
+        beq doDrawDot
+        lda >objectRedrawList,x
+        cmp #1
+        bne drawDotDone
+
+doDrawDot anop
+
+        lda #0
+        sta >objectDirtyList,x
+        sta >objectRedrawList,x
+
+        lda >objectPositionXList,x
+        bmi drawDotDone
+        sta >spriteX
+        lda >objectPositionYList,x
+        bmi drawDotDone
+        sta >spriteY
+        jsl drawSpriteDot
+drawDotDone anop
+        rts
+
+drawAuthor entry
+        lda #OBJECT_AUTHOR
+        tax
+
+        lda >objectRoomList,x
+        cmp >currentRoom
+        bne drawAuthorDone
+
+        lda >objectDirtyList,x
+        cmp #1
+        beq doDrawAuthor
+        lda >objectRedrawList,x
+        cmp #1
+        bne drawAuthorDone
+
+doDrawAuthor anop
+
+        lda #0
+        sta >objectDirtyList,x
+        sta >objectRedrawList,x
+
+        lda >objectPositionXList,x
+        bmi drawAuthorDone
+        sta >spriteX
+        lda >objectPositionYList,x
+        bmi drawAuthorDone
+        sta >spriteY
+        jsl drawSpriteAuthor
+drawAuthorDone anop
         rts
 
 drawBat entry
@@ -631,6 +698,41 @@ doEraseSword anop
 eraseSwordFog anop
         jsl eraseSpriteSwordFog
 eraseSwordDone anop
+        rts
+
+eraseDot entry
+        lda #OBJECT_DOT
+        tax
+
+        lda >objectRoomList,x
+        cmp >objectOldRoomList,x
+        bne doEraseDot
+
+        lda >objectRoomList,x
+        cmp >currentRoom
+        bne eraseDotDone
+
+        lda >objectDirtyList,x
+        cmp #1
+        bne eraseDotDone
+
+doEraseDot anop
+
+        lda >objectPositionOldXList,x
+        bmi eraseDotDone
+        sta >spriteX
+        lda >objectPositionOldYList,x
+        bmi eraseDotDone
+        sta >spriteY
+
+        jsl roomHasFog
+        cmp #1
+        beq eraseDotFog
+        jsl eraseSpriteDot
+        bra eraseDotDone
+eraseDotFog anop
+        jsl eraseSpriteDotFog
+eraseDotDone anop
         rts
 
 eraseBat entry

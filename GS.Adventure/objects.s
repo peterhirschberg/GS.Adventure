@@ -331,6 +331,9 @@ getHeightForObjectState entry
         cmp #OBJECT_BRIDGE
         beq getBridgeHeight
 
+        cmp #OBJECT_AUTHOR
+        beq getAuthorHeight
+
         rts
 
 getKeyHeight anop
@@ -405,6 +408,10 @@ getBridgeHeight anop
         lda #OBJECT_HEIGHT_BRIDGE
         rts
 
+getAuthorHeight anop
+        lda #OBJECT_HEIGHT_AUTHOR
+        rts
+
 
 getWidthForObjectState entry
 
@@ -449,6 +456,9 @@ getWidthForObjectState entry
         cmp #OBJECT_BRIDGE
         beq getBridgeWidth
 
+        cmp #OBJECT_AUTHOR
+        beq getAuthorWidth
+
         rts
 
 getKeyWidth anop
@@ -485,6 +495,10 @@ getBatWidth anop
 
 getBridgeWidth anop
         lda #OBJECT_WIDTH_BRIDGE
+        rts
+
+getAuthorWidth anop
+        lda #OBJECT_WIDTH_AUTHOR
         rts
 
 
@@ -704,7 +718,7 @@ objectColorList anop
         dc i2'COLOR_BLACK' ; black key
         dc i2'COLOR_BLACK' ; bat
         dc i2'COLOR_LTGRAY' ; dot
-        dc i2'COLOR_FLASH' ; chalise
+d        dc i2'COLOR_FLASH' ; chalise
         dc i2'COLOR_BLACK' ; magnet
         dc i2'0'   ; player
 
@@ -930,7 +944,8 @@ objectInitialRoomGame2List anop
         dc i2'$06' ; white key
         dc i2'$19' ; black key
         dc i2'$02' ; bat
-        dc i2'$15' ; dot
+;        dc i2'$15' ; dot
+    dc i2'$11' ; dot
         dc i2'$14' ; chalise
         dc i2'$0e' ; magnet
         dc i2'0'   ; player
@@ -1014,6 +1029,9 @@ OBJECT_HEIGHT_PORT_OPEN gequ 8
 
 OBJECT_WIDTH_PORT_CLOSED gequ 12
 OBJECT_HEIGHT_PORT_CLOSED gequ 32
+
+OBJECT_WIDTH_AUTHOR gequ 14
+OBJECT_HEIGHT_AUTHOR gequ 190
 
 
 ; Room bounds data for game level 3
