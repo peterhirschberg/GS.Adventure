@@ -92,6 +92,21 @@ onJoystickButton anop
         rts
 
 onReset anop
+
+        jsr dropCarriedObject
+
+        lda gameWon
+        cmp #0
+        beq softReset
+
+        lda #0
+        sta gameWon
+
+        jsr startGameSelectMode
+        rts
+
+softReset anop
+
         jsr resetGame
         rts
         

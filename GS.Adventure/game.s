@@ -28,7 +28,7 @@ initGame entry
         sta doInitGame
 
         jsr setupScreen
-;        jsr blackColorTable
+        jsr blackColorTable
 
         jsr zeroSurroundGrid
         jsr eraseSurroundPixelBuffer
