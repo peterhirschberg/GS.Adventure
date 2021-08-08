@@ -949,7 +949,7 @@ objectInitialPositionYGame1List anop
         dc i2'$20' ; yellow dragon
         dc i2'$20' ; green dragon
         dc i2'$20' ; sword
-        dc i2'$37' ; bridge
+        dc i2'$36' ; bridge
         dc i2'$40' ; yellow key
         dc i2'$40' ; white key
         dc i2'$40' ; black key
