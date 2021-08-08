@@ -94,6 +94,7 @@ onJoystickButton anop
 onReset anop
 
         jsr dropCarriedObject
+        jsr unlinkAllObjects
 
         lda gameWon
         cmp #0
@@ -111,6 +112,10 @@ softReset anop
         rts
         
 onSelect anop
+
+        lda #0
+        sta gameWon
+
         lda gameSelectMode
         cmp #1
         bne startSelectMode

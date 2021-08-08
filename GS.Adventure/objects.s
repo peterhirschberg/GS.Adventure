@@ -167,7 +167,7 @@ level2 anop ; level 2 & 3
 
 initDone anop
 
-        lda #$00
+        lda #0
         sta >objectStateList,x
         sta >objectLinkedList,x
 
@@ -175,6 +175,60 @@ initDone anop
         sta >objectLinkedObjectList,x
 
         rts
+
+
+unlinkAllObjects entry
+
+        ldx #OBJECT_YELLOWKEY
+        jsr unlinkObject
+
+        ldx #OBJECT_WHITEKEY
+        jsr unlinkObject
+
+        ldx #OBJECT_BLACKKEY
+        jsr unlinkObject
+
+        ldx #OBJECT_REDDRAGON
+        jsr unlinkObject
+
+        ldx #OBJECT_YELLOWDRAGON
+        jsr unlinkObject
+
+        ldx #OBJECT_GREENDRAGON
+        jsr unlinkObject
+
+        ldx #OBJECT_BRIDGE
+        jsr unlinkObject
+
+        ldx #OBJECT_DOT
+        jsr unlinkObject
+
+        ldx #OBJECT_CHALISE
+        jsr unlinkObject
+
+        ldx #OBJECT_MAGNET
+        jsr unlinkObject
+
+        ldx #OBJECT_BAT
+        jsr unlinkObject
+
+        ldx #OBJECT_SWORD
+        jsr unlinkObject
+
+        rts
+
+
+
+unlinkObject entry
+
+        lda #0
+        sta >objectLinkedList,x
+
+        lda #OBJECT_NONE
+        sta >objectLinkedObjectList,x
+
+        rts
+
 
 
 runObjects entry
@@ -915,8 +969,7 @@ objectInitialRoomGame1List anop
         dc i2'$1d' ; black key
         dc i2'$1a' ; bat
         dc i2'$15' ; dot
-;        dc i2'$1c' ; chalise
-    dc i2'$11' ; chalise
+        dc i2'$1c' ; chalise
         dc i2'$1b' ; magnet
         dc i2'0'   ; player
 

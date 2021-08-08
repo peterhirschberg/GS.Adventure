@@ -187,6 +187,11 @@ roarDone anop
         stx savex
         jsl eraseRoomSprites
         ldx savex
+
+        lda #3
+        sta >objectLinkedObjectXList,x
+        lda #20
+        sta >objectLinkedObjectYList,x
         
         lda >objectPositionXList,x
         clc

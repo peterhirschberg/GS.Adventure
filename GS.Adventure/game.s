@@ -48,24 +48,12 @@ initGame entry
         
 resetGame entry
 
+        jsr dropCarriedObject
+        jsr unlinkAllObjects
+
         lda gameSelectMode
         cmp #1
         bne softReset
-
-; unlink all objects
-        ldx #0
-unlinkLoop anop
-        lda #OBJECT_NONE
-        sta >objectLinkedObjectList,x
-        lda #0
-        sta >objectLinkedList,x
-        inx
-        inx
-        txa
-        cmp #24
-        bcs unlinkDone
-        bra unlinkLoop
-unlinkDone anop
 
         jsr initObjectPositions
         
