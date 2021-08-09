@@ -8,7 +8,7 @@ s6d2 =
 
 s7d1 = /Users/peter/Library/Developer/Xcode/DerivedData/GS.Adventure-bjhpcacschpjelablbvhwaezeqpl/Build/Products/Debug/GS.Adventure.2mg
 
-g_joystick_type = 0
+g_joystick_type = 4
 g_cfg_rom_path = ../../../../../../../../../../Library/GSport/ROM
 g_limit_speed = 0
 

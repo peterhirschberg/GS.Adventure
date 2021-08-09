@@ -288,12 +288,13 @@ startDragonRoarTimer entry
         adc temp
         sta temp
 
+        ldy temp
+        lda dragonDifficulty,y
+        sta temp
+
         lda #$fc
         sec
         sbc temp
-        lsr a
-        lsr a
-        lsr a
         sta temp
 
         txa

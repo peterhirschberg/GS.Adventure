@@ -201,23 +201,11 @@ pass1 anop
 
         jsr collisionCheckPlayerWithObjects
 
-        lda playerHitWall
-        cmp #1
-        beq hitPass1
-
-        lda playerHitObject
-        cmp #OBJECT_NONE
-        bne hitPass1
-
-        bra noHitPass1
-
-hitPass1 anop
-
         jsr erasePlayerHit
         jsr erasePlayer
         jsr drawPlayer
 
-noHitPass1 anop
+;noHitPass1 anop
 
         bra passDone
 

@@ -29,59 +29,95 @@ runPlayer entry
 
         lda joystickUp
         cmp #1
-        beq onJoystickUp
+        beq _onJoystickUp
+        bra _readDown
+
+_onJoystickUp anop
+
+        jsr onJoystickUp
+
+_readDown anop
 
         lda joystickDown
         cmp #1
-        beq onJoystickDown
+        beq _onJoystickDown
+        bra _readX
+
+_onJoystickDown anop
+
+        jsr onJoystickDown
+
+_readX anop
 
         lda joystickRight
         cmp #1
-        beq onJoystickRight
+        beq _onJoystickRight
+        bra _readLeft
+
+_onJoystickRight anop
+
+        jsr onJoystickRight
+
+_readLeft anop
 
         lda joystickLeft
         cmp #1
-        beq onJoystickLeft
+        beq _onJoystickLeft
+        bra _readButton
+
+_onJoystickLeft anop
+
+        jsr onJoystickLeft
+
+_readButton anop
 
         lda joystickButton
         cmp #1
-        beq onJoystickButton
+        beq _onJoystickButton
+        bra _readControlsDone
 
-        bra joystickDone
+_onJoystickButton anop
 
-onJoystickUp anop
+        jsr onJoystickButton
+
+_readControlsDone anop
+
+        jsr wrapPlayerRoom
+
+        rts
+
+
+
+onJoystickUp entry
         lda #0
         sta joystickUp
         jsr movePlayerUp
-        bra joystickDone
+        rts
 
-onJoystickDown anop
+onJoystickDown entry
         lda #0
         sta joystickDown
         jsr movePlayerDown
-        bra joystickDone
+        rts
 
-onJoystickRight anop
+onJoystickRight entry
         lda #0
         sta joystickRight
         jsr movePlayerRight
-        bra joystickDone
+        rts
 
-onJoystickLeft anop
+onJoystickLeft entry
         lda #0
         sta joystickLeft
         jsr movePlayerLeft
-        bra joystickDone
+        rts
 
-onJoystickButton anop
+onJoystickButton entry
         lda #0
         sta joystickButton
         jsr dropCarriedObject
         rts
 
-joystickDone anop
-        jsr wrapPlayerRoom
-        rts
 
 
 movePlayerUp entry
@@ -152,12 +188,6 @@ movePlayerCarriedObject entry
         sec
         sbc playerOldY
         sta playerDiffY
-
-        lda playerDiffX
-        clc
-        adc playerDiffY
-        cmp #0
-        beq carryDone
 
         ldx #OBJECT_PLAYER
         lda >objectLinkedObjectList,x
