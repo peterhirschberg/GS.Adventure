@@ -10,6 +10,7 @@ Original game written by Warren Robinett. Warren, you rock.
 ## Special thanks go to:
 
  - Jeremy Rand
+ - "fatdog"
  - Scott Duensing
  - Jesse Blue
  - Kelvin Sherlock

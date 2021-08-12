@@ -281,7 +281,9 @@ runGameSelectMode entry
         jsl drawRoomSprites
 
         rts
-        
+
+
+; Thanks to Antoine Vignau for this code
 
 saveState entry
         tdc
@@ -298,7 +300,7 @@ restoreState entry
         ldx mysp
         txs
         lda mydp
-        tcd 
+        tcd
         rtl
 
 
