@@ -33,7 +33,7 @@ drawRoom entry
 ; Playfields are always just the left half of the screen and
 ; the right half is either mirrored or repeated from the left.
 ;
-        jsr eraseRoom
+;        jsr eraseRoom
         jsl dirtyAllSprites
 
 ; draw room as mirrored or repeated
@@ -225,7 +225,39 @@ doneShift anop
 
         jsr drawBackgroundRectChunk
 
+        bra roomNextCol
+
 bitNotSet anop
+
+        lda cx
+        asl a
+        asl a
+        asl a
+        sta rectX
+
+        lda cy
+        asl a
+        asl a
+        asl a
+        asl a
+        asl a
+        sec
+        sbc #10 ; adjust vertical position
+        sta rectY
+
+        lda #CELL_WIDTH
+        sta rectWidth
+
+        lda #CELL_HEIGHT
+        sta rectHeight
+
+        lda #COLOR_LTGRAY
+        sta rectColor
+
+        jsr drawBackgroundRectChunk
+
+roomNextCol anop
+
         inc cx
         lda cx
         cmp #20
@@ -370,7 +402,55 @@ doneShift2 anop
 
         jsr drawBackgroundRectChunk
 
+        brl roomNextCol2
+
 bitNotSet2 anop
+
+        lda cx
+        asl a
+        asl a
+        asl a
+        sta rectX
+
+        lda cy
+        asl a
+        asl a
+        asl a
+        asl a
+        asl a
+        sec
+        sbc #10 ; adjust vertical position
+        sta rectY
+
+        lda #CELL_WIDTH
+        sta rectWidth
+
+        lda #CELL_HEIGHT
+        sta rectHeight
+
+        lda #COLOR_LTGRAY
+        sta rectColor
+
+; draw mirrored right half
+
+        lda cx
+        sta temp
+        inc temp
+
+        lda #40
+        sec
+        sbc temp
+
+        sta rectX
+        asl a
+        asl a
+        asl a
+        sta rectX
+
+        jsr drawBackgroundRectChunk
+
+roomNextCol2 anop
+
         dec cx
         lda cx
         bmi roomNextRow2
@@ -511,7 +591,52 @@ doneShift3 anop
 
         jsr drawBackgroundRectChunk
 
+        brl roomNextCol3
+
 bitNotSet3 anop
+
+        lda cx
+        asl a
+        asl a
+        asl a
+        sta rectX
+
+        lda cy
+        asl a
+        asl a
+        asl a
+        asl a
+        asl a
+        sec
+        sbc #10 ; adjust vertical position
+        sta rectY
+
+        lda #CELL_WIDTH
+        sta rectWidth
+
+        lda #CELL_HEIGHT
+        sta rectHeight
+
+        lda #COLOR_LTGRAY
+        sta rectColor
+
+        jsr drawBackgroundRectChunk
+
+        lda cx
+        asl a
+        asl a
+        asl a
+        clc
+        adc #160
+        sta rectX
+
+        lda #CELL_WIDTH
+        sta rectWidth
+
+        jsr drawBackgroundRectChunk
+
+roomNextCol3 anop
+
         inc cx
         lda cx
         cmp #20
