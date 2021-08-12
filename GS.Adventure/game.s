@@ -152,11 +152,6 @@ gameNotWon anop
 
         jsr runPlayer
 
-
-        lda playerMoved
-        cmp #0
-        beq noMovePass0
-
         lda playerMoved
         cmp #0
         beq noMovePass0
