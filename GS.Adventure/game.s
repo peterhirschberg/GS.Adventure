@@ -152,19 +152,8 @@ gameNotWon anop
 
         jsr runPlayer
 
-        lda playerX
-        sec
-        sbc playerOldX
-        sta playerXDiff
 
-        lda playerY
-        sec
-        sbc playerOldY
-        sta playerYDiff
-
-        lda playerXDiff
-        clc
-        adc playerYDiff
+        lda playerMoved
         cmp #0
         beq noMovePass0
 
@@ -185,6 +174,7 @@ updateSurround anop
         
 dontUpdateSurround anop
         jsr erasePlayer
+
 noMovePass0 anop
         jsr drawPlayer
 
@@ -201,11 +191,24 @@ pass1 anop
 
         jsr collisionCheckPlayerWithObjects
 
+        lda playerHitWall
+        cmp #0
+        beq noHitWallPass1
+        bra hitWallPass1
+
+noHitWallPass1 anop
+
+        lda playerHitObject
+        cmp #OBJECT_NONE
+        beq noHitPass1
+
+hitWallPass1 anop
+
         jsr erasePlayerHit
         jsr erasePlayer
         jsr drawPlayer
 
-;noHitPass1 anop
+noHitPass1 anop
 
         bra passDone
 

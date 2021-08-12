@@ -33,7 +33,7 @@ drawRoom entry
 ; Playfields are always just the left half of the screen and
 ; the right half is either mirrored or repeated from the left.
 ;
-;        jsr eraseRoom
+
         jsl dirtyAllSprites
 
 ; draw room as mirrored or repeated
