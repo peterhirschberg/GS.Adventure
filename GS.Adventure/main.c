@@ -114,9 +114,13 @@ int main(void)
         randomSeed = 1;
     srand(randomSeed);
     
+    saveState();
+    
     while (!shouldQuit) {
         runGameTick();
     }
+    
+    restoreState();
     
     ShutDownTools(refIsHandle, toolStartupRef);
     TLShutDown();

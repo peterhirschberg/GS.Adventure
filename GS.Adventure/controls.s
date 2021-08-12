@@ -78,7 +78,13 @@ controlsNext2 anop
         beq onDifficultyLeft
 
         cmp #'4'
-        beq onDifficultyRight
+        beq onDifficultyRightShort
+        bra controlsNext3
+
+onDifficultyRightShort anop
+        brl onDifficultyRight
+
+controlsNext3 anop
 
         cmp #$20
         beq onJoystickButton
@@ -137,7 +143,12 @@ turnJoystickOn anop
         rts
 
 onQuit anop
+        lda >BUTTON1
+        and #$80
+        cmp #0
+        beq dontQuit
         jsl signalQuit
+dontQuit anop
         rts
 
 onDifficultyLeft anop

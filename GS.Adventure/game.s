@@ -282,7 +282,25 @@ runGameSelectMode entry
 
         rts
         
-        
+
+saveState entry
+        tdc
+        sta mydp
+        tsx
+        stx mysp
+        rtl
+
+
+restoreState entry
+        clc
+        xce
+        rep #$30
+        ldx mysp
+        txs
+        lda mydp
+        tcd 
+        rtl
+
 
 
 doInitGame dc i2'1'
@@ -293,6 +311,10 @@ playerYDiff dc i2'0'
 temp dc i2'0'
 
 surroundUpdateCounter dc i2'0'
+
+mydp dc i4'0'
+mysp dc i4'0'
+
 
         end
 
