@@ -29,7 +29,8 @@ initGame entry
 
         jsr setupScreen
 
-        jsr drawSplash
+        jsr drawSplashBase
+        jsr drawSplashSprites
 loop anop
         bra loop
 

@@ -15,13 +15,10 @@ splash start
         using globalData
         using screenData
         using splashData
+        using controlsData
+
 
         
-drawSplash entry
-        jsr drawSplashBase
-        rts
-        
-
 drawSplashBase entry
 
         jsr splashColorTable
@@ -73,6 +70,160 @@ rowDone anop
 allDone anop
 
         rts
+        
+        
+        
+drawSplashSprites entry
+
+; dragon skill level [3]
+
+        lda #0
+        sta spriteSrcX
+        
+        lda #14
+        sta spriteSrcY
+        
+        lda #146
+        sta spriteWidth
+        
+        lda #12
+        sta spriteHeight
+        
+        lda #0
+        sta spriteDstX
+
+        lda #0
+        sta spriteDstY
+
+        jsr drawSplashSprite
+
+; dragon smartness [4]
+
+        lda #0
+        sta spriteSrcX
+        
+        lda #1
+        sta spriteSrcY
+        
+        lda #146
+        sta spriteWidth
+        
+        lda #12
+        sta spriteHeight
+        
+        lda #0
+        sta spriteDstX
+
+        lda #20
+        sta spriteDstY
+
+        jsr drawSplashSprite
+
+; control input type [j/k]
+
+        lda enableJoystick
+        cmp #0
+        bne notJoystick
+
+        lda #150
+        sta spriteSrcX
+
+        bra joyStickDone
+        
+notJoystick anop
+        
+        lda #0
+        sta spriteSrcX
+        
+joyStickDone anop
+        
+        lda #27
+        sta spriteSrcY
+        
+        lda #146
+        sta spriteWidth
+        
+        lda #12
+        sta spriteHeight
+        
+        lda #0
+        sta spriteDstX
+
+        lda #40
+        sta spriteDstY
+
+        jsr drawSplashSprite
+        
+        
+        rts
+        
+        
+drawSplashSprite entry
+
+        lda #0
+        sta rowCounter
+
+fillVLoop anop
+
+; src
+        lda rowCounter
+        clc
+        adc spriteSrcY
+
+        asl a
+        tax
+        lda spriteRowOffsets,x
+        clc
+        adc spriteSrcX
+        sta dataCounter
+
+; dst
+        lda rowCounter
+        clc
+        adc spriteDstY
+
+        asl a
+        tax
+        lda screenRowOffsets,x
+        clc
+        adc spriteDstX
+        sta screenCounter
+
+        lda spriteWidth
+        sta colCounter
+
+fillHLoop anop
+
+        short m
+        ldx dataCounter
+        lda >splashSpritesList,x
+        ldx screenCounter
+        sta >SCREEN_ADDR,x
+        long m
+        
+        inc dataCounter
+        inc dataCounter
+        inc screenCounter
+
+        dec colCounter
+        dec colCounter
+
+        lda colCounter
+        bmi nextRow
+        bra fillHLoop
+
+nextRow anop
+        inc rowCounter
+        lda rowCounter
+        cmp spriteHeight
+        beq fillDone
+        bra fillVLoop
+
+fillDone anop
+
+        rts
+        
+        
 
 
 rowCounter dc i2'0'
@@ -83,6 +234,217 @@ rowAddress dc i4'0'
 screenCounter dc i4'0'
 dataCounter dc i4'0'
 
+spriteSrcX dc i2'0'
+spriteSrcY dc i2'0'
+
+spriteDstX dc i2'0'
+spriteDstY dc i2'0'
+
+spriteWidth dc i2'0'
+spriteHeight dc i2'0'
+
+
+spriteRowOffsets anop
+        dc i2'$0'
+        dc i2'$140'
+        dc i2'$280'
+        dc i2'$3c0'
+        dc i2'$500'
+        dc i2'$640'
+        dc i2'$780'
+        dc i2'$8c0'
+        dc i2'$a00'
+        dc i2'$b40'
+        dc i2'$c80'
+        dc i2'$dc0'
+        dc i2'$f00'
+        dc i2'$1040'
+        dc i2'$1180'
+        dc i2'$12c0'
+        dc i2'$1400'
+        dc i2'$1540'
+        dc i2'$1680'
+        dc i2'$17c0'
+        dc i2'$1900'
+        dc i2'$1a40'
+        dc i2'$1b80'
+        dc i2'$1cc0'
+        dc i2'$1e00'
+        dc i2'$1f40'
+        dc i2'$2080'
+        dc i2'$21c0'
+        dc i2'$2300'
+        dc i2'$2440'
+        dc i2'$2580'
+        dc i2'$26c0'
+        dc i2'$2800'
+        dc i2'$2940'
+        dc i2'$2a80'
+        dc i2'$2bc0'
+        dc i2'$2d00'
+        dc i2'$2e40'
+        dc i2'$2f80'
+        dc i2'$30c0'
+        dc i2'$3200'
+        dc i2'$3340'
+        dc i2'$3480'
+        dc i2'$35c0'
+        dc i2'$3700'
+        dc i2'$3840'
+        dc i2'$3980'
+        dc i2'$3ac0'
+        dc i2'$3c00'
+        dc i2'$3d40'
+        dc i2'$3e80'
+        dc i2'$3fc0'
+        dc i2'$4100'
+        dc i2'$4240'
+        dc i2'$4380'
+        dc i2'$44c0'
+        dc i2'$4600'
+        dc i2'$4740'
+        dc i2'$4880'
+        dc i2'$49c0'
+        dc i2'$4b00'
+        dc i2'$4c40'
+        dc i2'$4d80'
+        dc i2'$4ec0'
+        dc i2'$5000'
+        dc i2'$5140'
+        dc i2'$5280'
+        dc i2'$53c0'
+        dc i2'$5500'
+        dc i2'$5640'
+        dc i2'$5780'
+        dc i2'$58c0'
+        dc i2'$5a00'
+        dc i2'$5b40'
+        dc i2'$5c80'
+        dc i2'$5dc0'
+        dc i2'$5f00'
+        dc i2'$6040'
+        dc i2'$6180'
+        dc i2'$62c0'
+        dc i2'$6400'
+        dc i2'$6540'
+        dc i2'$6680'
+        dc i2'$67c0'
+        dc i2'$6900'
+        dc i2'$6a40'
+        dc i2'$6b80'
+        dc i2'$6cc0'
+        dc i2'$6e00'
+        dc i2'$6f40'
+        dc i2'$7080'
+        dc i2'$71c0'
+        dc i2'$7300'
+        dc i2'$7440'
+        dc i2'$7580'
+        dc i2'$76c0'
+        dc i2'$7800'
+        dc i2'$7940'
+        dc i2'$7a80'
+        dc i2'$7bc0'
+        dc i2'$7d00'
+        dc i2'$7e40'
+        dc i2'$7f80'
+        dc i2'$80c0'
+        dc i2'$8200'
+        dc i2'$8340'
+        dc i2'$8480'
+        dc i2'$85c0'
+        dc i2'$8700'
+        dc i2'$8840'
+        dc i2'$8980'
+        dc i2'$8ac0'
+        dc i2'$8c00'
+        dc i2'$8d40'
+        dc i2'$8e80'
+        dc i2'$8fc0'
+        dc i2'$9100'
+        dc i2'$9240'
+        dc i2'$9380'
+        dc i2'$94c0'
+        dc i2'$9600'
+        dc i2'$9740'
+        dc i2'$9880'
+        dc i2'$99c0'
+        dc i2'$9b00'
+        dc i2'$9c40'
+        dc i2'$9d80'
+        dc i2'$9ec0'
+        dc i2'$a000'
+        dc i2'$a140'
+        dc i2'$a280'
+        dc i2'$a3c0'
+        dc i2'$a500'
+        dc i2'$a640'
+        dc i2'$a780'
+        dc i2'$a8c0'
+        dc i2'$aa00'
+        dc i2'$ab40'
+        dc i2'$ac80'
+        dc i2'$adc0'
+        dc i2'$af00'
+        dc i2'$b040'
+        dc i2'$b180'
+        dc i2'$b2c0'
+        dc i2'$b400'
+        dc i2'$b540'
+        dc i2'$b680'
+        dc i2'$b7c0'
+        dc i2'$b900'
+        dc i2'$ba40'
+        dc i2'$bb80'
+        dc i2'$bcc0'
+        dc i2'$be00'
+        dc i2'$bf40'
+        dc i2'$c080'
+        dc i2'$c1c0'
+        dc i2'$c300'
+        dc i2'$c440'
+        dc i2'$c580'
+        dc i2'$c6c0'
+        dc i2'$c800'
+        dc i2'$c940'
+        dc i2'$ca80'
+        dc i2'$cbc0'
+        dc i2'$cd00'
+        dc i2'$ce40'
+        dc i2'$cf80'
+        dc i2'$d0c0'
+        dc i2'$d200'
+        dc i2'$d340'
+        dc i2'$d480'
+        dc i2'$d5c0'
+        dc i2'$d700'
+        dc i2'$d840'
+        dc i2'$d980'
+        dc i2'$dac0'
+        dc i2'$dc00'
+        dc i2'$dd40'
+        dc i2'$de80'
+        dc i2'$dfc0'
+        dc i2'$e100'
+        dc i2'$e240'
+        dc i2'$e380'
+        dc i2'$e4c0'
+        dc i2'$e600'
+        dc i2'$e740'
+        dc i2'$e880'
+        dc i2'$e9c0'
+        dc i2'$eb00'
+        dc i2'$ec40'
+        dc i2'$ed80'
+        dc i2'$eec0'
+        dc i2'$f000'
+        dc i2'$f140'
+        dc i2'$f280'
+        dc i2'$f3c0'
+        dc i2'$f500'
+        dc i2'$f640'
+        dc i2'$f780'
+        dc i2'$f8c0'
 
         end
 
@@ -91,7 +453,7 @@ dataCounter dc i4'0'
 
 splashData data splashDataSeg
 
-; Splash screen art courtesy of "fatdog". Thank you!!!
+; Splash screen art courtesy of "fatdog" (fatdogprojects@gmail.com). Thank you!!!
     
 splashDataList anop
         dc i2'$00'
