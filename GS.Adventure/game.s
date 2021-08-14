@@ -28,6 +28,11 @@ initGame entry
         sta doInitGame
 
         jsr setupScreen
+
+        jsr drawSplash
+loop anop
+        bra loop
+
         jsr blackColorTable
 
         jsr zeroSurroundGrid
