@@ -19,6 +19,8 @@ splash start
 
 drawSplash entry
 
+        jsr splashColorTable
+
         lda #0
         sta rowCounter
         sta screenCounter

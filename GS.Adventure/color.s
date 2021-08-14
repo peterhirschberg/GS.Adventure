@@ -265,7 +265,76 @@ fogColorTable entry
 
         rts
 
+        
+splashColorTable entry
 
+        ldx #0
+        lda #$0e92
+        sta >COLOR_TABLE,x
+
+        ldx #2
+        lda #$0922
+        sta >COLOR_TABLE,x
+
+        ldx #4
+        lda #$0e43
+        sta >COLOR_TABLE,x
+
+        ldx #6
+        lda #$0467
+        sta >COLOR_TABLE,x
+
+        ldx #8
+        lda #$04bd
+        sta >COLOR_TABLE,x
+
+        ldx #10
+        lda #$0132
+        sta >COLOR_TABLE,x
+
+        ldx #12
+        lda #$0262
+        sta >COLOR_TABLE,x
+
+        ldx #14
+        lda #$03a3
+        sta >COLOR_TABLE,x
+
+        ldx #16
+        lda #$07c2
+        sta >COLOR_TABLE,x
+
+        ldx #18
+        lda #$0bd1
+        sta >COLOR_TABLE,x
+
+        ldx #20
+        lda #$0642
+        sta >COLOR_TABLE,x
+
+        ldx #22
+        lda #$0b52
+        sta >COLOR_TABLE,x
+
+        ldx #24
+        lda #$0ca4
+        sta >COLOR_TABLE,x
+
+        ldx #26
+        lda #$0fd1
+        sta >COLOR_TABLE,x
+
+        ldx #28
+        lda #$0fe4
+        sta >COLOR_TABLE,x
+
+        ldx #30
+        lda #$0eee
+        sta >COLOR_TABLE,x
+
+        rts
+        
+        
 
 advanceFlashColor entry
 
