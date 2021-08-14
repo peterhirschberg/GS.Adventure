@@ -89,10 +89,10 @@ drawSplashSprites entry
         lda #12
         sta spriteHeight
         
-        lda #0
+        lda #83
         sta spriteDstX
 
-        lda #0
+        lda #116
         sta spriteDstY
 
         jsr drawSplashSprite
