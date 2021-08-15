@@ -180,7 +180,6 @@ joyStickDone anop
 
         jsr drawSplashSprite
         
-        
         rts
         
         
@@ -195,7 +194,6 @@ fillVLoop anop
         lda rowCounter
         clc
         adc spriteSrcY
-
         asl a
         tax
         lda spriteRowOffsets,x
@@ -207,7 +205,6 @@ fillVLoop anop
         lda rowCounter
         clc
         adc spriteDstY
-
         asl a
         tax
         lda screenRowOffsets,x
@@ -249,8 +246,6 @@ fillDone anop
 
         rts
         
-        
-
 
 rowCounter dc i2'0'
 colCounter dc i2'0'
