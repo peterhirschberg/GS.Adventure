@@ -75,16 +75,22 @@ onSelectShort anop
 controlsNext2 anop
 
         cmp #'3'
-        beq onDifficultyLeft
+        beq onDifficultyLeftShort
+        bra controlsNext3
+        
+onDifficultyLeftShort anop
+        brl onDifficultyLeft
 
+controlsNext3 anop
+        
         cmp #'4'
         beq onDifficultyRightShort
-        bra controlsNext3
+        bra controlsNext4
 
 onDifficultyRightShort anop
         brl onDifficultyRight
 
-controlsNext3 anop
+controlsNext4 anop
 
         cmp #$20
         beq onJoystickButton
@@ -95,9 +101,14 @@ controlsNext3 anop
         beq onQuit
 
         cmp #'j'
-        beq onToggleJoystick
+        beq onEnableJoystick
         cmp #'J'
-        beq onToggleJoystick
+        beq onEnableJoystick
+
+        cmp #'k'
+        beq onDisableJoystick
+        cmp #'K'
+        beq onDisableJoystick
 
 checkKeysDone anop
         long i,m
@@ -128,18 +139,20 @@ onJoystickButton anop
         sta joystickButton
         rts
 
-onToggleJoystick anop
-        lda enableJoystick
-        cmp #0
-        beq turnJoystickOn
-        lda #0
-        sta enableJoystick
-        jsr playPutdownSound
-        rts
-turnJoystickOn anop
+onEnableJoystick anop
         lda #1
         sta enableJoystick
         jsr playPickupSound
+        lda #1
+        sta splashSpritesDirty
+        rts
+        
+onDisableJoystick anop
+        lda #0
+        sta enableJoystick
+        jsr playPutdownSound
+        lda #1
+        sta splashSpritesDirty
         rts
 
 onQuit anop
@@ -158,11 +171,15 @@ onDifficultyLeft anop
         lda #0
         sta gameDifficultyLeft
         jsr playPutdownSound
+        lda #1
+        sta splashSpritesDirty
         rts
 setSwitchLeft anop
         lda #1
         sta gameDifficultyLeft
         jsr playPickupSound
+        lda #1
+        sta splashSpritesDirty
         rts
 
 onDifficultyRight anop
@@ -172,11 +189,15 @@ onDifficultyRight anop
         lda #0
         sta gameDifficultyRight
         jsr playPutdownSound
+        lda #1
+        sta splashSpritesDirty
         rts
 setSwitchRight anop
         lda #1
         sta gameDifficultyRight
         jsr playPickupSound
+        lda #1
+        sta splashSpritesDirty
         rts
 
 onReset anop
@@ -411,7 +432,6 @@ joyY dc i2'0'
 
 
 controlsData data
-
 
 joystickUp dc i2'0'
 joystickRight dc i2'0'

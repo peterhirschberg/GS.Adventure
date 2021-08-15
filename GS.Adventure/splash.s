@@ -16,12 +16,10 @@ splash start
         using screenData
         using splashData
         using controlsData
-
+        using gameData
 
         
 drawSplashBase entry
-
-        jsr splashColorTable
 
         lda #0
         sta rowCounter
@@ -69,6 +67,8 @@ rowDone anop
 
 allDone anop
 
+        jsr splashColorTable
+
         rts
         
         
@@ -77,8 +77,21 @@ drawSplashSprites entry
 
 ; dragon skill level [3]
 
+        lda gameDifficultyLeft
+        cmp #0
+        beq noviceSkill
+
+        lda #150
+        sta spriteSrcX
+
+        bra skillDone
+        
+noviceSkill anop
+
         lda #0
         sta spriteSrcX
+        
+skillDone anop
         
         lda #14
         sta spriteSrcY
@@ -99,9 +112,22 @@ drawSplashSprites entry
 
 ; dragon smartness [4]
 
+        lda gameDifficultyRight
+        cmp #0
+        beq smartDragons
+
+        lda #150
+        sta spriteSrcX
+
+        bra smartDone
+        
+smartDragons anop
+
         lda #0
         sta spriteSrcX
         
+smartDone anop
+
         lda #1
         sta spriteSrcY
         
@@ -111,10 +137,10 @@ drawSplashSprites entry
         lda #12
         sta spriteHeight
         
-        lda #0
+        lda #83
         sta spriteDstX
 
-        lda #20
+        lda #130
         sta spriteDstY
 
         jsr drawSplashSprite
@@ -146,10 +172,10 @@ joyStickDone anop
         lda #12
         sta spriteHeight
         
-        lda #0
+        lda #83
         sta spriteDstX
 
-        lda #40
+        lda #64
         sta spriteDstY
 
         jsr drawSplashSprite

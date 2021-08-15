@@ -13,6 +13,7 @@
 
 game start
         using globalData
+        using controlsData
         using screenData
         using colorData
         using roomsData
@@ -29,24 +30,26 @@ initGame entry
 
         jsr setupScreen
 
+        jsr soundInit
+
+        jsr blackColorTable
+        
         jsr drawSplashBase
-        jsr drawSplashSprites
-loop anop
-        bra loop
+
+        rts
+        
+
+postSplashInitGame entry
 
         jsr blackColorTable
 
         jsr zeroSurroundGrid
         jsr eraseSurroundPixelBuffer
 
-;        jsr borderInit
-
         jsr initObjectPositions
 
         jsr startGameSelectMode
-
-        jsr soundInit
-
+        
         jsr normalColorTable
 
         rts
@@ -115,13 +118,21 @@ dontInitGame anop
 
         jsr waitForVbl
 
-;        jsr borderStart
-
         jsr checkControls
+        
+        lda doSplashScreen
+        cmp #1
+        bne checkSelectMode
+        
+        jsr runSplashScreen
+        rts
+
+checkSelectMode anop
         
         lda gameSelectMode
         cmp #1
         bne normalGameMode
+        
         jsr runGameSelectMode
         rts
 
@@ -245,12 +256,6 @@ passDone anop
         lda currentRoom
         sta lastRoom
 
-
-;        jsr borderStart
-
-;        jsr borderDone
-
-
         rts
         
         
@@ -286,6 +291,34 @@ runGameSelectMode entry
 
         rts
 
+        
+runSplashScreen entry
+
+        lda splashSpritesDirty
+        cmp #1
+        bne dontDrawSplashSprites
+
+        lda #0
+        sta splashSpritesDirty
+        
+        jsr drawSplashSprites
+
+dontDrawSplashSprites anop
+
+        lda joystickButton
+        cmp #1
+        bne notJoyStickButton
+        
+        lda #0
+        sta doSplashScreen
+        jsr postSplashInitGame
+        
+        rts
+        
+notJoyStickButton anop
+
+        rts
+        
 
 ; Thanks to Antoine Vignau for this code
 
@@ -308,6 +341,8 @@ restoreState entry
         rtl
 
 
+
+doSplashScreen dc i2'1'
 
 doInitGame dc i2'1'
 
@@ -337,5 +372,7 @@ gameDifficultyRight dc i2'1'
 gameWon dc i2'0'
 
 gameSelectMode dc i2'1'
+
+splashSpritesDirty dc i2'1'
 
         end
