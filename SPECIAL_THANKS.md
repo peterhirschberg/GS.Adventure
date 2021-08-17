@@ -20,3 +20,6 @@ Original game written by Warren Robinett. Warren, you rock.
  - Kent Dickey
  - Ian Brumby
  - Dagen Brock ("digarok")
+
+Splash screen artwork by "fatdog" (fatdogprojects@gmail.com)
+
