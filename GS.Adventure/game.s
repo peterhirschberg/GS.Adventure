@@ -341,9 +341,6 @@ restoreState entry
         rtl
 
 
-
-doSplashScreen dc i2'1'
-
 doInitGame dc i2'1'
 
 playerXDiff dc i2'0'
@@ -372,6 +369,8 @@ gameDifficultyRight dc i2'1'
 gameWon dc i2'0'
 
 gameSelectMode dc i2'1'
+
+doSplashScreen dc i2'1'
 
 splashSpritesDirty dc i2'1'
 

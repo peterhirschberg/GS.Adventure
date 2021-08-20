@@ -202,6 +202,13 @@ setSwitchRight anop
 
 onReset anop
 
+        lda doSplashScreen
+        cmp #0
+        beq continueReset
+        rts
+
+continueReset anop
+
         jsr dropCarriedObject
         jsr unlinkAllObjects
 
