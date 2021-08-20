@@ -25,8 +25,6 @@
 unsigned int userid;
 unsigned int randomSeed;
 
-word* backgroundLayer;
-
 
 boolean shouldQuit;
 
